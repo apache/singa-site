@@ -1,0 +1,436 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Building SINGA Docker container &mdash; incubator-singa 0.3.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="incubator-singa 0.3.0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">Source Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">incubator-singa</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Building SINGA Docker container</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="building-singa-docker-container">
+<span id="building-singa-docker-container"></span><h1>Building SINGA Docker container<a class="headerlink" href="#building-singa-docker-container" title="Permalink to this headline">¶</a></h1>
+<p>This guide explains how to set up a development environment for SINGA using Docker. It requires only Docker to be installed. The resulting image contains the complete working environment for SINGA. The image can then be used to set up cluster environment over one or multiple physical nodes.</p>
+<ol class="simple">
+<li><a class="reference external" href="#build_base">Build SINGA base</a></li>
+<li><a class="reference external" href="#build_gpu">Build GPU-enabled SINGA</a></li>
+<li><a class="reference external" href="#build_mesos">Build SINGA with Mesos and Hadoop</a></li>
+<li><a class="reference external" href="#pre_built">Pre-built images</a></li>
+<li><a class="reference external" href="#launch_stand_alone">Launch and stop SINGA (stand alone mode)</a></li>
+<li><a class="reference external" href="#launch_pseudo">Launch pseudo-distributed SINGA on one node</a></li>
+<li><a class="reference external" href="#launch_distributed">Launch fully distributed SINGA on multiple nodes</a></li>
+</ol>
+<hr class="docutils" />
+<p><a name="build_base"></a></p>
+<div class="section" id="build-singa-base-image">
+<span id="build-singa-base-image"></span><h2>Build SINGA base image<a class="headerlink" href="#build-singa-base-image" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd $SINGA_HOME/..
+$ sudo docker build -t singa/base -f incubator-singa/tool/docker/singa/Dockerfile . 
+$ sudo docker images
+REPOSITORY             TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+singa/base             latest              XXXX                XXX                 XXX GB
+</pre></div>
+</div>
+<p>The result is the image containing a built version of SINGA.</p>
+<p><img alt="singa/base" src="http://www.comp.nus.edu.sg/~dinhtta/files/images_base.png" /></p>
+<p><em>Figure 1. singa/base Docker image, containing library dependencies and SINGA built from source.</em></p>
+<hr class="docutils" />
+<p><a name="build_gpu"></a></p>
+</div>
+<div class="section" id="build-singa-with-gpu-support">
+<span id="build-singa-with-gpu-support"></span><h2>Build SINGA with GPU support<a class="headerlink" href="#build-singa-with-gpu-support" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd $SINGA_HOME/..
+$ sudo docker build -t singa/gpu -f incubator-singa/tool/docker/singa/Dockerfile_gpu . 
+$ sudo docker images
+REPOSITORY             TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+singa/gpu             latest              XXXX                XXX                 XXX GB
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><a name="build_mesos"></a></p>
+</div>
+<div class="section" id="build-singa-with-mesos-and-hadoop">
+<span id="build-singa-with-mesos-and-hadoop"></span><h2>Build SINGA with Mesos and Hadoop<a class="headerlink" href="#build-singa-with-mesos-and-hadoop" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd $SINGA_HOME/.. 
+$ sudo docker build -t singa/mesos -f incubator-singa/tool/docker/mesos/Dockerfile .
+$ sudo docker images
+REPOSITORY             TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+singa/mesos             latest              XXXX                XXX                 XXX GB
+</pre></div>
+</div>
+<p><img alt="singa/mesos" src="http://www.comp.nus.edu.sg/~dinhtta/files/images_mesos.png#1" /></p>
+<p><em>Figure 2. singa/mesos Docker image, containing Hadoop and Mesos built on
+top of SINGA. The default namenode address for Hadoop is <code class="docutils literal"><span class="pre">node0:9000</span></code></em></p>
+<p><strong>Notes</strong> A common failure observed during the build process is caused by network failure occuring when downloading dependencies. Simply re-run the build command.</p>
+<hr class="docutils" />
+<p><a name="pre_built"></a></p>
+</div>
+<div class="section" id="pre-built-images-on-epic-cluster">
+<span id="pre-built-images-on-epic-cluster"></span><h2>Pre-built images on epiC cluster<a class="headerlink" href="#pre-built-images-on-epic-cluster" title="Permalink to this headline">¶</a></h2>
+<p>For users with access to the <code class="docutils literal"><span class="pre">epiC</span></code> cluster, there are pre-built and loaded Docker images at the following nodes:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  <span class="n">ciidaa</span><span class="o">-</span><span class="n">c18</span>
+  <span class="n">ciidaa</span><span class="o">-</span><span class="n">c19</span>
+</pre></div>
+</div>
+<p>The available images at those nodes are:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">REPOSITORY</span>             <span class="n">TAG</span>                 <span class="n">IMAGE</span> <span class="n">ID</span>            <span class="n">CREATED</span>             <span class="n">VIRTUAL</span> <span class="n">SIZE</span>
+<span class="n">singa</span><span class="o">/</span><span class="n">base</span>             <span class="n">latest</span>              <span class="n">XXXX</span>                <span class="n">XXX</span>                 <span class="mf">2.01</span> <span class="n">GB</span>
+<span class="n">singa</span><span class="o">/</span><span class="n">mesos</span>            <span class="n">latest</span>              <span class="n">XXXX</span>                <span class="n">XXX</span>                 <span class="mf">4.935</span> <span class="n">GB</span>
+<span class="n">weaveworks</span><span class="o">/</span><span class="n">weaveexec</span>   <span class="mf">1.1</span><span class="o">.</span><span class="mi">1</span>               <span class="n">XXXX</span>                <span class="mi">11</span> <span class="n">days</span> <span class="n">ago</span>         <span class="mf">57.8</span> <span class="n">MB</span>
+<span class="n">weaveworks</span><span class="o">/</span><span class="n">weave</span>       <span class="mf">1.1</span><span class="o">.</span><span class="mi">1</span>               <span class="n">XXXX</span>                <span class="mi">11</span> <span class="n">days</span> <span class="n">ago</span>         <span class="mf">17.56</span> <span class="n">MB</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><a name="launch_stand_alone"></a></p>
+</div>
+<div class="section" id="launch-and-stop-singa-in-stand-alone-mode">
+<span id="launch-and-stop-singa-in-stand-alone-mode"></span><h2>Launch and stop SINGA in stand-alone mode<a class="headerlink" href="#launch-and-stop-singa-in-stand-alone-mode" title="Permalink to this headline">¶</a></h2>
+<p>To launch a test environment for a single-node SINGA training, simply start a container from <code class="docutils literal"><span class="pre">singa/base</span></code> image. The following starts a container called
+<code class="docutils literal"><span class="pre">XYZ</span></code>, then launches a shell in the container:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo docker run -dt --name XYZ singa/base /usr/bin/supervisord
+$ sudo docker exec -it XYZ /bin/bash
+</pre></div>
+</div>
+<p><img alt="Nothing" src="http://www.comp.nus.edu.sg/~dinhtta/files/images_standalone.png#1" /></p>
+<p><em>Figure 3. Launch SINGA in stand-alone mode: single node training</em></p>
+<p>Inside the launched container, the SINGA source directory can be found at <code class="docutils literal"><span class="pre">/root/incubator-singa</span></code>.</p>
+<p><strong>Launching GPU-enabled container</strong>
+First, make sure that the host GPUs are up and running. The list of <code class="docutils literal"><span class="pre">NVIDIA</span></code> devices should be listed at
+<code class="docutils literal"><span class="pre">/dev/nvidiaYYY</span></code>.</p>
+<p>Next, start a new container, passing it all the devices</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo docker run -dt --device /dev/nvidiaYYY --device /dev/nvidiaYYY ... --name XYZ singa/gpu /usr/bin/supervisord
+$ sudo docker exec -it XYZ /bin/bash
+</pre></div>
+</div>
+<p><strong>Stopping the container</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo docker stop XYZ
+$ sudo docker rm ZYZ
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><a name="launch_pseudo"></a></p>
+</div>
+<div class="section" id="launch-singa-on-pseudo-distributed-mode-single-node">
+<span id="launch-singa-on-pseudo-distributed-mode-single-node"></span><h2>Launch SINGA on pseudo-distributed mode (single node)<a class="headerlink" href="#launch-singa-on-pseudo-distributed-mode-single-node" title="Permalink to this headline">¶</a></h2>
+<p>To simulate a distributed environment on a single node, one can repeat the
+previous step multiple times, each time giving a different name to the
+container.  Network connections between these containers are already supported,
+thus SINGA instances/nodes in these container can readily communicate with each
+other.</p>
+<p>The previous approach requires the user to start SINGA instances individually
+at each container. Although there&#8217;s a bash script for that, we provide a better
+way. In particular, multiple containers can be started from <code class="docutils literal"><span class="pre">singa/mesos</span></code> image
+which already bundles Mesos and Hadoop with SINGA. Using Mesos makes it easy to
+launch, stop and monitor the distributed execution from a single container.
+Figure 4 shows <code class="docutils literal"><span class="pre">N+1</span></code> containers running concurrently at the local host.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo docker run -dt --name node0 singa/mesos /usr/bin/supervisord
+$ sudo docker run -dt --name node1 singa/mesos /usr/bin/supervisord
+...
+</pre></div>
+</div>
+<p><img alt="Nothing" src="http://www.comp.nus.edu.sg/~dinhtta/files/images_pseudo.png#1" /></p>
+<p><em>Figure 4. Launch SINGA in pseudo-distributed mode : multiple SINGA nodes over one single machine</em></p>
+<p><strong>Starting SINGA distributed training</strong></p>
+<p>Refer to the <a class="reference external" href="mesos.html">Mesos
+guide</a>
+for details of how to start training with multiple SINGA instances.</p>
+<p><strong>Important:</strong> the container that assumes the role of Hadoop&#8217;s namenode (and often Mesos&#8217;s and Zookeeper&#8217;s mater node as well) <strong>must</strong> be named <code class="docutils literal"><span class="pre">node0</span></code>. Otherwise, the user must log in to individual containers and change the Hadoop configuration separately.</p>
+<p><strong>Notes on Docker version &gt;=1.9</strong> Newer version of Docker adopted a built-in DNS server at the deamon. As a consequence,
+name resolution inside containers now <strong>cannot</strong> depend on the automatically updated <code class="docutils literal"><span class="pre">/etc/hosts</span></code> files as in version
+1.8 and earlier. Here we recommend two ways to make pseudo-distributed and distributed SINGA containers work as before</p>
+<ol>
+<li><p class="first">Downgrade to docker version 1.8 and earlier</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  $ sudo apt-get install docker-engine=1.8.3-0~trusty
+</pre></div>
+</div>
+</li>
+<li><p class="first">Manually log in to each running container, by <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">exec</span> <span class="pre">-it</span> <span class="pre">&lt;name&gt;</span> <span class="pre">/bin/bash</span></code>, and edit the <code class="docutils literal"><span class="pre">/etc/hosts</span></code> with the
+assigned IP addresses of all other running containers.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  <span class="n">node0</span> <span class="o">&lt;</span><span class="n">ip0</span><span class="o">&gt;</span>
+  <span class="n">node1</span> <span class="o">&lt;</span><span class="n">ip1</span><span class="o">&gt;</span>
+  <span class="o">...</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<hr class="docutils" />
+<p><a name="launch_distributed"></a></p>
+</div>
+<div class="section" id="launch-singa-on-fully-distributed-mode-multiple-nodes">
+<span id="launch-singa-on-fully-distributed-mode-multiple-nodes"></span><h2>Launch SINGA on fully distributed mode (multiple nodes)<a class="headerlink" href="#launch-singa-on-fully-distributed-mode-multiple-nodes" title="Permalink to this headline">¶</a></h2>
+<p>The previous section has explained how to start a distributed environment on a
+single node. But running many containers on one node does not scale. When there
+are multiple physical hosts available, it is better to distribute the
+containers over them.</p>
+<p>The only extra requirement for the fully distributed mode, as compared with the
+pseudo distributed mode, is that the containers from different hosts are able
+to transparently communicate with each other. In the pseudo distributed mode,
+the local docker engine takes care of such communication. Here, we rely on
+<a class="reference external" href="http://weave.works/guides/weave-docker-ubuntu-simple.html">Weave</a> to make the
+communication transparent. The resulting architecture is shown below.</p>
+<p><img alt="Nothing" src="http://www.comp.nus.edu.sg/~dinhtta/files/images_full.png#1" /></p>
+<p><em>Figure 5. Launch SINGA in fully distributed mode: multiple SINGA nodes over multiple machines</em></p>
+<p><strong>Install Weave at all hosts</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ curl -L git.io/weave -o /usr/local/bin/weave
+$ chmod a+x /usr/local/bin/weave
+</pre></div>
+</div>
+<p><strong>Starting Weave</strong></p>
+<p>Suppose <code class="docutils literal"><span class="pre">node0</span></code> will be launched at host with IP <code class="docutils literal"><span class="pre">111.222.111.222</span></code>.</p>
+<ul>
+<li><p class="first">At host <code class="docutils literal"><span class="pre">111.222.111.222</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    $ weave launch
+    $ eval &quot;$(weave env)&quot;  //if there&#39;s error, do `sudo -s` and try again
+</pre></div>
+</div>
+</li>
+<li><p class="first">At other hosts:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    $ weave launch 111.222.111.222
+    $ eval &quot;$(weave env)&quot; //if there&#39;s error, do `sudo -s` and try again
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Starting containers</strong></p>
+<p>The user logs in to each host and starts the container (same as in <a class="reference external" href="#launch_pseudo">pseudo-distributed</a> mode). Note that container acting as the head node of the cluster must be named <code class="docutils literal"><span class="pre">node0</span></code> (and be running at the host with IP <code class="docutils literal"><span class="pre">111.222.111.222</span></code>, for example).</p>
+<p><strong><em>Important</em>:</strong> when there are other containers sharing the same host as <code class="docutils literal"><span class="pre">node0</span></code>, say <code class="docutils literal"><span class="pre">node1</span></code> and <code class="docutils literal"><span class="pre">node2</span></code> for example,
+there&#8217;re additional changes to be made to <code class="docutils literal"><span class="pre">node1</span></code> and <code class="docutils literal"><span class="pre">node2</span></code>. Particularly, log in to each container and edit
+<code class="docutils literal"><span class="pre">/etc/hosts</span></code> file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># modified by weave</span>
+<span class="o">...</span>
+<span class="n">X</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">Z</span>   <span class="n">node0</span> <span class="n">node0</span><span class="o">.</span><span class="n">bridge</span>  <span class="o">//&lt;-</span> <span class="n">REMOVE</span> <span class="n">this</span> <span class="n">line</span>
+<span class="o">..</span>
+</pre></div>
+</div>
+<p>This is to ensure that name resolutions (of <code class="docutils literal"><span class="pre">node0</span></code>&#8216;s address) from <code class="docutils literal"><span class="pre">node1</span></code> and <code class="docutils literal"><span class="pre">node2</span></code> are correct. By default,
+containers of the same host resolves each other&#8217;s addresses via the Docker bridge. Instead, we want they to use
+addressed given by Weave.</p>
+<p><strong>Starting SINGA distributed training</strong></p>
+<p>Refer to the <a class="reference external" href="mesos.html">Mesos guide</a>
+for details of how to start training with multiple SINGA instances.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 The Apache Software Foundation. All rights reserved. Apache Singa, Apache, the Apache feather logo, and the Apache Singa project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+
+<div class="rst-versions shift-up" data-toggle="rst-versions" role="note" aria-label="versions">
+    <img src="../_static/apache.jpg">
+
+    <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: 0.3.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Languages</dt>
+            <dd><a href="../../en/index.html">English</a></dd>
+            <dd><a href="../../zh/index.html">中文</a></dd>
+            <dd><a href="../../jp/index.html">日本語</a></dd>
+            <dd><a href="../../kr/index.html">한국어</a></dd>
+        </dl>
+    </div>
+</div>
+
+<a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+         src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+         alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

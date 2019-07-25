@@ -1,0 +1,340 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Source Repository &mdash; incubator-singa 1.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Project Mailing Lists" href="mail-lists.html" />
+    <link rel="prev" title="How to prepare a release" href="../develop/how-to-release.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+    <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <style>
+	.fa:hover {
+	    opacity: 0.7;
+	}
+	.fab:hover {
+	    opacity: 0.7;
+	}
+    </style>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/index.html">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-to-release.html">How to prepare a release</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Source Repository</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#web-access">Web Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contributors">Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#committers">Committers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">incubator-singa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Source Repository</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="source-repository">
+<h1>Source Repository<a class="headerlink" href="#source-repository" title="Permalink to this headline">¶</a></h1>
+<p>This project uses <a class="reference external" href="http://git-scm.com/">Git</a> to manage its source code. Instructions on Git use can be found at <a class="reference external" href="http://git-scm.com/documentation">http://git-scm.com/documentation</a> .</p>
+<div class="section" id="web-access">
+<h2>Web Access<a class="headerlink" href="#web-access" title="Permalink to this headline">¶</a></h2>
+<p>The following is a link to the online source repository.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://gitbox.apache.org/repos/asf?p=incubator-singa.git">https://gitbox.apache.org/repos/asf?p=incubator-singa.git</a></li>
+</ul>
+</div>
+<div class="section" id="contributors">
+<h2>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h2>
+<p>Contributors are encouraged to rebase their commits onto the latest master before sending the pull requests to make the git history clean. The following git instructors should be executed after committing the current work:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout master
+git pull &lt;apache/incubator-singa upstream&gt; master:master
+git checkout &lt;new feature branch&gt;
+git rebase master
+</pre></div>
+</div>
+</div>
+<div class="section" id="committers">
+<h2>Committers<a class="headerlink" href="#committers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>To connect your Apache account with your Github account, Please follow the instructions on: <a class="reference external" href="https://gitbox.apache.org/setup/">https://gitbox.apache.org/setup/</a>. After that you can directly merge PRs using GitHub’s UI.</li>
+</ul>
+<p>To merge pull request <a class="reference external" href="https://github.com/apache/incubator-singa/pull/xxx">https://github.com/apache/incubator-singa/pull/xxx</a>, the following instructions should be executed,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/apache/incubator-singa.git
+git remote add asf https://gitbox.apache.org/repos/asf/incubator-singa.git
+<span class="c1"># optional</span>
+git pull asf master:master
+git fetch origin pull/xxx/head:prxxx
+git merge prxxx
+git push asf master:master
+</pre></div>
+</div>
+<ul class="simple">
+<li>To migrate from git-wip-us.apache.org to Gitbox: If you already cloned the SINGA repository from the old repo <a class="reference external" href="https://git-wip-us.apache.org/repos/asf/incubator-singa.git">https://git-wip-us.apache.org/repos/asf/incubator-singa.git</a>, you can update the master by:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git remote set-url origin git@github.com/apache/singa.git
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mail-lists.html" class="btn btn-neutral float-right" title="Project Mailing Lists" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../develop/how-to-release.html" class="btn btn-neutral" title="How to prepare a release" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: latest
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+      <dl>
+          <dt>Languages</dt>
+          <dd><a href="../../en/index.html">English</a></dd>
+          <dd><a href="../../zh/index.html">中文</a></dd>
+      </dl>
+      <dl>
+          <dt>Versions</dt>
+          <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+          <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+      </dl>
+
+  </div>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.png" style="background-color:white;"> </a>
+
+  <a href="https://github.com/apache/incubator-singa" class="fa fa-github" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a> 
+  <a href="https://www.linkedin.com/groups/13550034" class="fa fa-linkedin" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://twitter.com/ApacheSinga" class="fa fa-twitter" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://www.facebook.com/Apache-SINGA-347284219056544/" class="fa fa-facebook" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://www.researchgate.net/project/Apache-SINGA" class="fab fa-researchgate" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+
+</div>
+
+ <a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+        alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

@@ -1,0 +1,289 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>&lt;no title&gt; &mdash; incubator-singa 1.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="incubator-singa 1.1.0 documentation" href="../index.html"/>
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/index.html">Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">Source Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">incubator-singa</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>&lt;no title&gt;</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p>#singa-incubating-1.1.0 Release Notes</p>
+<hr class="docutils" />
+<p>SINGA is a general distributed deep learning platform for training big deep
+learning models over large datasets.</p>
+<p>This release includes following features:</p>
+<ul class="simple">
+<li>Core components<ul>
+<li>[SINGA-296] Add sign and to_host function for pysinga tensor module</li>
+</ul>
+</li>
+<li>Model components<ul>
+<li>[SINGA-254] Implement Adam for V1</li>
+<li>[SINGA-264] Extend the FeedForwardNet to accept multiple inputs</li>
+<li>[SINGA-267] Add spatial mode in batch normalization layer</li>
+<li>[SINGA-271] Add Concat and Slice layers</li>
+<li>[SINGA-275] Add Cross Entropy Loss for multiple labels</li>
+<li>[SINGA-278] Convert trained caffe parameters to singa</li>
+<li>[SINGA-287] Add memory size check for cudnn convolution</li>
+</ul>
+</li>
+<li>Utility functions and CI<ul>
+<li>[SINGA-242] Compile all source files into a single library.</li>
+<li>[SINGA-244] Separating swig interface and python binding files</li>
+<li>[SINGA-246] Imgtool for image augmentation</li>
+<li>[SINGA-247] Add windows support for singa</li>
+<li>[SINGA-251] Implement image loader for pysinga</li>
+<li>[SINGA-252] Use the snapshot methods to dump and load models for pysinga</li>
+<li>[SINGA-255] Compile mandatory dependent libaries together with SINGA code</li>
+<li>[SINGA-259] Add maven pom file for building java classes</li>
+<li>[SINGA-261] Add version ID into the checkpoint files</li>
+<li>[SINGA-266] Add Rafiki python toolkits</li>
+<li>[SINGA-273] Improve license and contributions</li>
+<li>[SINGA-284] Add python unittest into Jenkins and link static libs into whl file</li>
+<li>[SINGA-280] Jenkins CI support</li>
+<li>[SINGA-288] Publish wheel of PySINGA generated by Jenkins to public servers</li>
+</ul>
+</li>
+<li>Documentation and usability<ul>
+<li>[SINGA-263] Create Amazon Machine Image</li>
+<li>[SINGA-268] Add IPython notebooks to the documentation</li>
+<li>[SINGA-276] Create docker images</li>
+<li>[SINGA-289] Update SINGA website automatically using Jenkins</li>
+<li>[SINGA-295] Add an example of image classification using GoogleNet</li>
+</ul>
+</li>
+<li>Bugs fixed<ul>
+<li>[SINGA-245] float as the first operand can not multiply with a tensor object</li>
+<li>[SINGA-293] Bug from compiling PySINGA on Mac OS X with multiple version of Python</li>
+</ul>
+</li>
+</ul>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 The Apache Software Foundation. All rights reserved. Apache Singa, Apache, the Apache feather logo, and the Apache Singa project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+<div class="rst-versions shift-up" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: latest
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+      <dl>
+          <dt>Languages</dt>
+          <dd><a href="../../en/index.html">English</a></dd>
+          <dd><a href="../../zh/index.html">中文</a></dd>
+      </dl>
+      <dl>
+          <dt>Versions</dt>
+          <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+          <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+      </dl>
+
+  </div>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.jpg"> </a>
+</div>
+
+ <a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+        alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

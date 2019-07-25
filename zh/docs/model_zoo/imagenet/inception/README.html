@@ -1,0 +1,368 @@
+
+ 
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>用Inception V4做图像分类 &mdash; incubator-singa 2.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="用ResNet做图像分类" href="../resnet/README.html" />
+    <link rel="prev" title="用GoogleNet做图像分类" href="../googlenet/README.html" />
+     <link href="../../../../_static/style.css" rel="stylesheet" type="text/css">
+     <!--link href="../../../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+     <style>
+   .fa:hover {
+       opacity: 0.7;
+   }
+   .fab:hover {
+       opacity: 0.7;
+   }
+     </style>
+ 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../../../../_static/singa.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">文档</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html">安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../software_stack.html">软件架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../device.html">设备(Device)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tensor.html">张量(Tensor)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../layer.html">层(Layer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../net.html">前馈网络</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../initializer.html">初始化器(Initializer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../loss.html">损失(Loss)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../metric.html">度量(Metric)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../optimizer.html">优化器(Optimizer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../data.html">数据(Data)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../image_tool.html">图像工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../snapshot.html">Snapshot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../utils.html">Utils</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">模型库</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../cifar10/README.html">在Cifar-10上训练CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../char-rnn/README.html">在文本上训练Char-RNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnist/README.html">在MNIST数据集上训练RBM模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../alexnet/README.html">在ImageNet上训练AlexNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../densenet/README.html">用DenseNet做图像分类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../googlenet/README.html">用GoogleNet做图像分类</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">用Inception V4做图像分类</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">操作说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">详细信息</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../resnet/README.html">用ResNet做图像分类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vgg/README.html">用VGG做图像分类</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../downloads.html">下载 SINGA</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../develop/schedule.html">开发时间表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-contribute.html">如何贡献给 SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../develop/contribute-code.html">如何贡献代码</a></li>
+</ul>
+<p class="caption"><span class="caption-text">社区</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../community/source-repository.html">源代码库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../community/mail-lists.html">项目邮件列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../community/issue-tracking.html">问题追踪</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../community/team-list.html">SINGA团队</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">incubator-singa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">文档</a> &raquo;</li>
+        
+          <li><a href="../../index.html">模型库</a> &raquo;</li>
+        
+      <li>用Inception V4做图像分类</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+--><p>name: Inception V4 on ImageNet SINGA version: 1.1.1 SINGA commit: parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/inception_v4.tar.gz parameter_sha1: 5fdd6f5d8af8fd10e7321d9b38bb87ef14e80d56 license: https://github.com/tensorflow/models/tree/master/slim</p>
+<hr class="docutils" />
+<div class="section" id="inception-v4">
+<h1>用Inception V4做图像分类<a class="headerlink" href="#inception-v4" title="Permalink to this headline">¶</a></h1>
+<p>这个例子中，我们将Tensorflow训练好的Inception V4转换为SINGA模型以用作图像分类。</p>
+<div class="section" id="id1">
+<h2>操作说明<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>下载参数的checkpoint文件到如下目录</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ wget
+  $ tar xvf inception_v4.tar.gz
+</pre></div>
+</div>
+</li>
+<li><p>运行程序</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  # use cpu
+  $ python serve.py -C &amp;
+  # use gpu
+  $ python serve.py &amp;
+</pre></div>
+</div>
+</li>
+<li><p>提交图片进行分类</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ curl -i -F image=@image1.jpg http://localhost:9999/api
+  $ curl -i -F image=@image2.jpg http://localhost:9999/api
+  $ curl -i -F image=@image3.jpg http://localhost:9999/api
+</pre></div>
+</div>
+</li>
+</ul>
+<p>image1.jpg, image2.jpg和image3.jpg应该在执行指令前就已被下载。</p>
+</div>
+<div class="section" id="id2">
+<h2>详细信息<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>我们首先从Tensorflow的checkpoint文件中提取参数值到一个pickle版本中。 下载并解压缩checkpoint文件后，运行以下脚本</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python convert.py --file_name=inception_v4.ckpt
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../resnet/README.html" class="btn btn-neutral float-right" title="用ResNet做图像分类" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../googlenet/README.html" class="btn btn-neutral float-left" title="用GoogleNet做图像分类" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ 
+ <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+   <span class="rst-current-version" data-toggle="rst-current-version">
+     <span class="fa fa-book"> incubator-singa </span>
+     v: latest
+     <span class="fa fa-caret-down"></span>
+   </span>
+   <div class="rst-other-versions">
+       <dl>
+           <dt>Languages</dt>
+           <dd><a href="../../../../../index.html">English</a></dd>
+           <dd><a href="../../../.././index.html">中文</a></dd>
+       </dl>
+       <dl>
+           <dt>Versions</dt>
+           <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+           <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+       </dl>
+ 
+   </div>
+   <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
+   <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>
+   <a href="http://www.apache.org/foundation/thanks.html" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Thanks</a>
+   <a href="http://www.apache.org/foundation/sponsorship.html" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">Sponsorship</a>
+   <a href="http://www.apache.org/licenses/" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">License</a>
+   <br>
+   <a href="https://github.com/apache/incubator-singa" class="fa fa-github" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a> 
+   <a href="https://www.linkedin.com/groups/13550034" class="fa fa-linkedin" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://twitter.com/ApacheSinga" class="fa fa-twitter" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://www.facebook.com/Apache-SINGA-347284219056544/" class="fa fa-facebook" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://www.researchgate.net/project/Apache-SINGA" class="fab fa-researchgate" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+ 
+ </div>
+ 
+  <a href="https://github.com/apache/incubator-singa">
+     <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+         src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+         alt="Fork me on GitHub">
+ </a>
+ 
+  
+ 
+
+</body>
+</html>

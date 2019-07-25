@@ -1,0 +1,435 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Development Schedule &mdash; incubator-singa 1.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="incubator-singa 1.1.0 documentation" href="../index.html"/>
+        <link rel="next" title="How to Contribute to SINGA" href="how-contribute.html"/>
+        <link rel="prev" title="Image Classification using GoogleNet" href="../docs/model_zoo/imagenet/googlenet/README.html"/>
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/index.html">Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute-code.html">How to Contribute Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute-docs.html">How to Contribute to Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">Source Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">incubator-singa</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Development Schedule</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="development-schedule">
+<h1>Development Schedule<a class="headerlink" href="#development-schedule" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Release</th>
+<th class="head">Module</th>
+<th class="head">Feature</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>v0.1 Sep 2015</td>
+<td>Neural Network</td>
+<td>Feed forward neural network, including CNN, MLP</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>RBM-like model, including RBM</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Recurrent neural network, including standard RNN</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Architecture</td>
+<td>One worker group on single node (with data partition)</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Multi worker groups on single node using <a class="reference external" href="http://www.eecs.berkeley.edu/~brecht/papers/hogwildTR.pdf">Hogwild</a></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Distributed Hogwild</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Multi groups across nodes, like <a class="reference external" href="http://papers.nips.cc/paper/4687-large-scale-distributed-deep-networks">Downpour</a></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>All-Reduce training architecture like <a class="reference external" href="http://arxiv.org/abs/1501.02876">DeepImage</a></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Load-balance among servers</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Failure recovery</td>
+<td>Checkpoint and restore</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Tools</td>
+<td>Installation with GNU auto Tools</td>
+</tr>
+<tr class="row-odd"><td>v0.2 Jan 2016</td>
+<td>Neural Network</td>
+<td>Feed forward neural network, including AlexNet, cuDNN layers,Tools</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Recurrent neural network, including GRULayer and BPTT</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Model partition and hybrid partition</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Tools</td>
+<td>Integration with Mesos for resource management</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Prepare Docker images for deployment</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Visualization of neural net and debug information</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Binding</td>
+<td>Python binding for major components</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>GPU</td>
+<td>Single node with multiple GPUs</td>
+</tr>
+<tr class="row-odd"><td>v0.3 April 2016</td>
+<td>GPU</td>
+<td>Multiple nodes, each with multiple GPUs</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Heterogeneous training using both GPU and CPU <a class="reference external" href="http://arxiv.org/abs/1504.04343">CcT</a></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Support cuDNN v4</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Installation</td>
+<td>Remove dependency on ZeroMQ, CZMQ, Zookeeper for single node training</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Updater</td>
+<td>Add new SGD updaters including Adam, AdamMax and AdaDelta</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Binding</td>
+<td>Enhance Python binding for training</td>
+</tr>
+<tr class="row-odd"><td>v1.0 Sep 2016</td>
+<td>Programming abstraction</td>
+<td>Tensor with linear algebra, neural net and random operations</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Updater for distributed parameter updating</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Hardware</td>
+<td>Use Cuda and Cudnn for Nvidia GPU</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Use OpenCL for AMD GPU or other devices</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Cross-platform</td>
+<td>To extend from Linux to MacOS</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Large image models, e.g., <a class="reference external" href="https://arxiv.org/pdf/1409.1556.pdf">VGG</a> and <a class="reference external" href="http://arxiv.org/abs/1512.03385">Residual Net</a></td>
+</tr>
+<tr class="row-odd"><td>v1.1 Jan 2017</td>
+<td>Model Zoo</td>
+<td>GoogleNet; Health-care models</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Caffe converter</td>
+<td>Use SINGA to train models configured in caffe proto files</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Model components</td>
+<td>Add concat and slice layers; accept multiple inputs to the net</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Compilation and installation</td>
+<td>Windows suppport</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Simplify the installation by compiling protobuf and openblas together with SINGA</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Build python wheel automatically using Jenkins</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Install SINGA from Debian packages</td>
+</tr>
+<tr class="row-even"><td>v1.2 April 2017</td>
+<td>Numpy API</td>
+<td>Implement functions for the tensor module of PySINGA following numpy API</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Distributed training</td>
+<td>Migrate distributed training frameworks from V0.3</td>
+</tr>
+<tr class="row-even"><td>v1.3 July 2017</td>
+<td>Memory optimization</td>
+<td>Replace CNMEM with new memory pool to reduce memory footprint</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Execution optimization</td>
+<td>Runtime optimization of execution scheduling</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="how-contribute.html" class="btn btn-neutral float-right" title="How to Contribute to SINGA" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../docs/model_zoo/imagenet/googlenet/README.html" class="btn btn-neutral" title="Image Classification using GoogleNet" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 The Apache Software Foundation. All rights reserved. Apache Singa, Apache, the Apache feather logo, and the Apache Singa project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+<div class="rst-versions shift-up" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: latest
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+      <dl>
+          <dt>Languages</dt>
+          <dd><a href="../../en/index.html">English</a></dd>
+          <dd><a href="../../zh/index.html">中文</a></dd>
+      </dl>
+      <dl>
+          <dt>Versions</dt>
+          <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+          <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+      </dl>
+
+  </div>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.jpg"> </a>
+</div>
+
+ <a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+        alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

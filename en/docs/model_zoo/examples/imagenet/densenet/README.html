@@ -1,0 +1,354 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>–&gt; &mdash; incubator-singa 1.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link href="../../../../../_static/style.css" rel="stylesheet" type="text/css">
+    <!--link href="../../../../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <style>
+	.fa:hover {
+	    opacity: 0.7;
+	}
+	.fab:hover {
+	    opacity: 0.7;
+	}
+    </style>
+
+
+  
+  <script src="../../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../../../../../_static/singa.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../downloads.html">Download SINGA</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../develop/schedule.html">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../develop/how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../develop/contribute-code.html">How to Contribute Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../develop/how-to-release.html">How to prepare a release</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../community/source-repository.html">Source Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../community/mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../community/issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../community/team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">incubator-singa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>–&gt;</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">licenses</span><span class="o">/</span><span class="n">LICENSE</span><span class="o">-</span><span class="mf">2.0</span>
+
+<span class="n">Unless</span> <span class="n">required</span> <span class="n">by</span> <span class="n">applicable</span> <span class="n">law</span> <span class="ow">or</span> <span class="n">agreed</span> <span class="n">to</span> <span class="ow">in</span> <span class="n">writing</span><span class="p">,</span>
+<span class="n">software</span> <span class="n">distributed</span> <span class="n">under</span> <span class="n">the</span> <span class="n">License</span> <span class="ow">is</span> <span class="n">distributed</span> <span class="n">on</span> <span class="n">an</span>
+<span class="s2">&quot;AS IS&quot;</span> <span class="n">BASIS</span><span class="p">,</span> <span class="n">WITHOUT</span> <span class="n">WARRANTIES</span> <span class="n">OR</span> <span class="n">CONDITIONS</span> <span class="n">OF</span> <span class="n">ANY</span>
+<span class="n">KIND</span><span class="p">,</span> <span class="n">either</span> <span class="n">express</span> <span class="ow">or</span> <span class="n">implied</span><span class="o">.</span>  <span class="n">See</span> <span class="n">the</span> <span class="n">License</span> <span class="k">for</span> <span class="n">the</span>
+<span class="n">specific</span> <span class="n">language</span> <span class="n">governing</span> <span class="n">permissions</span> <span class="ow">and</span> <span class="n">limitations</span>
+<span class="n">under</span> <span class="n">the</span> <span class="n">License</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="section" id="">
+<span id="id1"></span><h1>–&gt;<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h1>
+<p>name: DenseNet models on ImageNet
+SINGA version: 1.1.1
+SINGA commit:
+license: https://github.com/pytorch/vision/blob/master/torchvision/models/densenet.py</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="image-classification-using-densenet">
+<span id="image-classification-using-densenet"></span><h1>Image Classification using DenseNet<a class="headerlink" href="#image-classification-using-densenet" title="Permalink to this headline">¶</a></h1>
+<p>In this example, we convert DenseNet on <a class="reference external" href="https://github.com/pytorch/vision/blob/master/torchvision/models/densenet.py">PyTorch</a>
+to SINGA for image classification.</p>
+<div class="section" id="instructions">
+<span id="instructions"></span><h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Download one parameter checkpoint file (see below) and the synset word file of ImageNet into this folder, e.g.,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ wget https://s3-ap-southeast-1.amazonaws.com/dlfile/densenet/densenet-121.tar.gz
+  $ wget https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/synset_words.txt
+  $ tar xvf densenet-121.tar.gz
+</pre></div>
+</div>
+</li>
+<li><p class="first">Usage</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ python serve.py -h
+</pre></div>
+</div>
+</li>
+<li><p class="first">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  # use cpu
+  $ python serve.py --use_cpu --parameter_file densenet-121.pickle --depth 121 &amp;
+  # use gpu
+  $ python serve.py --parameter_file densenet-121.pickle --depth 121 &amp;
+</pre></div>
+</div>
+<p>The parameter files for the following model and depth configuration pairs are provided:
+<a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/densenet/densenet-121.tar.gz">121</a>, <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/densenet/densenet-169.tar.gz">169</a>, <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/densenet/densenet-201.tar.gz">201</a>, <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/densenet/densenet-161.tar.gz">161</a></p>
+</li>
+<li><p class="first">Submit images for classification</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ curl -i -F image=@image1.jpg http://localhost:9999/api
+  $ curl -i -F image=@image2.jpg http://localhost:9999/api
+  $ curl -i -F image=@image3.jpg http://localhost:9999/api
+</pre></div>
+</div>
+</li>
+</ul>
+<p>image1.jpg, image2.jpg and image3.jpg should be downloaded before executing the above commands.</p>
+</div>
+<div class="section" id="details">
+<span id="details"></span><h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
+<p>The parameter files were converted from the pytorch via the convert.py program.</p>
+<p>Usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python convert.py -h
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../../',
+            VERSION:'1.1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: latest
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+      <dl>
+          <dt>Languages</dt>
+          <dd><a href="../../../../../../en/index.html">English</a></dd>
+          <dd><a href="../../../../../../zh/index.html">中文</a></dd>
+      </dl>
+      <dl>
+          <dt>Versions</dt>
+          <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+          <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+      </dl>
+
+  </div>
+  <a href="http://incubator.apache.org/"> <img src= "../../../../../_static/apache.png" style="background-color:white;"> </a>
+
+  <a href="https://github.com/apache/incubator-singa" class="fa fa-github" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a> 
+  <a href="https://www.linkedin.com/groups/13550034" class="fa fa-linkedin" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://twitter.com/ApacheSinga" class="fa fa-twitter" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://www.facebook.com/Apache-SINGA-347284219056544/" class="fa fa-facebook" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://www.researchgate.net/project/Apache-SINGA" class="fab fa-researchgate" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+
+</div>
+
+ <a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+        alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

@@ -1,0 +1,278 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Use parameters pre-trained from Caffe in SINGA &mdash; incubator-singa 1.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="incubator-singa 1.1.0 documentation" href="../../../../index.html"/>
+    <link href="../../../../_static/style.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../../../../_static/singa.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../develop/schedule.html">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../develop/contribute-code.html">How to Contribute Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../community/source-repository.html">Source Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../community/mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../community/issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../community/team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../index.html">incubator-singa</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Use parameters pre-trained from Caffe in SINGA</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="use-parameters-pre-trained-from-caffe-in-singa">
+<span id="use-parameters-pre-trained-from-caffe-in-singa"></span><h1>Use parameters pre-trained from Caffe in SINGA<a class="headerlink" href="#use-parameters-pre-trained-from-caffe-in-singa" title="Permalink to this headline">¶</a></h1>
+<p>In this example, we use SINGA to load the VGG parameters trained by Caffe to do image classification.</p>
+<div class="section" id="run-this-example">
+<span id="run-this-example"></span><h2>Run this example<a class="headerlink" href="#run-this-example" title="Permalink to this headline">¶</a></h2>
+<p>You can run this example by simply executing <code class="docutils literal"><span class="pre">run.sh</span> <span class="pre">vgg16</span></code> or <code class="docutils literal"><span class="pre">run.sh</span> <span class="pre">vgg19</span></code>
+The script does the following work.</p>
+<div class="section" id="obtain-the-caffe-model">
+<span id="obtain-the-caffe-model"></span><h3>Obtain the Caffe model<a class="headerlink" href="#obtain-the-caffe-model" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Download caffe model prototxt and parameter binary file.</li>
+<li>Currently we only support the latest caffe format, if your model is in
+previous version of caffe, please update it to current format.(This is
+supported by caffe)</li>
+<li>After updating, we can obtain two files, i.e., the prototxt and parameter
+binary file.</li>
+</ul>
+</div>
+<div class="section" id="prepare-test-images">
+<span id="prepare-test-images"></span><h3>Prepare test images<a class="headerlink" href="#prepare-test-images" title="Permalink to this headline">¶</a></h3>
+<p>A few sample images are downloaded into the <code class="docutils literal"><span class="pre">test</span></code> folder.</p>
+</div>
+<div class="section" id="predict">
+<span id="predict"></span><h3>Predict<a class="headerlink" href="#predict" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">predict.py</span></code> script creates the VGG model and read the parameters,</p>
+<div class="highlight-python"><div class="highlight"><pre>usage: predict.py [-h] model_txt model_bin imgclass
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">imgclass</span></code> refers to the synsets of imagenet dataset for vgg models.
+You can start the prediction program by executing the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>python predict.py vgg16.prototxt vgg16.caffemodel synset_words.txt
+</pre></div>
+</div>
+<p>Then you type in the image path, and the program would output the top-5 labels.</p>
+<p>More Caffe models would be tested soon.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 The Apache Software Foundation. All rights reserved. Apache Singa, Apache, the Apache feather logo, and the Apache Singa project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'1.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+<div class="rst-versions shift-up" data-toggle="rst-versions" role="note" aria-label="versions">
+<a href="http://incubator.apache.org/">
+<img src= "../../../../_static/apache.jpg">
+</a>
+
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: 1.1
+    <span class="fa fa-caret-down"></span>
+  </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Languages</dt>
+            <dd><a href="../../../../../en/index.html">English</a></dd>
+            <dd><a href="../../../../../zh/index.html">中文</a></dd>
+        </dl>
+        <dl>
+            <dt>Versions</dt>
+            <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+        </dl>
+
+    </div>
+</div>
+
+ <a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+        alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

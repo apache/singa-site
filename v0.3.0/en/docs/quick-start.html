@@ -1,0 +1,413 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quick Start &mdash; incubator-singa 0.3.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="incubator-singa 0.3.0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">Source Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">incubator-singa</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Quick Start</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quick-start">
+<span id="quick-start"></span><h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="section" id="singa-setup">
+<span id="singa-setup"></span><h2>SINGA setup<a class="headerlink" href="#singa-setup" title="Permalink to this headline">¶</a></h2>
+<p>Please refer to the <a class="reference external" href="installation.html">installation</a> page for guidance on installing SINGA.</p>
+<div class="section" id="training-on-a-single-node">
+<span id="training-on-a-single-node"></span><h3>Training on a single node<a class="headerlink" href="#training-on-a-single-node" title="Permalink to this headline">¶</a></h3>
+<p>For single node training, one process will be launched to run SINGA at
+local host. We train the <a class="reference external" href="http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks">CNN model</a> over the
+<a class="reference external" href="http://www.cs.toronto.edu/~kriz/cifar.html">CIFAR-10</a> dataset as an example.
+The hyper-parameters are set following
+<a class="reference external" href="https://code.google.com/p/cuda-convnet/">cuda-convnet</a>. More details is
+available at <a class="reference external" href="cnn.html">CNN example</a>.</p>
+<div class="section" id="preparing-data-and-job-configuration">
+<span id="preparing-data-and-job-configuration"></span><h4>Preparing data and job configuration<a class="headerlink" href="#preparing-data-and-job-configuration" title="Permalink to this headline">¶</a></h4>
+<p>Download the dataset and create the data shards for training and testing.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">examples</span><span class="o">/</span><span class="n">cifar10</span><span class="o">/</span>
+<span class="n">cp</span> <span class="n">Makefile</span><span class="o">.</span><span class="n">example</span> <span class="n">Makefile</span>
+<span class="n">make</span> <span class="n">download</span>
+<span class="n">make</span> <span class="n">create</span>
+</pre></div>
+</div>
+<p>A training dataset and a test dataset are created respectively. An <em>image_mean.bin</em> file is also
+generated, which contains the feature mean of all images.</p>
+<p>Since all code used for training this CNN model is provided by SINGA as
+built-in implementation, there is no need to write any code. Instead, users just
+execute the running script by providing the job
+configuration file (<em>job.conf</em>). To code in SINGA, please refer to the
+<a class="reference external" href="programming-guide.html">programming guide</a>.</p>
+</div>
+<div class="section" id="training-without-parallelism">
+<span id="training-without-parallelism"></span><h4>Training without parallelism<a class="headerlink" href="#training-without-parallelism" title="Permalink to this headline">¶</a></h4>
+<p>By default, the cluster topology has a single worker and a single server.
+In other words, neither the training data nor the neural net is partitioned.</p>
+<p>The training is started by running:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># goto top level folder</span>
+<span class="n">cd</span> <span class="o">../../</span>
+<span class="o">./</span><span class="n">singa</span> <span class="o">-</span><span class="n">conf</span> <span class="n">examples</span><span class="o">/</span><span class="n">cifar10</span><span class="o">/</span><span class="n">job</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="asynchronous-parallel-training">
+<span id="asynchronous-parallel-training"></span><h4>Asynchronous parallel training<a class="headerlink" href="#asynchronous-parallel-training" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># job.conf</span>
+<span class="o">...</span>
+<span class="n">cluster</span> <span class="p">{</span>
+  <span class="n">nworker_groups</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="n">nworkers_per_procs</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="n">workspace</span><span class="p">:</span> <span class="s2">&quot;examples/cifar10/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In SINGA, <a class="reference external" href="architecture.html">asynchronous training</a> is enabled by launching
+multiple worker groups. For example, we can change the original <em>job.conf</em> to
+have two worker groups as shown above. By default, each worker group has one
+worker. Since one process is set to contain two workers.  The two worker groups
+will run in the same process.  Consequently, they run the in-memory
+<a class="reference external" href="frameworks.html">Downpour</a> training framework.  Users do not need to split the
+dataset explicitly for each worker (group); instead, they can assign each
+worker (group) a random offset to the start of the dataset. The workers would
+run as on different data partitions.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># job.conf</span>
+<span class="o">...</span>
+<span class="n">neuralnet</span> <span class="p">{</span>
+  <span class="n">layer</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="n">store_conf</span> <span class="p">{</span>
+      <span class="n">random_skip</span><span class="p">:</span> <span class="mi">5000</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The running command is:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">singa</span> <span class="o">-</span><span class="n">conf</span> <span class="n">examples</span><span class="o">/</span><span class="n">cifar10</span><span class="o">/</span><span class="n">job</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="synchronous-parallel-training">
+<span id="synchronous-parallel-training"></span><h4>Synchronous parallel training<a class="headerlink" href="#synchronous-parallel-training" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># job.conf</span>
+<span class="o">...</span>
+<span class="n">cluster</span> <span class="p">{</span>
+  <span class="n">nworkers_per_group</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="n">nworkers_per_procs</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="n">workspace</span><span class="p">:</span> <span class="s2">&quot;examples/cifar10/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In SINGA, <a class="reference external" href="architecture.html">asynchronous training</a> is enabled
+by launching multiple workers within one worker group. For instance, we can
+change the original <em>job.conf</em> to have two workers in one worker group as shown
+above. The workers will run synchronously
+as they are from the same worker group. This framework is the in-memory
+<a class="reference external" href="frameworks.html">sandblaster</a>.
+The model is partitioned among the two workers. In specific, each layer is
+sliced over the two workers.  The sliced layer
+is the same as the original layer except that it only has <code class="docutils literal"><span class="pre">B/g</span></code> feature
+instances, where <code class="docutils literal"><span class="pre">B</span></code> is the number of instances in a mini-batch, <code class="docutils literal"><span class="pre">g</span></code> is the number of
+workers in a group. It is also possible to partition the layer (or neural net)
+using <a class="reference external" href="neural-net.html">other schemes</a>.
+All other settings are the same as running without partitioning</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">singa</span> <span class="o">-</span><span class="n">conf</span> <span class="n">examples</span><span class="o">/</span><span class="n">cifar10</span><span class="o">/</span><span class="n">job</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="training-in-a-cluster">
+<span id="training-in-a-cluster"></span><h3>Training in a cluster<a class="headerlink" href="#training-in-a-cluster" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="starting-zookeeper">
+<span id="starting-zookeeper"></span><h4>Starting Zookeeper<a class="headerlink" href="#starting-zookeeper" title="Permalink to this headline">¶</a></h4>
+<p>SINGA uses <a class="reference external" href="https://zookeeper.apache.org/">zookeeper</a> to coordinate the
+training, and uses ZeroMQ for transferring messages. After installing zookeeper
+and ZeroMQ, you need to configure SINGA with <code class="docutils literal"><span class="pre">--enable-dist</span></code> before compiling.
+Please make sure the zookeeper service is started before running SINGA.</p>
+<p>If you installed the zookeeper using our thirdparty script, you can
+simply start it by:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#goto top level folder</span>
+<span class="n">cd</span>  <span class="n">SINGA_ROOT</span>
+<span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">zk</span><span class="o">-</span><span class="n">service</span><span class="o">.</span><span class="n">sh</span> <span class="n">start</span>
+</pre></div>
+</div>
+<p>(<code class="docutils literal"><span class="pre">./bin/zk-service.sh</span> <span class="pre">stop</span></code> stops the zookeeper).</p>
+<p>Otherwise, if you launched a zookeeper by yourself but not used the
+default port, please edit the <code class="docutils literal"><span class="pre">conf/singa.conf</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">zookeeper_host</span><span class="p">:</span> <span class="s2">&quot;localhost:YOUR_PORT&quot;</span>
+</pre></div>
+</div>
+<p>We can extend the above two training frameworks to a cluster by updating the
+cluster configuration with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nworker_per_procs</span><span class="p">:</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Every process would then create only one worker thread. Consequently, the workers
+would be created in different processes (i.e., nodes). The <em>hostfile</em>
+must be provided under <em>SINGA_ROOT/conf/</em> specifying the nodes in the cluster,
+e.g.,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.1</span>
+<span class="mf">192.168</span><span class="o">.</span><span class="mf">0.2</span>
+</pre></div>
+</div>
+<p>And the zookeeper location must be configured correctly, e.g.,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#conf/singa.conf</span>
+<span class="n">zookeeper_host</span><span class="p">:</span> <span class="s2">&quot;logbase-a01&quot;</span>
+</pre></div>
+</div>
+<p>The running command is :</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">singa</span><span class="o">-</span><span class="n">run</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">conf</span> <span class="n">examples</span><span class="o">/</span><span class="n">cifar10</span><span class="o">/</span><span class="n">job</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>You can list the current running jobs by,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">singa</span><span class="o">-</span><span class="n">console</span><span class="o">.</span><span class="n">sh</span> <span class="nb">list</span>
+
+<span class="n">JOB</span> <span class="n">ID</span>    <span class="o">|</span><span class="n">NUM</span> <span class="n">PROCS</span>
+<span class="o">----------|-----------</span>
+<span class="mi">24</span>        <span class="o">|</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>Jobs can be killed by,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">singa</span><span class="o">-</span><span class="n">console</span><span class="o">.</span><span class="n">sh</span> <span class="n">kill</span> <span class="n">JOB_ID</span>
+</pre></div>
+</div>
+<p>Logs and job information are available in <em>/tmp/singa-log</em> folder, which can be
+changed to other folders by setting <code class="docutils literal"><span class="pre">log-dir</span></code> in <em>conf/singa.conf</em>.</p>
+</div>
+</div>
+<div class="section" id="training-with-gpus">
+<span id="training-with-gpus"></span><h3>Training with GPUs<a class="headerlink" href="#training-with-gpus" title="Permalink to this headline">¶</a></h3>
+<p>Please refer to the [GPU page][gpu.html] for details on training using GPUs.</p>
+</div>
+</div>
+<div class="section" id="where-to-go-next">
+<span id="where-to-go-next"></span><h2>Where to go next<a class="headerlink" href="#where-to-go-next" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="programming-guide.html">programming guide</a> pages will
+describe how to submit a training job in SINGA.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 The Apache Software Foundation. All rights reserved. Apache Singa, Apache, the Apache feather logo, and the Apache Singa project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+
+<div class="rst-versions shift-up" data-toggle="rst-versions" role="note" aria-label="versions">
+    <img src="../_static/apache.jpg">
+
+    <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: 0.3.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Languages</dt>
+            <dd><a href="../../en/index.html">English</a></dd>
+            <dd><a href="../../zh/index.html">中文</a></dd>
+            <dd><a href="../../jp/index.html">日本語</a></dd>
+            <dd><a href="../../kr/index.html">한국어</a></dd>
+        </dl>
+    </div>
+</div>
+
+<a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+         src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+         alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

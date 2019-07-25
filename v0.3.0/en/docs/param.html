@@ -1,0 +1,464 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Parameters &mdash; incubator-singa 0.3.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="incubator-singa 0.3.0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">Source Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">incubator-singa</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Parameters</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="parameters">
+<span id="parameters"></span><h1>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>A <code class="docutils literal"><span class="pre">Param</span></code> object in SINGA represents a set of parameters, e.g., a weight matrix
+or a bias vector. <em>Basic user guide</em> describes how to configure for a <code class="docutils literal"><span class="pre">Param</span></code>
+object, and <em>Advanced user guide</em> provides details on implementing users&#8217;
+parameter initialization methods.</p>
+<div class="section" id="basic-user-guide">
+<span id="basic-user-guide"></span><h2>Basic user guide<a class="headerlink" href="#basic-user-guide" title="Permalink to this headline">¶</a></h2>
+<p>The configuration of a Param object is inside a layer configuration, as the
+<code class="docutils literal"><span class="pre">Param</span></code> are associated with layers. An example configuration is like</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">layer</span> <span class="p">{</span>
+  <span class="o">...</span>
+  <span class="n">param</span> <span class="p">{</span>
+    <span class="n">name</span> <span class="p">:</span> <span class="s2">&quot;p1&quot;</span>
+    <span class="n">init</span> <span class="p">{</span>
+      <span class="nb">type</span> <span class="p">:</span> <span class="n">kConstant</span>
+      <span class="n">value</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <a class="reference external" href="overview.html">SGD algorithm</a> starts with initializing all
+parameters according to user specified initialization method (the <code class="docutils literal"><span class="pre">init</span></code> field).
+For the above example,
+all parameters in <code class="docutils literal"><span class="pre">Param</span></code> &#8220;p1&#8221; will be initialized to constant value 1. The
+configuration fields of a Param object is defined in <a class="reference external" href="../api/classsinga_1_1ParamProto.html">ParamProto</a>:</p>
+<ul class="simple">
+<li>name, an identifier string. It is an optional field. If not provided, SINGA
+will generate one based on layer name and its order in the layer.</li>
+<li>init, field for setting initialization methods.</li>
+<li>share_from, name of another <code class="docutils literal"><span class="pre">Param</span></code> object, from which this <code class="docutils literal"><span class="pre">Param</span></code> will share
+configurations and values.</li>
+<li>lr_scale, float value to be multiplied with the learning rate when
+<a class="reference external" href="updater.html">updating the parameters</a></li>
+<li>wd_scale, float value to be multiplied with the weight decay when
+<a class="reference external" href="updater.html">updating the parameters</a></li>
+</ul>
+<p>There are some other fields that are specific to initialization methods.</p>
+<div class="section" id="initialization-methods">
+<span id="initialization-methods"></span><h3>Initialization methods<a class="headerlink" href="#initialization-methods" title="Permalink to this headline">¶</a></h3>
+<p>Users can set the <code class="docutils literal"><span class="pre">type</span></code> of <code class="docutils literal"><span class="pre">init</span></code> use the following built-in initialization
+methods,</p>
+<ul>
+<li><p class="first"><code class="docutils literal"><span class="pre">kConst</span></code>, set all parameters of the Param object to a constant value</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">kConst</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span>  <span class="c1"># default is 1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">kGaussian</span></code>, initialize the parameters following a Gaussian distribution.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">kGaussian</span>
+<span class="n">mean</span><span class="p">:</span> <span class="nb">float</span> <span class="c1"># mean of the Gaussian distribution, default is 0</span>
+<span class="n">std</span><span class="p">:</span> <span class="nb">float</span> <span class="c1"># standard variance, default is 1</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="c1"># default 0</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">kUniform</span></code>, initialize the parameters following an uniform distribution</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">kUniform</span>
+<span class="n">low</span><span class="p">:</span> <span class="nb">float</span> <span class="c1"># lower boundary, default is -1</span>
+<span class="n">high</span><span class="p">:</span> <span class="nb">float</span> <span class="c1"># upper boundary, default is 1</span>
+<span class="n">value</span><span class="p">:</span> <span class="nb">float</span> <span class="c1"># default 0</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">kGaussianSqrtFanIn</span></code>, initialize <code class="docutils literal"><span class="pre">Param</span></code> objects with two dimensions (i.e.,
+matrix) using <code class="docutils literal"><span class="pre">kGaussian</span></code> and then
+multiple each parameter with <code class="docutils literal"><span class="pre">1/sqrt(fan_in)</span></code>, where<code class="docutils literal"><span class="pre">fan_in</span></code> is the number of
+columns of the matrix.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">kUniformSqrtFanIn</span></code>, the same as <code class="docutils literal"><span class="pre">kGaussianSqrtFanIn</span></code> except that the
+distribution is an uniform distribution.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">kUniformFanInOut</span></code>, initialize matrix <code class="docutils literal"><span class="pre">Param</span></code> objects using <code class="docutils literal"><span class="pre">kUniform</span></code> and then
+multiple each parameter with <code class="docutils literal"><span class="pre">sqrt(6/(fan_in</span> <span class="pre">+</span> <span class="pre">fan_out))</span></code>, where<code class="docutils literal"><span class="pre">fan_in</span> <span class="pre">+</span> <span class="pre">fan_out</span></code> sums up the number of columns and rows of the matrix.</p>
+</li>
+</ul>
+<p>For all above initialization methods except <code class="docutils literal"><span class="pre">kConst</span></code>, if their <code class="docutils literal"><span class="pre">value</span></code> is not
+1, every parameter will be multiplied with <code class="docutils literal"><span class="pre">value</span></code>. Users can also implement
+their own initialization method following the <em>Advanced user guide</em>.</p>
+</div>
+</div>
+<div class="section" id="advanced-user-guide">
+<span id="advanced-user-guide"></span><h2>Advanced user guide<a class="headerlink" href="#advanced-user-guide" title="Permalink to this headline">¶</a></h2>
+<p>This sections describes the details on implementing new parameter
+initialization methods.</p>
+<div class="section" id="base-paramgenerator">
+<span id="base-paramgenerator"></span><h3>Base ParamGenerator<a class="headerlink" href="#base-paramgenerator" title="Permalink to this headline">¶</a></h3>
+<p>All initialization methods are implemented as
+subclasses of the base <code class="docutils literal"><span class="pre">ParamGenerator</span></code> class.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ParamGenerator</span> <span class="p">{</span>
+ <span class="n">public</span><span class="p">:</span>
+  <span class="n">virtual</span> <span class="n">void</span> <span class="n">Init</span><span class="p">(</span><span class="n">const</span> <span class="n">ParamGenProto</span><span class="o">&amp;</span><span class="p">);</span>
+  <span class="n">void</span> <span class="n">Fill</span><span class="p">(</span><span class="n">Param</span><span class="o">*</span><span class="p">);</span>
+
+ <span class="n">protected</span><span class="p">:</span>
+  <span class="n">ParamGenProto</span> <span class="n">proto_</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Configurations of the initialization method is in <code class="docutils literal"><span class="pre">ParamGenProto</span></code>. The <code class="docutils literal"><span class="pre">Fill</span></code>
+function fills the <code class="docutils literal"><span class="pre">Param</span></code> object (passed in as an argument).</p>
+</div>
+<div class="section" id="new-paramgenerator-subclass">
+<span id="new-paramgenerator-subclass"></span><h3>New ParamGenerator subclass<a class="headerlink" href="#new-paramgenerator-subclass" title="Permalink to this headline">¶</a></h3>
+<p>Similar to implement a new Layer subclass, users can define a configuration
+protocol message,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># in user.proto</span>
+<span class="n">message</span> <span class="n">FooParamProto</span> <span class="p">{</span>
+  <span class="n">optional</span> <span class="n">int32</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">extend</span> <span class="n">ParamGenProto</span> <span class="p">{</span>
+  <span class="n">optional</span> <span class="n">FooParamProto</span> <span class="n">fooparam_conf</span> <span class="o">=</span><span class="mi">101</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The configuration of <code class="docutils literal"><span class="pre">Param</span></code> would be</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">param</span> <span class="p">{</span>
+  <span class="o">...</span>
+  <span class="n">init</span> <span class="p">{</span>
+    <span class="n">user_type</span><span class="p">:</span> <span class="s1">&#39;FooParam&quot; # must use user_type for user defined methods</span>
+    <span class="p">[</span><span class="n">fooparam_conf</span><span class="p">]</span> <span class="p">{</span> <span class="c1"># must use brackets for configuring user defined messages</span>
+      <span class="n">x</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The subclass could be declared as,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">FooParamGen</span> <span class="p">:</span> <span class="n">public</span> <span class="n">ParamGenerator</span> <span class="p">{</span>
+ <span class="n">public</span><span class="p">:</span>
+  <span class="n">void</span> <span class="n">Fill</span><span class="p">(</span><span class="n">Param</span><span class="o">*</span><span class="p">)</span> <span class="n">override</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Users can access the configuration fields in <code class="docutils literal"><span class="pre">Fill</span></code> by</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">proto_</span><span class="o">.</span><span class="n">GetExtension</span><span class="p">(</span><span class="n">fooparam_conf</span><span class="p">)</span><span class="o">.</span><span class="n">x</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>To use the new initialization method, users need to register it in the
+<a class="reference external" href="programming-guide.html">main function</a>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">RegisterParamGenerator</span><span class="o">&lt;</span><span class="n">FooParamGen</span><span class="o">&gt;</span><span class="p">(</span><span class="s2">&quot;FooParam&quot;</span><span class="p">)</span>  <span class="c1"># must be consistent with the user_type in configuration</span>
+</pre></div>
+</div>
+<p>{% comment %}</p>
+</div>
+<div class="section" id="base-param-class">
+<span id="base-param-class"></span><h3>Base Param class<a class="headerlink" href="#base-param-class" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="members">
+<span id="members"></span><h3>Members<a class="headerlink" href="#members" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">local_version_</span><span class="p">;</span>
+<span class="nb">int</span> <span class="n">slice_start_</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span> <span class="n">slice_offset_</span><span class="p">,</span> <span class="n">slice_size_</span><span class="p">;</span>
+
+<span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="nb">float</span><span class="o">&gt;&gt;</span> <span class="n">data_</span><span class="p">;</span>
+<span class="n">Blob</span><span class="o">&lt;</span><span class="nb">float</span><span class="o">&gt;</span> <span class="n">grad_</span><span class="p">;</span>
+<span class="n">ParamProto</span> <span class="n">proto_</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Each Param object has a local version and a global version (inside the data
+Blob). These two versions are used for synchronization. If multiple Param
+objects share the same values, they would have the same <code class="docutils literal"><span class="pre">data_</span></code> field.
+Consequently, their global version is the same. The global version is updated
+by <a class="reference external" href="communication.html">the stub thread</a>. The local version is
+updated in <code class="docutils literal"><span class="pre">Worker::Update</span></code> function which assigns the global version to the
+local version. The <code class="docutils literal"><span class="pre">Worker::Collect</span></code> function is blocked until the global
+version is larger than the local version, i.e., when <code class="docutils literal"><span class="pre">data_</span></code> is updated. In
+this way, we synchronize workers sharing parameters.</p>
+<p>In Deep learning models, some Param objects are 100 times larger than others.
+To ensure the load-balance among servers, SINGA slices large Param objects. The
+slicing information is recorded by <code class="docutils literal"><span class="pre">slice_*</span></code>. Each slice is assigned a unique
+ID starting from 0. <code class="docutils literal"><span class="pre">slice_start_</span></code> is the ID of the first slice of this Param
+object. <code class="docutils literal"><span class="pre">slice_offset_[i]</span></code> is the offset of the i-th slice in this Param
+object. <code class="docutils literal"><span class="pre">slice_size_[i]</span></code> is the size of the i-th slice. These slice information
+is used to create messages for transferring parameter values or gradients to
+different servers.</p>
+<p>Each Param object has a <code class="docutils literal"><span class="pre">grad_</span></code> field for gradients. Param objects do not share
+this Blob although they may share <code class="docutils literal"><span class="pre">data_</span></code>.  Because each layer containing a
+Param object would contribute gradients. E.g., in RNN, the recurrent layers
+share parameters values, and the gradients used for updating are averaged from all recurrent
+these recurrent layers. In SINGA, the stub thread will aggregate local
+gradients for the same Param object. The server will do a global aggregation
+of gradients for the same Param object.</p>
+<p>The <code class="docutils literal"><span class="pre">proto_</span></code> field has some meta information, e.g., name and ID. It also has a
+field called <code class="docutils literal"><span class="pre">owner</span></code> which is the ID of the Param object that shares parameter
+values with others.</p>
+</div>
+<div class="section" id="functions">
+<span id="functions"></span><h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<p>The base Param class implements two sets of functions,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>virtual void InitValues(int version = 0);  // initialize values according to `init_method`
+void ShareFrom(const Param&amp; other);  // share `data_` from `other` Param
+--------------
+virtual Msg* GenGetMsg(bool copy, int slice_idx);
+virtual Msg* GenPutMsg(bool copy, int slice_idx);
+... // other message related functions.
+</pre></div>
+</div>
+<p>Besides the functions for processing the parameter values, there is a set of
+functions for generating and parsing messages. These messages are for
+transferring parameter values or gradients between workers and servers. Each
+message corresponds to one Param slice. If <code class="docutils literal"><span class="pre">copy</span></code> is false, it means the
+receiver of this message is in the same process as the sender. In such case,
+only pointers to the memory of parameter value (or gradient) are wrapped in
+the message; otherwise, the parameter values (or gradients) should be copied
+into the message.</p>
+</div>
+</div>
+<div class="section" id="implementing-param-subclass">
+<span id="implementing-param-subclass"></span><h2>Implementing Param subclass<a class="headerlink" href="#implementing-param-subclass" title="Permalink to this headline">¶</a></h2>
+<p>Users can extend the base Param class to implement their own parameter
+initialization methods and message transferring protocols. Similar to
+implementing a new Layer subclasses, users can create google protocol buffer
+messages for configuring the Param subclass. The subclass, denoted as FooParam
+should be registered in main.cc,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dirver</span><span class="o">.</span><span class="n">RegisterParam</span><span class="o">&lt;</span><span class="n">FooParam</span><span class="o">&gt;</span><span class="p">(</span><span class="n">kFooParam</span><span class="p">);</span>  <span class="o">//</span> <span class="n">kFooParam</span> <span class="n">should</span> <span class="n">be</span> <span class="n">different</span> <span class="n">to</span> <span class="mi">0</span><span class="p">,</span> <span class="n">which</span> <span class="ow">is</span> <span class="k">for</span> <span class="n">the</span> <span class="n">base</span> <span class="n">Param</span> <span class="nb">type</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>type, an integer representing the <code class="docutils literal"><span class="pre">Param</span></code> type. Currently SINGA provides one
+<code class="docutils literal"><span class="pre">Param</span></code> implementation with type 0 (the default type). If users want
+to use their own Param implementation, they should extend the base Param
+class and configure this field with <code class="docutils literal"><span class="pre">kUserParam</span></code></li>
+</ul>
+<p>{% endcomment %}</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 The Apache Software Foundation. All rights reserved. Apache Singa, Apache, the Apache feather logo, and the Apache Singa project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+
+<div class="rst-versions shift-up" data-toggle="rst-versions" role="note" aria-label="versions">
+    <img src="../_static/apache.jpg">
+
+    <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: 0.3.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Languages</dt>
+            <dd><a href="../../en/index.html">English</a></dd>
+            <dd><a href="../../zh/index.html">中文</a></dd>
+            <dd><a href="../../jp/index.html">日本語</a></dd>
+            <dd><a href="../../kr/index.html">한국어</a></dd>
+        </dl>
+    </div>
+</div>
+
+<a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+         src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+         alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

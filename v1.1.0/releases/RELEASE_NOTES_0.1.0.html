@@ -1,0 +1,348 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>&lt;no title&gt; &mdash; incubator-singa 1.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="incubator-singa 1.1.0 documentation" href="../index.html"/>
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/index.html">Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">Source Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">incubator-singa</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>&lt;no title&gt;</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p>#singa-incubating-0.1.0 Release Notes</p>
+<hr class="docutils" />
+<p>SINGA is a general distributed deep learning platform for training big deep learning models over large datasets. It is
+designed with an intuitive programming model based on the layer abstraction. SINGA supports a wide variety of popular
+deep learning models.</p>
+<p>This release includes following features:</p>
+<ul class="simple">
+<li>Job management<ul>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-3">SINGA-3</a>  Use Zookeeper to check stopping (finish) time of the system</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-16">SINGA-16</a>  Runtime Process id Management</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-25">SINGA-25</a>  Setup glog output path</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-26">SINGA-26</a>  Run distributed training in a single command</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-30">SINGA-30</a>  Enhance easy-to-use feature and support concurrent jobs</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-33">SINGA-33</a>  Automatically launch a number of processes in the cluster</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-34">SINGA-34</a>  Support external zookeeper service</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-38">SINGA-38</a>  Support concurrent jobs</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-39">SINGA-39</a>  Avoid ssh in scripts for single node environment</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-43">SINGA-43</a>  Remove Job-related output from workspace</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-56">SINGA-56</a>  No automatic launching of zookeeper service</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-73">SINGA-73</a>  Refine the selection of available hosts from host list</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Installation with GNU Auto tool<ul>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-4">SINGA-4</a>  Refine thirdparty-dependency installation</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-13">SINGA-13</a>  Separate intermediate files of compilation from source files</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-17">SINGA-17</a>  Add root permission within thirdparty/install.</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-27">SINGA-27</a>  Generate python modules for proto objects</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-53">SINGA-53</a>  Add lmdb compiling options</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-62">SINGA-62</a>  Remove building scrips and auxiliary files</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-67">SINGA-67</a>  Add singatest into build targets</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Distributed training<ul>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-7">SINGA-7</a>  Implement shared memory Hogwild algorithm</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-8">SINGA-8</a>  Implement distributed Hogwild</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-19">SINGA-19</a>  Slice large Param objects for load-balance</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-29">SINGA-29</a>  Update NeuralNet class to enable layer partition type customization</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-24">SINGA-24</a>  Implement Downpour training framework</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-32">SINGA-32</a>  Implement AllReduce training framework</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-57">SINGA-57</a>  Improve Distributed Hogwild</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Training algorithms for different model categories<ul>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-9">SINGA-9</a>  Add Support for Restricted Boltzman Machine (RBM) model</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-10">SINGA-10</a>  Add Support for Recurrent Neural Networks (RNN)</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Checkpoint and restore<ul>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-12">SINGA-12</a>  Support Checkpoint and Restore</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Unit test<ul>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-64">SINGA-64</a>  Add the test module for utils/common</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Programming model<ul>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-36">SINGA-36</a>  Refactor job configuration, driver program and scripts</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-37">SINGA-37</a>  Enable users to set parameter sharing in model configuration</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-54">SINGA-54</a>  Refactor job configuration to move fields in ModelProto out</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-55">SINGA-55</a>  Refactor main.cc and singa.h</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-61">SINGA-61</a>  Support user defined classes</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-65">SINGA-65</a>  Add an example of writing user-defined layers</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Other features<ul>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-6">SINGA-6</a>  Implement thread-safe singleton</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-18">SINGA-18</a>  Update API for displaying performance metric</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-77">SINGA-77</a>  Integrate with Apache RAT</li>
+</ul>
+</li>
+</ul>
+<p>Some bugs are fixed during the development of this release</p>
+<ul class="simple">
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-2">SINGA-2</a> Check failed: zsock_connect</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-5">SINGA-5</a> Server early terminate when zookeeper singa folder is not initially empty</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-15">SINGA-15</a> Fixg a bug from ConnectStub function which gets stuck for connecting layer_dealer_</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-22">SINGA-22</a> Cannot find openblas library when it is installed in default path</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-23">SINGA-23</a> Libtool version mismatch error.</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-28">SINGA-28</a> Fix a bug from topology sort of Graph</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-42">SINGA-42</a> Issue when loading checkpoints</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-44">SINGA-44</a> A bug when reseting metric values</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-46">SINGA-46</a> Fix a bug in updater.cc to scale the gradients</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-47">SINGA-47</a> Fix a bug in data layers that leads to out-of-memory when group size is too large</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-48">SINGA-48</a> Fix a bug in trainer.cc that assigns the same NeuralNet instance to workers from diff groups</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-49">SINGA-49</a> Fix a bug in HandlePutMsg func that sets param fields to invalid values</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-66">SINGA-66</a> Fix bugs in Worker::RunOneBatch function and ClusterProto</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-79">SINGA-79</a> Fix bug in singatool that can not parse -conf flag</li>
+</ul>
+<p>Features planned for the next release</p>
+<ul class="simple">
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-11">SINGA-11</a> Start SINGA using Mesos</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-31">SINGA-31</a> Extend Blob to support xpu (cpu or gpu)</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-35">SINGA-35</a> Add random number generators</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-40">SINGA-40</a> Support sparse Param update</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-41">SINGA-41</a> Support single node single GPU training</li>
+</ul>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 The Apache Software Foundation. All rights reserved. Apache Singa, Apache, the Apache feather logo, and the Apache Singa project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+<div class="rst-versions shift-up" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: latest
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+      <dl>
+          <dt>Languages</dt>
+          <dd><a href="../../en/index.html">English</a></dd>
+          <dd><a href="../../zh/index.html">中文</a></dd>
+      </dl>
+      <dl>
+          <dt>Versions</dt>
+          <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+          <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+      </dl>
+
+  </div>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.jpg"> </a>
+</div>
+
+ <a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+        alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

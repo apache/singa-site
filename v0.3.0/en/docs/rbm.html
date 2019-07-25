@@ -1,0 +1,588 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RBM Example &mdash; incubator-singa 0.3.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="incubator-singa 0.3.0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">Source Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">incubator-singa</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>RBM Example</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rbm-example">
+<span id="rbm-example"></span><h1>RBM Example<a class="headerlink" href="#rbm-example" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>This example uses SINGA to train 4 RBM models and one auto-encoder model over the
+<a class="reference external" href="http://yann.lecun.com/exdb/mnist/">MNIST dataset</a>. The auto-encoder model is trained
+to reduce the dimensionality of the MNIST image feature. The RBM models are trained
+to initialize parameters of the auto-encoder model. This example application is
+from <a class="reference external" href="http://www.cs.toronto.edu/~hinton/science.pdf">Hinton&#8217;s science paper</a>.</p>
+<div class="section" id="running-instructions">
+<span id="running-instructions"></span><h2>Running instructions<a class="headerlink" href="#running-instructions" title="Permalink to this headline">¶</a></h2>
+<p>Running scripts are provided in <em>SINGA_ROOT/examples/rbm</em> folder.</p>
+<p>The MNIST dataset has 70,000 handwritten digit images. The
+<a class="reference external" href="data.html">data preparation</a> page
+has details on converting this dataset into SINGA recognizable format. Users can
+simply run the following commands to download and convert the dataset.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span># at SINGA_ROOT/examples/mnist/
+$ cp Makefile.example Makefile
+$ make download
+$ make create
+</pre></div>
+</div>
+<p>The training is separated into two phases, namely pre-training and fine-tuning.
+The pre-training phase trains 4 RBMs in sequence,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span># at SINGA_ROOT/
+$ ./bin/singa-run.sh -conf examples/rbm/rbm1.conf
+$ ./bin/singa-run.sh -conf examples/rbm/rbm2.conf
+$ ./bin/singa-run.sh -conf examples/rbm/rbm3.conf
+$ ./bin/singa-run.sh -conf examples/rbm/rbm4.conf
+</pre></div>
+</div>
+<p>The fine-tuning phase trains the auto-encoder by,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./bin/singa-run.sh -conf examples/rbm/autoencoder.conf
+</pre></div>
+</div>
+</div>
+<div class="section" id="training-details">
+<span id="training-details"></span><h2>Training details<a class="headerlink" href="#training-details" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rbm1">
+<span id="rbm1"></span><h3>RBM1<a class="headerlink" href="#rbm1" title="Permalink to this headline">¶</a></h3>
+<p><img src="../_static/images/example-rbm1.png" align="center" width="200px"/>
+<span><strong>Figure 1 - RBM1.</strong></span></p>
+<p>The neural net structure for training RBM1 is shown in Figure 1.
+The data layer and parser layer provides features for training RBM1.
+The visible layer (connected with parser layer) of RBM1 accepts the image feature
+(784 dimension). The hidden layer is set to have 1000 neurons (units).
+These two layers are configured as,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">layer</span><span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;RBMVis&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">kRBMVis</span>
+  <span class="n">srclayers</span><span class="p">:</span><span class="s2">&quot;mnist&quot;</span>
+  <span class="n">srclayers</span><span class="p">:</span><span class="s2">&quot;RBMHid&quot;</span>
+  <span class="n">rbm_conf</span><span class="p">{</span>
+    <span class="n">hdim</span><span class="p">:</span> <span class="mi">1000</span>
+  <span class="p">}</span>
+  <span class="n">param</span><span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;w1&quot;</span>
+    <span class="n">init</span><span class="p">{</span>
+      <span class="nb">type</span><span class="p">:</span> <span class="n">kGaussian</span>
+      <span class="n">mean</span><span class="p">:</span> <span class="mf">0.0</span>
+      <span class="n">std</span><span class="p">:</span> <span class="mf">0.1</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">param</span><span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;b11&quot;</span>
+    <span class="n">init</span><span class="p">{</span>
+      <span class="nb">type</span><span class="p">:</span> <span class="n">kConstant</span>
+      <span class="n">value</span><span class="p">:</span> <span class="mf">0.0</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">layer</span><span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;RBMHid&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">kRBMHid</span>
+  <span class="n">srclayers</span><span class="p">:</span><span class="s2">&quot;RBMVis&quot;</span>
+  <span class="n">rbm_conf</span><span class="p">{</span>
+    <span class="n">hdim</span><span class="p">:</span> <span class="mi">1000</span>
+  <span class="p">}</span>
+  <span class="n">param</span><span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;w1_&quot;</span>
+    <span class="n">share_from</span><span class="p">:</span> <span class="s2">&quot;w1&quot;</span>
+  <span class="p">}</span>
+  <span class="n">param</span><span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;b12&quot;</span>
+    <span class="n">init</span><span class="p">{</span>
+      <span class="nb">type</span><span class="p">:</span> <span class="n">kConstant</span>
+      <span class="n">value</span><span class="p">:</span> <span class="mf">0.0</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For RBM, the weight matrix is shared by the visible and hidden layers. For instance,
+<code class="docutils literal"><span class="pre">w1</span></code> is shared by <code class="docutils literal"><span class="pre">vis</span></code> and <code class="docutils literal"><span class="pre">hid</span></code> layers shown in Figure 1. In SINGA, we can configure
+the <code class="docutils literal"><span class="pre">share_from</span></code> field to enable <a class="reference external" href="param.html">parameter sharing</a>
+as shown above for the param <code class="docutils literal"><span class="pre">w1</span></code> and <code class="docutils literal"><span class="pre">w1_</span></code>.</p>
+<p><a class="reference external" href="train-one-batch.html#contrastive-divergence">Contrastive Divergence</a>
+is configured as the algorithm for <a class="reference external" href="train-one-batch.html">TrainOneBatch</a>.
+Following Hinton&#8217;s paper, we configure the <a class="reference external" href="updater.html">updating protocol</a>
+as follows,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Updater Configuration</span>
+<span class="n">updater</span><span class="p">{</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">kSGD</span>
+  <span class="n">momentum</span><span class="p">:</span> <span class="mf">0.2</span>
+  <span class="n">weight_decay</span><span class="p">:</span> <span class="mf">0.0002</span>
+  <span class="n">learning_rate</span><span class="p">{</span>
+    <span class="n">base_lr</span><span class="p">:</span> <span class="mf">0.1</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">kFixed</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Since the parameters of RBM0 will be used to initialize the auto-encoder, we should
+configure the <code class="docutils literal"><span class="pre">workspace</span></code> field to specify a path for the checkpoint folder.
+For example, if we configure it as,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cluster</span> <span class="p">{</span>
+  <span class="n">workspace</span><span class="p">:</span> <span class="s2">&quot;examples/rbm/rbm1/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then SINGA will <a class="reference external" href="checkpoint.html">checkpoint the parameters</a> into <em>examples/rbm/rbm1/</em>.</p>
+</div>
+<div class="section" id="rbm1">
+<span id="id1"></span><h3>RBM1<a class="headerlink" href="#rbm1" title="Permalink to this headline">¶</a></h3>
+<p><img src="../_static/images/example-rbm2.png" align="center" width="200px"/>
+<span><strong>Figure 2 - RBM2.</strong></span></p>
+<p>Figure 2 shows the net structure of training RBM2.
+The visible units of RBM2 accept the output from the Sigmoid1 layer. The Inner1 layer
+is a  <code class="docutils literal"><span class="pre">InnerProductLayer</span></code> whose parameters are set to the <code class="docutils literal"><span class="pre">w1</span></code> and <code class="docutils literal"><span class="pre">b12</span></code> learned
+from RBM1.
+The neural net configuration is (with layers for data layer and parser layer omitted).</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">layer</span><span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Inner1&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">kInnerProduct</span>
+  <span class="n">srclayers</span><span class="p">:</span><span class="s2">&quot;mnist&quot;</span>
+  <span class="n">innerproduct_conf</span><span class="p">{</span>
+    <span class="n">num_output</span><span class="p">:</span> <span class="mi">1000</span>
+  <span class="p">}</span>
+  <span class="n">param</span><span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;w1&quot;</span> <span class="p">}</span>
+  <span class="n">param</span><span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;b12&quot;</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">layer</span><span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Sigmoid1&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">kSigmoid</span>
+  <span class="n">srclayers</span><span class="p">:</span><span class="s2">&quot;Inner1&quot;</span>
+<span class="p">}</span>
+
+<span class="n">layer</span><span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;RBMVis&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">kRBMVis</span>
+  <span class="n">srclayers</span><span class="p">:</span><span class="s2">&quot;Sigmoid1&quot;</span>
+  <span class="n">srclayers</span><span class="p">:</span><span class="s2">&quot;RBMHid&quot;</span>
+  <span class="n">rbm_conf</span><span class="p">{</span>
+    <span class="n">hdim</span><span class="p">:</span> <span class="mi">500</span>
+  <span class="p">}</span>
+  <span class="n">param</span><span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;w2&quot;</span>
+    <span class="o">...</span>
+  <span class="p">}</span>
+  <span class="n">param</span><span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;b21&quot;</span>
+    <span class="o">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">layer</span><span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;RBMHid&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">kRBMHid</span>
+  <span class="n">srclayers</span><span class="p">:</span><span class="s2">&quot;RBMVis&quot;</span>
+  <span class="n">rbm_conf</span><span class="p">{</span>
+    <span class="n">hdim</span><span class="p">:</span> <span class="mi">500</span>
+  <span class="p">}</span>
+  <span class="n">param</span><span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;w2_&quot;</span>
+    <span class="n">share_from</span><span class="p">:</span> <span class="s2">&quot;w2&quot;</span>
+  <span class="p">}</span>
+  <span class="n">param</span><span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;b22&quot;</span>
+    <span class="o">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To load w0 and b02 from RBM0&#8217;s checkpoint file, we configure the <code class="docutils literal"><span class="pre">checkpoint_path</span></code> as,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">checkpoint_path</span><span class="p">:</span> <span class="s2">&quot;examples/rbm/rbm1/checkpoint/step6000-worker0&quot;</span>
+<span class="n">cluster</span><span class="p">{</span>
+  <span class="n">workspace</span><span class="p">:</span> <span class="s2">&quot;examples/rbm/rbm2&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The workspace is changed for checkpointing <code class="docutils literal"><span class="pre">w2</span></code>, <code class="docutils literal"><span class="pre">b21</span></code> and <code class="docutils literal"><span class="pre">b22</span></code> into
+<em>examples/rbm/rbm2/</em>.</p>
+</div>
+<div class="section" id="rbm3">
+<span id="rbm3"></span><h3>RBM3<a class="headerlink" href="#rbm3" title="Permalink to this headline">¶</a></h3>
+<p><img src="../_static/images/example-rbm3.png" align="center" width="200px"/>
+<span><strong>Figure 3 - RBM3.</strong></span></p>
+<p>Figure 3 shows the net structure of training RBM3. In this model, a layer with
+250 units is added as the hidden layer of RBM3. The visible units of RBM3
+accepts output from Sigmoid2 layer. Parameters of Inner1 and Innner2 are set to
+<code class="docutils literal"><span class="pre">w1,b12,w2,b22</span></code> which can be load from the checkpoint file of RBM2,
+i.e., &#8220;examples/rbm/rbm2/&#8221;.</p>
+</div>
+<div class="section" id="rbm4">
+<span id="rbm4"></span><h3>RBM4<a class="headerlink" href="#rbm4" title="Permalink to this headline">¶</a></h3>
+<p><img src="../_static/images/example-rbm4.png" align="center" width="200px"/>
+<span><strong>Figure 4 - RBM4.</strong></span></p>
+<p>Figure 4 shows the net structure of training RBM4. It is similar to Figure 3,
+but according to <a class="reference external" href="http://www.cs.toronto.edu/~hinton/science.pdf">Hinton&#8217;s science paper</a>, the hidden units of the
+top RBM (RBM4) have stochastic real-valued states drawn from a unit variance
+Gaussian whose mean is determined by the input from the RBM&#8217;s logistic visible
+units. So we add a <code class="docutils literal"><span class="pre">gaussian</span></code> field in the RBMHid layer to control the
+sampling distribution (Gaussian or Bernoulli). In addition, this
+RBM has a much smaller learning rate (0.001).  The neural net configuration for
+the RBM4 and the updating protocol is (with layers for data layer and parser
+layer omitted),</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Updater Configuration</span>
+<span class="n">updater</span><span class="p">{</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">kSGD</span>
+  <span class="n">momentum</span><span class="p">:</span> <span class="mf">0.9</span>
+  <span class="n">weight_decay</span><span class="p">:</span> <span class="mf">0.0002</span>
+  <span class="n">learning_rate</span><span class="p">{</span>
+    <span class="n">base_lr</span><span class="p">:</span> <span class="mf">0.001</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">kFixed</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">layer</span><span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;RBMVis&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">kRBMVis</span>
+  <span class="n">srclayers</span><span class="p">:</span><span class="s2">&quot;Sigmoid3&quot;</span>
+  <span class="n">srclayers</span><span class="p">:</span><span class="s2">&quot;RBMHid&quot;</span>
+  <span class="n">rbm_conf</span><span class="p">{</span>
+    <span class="n">hdim</span><span class="p">:</span> <span class="mi">30</span>
+  <span class="p">}</span>
+  <span class="n">param</span><span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;w4&quot;</span>
+    <span class="o">...</span>
+  <span class="p">}</span>
+  <span class="n">param</span><span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;b41&quot;</span>
+    <span class="o">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">layer</span><span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;RBMHid&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">kRBMHid</span>
+  <span class="n">srclayers</span><span class="p">:</span><span class="s2">&quot;RBMVis&quot;</span>
+  <span class="n">rbm_conf</span><span class="p">{</span>
+    <span class="n">hdim</span><span class="p">:</span> <span class="mi">30</span>
+    <span class="n">gaussian</span><span class="p">:</span> <span class="n">true</span>
+  <span class="p">}</span>
+  <span class="n">param</span><span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;w4_&quot;</span>
+    <span class="n">share_from</span><span class="p">:</span> <span class="s2">&quot;w4&quot;</span>
+  <span class="p">}</span>
+  <span class="n">param</span><span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;b42&quot;</span>
+    <span class="o">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="auto-encoder">
+<span id="auto-encoder"></span><h3>Auto-encoder<a class="headerlink" href="#auto-encoder" title="Permalink to this headline">¶</a></h3>
+<p>In the fine-tuning stage, the 4 RBMs are &#8220;unfolded&#8221; to form encoder and decoder
+networks that are initialized using the parameters from the previous 4 RBMs.</p>
+<p><img src="../_static/images/example-autoencoder.png" align="center" width="500px"/>
+<span><strong>Figure 5 - Auto-Encoders.</strong></span></p>
+<p>Figure 5 shows the neural net structure for training the auto-encoder.
+[Back propagation (kBP)] (train-one-batch.html) is
+configured as the algorithm for <code class="docutils literal"><span class="pre">TrainOneBatch</span></code>. We use the same cluster
+configuration as RBM models. For updater, we use <a class="reference external" href="updater.html#adagradupdater">AdaGrad</a> algorithm with
+fixed learning rate.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">### Updater Configuration</span>
+<span class="n">updater</span><span class="p">{</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">kAdaGrad</span>
+  <span class="n">learning_rate</span><span class="p">{</span>
+  <span class="n">base_lr</span><span class="p">:</span> <span class="mf">0.01</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">kFixed</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>According to <a class="reference external" href="http://www.cs.toronto.edu/~hinton/science.pdf">Hinton&#8217;s science paper</a>,
+we configure a EuclideanLoss layer to compute the reconstruction error. The neural net
+configuration is (with some of the middle layers omitted),</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">layer</span><span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span> <span class="p">}</span>
+<span class="n">layer</span><span class="p">{</span> <span class="n">name</span><span class="p">:</span><span class="s2">&quot;mnist&quot;</span> <span class="p">}</span>
+<span class="n">layer</span><span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Inner1&quot;</span>
+  <span class="n">param</span><span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;w1&quot;</span> <span class="p">}</span>
+  <span class="n">param</span><span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;b12&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">layer</span><span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Sigmoid1&quot;</span> <span class="p">}</span>
+<span class="o">...</span>
+<span class="n">layer</span><span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Inner8&quot;</span>
+  <span class="n">innerproduct_conf</span><span class="p">{</span>
+    <span class="n">num_output</span><span class="p">:</span> <span class="mi">784</span>
+    <span class="n">transpose</span><span class="p">:</span> <span class="n">true</span>
+  <span class="p">}</span>
+  <span class="n">param</span><span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;w8&quot;</span>
+    <span class="n">share_from</span><span class="p">:</span> <span class="s2">&quot;w1&quot;</span>
+  <span class="p">}</span>
+  <span class="n">param</span><span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;b11&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">layer</span><span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Sigmoid8&quot;</span> <span class="p">}</span>
+
+<span class="c1"># Euclidean Loss Layer Configuration</span>
+<span class="n">layer</span><span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;loss&quot;</span>
+  <span class="nb">type</span><span class="p">:</span><span class="n">kEuclideanLoss</span>
+  <span class="n">srclayers</span><span class="p">:</span><span class="s2">&quot;Sigmoid8&quot;</span>
+  <span class="n">srclayers</span><span class="p">:</span><span class="s2">&quot;mnist&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To load pre-trained parameters from the 4 RBMs&#8217; checkpoint file we configure <code class="docutils literal"><span class="pre">checkpoint_path</span></code> as</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">### Checkpoint Configuration</span>
+<span class="n">checkpoint_path</span><span class="p">:</span> <span class="s2">&quot;examples/rbm/checkpoint/rbm1/checkpoint/step6000-worker0&quot;</span>
+<span class="n">checkpoint_path</span><span class="p">:</span> <span class="s2">&quot;examples/rbm/checkpoint/rbm2/checkpoint/step6000-worker0&quot;</span>
+<span class="n">checkpoint_path</span><span class="p">:</span> <span class="s2">&quot;examples/rbm/checkpoint/rbm3/checkpoint/step6000-worker0&quot;</span>
+<span class="n">checkpoint_path</span><span class="p">:</span> <span class="s2">&quot;examples/rbm/checkpoint/rbm4/checkpoint/step6000-worker0&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="visualization-results">
+<span id="visualization-results"></span><h2>Visualization Results<a class="headerlink" href="#visualization-results" title="Permalink to this headline">¶</a></h2>
+<div>
+<img src="../_static/images/rbm-weight.PNG" align="center" width="300px"/><p><img src="../_static/images/rbm-feature.PNG" align="center" width="300px"/>
+<br/>
+<span><strong>Figure 6 - Bottom RBM weight matrix.</strong></span>
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+</p>
+<p><span><strong>Figure 7 - Top layer features.</strong></span></p>
+</div><p>Figure 6 visualizes sample columns of the weight matrix of RBM1, We can see the
+Gabor-like filters are learned. Figure 7 depicts the features extracted from
+the top-layer of the auto-encoder, wherein one point represents one image.
+Different colors represent different digits. We can see that most images are
+well clustered according to the ground truth.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 The Apache Software Foundation. All rights reserved. Apache Singa, Apache, the Apache feather logo, and the Apache Singa project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+
+<div class="rst-versions shift-up" data-toggle="rst-versions" role="note" aria-label="versions">
+    <img src="../_static/apache.jpg">
+
+    <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: 0.3.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Languages</dt>
+            <dd><a href="../../en/index.html">English</a></dd>
+            <dd><a href="../../zh/index.html">中文</a></dd>
+            <dd><a href="../../jp/index.html">日本語</a></dd>
+            <dd><a href="../../kr/index.html">한국어</a></dd>
+        </dl>
+    </div>
+</div>
+
+<a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+         src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+         alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

@@ -1,0 +1,589 @@
+
+ 
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>优化器(Optimizer) &mdash; incubator-singa 2.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="数据(Data)" href="data.html" />
+    <link rel="prev" title="度量(Metric)" href="metric.html" />
+     <link href="../_static/style.css" rel="stylesheet" type="text/css">
+     <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+     <style>
+   .fa:hover {
+       opacity: 0.7;
+   }
+   .fab:hover {
+       opacity: 0.7;
+   }
+     </style>
+ 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">文档</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_stack.html">软件架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device.html">设备(Device)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensor.html">张量(Tensor)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layer.html">层(Layer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net.html">前馈网络</a></li>
+<li class="toctree-l2"><a class="reference internal" href="initializer.html">初始化器(Initializer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loss.html">损失(Loss)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metric.html">度量(Metric)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">优化器(Optimizer)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#class-singa-optimizer-optimizer-lr-none-momentum-none-weight-decay-none-regularizer-none-constraint-none">class singa.optimizer.Optimizer(lr=None, momentum=None, weight_decay=None, regularizer=None, constraint=None)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#register-name-specs">register(name, specs)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apply-regularizer-constraint-epoch-value-grad-name-none-step-1">apply_regularizer_constraint(epoch, value, grad, name=None, step=-1)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apply-with-lr-epoch-lr-grad-value-name-none-step-1">apply_with_lr(epoch, lr, grad, value, name=None, step=-1)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apply-epoch-grad-value-name-none-step-1">apply(epoch, grad, value, name=None, step=-1)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#class-singa-optimizer-sgd-lr-none-momentum-none-weight-decay-none-regularizer-none-constraint-none">class singa.optimizer.SGD(lr=None, momentum=None, weight_decay=None, regularizer=None, constraint=None)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apply-with-lr-epoch-lr-grad-value-name-step-1">apply_with_lr(epoch, lr, grad, value, name, step=-1)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#class-singa-optimizer-nesterov-lr-none-momentum-0-9-weight-decay-none-regularizer-none-constraint-none">class singa.optimizer.Nesterov(lr=None, momentum=0.9, weight_decay=None, regularizer=None, constraint=None)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">apply_with_lr(epoch, lr, grad, value, name, step=-1)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#class-singa-optimizer-rmsprop-rho-0-9-epsilon-1e-08-lr-none-weight-decay-none-regularizer-none-constraint-none">class singa.optimizer.RMSProp(rho=0.9, epsilon=1e-08, lr=None, weight_decay=None, regularizer=None, constraint=None)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">apply_with_lr(epoch, lr, grad, value, name, step=-1)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#class-singa-optimizer-adagrad-epsilon-1e-08-lr-none-weight-decay-none-lr-gen-none-regularizer-none-constraint-none">class singa.optimizer.AdaGrad(epsilon=1e-08, lr=None, weight_decay=None, lr_gen=None, regularizer=None, constraint=None)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">apply_with_lr(epoch, lr, grad, value, name, step=-1)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#class-singa-optimizer-adam-beta-1-0-9-beta-2-0-999-epsilon-1e-08-lr-none-weight-decay-none-regularizer-none-constraint-none">class singa.optimizer.Adam(beta_1=0.9, beta_2=0.999, epsilon=1e-08, lr=None, weight_decay=None, regularizer=None, constraint=None)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">apply_with_lr(epoch, lr, grad, value, name, step=-1)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#class-singa-optimizer-regularizer">class singa.optimizer.Regularizer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apply-epoch-value-grad-step-1">apply(epoch, value, grad, step=-1)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#class-singa-optimizer-cppregularizer-conf">class singa.optimizer.CppRegularizer(conf)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">apply(epoch, value, grad, step=-1)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#class-singa-optimizer-l2regularizer-coefficient">class singa.optimizer.L2Regularizer(coefficient)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">apply(epoch, value, grad, step=-1)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#class-singa-optimizer-constraint">class singa.optimizer.Constraint</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">apply(epoch, value, grad, step=-1)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#class-singa-optimizer-cppconstraint-conf">class singa.optimizer.CppConstraint(conf)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">apply(epoch, value, grad, step=-1)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#class-singa-optimizer-l2constraint-threshold-none">class singa.optimizer.L2Constraint(threshold=None)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">apply(epoch, value, grad, step=-1)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">数据(Data)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_tool.html">图像工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snapshot.html">Snapshot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_zoo/index.html">模型库</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">下载 SINGA</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">开发时间表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">如何贡献给 SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">如何贡献代码</a></li>
+</ul>
+<p class="caption"><span class="caption-text">社区</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">源代码库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">项目邮件列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">问题追踪</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">SINGA团队</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">incubator-singa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">文档</a> &raquo;</li>
+        
+      <li>优化器(Optimizer)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+--><div class="section" id="optimizer">
+<h1>优化器(Optimizer)<a class="headerlink" href="#optimizer" title="Permalink to this headline">¶</a></h1>
+<p>这个模块包含一系列用于模型参数更新的优化器。</p>
+<p>示例用法：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">optimizer</span>
+<span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">tensor</span>
+
+<span class="n">sgd</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">p</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">g</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+
+<span class="n">sgd</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s1">&#39;param&#39;</span><span class="p">)</span>  <span class="c1"># use the global lr=0.1 for epoch 1</span>
+<span class="n">sgd</span><span class="o">.</span><span class="n">apply_with_lr</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s1">&#39;param&#39;</span><span class="p">)</span>  <span class="c1"># use lr=0.03 for epoch 2</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-optimizer-optimizer-lr-none-momentum-none-weight-decay-none-regularizer-none-constraint-none">
+<h2>class singa.optimizer.Optimizer(lr=None, momentum=None, weight_decay=None, regularizer=None, constraint=None)<a class="headerlink" href="#class-singa-optimizer-optimizer-lr-none-momentum-none-weight-decay-none-regularizer-none-constraint-none" title="Permalink to this headline">¶</a></h2>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Python优化器类的基类。
+典型地，优化器有如下作用：</p>
+<ol class="simple">
+<li><p>构建优化器</p></li>
+<li><p>（可选）以参数名为注册每种参数</p></li>
+<li><p>使用优化器依照给定参数梯度及其他信息更新参数值</p></li>
+</ol>
+<p>它的子类应该重写apply_with_lr函数已用于真实的参数更新。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>lr (float)</strong> – 学习速率</p></li>
+<li><p><strong>momentum (float)</strong> – 动量</p></li>
+<li><p><strong>weight_decay (float)</strong> – L2正则化系数，被排除于‘regularizer’之外</p></li>
+<li><p><strong>regularizer</strong> –  Regularizer或RegularizerConf实例；如被设置，正则化将被用于apply_with_lr()。 用户也可以在优化器外部做正则化。</p></li>
+<li><p><strong>constraint</strong> – Constraint或ConstraintConf实例；如被设置，正则化将被用于apply_with_lr()。 用户也可以在优化器外部做正则化。</p></li>
+</ul>
+<hr class="docutils" />
+<div class="section" id="register-name-specs">
+<h3>register(name, specs)<a class="headerlink" href="#register-name-specs" title="Permalink to this headline">¶</a></h3>
+<p>注册参数，包括为每个参数对象创建正则化和约束条件。 这里参数特定的正则化和约束比全局设置有更高优先级。 如果所有参数对于学习速率、正规化器和约束条件共享相同的设置，则不需要调用该函数。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>name (str)</strong> – 参数名</p></li>
+<li><p><strong>specs (ParamSpec)</strong> – protobuf对象，包括正则化和约束条件、学习速率和权值衰减乘子。</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="apply-regularizer-constraint-epoch-value-grad-name-none-step-1">
+<h3>apply_regularizer_constraint(epoch, value, grad, name=None, step=-1)<a class="headerlink" href="#apply-regularizer-constraint-epoch-value-grad-name-none-step-1" title="Permalink to this headline">¶</a></h3>
+<p>如果可用，将采用正则化和约束条件。 如果全局正则化和参数特定的正则化都存在，会采用参数特定的正则化。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>epoch (int)</strong> – 训练的epoch ID （完整训练一遍训练数据称为一个epoch）</p></li>
+<li><p><strong>value (Tensor)</strong> – 参数Tensor</p></li>
+<li><p><strong>grad (Tensor)</strong> – 参数梯度Tensor</p></li>
+<li><p><strong>name (string)</strong> – 参数名以索引到特定的规则（正则化或约束条件）</p></li>
+<li><p><strong>step (int)</strong> – 每个epoch内的迭代ID</p></li>
+</ul>
+<p><strong>返回值：</strong> 更新后的梯度tensor</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="apply-with-lr-epoch-lr-grad-value-name-none-step-1">
+<h3>apply_with_lr(epoch, lr, grad, value, name=None, step=-1)<a class="headerlink" href="#apply-with-lr-epoch-lr-grad-value-name-none-step-1" title="Permalink to this headline">¶</a></h3>
+<p>如果grad非空，则根据给定学习速率更新参数。</p>
+<p>子类优化器必须重写这个函数。如果grad为空，将不做任何操作。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>epoch (int)</strong> – 训练的epoch ID （完整训练一遍训练数据称为一个epoch）</p></li>
+<li><p><strong>lr (float)</strong> – 学习速率</p></li>
+<li><p><strong>value (Tensor)</strong> – 参数Tensor</p></li>
+<li><p><strong>grad (Tensor)</strong> – 参数梯度Tensor</p></li>
+<li><p><strong>name (string)</strong> – 参数名以索引到特定的规则（正则化或约束条件）</p></li>
+<li><p><strong>step (int)</strong> – 每个epoch内的迭代ID
+<strong>返回值：</strong> 更新后的参数值</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="apply-epoch-grad-value-name-none-step-1">
+<h3>apply(epoch, grad, value, name=None, step=-1)<a class="headerlink" href="#apply-epoch-grad-value-name-none-step-1" title="Permalink to this headline">¶</a></h3>
+<p>假设学习速率生成器配置完成，完成参数更新。 子类不需要重写这个函数。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>epoch (int)</strong> – 训练的epoch ID （完整训练一遍训练数据称为一个epoch）</p></li>
+<li><p><strong>value (Tensor)</strong> – 参数Tensor</p></li>
+<li><p><strong>grad (Tensor)</strong> – 参数梯度Tensor</p></li>
+<li><p><strong>name (string)</strong> – 参数名以索引到特定的规则（正则化或约束条件）</p></li>
+<li><p><strong>step (int)</strong> – 每个epoch内的迭代ID</p></li>
+</ul>
+<p><strong>返回值：</strong> 更新后的参数值</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-optimizer-sgd-lr-none-momentum-none-weight-decay-none-regularizer-none-constraint-none">
+<h2>class singa.optimizer.SGD(lr=None, momentum=None, weight_decay=None, regularizer=None, constraint=None)<a class="headerlink" href="#class-singa-optimizer-sgd-lr-none-momentum-none-weight-decay-none-regularizer-none-constraint-none" title="Permalink to this headline">¶</a></h2>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.optimizer.Optimizer</span></code></p>
+<p>原始的包含动量的随机梯度下降算法。 参数详见Optimizer基类。</p>
+<div class="section" id="apply-with-lr-epoch-lr-grad-value-name-step-1">
+<h3>apply_with_lr(epoch, lr, grad, value, name, step=-1)<a class="headerlink" href="#apply-with-lr-epoch-lr-grad-value-name-step-1" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-optimizer-nesterov-lr-none-momentum-0-9-weight-decay-none-regularizer-none-constraint-none">
+<h2>class singa.optimizer.Nesterov(lr=None, momentum=0.9, weight_decay=None, regularizer=None, constraint=None)<a class="headerlink" href="#class-singa-optimizer-nesterov-lr-none-momentum-0-9-weight-decay-none-regularizer-none-constraint-none" title="Permalink to this headline">¶</a></h2>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.optimizer.Optimizer</span></code></p>
+<p>包含Nesterov动量的随机梯度下降算法。参数详见Optimizer基类。</p>
+<div class="section" id="id1">
+<h3>apply_with_lr(epoch, lr, grad, value, name, step=-1)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-optimizer-rmsprop-rho-0-9-epsilon-1e-08-lr-none-weight-decay-none-regularizer-none-constraint-none">
+<h2>class singa.optimizer.RMSProp(rho=0.9, epsilon=1e-08, lr=None, weight_decay=None, regularizer=None, constraint=None)<a class="headerlink" href="#class-singa-optimizer-rmsprop-rho-0-9-epsilon-1e-08-lr-none-weight-decay-none-regularizer-none-constraint-none" title="Permalink to this headline">¶</a></h2>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.optimizer.Optimizer</span></code></p>
+<p>RMSProp优化器。构造器参数请参考Optimizer基类。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>rho (float)</strong> – [0, 1]间的浮点数</p></li>
+<li><p><strong>epsilon (float)</strong> – 很小的值，以避免数值误差</p></li>
+</ul>
+<div class="section" id="id2">
+<h3>apply_with_lr(epoch, lr, grad, value, name, step=-1)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-optimizer-adagrad-epsilon-1e-08-lr-none-weight-decay-none-lr-gen-none-regularizer-none-constraint-none">
+<h2>class singa.optimizer.AdaGrad(epsilon=1e-08, lr=None, weight_decay=None, lr_gen=None, regularizer=None, constraint=None)<a class="headerlink" href="#class-singa-optimizer-adagrad-epsilon-1e-08-lr-none-weight-decay-none-lr-gen-none-regularizer-none-constraint-none" title="Permalink to this headline">¶</a></h2>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.optimizer.Optimizer</span></code></p>
+<p>AdaGrad优化器。构造器参数请参考Optimizer基类。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>epsilon (float)</strong> – 很小的值，以避免数值误差</p></li>
+</ul>
+<div class="section" id="id3">
+<h3>apply_with_lr(epoch, lr, grad, value, name, step=-1)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-optimizer-adam-beta-1-0-9-beta-2-0-999-epsilon-1e-08-lr-none-weight-decay-none-regularizer-none-constraint-none">
+<h2>class singa.optimizer.Adam(beta_1=0.9, beta_2=0.999, epsilon=1e-08, lr=None, weight_decay=None, regularizer=None, constraint=None)<a class="headerlink" href="#class-singa-optimizer-adam-beta-1-0-9-beta-2-0-999-epsilon-1e-08-lr-none-weight-decay-none-regularizer-none-constraint-none" title="Permalink to this headline">¶</a></h2>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.optimizer.Optimizer</span></code></p>
+<p>Ada优化器。构造器参数请参考Optimizer基类。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>beta_1 (float)</strong> – 动量系数</p></li>
+<li><p><strong>beta_2 (float)</strong> – 整合的梯度平方的系数</p></li>
+<li><p><strong>epsilon (float)</strong> – 很小的值，以避免数值误差</p></li>
+</ul>
+<div class="section" id="id4">
+<h3>apply_with_lr(epoch, lr, grad, value, name, step=-1)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>更新一个参数对象</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>step (int)</strong> – 累积训练迭代数，而不是当前迭代ID</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-optimizer-regularizer">
+<h2>class singa.optimizer.Regularizer<a class="headerlink" href="#class-singa-optimizer-regularizer" title="Permalink to this headline">¶</a></h2>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Python参数梯度正则化的基类。</p>
+<div class="section" id="apply-epoch-value-grad-step-1">
+<h3>apply(epoch, value, grad, step=-1)<a class="headerlink" href="#apply-epoch-value-grad-step-1" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-optimizer-cppregularizer-conf">
+<h2>class singa.optimizer.CppRegularizer(conf)<a class="headerlink" href="#class-singa-optimizer-cppregularizer-conf" title="Permalink to this headline">¶</a></h2>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.optimizer.Regularizer</span></code></p>
+<p>正则化的封装使用C++实现。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>conf (RegularizerConf)</strong> – protobuf配置信息</p></li>
+</ul>
+<div class="section" id="id5">
+<h3>apply(epoch, value, grad, step=-1)<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-optimizer-l2regularizer-coefficient">
+<h2>class singa.optimizer.L2Regularizer(coefficient)<a class="headerlink" href="#class-singa-optimizer-l2regularizer-coefficient" title="Permalink to this headline">¶</a></h2>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.optimizer.Regularizer</span></code></p>
+<p>L2正则化。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>coefficient (float)</strong> – 正则化系数</p></li>
+</ul>
+<div class="section" id="id6">
+<h3>apply(epoch, value, grad, step=-1)<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-optimizer-constraint">
+<h2>class singa.optimizer.Constraint<a class="headerlink" href="#class-singa-optimizer-constraint" title="Permalink to this headline">¶</a></h2>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Python参数梯度约束的基类。</p>
+<div class="section" id="id7">
+<h3>apply(epoch, value, grad, step=-1)<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-optimizer-cppconstraint-conf">
+<h2>class singa.optimizer.CppConstraint(conf)<a class="headerlink" href="#class-singa-optimizer-cppconstraint-conf" title="Permalink to this headline">¶</a></h2>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.optimizer.Constraint</span></code></p>
+<p>约束的封装使用C++实现。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>conf (RegularizerConf)</strong> – protobuf配置信息</p></li>
+</ul>
+<div class="section" id="id8">
+<h3>apply(epoch, value, grad, step=-1)<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-optimizer-l2constraint-threshold-none">
+<h2>class singa.optimizer.L2Constraint(threshold=None)<a class="headerlink" href="#class-singa-optimizer-l2constraint-threshold-none" title="Permalink to this headline">¶</a></h2>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.optimizer.Constraint</span></code></p>
+<p>梯度缩放使得L2 norm小于给定阀值。</p>
+<div class="section" id="id9">
+<h3>apply(epoch, value, grad, step=-1)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="data.html" class="btn btn-neutral float-right" title="数据(Data)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="metric.html" class="btn btn-neutral float-left" title="度量(Metric)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ 
+ <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+   <span class="rst-current-version" data-toggle="rst-current-version">
+     <span class="fa fa-book"> incubator-singa </span>
+     v: latest
+     <span class="fa fa-caret-down"></span>
+   </span>
+   <div class="rst-other-versions">
+       <dl>
+           <dt>Languages</dt>
+           <dd><a href="../../index.html">English</a></dd>
+           <dd><a href=".././index.html">中文</a></dd>
+       </dl>
+       <dl>
+           <dt>Versions</dt>
+           <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+           <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+       </dl>
+ 
+   </div>
+   <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
+   <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>
+   <a href="http://www.apache.org/foundation/thanks.html" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Thanks</a>
+   <a href="http://www.apache.org/foundation/sponsorship.html" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">Sponsorship</a>
+   <a href="http://www.apache.org/licenses/" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">License</a>
+   <br>
+   <a href="https://github.com/apache/incubator-singa" class="fa fa-github" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a> 
+   <a href="https://www.linkedin.com/groups/13550034" class="fa fa-linkedin" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://twitter.com/ApacheSinga" class="fa fa-twitter" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://www.facebook.com/Apache-SINGA-347284219056544/" class="fa fa-facebook" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://www.researchgate.net/project/Apache-SINGA" class="fab fa-researchgate" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+ 
+ </div>
+ 
+  <a href="https://github.com/apache/incubator-singa">
+     <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+         src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+         alt="Fork me on GitHub">
+ </a>
+ 
+  
+ 
+
+</body>
+</html>

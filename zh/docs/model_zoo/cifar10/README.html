@@ -1,0 +1,388 @@
+
+ 
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>在Cifar-10上训练CNN &mdash; incubator-singa 2.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="在文本上训练Char-RNN" href="../char-rnn/README.html" />
+    <link rel="prev" title="模型库" href="../index.html" />
+     <link href="../../../_static/style.css" rel="stylesheet" type="text/css">
+     <!--link href="../../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+     <style>
+   .fa:hover {
+       opacity: 0.7;
+   }
+   .fab:hover {
+       opacity: 0.7;
+   }
+     </style>
+ 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../../../_static/singa.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">文档</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html">安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../software_stack.html">软件架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../device.html">设备(Device)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tensor.html">张量(Tensor)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../layer.html">层(Layer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../net.html">前馈网络</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../initializer.html">初始化器(Initializer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../loss.html">损失(Loss)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../metric.html">度量(Metric)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../optimizer.html">优化器(Optimizer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../data.html">数据(Data)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../image_tool.html">图像工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../snapshot.html">Snapshot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../utils.html">Utils</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">模型库</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">在Cifar-10上训练CNN</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">操作说明</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../char-rnn/README.html">在文本上训练Char-RNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mnist/README.html">在MNIST数据集上训练RBM模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../imagenet/alexnet/README.html">在ImageNet上训练AlexNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../imagenet/densenet/README.html">用DenseNet做图像分类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../imagenet/googlenet/README.html">用GoogleNet做图像分类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../imagenet/inception/README.html">用Inception V4做图像分类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../imagenet/resnet/README.html">用ResNet做图像分类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../imagenet/vgg/README.html">用VGG做图像分类</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../downloads.html">下载 SINGA</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../develop/schedule.html">开发时间表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../develop/how-contribute.html">如何贡献给 SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../develop/contribute-code.html">如何贡献代码</a></li>
+</ul>
+<p class="caption"><span class="caption-text">社区</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/source-repository.html">源代码库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/mail-lists.html">项目邮件列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/issue-tracking.html">问题追踪</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community/team-list.html">SINGA团队</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">incubator-singa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">文档</a> &raquo;</li>
+        
+          <li><a href="../index.html">模型库</a> &raquo;</li>
+        
+      <li>在Cifar-10上训练CNN</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+--><div class="section" id="cifar-10cnn">
+<h1>在Cifar-10上训练CNN<a class="headerlink" href="#cifar-10cnn" title="Permalink to this headline">¶</a></h1>
+<p>卷积神经网络（CNN）是一种被广泛用于图像和视频分类的前馈人造神经网络。在此例子中，我们将在Cifar-10数据集上训练三个深度CNN模型来进行图像分类，</p>
+<ol class="simple">
+<li><p><a class="reference external" href="https://code.google.com/p/cuda-convnet/source/browse/trunk/example-layers/layers-18pct.cfg">AlexNet</a>，我们在验证集上能达到的最高准确度（不做数据增强）在82%左右。</p></li>
+<li><p><a class="reference external" href="http://torch.ch/blog/2015/07/30/cifar.html">VGGNet</a>，我们在验证集上能达到的最高准确度（不做数据增强）在89%左右。</p></li>
+<li><p><a class="reference external" href="https://github.com/facebook/fb.resnet.torch">ResNet</a>，我们在验证集上能达到的最高准确度（不做数据增强）在83%左右。</p></li>
+<li><p><a class="reference external" href="https://github.com/BVLC/caffe/tree/master/examples/cifar10">来自Caffe的AlexNet</a>，SINGA能够无缝转换Caffe模型。</p></li>
+</ol>
+<div class="section" id="id1">
+<h2>操作说明<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="singa">
+<h3>SINGA安装<a class="headerlink" href="#singa" title="Permalink to this headline">¶</a></h3>
+<p>用户可以从源码编译和安装C++或者Python版本的SINGA。代码可以在CPU和GPU上执行。对于GPU上做训练，CUDA和CUDNN（V4或V5）是需要的。请参考安装界面以获得详细指示。</p>
+</div>
+<div class="section" id="id2">
+<h3>数据准备<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Cifar-10的二进制数据集文件可以由如下指令下载</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">download_data</span><span class="o">.</span><span class="n">py</span> <span class="nb">bin</span>
+</pre></div>
+</div>
+<p>Python版本可以由如下指令下载</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">download_data</span><span class="o">.</span><span class="n">py</span> <span class="n">py</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>训练<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>这里有4个训练程序</p>
+<p>1.train.py。下面的指令将会用’cifar-10-batches-py’底下的python版本的Cifar-10数据集训练VGG模型。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">vgg</span> <span class="n">cifar</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">batches</span><span class="o">-</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>要训练其他模型，请用’alexnet’，’resnet’或’caffe’替换’vgg’。其中，’caffe’指由caffe的AlexNet转换的模型。默认情况下，模型将在CudaGPU设备上训练；若想要在CppCPU上运行，需添加额外的参数</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">vgg</span> <span class="n">cifar</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">batches</span><span class="o">-</span><span class="n">py</span>  <span class="o">--</span><span class="n">use_cpu</span>
+</pre></div>
+</div>
+<p>2.alexnet.cc。它通过调用CPP API在CudaGPU上训练AlexNet模型。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">./</span><span class="n">run</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>3.alexnet-parallel.cc。它通过调用CPP API在两个CudaGPU上训练AlexNet模型。两个设备上同时运行并计算模型参数的梯度，然后它们会在CPU设备上取平均并用于更新参数。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">./</span><span class="n">run</span><span class="o">-</span><span class="n">parallel</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>4.vgg-parallel.cc。它调用CPP API在两个CudaGPU设备上训练VGG模型，同alexnet-parallel.cc类似。</p>
+</div>
+<div class="section" id="id4">
+<h3>预测<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>predict.py包含预测函数</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">images</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="n">topk</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>net通过加载先前训练好的模型来被创建；images包含图像的numpy数组（每张图像一行）；dev是训练时的设备，例如，一个CudaGPU设备或者CppCPU设备；它将返回每个实例的topk标签。</p>
+<p>Predict.py文件主函数提供了用预训练的模型为新图片做预测的例子。’mode.bin’文件由训练程序生成，需要被放置在cifar目录下执行</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">predict</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../char-rnn/README.html" class="btn btn-neutral float-right" title="在文本上训练Char-RNN" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="模型库" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ 
+ <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+   <span class="rst-current-version" data-toggle="rst-current-version">
+     <span class="fa fa-book"> incubator-singa </span>
+     v: latest
+     <span class="fa fa-caret-down"></span>
+   </span>
+   <div class="rst-other-versions">
+       <dl>
+           <dt>Languages</dt>
+           <dd><a href="../../../../index.html">English</a></dd>
+           <dd><a href="../../.././index.html">中文</a></dd>
+       </dl>
+       <dl>
+           <dt>Versions</dt>
+           <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+           <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+       </dl>
+ 
+   </div>
+   <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
+   <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>
+   <a href="http://www.apache.org/foundation/thanks.html" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Thanks</a>
+   <a href="http://www.apache.org/foundation/sponsorship.html" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">Sponsorship</a>
+   <a href="http://www.apache.org/licenses/" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">License</a>
+   <br>
+   <a href="https://github.com/apache/incubator-singa" class="fa fa-github" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a> 
+   <a href="https://www.linkedin.com/groups/13550034" class="fa fa-linkedin" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://twitter.com/ApacheSinga" class="fa fa-twitter" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://www.facebook.com/Apache-SINGA-347284219056544/" class="fa fa-facebook" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://www.researchgate.net/project/Apache-SINGA" class="fab fa-researchgate" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+ 
+ </div>
+ 
+  <a href="https://github.com/apache/incubator-singa">
+     <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+         src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+         alt="Fork me on GitHub">
+ </a>
+ 
+  
+ 
+
+</body>
+</html>

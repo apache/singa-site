@@ -1,0 +1,871 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Layers &mdash; incubator-singa 0.3.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="incubator-singa 0.3.0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">Source Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">incubator-singa</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Layers</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="layers">
+<span id="layers"></span><h1>Layers<a class="headerlink" href="#layers" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>Layer is a core abstraction in SINGA. It performs a variety of feature
+transformations for extracting high-level features, e.g., loading raw features,
+parsing RGB values, doing convolution transformation, etc.</p>
+<p>The <em>Basic user guide</em> section introduces the configuration of a built-in
+layer. <em>Advanced user guide</em> explains how to extend the base Layer class to
+implement users&#8217; functions.</p>
+<div class="section" id="basic-user-guide">
+<span id="basic-user-guide"></span><h2>Basic user guide<a class="headerlink" href="#basic-user-guide" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="layer-configuration">
+<span id="layer-configuration"></span><h3>Layer configuration<a class="headerlink" href="#layer-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Configuration of two example layers are shown below,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">layer</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">kCSVRecord</span>
+  <span class="n">store_conf</span> <span class="p">{</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">layer</span><span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;fc1&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">kInnerProduct</span>
+  <span class="n">srclayers</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span>
+  <span class="n">innerproduct_conf</span><span class="p">{</span> <span class="p">}</span>
+  <span class="n">param</span><span class="p">{</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>There are some common fields for all kinds of layers:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">name</span></code>: a string used to differentiate two layers in a neural net.</li>
+<li><code class="docutils literal"><span class="pre">type</span></code>: an integer used for identifying a specific Layer subclass. The types of built-in
+layers are listed in LayerType (defined in job.proto).
+For user-defined layer subclasses, <code class="docutils literal"><span class="pre">user_type</span></code> should be used instead of <code class="docutils literal"><span class="pre">type</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">srclayers</span></code>: names of the source layers.
+In SINGA, all connections are <a class="reference external" href="neural-net.html">converted</a> to directed connections.</li>
+<li><code class="docutils literal"><span class="pre">param</span></code>: configuration for a <a class="reference external" href="param.html">Param</a> instance.
+There can be multiple Param objects in one layer.</li>
+</ul>
+<p>Different layers may have different configurations. These configurations
+are defined in <code class="docutils literal"><span class="pre">&lt;type&gt;_conf</span></code>.  E.g., &#8220;fc1&#8221; layer has
+<code class="docutils literal"><span class="pre">innerproduct_conf</span></code>. The subsequent sections
+explain the functionality of each built-in layer and how to configure it.</p>
+</div>
+<div class="section" id="built-in-layer-subclasses">
+<span id="built-in-layer-subclasses"></span><h3>Built-in Layer subclasses<a class="headerlink" href="#built-in-layer-subclasses" title="Permalink to this headline">¶</a></h3>
+<p>SINGA has provided many built-in layers, which can be used directly to create neural nets.
+These layers are categorized according to their functionalities,</p>
+<ul class="simple">
+<li>Input layers for loading records (e.g., images) from disk files, HDFS or network into memory.</li>
+<li>Neuron layers for feature transformation, e.g., <a class="reference external" href="../api/classsinga_1_1ConvolutionLayer.html">convolution</a>, <a class="reference external" href="../api/classsinga_1_1PoolingLayer.html">pooling</a>, dropout, etc.</li>
+<li>Loss layers for measuring the training objective loss, e.g., Cross Entropy loss or Euclidean loss.</li>
+<li>Output layers for outputting the prediction results (e.g., probabilities of each category) or features into persistent storage, e.g., disk or HDFS.</li>
+<li>Connection layers for connecting layers when the neural net is partitioned.</li>
+</ul>
+<div class="section" id="input-layers">
+<span id="input-layers"></span><h4>Input layers<a class="headerlink" href="#input-layers" title="Permalink to this headline">¶</a></h4>
+<p>Input layers load training/test data from disk or other places (e.g., HDFS or network)
+into memory.</p>
+<div class="section" id="storeinputlayer">
+<span id="storeinputlayer"></span><h5>StoreInputLayer<a class="headerlink" href="#storeinputlayer" title="Permalink to this headline">¶</a></h5>
+<p><a class="reference external" href="../api/classsinga_1_1StoreInputLayer.html">StoreInputLayer</a> is a base layer for
+loading data from data store. The data store can be a KVFile or TextFile (LMDB,
+LevelDB, HDFS, etc., will be supported later). Its <code class="docutils literal"><span class="pre">ComputeFeature</span></code> function reads
+batchsize (string:key, string:value) tuples. Each tuple is parsed by a <code class="docutils literal"><span class="pre">Parse</span></code> function
+implemented by its subclasses.</p>
+<p>The configuration for this layer is in <code class="docutils literal"><span class="pre">store_conf</span></code>,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">store_conf</span> <span class="p">{</span>
+  <span class="n">backend</span><span class="p">:</span> <span class="c1"># &quot;kvfile&quot; or &quot;textfile&quot;</span>
+  <span class="n">path</span><span class="p">:</span> <span class="c1"># path to the data store</span>
+  <span class="n">batchsize</span> <span class="p">:</span> <span class="mi">32</span>
+  <span class="n">prefetching</span><span class="p">:</span> <span class="n">true</span> <span class="c1">#default value is false</span>
+  <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="singlelabelrecordlayer">
+<span id="singlelabelrecordlayer"></span><h5>SingleLabelRecordLayer<a class="headerlink" href="#singlelabelrecordlayer" title="Permalink to this headline">¶</a></h5>
+<p>It is a subclass of StoreInputLayer. It assumes the (key, value) tuple loaded
+from a data store contains a feature vector (and a label) for one data instance.
+All feature vectors are of the same fixed length. The shape of one instance
+is configured through the <code class="docutils literal"><span class="pre">shape</span></code> field, e.g., the following configuration
+specifies the shape for the CIFAR10 images.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">store_conf</span> <span class="p">{</span>
+  <span class="n">shape</span><span class="p">:</span> <span class="mi">3</span>  <span class="c1">#channels</span>
+  <span class="n">shape</span><span class="p">:</span> <span class="mi">32</span> <span class="c1">#height</span>
+  <span class="n">shape</span><span class="p">:</span> <span class="mi">32</span> <span class="c1">#width</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>It may do some preprocessing like <a class="reference external" href="http://ufldl.stanford.edu/wiki/index.php/Data_Preprocessing">standardization</a>.
+The data for preprocessing is loaded by and parsed in a virtual function, which is implemented by
+its subclasses.</p>
+</div>
+<div class="section" id="recordinputlayer">
+<span id="recordinputlayer"></span><h5>RecordInputLayer<a class="headerlink" href="#recordinputlayer" title="Permalink to this headline">¶</a></h5>
+<p>It is a subclass of SingleLabelRecordLayer. It parses the value field from one
+tuple into a RecordProto, which is generated by Google Protobuf according
+to common.proto.  It can be used to store features for images (e.g., using the pixel field)
+or other objects (using the data field). The key field is not parsed.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">kRecordInput</span>
+<span class="n">store_conf</span> <span class="p">{</span>
+  <span class="n">has_label</span><span class="p">:</span> <span class="c1"># default is true</span>
+  <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="csvinputlayer">
+<span id="csvinputlayer"></span><h5>CSVInputLayer<a class="headerlink" href="#csvinputlayer" title="Permalink to this headline">¶</a></h5>
+<p>It is a subclass of SingleLabelRecordLayer. The value field from one tuple is parsed
+as a CSV line (separated by comma). The first number would be parsed as a label if
+<code class="docutils literal"><span class="pre">has_label</span></code> is configured in <code class="docutils literal"><span class="pre">store_conf</span></code>. Otherwise, all numbers would be parsed
+into one row of the <code class="docutils literal"><span class="pre">data_</span></code> Blob.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">kCSVInput</span>
+<span class="n">store_conf</span> <span class="p">{</span>
+  <span class="n">has_label</span><span class="p">:</span> <span class="c1"># default is true</span>
+  <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="imagepreprocesslayer">
+<span id="imagepreprocesslayer"></span><h5>ImagePreprocessLayer<a class="headerlink" href="#imagepreprocesslayer" title="Permalink to this headline">¶</a></h5>
+<p>This layer does image preprocessing, e.g., cropping, mirroring and scaling, against
+the data Blob from its source layer. It deprecates the RGBImageLayer which
+works on the Record from ShardDataLayer. It still uses the same configuration as
+RGBImageLayer,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">kImagePreprocess</span>
+<span class="n">rgbimage_conf</span> <span class="p">{</span>
+  <span class="n">scale</span><span class="p">:</span> <span class="nb">float</span>
+  <span class="n">cropsize</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># cropping each image to keep the central part with this size</span>
+  <span class="n">mirror</span><span class="p">:</span> <span class="nb">bool</span>  <span class="c1"># mirror the image by set image[i,j]=image[i,len-j]</span>
+  <span class="n">meanfile</span><span class="p">:</span> <span class="s2">&quot;Image_Mean_File_Path&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sharddatalayer-deprected">
+<span id="sharddatalayer-deprected"></span><h5>ShardDataLayer (Deprected)<a class="headerlink" href="#sharddatalayer-deprected" title="Permalink to this headline">¶</a></h5>
+<p>Deprected! Please use ProtoRecordInputLayer or CSVRecordInputLayer.</p>
+<p><a class="reference external" href="../api/classsinga_1_1ShardDataLayer.html">ShardDataLayer</a> is a subclass of DataLayer,
+which reads Records from disk file. The file should be created using
+<a class="reference external" href="../api/classsinga_1_1DataShard.html">DataShard</a>
+class. With the data file prepared, users configure the layer as</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">kShardData</span>
+<span class="n">sharddata_conf</span> <span class="p">{</span>
+  <span class="n">path</span><span class="p">:</span> <span class="s2">&quot;path to data shard folder&quot;</span>
+  <span class="n">batchsize</span><span class="p">:</span> <span class="nb">int</span>
+  <span class="n">random_skip</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">batchsize</span></code> specifies the number of records to be trained for one mini-batch.
+The first <code class="docutils literal"><span class="pre">rand()</span> <span class="pre">%</span> <span class="pre">random_skip</span></code> <code class="docutils literal"><span class="pre">Record</span></code>s will be skipped at the first
+iteration. This is to enforce that different workers work on different Records.</p>
+</div>
+<div class="section" id="lmdbdatalayer-deprected">
+<span id="lmdbdatalayer-deprected"></span><h5>LMDBDataLayer (Deprected)<a class="headerlink" href="#lmdbdatalayer-deprected" title="Permalink to this headline">¶</a></h5>
+<p>Deprected! Please use ProtoRecordInputLayer or CSVRecordInputLayer.</p>
+<p>[LMDBDataLayer] is similar to ShardDataLayer, except that the Records are
+loaded from LMDB.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">kLMDBData</span>
+<span class="n">lmdbdata_conf</span> <span class="p">{</span>
+  <span class="n">path</span><span class="p">:</span> <span class="s2">&quot;path to LMDB folder&quot;</span>
+  <span class="n">batchsize</span><span class="p">:</span> <span class="nb">int</span>
+  <span class="n">random_skip</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="parserlayer-deprected">
+<span id="parserlayer-deprected"></span><h5>ParserLayer (Deprected)<a class="headerlink" href="#parserlayer-deprected" title="Permalink to this headline">¶</a></h5>
+<p>Deprected! Please use ProtoRecordInputLayer or CSVRecordInputLayer.</p>
+<p>It get a vector of Records from DataLayer and parse features into
+a Blob.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">void</span> <span class="n">ParseRecords</span><span class="p">(</span><span class="n">Phase</span> <span class="n">phase</span><span class="p">,</span> <span class="n">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Record</span><span class="o">&gt;&amp;</span> <span class="n">records</span><span class="p">,</span> <span class="n">Blob</span><span class="o">&lt;</span><span class="nb">float</span><span class="o">&gt;*</span> <span class="n">blob</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="labellayer-deprected">
+<span id="labellayer-deprected"></span><h5>LabelLayer (Deprected)<a class="headerlink" href="#labellayer-deprected" title="Permalink to this headline">¶</a></h5>
+<p>Deprected! Please use ProtoRecordInputLayer or CSVRecordInputLayer.</p>
+<p><a class="reference external" href="../api/classsinga_1_1LabelLayer.html">LabelLayer</a> is a subclass of ParserLayer.
+It parses a single label from each Record. Consequently, it
+will put $b$ (mini-batch size) values into the Blob. It has no specific configuration fields.</p>
+</div>
+<div class="section" id="mnistimagelayer-deprected">
+<span id="mnistimagelayer-deprected"></span><h5>MnistImageLayer (Deprected)<a class="headerlink" href="#mnistimagelayer-deprected" title="Permalink to this headline">¶</a></h5>
+<p>Deprected! Please use ProtoRecordInputLayer or CSVRecordInputLayer.
+[MnistImageLayer] is a subclass of ParserLayer. It parses the pixel values of
+each image from the MNIST dataset. The pixel
+values may be normalized as <code class="docutils literal"><span class="pre">x/norm_a</span> <span class="pre">-</span> <span class="pre">norm_b</span></code>. For example, if <code class="docutils literal"><span class="pre">norm_a</span></code> is
+set to 255 and <code class="docutils literal"><span class="pre">norm_b</span></code> is set to 0, then every pixel will be normalized into
+[0, 1].</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">kMnistImage</span>
+<span class="n">mnistimage_conf</span> <span class="p">{</span>
+  <span class="n">norm_a</span><span class="p">:</span> <span class="nb">float</span>
+  <span class="n">norm_b</span><span class="p">:</span> <span class="nb">float</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rgbimagelayer-deprected">
+<span id="rgbimagelayer-deprected"></span><h5>RGBImageLayer (Deprected)<a class="headerlink" href="#rgbimagelayer-deprected" title="Permalink to this headline">¶</a></h5>
+<p>Deprected! Please use the ImagePreprocessLayer.
+<a class="reference external" href="../api/classsinga_1_1RGBImageLayer.html">RGBImageLayer</a> is a subclass of ParserLayer.
+It parses the RGB values of one image from each Record. It may also
+apply some transformations, e.g., cropping, mirroring operations. If the
+<code class="docutils literal"><span class="pre">meanfile</span></code> is specified, it should point to a path that contains one Record for
+the mean of each pixel over all training images.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">kRGBImage</span>
+<span class="n">rgbimage_conf</span> <span class="p">{</span>
+  <span class="n">scale</span><span class="p">:</span> <span class="nb">float</span>
+  <span class="n">cropsize</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># cropping each image to keep the central part with this size</span>
+  <span class="n">mirror</span><span class="p">:</span> <span class="nb">bool</span>  <span class="c1"># mirror the image by set image[i,j]=image[i,len-j]</span>
+  <span class="n">meanfile</span><span class="p">:</span> <span class="s2">&quot;Image_Mean_File_Path&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="prefetchlayer">
+<span id="prefetchlayer"></span><h5>PrefetchLayer<a class="headerlink" href="#prefetchlayer" title="Permalink to this headline">¶</a></h5>
+<p><a class="reference external" href="../api/classsinga_1_1PrefetchLayer.html">PrefetchLayer</a> embeds other input layers
+to do data prefeching.  It will launch a thread to call the embedded layers to load and extract features.
+It ensures that the I/O task and computation task can work simultaneously.
+One example PrefetchLayer configuration is,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">layer</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;prefetch&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">kPrefetch</span>
+  <span class="n">sublayers</span> <span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">kShardData</span>
+    <span class="n">sharddata_conf</span> <span class="p">{</span> <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">sublayers</span> <span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;rgb&quot;</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">kRGBImage</span>
+    <span class="n">srclayers</span><span class="p">:</span><span class="s2">&quot;data&quot;</span>
+    <span class="n">rgbimage_conf</span> <span class="p">{</span> <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">sublayers</span> <span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;label&quot;</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">kLabel</span>
+    <span class="n">srclayers</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span>
+  <span class="p">}</span>
+  <span class="n">exclude</span><span class="p">:</span><span class="n">kTest</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The layers on top of the PrefetchLayer should use the name of the embedded
+layers as their source layers. For example, the &#8220;rgb&#8221; and &#8220;label&#8221; should be
+configured to the <code class="docutils literal"><span class="pre">srclayers</span></code> of other layers.</p>
+</div>
+</div>
+<div class="section" id="output-layers">
+<span id="output-layers"></span><h4>Output Layers<a class="headerlink" href="#output-layers" title="Permalink to this headline">¶</a></h4>
+<p>Output layers get data from their source layers and write them to persistent storage,
+e.g., disk files or HDFS (to be supported).</p>
+<div class="section" id="recordoutputlayer">
+<span id="recordoutputlayer"></span><h5>RecordOutputLayer<a class="headerlink" href="#recordoutputlayer" title="Permalink to this headline">¶</a></h5>
+<p>This layer gets data (and label if it is available) from its source layer and converts it into records of type
+RecordProto. Records are written as (key = instance No., value = serialized record) tuples into Store, e.g., KVFile. The configuration of this layer
+should include the specifics of the Store backend via <code class="docutils literal"><span class="pre">store_conf</span></code>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">layer</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;output&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">kRecordOutput</span>
+  <span class="n">srclayers</span><span class="p">:</span>
+  <span class="n">store_conf</span> <span class="p">{</span>
+    <span class="n">backend</span><span class="p">:</span> <span class="s2">&quot;kvfile&quot;</span>
+    <span class="n">path</span><span class="p">:</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="csvoutputlayer">
+<span id="csvoutputlayer"></span><h5>CSVOutputLayer<a class="headerlink" href="#csvoutputlayer" title="Permalink to this headline">¶</a></h5>
+<p>This layer gets data (and label if it available) from its source layer and converts it into
+a string per instance with fields separated by commas (i.e., CSV format). The shape information
+is not kept in the string. All strings are written into
+Store, e.g., text file. The configuration of this layer should include the specifics of the Store backend via <code class="docutils literal"><span class="pre">store_conf</span></code>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">layer</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;output&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">kCSVOutput</span>
+  <span class="n">srclayers</span><span class="p">:</span>
+  <span class="n">store_conf</span> <span class="p">{</span>
+    <span class="n">backend</span><span class="p">:</span> <span class="s2">&quot;textfile&quot;</span>
+    <span class="n">path</span><span class="p">:</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="neuron-layers">
+<span id="neuron-layers"></span><h4>Neuron Layers<a class="headerlink" href="#neuron-layers" title="Permalink to this headline">¶</a></h4>
+<p>Neuron layers conduct feature transformations.</p>
+</div>
+<div class="section" id="activationlayer">
+<span id="activationlayer"></span><h4>ActivationLayer<a class="headerlink" href="#activationlayer" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">kActivation</span>
+<span class="n">activation_conf</span> <span class="p">{</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="p">{</span><span class="n">RELU</span><span class="p">,</span> <span class="n">SIGMOID</span><span class="p">,</span> <span class="n">TANH</span><span class="p">,</span> <span class="n">STANH</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="convolutionlayer">
+<span id="convolutionlayer"></span><h5>ConvolutionLayer<a class="headerlink" href="#convolutionlayer" title="Permalink to this headline">¶</a></h5>
+<p><a class="reference external" href="../api/classsinga_1_1ConvolutionLayer.html">ConvolutionLayer</a> conducts convolution transformation.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">kConvolution</span>
+<span class="n">convolution_conf</span> <span class="p">{</span>
+  <span class="n">num_filters</span><span class="p">:</span> <span class="nb">int</span>
+  <span class="n">kernel</span><span class="p">:</span> <span class="nb">int</span>
+  <span class="n">stride</span><span class="p">:</span> <span class="nb">int</span>
+  <span class="n">pad</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">}</span>
+<span class="n">param</span> <span class="p">{</span> <span class="p">}</span> <span class="c1"># weight/filter matrix</span>
+<span class="n">param</span> <span class="p">{</span> <span class="p">}</span> <span class="c1"># bias vector</span>
+</pre></div>
+</div>
+<p>The int value <code class="docutils literal"><span class="pre">num_filters</span></code> stands for the count of the applied filters; the int
+value <code class="docutils literal"><span class="pre">kernel</span></code> stands for the convolution kernel size (equal width and height);
+the int value <code class="docutils literal"><span class="pre">stride</span></code> stands for the distance between the successive filters;
+the int value <code class="docutils literal"><span class="pre">pad</span></code> pads each with a given int number of pixels border of
+zeros.</p>
+</div>
+<div class="section" id="innerproductlayer">
+<span id="innerproductlayer"></span><h5>InnerProductLayer<a class="headerlink" href="#innerproductlayer" title="Permalink to this headline">¶</a></h5>
+<p><a class="reference external" href="../api/classsinga_1_1InnerProductLayer.html">InnerProductLayer</a> is fully connected with its (single) source layer.
+Typically, it has two parameter fields, one for weight matrix, and the other
+for bias vector. It rotates the feature of the source layer (by multiplying with weight matrix) and
+shifts it (by adding the bias vector).</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">kInnerProduct</span>
+<span class="n">innerproduct_conf</span> <span class="p">{</span>
+  <span class="n">num_output</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">}</span>
+<span class="n">param</span> <span class="p">{</span> <span class="p">}</span> <span class="c1"># weight matrix</span>
+<span class="n">param</span> <span class="p">{</span> <span class="p">}</span> <span class="c1"># bias vector</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="poolinglayer">
+<span id="poolinglayer"></span><h5>PoolingLayer<a class="headerlink" href="#poolinglayer" title="Permalink to this headline">¶</a></h5>
+<p><a class="reference external" href="../api/classsinga_1_1PoolingLayer.html">PoolingLayer</a> is used to do a normalization (or averaging or sampling) of the
+feature vectors from the source layer.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">kPooling</span>
+<span class="n">pooling_conf</span> <span class="p">{</span>
+  <span class="n">pool</span><span class="p">:</span> <span class="n">AVE</span><span class="o">|</span><span class="n">MAX</span> <span class="o">//</span> <span class="n">Choose</span> <span class="n">whether</span> <span class="n">use</span> <span class="n">the</span> <span class="n">Average</span> <span class="n">Pooling</span> <span class="ow">or</span> <span class="n">Max</span> <span class="n">Pooling</span>
+  <span class="n">kernel</span><span class="p">:</span> <span class="nb">int</span>   <span class="o">//</span> <span class="n">size</span> <span class="n">of</span> <span class="n">the</span> <span class="n">kernel</span> <span class="nb">filter</span>
+  <span class="n">pad</span><span class="p">:</span> <span class="nb">int</span>      <span class="o">//</span> <span class="n">the</span> <span class="n">padding</span> <span class="n">size</span>
+  <span class="n">stride</span><span class="p">:</span> <span class="nb">int</span>   <span class="o">//</span> <span class="n">the</span> <span class="n">step</span> <span class="n">length</span> <span class="n">of</span> <span class="n">the</span> <span class="nb">filter</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The pooling layer has two methods: Average Pooling and Max Pooling.
+Use the enum AVE and MAX to choose the method.</p>
+<ul class="simple">
+<li>Max Pooling selects the max value for each filtering area as a point of the
+result feature blob.</li>
+<li>Average Pooling averages all values for each filtering area at a point of the
+result feature blob.</li>
+</ul>
+</div>
+<div class="section" id="relulayer">
+<span id="relulayer"></span><h5>ReLULayer<a class="headerlink" href="#relulayer" title="Permalink to this headline">¶</a></h5>
+<p><a class="reference external" href="../api/classsinga_1_1ReLULayer.html">ReLuLayer</a> has rectified linear neurons, which conducts the following
+transformation, <code class="docutils literal"><span class="pre">f(x)</span> <span class="pre">=</span> <span class="pre">Max(0,</span> <span class="pre">x)</span></code>. It has no specific configuration fields.</p>
+</div>
+<div class="section" id="stanhlayer">
+<span id="stanhlayer"></span><h5>STanhLayer<a class="headerlink" href="#stanhlayer" title="Permalink to this headline">¶</a></h5>
+<p><a class="reference external" href="../api/classsinga_1_1TanhLayer.html">STanhLayer</a> uses the scaled tanh as activation function, i.e., <code class="docutils literal"><span class="pre">f(x)=1.7159047*</span> <span class="pre">tanh(0.6666667</span> <span class="pre">*</span> <span class="pre">x)</span></code>.
+It has no specific configuration fields.</p>
+</div>
+<div class="section" id="sigmoidlayer">
+<span id="sigmoidlayer"></span><h5>SigmoidLayer<a class="headerlink" href="#sigmoidlayer" title="Permalink to this headline">¶</a></h5>
+<p>[SigmoidLayer] uses the sigmoid (or logistic) as activation function, i.e.,
+<code class="docutils literal"><span class="pre">f(x)=sigmoid(x)</span></code>.  It has no specific configuration fields.</p>
+</div>
+<div class="section" id="dropout-layer">
+<span id="dropout-layer"></span><h5>Dropout Layer<a class="headerlink" href="#dropout-layer" title="Permalink to this headline">¶</a></h5>
+<p><a class="reference external" href="../api/asssinga_1_1DropoutLayer.html">DropoutLayer</a> is a layer that randomly dropouts some inputs.
+This scheme helps deep learning model away from over-fitting.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">kDropout</span>
+<span class="n">dropout_conf</span> <span class="p">{</span>
+  <span class="n">dropout_ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="c1"># dropout probability</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lrnlayer">
+<span id="lrnlayer"></span><h5>LRNLayer<a class="headerlink" href="#lrnlayer" title="Permalink to this headline">¶</a></h5>
+<p><a class="reference external" href="../api/classsinga_1_1LRNLayer.html">LRNLayer</a>, (Local Response Normalization), normalizes over the channels.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">kLRN</span>
+<span class="n">lrn_conf</span> <span class="p">{</span>
+  <span class="n">local_size</span><span class="p">:</span> <span class="nb">int</span>
+  <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span>  <span class="o">//</span> <span class="n">scaling</span> <span class="n">parameter</span>
+  <span class="n">beta</span><span class="p">:</span> <span class="nb">float</span>   <span class="o">//</span> <span class="n">exponential</span> <span class="n">number</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">local_size</span></code> specifies  the quantity of the adjoining channels which will be summed up.
+For <code class="docutils literal"><span class="pre">WITHIN_CHANNEL</span></code>, it means the side length of the space region which will be summed up.</p>
+</div>
+</div>
+</div>
+<div class="section" id="cudnn-layers">
+<span id="cudnn-layers"></span><h3>CuDNN layers<a class="headerlink" href="#cudnn-layers" title="Permalink to this headline">¶</a></h3>
+<p>CuDNN v3 and v4 are supported in SINGA, which include the following layers,</p>
+<ul class="simple">
+<li>CudnnActivationLayer (activation functions are SIGMOID, TANH, RELU)</li>
+<li>CudnnConvLayer</li>
+<li>CudnnLRNLayer</li>
+<li>CudnnPoolLayer</li>
+<li>CudnnSoftmaxLayer</li>
+</ul>
+<p>These layers have the same configuration as the corresponding CPU layers.
+For CuDNN v4, the batch normalization layer is added, which is named as
+<code class="docutils literal"><span class="pre">CudnnBMLayer</span></code>.</p>
+<div class="section" id="loss-layers">
+<span id="loss-layers"></span><h4>Loss Layers<a class="headerlink" href="#loss-layers" title="Permalink to this headline">¶</a></h4>
+<p>Loss layers measures the objective training loss.</p>
+<div class="section" id="softmaxlosslayer">
+<span id="softmaxlosslayer"></span><h5>SoftmaxLossLayer<a class="headerlink" href="#softmaxlosslayer" title="Permalink to this headline">¶</a></h5>
+<p><a class="reference external" href="../api/classsinga_1_1SoftmaxLossLayer.html">SoftmaxLossLayer</a> is a combination of the Softmax transformation and
+Cross-Entropy loss. It applies Softmax firstly to get a prediction probability
+for each output unit (neuron) and compute the cross-entropy against the ground truth.
+It is generally used as the final layer to generate labels for classification tasks.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">kSoftmaxLoss</span>
+<span class="n">softmaxloss_conf</span> <span class="p">{</span>
+  <span class="n">topk</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The configuration field <code class="docutils literal"><span class="pre">topk</span></code> is for selecting the labels with <code class="docutils literal"><span class="pre">topk</span></code>
+probabilities as the prediction results. It is tedious for users to view the
+prediction probability of every label.</p>
+</div>
+</div>
+<div class="section" id="connectionlayer">
+<span id="connectionlayer"></span><h4>ConnectionLayer<a class="headerlink" href="#connectionlayer" title="Permalink to this headline">¶</a></h4>
+<p>Subclasses of ConnectionLayer are utility layers that connects other layers due
+to neural net partitioning or other cases.</p>
+<div class="section" id="concatelayer">
+<span id="concatelayer"></span><h5>ConcateLayer<a class="headerlink" href="#concatelayer" title="Permalink to this headline">¶</a></h5>
+<p><a class="reference external" href="../api/classsinga_1_1ConcateLayer.html">ConcateLayer</a> connects more than one source layers to concatenate their feature
+blob along given dimension.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">kConcate</span>
+<span class="n">concate_conf</span> <span class="p">{</span>
+  <span class="n">concate_dim</span><span class="p">:</span> <span class="nb">int</span>  <span class="o">//</span> <span class="n">define</span> <span class="n">the</span> <span class="n">dimension</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="slicelayer">
+<span id="slicelayer"></span><h5>SliceLayer<a class="headerlink" href="#slicelayer" title="Permalink to this headline">¶</a></h5>
+<p><a class="reference external" href="../api/classsinga_1_1SliceLayer.html">SliceLayer</a> connects to more than one destination layers to slice its feature
+blob along given dimension.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">kSlice</span>
+<span class="n">slice_conf</span> <span class="p">{</span>
+  <span class="n">slice_dim</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="splitlayer">
+<span id="splitlayer"></span><h5>SplitLayer<a class="headerlink" href="#splitlayer" title="Permalink to this headline">¶</a></h5>
+<p><a class="reference external" href="../api/classsinga_1_1SplitLayer.html">SplitLayer</a> connects to more than one destination layers to replicate its
+feature blob.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">:</span> <span class="n">kSplit</span>
+<span class="n">split_conf</span> <span class="p">{</span>
+  <span class="n">num_splits</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bridgesrclayer-bridgedstlayer">
+<span id="bridgesrclayer-bridgedstlayer"></span><h5>BridgeSrcLayer &amp; BridgeDstLayer<a class="headerlink" href="#bridgesrclayer-bridgedstlayer" title="Permalink to this headline">¶</a></h5>
+<p><a class="reference external" href="../api/classsinga_1_1BridgeSrcLayer.html">BridgeSrcLayer</a> &amp;
+<a class="reference external" href="../api/classsinga_1_1BridgeDstLayer.html">BridgeDstLayer</a> are utility layers assisting data (e.g., feature or
+gradient) transferring due to neural net partitioning. These two layers are
+added implicitly. Users typically do not need to configure them in their neural
+net configuration.</p>
+</div>
+</div>
+</div>
+<div class="section" id="outputlayer">
+<span id="outputlayer"></span><h3>OutputLayer<a class="headerlink" href="#outputlayer" title="Permalink to this headline">¶</a></h3>
+<p>It write the prediction results or the extracted features into file, HTTP stream
+or other places. Currently SINGA has not implemented any specific output layer.</p>
+</div>
+</div>
+<div class="section" id="advanced-user-guide">
+<span id="advanced-user-guide"></span><h2>Advanced user guide<a class="headerlink" href="#advanced-user-guide" title="Permalink to this headline">¶</a></h2>
+<p>The base Layer class is introduced in this section, followed by how to
+implement a new Layer subclass.</p>
+<div class="section" id="base-layer-class">
+<span id="base-layer-class"></span><h3>Base Layer class<a class="headerlink" href="#base-layer-class" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="members">
+<span id="members"></span><h4>Members<a class="headerlink" href="#members" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LayerProto</span> <span class="n">layer_conf_</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="nb">float</span><span class="o">&gt;&gt;</span> <span class="n">datavec_</span><span class="p">,</span> <span class="n">gradvec_</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">AuxType</span><span class="o">&gt;</span> <span class="n">aux_data_</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The base layer class keeps the user configuration in <code class="docutils literal"><span class="pre">layer_conf_</span></code>.
+<code class="docutils literal"><span class="pre">datavec_</span></code> stores the features associated with this layer.
+There are layers without feature vectors; instead, they share the data from
+source layers.
+The <code class="docutils literal"><span class="pre">gradvec_</span></code> is for storing the gradients of the
+objective loss w.r.t. the <code class="docutils literal"><span class="pre">datavec_</span></code>. The <code class="docutils literal"><span class="pre">aux_data_</span></code> stores the auxiliary data, e.g., image label (set <code class="docutils literal"><span class="pre">AuxType</span></code> to int).
+If images have variant number of labels, the AuxType can be defined to <code class="docutils literal"><span class="pre">vector&lt;int&gt;</span></code>.
+Currently, we hard code <code class="docutils literal"><span class="pre">AuxType</span></code> to int. It will be added as a template argument of Layer class later.</p>
+<p>If a layer has parameters, these parameters are declared using type
+<a class="reference external" href="param.html">Param</a>. Since some layers do not have
+parameters, we do not declare any <code class="docutils literal"><span class="pre">Param</span></code> in the base layer class.</p>
+</div>
+<div class="section" id="functions">
+<span id="functions"></span><h4>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">void</span> <span class="n">Setup</span><span class="p">(</span><span class="n">const</span> <span class="n">LayerProto</span><span class="o">&amp;</span> <span class="n">conf</span><span class="p">,</span> <span class="n">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Layer</span><span class="o">*&gt;&amp;</span> <span class="n">srclayers</span><span class="p">);</span>
+<span class="n">virtual</span> <span class="n">void</span> <span class="n">ComputeFeature</span><span class="p">(</span><span class="nb">int</span> <span class="n">flag</span><span class="p">,</span> <span class="n">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Layer</span><span class="o">*&gt;&amp;</span> <span class="n">srclayers</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">virtual</span> <span class="n">void</span> <span class="n">ComputeGradient</span><span class="p">(</span><span class="nb">int</span> <span class="n">flag</span><span class="p">,</span> <span class="n">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Layer</span><span class="o">*&gt;&amp;</span> <span class="n">srclayers</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">Setup</span></code> function reads user configuration, i.e. <code class="docutils literal"><span class="pre">conf</span></code>, and information
+from source layers, e.g., mini-batch size,  to set the
+shape of the <code class="docutils literal"><span class="pre">data_</span></code> (and <code class="docutils literal"><span class="pre">grad_</span></code>) field as well
+as some other layer specific fields.
+Memory will not be allocated until computation over the data structure happens.</p>
+<p>The <code class="docutils literal"><span class="pre">ComputeFeature</span></code> function evaluates the feature blob by transforming (e.g.
+convolution and pooling) features from the source layers.  <code class="docutils literal"><span class="pre">ComputeGradient</span></code>
+computes the gradients of parameters associated with this layer.  These two
+functions are invoked by the <a class="reference external" href="train-one-batch.html">TrainOneBatch</a>
+function during training. Hence, they should be consistent with the
+<code class="docutils literal"><span class="pre">TrainOneBatch</span></code> function. Particularly, for feed-forward and RNN models, they are
+trained using <a class="reference external" href="train-one-batch.html#back-propagation">BP algorithm</a>,
+which requires each layer&#8217;s <code class="docutils literal"><span class="pre">ComputeFeature</span></code>
+function to compute <code class="docutils literal"><span class="pre">data_</span></code> based on source layers, and requires each layer&#8217;s
+<code class="docutils literal"><span class="pre">ComputeGradient</span></code> to compute gradients of parameters and source layers&#8217;
+<code class="docutils literal"><span class="pre">grad_</span></code>. For energy models, e.g., RBM, they are trained by
+<a class="reference external" href="train-one-batch.html#contrastive-divergence">CD algorithm</a>, which
+requires each layer&#8217;s <code class="docutils literal"><span class="pre">ComputeFeature</span></code> function to compute the feature vectors
+for the positive phase or negative phase depending on the <code class="docutils literal"><span class="pre">phase</span></code> argument, and
+requires the <code class="docutils literal"><span class="pre">ComputeGradient</span></code> function to only compute parameter gradients.
+For some layers, e.g., loss layer or output layer, they can put the loss or
+prediction result into the <code class="docutils literal"><span class="pre">metric</span></code> argument, which will be averaged and
+displayed periodically.</p>
+</div>
+</div>
+<div class="section" id="implementing-a-new-layer-subclass">
+<span id="implementing-a-new-layer-subclass"></span><h3>Implementing a new Layer subclass<a class="headerlink" href="#implementing-a-new-layer-subclass" title="Permalink to this headline">¶</a></h3>
+<p>Users can extend the Layer class or other subclasses to implement their own feature transformation
+logics as long as the two virtual functions are overridden to be consistent with
+the <code class="docutils literal"><span class="pre">TrainOneBatch</span></code> function. The <code class="docutils literal"><span class="pre">Setup</span></code> function may also be overridden to
+read specific layer configuration.</p>
+<p>The <a class="reference external" href="rnn.html">RNNLM</a> provides a couple of user-defined layers. You can refer to them as examples.</p>
+<div class="section" id="layer-specific-protocol-message">
+<span id="layer-specific-protocol-message"></span><h4>Layer specific protocol message<a class="headerlink" href="#layer-specific-protocol-message" title="Permalink to this headline">¶</a></h4>
+<p>To implement a new layer, the first step is to define the layer specific
+configuration. Suppose the new layer is <code class="docutils literal"><span class="pre">FooLayer</span></code>, the layer specific
+google protocol message <code class="docutils literal"><span class="pre">FooLayerProto</span></code> should be defined as</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># in user.proto</span>
+<span class="n">package</span> <span class="n">singa</span>
+<span class="kn">import</span> <span class="s2">&quot;job.proto&quot;</span>
+<span class="n">message</span> <span class="n">FooLayerProto</span> <span class="p">{</span>
+  <span class="n">optional</span> <span class="n">int32</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="o">//</span> <span class="n">specific</span> <span class="n">fields</span> <span class="n">to</span> <span class="n">the</span> <span class="n">FooLayer</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In addition, users need to extend the original <code class="docutils literal"><span class="pre">LayerProto</span></code> (defined in job.proto of SINGA)
+to include the <code class="docutils literal"><span class="pre">foo_conf</span></code> as follows.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">extend</span> <span class="n">LayerProto</span> <span class="p">{</span>
+  <span class="n">optional</span> <span class="n">FooLayerProto</span> <span class="n">foo_conf</span> <span class="o">=</span> <span class="mi">101</span><span class="p">;</span>  <span class="o">//</span> <span class="n">unique</span> <span class="n">field</span> <span class="nb">id</span><span class="p">,</span> <span class="n">reserved</span> <span class="k">for</span> <span class="n">extensions</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If there are multiple new layers, then each layer that has specific
+configurations would have a <code class="docutils literal"><span class="pre">&lt;type&gt;_conf</span></code> field and takes one unique extension number.
+SINGA has reserved enough extension numbers, e.g., starting from 101 to 1000.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># job.proto of SINGA</span>
+<span class="n">LayerProto</span> <span class="p">{</span>
+  <span class="o">...</span>
+  <span class="n">extensions</span> <span class="mi">101</span> <span class="n">to</span> <span class="mi">1000</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>With user.proto defined, users can use
+<a class="reference external" href="https://developers.google.com/protocol-buffers/">protoc</a> to generate the <code class="docutils literal"><span class="pre">user.pb.cc</span></code>
+and <code class="docutils literal"><span class="pre">user.pb.h</span></code> files.  In users&#8217; code, the extension fields can be accessed via,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">auto</span> <span class="n">conf</span> <span class="o">=</span> <span class="n">layer_proto_</span><span class="o">.</span><span class="n">GetExtension</span><span class="p">(</span><span class="n">foo_conf</span><span class="p">);</span>
+<span class="nb">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">conf</span><span class="o">.</span><span class="n">a</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>When defining configurations of the new layer (in job.conf), users should use
+<code class="docutils literal"><span class="pre">user_type</span></code> for its layer type instead of <code class="docutils literal"><span class="pre">type</span></code>. In addition, <code class="docutils literal"><span class="pre">foo_conf</span></code>
+should be enclosed in brackets.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">layer</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;foo&quot;</span>
+  <span class="n">user_type</span><span class="p">:</span> <span class="s2">&quot;kFooLayer&quot;</span>  <span class="c1"># Note user_type of user-defined layers is string</span>
+  <span class="p">[</span><span class="n">foo_conf</span><span class="p">]</span> <span class="p">{</span>      <span class="c1"># Note there is a pair of [] for extension fields</span>
+    <span class="n">a</span><span class="p">:</span> <span class="mi">10</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="new-layer-subclass-declaration">
+<span id="new-layer-subclass-declaration"></span><h4>New Layer subclass declaration<a class="headerlink" href="#new-layer-subclass-declaration" title="Permalink to this headline">¶</a></h4>
+<p>The new layer subclass can be implemented like the built-in layer subclasses.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">FooLayer</span> <span class="p">:</span> <span class="n">public</span> <span class="n">singa</span><span class="p">::</span><span class="n">Layer</span> <span class="p">{</span>
+ <span class="n">public</span><span class="p">:</span>
+  <span class="n">void</span> <span class="n">Setup</span><span class="p">(</span><span class="n">const</span> <span class="n">LayerProto</span><span class="o">&amp;</span> <span class="n">conf</span><span class="p">,</span> <span class="n">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Layer</span><span class="o">*&gt;&amp;</span> <span class="n">srclayers</span><span class="p">)</span> <span class="n">override</span><span class="p">;</span>
+  <span class="n">void</span> <span class="n">ComputeFeature</span><span class="p">(</span><span class="nb">int</span> <span class="n">flag</span><span class="p">,</span> <span class="n">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Layer</span><span class="o">*&gt;&amp;</span> <span class="n">srclayers</span><span class="p">)</span> <span class="n">override</span><span class="p">;</span>
+  <span class="n">void</span> <span class="n">ComputeGradient</span><span class="p">(</span><span class="nb">int</span> <span class="n">flag</span><span class="p">,</span> <span class="n">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Layer</span><span class="o">*&gt;&amp;</span> <span class="n">srclayers</span><span class="p">)</span> <span class="n">override</span><span class="p">;</span>
+
+ <span class="n">private</span><span class="p">:</span>
+  <span class="o">//</span>  <span class="n">members</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Users must override the two virtual functions to be called by the
+<code class="docutils literal"><span class="pre">TrainOneBatch</span></code> for either BP or CD algorithm. Typically, the <code class="docutils literal"><span class="pre">Setup</span></code> function
+will also be overridden to initialize some members. The user configured fields
+can be accessed through <code class="docutils literal"><span class="pre">layer_conf_</span></code> as shown in the above paragraphs.</p>
+</div>
+<div class="section" id="new-layer-subclass-registration">
+<span id="new-layer-subclass-registration"></span><h4>New Layer subclass registration<a class="headerlink" href="#new-layer-subclass-registration" title="Permalink to this headline">¶</a></h4>
+<p>The newly defined layer should be registered in <a class="reference external" href="http://singa.incubator.apache.org/docs/programming-guide">main.cc</a> by adding</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">RegisterLayer</span><span class="o">&lt;</span><span class="n">FooLayer</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s2">&quot;kFooLayer&quot;</span><span class="p">);</span> <span class="o">//</span> <span class="s2">&quot;kFooLayer&quot;</span> <span class="n">should</span> <span class="n">be</span> <span class="n">matched</span> <span class="n">to</span> <span class="n">layer</span> <span class="n">configurations</span> <span class="ow">in</span> <span class="n">job</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>After that, the <a class="reference external" href="neural-net.html">NeuralNet</a> can create instances of the new Layer subclass.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 The Apache Software Foundation. All rights reserved. Apache Singa, Apache, the Apache feather logo, and the Apache Singa project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+
+<div class="rst-versions shift-up" data-toggle="rst-versions" role="note" aria-label="versions">
+    <img src="../_static/apache.jpg">
+
+    <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: 0.3.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Languages</dt>
+            <dd><a href="../../en/index.html">English</a></dd>
+            <dd><a href="../../zh/index.html">中文</a></dd>
+            <dd><a href="../../jp/index.html">日本語</a></dd>
+            <dd><a href="../../kr/index.html">한국어</a></dd>
+        </dl>
+    </div>
+</div>
+
+<a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+         src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+         alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

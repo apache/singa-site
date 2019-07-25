@@ -1,0 +1,792 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation &mdash; incubator-singa 1.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="incubator-singa 1.1.0 documentation" href="../index.html"/>
+        <link rel="up" title="Documentation" href="index.html"/>
+        <link rel="next" title="Software Stack" href="software_stack.html"/>
+        <link rel="prev" title="Documentation" href="index.html"/>
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#from-wheel">From wheel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pre-requisite">Pre-requisite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virtual-environment">Virtual environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#instructions">Instructions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#from-debian-package">From Debian Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#from-source">From source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pre-requisite">Pre-requisite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#instructions">Instructions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linux-and-mac-os">Linux and Mac OS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compile-singa-on-windows">Compile SINGA on Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#faq">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="software_stack.html">Software Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net.html">FeedForward Net</a></li>
+<li class="toctree-l2"><a class="reference internal" href="initializer.html">Initializer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loss.html">Loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metric.html">Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimizer.html">Optimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_tool.html">Image Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snapshot.html">Snapshot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="converter.html">Caffe Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_zoo/index.html">Model Zoo</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">Source Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">incubator-singa</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Documentation</a> &raquo;</li>
+      
+    <li>Installation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<span id="installation"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="from-wheel">
+<span id="from-wheel"></span><h2>From wheel<a class="headerlink" href="#from-wheel" title="Permalink to this headline">¶</a></h2>
+<p>Users can download the pre-compiled wheel files to install PySINGA.
+PySINGA has been tested on Linux (Ubunu 14.04 and 16.04) and Mac OS (10.11 and 10.12).</p>
+<div class="section" id="pre-requisite">
+<span id="pre-requisite"></span><h3>Pre-requisite<a class="headerlink" href="#pre-requisite" title="Permalink to this headline">¶</a></h3>
+<p>Python 2.7 and pip are required</p>
+<div class="highlight-python"><div class="highlight"><pre># For Ubuntu
+$ sudo apt-get install python2.7-dev python-pip
+
+# For Mac
+$ brew tap homebrew/python
+$ brew install python
+</pre></div>
+</div>
+<p>Note for Mac OS, you need to configure the (python) paths correctly if multiple python versions are installed.
+Refer to FAQ for the errors and solutions.</p>
+</div>
+<div class="section" id="virtual-environment">
+<span id="virtual-environment"></span><h3>Virtual environment<a class="headerlink" href="#virtual-environment" title="Permalink to this headline">¶</a></h3>
+<p>Users are recommended to use PySINGA in python virtual environment.</p>
+<p>To use pip with virtual environment,</p>
+<div class="highlight-python"><div class="highlight"><pre># install virtualenv
+$ pip install virtualenv
+$ virtualenv pysinga
+$ source pysinga/bin/activate
+</pre></div>
+</div>
+<p>To use anaconda with virtual environment,</p>
+<div class="highlight-python"><div class="highlight"><pre>$ conda create --name pysinga python=2
+$ source activate pysinga
+</pre></div>
+</div>
+<p>Note that in python virtual environment, you may need to reset the <code class="docutils literal"><span class="pre">PYTHONPATH</span></code> to empty
+to avoid the conflicts of system path and virtual environment path.</p>
+</div>
+<div class="section" id="instructions">
+<span id="instructions"></span><h3>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h3>
+<p>Currently, the following wheel files are available,</p>
+<table border="1">
+  <tr>
+    <th>OS</th>
+    <th>Device</th>
+    <th>CUDA/cuDNN</th>
+    <th>Link</th>
+  </tr>
+  <tr>
+    <td>Ubuntu14.04</td>
+    <td>CPU</td>
+    <td>-</td>
+    <td><a href="http://comp.nus.edu.sg/~dbsystem/singa/assets/file/wheel/linux/latest/ubuntu14.04-cpp/">latest</a>, <a href="http://www.comp.nus.edu.sg/~dbsystem/singa/assets/file/wheel/linux">history</a></td>
+  </tr>
+  <tr>
+    <td>Ubuntu14.04</td>
+    <td>GPU</td>
+    <td>CUDA7.5+cuDNN4</td>
+    <td><a href="http://comp.nus.edu.sg/~dbsystem/singa/assets/file/wheel/linux/latest/ubuntu14.04-cuda7.5-cudnn4/">latest</a>, <a href="http://www.comp.nus.edu.sg/~dbsystem/singa/assets/file/wheel/linux">history</a></td>
+  </tr>
+  <tr>
+    <td>Ubuntu14.04</td>
+    <td>GPU</td>
+    <td>CUDA7.5+cuDNN5</td>
+    <td><a href="http://comp.nus.edu.sg/~dbsystem/singa/assets/file/wheel/linux/latest/ubuntu14.04-cuda7.5-cudnn5/">latest</a>, <a href="http://www.comp.nus.edu.sg/~dbsystem/singa/assets/file/wheel/linux">history</a></td>
+  </tr>
+  <tr>
+    <td>Ubuntu16.04</td>
+    <td>CPU</td>
+    <td>-</td>
+    <td><a href="http://comp.nus.edu.sg/~dbsystem/singa/assets/file/wheel/linux/latest/ubuntu16.04-cpp/">latest</a>, <a href="http://www.comp.nus.edu.sg/~dbsystem/singa/assets/file/wheel/linux">history</a></td>
+  </tr>
+  <tr>
+    <td>Ubuntu16.04</td>
+    <td>GPU</td>
+    <td>CUDA8.0+cuDNN5</td>
+    <td><a href="http://comp.nus.edu.sg/~dbsystem/singa/assets/file/wheel/linux/latest/ubuntu16.04-cuda8.0-cudnn5/">latest</a>, <a href="http://www.comp.nus.edu.sg/~dbsystem/singa/assets/file/wheel/linux">history</a></td>
+  </tr>
+  <tr>
+    <td>MacOSX10.11</td>
+    <td>CPU</td>
+    <td>-</td>
+    <td><a href="http://comp.nus.edu.sg/~dbsystem/singa/assets/file/wheel/macosx/latest/macosx10.11-cpp/">latest</a>, <a href="http://www.comp.nus.edu.sg/~dbsystem/singa/assets/file/wheel/macosx">history</a></td>
+  </tr>
+  <tr>
+    <td>MacOSX10.12</td>
+    <td>CPU</td>
+    <td>-</td>
+    <td><a href="http://comp.nus.edu.sg/~dbsystem/singa/assets/file/wheel/macosx/latest/macosx10.12-cpp/">latest</a>, <a href="http://www.comp.nus.edu.sg/~dbsystem/singa/assets/file/wheel/macosx">history</a></td>
+  </tr>
+</table><p>Download the whl file and execute the following command to install PySINGA,</p>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install --upgrade &lt;path to the whel file&gt;
+</pre></div>
+</div>
+<p>To install the wheel file compiled with CUDA, you need to install CUDA and export the <code class="docutils literal"><span class="pre">LD_LIBRARY_PATH</span></code> to cuDNN before running the above instruction.</p>
+<p>If you have sudo right, you can run the above commands using <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">pip</span> <span class="pre">install</span></code> without python virtual environment.
+The option <code class="docutils literal"><span class="pre">--upgrade</span></code> may cause errors sometimes, in which case you can ignore it.</p>
+</div>
+</div>
+<div class="section" id="from-debian-package">
+<span id="from-debian-package"></span><h2>From Debian Package<a class="headerlink" href="#from-debian-package" title="Permalink to this headline">¶</a></h2>
+<p>The following Debian packages (on architecture: amd64) are available</p>
+<table border="1">
+  <tr>
+    <th>OS</th>
+    <th>Device</th>
+    <th>CUDA/cuDNN</th>
+    <th>Link</th>
+  </tr>
+  <tr>
+    <td>Ubuntu14.04</td>
+    <td>CPU</td>
+    <td>-</td>
+    <td><a href="http://comp.nus.edu.sg/~dbsystem/singa/assets/file/debian/latest/ubuntu14.04-cpp/python-singa.deb">latest</a>, <a href="http://www.comp.nus.edu.sg/~dbsystem/singa/assets/file/debian">history</a></td>
+  </tr>
+  <tr>
+    <td>Ubuntu14.04</td>
+    <td>GPU</td>
+    <td>CUDA7.5+cuDNN4</td>
+    <td>coming soon</td>
+  </tr>
+  <tr>
+    <td>Ubuntu14.04</td>
+    <td>GPU</td>
+    <td>CUDA7.5+cuDNN5</td>
+    <td>coming soon</td>
+  </tr>
+  <tr>
+    <td>Ubuntu16.04</td>
+    <td>CPU</td>
+    <td>-</td>
+    <td><a href="http://comp.nus.edu.sg/~dbsystem/singa/assets/file/debian/latest/ubuntu16.04-cpp/python-singa.deb">latest</a>, <a href="http://www.comp.nus.edu.sg/~dbsystem/singa/assets/file/debian">history</a></td>
+  </tr>
+  <tr>
+    <td>Ubuntu16.04</td>
+    <td>GPU</td>
+    <td>CUDA8.0+cuDNN5</td>
+    <td>coming soon</td>
+  </tr>
+</table><p>Download the deb file and install it via</p>
+<div class="highlight-python"><div class="highlight"><pre>apt-get install &lt;path to the deb file, e.g., ./python-singa.deb&gt;
+</pre></div>
+</div>
+<p>Note that the path must include <code class="docutils literal"><span class="pre">./</span></code> if the file in inside the current folder.</p>
+</div>
+<div class="section" id="from-source">
+<span id="from-source"></span><h2>From source<a class="headerlink" href="#from-source" title="Permalink to this headline">¶</a></h2>
+<p>The source files could be downloaded either as a <a class="reference external" href="https://dist.apache.org/repos/dist/dev/incubator/singa/">tar.gz file</a>, or as a git repo</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git clone https://github.com/apache/incubator-singa.git
+$ cd incubator-singa/
+</pre></div>
+</div>
+<div class="section" id="pre-requisite">
+<span id="id1"></span><h3>Pre-requisite<a class="headerlink" href="#pre-requisite" title="Permalink to this headline">¶</a></h3>
+<p>The following libraries are required</p>
+<ul class="simple">
+<li>cmake (&gt;=2.8)</li>
+<li>gcc (&gt;=4.8.1) or Clang</li>
+<li>google protobuf (&gt;=2.5,&lt;3)</li>
+<li>blas (tested with openblas &gt;=0.2.10)</li>
+<li>swig(&gt;=3.0.10) for compiling PySINGA</li>
+<li>numpy(&gt;=1.11.0) for compiling PySINGA</li>
+</ul>
+<p>The following libraries are optional</p>
+<ul class="simple">
+<li>opencv (tested with 2.4.8)</li>
+<li>lmdb (tested with 0.9)</li>
+<li>glog</li>
+</ul>
+</div>
+<div class="section" id="instructions">
+<span id="id2"></span><h3>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li>create a <code class="docutils literal"><span class="pre">build</span></code> folder inside incubator-singa and go into that folder</li>
+<li>run <code class="docutils literal"><span class="pre">cmake</span> <span class="pre">[options]</span> <span class="pre">..</span></code>
+by default all options are OFF except <code class="docutils literal"><span class="pre">USE_PYTHON</span></code><ul>
+<li><code class="docutils literal"><span class="pre">USE_MODUELS=ON</span></code>, used if protobuf and blas are not installed a prior</li>
+<li><code class="docutils literal"><span class="pre">USE_CUDA=ON</span></code>, used if CUDA and cuDNN is available</li>
+<li><code class="docutils literal"><span class="pre">USE_PYTHON=ON</span></code>, used for compiling PySINGA</li>
+<li><code class="docutils literal"><span class="pre">USE_OPENCL=ON</span></code>, used for compiling with OpenCL support</li>
+</ul>
+</li>
+<li>compile the code, e.g., <code class="docutils literal"><span class="pre">make</span></code></li>
+<li>goto python folder</li>
+<li>run <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">.</span></code></li>
+<li>[optional] run <code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">bdist_wheel</span></code> to generate the wheel file</li>
+</ol>
+<p>Step 4 and 5 are to install PySINGA.
+Details on the installation of dependent libraries and the instructions for each OS are given in the following sections.</p>
+</div>
+<div class="section" id="linux-and-mac-os">
+<span id="linux-and-mac-os"></span><h3>Linux and Mac OS<a class="headerlink" href="#linux-and-mac-os" title="Permalink to this headline">¶</a></h3>
+<p>Most of the dependent libraries could be installed from source or via package mangers like
+apt-get, yum, and homebrew. Please refer to FAQ for problems caused by the path setting of the dependent libraries.</p>
+<p>The following instructions are tested on Ubuntu 14.04  and 16.04for installing dependent libraries.</p>
+<div class="highlight-python"><div class="highlight"><pre># required libraries
+$ sudo apt-get install libprotobuf-dev libopenblas-dev protobuf-compiler
+
+# optional libraries
+$ sudo apt-get install python2.7-dev python-pip python-numpy
+$ sudo apt-get install libopencv-dev libgoogle-glog-dev liblmdb-dev
+</pre></div>
+</div>
+<p>The following instructions are tested on Mac OS X Yosemite (10.11 and 10.12) for installing dependent libraries.</p>
+<div class="highlight-python"><div class="highlight"><pre># required libraries
+$ brew tap homebrew/science
+$ brew install openblas
+$ brew install protobuf260
+
+# optional libraries
+$ brew tap homebrew/python
+$ brew install python
+$ brew install opencv
+$ brew install -vd glog lmdb
+</pre></div>
+</div>
+<p>By default, openblas is installed into /usr/local/opt/openblas. To let the compiler (and cmake) know the openblas
+path,</p>
+<div class="highlight-python"><div class="highlight"><pre>$ export CMAKE_INCLUDE_PATH=/usr/local/opt/openblas/include:$CMAKE_INCLUDE_PATH
+$ export CMAKE_LIBRARY_PATH=/usr/local/opt/openblas/lib:$CMAKE_LIBRARY_PATH
+</pre></div>
+</div>
+<p>To let the runtime know the openblas path,</p>
+<div class="highlight-python"><div class="highlight"><pre>$ export LD_LIBRARY_PATH=/usr/local/opt/openblas/library:$LD_LIBRARY_PATH
+</pre></div>
+</div>
+<div class="section" id="compile-with-use-modules-on">
+<span id="compile-with-use-modules-on"></span><h4>Compile with USE_MODULES=ON<a class="headerlink" href="#compile-with-use-modules-on" title="Permalink to this headline">¶</a></h4>
+<p>If protobuf and openblas are not installed, you can compile SINGA together with them</p>
+<div class="highlight-python"><div class="highlight"><pre>$ In SINGA ROOT folder
+$ mkdir build
+$ cd build
+$ cmake -DUSE_MODULES=ON ..
+$ make
+</pre></div>
+</div>
+<p>cmake would download OpenBlas and Protobuf (2.6.1) and compile them together
+with SINGA.</p>
+<p>After compiling SINGA, you can run the unit tests by</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ./bin/test_singa
+</pre></div>
+</div>
+<p>You can see all the testing cases with testing results. If SINGA passes all
+tests, then you have successfully installed SINGA.</p>
+<p>You can use <code class="docutils literal"><span class="pre">ccmake</span> <span class="pre">..</span></code> to configure the compilation options.
+If some dependent libraries are not in the system default paths, you need to export
+the following environment variables</p>
+<div class="highlight-python"><div class="highlight"><pre>export CMAKE_INCLUDE_PATH=&lt;path to the header file folder&gt;
+export CMAKE_LIBRARY_PATH=&lt;path to the lib file folder&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="compile-with-use-python-on">
+<span id="compile-with-use-python-on"></span><h4>Compile with USE_PYTHON=ON<a class="headerlink" href="#compile-with-use-python-on" title="Permalink to this headline">¶</a></h4>
+<p>swig and numpy can be install by</p>
+<div class="highlight-python"><div class="highlight"><pre>$ Ubuntu 14.04 and 16.04
+$ sudo apt-get install python-numpy
+# Ubuntu 16.04
+$ sudo apt-get install swig
+</pre></div>
+</div>
+<p>Note that swig has to be installed from source on Ubuntu 14.04.
+After installing numpy, export the header path of numpy.i as</p>
+<div class="highlight-python"><div class="highlight"><pre>$ export CPLUS_INCLUDE_PATH=`python -c &quot;import numpy; print numpy.get_include()&quot;`:$CPLUS_INCLUDE_PATH
+</pre></div>
+</div>
+<p>Similar to compile CPP code, PySINGA is compiled by</p>
+<div class="highlight-python"><div class="highlight"><pre>$ cmake -DUSE_PYTHON=ON ..
+$ make
+$ cd python
+$ pip install .
+</pre></div>
+</div>
+<p>Developers can build the wheel file via</p>
+<div class="highlight-python"><div class="highlight"><pre># under the build directory
+$ cd python
+</pre></div>
+</div>
+<p>The generated wheel file is under &#8220;dist&#8221; directory.</p>
+</div>
+<div class="section" id="compile-singa-with-use-cuda-on">
+<span id="compile-singa-with-use-cuda-on"></span><h4>Compile SINGA with USE_CUDA=ON<a class="headerlink" href="#compile-singa-with-use-cuda-on" title="Permalink to this headline">¶</a></h4>
+<p>Users are encouraged to install the CUDA and
+<a class="reference external" href="https://developer.nvidia.com/cudnn">cuDNN</a> for running SINGA on GPUs to
+get better performance.</p>
+<p>SINGA has been tested over CUDA (7, 7.5, 8), and cuDNN (4 and 5).  If cuDNN is
+decompressed into non-system folder, e.g. /home/bob/local/cudnn/, the following
+commands should be executed for cmake and the runtime to find it</p>
+<div class="highlight-python"><div class="highlight"><pre>$ export CMAKE_INCLUDE_PATH=/home/bob/local/cudnn/include:$CMAKE_INCLUDE_PATH
+$ export CMAKE_LIBRARY_PATH=/home/bob/local/cudnn/lib64:$CMAKE_LIBRARY_PATH
+$ export LD_LIBRARY_PATH=/home/bob/local/cudnn/lib64:$LD_LIBRARY_PATH
+</pre></div>
+</div>
+<p>The cmake options for CUDA and cuDNN should be switched on</p>
+<div class="highlight-python"><div class="highlight"><pre># Dependent libs are install already
+$ cmake -DUSE_CUDA=ON ..
+</pre></div>
+</div>
+</div>
+<div class="section" id="compile-singa-with-use-opencl-on">
+<span id="compile-singa-with-use-opencl-on"></span><h4>Compile SINGA with USE_OPENCL=ON<a class="headerlink" href="#compile-singa-with-use-opencl-on" title="Permalink to this headline">¶</a></h4>
+<p>SINGA uses opencl-headers and viennacl (version 1.7.1 or newer) for OpenCL support, which
+can be installed using via</p>
+<div class="highlight-python"><div class="highlight"><pre># On Ubuntu 16.04
+$ sudo apt-get install opencl-headers, libviennacl-dev
+# On Fedora
+$ sudo yum install opencl-headers, viennacl
+</pre></div>
+</div>
+<p>Additionally, you will need the OpenCL Installable Client Driver (ICD) for the platforms that you want to run OpenCL on.</p>
+<ul class="simple">
+<li>For AMD and nVidia GPUs, the driver package should also install the correct OpenCL ICD.</li>
+<li>For Intel CPUs and/or GPUs, get the driver from the <a class="reference external" href="https://software.intel.com/en-us/articles/opencl-drivers">Intel website.</a> Note that the drivers provided on that website only supports recent CPUs and Iris GPUs.</li>
+<li>For older Intel CPUs, you can use the <code class="docutils literal"><span class="pre">beignet-opencl-icd</span></code> package.</li>
+</ul>
+<p>Note that running OpenCL on CPUs is not currently recommended because it is slow. Memory transfer is on the order of whole seconds (1000&#8217;s of ms on CPUs as compared to 1&#8217;s of ms on GPUs).</p>
+<p>More information on setting up a working OpenCL environment may be found <a class="reference external" href="https://wiki.tiker.net/OpenCLHowTo">here</a>.</p>
+<p>If the package version of ViennaCL is not at least 1.7.1, you will need to build it from source:</p>
+<p>Clone <a class="reference external" href="https://github.com/viennacl/viennacl-dev">the repository from here</a>, checkout the <code class="docutils literal"><span class="pre">release-1.7.1</span></code> tag and build it.
+Remember to add its directory to <code class="docutils literal"><span class="pre">PATH</span></code> and the built libraries to <code class="docutils literal"><span class="pre">LD_LIBRARY_PATH</span></code>.</p>
+<p>To build SINGA with OpenCL support, you need to pass the flag during cmake:</p>
+<div class="highlight-python"><div class="highlight"><pre>cmake -DUSE_OPENCL=ON ..
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="compile-singa-on-windows">
+<span id="compile-singa-on-windows"></span><h3>Compile SINGA on Windows<a class="headerlink" href="#compile-singa-on-windows" title="Permalink to this headline">¶</a></h3>
+<p>For the dependent library installation, please refer to <a class="reference external" href="dependencies.md">Dependencies</a>.
+After all the dependencies are successfully installed, just run the following commands to
+generate the VS solution in cmd under singa folder:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ md build &amp;&amp; cd build
+$ cmake -G &quot;Visual Studio 14&quot; -DUSE_CUDA=OFF -DUSE_PYTHON=OFF ..
+</pre></div>
+</div>
+<p>The default project generated by the command is 32-bit version. You can also
+specify a 64-bit version project by:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ md build &amp;&amp; cd build
+$ cmake -G &quot;Visual Studio 14 Win64&quot; -DUSE_CUDA=OFF -DUSE_PYTHON=OFF ..
+</pre></div>
+</div>
+<p>If you get error outputs like &#8220;Could NOT find xxxxx&#8221; indicating a dependent
+library missing, configure your library file and include path for cmake or the system.
+For example, you get an error &#8220;Could NOT find CBLAS&#8221; and suppose you installed
+openblas header files at &#8220;d:\include&#8221; and openblas library at &#8220;d:\lib&#8221;. You should run the
+following command to specify your cblas parameters in cmake:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ cmake -G &quot;Visual Studio 14&quot; -DUSE_CUDA=OFF -DUSE_PYTHON=OFF -DCBLAS_INCLUDE_DIR=&quot;d:\include&quot; -DCBLAS_LIBRARIES=&quot;d:\lib\libopenblas.lib&quot; -DProtobuf_INCLUDE_DIR=&lt;include dir of protobuf&gt; -DProtobuf_LIBRARIES=&lt;path to libprotobuf.lib&gt; -DProtobuf_PROTOC_EXECUTABLE=&lt;path to protoc.exe&gt; -DGLOG_INCLUDE_DIR=&lt;include dir of glog&gt; -DGLOG_LIBRARIES=&lt;path to libglog.lib&gt; ..
+</pre></div>
+</div>
+<p>To find out the parameters you need to specify for some special libraries, you
+can run the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ cmake -LAH
+</pre></div>
+</div>
+<p>If you use cmake GUI tool in windows, make sure you configure the right
+parameters for the singa solution by select &#8220;Advanced&#8221; box. After generating the VS project,
+open the &#8220;singa.sln&#8221; project file under
+the &#8220;build&#8221; folder and compile it as a normal VS solution. You will find the
+unit tests file named &#8220;test_singa&#8221; in the project binary folder.
+If you get errors when running test_singa.exe due to libglog.dll/libopenblas.dll missing,
+just copy the dll files into the same folder as test_singa.exe</p>
+</div>
+</div>
+<div class="section" id="faq">
+<span id="faq"></span><h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Q: Error from &#8216;import singa&#8217; using PySINGA installed from wheel.</p>
+<p>A: Please check the detailed error from <code class="docutils literal"><span class="pre">python</span> <span class="pre">-c</span> <span class="pre">&quot;from</span> <span class="pre">singa</span> <span class="pre">import</span> <span class="pre">_singa_wrap&quot;</span></code>. Sometimes it is
+caused by the dependent libraries, e.g. there are multiple versions of protobuf or missing of cudnn. Following
+steps show the solutions for different cases</p>
+<ol>
+<li><p class="first">Check the cudnn and cuda and gcc versions, cudnn5 and cuda7.5 and gcc4.8/4.9 are preferred. if gcc is 5.0, then downgrade it.
+If cudnn is missing or not match with the wheel version, you can download the correct version of cudnn into ~/local/cudnn/ and</p>
+<div class="highlight-python"><div class="highlight"><pre> $ echo &quot;export LD_LIBRARY_PATH=/home/&lt;yourname&gt;/local/cudnn/lib64:$LD_LIBRARY_PATH&quot; &gt;&gt; ~/.bashrc
+</pre></div>
+</div>
+</li>
+<li><p class="first">If it is the problem related to protobuf, then download the newest whl files which have <a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-255">compiled protobuf and openblas into the whl</a> file of PySINGA.
+Or you can install protobuf from source into a local folder, say ~/local/;
+Decompress the tar file, and then</p>
+<div class="highlight-python"><div class="highlight"><pre> $ ./configure --prefix=/home/&lt;yourname&gt;local
+ $ make &amp;&amp; make install
+ $ echo &quot;export LD_LIBRARY_PATH=/home/&lt;yourname&gt;/local/lib:$LD_LIBRARY_PATH&quot; &gt;&gt; ~/.bashrc
+ $ source ~/.bashrc
+</pre></div>
+</div>
+</li>
+<li><p class="first">If it cannot find other libs including python, then create virtual env using pip or conda;
+and then install SINGA via</p>
+<div class="highlight-python"><div class="highlight"><pre> $ pip install --upgrade &lt;url of singa wheel&gt;
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p class="first">Q: Error from running <code class="docutils literal"><span class="pre">cmake</span> <span class="pre">..</span></code>, which cannot find the dependent libraries.</p>
+<p>A: If you haven&#8217;t installed the libraries, install them. If you installed
+the libraries in a folder that is outside of the system folder, e.g. /usr/local,
+you need to export the following variables</p>
+<div class="highlight-python"><div class="highlight"><pre>  $ export CMAKE_INCLUDE_PATH=&lt;path to your header file folder&gt;
+  $ export CMAKE_LIBRARY_PATH=&lt;path to your lib file folder&gt;
+</pre></div>
+</div>
+</li>
+</ul>
+<ul>
+<li><p class="first">Q: Error from <code class="docutils literal"><span class="pre">make</span></code>, e.g. the linking phase</p>
+<p>A: If your libraries are in other folders than system default paths, you need
+to export the following varaibles</p>
+<div class="highlight-python"><div class="highlight"><pre>  $ export LIBRARY_PATH=&lt;path to your lib file folder&gt;
+  $ export LD_LIBRARY_PATH=&lt;path to your lib file folder&gt;
+</pre></div>
+</div>
+</li>
+</ul>
+<ul>
+<li><p class="first">Q: Error from header files, e.g. &#8216;cblas.h no such file or directory exists&#8217;</p>
+<p>A: You need to include the folder of the cblas.h into CPLUS_INCLUDE_PATH,
+e.g.,</p>
+<div class="highlight-python"><div class="highlight"><pre>  $ export CPLUS_INCLUDE_PATH=/opt/OpenBLAS/include:$CPLUS_INCLUDE_PATH
+</pre></div>
+</div>
+</li>
+<li><p class="first">Q:While compiling SINGA, I get error <code class="docutils literal"><span class="pre">SSE2</span> <span class="pre">instruction</span> <span class="pre">set</span> <span class="pre">not</span> <span class="pre">enabled</span></code></p>
+<p>A:You can try following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>  $ make CFLAGS=&#39;-msse2&#39; CXXFLAGS=&#39;-msse2&#39;
+</pre></div>
+</div>
+</li>
+<li><p class="first">Q:I get <code class="docutils literal"><span class="pre">ImportError:</span> <span class="pre">cannot</span> <span class="pre">import</span> <span class="pre">name</span> <span class="pre">enum_type_wrapper</span></code> from google.protobuf.internal when I try to import .py files.</p>
+<p>A: You need to install the python binding of protobuf, which could be installed via</p>
+<div class="highlight-python"><div class="highlight"><pre>  $ sudo apt-get install protobuf
+</pre></div>
+</div>
+<p>or from source</p>
+<div class="highlight-python"><div class="highlight"><pre>  $ cd /PROTOBUF/SOURCE/FOLDER
+  $ cd python
+  $ python setup.py build
+  $ python setup.py install
+</pre></div>
+</div>
+</li>
+<li><p class="first">Q: When I build OpenBLAS from source, I am told that I need a Fortran compiler.</p>
+<p>A: You can compile OpenBLAS by</p>
+<div class="highlight-python"><div class="highlight"><pre>  $ make ONLY_CBLAS=1
+</pre></div>
+</div>
+<p>or install it using</p>
+<div class="highlight-python"><div class="highlight"><pre>  $ sudo apt-get install libopenblas-dev
+</pre></div>
+</div>
+</li>
+<li><p class="first">Q: When I build protocol buffer, it reports that GLIBC++_3.4.20 not found in /usr/lib64/libstdc++.so.6.</p>
+<p>A: This means the linker found libstdc++.so.6 but that library
+belongs to an older version of GCC than was used to compile and link the
+program. The program depends on code defined in
+the newer libstdc++ that belongs to the newer version of GCC, so the linker
+must be told how to find the newer libstdc++ shared library.
+The simplest way to fix this is to find the correct libstdc++ and export it to
+LD_LIBRARY_PATH. For example, if GLIBC++_3.4.20 is listed in the output of the
+following command,</p>
+<div class="highlight-python"><div class="highlight"><pre>  $ strings /usr/local/lib64/libstdc++.so.6|grep GLIBC++
+</pre></div>
+</div>
+<p>then you just set your environment variable as</p>
+<div class="highlight-python"><div class="highlight"><pre>  $ export LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH
+</pre></div>
+</div>
+</li>
+<li><p class="first">Q: When I build glog, it reports that &#8220;src/logging_unittest.cc:83:20: error: ‘gflags’ is not a namespace-name&#8221;</p>
+<p>A: It maybe that you have installed gflags with a different namespace such as &#8220;google&#8221;. so glog can&#8217;t find &#8216;gflags&#8217; namespace.
+Because it is not necessary to have gflags to build glog. So you can change the configure.ac file to ignore gflags.</p>
+<div class="highlight-python"><div class="highlight"><pre>  1. cd to glog src directory
+  2. change line 125 of configure.ac  to &quot;AC_CHECK_LIB(gflags, main, ac_cv_have_libgflags=0, ac_cv_have_libgflags=0)&quot;
+  3. autoreconf
+</pre></div>
+</div>
+<p>After this, you can build glog again.</p>
+</li>
+<li><p class="first">Q: When using virtual environment, everytime I run pip install, it would reinstall numpy. However, the numpy would not be used when I <code class="docutils literal"><span class="pre">import</span> <span class="pre">numpy</span></code></p>
+<p>A: It could be caused by the <code class="docutils literal"><span class="pre">PYTHONPATH</span></code> which should be set to empty when you are using virtual environment to avoid the conflicts with the path of
+the virtual environment.</p>
+</li>
+<li><p class="first">Q: When compiling PySINGA from source, there is a compilation error due to the missing of &lt;numpy/objectarray.h&gt;</p>
+<p>A: Please install numpy and export the path of numpy header files as</p>
+<div class="highlight-python"><div class="highlight"><pre>  $ export CPLUS_INCLUDE_PATH=`python -c &quot;import numpy; print numpy.get_include()&quot;`:$CPLUS_INCLUDE_PATH
+</pre></div>
+</div>
+</li>
+<li><p class="first">Q: When I run PySINGA in Mac OS X, I got the error &#8220;Fatal Python error: PyThreadState_Get: no current thread  Abort trap: 6&#8221;</p>
+<p>A: This error happens typically when you have multiple version of Python on your system,
+e.g, the one comes with the OS and the one installed by Homebrew. The Python linked by PySINGA must be the same as the Python interpreter.
+You can check your interpreter by <code class="docutils literal"><span class="pre">which</span> <span class="pre">python</span></code> and check the Python linked by PySINGA via <code class="docutils literal"><span class="pre">otool</span> <span class="pre">-L</span> <span class="pre">&lt;path</span> <span class="pre">to</span> <span class="pre">_singa_wrap.so&gt;</span></code>.
+To fix this error, compile SINGA with the correct version of Python.
+In particular, if you build PySINGA from source, you need to specify the paths when invoking <a class="reference external" href="http://stackoverflow.com/questions/15291500/i-have-2-versions-of-python-installed-but-cmake-is-using-older-version-how-do">cmake</a></p>
+<div class="highlight-python"><div class="highlight"><pre>  $ cmake -DPYTHON_LIBRARY=`python-config --prefix`/lib/libpython2.7.dylib -DPYTHON_INCLUDE_DIR=`python-config --prefix`/include/python2.7/ ..
+</pre></div>
+</div>
+<p>If installed PySINGA from binary packages, e.g. debian or wheel, then you need to change the python interpreter, e.g., reset the $PATH to put the correct path of Python at the front position.</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="software_stack.html" class="btn btn-neutral float-right" title="Software Stack" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 The Apache Software Foundation. All rights reserved. Apache Singa, Apache, the Apache feather logo, and the Apache Singa project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+<div class="rst-versions shift-up" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: latest
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+      <dl>
+          <dt>Languages</dt>
+          <dd><a href="../../en/index.html">English</a></dd>
+          <dd><a href="../../zh/index.html">中文</a></dd>
+      </dl>
+      <dl>
+          <dt>Versions</dt>
+          <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+          <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+      </dl>
+
+  </div>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.jpg"> </a>
+</div>
+
+ <a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+        alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

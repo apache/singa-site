@@ -1,0 +1,294 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>프로그래밍 가이드 &mdash; incubator-singa 0.3.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="incubator-singa 0.3.0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">최신 문서</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul class="simple">
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul class="simple">
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">incubator-singa</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>프로그래밍 가이드</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="">
+<span id="id1"></span><h1>프로그래밍 가이드<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>Figure 1에 그려진 다음과 같은 4가지 Components 를 설정하여 트레이닝을 시작합니다.</p>
+<ul class="simple">
+<li><a class="reference external" href="neural-net.html">NeuralNet</a> : 뉴럴네트워크의 구조와 각 &#8220;레이어&#8221;의 설정을 기술합니다.</li>
+<li><a class="reference external" href="train-one-batch.html">TrainOneBatch</a> : 모델 카테고리에 적합한 알고리즘을 기술합니다.</li>
+<li><a class="reference external" href="updater.html">Updater</a> : server에서 매개 변수를 업데이트하는 방법을 기술합니다.</li>
+<li><a class="reference external" href="distributed-training.html">Cluster Topology</a> : workers와 servers 분산 토폴로지를 기술합니다.</li>
+</ul>
+<p><em>Basic 유저 가이드</em> 에서 built-in components 를 써서 트레이닝을 시작하는 방법을 설명합니다. <em>Advanced 유저 가이드</em> 에서는 유저가 임플리멘트한 모델, 함수, 알고리듬을 써서 트레이닝을 시작하는 방법을 설병합니다. 트레이닝 데이타는 <a class="reference external" href="data.html">process</a> 를 참고로 준비를 해주세요.</p>
+<p><img src="../_static/images/overview.png" align="center" width="400px"/>
+<span><strong>Figure 1 - SINGA Overview </strong></span></p>
+<div class="section" id="basic">
+<span id="basic"></span><h2>Basic 유저 가이드<a class="headerlink" href="#basic" title="Permalink to this headline">¶</a></h2>
+<p>SINGA 에서 준비된 main 함수를 써서 쉽게 트레이닝을 시작할수 있습니다.
+이 경우 <a class="reference external" href="../api/classsinga_1_1JobProto.html">JobProto</a> 를 위하여 google protocol buffer message 로 씌여진 job configuration 파일을 준비합니다. 그리고 아래의 커맨드라인을 실행합니다.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">singa</span><span class="o">-</span><span class="n">run</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">conf</span> <span class="o">&lt;</span><span class="n">path</span> <span class="n">to</span> <span class="n">job</span> <span class="n">conf</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">-</span><span class="n">resume</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">-resume</span></code> 는 저번 <a class="reference external" href="checkpoint.html">checkpoint</a> 부터 다시 트레이닝을 계속할때 쓰는 인수 입니다.
+<a class="reference external" href="mlp.html">MLP</a> 와 <a class="reference external" href="cnn.html">CNN</a> 샘플들은 built-in 컴포넌트를 이용하고 있습니다.
+Please read the corresponding pages for their job configuration files. The subsequent pages will illustrate the details on each component of the configuration.</p>
+</div>
+<div class="section" id="advanced">
+<span id="advanced"></span><h2>Advanced 유저 가이드<a class="headerlink" href="#advanced" title="Permalink to this headline">¶</a></h2>
+<p>If a user&#8217;s model contains some user-defined components, e.g.,
+<a class="reference external" href="updater.html">Updater</a>, he has to write a main function to
+register these components. It is similar to Hadoop&#8217;s main function. Generally,
+the main function should</p>
+<ul class="simple">
+<li>SINGA 초기화, e.g., setup logging.</li>
+<li>유저 컴포넌트의 등록</li>
+<li>job configuration 을 작성하고 SINGA driver 에서 설정</li>
+</ul>
+<p>main 함수의 샘플입니다.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#include &quot;singa.h&quot;</span>
+<span class="c1">#include &quot;user.h&quot;  // header for user code</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span><span class="o">**</span> <span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">singa</span><span class="p">::</span><span class="n">Driver</span> <span class="n">driver</span><span class="p">;</span>
+  <span class="n">driver</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+  <span class="nb">bool</span> <span class="n">resume</span><span class="p">;</span>
+  <span class="o">//</span> <span class="n">parse</span> <span class="n">resume</span> <span class="n">option</span> <span class="kn">from</span> <span class="nn">argv.</span>
+
+  <span class="o">//</span> <span class="n">register</span> <span class="n">user</span> <span class="n">defined</span> <span class="n">layers</span>
+  <span class="n">driver</span><span class="o">.</span><span class="n">RegisterLayer</span><span class="o">&lt;</span><span class="n">FooLayer</span><span class="o">&gt;</span><span class="p">(</span><span class="n">kFooLayer</span><span class="p">);</span>
+  <span class="o">//</span> <span class="n">register</span> <span class="n">user</span> <span class="n">defined</span> <span class="n">updater</span>
+  <span class="n">driver</span><span class="o">.</span><span class="n">RegisterUpdater</span><span class="o">&lt;</span><span class="n">FooUpdater</span><span class="o">&gt;</span><span class="p">(</span><span class="n">kFooUpdater</span><span class="p">);</span>
+  <span class="o">...</span>
+  <span class="n">auto</span> <span class="n">jobConf</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">job_conf</span><span class="p">();</span>
+  <span class="o">//</span>  <span class="n">update</span> <span class="n">jobConf</span>
+
+  <span class="n">driver</span><span class="o">.</span><span class="n">Train</span><span class="p">(</span><span class="n">resume</span><span class="p">,</span> <span class="n">jobConf</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Driver class&#8217; <code class="docutils literal"><span class="pre">Init</span></code> method 는 커맨드라인 인수 <code class="docutils literal"><span class="pre">-conf</span> <span class="pre">&lt;job</span> <span class="pre">conf&gt;</span></code> 에서 주어진 job configuration 파일을 읽습니다. 그 파일에는 cluster topology 정보가 기술 되어있고, 유저가 neural net, updater 등을 업데이트 혹은 설정 하기위한 <code class="docutils literal"><span class="pre">jobConf</span></code>를 리턴합니다.
+유저가 Layer, Updater, Worker, Param 등의 subclass를 정의하면, driver 에 등록을 해야합니다.
+트레이닝을 시작하기 위하여 job configuration 즉 <code class="docutils literal"><span class="pre">jobConf</span></code>를 driver.Train 에 넘겨줍니다.</p>
+<!--We will provide helper functions to make the configuration easier in the
+future, like [keras](https://github.com/fchollet/keras).--><p>유저코드를 compile 하고 SINGA library (<em>.libs/libsinga.so</em>) 와 링크시켜 실행파일, e.g., <em>mysinga</em>, 을 생성합니다. 프로그램은 다음과 같이 실행합니다.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">singa</span><span class="o">-</span><span class="n">run</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">conf</span> <span class="o">&lt;</span><span class="n">path</span> <span class="n">to</span> <span class="n">job</span> <span class="n">conf</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">exec</span> <span class="o">&lt;</span><span class="n">path</span> <span class="n">to</span> <span class="n">mysinga</span><span class="o">&gt;</span> <span class="p">[</span><span class="n">other</span> <span class="n">arguments</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="rnn.html">RNN application</a> 에서 RNN 모델의 트레이닝을 위한 함수의 프로그램 예를 설명합니다.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 The Apache Software Foundation. All rights reserved. Apache Singa, Apache, the Apache feather logo, and the Apache Singa project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+
+<div class="rst-versions shift-up" data-toggle="rst-versions" role="note" aria-label="versions">
+    <img src="../_static/apache.jpg">
+
+    <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: 0.3.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Languages</dt>
+            <dd><a href="../../en/index.html">English</a></dd>
+            <dd><a href="../../zh/index.html">中文</a></dd>
+            <dd><a href="../../jp/index.html">日本語</a></dd>
+            <dd><a href="../../kr/index.html">한국어</a></dd>
+        </dl>
+    </div>
+</div>
+
+<a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+         src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+         alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

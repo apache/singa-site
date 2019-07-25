@@ -1,0 +1,396 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>퀵 스타트 &mdash; incubator-singa 0.3.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="incubator-singa 0.3.0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">최신 문서</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul class="simple">
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul class="simple">
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">incubator-singa</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>퀵 스타트</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="">
+<span id="id1"></span><h1>퀵 스타트<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="section" id="singa">
+<span id="singa"></span><h2>SINGA 인스톨<a class="headerlink" href="#singa" title="Permalink to this headline">¶</a></h2>
+<p>SINGA 인스톨은 <a class="reference external" href="installation.html">여기</a>를 참조하십시오.</p>
+<div class="section" id="zookeeper">
+<span id="zookeeper"></span><h3>Zookeeper 실행<a class="headerlink" href="#zookeeper" title="Permalink to this headline">¶</a></h3>
+<p>SINGA 트레이닝은 <a class="reference external" href="https://zookeeper.apache.org/">zookeeper</a>를 이용합니다. 우선 zookeeper 서비스가 시작되어 있는지 확인하십시오.</p>
+<p>준비된 thirdparty 스크립트를 사용하여 zookeeper를 설치 한 경우 다음 스크립트를 실행하십시오.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#goto top level folder</span>
+<span class="n">cd</span> <span class="n">SINGA_ROOT</span>
+<span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">zk</span><span class="o">-</span><span class="n">service</span><span class="o">.</span><span class="n">sh</span> <span class="n">start</span>
+</pre></div>
+</div>
+<p>(<code class="docutils literal"><span class="pre">./bin/zk-service.sh</span> <span class="pre">stop</span></code> // zookeeper 중지).</p>
+<p>기본 포트를 사용하지 않고 zookeeper를 시작시킬 때는 <code class="docutils literal"><span class="pre">conf/singa.conf</span></code>을 편집하십시오.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">zookeeper_host</span> <span class="p">:</span> <span class="s2">&quot;localhost : YOUR_PORT&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="stand-alone">
+<span id="stand-alone"></span><h2>Stand-alone 모드에서 실행<a class="headerlink" href="#stand-alone" title="Permalink to this headline">¶</a></h2>
+<p>Stand-alone 모드에서 SINGA을 실행할 때, <a class="reference external" href="http://mesos.apache.org/">Mesos</a> 와 <a class="reference external" href="http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html">YARN</a> 과 같은 클러스터 관리툴을 이용하지 않는 경우를 말합니다.</p>
+<div class="section" id="single">
+<span id="single"></span><h3>Single 노드에서의 트레이닝<a class="headerlink" href="#single" title="Permalink to this headline">¶</a></h3>
+<p>하나의 프로세스가 시작됩니다.
+예를 들어,
+<a class="reference external" href="http://www.cs.toronto.edu/~kriz/cifar.html">CIFAR-10</a> 데이터 세트를 이용하여
+<a class="reference external" href="http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks">CNN 모델</a>을 트레이닝 시킵니다.
+하이퍼 파라미터는 <a class="reference external" href="https://code.google.com/p/cuda-convnet/">cuda-convnet</a>에 따라 설정되어 있습니다.
+자세한 내용은 <a class="reference external" href="cnn.html">CNN 샘플</a> 페이지를 참조하십시오.</p>
+<div class="section" id="">
+<span id="id2"></span><h4>데이터와 작업 설정<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<p>데이터 세트 다운로드와 Triaing 이나 Test 를 위한 데이터 샤드의 생성은 다음과 같이 실시합니다.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">examples</span><span class="o">/</span><span class="n">cifar10</span><span class="o">/</span>
+<span class="n">cp</span> <span class="n">Makefile</span><span class="o">.</span><span class="n">example</span> <span class="n">Makefile</span>
+<span class="n">make</span> <span class="n">download</span>
+<span class="n">make</span> <span class="n">create</span>
+</pre></div>
+</div>
+<p>Training 과 Test 데이터 세트는 각각 <em>cifar10-train-shard</em>
+그리고 <em>cifar10-test-shard</em> 폴더에 만들어집니다. 모든 이미지의 특징 평균을 기술한 <em>image_mean.bin</em> 파일도 함께 생성됩니다.</p>
+<p>CNN 모델 트레이닝에 필요한 소스코드는 모두 SINGA에 포함되어 있습니다. 코드를 추가 할 필요는 없습니다.
+작업 설정 파일(<em>job.conf</em>) 을 지정하여 스크립트(<em>../../bin/singa-run.sh</em>)를 실행합니다.
+SINGA 코드를 변경하거나 추가 할 경우는, 프로그래밍가이드 (programming-guide.html)를 참조하십시오.</p>
+</div>
+<div class="section" id="">
+<span id="id3"></span><h4>병렬화 없이 트레이닝<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<p>Cluster Topology의 기본값은 하나의 worker와 하나의 server가 있습니다.
+데이터와 모델의 병렬 처리는 되지 않습니다.</p>
+<p>트레이닝을 시작하기 위하여 다음 스크립트를 실행합니다.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># goto top level folder</span>
+<span class="n">cd</span> <span class="o">../../</span>
+<span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">singa</span><span class="o">-</span><span class="n">run</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">conf</span> <span class="n">examples</span><span class="o">/</span><span class="n">cifar10</span><span class="o">/</span><span class="n">job</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>현재 실행중인 작업의 리스트를 보려면</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">singa</span><span class="o">-</span><span class="n">console</span><span class="o">.</span><span class="n">sh</span> <span class="nb">list</span>
+
+<span class="n">JOB</span> <span class="n">ID</span>     <span class="o">|</span> <span class="n">NUM</span> <span class="n">PROCS</span>
+<span class="o">----------</span> <span class="o">|</span> <span class="o">-----------</span>
+<span class="mi">24</span>         <span class="o">|</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>작업을 종료하려면</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">singa</span><span class="o">-</span><span class="n">console</span><span class="o">.</span><span class="n">sh</span> <span class="n">kill</span> <span class="n">JOB_ID</span>
+</pre></div>
+</div>
+<p>로그 및 작업 정보는 <em>/tmp/singa-log</em> 폴더에 저장됩니다.
+<em>conf/singa.conf</em> 파일의 <code class="docutils literal"><span class="pre">log-dir</span></code>에서 변경 가능합니다.</p>
+</div>
+<div class="section" id="">
+<span id="id4"></span><h4>비동기 병렬 트레이닝<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># job.conf</span>
+<span class="o">...</span>
+<span class="n">cluster</span> <span class="p">{</span>
+  <span class="n">nworker_groups</span> <span class="p">:</span> <span class="mi">2</span>
+  <span class="n">nworkers_per_procs</span> <span class="p">:</span> <span class="mi">2</span>
+  <span class="n">workspace</span> <span class="p">:</span> <span class="s2">&quot;examples/cifar10/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>여러 worker 그룹을 실행함으로써 <a class="reference external" href="architecture.html">비동기 트레이닝</a>을 할 수 있습니다.
+예를 들어, <em>job.conf</em> 을 위와 같이 변경합니다.
+기본적으로 하나의 worker 그룹이 하나의 worker를 갖도록 설정되어 있습니다.
+위의 설정은 하나의 프로세스에 2개의 worker가 설정되어 있기 때문에 2개의 worker 그룹이 동일한 프로세스로 실행됩니다.
+결과 인메모리 <a class="reference external" href="frameworks.html">Downpour</a> 트레이닝 프레임워크로 실행됩니다.</p>
+<p>사용자는 데이터의 분산을 신경 쓸 필요는 없습니다.
+랜덤 오프셋에 따라 각 worker 그룹에 데이터가 보내집니다.
+각 worker는 다른 데이터 파티션을 담당합니다.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># job.conf</span>
+<span class="o">...</span>
+<span class="n">neuralnet</span> <span class="p">{</span>
+  <span class="n">layer</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="n">sharddata_conf</span> <span class="p">{</span>
+      <span class="n">random_skip</span> <span class="p">:</span> <span class="mi">5000</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>스크립트 실행 :</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">singa</span><span class="o">-</span><span class="n">run</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">conf</span> <span class="n">examples</span><span class="o">/</span><span class="n">cifar10</span><span class="o">/</span><span class="n">job</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="">
+<span id="id5"></span><h4>동기화 병렬 트레이닝<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># job.conf</span>
+<span class="o">...</span>
+<span class="n">cluster</span> <span class="p">{</span>
+  <span class="n">nworkers_per_group</span> <span class="p">:</span> <span class="mi">2</span>
+  <span class="n">nworkers_per_procs</span> <span class="p">:</span> <span class="mi">2</span>
+  <span class="n">workspace</span> <span class="p">:</span> <span class="s2">&quot;examples/cifar10/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>하나의 worker 그룹으로 여러 worker를 실행하여 <a class="reference external" href="architecture.html">동기 트레이닝</a>을 수행 할 수 있습니다.
+예를 들어, <em>job.conf</em> 파일을 위와 같이 변경합니다.
+위의 설정은 하나의 worker 그룹에 2개의 worker가 설정되었습니다.
+worker 들은 그룹 내에서 동기화합니다.
+이것은 인메모리 <a class="reference external" href="frameworks.html">sandblaster</a>로 실행됩니다.
+모델은 2개의 worker로 분할됩니다. 각 레이어가 2개의 worker로 분산됩니다.
+배분 된 레이어는 원본 레이어와 기능은 같지만 특징 인스턴스의 수가 <code class="docutils literal"><span class="pre">B</span> <span class="pre">/</span> <span class="pre">g</span></code> 로 됩니다.
+여기서 <code class="docutils literal"><span class="pre">B</span></code>는 미니밧치 인스턴스의 숫자로 <code class="docutils literal"><span class="pre">g</span></code>는 그룹의 worker 수 입니다.
+<a class="reference external" href="neural-net.html">다른 스킴</a>을 이용한 레이어 (뉴럴네트워크) 파티션 방법도 있습니다.</p>
+<p>다른 설정들은 모두 &#8220;병렬화 없음&#8221;의 경우와 동일합니다.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">singa</span><span class="o">-</span><span class="n">run</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">conf</span> <span class="n">examples</span><span class="o">/</span><span class="n">cifar10</span><span class="o">/</span><span class="n">job</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="">
+<span id="id6"></span><h3>클러스터에서의 트레이닝<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<p>클러스터 설정을 변경하여 위 트레이닝 프레임워크를 확장합니다.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nworker_per_procs</span> <span class="p">:</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>모든 프로세스는 하나의 worker 스레드를 생성합니다.
+결과 worker 우리는 다른 프로세스 (노드)에서 생성됩니다.
+클러스터의 노드를 특정하려면 <em>SINGA_ROOT/conf/</em> 의 <em>hostfile</em> 의 설​​정이 필요합니다.</p>
+<p>e.g.,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">logbase</span><span class="o">-</span><span class="n">a01</span>
+<span class="n">logbase</span><span class="o">-</span><span class="n">a02</span>
+</pre></div>
+</div>
+<p>zookeeper location도 설정해야합니다.</p>
+<p>e.g.,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># conf/singa.conf</span>
+<span class="n">zookeeper_host</span> <span class="p">:</span> <span class="s2">&quot;logbase-a01&quot;</span>
+</pre></div>
+</div>
+<p>스크립트의 실행은 &#8220;Single 노드 트레이닝&#8221;과 동일합니다.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">singa</span><span class="o">-</span><span class="n">run</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">conf</span> <span class="n">examples</span><span class="o">/</span><span class="n">cifar10</span><span class="o">/</span><span class="n">job</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="mesos">
+<span id="mesos"></span><h2>Mesos에서 실행<a class="headerlink" href="#mesos" title="Permalink to this headline">¶</a></h2>
+<p><em>working</em> ...</p>
+</div>
+<div class="section" id="">
+<span id="id7"></span><h2>다음<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<p>SINGA 의 코드 변경 및 추가에 대한 자세한 내용은 <a class="reference external" href="programming-guide.html">프로그래밍 가이드</a>를 참조하십시오.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 The Apache Software Foundation. All rights reserved. Apache Singa, Apache, the Apache feather logo, and the Apache Singa project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+
+<div class="rst-versions shift-up" data-toggle="rst-versions" role="note" aria-label="versions">
+    <img src="../_static/apache.jpg">
+
+    <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: 0.3.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Languages</dt>
+            <dd><a href="../../en/index.html">English</a></dd>
+            <dd><a href="../../zh/index.html">中文</a></dd>
+            <dd><a href="../../jp/index.html">日本語</a></dd>
+            <dd><a href="../../kr/index.html">한국어</a></dd>
+        </dl>
+    </div>
+</div>
+
+<a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+         src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+         alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

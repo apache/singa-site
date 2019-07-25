@@ -1,0 +1,337 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>&lt;no title&gt; &mdash; incubator-singa 1.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="incubator-singa 1.1.0 documentation" href="../index.html"/>
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/index.html">Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">Source Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">incubator-singa</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>&lt;no title&gt;</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p>#singa-incubating-0.2.0 Release Notes</p>
+<hr class="docutils" />
+<p>SINGA is a general distributed deep learning platform for training big deep
+learning models over large datasets. It is designed with an intuitive
+programming model based on the layer abstraction. SINGA supports a wide variety
+of popular deep learning models.</p>
+<p>This release includes the following <strong>major features</strong>:</p>
+<ul class="simple">
+<li><a class="reference external" href="../docs/gpu.html">Training on GPU</a> enables training of complex models on a single node with multiple GPU cards.</li>
+<li><a class="reference external" href="../docs/hybrid.html">Hybrid neural net partitioning</a> supports data and model parallelism at the same time.</li>
+<li><a class="reference external" href="../docs/python.html">Python wrapper</a> makes it easy to configure the job, including neural net and SGD algorithm.</li>
+<li><a class="reference external" href="../docs/general-rnn.html">RNN model and BPTT algorithm</a> are implemented to support applications based on RNN models, e.g., GRU.</li>
+<li><a class="reference external" href="../docs/distributed-training.md">Cloud software integration</a> includes Mesos, Docker and HDFS.</li>
+</ul>
+<p><strong>More details</strong> are listed as follows,</p>
+<ul class="simple">
+<li>Programming model<ul>
+<li>[SINGA-80] New Blob Level and Address Level Math Operation Interface</li>
+<li>[SINGA-82] Refactor input layers using data store abstraction</li>
+<li>[SINGA-87] Replace exclude field to include field for layer configuration</li>
+<li>[SINGA-110] Add Layer member datavec_ and gradvec_</li>
+<li>[SINGA-120] Implemented GRU and BPTT (BPTTWorker)</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Neuralnet layers<ul>
+<li>[SINGA-91] Add SoftmaxLayer and ArgSortLayer</li>
+<li>[SINGA-106] Add dummy layer for test purpose</li>
+<li>[SINGA-120] Implemented GRU and BPTT (GRULayer and OneHotLayer)</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>GPU training support<ul>
+<li>[SINGA-100] Implement layers using CUDNN for GPU training</li>
+<li>[SINGA-104] Add Context Class</li>
+<li>[SINGA-105] Update GUN make files for compiling cuda related code</li>
+<li>[SINGA-98] Add Support for AlexNet ImageNet Classification Model</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Model/Hybrid partition<ul>
+<li>[SINGA-109] Refine bridge layers</li>
+<li>[SINGA-111] Add slice, concate and split layers</li>
+<li>[SINGA-113] Model/Hybrid Partition Support</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Python binding<ul>
+<li>[SINGA-108] Add Python wrapper to singa</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Predict-only mode<ul>
+<li>[SINGA-85] Add functions for extracting features and test new data</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Integrate with third-party tools<ul>
+<li>[SINGA-11] Start SINGA on Apache Mesos</li>
+<li>[SINGA-78] Use Doxygen to generate documentation</li>
+<li>[SINGA-89] Add Docker support</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Unit test<ul>
+<li>[SINGA-95] Add make test after building</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Other improvment<ul>
+<li>[SINGA-84] Header Files Rearrange</li>
+<li>[SINGA-93] Remove the asterisk in the log tcp://169.254.12.152:*:49152</li>
+<li>[SINGA-94] Move call to google::InitGoogleLogging() from Driver::Init() to main()</li>
+<li>[SINGA-96] Add Momentum to Cifar10 Example</li>
+<li>[SINGA-101] Add ll (ls -l) command in .bashrc file when using docker</li>
+<li>[SINGA-114] Remove short logs in tmp directory</li>
+<li>[SINGA-115] Print layer debug information in the neural net graph file</li>
+<li>[SINGA-118] Make protobuf LayerType field id easy to assign</li>
+<li>[SIGNA-97] Add HDFS Store</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>Bugs fixed<ul>
+<li>[SINGA-85] Fix compilation errors in examples</li>
+<li>[SINGA-90] Miscellaneous trivial bug fixes</li>
+<li>[SINGA-107] Error from loading pre-trained params for training stacked RBMs</li>
+<li>[SINGA-116] Fix a bug in InnerProductLayer caused by weight matrix sharing</li>
+</ul>
+</li>
+</ul>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 The Apache Software Foundation. All rights reserved. Apache Singa, Apache, the Apache feather logo, and the Apache Singa project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+<div class="rst-versions shift-up" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: latest
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+      <dl>
+          <dt>Languages</dt>
+          <dd><a href="../../en/index.html">English</a></dd>
+          <dd><a href="../../zh/index.html">中文</a></dd>
+      </dl>
+      <dl>
+          <dt>Versions</dt>
+          <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+          <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+      </dl>
+
+  </div>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.jpg"> </a>
+</div>
+
+ <a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+        alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

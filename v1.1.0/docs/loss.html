@@ -1,0 +1,431 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Loss &mdash; incubator-singa 1.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="incubator-singa 1.1.0 documentation" href="../index.html"/>
+        <link rel="up" title="Documentation" href="index.html"/>
+        <link rel="next" title="Metric" href="metric.html"/>
+        <link rel="prev" title="Initializer" href="initializer.html"/>
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_stack.html">Software Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net.html">FeedForward Net</a></li>
+<li class="toctree-l2"><a class="reference internal" href="initializer.html">Initializer</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metric.html">Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimizer.html">Optimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_tool.html">Image Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snapshot.html">Snapshot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="converter.html">Caffe Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_zoo/index.html">Model Zoo</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">Source Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">incubator-singa</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Documentation</a> &raquo;</li>
+      
+    <li>Loss</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-singa.loss">
+<span id="loss"></span><h1>Loss<a class="headerlink" href="#module-singa.loss" title="Permalink to this headline">¶</a></h1>
+<p>Loss module includes a set of training loss implmentations. Some are converted
+from C++ implementation, and the rest are implemented directly using python
+Tensor.</p>
+<p>Example usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">tensor</span>
+<span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">loss</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">x</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># randomly genearte the prediction activation</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">))</span>  <span class="c1"># set the truth</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">loss</span><span class="o">.</span><span class="n">SoftmaxCrossEntropy</span><span class="p">()</span>
+<span class="n">l</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># l is tensor with 3 loss values</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>  <span class="c1"># g is a tensor containing all gradients of x w.r.t l</span>
+</pre></div>
+</div>
+<dl class="class">
+<dt id="singa.loss.Loss">
+<em class="property">class </em><code class="descclassname">singa.loss.</code><code class="descname">Loss</code><a class="headerlink" href="#singa.loss.Loss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Base loss class.</p>
+<p>Subclasses that wrap the C++ loss classes can use the inherited foward,
+backward, and evaluate functions of this base class. Other subclasses need
+to override these functions</p>
+<dl class="method">
+<dt id="singa.loss.Loss.backward">
+<code class="descname">backward</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.loss.Loss.backward" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the grad of x w.r.t. the loss</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.loss.Loss.evaluate">
+<code class="descname">evaluate</code><span class="sig-paren">(</span><em>flag</em>, <em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.loss.Loss.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>flag</strong> (<em>int</em>) &#8211; must be kEval, to be removed</li>
+<li><strong>x</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) &#8211; the prediction Tensor</li>
+<li><strong>y</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) &#8211; the ground truth Tnesor</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the averaged loss for all samples in x.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.loss.Loss.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>flag</em>, <em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.loss.Loss.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the loss values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>flag</strong> &#8211; kTrain/kEval or bool. If it is kTrain/True, then the backward
+function must be called before calling forward again.</li>
+<li><strong>x</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) &#8211; the prediction Tensor</li>
+<li><strong>y</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) &#8211; the ground truch Tensor, x.shape[0] must = y.shape[0]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a tensor of floats for the loss values, one per sample</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.loss.SoftmaxCrossEntropy">
+<em class="property">class </em><code class="descclassname">singa.loss.</code><code class="descname">SoftmaxCrossEntropy</code><a class="headerlink" href="#singa.loss.SoftmaxCrossEntropy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.loss.Loss" title="singa.loss.Loss"><code class="xref py py-class docutils literal"><span class="pre">singa.loss.Loss</span></code></a></p>
+<p>This loss function is a combination of SoftMax and Cross-Entropy loss.</p>
+<p>It converts the inputs via SoftMax function and then
+computes the cross-entropy loss against the ground truth values.</p>
+<p>For each sample, the ground truth could be a integer as the label index;
+or a binary array, indicating the label distribution. The ground truth
+tensor thus could be a 1d or 2d tensor.
+The data/feature tensor could 1d (for a single sample) or 2d for a batch of
+samples.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.loss.SquaredError">
+<em class="property">class </em><code class="descclassname">singa.loss.</code><code class="descname">SquaredError</code><a class="headerlink" href="#singa.loss.SquaredError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.loss.Loss" title="singa.loss.Loss"><code class="xref py py-class docutils literal"><span class="pre">singa.loss.Loss</span></code></a></p>
+<p>This loss evaluates the squared error between the prediction and the
+truth values.</p>
+<p>It is implemented using Python Tensor operations.</p>
+<dl class="method">
+<dt id="singa.loss.SquaredError.backward">
+<code class="descname">backward</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.loss.SquaredError.backward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the gradient of x w.r.t the error.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">x - y</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.loss.SquaredError.evaluate">
+<code class="descname">evaluate</code><span class="sig-paren">(</span><em>flag</em>, <em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.loss.SquaredError.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compuate the averaged error.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a float value as the averaged error</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.loss.SquaredError.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>flag</em>, <em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.loss.SquaredError.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the error as 0.5 * ||x-y||^2.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>flag</strong> (<em>int</em>) &#8211; kTrain or kEval; if kTrain, then the backward must be
+called before calling forward again.</li>
+<li><strong>x</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) &#8211; the prediction Tensor</li>
+<li><strong>y</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) &#8211; the truth Tensor, an integer value per sample, whose
+value is [0, x.shape[1])</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a Tensor with one error value per sample</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="metric.html" class="btn btn-neutral float-right" title="Metric" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="initializer.html" class="btn btn-neutral" title="Initializer" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 The Apache Software Foundation. All rights reserved. Apache Singa, Apache, the Apache feather logo, and the Apache Singa project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+<div class="rst-versions shift-up" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: latest
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+      <dl>
+          <dt>Languages</dt>
+          <dd><a href="../../en/index.html">English</a></dd>
+          <dd><a href="../../zh/index.html">中文</a></dd>
+      </dl>
+      <dl>
+          <dt>Versions</dt>
+          <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+          <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+      </dl>
+
+  </div>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.jpg"> </a>
+</div>
+
+ <a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+        alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

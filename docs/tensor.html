@@ -1,0 +1,1595 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tensor &mdash; incubator-singa 2.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Layer" href="layer.html" />
+    <link rel="prev" title="Device" href="device.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+    <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <style>
+	.fa:hover {
+	    opacity: 0.7;
+	}
+	.fab:hover {
+	    opacity: 0.7;
+	}
+    </style>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_stack.html">Software Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="benchmark.html">Benchmark for Distributed training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device.html">Device</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tensor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tensor-implementation">Tensor implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-singa.tensor">Python API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cpp-api">CPP API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net.html">FeedForward Net</a></li>
+<li class="toctree-l2"><a class="reference internal" href="initializer.html">Initializer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loss.html">Loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metric.html">Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimizer.html">Optimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autograd.html">Autograd in Singa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_tool.html">Image Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snapshot.html">Snapshot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="converter.html">Caffe Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_zoo/index.html">Model Zoo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-to-release.html">How to prepare a release</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">Source Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">incubator-singa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Documentation</a> &raquo;</li>
+        
+      <li>Tensor</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tensor">
+<h1>Tensor<a class="headerlink" href="#tensor" title="Permalink to this headline">¶</a></h1>
+<p>Each Tensor instance is a multi-dimensional array allocated on a specific
+Device instance. Tensor instances store variables and provide
+linear algebra operations over different types of hardware devices without user
+awareness. Note that users need to make sure the tensor operands are
+allocated on the same device except copy functions.</p>
+<div class="section" id="tensor-implementation">
+<h2>Tensor implementation<a class="headerlink" href="#tensor-implementation" title="Permalink to this headline">¶</a></h2>
+<p>SINGA has three different sets of implmentations of Tensor functions, one for each
+type of Device.</p>
+<ul class="simple">
+<li><p>‘tensor_math_cpp.h’ implements operations using Cpp (with CBLAS) for CppGPU devices.</p></li>
+<li><p>‘tensor_math_cuda.h’ implements operations using Cuda (with cuBLAS) for CudaGPU devices.</p></li>
+<li><p>‘tensor_math_opencl.h’ implements operations using OpenCL for OpenclGPU devices.</p></li>
+</ul>
+</div>
+<div class="section" id="module-singa.tensor">
+<span id="python-api"></span><h2>Python API<a class="headerlink" href="#module-singa.tensor" title="Permalink to this headline">¶</a></h2>
+<p>Example usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">singa</span> <span class="k">import</span> <span class="n">tensor</span>
+<span class="kn">from</span> <span class="nn">singa</span> <span class="k">import</span> <span class="n">device</span>
+
+<span class="c1"># create a tensor with shape (2,3), default CppCPU device and float32</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">x</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="c1"># create a tensor from a numpy array</span>
+<span class="n">npy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">npy</span><span class="p">)</span>
+
+<span class="n">y</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># sample values from the uniform distribution</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">mult</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># gemm -&gt; z of shape (2, 3)</span>
+
+<span class="n">x</span> <span class="o">+=</span> <span class="n">z</span>  <span class="c1"># element-wise addition</span>
+
+<span class="n">dev</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">get_default_device</span><span class="p">()</span>
+<span class="n">x</span><span class="o">.</span><span class="n">to_device</span><span class="p">(</span><span class="n">dev</span><span class="p">)</span>  <span class="c1"># move the data to a gpu device</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>  <span class="c1"># tensor -&gt; numpy array</span>
+</pre></div>
+</div>
+<p>There are two sets of tensor functions,</p>
+<dl class="simple">
+<dt>Tensor member functions</dt><dd><p>which would change the internal state of the Tensor instance.</p>
+</dd>
+<dt>Tensor module functions</dt><dd><p>which accept Tensor instances as arguments and return Tensor instances.</p>
+</dd>
+</dl>
+<p>Every Tesor instance must be initialized before reading data from it.</p>
+<dl class="class">
+<dt id="singa.tensor.AddBias">
+<em class="property">class </em><code class="descclassname">singa.tensor.</code><code class="descname">AddBias</code><span class="sig-paren">(</span><em>axis=0</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.AddBias" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add Bias to each row / column of the Tensor, depending on the parameter axis.</p>
+<dl class="method">
+<dt id="singa.tensor.AddBias.backward">
+<code class="descname">backward</code><span class="sig-paren">(</span><em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.AddBias.backward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dy</strong> (<em>CTensor</em>) – data for the dL / dy, L is the loss.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a tuple for (db, dx), db is data for dL / db, dx is data
+for dL / dx.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.AddBias.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em>, <em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.AddBias.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – matrix.</p></li>
+<li><p><strong>b</strong> – bias to be added.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the result Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.tensor.CrossEntropy">
+<em class="property">class </em><code class="descclassname">singa.tensor.</code><code class="descname">CrossEntropy</code><a class="headerlink" href="#singa.tensor.CrossEntropy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculte CrossEntropy loss for a batch of training data.</p>
+<dl class="method">
+<dt id="singa.tensor.CrossEntropy.backward">
+<code class="descname">backward</code><span class="sig-paren">(</span><em>dy=1.0</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.CrossEntropy.backward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dy</strong> (<em>float</em><em> or </em><em>CTensor</em>) – scalar, accumulate gradient from outside of current network, usually</p></li>
+<li><p><strong>to 1.0</strong> (<em>equal</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>data for the dL /dx, L is the loss, x is the output of current network.
+note that this is true for dy = 1.0</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dx (CTensor)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.CrossEntropy.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em>, <em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.CrossEntropy.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>CTensor</em>) – 1d or 2d tensor, the prediction data(output) of current network.</p></li>
+<li><p><strong>t</strong> (<em>CTensor</em>) – 1d or 2d tensor, the target data for training.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>scalar.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>loss (CTensor)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.tensor.Dummy">
+<em class="property">class </em><code class="descclassname">singa.tensor.</code><code class="descname">Dummy</code><span class="sig-paren">(</span><em>tensor</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Dummy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dummy operation whice serves as a placehoder for autograd</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em>) – set it for debug</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.tensor.Matmul">
+<em class="property">class </em><code class="descclassname">singa.tensor.</code><code class="descname">Matmul</code><a class="headerlink" href="#singa.tensor.Matmul" title="Permalink to this definition">¶</a></dt>
+<dd><p>For matrix multiplication</p>
+<dl class="method">
+<dt id="singa.tensor.Matmul.backward">
+<code class="descname">backward</code><span class="sig-paren">(</span><em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Matmul.backward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dy</strong> (<em>CTensor</em>) – data for the dL / dy, L is the loss</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a tuple for (dx, dw)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Matmul.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em>, <em>w</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Matmul.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do forward propgation.</p>
+<p>Store the x(or w) if w(or x) requires gradient.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>CTensor</em>) – matrix</p></li>
+<li><p><strong>w</strong> (<em>CTensor</em>) – matrix</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a CTensor for the result</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.tensor.Operation">
+<em class="property">class </em><code class="descclassname">singa.tensor.</code><code class="descname">Operation</code><a class="headerlink" href="#singa.tensor.Operation" title="Permalink to this definition">¶</a></dt>
+<dd><p>An operation includes the forward and backward function of
+tensor calculation.</p>
+<p>To add a specific operation Xxxx, subclass Operation and implement
+forward() and backward(). Then implement a function xxxx which creates
+a Xxxx instance and calls __call__ to do forward. The autograd engine
+is able to do backward propagation by calling the backward() of Xxxx
+automatically. Notice that the tensors are CTensor. NOT Python Tensor.
+The arguments of forward() and backward() should only include CTensor args;</p>
+<dl class="method">
+<dt id="singa.tensor.Operation.backward">
+<code class="descname">backward</code><span class="sig-paren">(</span><em>*dys</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Operation.backward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Backward propagation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dys</strong> – input args consisting of only CTensors.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>CTensor instance(s)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Operation.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>*xs</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Operation.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forward propagation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>xs</strong> – input args consisting of only CTensors.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>CTensor instance(s)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.tensor.ReLU">
+<em class="property">class </em><code class="descclassname">singa.tensor.</code><code class="descname">ReLU</code><a class="headerlink" href="#singa.tensor.ReLU" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="singa.tensor.ReLU.backward">
+<code class="descname">backward</code><span class="sig-paren">(</span><em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.ReLU.backward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dy</strong> (<em>CTensor</em>) – dL / dy</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dL / dx = dy if x &gt;= 0; otherwise 0;</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dx(CTensor)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.ReLU.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.ReLU.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>CTensor</em>) – input tensor</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new CTensor whose element y = x if x &gt;= 0; otherwise 0;</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.tensor.SoftMax">
+<em class="property">class </em><code class="descclassname">singa.tensor.</code><code class="descname">SoftMax</code><span class="sig-paren">(</span><em>axis=0</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.SoftMax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply SoftMax for each row of the Tensor or each column of the Tensor
+according to the parameter axis.</p>
+<dl class="method">
+<dt id="singa.tensor.SoftMax.backward">
+<code class="descname">backward</code><span class="sig-paren">(</span><em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.SoftMax.backward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dy</strong> (<em>CTensor</em>) – data for the dL / dy, L is the loss</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>data for the dL / dx, L is the loss,
+x is the input of current Opertion</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dx (Ctensor)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.SoftMax.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.SoftMax.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>data</em>) – the input 1d or 2d tensor</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the result Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.tensor.Tensor">
+<em class="property">class </em><code class="descclassname">singa.tensor.</code><code class="descname">Tensor</code><span class="sig-paren">(</span><em>shape=()</em>, <em>device=None</em>, <em>dtype=0</em>, <em>data=None</em>, <em>requires_grad=True</em>, <em>stores_grad=False</em>, <em>creator=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Python Tensor, which wraps a swig converted Tensor from CPP Tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape</strong> (<em>tuple&lt;int&gt;</em>) – a tuple of integers for the tensor shape. If shape
+is not specified, the created tensor is called a dummy tensor.</p></li>
+<li><p><strong>device</strong> – a swig device. If None, the default host device is used.</p></li>
+<li><p><strong>dtype</strong> – data type. currently, most operations only accept float32.</p></li>
+<li><p><strong>data</strong> – a numpy array or swig tensor.</p></li>
+<li><p><strong>requires_grad</strong> – boolean indicator for computing the gradient.</p></li>
+<li><p><strong>stores_grad</strong> – boolean indicator for storing and returning the gradient.
+Some intermediate tensors’ gradient can be released
+during the backward propagation. A tensor may require
+grad but not store grad; But if a tensor stores grad
+then it must require grad.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="singa.tensor.Tensor.T">
+<code class="descname">T</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.T" title="Permalink to this definition">¶</a></dt>
+<dd><p>shallow copy, negate the transpose field.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a new Tensor which shares the underlying data memory (shallow copy)
+but is marked as a transposed version of this tensor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.add_column">
+<code class="descname">add_column</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.add_column" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a tensor to each column of this tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>v</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – a Tensor to be added as a column to this tensor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.add_row">
+<code class="descname">add_row</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.add_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a tensor to each row of this tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>v</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – a Tensor to be added as a row to this tensor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.bernoulli">
+<code class="descname">bernoulli</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.bernoulli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample 0/1 for each element according to the given probability.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>p</strong> (<em>float</em>) – with probability p, each element is sample to 1.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.clone">
+<code class="descname">clone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.clone" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a new Tensor which does deep copy of this tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>shallow copy calls copy constructor of singa::Tensor</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.copy_data">
+<code class="descname">copy_data</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.copy_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy data from other Tensor instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – source Tensor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.copy_from_numpy">
+<code class="descname">copy_from_numpy</code><span class="sig-paren">(</span><em>np_array</em>, <em>offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.copy_from_numpy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy the data from the numpy array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>np_array</strong> – source numpy array</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – destination offset</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.deepcopy">
+<code class="descname">deepcopy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.deepcopy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as clone().</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a new Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.div_column">
+<code class="descname">div_column</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.div_column" title="Permalink to this definition">¶</a></dt>
+<dd><p>Divide each column of this tensor by v.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>v</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – 1d tensor of the same length the column of self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.div_row">
+<code class="descname">div_row</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.div_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Divide each row of this tensor by v.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>v</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – 1d tensor of the same length the row of self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.gaussian">
+<code class="descname">gaussian</code><span class="sig-paren">(</span><em>mean</em>, <em>std</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.gaussian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a value for each element following a Gaussian distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mean</strong> (<em>float</em>) – mean of the distribution</p></li>
+<li><p><strong>std</strong> (<em>float</em>) – standard variance of the distribution</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.is_empty">
+<code class="descname">is_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.is_empty" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if the tensor is empty according to its shape</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.is_transpose">
+<code class="descname">is_transpose</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.is_transpose" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if the internal data is transposed; otherwise False.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.l1">
+<code class="descname">l1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.l1" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the L1 norm.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.l2">
+<code class="descname">l2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.l2" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the L2 norm.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.memsize">
+<code class="descname">memsize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.memsize" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the number of Bytes allocated for this tensor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.mult_column">
+<code class="descname">mult_column</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.mult_column" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiply each column of this tensor by v element-wisely.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>v</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – 1d tensor of the same length the column of self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.mult_row">
+<code class="descname">mult_row</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.mult_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiply each row of this tensor by v element-wisely.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>v</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – 1d tensor of the same length the row of self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.ndim">
+<code class="descname">ndim</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.ndim" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the number of dimensions of the tensor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.reset_like">
+<code class="descname">reset_like</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.reset_like" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the shape, dtype and device as the given tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.reshape">
+<code class="descname">reshape</code><span class="sig-paren">(</span><em>shape</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.reshape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the tensor shape.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>shape</strong> (<em>list&lt;int&gt;</em>) – new shape, which should have the same volumn as
+the original shape.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.set_value">
+<code class="descname">set_value</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.set_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set all elements of the tensor to be the give value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>float</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.size">
+<code class="descname">size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.size" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the number of elements of the tensor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.to_device">
+<code class="descname">to_device</code><span class="sig-paren">(</span><em>device</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.to_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the tensor data onto a given device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>device</strong> – a swig Device converted from CudaGPU or CppCPU or OpenclGPU</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.to_host">
+<code class="descname">to_host</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.to_host" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the tensor data onto the default host CppCPU device.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.tensor.Tensor.uniform">
+<code class="descname">uniform</code><span class="sig-paren">(</span><em>low</em>, <em>high</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.Tensor.uniform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a value for each element following a uniform distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>low</strong> (<em>float</em>) – the lower bound</p></li>
+<li><p><strong>high</strong> (<em>float</em>) – the hight bound</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.abs">
+<code class="descclassname">singa.tensor.</code><code class="descname">abs</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.abs" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – input Tensor</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new Tensor whose element y = abs(x), x is an element of t</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.add">
+<code class="descclassname">singa.tensor.</code><code class="descname">add</code><span class="sig-paren">(</span><em>lhs</em>, <em>rhs</em>, <em>ret=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elementi-wise addition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lhs</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – </p></li>
+<li><p><strong>rhs</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – </p></li>
+<li><p><strong>ret</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a><em>, </em><em>optional</em>) – if not None, the result is stored in it;
+otherwise, a new Tensor would be created for the result.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the result Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.add_column">
+<code class="descclassname">singa.tensor.</code><code class="descname">add_column</code><span class="sig-paren">(</span><em>alpha</em>, <em>v</em>, <em>beta</em>, <em>M</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.add_column" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add v to each column of M.</p>
+<p>Denote each column of M as m, m = alpha * v + beta * m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>alpha</strong> (<em>float</em>) – </p></li>
+<li><p><strong>v</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – </p></li>
+<li><p><strong>beta</strong> (<em>float</em>) – </p></li>
+<li><p><strong>M</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – 2d tensor</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>M</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.add_row">
+<code class="descclassname">singa.tensor.</code><code class="descname">add_row</code><span class="sig-paren">(</span><em>alpha</em>, <em>v</em>, <em>beta</em>, <em>M</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.add_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add v to each row of M.</p>
+<p>Denote each row of M as m, m = alpha * v + beta * m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>alpha</strong> (<em>float</em>) – </p></li>
+<li><p><strong>v</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – </p></li>
+<li><p><strong>beta</strong> (<em>float</em>) – </p></li>
+<li><p><strong>M</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – 2d tensor</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>M</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.average">
+<code class="descclassname">singa.tensor.</code><code class="descname">average</code><span class="sig-paren">(</span><em>t</em>, <em>axis=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.average" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – input Tensor</p></li>
+<li><p><strong>axis</strong> (<em>int</em><em>, </em><em>optional</em>) – if None, average all elements; otherwise average
+along the given dimension. 0 for averaging each column; 1 for
+averaging each row.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a float value if axis is None; otherwise, a new Tensor for the result.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.axpy">
+<code class="descclassname">singa.tensor.</code><code class="descname">axpy</code><span class="sig-paren">(</span><em>alpha</em>, <em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.axpy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Element-wise operation for y += alpha * x.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>alpha</strong> (<em>float</em>) – </p></li>
+<li><p><strong>x</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – </p></li>
+<li><p><strong>y</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>y</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.bernoulli">
+<code class="descclassname">singa.tensor.</code><code class="descname">bernoulli</code><span class="sig-paren">(</span><em>p</em>, <em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.bernoulli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a binary value for each element of t.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> (<em>float</em>) – each element is 1 with probability p; and 0 with 1 - p</p></li>
+<li><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – the results are put into t</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>t</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.copy_data_to_from">
+<code class="descclassname">singa.tensor.</code><code class="descname">copy_data_to_from</code><span class="sig-paren">(</span><em>dst</em>, <em>src</em>, <em>size</em>, <em>dst_offset=0</em>, <em>src_offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.copy_data_to_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy the data between two Tensor instances which could be on different
+devices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – destination Tensor</p></li>
+<li><p><strong>src</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – source Tensor</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – number of elements to copy</p></li>
+<li><p><strong>dst_offset</strong> (<em>int</em>) – offset in terms of elements to the start of dst</p></li>
+<li><p><strong>src_offset</strong> (<em>int</em>) – offset in terms of elements to the start of src</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.copy_from_numpy">
+<code class="descclassname">singa.tensor.</code><code class="descname">copy_from_numpy</code><span class="sig-paren">(</span><em>data</em>, <em>np_array</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.copy_from_numpy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy the data from the numpy array.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.ctensor2numpy">
+<code class="descclassname">singa.tensor.</code><code class="descname">ctensor2numpy</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.ctensor2numpy" title="Permalink to this definition">¶</a></dt>
+<dd><p>To be used in SoftMax Operation.
+Convert a singa_tensor to numpy_tensor.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.div">
+<code class="descclassname">singa.tensor.</code><code class="descname">div</code><span class="sig-paren">(</span><em>lhs</em>, <em>rhs</em>, <em>ret=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.div" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elementi-wise division.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lhs</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – </p></li>
+<li><p><strong>rhs</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – </p></li>
+<li><p><strong>ret</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a><em>, </em><em>optional</em>) – if not None, the result is stored in it;
+otherwise, a new Tensor would be created for the result.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the result Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.einsum">
+<code class="descclassname">singa.tensor.</code><code class="descname">einsum</code><span class="sig-paren">(</span><em>ops</em>, <em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.einsum" title="Permalink to this definition">¶</a></dt>
+<dd><p>function TODO list to finish the function in cpp(just like numpy function):
+1.sum(A,axis = None)
+2.repeat(A,repeats)
+3.transpose(A,axes = None)
+Do the matrix to matrix einsum calculation according to the operands
+Warning : this function could only support two matrix’ einsum calcultion
+:param ops: the string specifies the subscripts for summation such as ‘ki,kj-&gt;kij’</p>
+<blockquote>
+<div><p>Here all the 26 lowercase letter can be used here.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>arg</strong> (<em>list of array_like</em>) – These are the tensors for the operation,but here only support two tensors.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Returns: Singa.Tensor</dt><dd><p>the output matirx of the einsum calculation</p>
+</dd>
+</dl>
+<p>The best way to understand this function is to try the examples below:
+<a href="#id1"><span class="problematic" id="id2">A_</span></a> = [0,1,2,3,4,5,6,7,8,9,10,11]
+A = <a href="#id3"><span class="problematic" id="id4">A_</span></a>.reshape(4,3)
+B = <a href="#id5"><span class="problematic" id="id6">A_</span></a>.reshape(3,4)</p>
+<p>Here this einsum calculation is the same as normal ‘mult’
+Res = einsum(‘ij,jk-&gt;ik’,A,B)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[[</span> <span class="mi">20</span>  <span class="mi">23</span>  <span class="mi">26</span>  <span class="mi">29</span><span class="p">]</span>
+<span class="go">     [ 56  68  80  92]</span>
+<span class="go">     [ 92 113 134 155]</span>
+<span class="go">     [128 158 188 218]]</span>
+</pre></div>
+</div>
+<p><a href="#id7"><span class="problematic" id="id8">A_</span></a> = [0,1,2,3,4,5,6,7,8,9,10,11]
+A = <a href="#id9"><span class="problematic" id="id10">A_</span></a>.reshape(4,3)
+B = <a href="#id11"><span class="problematic" id="id12">A_</span></a>.reshape(4,3)</p>
+<p>Here the einsum calculation is the same as normol ‘eltwise_mult’
+Res = einsum(‘ki,ki-&gt;ki’,A,B)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[[</span>  <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">4</span><span class="p">]</span>
+<span class="go">     [  9  16  25]</span>
+<span class="go">     [ 36  49  64]</span>
+<span class="go">     [ 81 100 121]]</span>
+</pre></div>
+</div>
+<p>A = [0,1,2,3,4,5,6,7,8,9,10,11]
+A = A.reshape(4,3)</p>
+<p>Res = einsum(‘ki,kj-&gt;kij’,A,A)
+&gt;&gt;&gt; [[[  0   0   0]</p>
+<blockquote>
+<div><blockquote>
+<div><p>[  0   1   2]
+[  0   2   4]]</p>
+</div></blockquote>
+<dl class="simple">
+<dt>[[  9  12  15]</dt><dd><p>[ 12  16  20]
+[ 15  20  25]]</p>
+</dd>
+<dt>[[ 36  42  48]</dt><dd><p>[ 42  49  56]
+[ 48  56  64]]</p>
+</dd>
+<dt>[[ 81  90  99]</dt><dd><p>[ 90 100 110]
+[ 99 110 121]]]</p>
+</dd>
+</dl>
+</div></blockquote>
+<p><a href="#id13"><span class="problematic" id="id14">A_</span></a> = [0,1,2,3,4,5,6,7,8,9,10,11]
+A = <a href="#id15"><span class="problematic" id="id16">A_</span></a>.reshape(3,2,2)</p>
+<p>Res = einsum(‘kia,kja-&gt;kij’,A,A)
+&gt;&gt;&gt; [[[  1   3]</p>
+<blockquote>
+<div><blockquote>
+<div><p>[  3  13]]</p>
+</div></blockquote>
+<dl class="simple">
+<dt>[[ 41  59]</dt><dd><p>[ 59  85]]</p>
+</dd>
+<dt>[[145 179]</dt><dd><p>[179 221]]]</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.eltwise_mult">
+<code class="descclassname">singa.tensor.</code><code class="descname">eltwise_mult</code><span class="sig-paren">(</span><em>lhs</em>, <em>rhs</em>, <em>ret=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.eltwise_mult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elementi-wise multiplication.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lhs</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – </p></li>
+<li><p><strong>rhs</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – </p></li>
+<li><p><strong>ret</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a><em>, </em><em>optional</em>) – if not None, the result is stored in it;
+otherwise, a new Tensor would be created for the result.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the result Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.exp">
+<code class="descclassname">singa.tensor.</code><code class="descname">exp</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.exp" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – input Tensor</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new Tensor whose element y = exp(x), x is an element of t</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.from_numpy">
+<code class="descclassname">singa.tensor.</code><code class="descname">from_numpy</code><span class="sig-paren">(</span><em>np_array</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.from_numpy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Tensor instance with the shape, dtype and values from the numpy
+array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>np_array</strong> – the numpy array.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A Tensor instance allocated on the default CppCPU device.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.gaussian">
+<code class="descclassname">singa.tensor.</code><code class="descname">gaussian</code><span class="sig-paren">(</span><em>mean</em>, <em>std</em>, <em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.gaussian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate values following a Gaussian distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mean</strong> (<em>float</em>) – the mean of the Gaussian distribution.</p></li>
+<li><p><strong>std</strong> (<em>float</em>) – the standard variance of the Gaussian distribution.</p></li>
+<li><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – the results are put into t</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>t</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.ge">
+<code class="descclassname">singa.tensor.</code><code class="descname">ge</code><span class="sig-paren">(</span><em>t</em>, <em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.ge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elementi-wise comparison for t &gt;= x.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – left hand side operand</p></li>
+<li><p><strong>x</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a><em> or </em><em>float</em>) – right hand side operand</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0.0f,
+or t[i] &gt;= x[i] ? 1.0f:0.0f</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>a Tensor with each element being t[i] &gt;= x ? 1.0f</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.gt">
+<code class="descclassname">singa.tensor.</code><code class="descname">gt</code><span class="sig-paren">(</span><em>t</em>, <em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.gt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elementi-wise comparison for t &gt; x.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – left hand side operand</p></li>
+<li><p><strong>x</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a><em> or </em><em>float</em>) – right hand side operand</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0.0f,
+or t[i] &gt; x[i] ? 1.0f:0.0f</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>a Tensor with each element being t[i] &gt; x ? 1.0f</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.le">
+<code class="descclassname">singa.tensor.</code><code class="descname">le</code><span class="sig-paren">(</span><em>t</em>, <em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.le" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elementi-wise comparison for t &lt;= x.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – left hand side operand</p></li>
+<li><p><strong>x</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a><em> or </em><em>float</em>) – right hand side operand</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0.0f,
+or t[i] &lt;= x[i] ? 1.0f:0.0f</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>a Tensor with each element being t[i] &lt;= x ? 1.0f</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.log">
+<code class="descclassname">singa.tensor.</code><code class="descname">log</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.log" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – input Tensor</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new Tensor whose element y = log(x), x is an element of t</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.lt">
+<code class="descclassname">singa.tensor.</code><code class="descname">lt</code><span class="sig-paren">(</span><em>t</em>, <em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.lt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elementi-wise comparison for t &lt; x</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – left hand side operand</p></li>
+<li><p><strong>x</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a><em> or </em><em>float</em>) – right hand side operand</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0.0f,
+or t[i] &lt; x[i] ? 1.0f:0.0f</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>a Tensor with each element being t[i] &lt; x ? 1.0f</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.mult">
+<code class="descclassname">singa.tensor.</code><code class="descname">mult</code><span class="sig-paren">(</span><em>A</em>, <em>B</em>, <em>C=None</em>, <em>alpha=1.0</em>, <em>beta=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.mult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do matrix-matrix or matrix-vector multiplication.</p>
+<p>This function returns C = alpha * A * B + beta * C</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – 2d Tensor</p></li>
+<li><p><strong>B</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – If B is a 1d Tensor, GEMV would be invoked for matrix-vector
+multiplication; otherwise GEMM would be invoked.</p></li>
+<li><p><strong>C</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a><em>, </em><em>optional</em>) – for storing the result; If None, a new Tensor
+would be created.</p></li>
+<li><p><strong>alpha</strong> (<em>float</em>) – </p></li>
+<li><p><strong>beta</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the result Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.pow">
+<code class="descclassname">singa.tensor.</code><code class="descname">pow</code><span class="sig-paren">(</span><em>t</em>, <em>x</em>, <em>out=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.pow" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – input tensor</p></li>
+<li><p><strong>x</strong> (<em>float</em><em> or </em><a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – y[i] = t[i]^x if x is a float value; otherwise,
+y[i]= t[i]^x[i] if x is a tensor.</p></li>
+<li><p><strong>out</strong> (<em>None</em><em> or </em><a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – if None, a new Tensor would be constructed to
+store the result; otherwise, the result is put into out.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the result tensor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.reshape">
+<code class="descclassname">singa.tensor.</code><code class="descname">reshape</code><span class="sig-paren">(</span><em>t</em>, <em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.reshape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reshape the input tensor with the given shape.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – the tensor to be changed</p></li>
+<li><p><strong>s</strong> (<em>list&lt;int&gt;</em>) – the new shape, which should have the same volumn as the
+old shape.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the new Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.sigmoid">
+<code class="descclassname">singa.tensor.</code><code class="descname">sigmoid</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.sigmoid" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – input Tensor</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new Tensor whose element y = sigmoid(x); x is an element of t</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.sign">
+<code class="descclassname">singa.tensor.</code><code class="descname">sign</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.sign" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – input Tensor</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new Tensor whose element y = sign(x)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.sizeof">
+<code class="descclassname">singa.tensor.</code><code class="descname">sizeof</code><span class="sig-paren">(</span><em>dtype</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.sizeof" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the number of bytes of the given SINGA data type defined in core.proto</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.softmax">
+<code class="descclassname">singa.tensor.</code><code class="descname">softmax</code><span class="sig-paren">(</span><em>t</em>, <em>out=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.softmax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply SoftMax for each row of the Tensor.
+:param t: the input 1d or 2d tensor
+:type t: Tensor
+:param out: if not None, it is used to store the result
+:type out: Tensor, optional</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the result Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.sqrt">
+<code class="descclassname">singa.tensor.</code><code class="descname">sqrt</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.sqrt" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – input Tensor</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new Tensor whose element y = sqrt(x), x is an element of t</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.square">
+<code class="descclassname">singa.tensor.</code><code class="descname">square</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.square" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – input Tensor</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new Tensor whose element y = x * x, x is an element of t</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.sub">
+<code class="descclassname">singa.tensor.</code><code class="descname">sub</code><span class="sig-paren">(</span><em>lhs</em>, <em>rhs</em>, <em>ret=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elementi-wise subtraction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lhs</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – </p></li>
+<li><p><strong>rhs</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – </p></li>
+<li><p><strong>ret</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a><em>, </em><em>optional</em>) – if not None, the result is stored in it;
+otherwise, a new Tensor would be created for the result.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the result Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.sum">
+<code class="descclassname">singa.tensor.</code><code class="descname">sum</code><span class="sig-paren">(</span><em>t</em>, <em>axis=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.sum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sum elements of the input tensor long the given axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – input Tensor</p></li>
+<li><p><strong>axis</strong> (<em>int</em><em>, </em><em>optional</em>) – if None, the summation is done over all elements;
+if axis is provided, then it is calculated along the given axis,
+e.g. 0 – sum each column; 1 – sum each row.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a float value as the sum of all elements, or a new Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.sum_columns">
+<code class="descclassname">singa.tensor.</code><code class="descname">sum_columns</code><span class="sig-paren">(</span><em>M</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.sum_columns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sum all columns into a single column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – the input 2d tensor.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new Tensor as the resulted column.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.sum_rows">
+<code class="descclassname">singa.tensor.</code><code class="descname">sum_rows</code><span class="sig-paren">(</span><em>M</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.sum_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sum all rows into a single row.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – the input 2d tensor.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new Tensor as the resulted row.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.tanh">
+<code class="descclassname">singa.tensor.</code><code class="descname">tanh</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.tanh" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – input Tensor</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new Tensor whose element y = tanh(x), x is an element of t</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.to_host">
+<code class="descclassname">singa.tensor.</code><code class="descname">to_host</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.to_host" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy the data to a host tensor.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.to_numpy">
+<code class="descclassname">singa.tensor.</code><code class="descname">to_numpy</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.to_numpy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy the tensor into a numpy array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a numpy array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.tensor.uniform">
+<code class="descclassname">singa.tensor.</code><code class="descname">uniform</code><span class="sig-paren">(</span><em>low</em>, <em>high</em>, <em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.tensor.uniform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate values following a Uniform distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>low</strong> (<em>float</em>) – the lower bound</p></li>
+<li><p><strong>hight</strong> (<em>float</em>) – the higher bound</p></li>
+<li><p><strong>t</strong> (<a class="reference internal" href="#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – the results are put into t</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>t</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="cpp-api">
+<h2>CPP API<a class="headerlink" href="#cpp-api" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="layer.html" class="btn btn-neutral float-right" title="Layer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="device.html" class="btn btn-neutral float-left" title="Device" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: latest
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+      <dl>
+          <dt>Languages</dt>
+          <dd><a href=".././index.html">English</a></dd>
+          <dd><a href=".././zh/index.html">中文</a></dd>
+      </dl>
+      <dl>
+          <dt>Versions</dt>
+          <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+          <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+      </dl>
+
+  </div>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.png" style="background-color:white;"> </a>
+
+  <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
+  <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>
+  <a href="http://www.apache.org/foundation/thanks.html" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Thanks</a>
+  <a href="http://www.apache.org/foundation/sponsorship.html" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">Sponsorship</a>
+  <a href="http://www.apache.org/licenses/" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">License</a>
+  <br>
+  <a href="https://github.com/apache/incubator-singa" class="fa fa-github" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a> 
+  <a href="https://www.linkedin.com/groups/13550034" class="fa fa-linkedin" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://twitter.com/ApacheSinga" class="fa fa-twitter" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://www.facebook.com/Apache-SINGA-347284219056544/" class="fa fa-facebook" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://www.researchgate.net/project/Apache-SINGA" class="fab fa-researchgate" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+
+</div>
+
+ <a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+        alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

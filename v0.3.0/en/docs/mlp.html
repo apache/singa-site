@@ -1,0 +1,453 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MLP Example &mdash; incubator-singa 0.3.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="incubator-singa 0.3.0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">Source Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">incubator-singa</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>MLP Example</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mlp-example">
+<span id="mlp-example"></span><h1>MLP Example<a class="headerlink" href="#mlp-example" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>Multilayer perceptron (MLP) is a subclass of feed-forward neural networks.
+A MLP typically consists of multiple directly connected layers, with each layer fully
+connected to the next one. In this example, we will use SINGA to train a
+<a class="reference external" href="http://arxiv.org/abs/1003.0358">simple MLP model proposed by Ciresan</a>
+for classifying handwritten digits from the <a class="reference external" href="http://yann.lecun.com/exdb/mnist/">MNIST dataset</a>.</p>
+<div class="section" id="running-instructions">
+<span id="running-instructions"></span><h2>Running instructions<a class="headerlink" href="#running-instructions" title="Permalink to this headline">¶</a></h2>
+<p>Please refer to the <a class="reference external" href="installation.html">installation</a> page for
+instructions on building SINGA, and the <a class="reference external" href="quick-start.html">quick start</a>
+for instructions on starting zookeeper.</p>
+<p>We have provided scripts for preparing the training and test dataset in <em>examples/cifar10/</em>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span># in examples/mnist
+$ cp Makefile.example Makefile
+$ make download
+$ make create
+</pre></div>
+</div>
+<div class="section" id="training-on-cpu">
+<span id="training-on-cpu"></span><h3>Training on CPU<a class="headerlink" href="#training-on-cpu" title="Permalink to this headline">¶</a></h3>
+<p>After the datasets are prepared, we start the training by</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">singa</span><span class="o">-</span><span class="n">run</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">conf</span> <span class="n">examples</span><span class="o">/</span><span class="n">mnist</span><span class="o">/</span><span class="n">job</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>After it is started, you should see output like</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Record</span> <span class="n">job</span> <span class="n">information</span> <span class="n">to</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">singa</span><span class="o">-</span><span class="n">log</span><span class="o">/</span><span class="n">job</span><span class="o">-</span><span class="n">info</span><span class="o">/</span><span class="n">job</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">20150817</span><span class="o">-</span><span class="mi">055231</span>
+<span class="n">Executing</span> <span class="p">:</span> <span class="o">./</span><span class="n">singa</span> <span class="o">-</span><span class="n">conf</span> <span class="o">/</span><span class="n">xxx</span><span class="o">/</span><span class="n">incubator</span><span class="o">-</span><span class="n">singa</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">mnist</span><span class="o">/</span><span class="n">job</span><span class="o">.</span><span class="n">conf</span> <span class="o">-</span><span class="n">singa_conf</span> <span class="o">/</span><span class="n">xxx</span><span class="o">/</span><span class="n">incubator</span><span class="o">-</span><span class="n">singa</span><span class="o">/</span><span class="n">conf</span><span class="o">/</span><span class="n">singa</span><span class="o">.</span><span class="n">conf</span> <span class="o">-</span><span class="n">singa_job</span> <span class="mi">1</span>
+<span class="n">E0817</span> <span class="mi">07</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mf">09.211885</span> <span class="mi">34073</span> <span class="n">cluster</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">51</span><span class="p">]</span> <span class="n">proc</span> <span class="c1">#0 -&gt; 192.168.5.128:49152 (pid = 34073)</span>
+<span class="n">E0817</span> <span class="mi">07</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mf">14.972231</span> <span class="mi">34114</span> <span class="n">server</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">36</span><span class="p">]</span> <span class="n">Server</span> <span class="p">(</span><span class="n">group</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">start</span>
+<span class="n">E0817</span> <span class="mi">07</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mf">14.972520</span> <span class="mi">34115</span> <span class="n">worker</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">134</span><span class="p">]</span> <span class="n">Worker</span> <span class="p">(</span><span class="n">group</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">start</span>
+<span class="n">E0817</span> <span class="mi">07</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mf">24.462602</span> <span class="mi">34073</span> <span class="n">trainer</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">373</span><span class="p">]</span> <span class="n">Test</span> <span class="n">step</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">2.341021</span><span class="p">,</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.109100</span>
+<span class="n">E0817</span> <span class="mi">07</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mf">47.341076</span> <span class="mi">34073</span> <span class="n">trainer</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">373</span><span class="p">]</span> <span class="n">Train</span> <span class="n">step</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">2.357269</span><span class="p">,</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.099000</span>
+<span class="n">E0817</span> <span class="mi">07</span><span class="p">:</span><span class="mi">16</span><span class="p">:</span><span class="mf">07.173364</span> <span class="mi">34073</span> <span class="n">trainer</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">373</span><span class="p">]</span> <span class="n">Train</span> <span class="n">step</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">2.222740</span><span class="p">,</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.201800</span>
+<span class="n">E0817</span> <span class="mi">07</span><span class="p">:</span><span class="mi">16</span><span class="p">:</span><span class="mf">26.714855</span> <span class="mi">34073</span> <span class="n">trainer</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">373</span><span class="p">]</span> <span class="n">Train</span> <span class="n">step</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">2.091030</span><span class="p">,</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.327200</span>
+<span class="n">E0817</span> <span class="mi">07</span><span class="p">:</span><span class="mi">16</span><span class="p">:</span><span class="mf">46.590946</span> <span class="mi">34073</span> <span class="n">trainer</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">373</span><span class="p">]</span> <span class="n">Train</span> <span class="n">step</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">1.969412</span><span class="p">,</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.442100</span>
+<span class="n">E0817</span> <span class="mi">07</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mf">06.207080</span> <span class="mi">34073</span> <span class="n">trainer</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">373</span><span class="p">]</span> <span class="n">Train</span> <span class="n">step</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">1.865466</span><span class="p">,</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.514800</span>
+<span class="n">E0817</span> <span class="mi">07</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mf">25.890033</span> <span class="mi">34073</span> <span class="n">trainer</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">373</span><span class="p">]</span> <span class="n">Train</span> <span class="n">step</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">1.773849</span><span class="p">,</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.569100</span>
+<span class="n">E0817</span> <span class="mi">07</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mf">51.208935</span> <span class="mi">34073</span> <span class="n">trainer</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">373</span><span class="p">]</span> <span class="n">Test</span> <span class="n">step</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">1.613709</span><span class="p">,</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.662100</span>
+<span class="n">E0817</span> <span class="mi">07</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mf">53.176766</span> <span class="mi">34073</span> <span class="n">trainer</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">373</span><span class="p">]</span> <span class="n">Train</span> <span class="n">step</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">1.659150</span><span class="p">,</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.652600</span>
+<span class="n">E0817</span> <span class="mi">07</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mf">12.783370</span> <span class="mi">34073</span> <span class="n">trainer</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">373</span><span class="p">]</span> <span class="n">Train</span> <span class="n">step</span><span class="o">-</span><span class="mi">70</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">1.574024</span><span class="p">,</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.666000</span>
+<span class="n">E0817</span> <span class="mi">07</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mf">32.904942</span> <span class="mi">34073</span> <span class="n">trainer</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">373</span><span class="p">]</span> <span class="n">Train</span> <span class="n">step</span><span class="o">-</span><span class="mi">80</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">1.529380</span><span class="p">,</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.670500</span>
+<span class="n">E0817</span> <span class="mi">07</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mf">52.608111</span> <span class="mi">34073</span> <span class="n">trainer</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">373</span><span class="p">]</span> <span class="n">Train</span> <span class="n">step</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">1.443911</span><span class="p">,</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.703500</span>
+<span class="n">E0817</span> <span class="mi">07</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mf">12.168465</span> <span class="mi">34073</span> <span class="n">trainer</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">373</span><span class="p">]</span> <span class="n">Train</span> <span class="n">step</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">1.387759</span><span class="p">,</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.721000</span>
+<span class="n">E0817</span> <span class="mi">07</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mf">31.855865</span> <span class="mi">34073</span> <span class="n">trainer</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">373</span><span class="p">]</span> <span class="n">Train</span> <span class="n">step</span><span class="o">-</span><span class="mi">110</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">1.335246</span><span class="p">,</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.736500</span>
+<span class="n">E0817</span> <span class="mi">07</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mf">57.327133</span> <span class="mi">34073</span> <span class="n">trainer</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">373</span><span class="p">]</span> <span class="n">Test</span> <span class="n">step</span><span class="o">-</span><span class="mi">120</span><span class="p">,</span> <span class="n">loss</span> <span class="p">:</span> <span class="mf">1.216652</span><span class="p">,</span> <span class="n">accuracy</span> <span class="p">:</span> <span class="mf">0.769900</span>
+</pre></div>
+</div>
+<p>After the training of some steps (depends on the setting) or the job is
+finished, SINGA will <a class="reference external" href="checkpoint.html">checkpoint</a> the model parameters.</p>
+</div>
+<div class="section" id="training-on-gpu">
+<span id="training-on-gpu"></span><h3>Training on GPU<a class="headerlink" href="#training-on-gpu" title="Permalink to this headline">¶</a></h3>
+<p>To train this example model on GPU, just add a field in the configuration file for
+the GPU device,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># job.conf</span>
+<span class="n">gpu</span><span class="p">:</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="training-using-python-script">
+<span id="training-using-python-script"></span><h3>Training using Python script<a class="headerlink" href="#training-using-python-script" title="Permalink to this headline">¶</a></h3>
+<p>The python helpers come with SINGA 0.2 make it easy to configure the job. For example
+the job.conf is replaced with a simple python script mnist_mlp.py
+which has about 30 lines of code following the <a class="reference external" href="http://keras.io/">Keras API</a>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">singa</span><span class="o">-</span><span class="n">run</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">exec</span> <span class="n">tool</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">mnist_mlp</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="details">
+<span id="details"></span><h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
+<p>To train a model in SINGA, you need to prepare the datasets,
+and a job configuration which specifies the neural net structure, training
+algorithm (BP or CD), SGD update algorithm (e.g. Adagrad),
+number of training/test steps, etc.</p>
+<div class="section" id="data-preparation">
+<span id="data-preparation"></span><h3>Data preparation<a class="headerlink" href="#data-preparation" title="Permalink to this headline">¶</a></h3>
+<p>Before using SINGA, you need to write a program to pre-process the dataset you
+use to a format that SINGA can read. Please refer to the
+<a class="reference external" href="data.html">Data Preparation</a> to get details about preparing
+this MNIST dataset.</p>
+</div>
+<div class="section" id="neural-net">
+<span id="neural-net"></span><h3>Neural net<a class="headerlink" href="#neural-net" title="Permalink to this headline">¶</a></h3>
+<div style = "text-align: center">
+<img src = "../_static/images/example-mlp.png" style = "width: 230px">
+<br/><strong>Figure 1 - Net structure of the MLP example. </strong></img>
+</div><p>Figure 1 shows the structure of the simple MLP model, which is constructed following
+<a class="reference external" href="http://arxiv.org/abs/1003.0358">Ciresan&#8217;s paper</a>. The dashed circle contains
+two layers which represent one feature transformation stage. There are 6 such
+stages in total. They sizes of the <a class="reference external" href="layer.html#innerproductlayer">InnerProductLayer</a>s in these circles decrease from
+2500-&gt;2000-&gt;1500-&gt;1000-&gt;500-&gt;10.</p>
+<p>Next we follow the guide in <a class="reference external" href="neural-net.html">neural net page</a>
+and <a class="reference external" href="layer.html">layer page</a> to write the neural net configuration.</p>
+<ul>
+<li><p class="first">We configure an input layer to read the training/testing records from a disk file.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  <span class="n">layer</span> <span class="p">{</span>
+      <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span>
+      <span class="nb">type</span><span class="p">:</span> <span class="n">kRecordInput</span>
+      <span class="n">store_conf</span> <span class="p">{</span>
+        <span class="n">backend</span><span class="p">:</span> <span class="s2">&quot;kvfile&quot;</span>
+        <span class="n">path</span><span class="p">:</span> <span class="s2">&quot;examples/mnist/train_data.bin&quot;</span>
+        <span class="n">random_skip</span><span class="p">:</span> <span class="mi">5000</span>
+        <span class="n">batchsize</span><span class="p">:</span> <span class="mi">64</span>
+        <span class="n">shape</span><span class="p">:</span> <span class="mi">784</span>
+        <span class="n">std_value</span><span class="p">:</span> <span class="mf">127.5</span>
+        <span class="n">mean_value</span><span class="p">:</span> <span class="mf">127.5</span>
+       <span class="p">}</span>
+       <span class="n">exclude</span><span class="p">:</span> <span class="n">kTest</span>
+    <span class="p">}</span>
+
+  <span class="n">layer</span> <span class="p">{</span>
+      <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span>
+      <span class="nb">type</span><span class="p">:</span> <span class="n">kRecordInput</span>
+      <span class="n">store_conf</span> <span class="p">{</span>
+        <span class="n">backend</span><span class="p">:</span> <span class="s2">&quot;kvfile&quot;</span>
+        <span class="n">path</span><span class="p">:</span> <span class="s2">&quot;examples/mnist/test_data.bin&quot;</span>
+        <span class="n">batchsize</span><span class="p">:</span> <span class="mi">100</span>
+        <span class="n">shape</span><span class="p">:</span> <span class="mi">784</span>
+        <span class="n">std_value</span><span class="p">:</span> <span class="mf">127.5</span>
+        <span class="n">mean_value</span><span class="p">:</span> <span class="mf">127.5</span>
+       <span class="p">}</span>
+       <span class="n">exclude</span><span class="p">:</span> <span class="n">kTrain</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<ul>
+<li><p class="first">All <a class="reference external" href="layer.html#innerproductlayer">InnerProductLayer</a>s are configured similarly as,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  <span class="n">layer</span><span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;fc1&quot;</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">kInnerProduct</span>
+    <span class="n">srclayers</span><span class="p">:</span><span class="s2">&quot;data&quot;</span>
+    <span class="n">innerproduct_conf</span><span class="p">{</span>
+      <span class="n">num_output</span><span class="p">:</span> <span class="mi">2500</span>
+    <span class="p">}</span>
+    <span class="n">param</span><span class="p">{</span>
+      <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;w1&quot;</span>
+      <span class="o">...</span>
+    <span class="p">}</span>
+    <span class="n">param</span><span class="p">{</span>
+      <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;b1&quot;</span>
+      <span class="o">..</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<p>with the <code class="docutils literal"><span class="pre">num_output</span></code> decreasing from 2500 to 10.</p>
+</li>
+<li><p class="first">A <a class="reference external" href="layer.html#stanhlayer">STanhLayer</a> is connected to every InnerProductLayer
+except the last one. It transforms the feature via scaled tanh function.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  <span class="n">layer</span><span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;tanh1&quot;</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">kSTanh</span>
+    <span class="n">srclayers</span><span class="p">:</span><span class="s2">&quot;fc1&quot;</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">The final <a class="reference external" href="layer.html#softmaxloss">Softmax loss layer</a> connects
+to LabelLayer and the last STanhLayer.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  <span class="n">layer</span><span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;loss&quot;</span>
+    <span class="nb">type</span><span class="p">:</span><span class="n">kSoftmaxLoss</span>
+    <span class="n">softmaxloss_conf</span><span class="p">{</span> <span class="n">topk</span><span class="p">:</span><span class="mi">1</span> <span class="p">}</span>
+    <span class="n">srclayers</span><span class="p">:</span><span class="s2">&quot;fc6&quot;</span>
+    <span class="n">srclayers</span><span class="p">:</span><span class="s2">&quot;data&quot;</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="updater">
+<span id="updater"></span><h3>Updater<a class="headerlink" href="#updater" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="updater.html#updater">normal SGD updater</a> is selected.
+The learning rate shrinks by 0.997 every 60 steps (i.e., one epoch).</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">updater</span><span class="p">{</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">kSGD</span>
+  <span class="n">learning_rate</span><span class="p">{</span>
+    <span class="n">base_lr</span><span class="p">:</span> <span class="mf">0.001</span>
+    <span class="nb">type</span> <span class="p">:</span> <span class="n">kStep</span>
+    <span class="n">step_conf</span><span class="p">{</span>
+      <span class="n">change_freq</span><span class="p">:</span> <span class="mi">60</span>
+      <span class="n">gamma</span><span class="p">:</span> <span class="mf">0.997</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="trainonebatch-algorithm">
+<span id="trainonebatch-algorithm"></span><h3>TrainOneBatch algorithm<a class="headerlink" href="#trainonebatch-algorithm" title="Permalink to this headline">¶</a></h3>
+<p>The MLP model is a feed-forward model, hence
+<a class="reference external" href="train-one-batch#back-propagation">Back-propagation algorithm</a>
+is selected.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">train_one_batch</span> <span class="p">{</span>
+  <span class="n">alg</span><span class="p">:</span> <span class="n">kBP</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cluster-setting">
+<span id="cluster-setting"></span><h3>Cluster setting<a class="headerlink" href="#cluster-setting" title="Permalink to this headline">¶</a></h3>
+<p>The following configuration set a single worker and server for training.
+<a class="reference external" href="frameworks.html">Training frameworks</a> page introduces configurations of a couple of distributed
+training frameworks.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cluster</span> <span class="p">{</span>
+  <span class="n">nworker_groups</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">nserver_groups</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 The Apache Software Foundation. All rights reserved. Apache Singa, Apache, the Apache feather logo, and the Apache Singa project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+
+<div class="rst-versions shift-up" data-toggle="rst-versions" role="note" aria-label="versions">
+    <img src="../_static/apache.jpg">
+
+    <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: 0.3.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Languages</dt>
+            <dd><a href="../../en/index.html">English</a></dd>
+            <dd><a href="../../zh/index.html">中文</a></dd>
+            <dd><a href="../../jp/index.html">日本語</a></dd>
+            <dd><a href="../../kr/index.html">한국어</a></dd>
+        </dl>
+    </div>
+</div>
+
+<a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+         src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+         alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

@@ -1,0 +1,1161 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Layer &mdash; incubator-singa 1.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="incubator-singa 1.1.0 documentation" href="../index.html"/>
+        <link rel="up" title="Documentation" href="index.html"/>
+        <link rel="next" title="FeedForward Net" href="net.html"/>
+        <link rel="prev" title="Tensor" href="tensor.html"/>
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_stack.html">Software Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensor</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-singa.layer">Python API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cpp-api">CPP API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="net.html">FeedForward Net</a></li>
+<li class="toctree-l2"><a class="reference internal" href="initializer.html">Initializer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loss.html">Loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metric.html">Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimizer.html">Optimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_tool.html">Image Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snapshot.html">Snapshot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="converter.html">Caffe Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_zoo/index.html">Model Zoo</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">Source Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">incubator-singa</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Documentation</a> &raquo;</li>
+      
+    <li>Layer</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="layer">
+<h1>Layer<a class="headerlink" href="#layer" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-singa.layer">
+<span id="python-api"></span><h2>Python API<a class="headerlink" href="#module-singa.layer" title="Permalink to this headline">¶</a></h2>
+<p>Python layers wrap the C++ layers to provide simpler construction APIs.</p>
+<p>Example usages:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">layer</span>
+<span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">tensor</span>
+<span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">device</span>
+
+<span class="n">layer</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="s1">&#39;cudnn&#39;</span>  <span class="c1"># to use cudnn layers</span>
+<span class="n">dev</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">create_cuda_gpu</span><span class="p">()</span>
+
+<span class="c1"># create a convolution layer</span>
+<span class="n">conv</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="s1">&#39;conv&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">input_sample_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">))</span>
+<span class="n">conv</span><span class="o">.</span><span class="n">to_device</span><span class="p">(</span><span class="n">dev</span><span class="p">)</span>  <span class="c1"># move the layer data onto a CudaGPU device</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span> <span class="n">dev</span><span class="p">)</span>
+<span class="n">x</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">conv</span><span class="o">.</span><span class="n">foward</span><span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">dy</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">()</span>
+<span class="n">dy</span><span class="o">.</span><span class="n">reset_like</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">dy</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="c1"># dp is a list of tensors for parameter gradients</span>
+<span class="n">dx</span><span class="p">,</span> <span class="n">dp</span> <span class="o">=</span> <span class="n">conv</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">kTrain</span><span class="p">,</span> <span class="n">dy</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="data">
+<dt id="singa.layer.engine">
+<code class="descclassname">singa.layer.</code><code class="descname">engine</code><em class="property"> = 'cudnn'</em><a class="headerlink" href="#singa.layer.engine" title="Permalink to this definition">¶</a></dt>
+<dd><p>engine is the prefix of layer identifier.</p>
+<p>The value could be one of [<strong>&#8216;cudnn&#8217;, &#8216;singacpp&#8217;, &#8216;singacuda&#8217;, &#8216;singacl&#8217;</strong>], for
+layers implemented using the cudnn library, Cpp, Cuda and OpenCL respectively.
+For example, CudnnConvolution layer is identified by &#8216;cudnn_convolution&#8217;;
+&#8216;singacpp_convolution&#8217; is for Convolution layer;
+Some layers&#8217; implementation use only Tensor functions, thererfore they are
+transparent to the underlying devices. For threse layers, they would have
+multiple identifiers, e.g., singacpp_dropout, singacuda_dropout and
+singacl_dropout are all for the Dropout layer. In addition, it has an extra
+identifier &#8216;singa&#8217;, i.e. &#8216;singa_dropout&#8217; also stands for the Dropout layer.</p>
+<p>engine is case insensitive. Each python layer would create the correct specific
+layer using the engine attribute.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.Layer">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">Layer</code><span class="sig-paren">(</span><em>name</em>, <em>conf=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Layer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Base Python layer class.</p>
+<dl class="docutils">
+<dt>Typically, the life cycle of a layer instance includes:</dt>
+<dd><ol class="first last arabic simple">
+<li>construct layer without input_sample_shapes, goto 2;
+construct layer with input_sample_shapes, goto 3;</li>
+<li>call setup to create the parameters and setup other meta fields</li>
+<li>call forward or access layer members</li>
+<li>call backward and get parameters for update</li>
+</ol>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) &#8211; layer name</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="singa.layer.Layer.setup">
+<code class="descname">setup</code><span class="sig-paren">(</span><em>in_shapes</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Layer.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call the C++ setup function to create params and set some meta data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>in_shapes</strong> &#8211; if the layer accepts a single input Tensor, in_shapes is
+a single tuple specifying the inpute Tensor shape; if the layer
+accepts multiple input Tensor (e.g., the concatenation layer),
+in_shapes is a tuple of tuples, each for one input Tensor</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.Layer.caffe_layer">
+<code class="descname">caffe_layer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Layer.caffe_layer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a singa layer based on caffe layer configuration.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.Layer.get_output_sample_shape">
+<code class="descname">get_output_sample_shape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Layer.get_output_sample_shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called after setup to get the shape of the output sample(s).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a tuple for a single output Tensor or a list of tuples if this layer
+has multiple outputs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.Layer.param_names">
+<code class="descname">param_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Layer.param_names" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of strings, one for the name of one parameter Tensor</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.Layer.param_values">
+<code class="descname">param_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Layer.param_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return param value tensors.</p>
+<p>Parameter tensors are not stored as layer members because cpp Tensor
+could be moved onto diff devices due to the change of layer device,
+which would result in inconsistency.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of tensors, one for each paramter</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.Layer.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>flag</em>, <em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Layer.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forward propagate through this layer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>flag</strong> &#8211; True (kTrain) for training (kEval); False for evaluating;
+other values for furture use.</li>
+<li><strong>x</strong> (<em>Tensor or list&lt;Tensor&gt;</em>) &#8211; an input tensor if the layer is
+connected from a single layer; a list of tensors if the layer
+is connected from multiple layers.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a tensor if the layer is connected to a single layer; a list of
+tensors if the layer is connected to multiple layers;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.Layer.backward">
+<code class="descname">backward</code><span class="sig-paren">(</span><em>flag</em>, <em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Layer.backward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Backward propagate gradients through this layer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>flag</strong> (<em>int</em>) &#8211; for future use.</li>
+<li><strong>dy</strong> (<em>Tensor or list&lt;Tensor&gt;</em>) &#8211; the gradient tensor(s) y w.r.t the
+objective loss</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">&lt;dx, &lt;dp1, dp2..&gt;&gt;, dx is a (set of) tensor(s) for the gradient of x
+, dpi is the gradient of the i-th parameter</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.Layer.to_device">
+<code class="descname">to_device</code><span class="sig-paren">(</span><em>device</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Layer.to_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move layer state tensors onto the given device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>device</strong> &#8211; swig converted device, created using singa.device</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.Layer.as_type">
+<code class="descname">as_type</code><span class="sig-paren">(</span><em>dtype</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Layer.as_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.Dummy">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">Dummy</code><span class="sig-paren">(</span><em>name</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Dummy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.Layer" title="singa.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.Layer</span></code></a></p>
+<p>A dummy layer that does nothing but just forwards/backwards the data
+(the input/output is a single tensor).</p>
+<dl class="method">
+<dt id="singa.layer.Dummy.get_output_sample_shape">
+<code class="descname">get_output_sample_shape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Dummy.get_output_sample_shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.Dummy.setup">
+<code class="descname">setup</code><span class="sig-paren">(</span><em>input_sample_shape</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Dummy.setup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.Dummy.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>flag</em>, <em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Dummy.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the input x</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.Dummy.backward">
+<code class="descname">backward</code><span class="sig-paren">(</span><em>falg</em>, <em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Dummy.backward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return dy, []</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.Conv2D">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">Conv2D</code><span class="sig-paren">(</span><em>name</em>, <em>nb_kernels</em>, <em>kernel=3</em>, <em>stride=1</em>, <em>border_mode='same'</em>, <em>cudnn_prefer='fatest'</em>, <em>data_format='NCHW'</em>, <em>use_bias=True</em>, <em>W_specs=None</em>, <em>b_specs=None</em>, <em>pad=None</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Conv2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.Layer" title="singa.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.Layer</span></code></a></p>
+<p>Construct a layer for 2D convolution.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>nb_kernels</strong> (<em>int</em>) &#8211; num of the channels (kernels) of the input Tensor</li>
+<li><strong>kernel</strong> &#8211; an integer or a pair of integers for kernel height and width</li>
+<li><strong>stride</strong> &#8211; an integer or a pair of integers for stride height and width</li>
+<li><strong>border_mode</strong> (<em>string</em>) &#8211; padding mode, case in-sensitive,
+&#8216;valid&#8217; -&gt; padding is 0 for height and width
+&#8216;same&#8217; -&gt; padding is half of the kernel (floor), the kernel must be
+odd number.</li>
+<li><strong>cudnn_prefer</strong> (<em>string</em>) &#8211; the preferred algorithm for cudnn convolution
+which could be &#8216;fatest&#8217;, &#8216;autotune&#8217;, &#8216;limited_workspace&#8217; and
+&#8216;no_workspace&#8217;</li>
+<li><strong>data_format</strong> (<em>string</em>) &#8211; either &#8216;NCHW&#8217; or &#8216;NHWC&#8217;</li>
+<li><strong>use_bias</strong> (<em>bool</em>) &#8211; True or False</li>
+<li><strong>pad</strong> &#8211; an integer or a pair of integers for padding height and width</li>
+<li><strong>W_specs</strong> (<em>dict</em>) &#8211; used to specify the weight matrix specs, fields
+include,
+&#8216;name&#8217; for parameter name
+&#8216;lr_mult&#8217; for learning rate multiplier
+&#8216;decay_mult&#8217; for weight decay multiplier
+&#8216;init&#8217; for init method, which could be &#8216;gaussian&#8217;, &#8216;uniform&#8217;,
+&#8216;xavier&#8217; and &#8216;&#8217;
+&#8216;std&#8217;, &#8216;mean&#8217;, &#8216;high&#8217;, &#8216;low&#8217; for corresponding init methods
+TODO(wangwei) &#8216;clamp&#8217; for gradient constraint, value is scalar
+&#8216;regularizer&#8217; for regularization, currently support &#8216;l2&#8217;</li>
+<li><strong>b_specs</strong> (<em>dict</em>) &#8211; hyper-parameters for bias vector, similar as W_specs</li>
+<li><strong>name</strong> (<em>string</em>) &#8211; layer name.</li>
+<li><strong>input_sample_shape</strong> &#8211; 3d tuple for the shape of the input Tensor
+without the batchsize, e.g., (channel, height, width) or
+(height, width, channel)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.Conv1D">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">Conv1D</code><span class="sig-paren">(</span><em>name</em>, <em>nb_kernels</em>, <em>kernel=3</em>, <em>stride=1</em>, <em>border_mode='same'</em>, <em>cudnn_prefer='fatest'</em>, <em>use_bias=True</em>, <em>W_specs={'init': 'Xavier'}</em>, <em>b_specs={'init': 'Constant'</em>, <em>'value': 0}</em>, <em>pad=None</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Conv1D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.Conv2D" title="singa.layer.Conv2D"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.Conv2D</span></code></a></p>
+<p>Construct a layer for 1D convolution.</p>
+<p>Most of the args are the same as those for Conv2D except the kernel,
+stride, pad, which is a scalar instead of a tuple.
+input_sample_shape is a tuple with a single value for the input feature
+length</p>
+<dl class="method">
+<dt id="singa.layer.Conv1D.get_output_sample_shape">
+<code class="descname">get_output_sample_shape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Conv1D.get_output_sample_shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.Pooling2D">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">Pooling2D</code><span class="sig-paren">(</span><em>name</em>, <em>mode</em>, <em>kernel=3</em>, <em>stride=2</em>, <em>border_mode='same'</em>, <em>pad=None</em>, <em>data_format='NCHW'</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Pooling2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.Layer" title="singa.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.Layer</span></code></a></p>
+<p>2D pooling layer providing max/avg pooling.</p>
+<p>All args are the same as those for Conv2D, except the following one</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mode</strong> &#8211; pooling type, model_pb2.PoolingConf.MAX or
+model_pb2.PoolingConf.AVE</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.MaxPooling2D">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">MaxPooling2D</code><span class="sig-paren">(</span><em>name</em>, <em>kernel=3</em>, <em>stride=2</em>, <em>border_mode='same'</em>, <em>pad=None</em>, <em>data_format='NCHW'</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.MaxPooling2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.Pooling2D" title="singa.layer.Pooling2D"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.Pooling2D</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.AvgPooling2D">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">AvgPooling2D</code><span class="sig-paren">(</span><em>name</em>, <em>kernel=3</em>, <em>stride=2</em>, <em>border_mode='same'</em>, <em>pad=None</em>, <em>data_format='NCHW'</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.AvgPooling2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.Pooling2D" title="singa.layer.Pooling2D"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.Pooling2D</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.MaxPooling1D">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">MaxPooling1D</code><span class="sig-paren">(</span><em>name</em>, <em>kernel=3</em>, <em>stride=2</em>, <em>border_mode='same'</em>, <em>pad=None</em>, <em>data_format='NCHW'</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.MaxPooling1D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.MaxPooling2D" title="singa.layer.MaxPooling2D"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.MaxPooling2D</span></code></a></p>
+<dl class="method">
+<dt id="singa.layer.MaxPooling1D.get_output_sample_shape">
+<code class="descname">get_output_sample_shape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.MaxPooling1D.get_output_sample_shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.AvgPooling1D">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">AvgPooling1D</code><span class="sig-paren">(</span><em>name</em>, <em>kernel=3</em>, <em>stride=2</em>, <em>border_mode='same'</em>, <em>pad=None</em>, <em>data_format='NCHW'</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.AvgPooling1D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.AvgPooling2D" title="singa.layer.AvgPooling2D"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.AvgPooling2D</span></code></a></p>
+<dl class="method">
+<dt id="singa.layer.AvgPooling1D.get_output_sample_shape">
+<code class="descname">get_output_sample_shape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.AvgPooling1D.get_output_sample_shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.BatchNormalization">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">BatchNormalization</code><span class="sig-paren">(</span><em>name</em>, <em>momentum=0.9</em>, <em>beta_specs=None</em>, <em>gamma_specs=None</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.BatchNormalization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.Layer" title="singa.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.Layer</span></code></a></p>
+<p>Batch-normalization.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>momentum</strong> (<em>float</em>) &#8211; for running average mean and variance.</li>
+<li><strong>beta_specs</strong> (<em>dict</em>) &#8211; dictionary includes the fields for the beta
+param:
+&#8216;name&#8217; for parameter name
+&#8216;lr_mult&#8217; for learning rate multiplier
+&#8216;decay_mult&#8217; for weight decay multiplier
+&#8216;init&#8217; for init method, which could be &#8216;gaussian&#8217;, &#8216;uniform&#8217;,
+&#8216;xavier&#8217; and &#8216;&#8217;
+&#8216;std&#8217;, &#8216;mean&#8217;, &#8216;high&#8217;, &#8216;low&#8217; for corresponding init methods
+&#8216;clamp&#8217; for gradient constraint, value is scalar
+&#8216;regularizer&#8217; for regularization, currently support &#8216;l2&#8217;</li>
+<li><strong>gamma_specs</strong> (<em>dict</em>) &#8211; similar to beta_specs, but for the gamma param.</li>
+<li><strong>name</strong> (<em>string</em>) &#8211; layer name</li>
+<li><strong>input_sample_shape</strong> (<em>tuple</em>) &#8211; with at least one integer</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.LRN">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">LRN</code><span class="sig-paren">(</span><em>name</em>, <em>size=5</em>, <em>alpha=1</em>, <em>beta=0.75</em>, <em>mode='cross_channel'</em>, <em>k=1</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.LRN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.Layer" title="singa.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.Layer</span></code></a></p>
+<p>Local response normalization.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>size</strong> (<em>int</em>) &#8211; # of channels to be crossed
+normalization.</li>
+<li><strong>mode</strong> (<em>string</em>) &#8211; &#8216;cross_channel&#8217;</li>
+<li><strong>input_sample_shape</strong> (<em>tuple</em>) &#8211; 3d tuple, (channel, height, width)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.Dense">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">Dense</code><span class="sig-paren">(</span><em>name</em>, <em>num_output</em>, <em>use_bias=True</em>, <em>W_specs=None</em>, <em>b_specs=None</em>, <em>W_transpose=False</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Dense" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.Layer" title="singa.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.Layer</span></code></a></p>
+<p>Apply linear/affine transformation, also called inner-product or
+fully connected layer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>num_output</strong> (<em>int</em>) &#8211; output feature length.</li>
+<li><strong>use_bias</strong> (<em>bool</em>) &#8211; add a bias vector or not to the transformed feature</li>
+<li><strong>W_specs</strong> (<em>dict</em>) &#8211; specs for the weight matrix
+&#8216;name&#8217; for parameter name
+&#8216;lr_mult&#8217; for learning rate multiplier
+&#8216;decay_mult&#8217; for weight decay multiplier
+&#8216;init&#8217; for init method, which could be &#8216;gaussian&#8217;, &#8216;uniform&#8217;,
+&#8216;xavier&#8217; and &#8216;&#8217;
+&#8216;std&#8217;, &#8216;mean&#8217;, &#8216;high&#8217;, &#8216;low&#8217; for corresponding init methods
+&#8216;clamp&#8217; for gradient constraint, value is scalar
+&#8216;regularizer&#8217; for regularization, currently support &#8216;l2&#8217;</li>
+<li><strong>b_specs</strong> (<em>dict</em>) &#8211; specs for the bias vector, same fields as W_specs.</li>
+<li><strong>W_transpose</strong> (<em>bool</em>) &#8211; if true, output=x*W.T+b;</li>
+<li><strong>input_sample_shape</strong> (<em>tuple</em>) &#8211; input feature length</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.Dropout">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">Dropout</code><span class="sig-paren">(</span><em>name</em>, <em>p=0.5</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Dropout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.Layer" title="singa.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.Layer</span></code></a></p>
+<p>Droput layer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>p</strong> (<em>float</em>) &#8211; probability for dropping out the element, i.e., set to 0</li>
+<li><strong>name</strong> (<em>string</em>) &#8211; layer name</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.Activation">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">Activation</code><span class="sig-paren">(</span><em>name</em>, <em>mode='relu'</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Activation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.Layer" title="singa.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.Layer</span></code></a></p>
+<p>Activation layers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>string</em>) &#8211; layer name</li>
+<li><strong>mode</strong> (<em>string</em>) &#8211; &#8216;relu&#8217;, &#8216;sigmoid&#8217;, or &#8216;tanh&#8217;</li>
+<li><strong>input_sample_shape</strong> (<em>tuple</em>) &#8211; shape of a single sample</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.Softmax">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">Softmax</code><span class="sig-paren">(</span><em>name</em>, <em>axis=1</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Softmax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.Layer" title="singa.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.Layer</span></code></a></p>
+<p>Apply softmax.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>axis</strong> (<em>int</em>) &#8211; reshape the input as a matrix with the dimension
+[0,axis) as the row, the [axis, -1) as the column.</li>
+<li><strong>input_sample_shape</strong> (<em>tuple</em>) &#8211; shape of a single sample</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.Flatten">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">Flatten</code><span class="sig-paren">(</span><em>name</em>, <em>axis=1</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.Layer" title="singa.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.Layer</span></code></a></p>
+<p>Reshape the input tensor into a matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>axis</strong> (<em>int</em>) &#8211; reshape the input as a matrix with the dimension
+[0,axis) as the row, the [axis, -1) as the column.</li>
+<li><strong>input_sample_shape</strong> (<em>tuple</em>) &#8211; shape for a single sample</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.Merge">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">Merge</code><span class="sig-paren">(</span><em>name</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.Layer" title="singa.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.Layer</span></code></a></p>
+<p>Sum all input tensors.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>input_sample_shape</strong> &#8211; sample shape of the input. The sample shape of all
+inputs should be the same.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="singa.layer.Merge.setup">
+<code class="descname">setup</code><span class="sig-paren">(</span><em>in_shape</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Merge.setup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.Merge.get_output_sample_shape">
+<code class="descname">get_output_sample_shape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Merge.get_output_sample_shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.Merge.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>flag</em>, <em>inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Merge.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge all input tensors by summation.</p>
+<p>TODO(wangwei) do element-wise merge operations, e.g., avg, count
+:param flag: not used.
+:param inputs: a list of tensors</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A single tensor as the sum of all input tensors</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.Merge.backward">
+<code class="descname">backward</code><span class="sig-paren">(</span><em>flag</em>, <em>grad</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Merge.backward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replicate the grad for each input source layer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>grad</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of replicated grad, one per source layer</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.Split">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">Split</code><span class="sig-paren">(</span><em>name</em>, <em>num_output</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Split" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.Layer" title="singa.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.Layer</span></code></a></p>
+<p>Replicate the input tensor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>num_output</strong> (<em>int</em>) &#8211; number of output tensors to generate.</li>
+<li><strong>input_sample_shape</strong> &#8211; includes a single integer for the input sample
+feature size.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="singa.layer.Split.setup">
+<code class="descname">setup</code><span class="sig-paren">(</span><em>in_shape</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Split.setup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.Split.get_output_sample_shape">
+<code class="descname">get_output_sample_shape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Split.get_output_sample_shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.Split.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>flag</em>, <em>input</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Split.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replicate the input tensor into mutiple tensors.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>flag</strong> &#8211; not used</li>
+<li><strong>input</strong> &#8211; a single input tensor</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list a output tensor (each one is a copy of the input)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.Split.backward">
+<code class="descname">backward</code><span class="sig-paren">(</span><em>flag</em>, <em>grads</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Split.backward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sum all grad tensors to generate a single output tensor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>grads</strong> (<em>list of Tensor</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a single tensor as the sum of all grads</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.Concat">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">Concat</code><span class="sig-paren">(</span><em>name</em>, <em>axis</em>, <em>input_sample_shapes=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Concat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.Layer" title="singa.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.Layer</span></code></a></p>
+<p>Concatenate tensors vertically (axis = 0) or horizontally (axis = 1).</p>
+<p>Currently, only support tensors with 2 dimensions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>axis</strong> (<em>int</em>) &#8211; 0 for concat row; 1 for concat columns;</li>
+<li><strong>input_sample_shapes</strong> &#8211; a list of sample shape tuples, one per input tensor</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="singa.layer.Concat.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>flag</em>, <em>inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Concat.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Concatenate all input tensors.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>flag</strong> &#8211; same as Layer::forward()</li>
+<li><strong>input</strong> &#8211; a list of tensors</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a single concatenated tensor</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.Concat.backward">
+<code class="descname">backward</code><span class="sig-paren">(</span><em>flag</em>, <em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Concat.backward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Backward propagate gradients through this layer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>flag</strong> &#8211; same as Layer::backward()</li>
+<li><strong>dy</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) &#8211; the gradient tensors of y w.r.t objective loss</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">&lt;dx, []&gt;, dx is a list tensors for the gradient of the inputs; []
+is an empty list.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.Slice">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">Slice</code><span class="sig-paren">(</span><em>name</em>, <em>axis</em>, <em>slice_point</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Slice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.Layer" title="singa.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.Layer</span></code></a></p>
+<p>Slice the input tensor into multiple sub-tensors vertially (axis=0) or
+horizontally (axis=1).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>axis</strong> (<em>int</em>) &#8211; 0 for slice rows; 1 for slice columns;</li>
+<li><strong>slice_point</strong> (<em>list</em>) &#8211; positions along the axis to do slice; there are n-1
+points for n sub-tensors;</li>
+<li><strong>input_sample_shape</strong> &#8211; input tensor sample shape</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="singa.layer.Slice.get_output_sample_shape">
+<code class="descname">get_output_sample_shape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Slice.get_output_sample_shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.Slice.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>flag</em>, <em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Slice.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Slice the input tensor on the given axis.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>flag</strong> &#8211; same as Layer::forward()</li>
+<li><strong>x</strong> &#8211; a single input tensor</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list a output tensor</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.Slice.backward">
+<code class="descname">backward</code><span class="sig-paren">(</span><em>flag</em>, <em>grads</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.Slice.backward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Concate all grad tensors to generate a single output tensor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>flag</strong> &#8211; same as Layer::backward()</li>
+<li><strong>grads</strong> &#8211; a list of tensors, one for the gradient of one sliced tensor</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a single tensor for the gradient of the original user, and an empty
+list.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.RNN">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">RNN</code><span class="sig-paren">(</span><em>name</em>, <em>hidden_size</em>, <em>rnn_mode='lstm'</em>, <em>dropout=0.0</em>, <em>num_stacks=1</em>, <em>input_mode='linear'</em>, <em>bidirectional=False</em>, <em>param_specs=None</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.RNN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.Layer" title="singa.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.Layer</span></code></a></p>
+<p>Recurrent layer with 4 types of units, namely lstm, gru, tanh and relu.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>hidden_size</strong> &#8211; hidden feature size, the same for all stacks of layers.</li>
+<li><strong>rnn_mode</strong> &#8211; decides the rnn unit, which could be one of &#8216;lstm&#8217;, &#8216;gru&#8217;,
+&#8216;tanh&#8217; and &#8216;relu&#8217;, refer to cudnn manual for each mode.</li>
+<li><strong>num_stacks</strong> &#8211; num of stacks of rnn layers. It is different to the
+unrolling seqence length.</li>
+<li><strong>input_mode</strong> &#8211; &#8216;linear&#8217; convert the input feature x by by a linear
+transformation to get a feature vector of size hidden_size;
+&#8216;skip&#8217; does nothing but requires the input feature size equals
+hidden_size</li>
+<li><strong>bidirection</strong> &#8211; True for bidirectional RNN</li>
+<li><strong>param_specs</strong> &#8211; config for initializing the RNN parameters.</li>
+<li><strong>input_sample_shape</strong> &#8211; includes a single integer for the input sample
+feature size.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="singa.layer.RNN.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>flag</em>, <em>inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.RNN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forward inputs through the RNN.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>flag</strong> &#8211; True(kTrain) for training; False(kEval) for evaluation;
+others values for future use.</li>
+<li><strong>&lt;x1, x2,...xn, hx, cx&gt;, where xi is the input tensor for the</strong> (<em>inputs,</em>) &#8211; i-th position, its shape is (batch_size, input_feature_length);
+the batch_size of xi must &gt;= that of xi+1; hx is the initial
+hidden state of shape (num_stacks * bidirection?2:1, batch_size,
+hidden_size). cx is the initial cell state tensor of the same
+shape as hy. cx is valid for only lstm. For other RNNs there is
+no cx. Both hx and cx could be dummy tensors without shape and
+data.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">&lt;y1, y2, ... yn, hy, cy&gt;, where yi is the output tensor for the i-th
+position, its shape is (batch_size,
+hidden_size * bidirection?2:1). hy is the final hidden state
+tensor. cx is the final cell state tensor. cx is only used for
+lstm.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="singa.layer.RNN.backward">
+<code class="descname">backward</code><span class="sig-paren">(</span><em>flag</em>, <em>grad</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.RNN.backward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Backward gradients through the RNN.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>for future use.</strong> (<em>flag,</em>) &#8211; </li>
+<li><strong>&lt;dy1, dy2,...dyn, dhy, dcy&gt;, where dyi is the gradient for the</strong> (<em>grad,</em>) &#8211; </li>
+<li><strong>output, its shape is (batch_size, hidden_size*bidirection?2</strong> (<em>i-th</em>) &#8211; 1);
+dhy is the gradient for the final hidden state, its shape is
+(num_stacks * bidirection?2:1, batch_size,
+hidden_size). dcy is the gradient for the final cell state.
+cx is valid only for lstm. For other RNNs there is
+no cx. Both dhy and dcy could be dummy tensors without shape and
+data.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">&lt;dx1, dx2, ... dxn, dhx, dcx&gt;, where dxi is the gradient tensor for
+the i-th input, its shape is (batch_size,
+input_feature_length). dhx is the gradient for the initial
+hidden state. dcx is the gradient for the initial cell state,
+which is valid only for lstm.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.LSTM">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">LSTM</code><span class="sig-paren">(</span><em>name</em>, <em>hidden_size</em>, <em>dropout=0.0</em>, <em>num_stacks=1</em>, <em>input_mode='linear'</em>, <em>bidirectional=False</em>, <em>param_specs=None</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.LSTM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.RNN" title="singa.layer.RNN"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.RNN</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="singa.layer.GRU">
+<em class="property">class </em><code class="descclassname">singa.layer.</code><code class="descname">GRU</code><span class="sig-paren">(</span><em>name</em>, <em>hidden_size</em>, <em>dropout=0.0</em>, <em>num_stacks=1</em>, <em>input_mode='linear'</em>, <em>bidirectional=False</em>, <em>param_specs=None</em>, <em>input_sample_shape=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.GRU" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#singa.layer.RNN" title="singa.layer.RNN"><code class="xref py py-class docutils literal"><span class="pre">singa.layer.RNN</span></code></a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="singa.layer.get_layer_list">
+<code class="descclassname">singa.layer.</code><code class="descname">get_layer_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.layer.get_layer_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of strings which include the identifiers (tags) of all
+supported layers</p>
+</dd></dl>
+
+</div>
+<div class="section" id="cpp-api">
+<h2>CPP API<a class="headerlink" href="#cpp-api" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="net.html" class="btn btn-neutral float-right" title="FeedForward Net" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tensor.html" class="btn btn-neutral" title="Tensor" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 The Apache Software Foundation. All rights reserved. Apache Singa, Apache, the Apache feather logo, and the Apache Singa project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+<div class="rst-versions shift-up" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: latest
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+      <dl>
+          <dt>Languages</dt>
+          <dd><a href="../../en/index.html">English</a></dd>
+          <dd><a href="../../zh/index.html">中文</a></dd>
+      </dl>
+      <dl>
+          <dt>Versions</dt>
+          <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+          <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+      </dl>
+
+  </div>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.jpg"> </a>
+</div>
+
+ <a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+        alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

@@ -1,0 +1,397 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>クイック スタート &mdash; incubator-singa 0.3.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="incubator-singa 0.3.0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">ドキュメント</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul class="simple">
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul class="simple">
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">incubator-singa</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>クイック スタート</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="">
+<span id="id1"></span><h1>クイック スタート<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="section" id="singa">
+<span id="singa"></span><h2>SINGA セットアップ<a class="headerlink" href="#singa" title="Permalink to this headline">¶</a></h2>
+<p>SINGAのインストールについては<a class="reference external" href="installation.html">こちら</a>をご覧ください。</p>
+<div class="section" id="zookeeper">
+<span id="zookeeper"></span><h3>Zookeeper の実行<a class="headerlink" href="#zookeeper" title="Permalink to this headline">¶</a></h3>
+<p>SINGAのトレーニングは　<a class="reference external" href="https://zookeeper.apache.org/">zookeeper</a> を利用します。まずは zookeeper サービスが開始されていることを確認してください。</p>
+<p>準備された thirdparty のスクリプトを使って zookeeper をインストールした場合、次のスクリプトを実行してください。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#goto top level folder</span>
+<span class="n">cd</span>  <span class="n">SINGA_ROOT</span>
+<span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">zk</span><span class="o">-</span><span class="n">service</span><span class="o">.</span><span class="n">sh</span> <span class="n">start</span>
+</pre></div>
+</div>
+<p>(<code class="docutils literal"><span class="pre">./bin/zk-service.sh</span> <span class="pre">stop</span></code> // zookeeper の停止).</p>
+<p>デフォルトのポートを使用せずに zookeeper をスタートさせる時は、<code class="docutils literal"><span class="pre">conf/singa.conf</span></code>を編集してください。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">zookeeper_host</span><span class="p">:</span> <span class="s2">&quot;localhost:YOUR_PORT&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="">
+<span id="id2"></span><h2>スタンドアローンモードでの実行<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<p>スタンドアローンモードでSINGAを実行するとは、<a class="reference external" href="http://mesos.apache.org/">Mesos</a> や <a class="reference external" href="http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html">YARN</a> のようなクラスターマネージャー利用しない場合のことを言います。</p>
+<div class="section" id="single">
+<span id="single"></span><h3>Single ノードでのトレーニング<a class="headerlink" href="#single" title="Permalink to this headline">¶</a></h3>
+<p>１つのプロセスがローンチされます。
+例として、
+<a class="reference external" href="http://www.cs.toronto.edu/~kriz/cifar.html">CIFAR-10</a> データセットを利用して
+<a class="reference external" href="http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks">CNN モデル</a> をトレーニングさせます。
+ハイパーパラメーターは、<a class="reference external" href="https://code.google.com/p/cuda-convnet/">cuda-convnet</a> に基づいて設定されてあります。
+詳細は、<a class="reference external" href="cnn.html">CNN サンプル</a> のページをご覧ください。</p>
+<div class="section" id="">
+<span id="id3"></span><h4>データと、ジョブ設定<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<p>データセットのダウンロードと、Triaing や Test のためのデータシャードの生成は次のように行います。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">examples</span><span class="o">/</span><span class="n">cifar10</span><span class="o">/</span>
+<span class="n">cp</span> <span class="n">Makefile</span><span class="o">.</span><span class="n">example</span> <span class="n">Makefile</span>
+<span class="n">make</span> <span class="n">download</span>
+<span class="n">make</span> <span class="n">create</span>
+</pre></div>
+</div>
+<p>Training と Test データセットは、それぞれ <em>cifar10-train-shard</em>
+と <em>cifar10-test-shard</em> フォルダーに作られます。　すべての画像の特徴平均を記述した <em>image_mean.bin</em> ファイルも作成されます。</p>
+<p>CNN モデルのトレーニングに必要なソースコードはすべてSINGAに組み込まれています。コードを追加する必要はありません。
+ジョブ設定ファイル (<em>job.conf</em>) を指定して、スクリプト(<em>../../bin/singa-run.sh</em>) を実行します。
+SINGAのコードを変更、または追加する時は、<a class="reference external" href="programming-guide.html">プログラミングガイド</a>をご覧ください。</p>
+</div>
+<div class="section" id="">
+<span id="id4"></span><h4>並列化なしのトレーニング<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<p>Cluster Topology のデフォルト値は、１つの worker と　１つの server となっています。
+データとニューラルネットの並列化はされません。</p>
+<p>トレーニングを開始するには次のスクリプトを実行します。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># goto top level folder</span>
+<span class="n">cd</span> <span class="o">../../</span>
+<span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">singa</span><span class="o">-</span><span class="n">run</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">conf</span> <span class="n">examples</span><span class="o">/</span><span class="n">cifar10</span><span class="o">/</span><span class="n">job</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>現在、起動中のジョブのリストを表示するには</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">singa</span><span class="o">-</span><span class="n">console</span><span class="o">.</span><span class="n">sh</span> <span class="nb">list</span>
+
+<span class="n">JOB</span> <span class="n">ID</span>    <span class="o">|</span><span class="n">NUM</span> <span class="n">PROCS</span>
+<span class="o">----------|-----------</span>
+<span class="mi">24</span>        <span class="o">|</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>ジョブの強制終了をするには</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">singa</span><span class="o">-</span><span class="n">console</span><span class="o">.</span><span class="n">sh</span> <span class="n">kill</span> <span class="n">JOB_ID</span>
+</pre></div>
+</div>
+<p>ログとジョブの情報は <em>/tmp/singa-log</em> フォルダーに保存されます。
+<em>conf/singa.conf</em> ファイルの <code class="docutils literal"><span class="pre">log-dir</span></code>で変更可能です。</p>
+</div>
+<div class="section" id="">
+<span id="id5"></span><h4>非同期、並列トレーニング<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># job.conf</span>
+<span class="o">...</span>
+<span class="n">cluster</span> <span class="p">{</span>
+  <span class="n">nworker_groups</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="n">nworkers_per_procs</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="n">workspace</span><span class="p">:</span> <span class="s2">&quot;examples/cifar10/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>複数の worker グループをローンチすることによって、
+In SINGA, <a class="reference external" href="architecture.html">非同期トレーニング</a> を実行することが出来ます。
+例えば、<em>job.conf</em> を上記のように変更します。
+デフォルトでは、１つの worker グループが１つの worker を持つよう設定されています。
+上記の設定では、１つのプロセスに２つの worker が設定されているので、２つの worker グループが同じプロセスとして実行されます。
+結果、インメモリ <a class="reference external" href="frameworks.html">Downpour</a> トレーニングフレームワークとして、実行されます。</p>
+<p>ユーザーは、データの分散を気にする必要はありません。
+ランダムオフセットに従い、各 worker グループに、データが振り分けられます。
+各 worker は異なるデータパーティションを担当します。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># job.conf</span>
+<span class="o">...</span>
+<span class="n">neuralnet</span> <span class="p">{</span>
+  <span class="n">layer</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="n">sharddata_conf</span> <span class="p">{</span>
+      <span class="n">random_skip</span><span class="p">:</span> <span class="mi">5000</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>スクリプト実行:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">singa</span><span class="o">-</span><span class="n">run</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">conf</span> <span class="n">examples</span><span class="o">/</span><span class="n">cifar10</span><span class="o">/</span><span class="n">job</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="">
+<span id="id6"></span><h4>同期、並列トレーニング<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># job.conf</span>
+<span class="o">...</span>
+<span class="n">cluster</span> <span class="p">{</span>
+  <span class="n">nworkers_per_group</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="n">nworkers_per_procs</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="n">workspace</span><span class="p">:</span> <span class="s2">&quot;examples/cifar10/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>１つのworkerグループとして複数のworkerをローンチすることで <a class="reference external" href="architecture.html">同期トレーニング</a>を実行することが出来ます。
+例えば、<em>job.conf</em> ファイルを上記のように変更します。
+上記の設定では、１つの worker グループに２つの worker が設定されました。
+worker 達はグループ内で同期します。
+これは、インメモリ <a class="reference external" href="frameworks.html">sandblaster</a> として実行されます。
+モデルは２つのworkerに分割されます。各レイヤーが２つのworkerに振り分けられます。
+振り分けられたレイヤーはオリジナルのレイヤーと機能は同じですが、特徴インスタンスの数が <code class="docutils literal"><span class="pre">B/g</span></code> になります。
+ここで、<code class="docutils literal"><span class="pre">B</span></code>はミニバッチのインスタンスの数で、<code class="docutils literal"><span class="pre">g</span></code>はグループ内の worker の数です。
+<a class="reference external" href="neural-net.html">別のスキーム</a> を利用したレイヤー（ニューラルネットワーク）パーティション方法もあります。</p>
+<p>他の設定はすべて「並列化なし」の場合と同じです。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">singa</span><span class="o">-</span><span class="n">run</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">conf</span> <span class="n">examples</span><span class="o">/</span><span class="n">cifar10</span><span class="o">/</span><span class="n">job</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="">
+<span id="id7"></span><h3>クラスタ上でのトレーニング<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<p>クラスター設定を変更して、上記トレーニングフレームワークの拡張を行います。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nworker_per_procs</span><span class="p">:</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>すべてのプロセスは１つのworkerスレッドを生成します。
+結果、worker 達は異なるプロセス（ノード）内で生成されます。
+クラスター内のノードを特定するには、<em>SINGA_ROOT/conf/</em> の <em>hostfile</em> の設定が必要です。</p>
+<p>e.g.,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">logbase</span><span class="o">-</span><span class="n">a01</span>
+<span class="n">logbase</span><span class="o">-</span><span class="n">a02</span>
+</pre></div>
+</div>
+<p>zookeeper location も設定する必要があります。</p>
+<p>e.g.,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#conf/singa.conf</span>
+<span class="n">zookeeper_host</span><span class="p">:</span> <span class="s2">&quot;logbase-a01&quot;</span>
+</pre></div>
+</div>
+<p>スクリプトの実行は「Single ノード トレーニング」と同じです。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">singa</span><span class="o">-</span><span class="n">run</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">conf</span> <span class="n">examples</span><span class="o">/</span><span class="n">cifar10</span><span class="o">/</span><span class="n">job</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="mesos">
+<span id="mesos"></span><h2>Mesos　での実行<a class="headerlink" href="#mesos" title="Permalink to this headline">¶</a></h2>
+<p><em>working</em>...</p>
+</div>
+<div class="section" id="">
+<span id="id8"></span><h2>次へ<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<p>SINGAのコード変更や追加に関する詳細は、<a class="reference external" href="programming-guide.html">プログラミングガイド</a> をご覧ください。</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 The Apache Software Foundation. All rights reserved. Apache Singa, Apache, the Apache feather logo, and the Apache Singa project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+
+<div class="rst-versions shift-up" data-toggle="rst-versions" role="note" aria-label="versions">
+    <img src="../_static/apache.jpg">
+
+    <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: 0.3.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Languages</dt>
+            <dd><a href="../../en/index.html">English</a></dd>
+            <dd><a href="../../zh/index.html">中文</a></dd>
+            <dd><a href="../../jp/index.html">日本語</a></dd>
+            <dd><a href="../../kr/index.html">한국어</a></dd>
+        </dl>
+    </div>
+</div>
+
+<a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+         src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+         alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

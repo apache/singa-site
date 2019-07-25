@@ -1,0 +1,357 @@
+
+ 
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>初始化器(Initializer) &mdash; incubator-singa 2.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="损失(Loss)" href="loss.html" />
+    <link rel="prev" title="前馈网络" href="net.html" />
+     <link href="../_static/style.css" rel="stylesheet" type="text/css">
+     <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+     <style>
+   .fa:hover {
+       opacity: 0.7;
+   }
+   .fab:hover {
+       opacity: 0.7;
+   }
+     </style>
+ 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">文档</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_stack.html">软件架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device.html">设备(Device)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensor.html">张量(Tensor)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layer.html">层(Layer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net.html">前馈网络</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">初始化器(Initializer)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#python-api">Python API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#singa-initializer-uniform-t-fan-in-0-fan-out-0">singa.initializer.uniform(t, fan_in=0, fan_out=0)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#singa-initializer-gaussian-t-fan-in-0-fan-out-0">singa.initializer.gaussian(t, fan_in=0, fan_out=0)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="loss.html">损失(Loss)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metric.html">度量(Metric)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimizer.html">优化器(Optimizer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">数据(Data)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_tool.html">图像工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snapshot.html">Snapshot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_zoo/index.html">模型库</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">下载 SINGA</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">开发时间表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">如何贡献给 SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">如何贡献代码</a></li>
+</ul>
+<p class="caption"><span class="caption-text">社区</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">源代码库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">项目邮件列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">问题追踪</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">SINGA团队</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">incubator-singa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">文档</a> &raquo;</li>
+        
+      <li>初始化器(Initializer)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+--><div class="section" id="initializer">
+<h1>初始化器(Initializer)<a class="headerlink" href="#initializer" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="python-api">
+<h2>Python API<a class="headerlink" href="#python-api" title="Permalink to this headline">¶</a></h2>
+<p>普遍使用的参数初始化方法（tensor对象）。</p>
+<p>示例用法：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">tensor</span>
+<span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">initializer</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">initializer</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># use both fan_in and fan_out</span>
+<span class="n">initializer</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># use only fan_in</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<div class="section" id="singa-initializer-uniform-t-fan-in-0-fan-out-0">
+<h3>singa.initializer.uniform(t, fan_in=0, fan_out=0)<a class="headerlink" href="#singa-initializer-uniform-t-fan-in-0-fan-out-0" title="Permalink to this headline">¶</a></h3>
+<p>按照指定均匀分布对输入tensor初始化。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>fan_in (int)</strong> – 对于卷积层权重tensor，fan_in = nb_channel * kh * kw;对于全连接层，fan_in = input_feature_length</p></li>
+<li><p><strong>fan_out (int)</strong> – 对于卷积层权重tensor，fan_out = nb_filter * kh * kw;对于全连接层，fan_out = output_feature_length</p></li>
+</ul>
+<p><strong>参考文献</strong> [Bengio and Glorot 2010]： Understanding the difficulty of training deep feedforward neuralnetworks.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="singa-initializer-gaussian-t-fan-in-0-fan-out-0">
+<h3>singa.initializer.gaussian(t, fan_in=0, fan_out=0)<a class="headerlink" href="#singa-initializer-gaussian-t-fan-in-0-fan-out-0" title="Permalink to this headline">¶</a></h3>
+<p>按照指定高斯分布对输入tensor初始化。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>fan_in (int)</strong> – 对于卷积层权重tensor，fan_in = nb_channel * kh * kw;对于全连接层，fan_in = input_feature_length</p></li>
+<li><p><strong>fan_out (int)</strong> – 对于卷积层权重tensor，fan_out = nb_filter * kh * kw;对于全连接层，fan_out = output_feature_length</p></li>
+</ul>
+<p><strong>参考文献</strong> Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun: Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification</p>
+<hr class="docutils" />
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="loss.html" class="btn btn-neutral float-right" title="损失(Loss)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="net.html" class="btn btn-neutral float-left" title="前馈网络" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ 
+ <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+   <span class="rst-current-version" data-toggle="rst-current-version">
+     <span class="fa fa-book"> incubator-singa </span>
+     v: latest
+     <span class="fa fa-caret-down"></span>
+   </span>
+   <div class="rst-other-versions">
+       <dl>
+           <dt>Languages</dt>
+           <dd><a href="../../index.html">English</a></dd>
+           <dd><a href=".././index.html">中文</a></dd>
+       </dl>
+       <dl>
+           <dt>Versions</dt>
+           <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+           <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+       </dl>
+ 
+   </div>
+   <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
+   <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>
+   <a href="http://www.apache.org/foundation/thanks.html" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Thanks</a>
+   <a href="http://www.apache.org/foundation/sponsorship.html" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">Sponsorship</a>
+   <a href="http://www.apache.org/licenses/" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">License</a>
+   <br>
+   <a href="https://github.com/apache/incubator-singa" class="fa fa-github" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a> 
+   <a href="https://www.linkedin.com/groups/13550034" class="fa fa-linkedin" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://twitter.com/ApacheSinga" class="fa fa-twitter" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://www.facebook.com/Apache-SINGA-347284219056544/" class="fa fa-facebook" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://www.researchgate.net/project/Apache-SINGA" class="fab fa-researchgate" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+ 
+ </div>
+ 
+  <a href="https://github.com/apache/incubator-singa">
+     <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+         src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+         alt="Fork me on GitHub">
+ </a>
+ 
+  
+ 
+
+</body>
+</html>

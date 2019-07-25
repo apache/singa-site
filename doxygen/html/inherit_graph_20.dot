@@ -1,0 +1,7 @@
+digraph "Graphical Class Hierarchy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="singa::lang::_Opencl",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structsinga_1_1lang_1_1__Opencl.html",tooltip="To implement function using opencl libraries. "];
+}

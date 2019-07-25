@@ -1,0 +1,488 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Autograd in Singa &mdash; incubator-singa 1.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data" href="data.html" />
+    <link rel="prev" title="Optimizer" href="optimizer.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+    <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <style>
+	.fa:hover {
+	    opacity: 0.7;
+	}
+	.fab:hover {
+	    opacity: 0.7;
+	}
+    </style>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_stack.html">Software Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layer.html">Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="net.html">FeedForward Net</a></li>
+<li class="toctree-l2"><a class="reference internal" href="initializer.html">Initializer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loss.html">Loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metric.html">Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimizer.html">Optimizer</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Autograd in Singa</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#relevant-modules">Relevant Modules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tensor">Tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#operation">Operation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#layer">Layer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#operation-only">Operation only</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#operation-layer">Operation + Layer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_tool.html">Image Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snapshot.html">Snapshot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="converter.html">Caffe Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-to-release.html">How to prepare a release</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">Source Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">incubator-singa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Documentation</a> &raquo;</li>
+        
+      <li>Autograd in Singa</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">licenses</span><span class="o">/</span><span class="n">LICENSE</span><span class="o">-</span><span class="mf">2.0</span>
+
+<span class="n">Unless</span> <span class="n">required</span> <span class="n">by</span> <span class="n">applicable</span> <span class="n">law</span> <span class="ow">or</span> <span class="n">agreed</span> <span class="n">to</span> <span class="ow">in</span> <span class="n">writing</span><span class="p">,</span>
+<span class="n">software</span> <span class="n">distributed</span> <span class="n">under</span> <span class="n">the</span> <span class="n">License</span> <span class="ow">is</span> <span class="n">distributed</span> <span class="n">on</span> <span class="n">an</span>
+<span class="s2">&quot;AS IS&quot;</span> <span class="n">BASIS</span><span class="p">,</span> <span class="n">WITHOUT</span> <span class="n">WARRANTIES</span> <span class="n">OR</span> <span class="n">CONDITIONS</span> <span class="n">OF</span> <span class="n">ANY</span>
+<span class="n">KIND</span><span class="p">,</span> <span class="n">either</span> <span class="n">express</span> <span class="ow">or</span> <span class="n">implied</span><span class="o">.</span>  <span class="n">See</span> <span class="n">the</span> <span class="n">License</span> <span class="k">for</span> <span class="n">the</span>
+<span class="n">specific</span> <span class="n">language</span> <span class="n">governing</span> <span class="n">permissions</span> <span class="ow">and</span> <span class="n">limitations</span>
+<span class="n">under</span> <span class="n">the</span> <span class="n">License</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>–&gt;</p>
+<div class="section" id="autograd-in-singa">
+<span id="autograd-in-singa"></span><h1>Autograd in Singa<a class="headerlink" href="#autograd-in-singa" title="Permalink to this headline">¶</a></h1>
+<p>There are two typical ways to implement autograd, via symbolic differentiation like <a class="reference external" href="http://deeplearning.net/software/theano/index.html">Theano</a> or reverse differentiation like <a class="reference external" href="https://pytorch.org/docs/stable/notes/autograd.html">Pytorch</a>. Singa follows Pytorch way, which records the computation graph and apply the backward propagation automatically after forward propagation. The autograd algorithm is explained in details <a class="reference external" href="https://pytorch.org/docs/stable/notes/autograd.html">here</a>. We explain the relevant modules in Singa and give an example to illustrate the usage.</p>
+<div class="section" id="relevant-modules">
+<span id="relevant-modules"></span><h2>Relevant Modules<a class="headerlink" href="#relevant-modules" title="Permalink to this headline">¶</a></h2>
+<p>There are three classes involved in autograd, namely  <code class="docutils literal notranslate"><span class="pre">singa.tensor.Tensor</span></code> , <code class="docutils literal notranslate"><span class="pre">singa.autograd.Operation</span></code>, and <code class="docutils literal notranslate"><span class="pre">singa.autograd.Layer</span></code>. In the rest of this article, we use tensor, operation and layer to refer to an instance of the respective class.</p>
+<div class="section" id="tensor">
+<span id="tensor"></span><h3>Tensor<a class="headerlink" href="#tensor" title="Permalink to this headline">¶</a></h3>
+<p>Three attributes of Tensor are used by autograd,</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">.creator</span></code> is an <code class="docutils literal notranslate"><span class="pre">Operation</span></code> instance. It records the operation that generates the Tensor instance.</li>
+<li><code class="docutils literal notranslate"><span class="pre">.requires_grad</span></code> is a boolean variable. It is used to indicate that the autograd algorithm needs to compute the gradient of the tensor (i.e., the owner). For example, during backpropagation, the gradients of the tensors for the weight matrix of a linear layer and the feature maps of a convolution layer (not the bottom layer) should be computed.</li>
+<li><code class="docutils literal notranslate"><span class="pre">.stores_grad</span></code> is a boolean variable. It is used to indicate that the gradient of the owner tensor should be stored and output by the backward function. For example, the gradient of the feature maps is computed during backpropagation, but is not included in the output of the backward function.</li>
+</ul>
+<p>Programmers can change <code class="docutils literal notranslate"><span class="pre">requires_grad</span></code> and <code class="docutils literal notranslate"><span class="pre">stores_grad</span></code> of a Tensor instance. For example, if later is set to True, the corresponding gradient is included in the output of the backward function. It should be noted that if <code class="docutils literal notranslate"><span class="pre">stores_grad</span></code> is True, then <code class="docutils literal notranslate"><span class="pre">requires_grad</span></code> must be true, not vice versa.</p>
+</div>
+<div class="section" id="operation">
+<span id="operation"></span><h3>Operation<a class="headerlink" href="#operation" title="Permalink to this headline">¶</a></h3>
+<p>It takes one or more <code class="docutils literal notranslate"><span class="pre">Tensor</span></code> instances as input, and then outputs one or more <code class="docutils literal notranslate"><span class="pre">Tensor</span></code> instances. For example, ReLU can be implemented as a specific Operation subclass. When an <code class="docutils literal notranslate"><span class="pre">Operation</span></code> instance is called (after instantiation), the following two steps are executed:</p>
+<ol class="simple">
+<li>record the source operations, i.e., the <code class="docutils literal notranslate"><span class="pre">creator</span></code>s of the input tensors.    2. do calculation by calling member function <code class="docutils literal notranslate"><span class="pre">.forward()</span></code></li>
+</ol>
+<p>There are two member functions for forwarding and backwarding, i.e., <code class="docutils literal notranslate"><span class="pre">.forward()</span></code> and <code class="docutils literal notranslate"><span class="pre">.backward()</span></code>. They take <code class="docutils literal notranslate"><span class="pre">Tensor.data</span></code> as inputs (the type is <code class="docutils literal notranslate"><span class="pre">CTensor</span></code>), and output <code class="docutils literal notranslate"><span class="pre">Ctensor</span></code>s. To add a specific operation, subclass <code class="docutils literal notranslate"><span class="pre">operation</span></code> should implement their own <code class="docutils literal notranslate"><span class="pre">.forward()</span></code> and <code class="docutils literal notranslate"><span class="pre">.backward()</span></code>. The <code class="docutils literal notranslate"><span class="pre">backward()</span></code> function is called by the <code class="docutils literal notranslate"><span class="pre">backward()</span></code> function of autograd automatically during backward propogation to compute the gradients of inputs (according to the <code class="docutils literal notranslate"><span class="pre">require_grad</span></code> field).</p>
+</div>
+<div class="section" id="layer">
+<span id="layer"></span><h3>Layer<a class="headerlink" href="#layer" title="Permalink to this headline">¶</a></h3>
+<p>For those operations that require parameters, we package them into a new class, <code class="docutils literal notranslate"><span class="pre">Layer</span></code>. For example, convolution operation is wrapped into a convolution layer. <code class="docutils literal notranslate"><span class="pre">Layer</span></code> manages (stores) the parameters and calls the corresponding <code class="docutils literal notranslate"><span class="pre">Operation</span></code>s to implement the transformation.</p>
+</div>
+</div>
+<div class="section" id="examples">
+<span id="examples"></span><h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>Multiple examples are provided in the <a class="reference external" href="https://github.com/apache/incubator-singa/tree/master/examples/autograd">example folder</a>. We explain two representative examples here.</p>
+<div class="section" id="operation-only">
+<span id="operation-only"></span><h3>Operation only<a class="headerlink" href="#operation-only" title="Permalink to this headline">¶</a></h3>
+<p>The following codes implement a MLP model using only Operation instances (no Layer instances).</p>
+<div class="section" id="import-packages">
+<span id="import-packages"></span><h4>Import packages<a class="headerlink" href="#import-packages" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa.tensor</span> <span class="k">import</span> <span class="n">Tensor</span>
+<span class="kn">from</span> <span class="nn">singa</span> <span class="k">import</span> <span class="n">autograd</span>
+<span class="kn">from</span> <span class="nn">singa</span> <span class="k">import</span> <span class="n">opt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-weight-matrix-and-bias-vector">
+<span id="create-weight-matrix-and-bias-vector"></span><h4>Create weight matrix and bias vector<a class="headerlink" href="#create-weight-matrix-and-bias-vector" title="Permalink to this headline">¶</a></h4>
+<p>The parameter tensors are created with both <code class="docutils literal notranslate"><span class="pre">requires_grad</span></code> and <code class="docutils literal notranslate"><span class="pre">stores_grad</span></code> set to True.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">w0</span> <span class="o">=</span> <span class="n">Tensor</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">stores_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">w0</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">b0</span> <span class="o">=</span> <span class="n">Tensor</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">stores_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">b0</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">w1</span> <span class="o">=</span> <span class="n">Tensor</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">stores_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">w1</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">b1</span> <span class="o">=</span> <span class="n">Tensor</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">stores_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">b1</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="training">
+<span id="training"></span><h4>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">Tensor</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># data matrix</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">Tensor</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">label</span><span class="p">)</span> <span class="c1"># label vector</span>
+<span class="n">autograd</span><span class="o">.</span><span class="n">training</span> <span class="o">=</span> <span class="kc">True</span>    <span class="c1"># for training</span>
+<span class="n">sgd</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>   <span class="c1"># optimizer</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">w0</span><span class="p">)</span> <span class="c1"># matrix multiplication</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">add_bias</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">b0</span><span class="p">)</span>    <span class="c1"># add the bias vector</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>            <span class="c1"># ReLU activation operation</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w1</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">add_bias</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">b1</span><span class="p">)</span>
+    
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">softmax_cross_entropy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">autograd</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">loss</span><span class="p">):</span>        
+        <span class="n">sgd</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="operation-layer">
+<span id="operation-layer"></span><h3>Operation + Layer<a class="headerlink" href="#operation-layer" title="Permalink to this headline">¶</a></h3>
+<p>The following <a class="reference external" href="https://github.com/apache/incubator-singa/blob/master/examples/autograd/mnist_cnn.py">example</a> implements a CNN model using layers provided by the autograd module.</p>
+<div class="section" id="create-the-layers">
+<span id="create-the-layers"></span><h4>Create the layers<a class="headerlink" href="#create-the-layers" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conv1</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">bn1</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">pooling1</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">conv21</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">conv22</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">bn2</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">linear</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">32</span> <span class="o">*</span> <span class="mi">28</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>    
+<span class="n">pooling2</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">AvgPool2d</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="define-the-forward-function">
+<span id="define-the-forward-function"></span><h4>Define the forward function<a class="headerlink" href="#define-the-forward-function" title="Permalink to this headline">¶</a></h4>
+<p>The operations in the forward pass will be recorded automatically for backward propagation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="c1"># x is the input data (a batch of images)</span>
+    <span class="c1"># t the the label vector (a batch of integers)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">conv1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>           <span class="c1"># Conv layer  </span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>   <span class="c1"># ReLU operation</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">bn1</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>             <span class="c1"># BN layer</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">pooling1</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>        <span class="c1"># Pooling Layer</span>
+    
+    <span class="c1"># two parallel convolution layers</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="n">conv21</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">y2</span> <span class="o">=</span> <span class="n">conv22</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># cat operation</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>           <span class="c1"># ReLU operation</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">bn2</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">pooling2</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="n">y</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>        <span class="c1"># flatten operation</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">linear</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>                  <span class="c1"># Linear layer</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">softmax_cross_entropy</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>  <span class="c1"># operation </span>
+    <span class="k">return</span> <span class="n">loss</span><span class="p">,</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="training">
+<span id="id1"></span><h4>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">autograd</span><span class="o">.</span><span class="n">training</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_number</span><span class="p">):</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">dev</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">x_train</span><span class="p">[</span>
+                               <span class="n">i</span> <span class="o">*</span> <span class="n">batch_sz</span><span class="p">:(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">batch_sz</span><span class="p">],</span> <span class="n">stores_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">targets</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">dev</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">y_train</span><span class="p">[</span>
+                                <span class="n">i</span> <span class="o">*</span> <span class="n">batch_sz</span><span class="p">:(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">batch_sz</span><span class="p">],</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">stores_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">loss</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">forward</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span> <span class="c1"># forward the net</span>
+    
+        <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">gp</span> <span class="ow">in</span> <span class="n">autograd</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">loss</span><span class="p">):</span>  <span class="c1"># auto backward</span>
+            <span class="n">sgd</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">gp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="data.html" class="btn btn-neutral float-right" title="Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="optimizer.html" class="btn btn-neutral" title="Optimizer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: latest
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+      <dl>
+          <dt>Languages</dt>
+          <dd><a href="../../en/index.html">English</a></dd>
+          <dd><a href="../../zh/index.html">中文</a></dd>
+      </dl>
+      <dl>
+          <dt>Versions</dt>
+          <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+          <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+      </dl>
+
+  </div>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.png" style="background-color:white;"> </a>
+
+  <a href="https://github.com/apache/incubator-singa" class="fa fa-github" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a> 
+  <a href="https://www.linkedin.com/groups/13550034" class="fa fa-linkedin" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://twitter.com/ApacheSinga" class="fa fa-twitter" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://www.facebook.com/Apache-SINGA-347284219056544/" class="fa fa-facebook" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://www.researchgate.net/project/Apache-SINGA" class="fab fa-researchgate" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+
+</div>
+
+ <a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+        alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

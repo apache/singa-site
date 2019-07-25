@@ -1,0 +1,802 @@
+
+ 
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>层(Layer) &mdash; incubator-singa 2.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="前馈网络" href="net.html" />
+    <link rel="prev" title="张量(Tensor)" href="tensor.html" />
+     <link href="../_static/style.css" rel="stylesheet" type="text/css">
+     <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+     <style>
+   .fa:hover {
+       opacity: 0.7;
+   }
+   .fab:hover {
+       opacity: 0.7;
+   }
+     </style>
+ 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">文档</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_stack.html">软件架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device.html">设备(Device)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensor.html">张量(Tensor)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">层(Layer)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#python-api">Python API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#singa-layer-engine-cudnn">singa.layer.engine = ‘cudnn’</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-layer-name-conf-none-kwargs">class singa.layer.Layer(name, conf=None, **kwargs)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-dummy-name-input-sample-shape-none">class singa.layer.Dummy(name, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-conv2d-name-nb-kernels-kernel-3-stride-1-border-mode-same-cudnn-prefer-fatest-data-format-nchw-use-bias-true-w-specs-none-b-specs-none-pad-none-input-sample-shape-none">class singa.layer.Conv2D(name, nb_kernels, kernel=3, stride=1, border_mode=’same’, cudnn_prefer=’fatest’, data_format=’NCHW’, use_bias=True, W_specs=None, b_specs=None, pad=None, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-conv1d-name-nb-kernels-kernel-3-stride-1-border-mode-same-cudnn-prefer-fatest-use-bias-true-w-specs-init-xavier-b-specs-init-constant-value-0-pad-none-input-sample-shape-none">class singa.layer.Conv1D(name, nb_kernels, kernel=3, stride=1, border_mode=’same’, cudnn_prefer=’fatest’, use_bias=True, W_specs={‘init’: ‘Xavier’}, b_specs={‘init’: ‘Constant’, ‘value’: 0}, pad=None, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-pooling2d-name-mode-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none">class singa.layer.Pooling2D(name, mode, kernel=3, stride=2, border_mode=’same’, pad=None, data_format=’NCHW’, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-maxpooling2d-name-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none">class singa.layer.MaxPooling2D(name, kernel=3, stride=2, border_mode=’same’, pad=None, data_format=’NCHW’, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-avgpooling2d-name-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none">class singa.layer.AvgPooling2D(name, kernel=3, stride=2, border_mode=’same’, pad=None, data_format=’NCHW’, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-maxpooling1d-name-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none">class singa.layer.MaxPooling1D(name, kernel=3, stride=2, border_mode=’same’, pad=None, data_format=’NCHW’, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-avgpooling1d-name-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none">class singa.layer.AvgPooling1D(name, kernel=3, stride=2, border_mode=’same’, pad=None, data_format=’NCHW’, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-batchnormalization-name-momentum-0-9-beta-specs-none-gamma-specs-none-input-sample-shape-none">class singa.layer.BatchNormalization(name, momentum=0.9, beta_specs=None, gamma_specs=None, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-lrn-name-size-5-alpha-1-beta-0-75-mode-cross-channel-k-1-input-sample-shape-none">class singa.layer.LRN(name, size=5, alpha=1, beta=0.75, mode=’cross_channel’, k=1, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-dense-name-num-output-use-bias-true-w-specs-none-b-specs-none-w-transpose-false-input-sample-shape-none">class singa.layer.Dense(name, num_output, use_bias=True, W_specs=None, b_specs=None, W_transpose=False, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-dropout-name-p-0-5-input-sample-shape-none">class singa.layer.Dropout(name, p=0.5, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-activation-name-mode-relu-input-sample-shape-none">class singa.layer.Activation(name, mode=’relu’, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-softmax-name-axis-1-input-sample-shape-none">class singa.layer.Softmax(name, axis=1, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-flatten-name-axis-1-input-sample-shape-none">class singa.layer.Flatten(name, axis=1, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-merge-name-input-sample-shape-none">class singa.layer.Merge(name, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-split-name-num-output-input-sample-shape-none">class singa.layer.Split(name, num_output, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-concat-name-axis-input-sample-shapes-none">class singa.layer.Concat(name, axis, input_sample_shapes=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-slice-name-axis-slice-point-input-sample-shape-none">class singa.layer.Slice(name, axis, slice_point, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-rnn-name-hidden-size-rnn-mode-lstm-dropout-0-0-num-stacks-1-input-mode-linear-bidirectional-false-param-specs-none-input-sample-shape-none">class singa.layer.RNN(name, hidden_size, rnn_mode=’lstm’, dropout=0.0, num_stacks=1, input_mode=’linear’, bidirectional=False, param_specs=None, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-lstm-name-hidden-size-dropout-0-0-num-stacks-1-input-mode-linear-bidirectional-false-param-specs-none-input-sample-shape-none">class singa.layer.LSTM(name, hidden_size, dropout=0.0, num_stacks=1, input_mode=’linear’, bidirectional=False, param_specs=None, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-singa-layer-gru-name-hidden-size-dropout-0-0-num-stacks-1-input-mode-linear-bidirectional-false-param-specs-none-input-sample-shape-none">class singa.layer.GRU(name, hidden_size, dropout=0.0, num_stacks=1, input_mode=’linear’, bidirectional=False, param_specs=None, input_sample_shape=None)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="net.html">前馈网络</a></li>
+<li class="toctree-l2"><a class="reference internal" href="initializer.html">初始化器(Initializer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loss.html">损失(Loss)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metric.html">度量(Metric)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimizer.html">优化器(Optimizer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">数据(Data)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_tool.html">图像工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snapshot.html">Snapshot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_zoo/index.html">模型库</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">下载 SINGA</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">开发时间表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">如何贡献给 SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">如何贡献代码</a></li>
+</ul>
+<p class="caption"><span class="caption-text">社区</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">源代码库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">项目邮件列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">问题追踪</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">SINGA团队</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">incubator-singa</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">文档</a> &raquo;</li>
+        
+      <li>层(Layer)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+--><div class="section" id="layer">
+<h1>层(Layer)<a class="headerlink" href="#layer" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="python-api">
+<h2>Python API<a class="headerlink" href="#python-api" title="Permalink to this headline">¶</a></h2>
+<p>Python层将C++层封装成更简单的API。</p>
+<p>示例用法：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">layer</span>
+<span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">tensor</span>
+<span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">device</span>
+
+<span class="n">layer</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="s1">&#39;cudnn&#39;</span>  <span class="c1"># to use cudnn layers</span>
+<span class="n">dev</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">create_cuda_gpu</span><span class="p">()</span>
+
+<span class="c1"># create a convolution layer</span>
+<span class="n">conv</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="s1">&#39;conv&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">input_sample_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">))</span>
+<span class="n">conv</span><span class="o">.</span><span class="n">to_device</span><span class="p">(</span><span class="n">dev</span><span class="p">)</span>  <span class="c1"># move the layer data onto a CudaGPU device</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span> <span class="n">dev</span><span class="p">)</span>
+<span class="n">x</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">conv</span><span class="o">.</span><span class="n">foward</span><span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">dy</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">()</span>
+<span class="n">dy</span><span class="o">.</span><span class="n">reset_like</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">dy</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="c1"># dp is a list of tensors for parameter gradients</span>
+<span class="n">dx</span><span class="p">,</span> <span class="n">dp</span> <span class="o">=</span> <span class="n">conv</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">kTrain</span><span class="p">,</span> <span class="n">dy</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<div class="section" id="singa-layer-engine-cudnn">
+<h3>singa.layer.engine = ‘cudnn’<a class="headerlink" href="#singa-layer-engine-cudnn" title="Permalink to this headline">¶</a></h3>
+<p>引擎（engine）是层标识符的前缀。
+这个值可能是[cudnn’，’singacpp’，’singacuda’，’singacl’]之一，分别用cudnn库，Cpp，Cuda和OpenCL实现。 例如，CudnnConvolution层由’cudnn_convolution’标识; ‘singacpp_convolution’用于卷积层; 有些层的实现只使用tensor函数，因此它们对底层设备是透明的。 对于这些层，它们将具有多个标识符，例如，singacpp_dropout，singacuda_dropout和singacl_dropout全都用于Dropout层。 此外，它还有一个额外的标识符’singa’，即’singa_dropout’也代表Dropout层。</p>
+<p>引擎是大小写敏感的。每个python层将会用引擎属性创建正确的层。</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-layer-name-conf-none-kwargs">
+<h3>class singa.layer.Layer(name, conf=None, **kwargs)<a class="headerlink" href="#class-singa-layer-layer-name-conf-none-kwargs" title="Permalink to this headline">¶</a></h3>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Python层的基类。
+典型地，层实例的生命周期包括：</p>
+<ol class="simple">
+<li><p>构造层没有input_sample_shapes，转到2;用input_sample_shapes构建层，转到3</p></li>
+<li><p>调用setup来创建参数并设置其他元字段</p></li>
+<li><p>调用前向传播或访问层成员</p></li>
+<li><p>调用后向传播并获取参数完成更新</p></li>
+</ol>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>name (str)</strong> – 层名</p></li>
+</ul>
+<hr class="docutils" />
+<div class="section" id="setup-in-shapes">
+<h4>setup(in_shapes)<a class="headerlink" href="#setup-in-shapes" title="Permalink to this headline">¶</a></h4>
+<p>调用C++setup函数创建参数并设置元数据。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>in_shapes</strong> – 如果层接受单个输入tensor，则in_shapes是指定输入tensor形状的单个元组; 如果该层接受多个输入tensor（例如，concatenation层），则in_shapes是元组的元组，每个元组对于一个输入tensor</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="caffe-layer">
+<h4>caffe_layer()<a class="headerlink" href="#caffe-layer" title="Permalink to this headline">¶</a></h4>
+<p>基于caffe层的配置创建一个SINGA层</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="get-output-sample-shape">
+<h4>get_output_sample_shape()<a class="headerlink" href="#get-output-sample-shape" title="Permalink to this headline">¶</a></h4>
+<p>在setup以获得输出样本的形状后被调用</p>
+<p><strong>返回值：</strong> 单个输出tensor的元组；如果该层具有多个输出，则为元组列表</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="param-names">
+<h4>param_names()<a class="headerlink" href="#param-names" title="Permalink to this headline">¶</a></h4>
+<p><strong>返回值：</strong> 字符串列表，每个值代表一个参数tensor的名称</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="param-values">
+<h4>param_values()<a class="headerlink" href="#param-values" title="Permalink to this headline">¶</a></h4>
+<p>返回参数值tensor。
+参数tesnor不作为层成员存储。由于层设备的更改，cpp tensor可能会移动到diff设备上，这会导致不一致。</p>
+<p><strong>返回值：</strong> tensor列表，每个参数对应列表中的一个</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="forward-flag-x">
+<h4>forward(flag, x)<a class="headerlink" href="#forward-flag-x" title="Permalink to this headline">¶</a></h4>
+<p>当前层的前向传播。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>flag</strong> – True (kTrain) for training (kEval); False for evaluating; other values for furture use.</p></li>
+<li><p><strong>x (Tensor or list<Tensor>)</strong> – an input tensor if the layer is connected from a single layer; a list of tensors if the layer is connected from multiple layers.</p></li>
+</ul>
+<p><strong>返回值：</strong> 如果该层被连接在一个单独的层则返回tensor；如果被连接到多个层，则返回一个tensor列表</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="backward-flag-dy">
+<h4>backward(flag, dy)<a class="headerlink" href="#backward-flag-dy" title="Permalink to this headline">¶</a></h4>
+<p>当前层的后向传播。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>flag (int)</strong> – 保留为以后使用</p></li>
+<li><p><strong>dy (Tensor or list<Tensor>)</strong> – 与目标损失相对应的梯度tensor</p></li>
+</ul>
+<p><strong>返回值：</strong> &lt;dx, &lt;dp1, dp2..&gt;&gt;，dx是输入x的梯度，dpi是第i个参数的梯度</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="to-device-device">
+<h4>to_device(device)<a class="headerlink" href="#to-device-device" title="Permalink to this headline">¶</a></h4>
+<p>将层状态tensor移至指定设备。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>device</strong> – swig转换的设备，由singa.device创建</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-dummy-name-input-sample-shape-none">
+<h3>class singa.layer.Dummy(name, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-dummy-name-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.layer.Layer</span></code></p>
+<p>一个虚拟层，仅用于向前/向后传递数据（输入/输出是单个tensor）。</p>
+<div class="section" id="id1">
+<h4>forward(flag, x)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p><strong>返回值：</strong> 输入x</p>
+</div>
+<div class="section" id="backward-falg-dy">
+<h4>backward(falg, dy)<a class="headerlink" href="#backward-falg-dy" title="Permalink to this headline">¶</a></h4>
+<p><strong>返回值：</strong> dy，[]</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-conv2d-name-nb-kernels-kernel-3-stride-1-border-mode-same-cudnn-prefer-fatest-data-format-nchw-use-bias-true-w-specs-none-b-specs-none-pad-none-input-sample-shape-none">
+<h3>class singa.layer.Conv2D(name, nb_kernels, kernel=3, stride=1, border_mode=’same’, cudnn_prefer=’fatest’, data_format=’NCHW’, use_bias=True, W_specs=None, b_specs=None, pad=None, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-conv2d-name-nb-kernels-kernel-3-stride-1-border-mode-same-cudnn-prefer-fatest-data-format-nchw-use-bias-true-w-specs-none-b-specs-none-pad-none-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.layer.Layer</span></code></p>
+<p>创建一个层做2D卷积。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>nb_kernels (int)</strong> – 输入tensor的通道（核）数</p></li>
+<li><p><strong>kernel</strong> – 一个或一对整型数表示核的高和宽</p></li>
+<li><p><strong>stride</strong> – 一个或一对整型数表示步长的高和宽</p></li>
+<li><p><strong>border_mode (string)</strong> – 填充模式，不区分大小写，‘valid’ -&gt; 在高和宽长度上补0 ‘same’ -&gt; 填充核一半（下取整）数目的0，核必须是奇数</p></li>
+<li><p><strong>cudnn_prefer (string)</strong> – 偏好的cudnn卷积算法，可以是‘fatest’, ‘autotune’, ‘limited_workspace’和‘no_workspace’</p></li>
+<li><p><strong>data_format (string)</strong> – ‘NCHW’或‘NHWC’</p></li>
+<li><p><strong>use_bias (bool)</strong> – True或False</p></li>
+<li><p><strong>pad</strong> – 一个或一对整型数表示填充的高和宽</p></li>
+<li><p><strong>W_specs (dict)</strong> – 用于指定权重矩阵的规格，字段包括代表参数名称的‘name’，代表学习速率乘数的’lr_mult，代表权重衰减乘数的’’decay_mult’，代表初始化方法的’init’，其可以是’gaussian’，’uniform’，’ xavier’，相应的初始化方法为’’’std’，’mean’，’high’，’low’。TODO（wangwei）’clamp’为渐变约束，value为标量，’regularizer’为正规化，目前支持’l2’</p></li>
+<li><p><strong>b_specs (dict)</strong> – 偏移向量的超参数，同W_specs类似</p></li>
+<li><p><strong>name (string)</strong> – 层名</p></li>
+<li><p><strong>input_sample_shape</strong> – 用于输入tensor形状的三元组，例如（通道，高度，宽度）或（高度，宽度，通道）</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-conv1d-name-nb-kernels-kernel-3-stride-1-border-mode-same-cudnn-prefer-fatest-use-bias-true-w-specs-init-xavier-b-specs-init-constant-value-0-pad-none-input-sample-shape-none">
+<h3>class singa.layer.Conv1D(name, nb_kernels, kernel=3, stride=1, border_mode=’same’, cudnn_prefer=’fatest’, use_bias=True, W_specs={‘init’: ‘Xavier’}, b_specs={‘init’: ‘Constant’, ‘value’: 0}, pad=None, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-conv1d-name-nb-kernels-kernel-3-stride-1-border-mode-same-cudnn-prefer-fatest-use-bias-true-w-specs-init-xavier-b-specs-init-constant-value-0-pad-none-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.layer.Conv2D</span></code></p>
+<p>构建1D卷积层。
+大部分参数与Conv2D的参数相同，除了核，步长，填充值，这是一个标量而不是元组。 input_sample_shape是一个具有单个输入特征长度值的元组。</p>
+<div class="section" id="id2">
+<h4>get_output_sample_shape()<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-pooling2d-name-mode-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none">
+<h3>class singa.layer.Pooling2D(name, mode, kernel=3, stride=2, border_mode=’same’, pad=None, data_format=’NCHW’, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-pooling2d-name-mode-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.layer.Layer</span></code></p>
+<p>2D池化层进行最大或平均池化。
+所有的参数都与Conv2D相同，除了下面的参数。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>mode</strong> – 池化模式，model_pb2.PoolingConf.MAX或model_pb2.PoolingConf.AVE</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-maxpooling2d-name-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none">
+<h3>class singa.layer.MaxPooling2D(name, kernel=3, stride=2, border_mode=’same’, pad=None, data_format=’NCHW’, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-maxpooling2d-name-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类: <code class="docutils literal notranslate"><span class="pre">singa.layer.Pooling2D</span></code></p>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-avgpooling2d-name-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none">
+<h3>class singa.layer.AvgPooling2D(name, kernel=3, stride=2, border_mode=’same’, pad=None, data_format=’NCHW’, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-avgpooling2d-name-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类: <code class="docutils literal notranslate"><span class="pre">singa.layer.Pooling2D</span></code></p>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-maxpooling1d-name-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none">
+<h3>class singa.layer.MaxPooling1D(name, kernel=3, stride=2, border_mode=’same’, pad=None, data_format=’NCHW’, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-maxpooling1d-name-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类: <code class="docutils literal notranslate"><span class="pre">singa.layer.MaxPooling2D</span></code></p>
+<p>get_output_sample_shape()</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-avgpooling1d-name-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none">
+<h3>class singa.layer.AvgPooling1D(name, kernel=3, stride=2, border_mode=’same’, pad=None, data_format=’NCHW’, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-avgpooling1d-name-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类: <code class="docutils literal notranslate"><span class="pre">singa.layer.AvgPooling2D</span></code></p>
+<p>get_output_sample_shape()</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-batchnormalization-name-momentum-0-9-beta-specs-none-gamma-specs-none-input-sample-shape-none">
+<h3>class singa.layer.BatchNormalization(name, momentum=0.9, beta_specs=None, gamma_specs=None, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-batchnormalization-name-momentum-0-9-beta-specs-none-gamma-specs-none-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.layer.Layer</span></code></p>
+<p>批量正则化。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>momentum (float)</strong> – 用于运行的均值和方差</p></li>
+<li><p><strong>beta_specs (dict)</strong> – 字典，包括beta参数的字段：’name’参数名称’；lr_mult’学习速率乘数；’decay_mult’权重衰减乘数；’init’初始化方法；可以是’gaussian’，’uniform’和’xavier’，’std’，’mean’，’high’，’low’表示相应初始化方法；’clamp’表示梯度约束，值是标量；’regularizer’用于正则化，目前支持’l2’</p></li>
+<li><p><strong>gamma_specs (dict)</strong> – 同beta_specs类似, 但用于gamma参数.</p></li>
+<li><p><strong>name (string)</strong> – 层名</p></li>
+<li><p><strong>input_sample_shape (tuple)</strong> – 整型数，至少一个</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-lrn-name-size-5-alpha-1-beta-0-75-mode-cross-channel-k-1-input-sample-shape-none">
+<h3>class singa.layer.LRN(name, size=5, alpha=1, beta=0.75, mode=’cross_channel’, k=1, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-lrn-name-size-5-alpha-1-beta-0-75-mode-cross-channel-k-1-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.layer.Layer</span></code></p>
+<p>局部响应归一化。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>size (int)</strong> – 用于归一化的通道数.</p></li>
+<li><p><strong>mode (string)</strong> – ‘cross_channel’</p></li>
+<li><p><strong>input_sample_shape (tuple)</strong> – 3维元组，(channel, height, width)</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-dense-name-num-output-use-bias-true-w-specs-none-b-specs-none-w-transpose-false-input-sample-shape-none">
+<h3>class singa.layer.Dense(name, num_output, use_bias=True, W_specs=None, b_specs=None, W_transpose=False, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-dense-name-num-output-use-bias-true-w-specs-none-b-specs-none-w-transpose-false-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.layer.Layer</span></code></p>
+<p>进行线性或放射变换，也被叫做内积或全连接层。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>num_output (int)</strong> – 输出特征长度</p></li>
+<li><p><strong>use_bias (bool)</strong> – 转换后的特征向量是否加上偏移向量</p></li>
+<li><p><strong>W_specs (dict)</strong> – 包含权值矩阵的字段：’name’参数名称’；lr_mult’学习速率乘数；’decay_mult’权重衰减乘数；’init’初始化方法；可以是’gaussian’，’uniform’和’xavier’，’std’，’mean’，’high’，’low’表示相应初始化方法；’clamp’表示梯度约束，值是标量；’regularizer’用于正则化，目前支持’l2’</p></li>
+<li><p><strong>b_specs (dict)</strong> – 偏移向量的字段, 同W_specs类似</p></li>
+<li><p><strong>W_transpose (bool)</strong> – 如果为真，输出为x*W.T+b</p></li>
+<li><p><strong>input_sample_shape (tuple)</strong> – 输入特征长度</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-dropout-name-p-0-5-input-sample-shape-none">
+<h3>class singa.layer.Dropout(name, p=0.5, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-dropout-name-p-0-5-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.layer.Layer</span></code></p>
+<p>Dropout层</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>p (float)</strong> – 随机丢掉一个元素（即将其中设为0）的概率</p></li>
+<li><p><strong>name (string)</strong> – 层名</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-activation-name-mode-relu-input-sample-shape-none">
+<h3>class singa.layer.Activation(name, mode=’relu’, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-activation-name-mode-relu-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.layer.Layer</span></code></p>
+<p>激励层</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>name (string)</strong> – 层名</p></li>
+<li><p><strong>mode (string)</strong> – ‘relu’, ‘sigmoid’或 ‘tanh’</p></li>
+<li><p><strong>input_sample_shape (tuple)</strong> – 单个样本的形状</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-softmax-name-axis-1-input-sample-shape-none">
+<h3>class singa.layer.Softmax(name, axis=1, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-softmax-name-axis-1-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.layer.Layer</span></code></p>
+<p>采用SoftMax。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>axis (int)</strong> – 对[axis, -1)的数据逐个进行SoftMax</p></li>
+<li><p><strong>input_sample_shape (tuple)</strong> – 单个样本的形状</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-flatten-name-axis-1-input-sample-shape-none">
+<h3>class singa.layer.Flatten(name, axis=1, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-flatten-name-axis-1-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.layer.Layer</span></code></p>
+<p>将输入tensor重塑为一个矩阵。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>axis (int)</strong> – 根据指定维度将输入重塑为矩阵，[0,axis)作为行，[axis, -1)作为列</p></li>
+<li><p><strong>input_sample_shape (tuple)</strong> – 单个样本的形状</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-merge-name-input-sample-shape-none">
+<h3>class singa.layer.Merge(name, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-merge-name-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.layer.Layer</span></code></p>
+<p>对所有输入tensor求和。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>input_sample_shape</strong> – 输入样本的形状。所有样本的形状应该一致。</p></li>
+</ul>
+<div class="section" id="setup-in-shape">
+<h4>setup(in_shape)<a class="headerlink" href="#setup-in-shape" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="id3">
+<h4>get_output_sample_shape()<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="forward-flag-inputs">
+<h4>forward(flag, inputs)<a class="headerlink" href="#forward-flag-inputs" title="Permalink to this headline">¶</a></h4>
+<p>通过求和合并所有输入tensor。
+TODO(wangwei) 元素级别的合并操作。</p>
+<p><strong>返回值：</strong> 单个tensor，包含所有输入tensor的和</p>
+</div>
+<div class="section" id="backward-flag-grad">
+<h4>backward(flag, grad)<a class="headerlink" href="#backward-flag-grad" title="Permalink to this headline">¶</a></h4>
+<p>复制每个输入层的梯度tensor。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>grad</strong> - 梯度tensor</p></li>
+</ul>
+<p><strong>返回值：</strong> tensor列表，每个输入层对应其中一个</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-split-name-num-output-input-sample-shape-none">
+<h3>class singa.layer.Split(name, num_output, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-split-name-num-output-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.layer.Layer</span></code></p>
+<p>生成输入tensor的多个副本。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>num_output (int)</strong> – 待生成的输出tensor数目</p></li>
+<li><p><strong>input_sample_shape()</strong> – 包含一个整型数，代表输入样本特征大小</p></li>
+</ul>
+<div class="section" id="id4">
+<h4>setup(in_shape)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="id5">
+<h4>get_output_sample_shape()<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="forward">
+<h4>forward()<a class="headerlink" href="#forward" title="Permalink to this headline">¶</a></h4>
+<p>生成输入tensor的多个副本。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>flag</strong> – 没有用到</p></li>
+<li><p><strong>input</strong> – 单个输入tensor</p></li>
+</ul>
+<p><strong>返回值：</strong> 输出tensor列表，每个对应输入的一个拷贝</p>
+</div>
+<div class="section" id="backward">
+<h4>backward()<a class="headerlink" href="#backward" title="Permalink to this headline">¶</a></h4>
+<p>对所有输入tensor求和得到单个输出tensor。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>grad</strong> - 梯度tensor</p></li>
+</ul>
+<p><strong>返回值：</strong> 一个tensor，代表所有输入梯度tensor的求和</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-concat-name-axis-input-sample-shapes-none">
+<h3>class singa.layer.Concat(name, axis, input_sample_shapes=None)<a class="headerlink" href="#class-singa-layer-concat-name-axis-input-sample-shapes-none" title="Permalink to this headline">¶</a></h3>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.layer.Layer</span></code></p>
+<p>将tensor竖直(axis=0)或水平(axis=1)拼接。目前仅支持2维tensor。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>axis (int)</strong> – 0表示拼接行; 1表示拼接列;</p></li>
+<li><p><strong>input_sample_shapes</strong> – 样本形状的元组列表，每个对应一个输入样本的tensor</p></li>
+</ul>
+<div class="section" id="id6">
+<h4>forward(flag, inputs)<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p>拼接所有输入tensor。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>flag</strong> – 同Layer::forward()</p></li>
+<li><p><strong>input</strong> – tensor列表</p></li>
+</ul>
+<p><strong>返回值：</strong> 一个拼接后的tensor</p>
+</div>
+<div class="section" id="id7">
+<h4>backward(flag, dy)<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>flag</strong> – same as Layer::backward()</p></li>
+<li><p><strong>dy (Tensor)</strong> – the gradient tensors of y w.r.t objective loss</p></li>
+</ul>
+<p><strong>返回值：</strong> 元组(dx, []), dx是tensor列表，对应输入的梯度；[]是空列表</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-slice-name-axis-slice-point-input-sample-shape-none">
+<h3>class singa.layer.Slice(name, axis, slice_point, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-slice-name-axis-slice-point-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.layer.Layer</span></code></p>
+<p>将输入tensor沿竖直(axis=0)或水平(axis=1)分成多个子tensor。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>axis (int)</strong> – 0代表分割行; 1代表分割列;</p></li>
+<li><p><strong>slice_point (list)</strong> – 沿着轴分割的位置；n-1个分割点对应n个子tensor；</p></li>
+<li><p><strong>input_sample_shape</strong> – 输入样本tensor的形状</p></li>
+</ul>
+<div class="section" id="id8">
+<h4>get_output_sample_shape()<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="id9">
+<h4>forward(flag, x)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<p>沿给定轴分割输入tensor。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>flag</strong> – 同Layer::forward()</p></li>
+<li><p><strong>x</strong> – 单个输入tensor</p></li>
+</ul>
+<p><strong>返回值：</strong> 输出tensor列表</p>
+</div>
+<div class="section" id="backward-flag-grads">
+<h4>backward(flag, grads)<a class="headerlink" href="#backward-flag-grads" title="Permalink to this headline">¶</a></h4>
+<p>拼接所有梯度tensor以生成一个输出tensor。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>flag</strong> – 同Layer::backward()</p></li>
+<li><p><strong>grads</strong> – tensor列表，每个对应一个分割的梯度tensor
+<strong>返回值：</strong> 元组(dx, []), dx是一个tensor，对应原始输入的梯度；[]是空列表</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-rnn-name-hidden-size-rnn-mode-lstm-dropout-0-0-num-stacks-1-input-mode-linear-bidirectional-false-param-specs-none-input-sample-shape-none">
+<h3>class singa.layer.RNN(name, hidden_size, rnn_mode=’lstm’, dropout=0.0, num_stacks=1, input_mode=’linear’, bidirectional=False, param_specs=None, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-rnn-name-hidden-size-rnn-mode-lstm-dropout-0-0-num-stacks-1-input-mode-linear-bidirectional-false-param-specs-none-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.layer.Layer</span></code></p>
+<p>递归层包含4个单元，即lstm, gru, tanh和relu。</p>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>hidden_size</strong> – 隐含层特征大小，同所有层的堆栈。</p></li>
+<li><p><strong>rnn_mode</strong> – 决定了RNN单元，可以是‘lstm’, ‘gru’, ‘tanh’和 ‘relu’。对于每种模式，可以参考cudnn手册。</p></li>
+<li><p><strong>num_stacks</strong> – rnn层的堆栈数量。这不同于需要展开的序列长度。</p></li>
+<li><p><strong>input_mode</strong> – ‘linear’，通过线性变换将输入特征x转换成大小为hidden_size的特征向量；’skip’，仅要求输入特征大小等于hidden_size。</p></li>
+<li><p><strong>bidirection</strong> – 对于双向RNN为真。</p></li>
+<li><p><strong>param_specs</strong> – RNN参数的初始化配置。</p></li>
+<li><p><strong>input_sample_shape</strong> – 包含一个整型数，代表输入样本的特征大小。</p></li>
+</ul>
+<div class="section" id="id10">
+<h4>forward(flag, inputs)<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>flag</strong> – True(kTrain) 代表训练；False(kEval)代表验证; 其他值用作以后使用。</p></li>
+<li><p><strong>&lt;x1, x2,..xn, hx, cx&gt;</strong> – 其中，xi是输入(inputs,)第i个位置的tensor，它的形状是 (batch_size, input_feature_length); xi的batch_size必须大于xi + 1的大小; hx是初始隐藏状态，形状是（num_stacks * bidirection？2：1，batch_size，hidden_size）。 cx是与hy相同形状的初始细胞状态张量。 cx仅对lstm有效。 对于其他RNN，不存在cx。 hx和cx都可以是没有形状和数据的虚拟张量。
+返回值：&lt;y1，y2，… yn，hy，cy&gt;，其中yi是第i个位置的输出张量，其形状是（batch_size，hidden_size *双向？2：1）。 hy是最终的隐藏状态张量。 cx是最终的细胞状态张量。 cx仅用于lstm。</p></li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h4>backward(flag, grad)<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<p><strong>参数：</strong></p>
+<ul class="simple">
+<li><p><strong>flag</strong> – 未来使用</p></li>
+<li><p><strong>&lt;dy1, dy2,..dyn, dhy, dcy&gt;</strong> - 其中，dyi是(grad,) 第i个位置的梯度，它的形状是 (batch_size, hidden_size*bidirection?2 (i-th) – 1); dhy是最终隐藏状态的渐变，它的形状是（num_stacks *双向？2：1，batch_size，hidden_size）。dcy是最终单元状态的梯度。 cx仅对lstm有效，其他RNN不存在cx。 dhy和dcy都可以是没有形状和数据的虚拟tensor。</p></li>
+</ul>
+<p><strong>返回值：</strong> &lt;dx1，dx2，… dxn，dhx，dcx&gt;，其中dxi是第i个输入的梯度张量，它的形状是（batch_size，input_feature_length）。 dhx是初始隐藏状态的梯度。 dcx是初始单元状态的梯度，仅对lstm有效。</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-lstm-name-hidden-size-dropout-0-0-num-stacks-1-input-mode-linear-bidirectional-false-param-specs-none-input-sample-shape-none">
+<h3>class singa.layer.LSTM(name, hidden_size, dropout=0.0, num_stacks=1, input_mode=’linear’, bidirectional=False, param_specs=None, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-lstm-name-hidden-size-dropout-0-0-num-stacks-1-input-mode-linear-bidirectional-false-param-specs-none-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.layer.RNN</span></code></p>
+</div>
+<hr class="docutils" />
+<div class="section" id="class-singa-layer-gru-name-hidden-size-dropout-0-0-num-stacks-1-input-mode-linear-bidirectional-false-param-specs-none-input-sample-shape-none">
+<h3>class singa.layer.GRU(name, hidden_size, dropout=0.0, num_stacks=1, input_mode=’linear’, bidirectional=False, param_specs=None, input_sample_shape=None)<a class="headerlink" href="#class-singa-layer-gru-name-hidden-size-dropout-0-0-num-stacks-1-input-mode-linear-bidirectional-false-param-specs-none-input-sample-shape-none" title="Permalink to this headline">¶</a></h3>
+<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.layer.RNN</span></code></p>
+<hr class="docutils" />
+<div class="section" id="singa-layer-get-layer-list">
+<h4>singa.layer.get_layer_list()<a class="headerlink" href="#singa-layer-get-layer-list" title="Permalink to this headline">¶</a></h4>
+<p>返回包含所有支持图层的标识符（标签）的字符串列表</p>
+<hr class="docutils" />
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="net.html" class="btn btn-neutral float-right" title="前馈网络" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tensor.html" class="btn btn-neutral float-left" title="张量(Tensor)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ 
+ <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+   <span class="rst-current-version" data-toggle="rst-current-version">
+     <span class="fa fa-book"> incubator-singa </span>
+     v: latest
+     <span class="fa fa-caret-down"></span>
+   </span>
+   <div class="rst-other-versions">
+       <dl>
+           <dt>Languages</dt>
+           <dd><a href="../../index.html">English</a></dd>
+           <dd><a href=".././index.html">中文</a></dd>
+       </dl>
+       <dl>
+           <dt>Versions</dt>
+           <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+           <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+       </dl>
+ 
+   </div>
+   <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
+   <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>
+   <a href="http://www.apache.org/foundation/thanks.html" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Thanks</a>
+   <a href="http://www.apache.org/foundation/sponsorship.html" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">Sponsorship</a>
+   <a href="http://www.apache.org/licenses/" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">License</a>
+   <br>
+   <a href="https://github.com/apache/incubator-singa" class="fa fa-github" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a> 
+   <a href="https://www.linkedin.com/groups/13550034" class="fa fa-linkedin" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://twitter.com/ApacheSinga" class="fa fa-twitter" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://www.facebook.com/Apache-SINGA-347284219056544/" class="fa fa-facebook" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+   <a href="https://www.researchgate.net/project/Apache-SINGA" class="fab fa-researchgate" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+ 
+ </div>
+ 
+  <a href="https://github.com/apache/incubator-singa">
+     <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+         src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+         alt="Fork me on GitHub">
+ </a>
+ 
+  
+ 
+
+</body>
+</html>

@@ -1,0 +1,315 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Dependent library installation &mdash; incubator-singa 1.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="incubator-singa 1.1.0 documentation" href="../index.html"/>
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">Source Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">incubator-singa</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Dependent library installation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dependent-library-installation">
+<span id="dependent-library-installation"></span><h1>Dependent library installation<a class="headerlink" href="#dependent-library-installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="windows">
+<span id="windows"></span><h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
+<p>This section is used to compile and install the dependent libraries under
+windows system from source codes. The following instructions ONLY work for Visual Studio 2015 as
+previous VS does not support <a class="reference external" href="https://msdn.microsoft.com/en-us/library/hh567368.aspx">C++11 features</a> well (including generic lambdas, auto, non-static
+data member initializers). If you intend to generate a 32-bit/64-bit singa solution, please configure all the
+VS projects for the dependent libraries as 32-bit/64-bit. This can be done by
+&#8220;Configuration Manager&#8221; in VS 2015 or use corresponding generator in cmake. When compiling the following libraries, you
+may get system-specific warnings/errors. Please fix them according to the
+prompts by VS.</p>
+<div class="section" id="google-logging">
+<span id="google-logging"></span><h3>Google Logging<a class="headerlink" href="#google-logging" title="Permalink to this headline">¶</a></h3>
+<p>The glog library is an optional library for singa project. But it is currently necessary for Window compilation.
+Since the latest release version of glog will encounter error C2084 on sprintf function
+under VS2015, we test the compilation and installation using the master branch from <a class="reference external" href="https://github.com/google/glog">github</a>.</p>
+<p>Step 1: Download and decompress the source code. Or use <code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/google/glog</span></code> to get the code.</p>
+<p>Step 2: Open &#8220;glog.sln&#8221; file under project folder. You will get a conversion
+dialog and please finish it by the prompts. Compile all the projects in the solution after
+proper configuration, especially &#8220;libglog&#8221; and &#8220;libglog_static&#8221; projects.</p>
+<p>Step 3: Copy all the header files and the entire directory named &#8220;glog&#8221; under
+&#8220;src\windows&#8220; folder into the installation include folder (or system folder).
+Copy all the generated library files into the installation library folder (or
+system folder).</p>
+<p>Step 4: Done.</p>
+</div>
+<div class="section" id="google-protobuf">
+<span id="google-protobuf"></span><h3>Google protobuf<a class="headerlink" href="#google-protobuf" title="Permalink to this headline">¶</a></h3>
+<p>Tested on version 2.6.1:</p>
+<p>Step 1: Download and decompress the source code.</p>
+<p>Step 2: Open &#8220;protobuf.sln&#8221; file under &#8220;vsprojects&#8221; folder. You will get a conversion
+dialog and please finish it by the prompts. Compile all the projects in the solution after proper
+configuration. Especially &#8220;libprotobuf&#8221;, &#8220;libprotobuf-lite&#8221;, &#8220;libprotoc&#8221; and
+&#8220;protoc&#8221; projects.</p>
+<p>Step 3: Run &#8220;extract_includes.bat&#8221; script under &#8220;vsprojects&#8221; folder, you will
+get a new &#8220;include&#8221; folder with all the headers.</p>
+<p>Step 4: Copy the library files, such as &#8220;libprotobuf.lib&#8221;,
+&#8220;libprotobuf-lite.lib&#8221;, &#8220;libprotoc.lib&#8221;, etc., into your installation library folder (or
+system folder). Copy the binary file &#8220;protoc&#8221; into your installation binary
+folder (or system folder). Copy all the headers and folders in &#8220;include&#8221; folder into your
+installation include folder (or system folder).</p>
+<p>Step 5: Done.</p>
+</div>
+<div class="section" id="cblas">
+<span id="cblas"></span><h3>CBLAS<a class="headerlink" href="#cblas" title="Permalink to this headline">¶</a></h3>
+<p>There are ready-to-use binary packages online
+(<a class="reference external" href="https://sourceforge.net/projects/openblas/files/">link</a>). However, we still install
+OpenBLAS with version 0.2.18 as test:</p>
+<p>Step 1: Download and decompress the source code.</p>
+<p>Step 2: Start a cmd window under the OpenBLAS folder then run the following
+commands to generate the solution:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ md build $$ cd build
+$ cmake -G &quot;Visual Studio 14&quot; ..
+</pre></div>
+</div>
+<p>Or run <code class="docutils literal"><span class="pre">cmake</span> <span class="pre">-G</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">14</span> <span class="pre">Win64&quot;</span></code> as you wish.</p>
+<p>Step 3: Install Perl into your system and put perl.exe on your path. Open &#8220;OpenBlas.sln&#8221; and build the solution, especially &#8220;libopenblas&#8221;
+project.</p>
+<p>Step 4: Copy the library files under &#8220;build\lib&#8221; folder and all header files
+under OpenBLAS folder into installation library and include folders (or system
+folders).</p>
+<p>Step 5: Done.</p>
+</div>
+</div>
+<div class="section" id="faq">
+<span id="faq"></span><h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p class="first">Error C2375 &#8216;snprintf&#8217;: redefinition; different linkage</p>
+<p>Add “HAVE_SNPRINTF” to “C/C++ - Preprocessor - Preprocessor definitions”</p>
+</li>
+<li><p class="first">Error due to hash map</p>
+<p>Add &#8220;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS&#8221; to Preprocessor Definitions.</p>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 The Apache Software Foundation. All rights reserved. Apache Singa, Apache, the Apache feather logo, and the Apache Singa project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+<div class="rst-versions shift-up" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: latest
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+      <dl>
+          <dt>Languages</dt>
+          <dd><a href="../../en/index.html">English</a></dd>
+          <dd><a href="../../zh/index.html">中文</a></dd>
+      </dl>
+      <dl>
+          <dt>Versions</dt>
+          <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+          <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+      </dl>
+
+  </div>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.jpg"> </a>
+</div>
+
+ <a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+        alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

@@ -1,0 +1,311 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How to Contribute Code &mdash; incubator-singa 1.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="incubator-singa 1.1.0 documentation" href="../index.html"/>
+        <link rel="next" title="How to Contribute to Documentation" href="contribute-docs.html"/>
+        <link rel="prev" title="How to Contribute to SINGA" href="how-contribute.html"/>
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/index.html">Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="schedule.html">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">How to Contribute Code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#coding-style">Coding Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jira-format">JIRA format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pull-request">Pull Request</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contribute-docs.html">How to Contribute to Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">Source Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">incubator-singa</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>How to Contribute Code</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="how-to-contribute-code">
+<span id="how-to-contribute-code"></span><h1>How to Contribute Code<a class="headerlink" href="#how-to-contribute-code" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="coding-style">
+<span id="coding-style"></span><h2>Coding Style<a class="headerlink" href="#coding-style" title="Permalink to this headline">¶</a></h2>
+<p>The SINGA codebase follows the <a class="reference external" href="http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml">Google C++ Style Guide</a>.</p>
+<p>To check if your code follows the style, you can use the provided cpplint tool:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ./tool/cpplint.py YOUR_FILE
+</pre></div>
+</div>
+</div>
+<div class="section" id="jira-format">
+<span id="jira-format"></span><h2>JIRA format<a class="headerlink" href="#jira-format" title="Permalink to this headline">¶</a></h2>
+<p>Like other Apache projects, SINGA uses JIRA to track bugs, improvements and
+other high-level discussions (e.g., system design and features).  Github pull requests are
+used for implementation discussions, e.g., code review and code merge.</p>
+<ul class="simple">
+<li>Provide a descriptive Title.</li>
+<li>Write a detailed Description. For bug reports, this should ideally include a
+short reproduction of the problem. For new features, it may include a design
+document.</li>
+<li>Set <a class="reference external" href="https://cwiki.apache.org/confluence/display/SPARK/Contributing+to+Spark#ContributingtoSpark-JIRA">required fields</a></li>
+</ul>
+</div>
+<div class="section" id="pull-request">
+<span id="pull-request"></span><h2>Pull Request<a class="headerlink" href="#pull-request" title="Permalink to this headline">¶</a></h2>
+<p>The work flow is</p>
+<ul class="simple">
+<li>Fork the <a class="reference external" href="https://github.com/apache/incubator-singa">SINGA Github repository</a> to
+your own Github account.</li>
+<li>Clone your fork, create a new branch (e.g., feature-foo or fixbug-foo),
+work on it. After finishing your job,
+<a class="reference external" href="https://git-scm.com/book/en/v2/Git-Branching-Rebasing">rebase</a> it to the
+current latest master and push commits to your own Github account (the new
+branch).</li>
+<li>Open a pull request against the master branch of apache/incubator-singa.
+The PR title should be of the form SINGA-xxxx Title, where
+SINGA-xxxx is the relevant JIRA number, and Title may be the JIRA&#8217;s title or a
+more specific title describing the PR itself, for example, &#8220;SINGA-6 Implement thread-safe singleton&#8221;. Detailed description can be copied from the JIRA.
+Consider identifying committers or other contributors who have worked on the
+code being changed. Find the file(s) in Github and click &#8220;Blame&#8221; to see a
+line-by-line annotation of who changed the code last.  You can add &#64;username in
+the PR description to ping them immediately.
+Please state that the contribution is your original work and that you license
+the work to the project under the project&#8217;s open source license. Further commits (e.g., bug fix)
+to your new branch will be added to this pull request automatically by Github.</li>
+<li>Wait for one committer to review the patch. If no conflicts, the committers will merge it with
+the master branch. The merge should a) not use rebase b) disable fast forward merge c) check the
+commit message format and test the code/feature.</li>
+<li>If there are too many small commit messages, you will be told to squash your commits into fewer meaningful
+commits. If your commit message does not follow the format (i.e., SINGA-xxxx), you will be told to
+reword your commit message. Both changes can be done using interactive git rebase. Once you
+get the commits corrected, push them to you own github again. Your pull request
+will be automatically updated. For details, please refer to
+<a class="reference external" href="https://github.com/edx/edx-platform/wiki/How-to-Rebase-a-Pull-Request">Rebase Pull Requests</a>.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="contribute-docs.html" class="btn btn-neutral float-right" title="How to Contribute to Documentation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="how-contribute.html" class="btn btn-neutral" title="How to Contribute to SINGA" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 The Apache Software Foundation. All rights reserved. Apache Singa, Apache, the Apache feather logo, and the Apache Singa project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+<div class="rst-versions shift-up" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: latest
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+      <dl>
+          <dt>Languages</dt>
+          <dd><a href="../../en/index.html">English</a></dd>
+          <dd><a href="../../zh/index.html">中文</a></dd>
+      </dl>
+      <dl>
+          <dt>Versions</dt>
+          <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+          <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+      </dl>
+
+  </div>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.jpg"> </a>
+</div>
+
+ <a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+        alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

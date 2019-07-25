@@ -1,0 +1,677 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Communication &mdash; incubator-singa 0.3.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="incubator-singa 0.3.0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> incubator-singa
+          
+
+          
+            
+            <img src="../_static/singa.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute Documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../community/source-repository.html">Source Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/mail-lists.html">Project Mailing Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/issue-tracking.html">Issue Tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/team-list.html">The SINGA Team</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">incubator-singa</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Communication</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="communication">
+<span id="communication"></span><h1>Communication<a class="headerlink" href="#communication" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>Different messaging libraries has different benefits and drawbacks. For instance,
+MPI provides fast message passing between GPUs (using GPUDirect), but does not
+support fault-tolerance well. On the contrary, systems using ZeroMQ can be
+fault-tolerant, but does not support GPUDirect. The AllReduce function
+of MPI is also missing in ZeroMQ which is efficient for data aggregation for
+distributed training. In Singa, we provide general messaging APIs for
+communication between threads within a process and across processes, and let
+users choose the underlying implementation (MPI or ZeroMQ) that meets their requirements.</p>
+<p>Singa&#8217;s messaging library consists of two components, namely the message, and
+the socket to send and receive messages. <strong>Socket</strong> refers to a
+Singa defined data structure instead of the Linux Socket.
+We will introduce the two components in detail with the following figure as an
+example architecture.</p>
+<p><img src="../_static/images/arch/arch2.png" style="width: 550px"/>
+<img src="../_static/images/arch/comm.png" style="width: 550px"/></p>
+<p><strong> Fig.1 - Example physical architecture and network connection</strong></p><p>Fig.1 shows an example physical architecture and its network connection.
+<a class="reference external" href="architecture.html}">Section-partition server side ParamShard</a> has a detailed description of the
+architecture. Each process consists of one main thread running the stub and multiple
+background threads running the worker and server tasks. The stub of the main
+thread forwards messages among threads . The worker and
+server tasks are performed by the background threads.</p>
+<div class="section" id="message">
+<span id="message"></span><h2>Message<a class="headerlink" href="#message" title="Permalink to this headline">¶</a></h2>
+<object type="image/svg+xml" style="width: 100px" data="../images/msg.svg" > Not
+supported </object>
+<p><strong> Fig.2 - Logical message format</strong></p><p>Fig.2 shows the logical message format which has two parts, the header and the
+content. The message header includes the sender&#8217;s and receiver&#8217;s IDs, each consisting of
+the group ID and the worker/server ID within the group. The stub forwards
+messages by looking up an address table based on the receiver&#8217;s ID.
+There are two sets of messages according to the message type defined below.</p>
+<ul class="simple">
+<li>kGet/kPut/kRequest/kSync for messages about parameters</li>
+<li>kFeaBlob/kGradBlob for messages about transferring feature and gradient
+blobs of one layer to its neighboring layer</li>
+</ul>
+<p>There is a target ID in the header. If the message body is parameters,
+the target ID is then the parameter ID. Otherwise the message is related to
+layer feature or gradient, and the target ID consists of the layer ID and the
+blob ID of that layer. The message content has multiple frames to store the
+parameter or feature data.</p>
+<p>The API for the base Msg is:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/**</span>
+ <span class="o">*</span> <span class="n">Msg</span> <span class="n">used</span> <span class="n">to</span> <span class="n">transfer</span> <span class="n">Param</span> <span class="n">info</span> <span class="p">(</span><span class="n">gradient</span> <span class="ow">or</span> <span class="n">value</span><span class="p">),</span> <span class="n">feature</span> <span class="n">blob</span><span class="p">,</span> <span class="n">etc</span>
+ <span class="o">*</span> <span class="n">between</span> <span class="n">workers</span><span class="p">,</span> <span class="n">stubs</span> <span class="ow">and</span> <span class="n">servers</span><span class="o">.</span>
+ <span class="o">*</span>
+ <span class="o">*</span> <span class="n">Each</span> <span class="n">msg</span> <span class="n">has</span> <span class="n">a</span> <span class="n">source</span> <span class="n">addr</span> <span class="ow">and</span> <span class="n">dest</span> <span class="n">addr</span> <span class="n">identified</span> <span class="n">by</span> <span class="n">a</span> <span class="n">unique</span> <span class="n">integer</span><span class="o">.</span>
+ <span class="o">*</span> <span class="n">It</span> <span class="ow">is</span> <span class="n">also</span> <span class="n">associated</span> <span class="k">with</span> <span class="n">a</span> <span class="n">target</span> <span class="n">field</span> <span class="p">(</span><span class="n">value</span> <span class="ow">and</span> <span class="n">version</span><span class="p">)</span> <span class="k">for</span> <span class="n">ease</span> <span class="n">of</span>
+ <span class="o">*</span> <span class="n">getting</span> <span class="n">some</span> <span class="n">meta</span> <span class="n">info</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="p">,</span> <span class="n">parameter</span> <span class="nb">id</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">msg</span><span class="o">.</span>
+ <span class="o">*</span>
+ <span class="o">*</span> <span class="n">Other</span> <span class="n">data</span> <span class="ow">is</span> <span class="n">added</span> <span class="n">into</span> <span class="n">the</span> <span class="n">message</span> <span class="k">as</span> <span class="n">frames</span><span class="o">.</span>
+ <span class="o">*/</span>
+<span class="k">class</span> <span class="nc">Msg</span> <span class="p">{</span>
+ <span class="n">public</span><span class="p">:</span>
+  <span class="o">~</span><span class="n">Msg</span><span class="p">();</span>
+  <span class="n">Msg</span><span class="p">();</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="n">Construct</span> <span class="n">the</span> <span class="n">msg</span> <span class="n">providing</span> <span class="n">source</span> <span class="ow">and</span> <span class="n">destination</span> <span class="n">addr</span><span class="o">.</span>
+   <span class="o">*/</span>
+  <span class="n">Msg</span><span class="p">(</span><span class="nb">int</span> <span class="n">src</span><span class="p">,</span> <span class="nb">int</span> <span class="n">dst</span><span class="p">);</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="n">Copy</span> <span class="n">constructor</span><span class="o">.</span>
+   <span class="o">*/</span>
+  <span class="n">Msg</span><span class="p">(</span><span class="n">const</span> <span class="n">Msg</span><span class="o">&amp;</span> <span class="n">msg</span><span class="p">);</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="n">Swap</span> <span class="n">the</span> <span class="n">src</span><span class="o">/</span><span class="n">dst</span> <span class="n">addr</span>
+   <span class="o">*/</span>
+  <span class="n">void</span> <span class="n">SwapAddr</span><span class="p">();</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="n">Add</span> <span class="n">a</span> <span class="n">frame</span> <span class="p">(</span><span class="n">a</span> <span class="n">chunk</span> <span class="n">of</span> <span class="nb">bytes</span><span class="p">)</span> <span class="n">into</span> <span class="n">the</span> <span class="n">message</span>
+   <span class="o">*/</span>
+  <span class="n">void</span> <span class="n">AddFrame</span><span class="p">(</span><span class="n">const</span> <span class="n">void</span><span class="o">*</span> <span class="n">addr</span><span class="p">,</span> <span class="nb">int</span> <span class="n">nBytes</span><span class="p">);</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="nd">@return</span> <span class="n">num</span> <span class="n">of</span> <span class="nb">bytes</span> <span class="n">of</span> <span class="n">the</span> <span class="n">current</span> <span class="n">frame</span><span class="o">.</span>
+   <span class="o">*/</span>
+  <span class="nb">int</span> <span class="n">FrameSize</span><span class="p">();</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="nd">@return</span> <span class="n">the</span> <span class="n">pointer</span> <span class="n">to</span> <span class="n">the</span> <span class="n">current</span> <span class="n">frame</span> <span class="n">data</span><span class="o">.</span>
+   <span class="o">*/</span>
+  <span class="n">void</span><span class="o">*</span> <span class="n">FrameData</span><span class="p">();</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="nd">@return</span> <span class="n">the</span> <span class="n">data</span> <span class="n">of</span> <span class="n">the</span> <span class="n">current</span> <span class="n">frame</span> <span class="k">as</span> <span class="n">c</span> <span class="n">string</span>
+   <span class="o">*/</span>
+  <span class="n">char</span><span class="o">*</span> <span class="n">FrameStr</span><span class="p">();</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="n">Move</span> <span class="n">the</span> <span class="n">cursor</span> <span class="n">to</span> <span class="n">the</span> <span class="n">first</span> <span class="n">frame</span><span class="o">.</span>
+   <span class="o">*/</span>
+  <span class="n">void</span> <span class="n">FirstFrame</span><span class="p">();</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="n">Move</span> <span class="n">the</span> <span class="n">cursor</span> <span class="n">to</span> <span class="n">the</span> <span class="n">last</span> <span class="n">frame</span><span class="o">.</span>
+   <span class="o">*/</span>
+  <span class="n">void</span> <span class="n">LastFrame</span><span class="p">();</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="n">Move</span> <span class="n">the</span> <span class="n">cursor</span> <span class="n">to</span> <span class="n">the</span> <span class="nb">next</span> <span class="n">frame</span>
+   <span class="o">*</span> <span class="nd">@return</span> <span class="n">true</span> <span class="k">if</span> <span class="n">the</span> <span class="nb">next</span> <span class="n">frame</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">NULL</span><span class="p">;</span> <span class="n">otherwise</span> <span class="n">false</span>
+   <span class="o">*/</span>
+  <span class="nb">bool</span> <span class="n">NextFrame</span><span class="p">();</span>
+  <span class="o">/**</span>
+   <span class="o">*</span>  <span class="n">Add</span> <span class="n">a</span> <span class="s1">&#39;format&#39;</span> <span class="n">frame</span> <span class="n">to</span> <span class="n">the</span> <span class="n">msg</span> <span class="p">(</span><span class="n">like</span> <span class="n">CZMQ</span><span class="s1">&#39;s zsock_send).</span>
+   <span class="o">*</span>
+   <span class="o">*</span>  <span class="n">The</span> <span class="nb">format</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">string</span> <span class="n">that</span> <span class="n">defines</span> <span class="n">the</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">each</span> <span class="n">field</span><span class="o">.</span>
+   <span class="o">*</span>  <span class="n">The</span> <span class="nb">format</span> <span class="n">can</span> <span class="n">contain</span> <span class="nb">any</span> <span class="n">of</span> <span class="n">these</span> <span class="n">characters</span><span class="p">,</span> <span class="n">each</span> <span class="n">corresponding</span> <span class="n">to</span>
+   <span class="o">*</span>  <span class="n">one</span> <span class="ow">or</span> <span class="n">two</span> <span class="n">arguments</span><span class="p">:</span>
+   <span class="o">*</span>  <span class="n">i</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">(</span><span class="n">signed</span><span class="p">)</span>
+   <span class="o">*</span>  <span class="mi">1</span> <span class="o">=</span> <span class="n">uint8_t</span>
+   <span class="o">*</span>  <span class="mi">2</span> <span class="o">=</span> <span class="n">uint16_t</span>
+   <span class="o">*</span>  <span class="mi">4</span> <span class="o">=</span> <span class="n">uint32_t</span>
+   <span class="o">*</span>  <span class="mi">8</span> <span class="o">=</span> <span class="n">uint64_t</span>
+   <span class="o">*</span>  <span class="n">p</span> <span class="o">=</span> <span class="n">void</span> <span class="o">*</span> <span class="p">(</span><span class="n">sends</span> <span class="n">the</span> <span class="n">pointer</span> <span class="n">value</span><span class="p">,</span> <span class="n">only</span> <span class="n">meaningful</span> <span class="n">over</span> <span class="n">inproc</span><span class="p">)</span>
+   <span class="o">*</span>  <span class="n">s</span> <span class="o">=</span> <span class="n">char</span><span class="o">**</span>
+   <span class="o">*</span>
+   <span class="o">*</span>  <span class="n">Returns</span> <span class="n">size</span> <span class="n">of</span> <span class="n">the</span> <span class="n">added</span> <span class="n">content</span><span class="o">.</span>
+   <span class="o">*/</span>
+  <span class="nb">int</span> <span class="n">AddFormatFrame</span><span class="p">(</span><span class="n">const</span> <span class="n">char</span> <span class="o">*</span><span class="nb">format</span><span class="p">,</span> <span class="o">...</span><span class="p">);</span>
+  <span class="o">/**</span>
+   <span class="o">*</span>  <span class="n">Parse</span> <span class="n">the</span> <span class="n">current</span> <span class="n">frame</span> <span class="n">added</span> <span class="n">using</span> <span class="n">AddFormatFrame</span><span class="p">(</span><span class="n">const</span> <span class="n">char</span><span class="o">*</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span><span class="o">.</span>
+   <span class="o">*</span>
+   <span class="o">*</span>  <span class="n">The</span> <span class="nb">format</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">string</span> <span class="n">that</span> <span class="n">defines</span> <span class="n">the</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">each</span> <span class="n">field</span><span class="o">.</span>
+   <span class="o">*</span>  <span class="n">The</span> <span class="nb">format</span> <span class="n">can</span> <span class="n">contain</span> <span class="nb">any</span> <span class="n">of</span> <span class="n">these</span> <span class="n">characters</span><span class="p">,</span> <span class="n">each</span> <span class="n">corresponding</span> <span class="n">to</span>
+   <span class="o">*</span>  <span class="n">one</span> <span class="ow">or</span> <span class="n">two</span> <span class="n">arguments</span><span class="p">:</span>
+   <span class="o">*</span>  <span class="n">i</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">(</span><span class="n">signed</span><span class="p">)</span>
+   <span class="o">*</span>  <span class="mi">1</span> <span class="o">=</span> <span class="n">uint8_t</span>
+   <span class="o">*</span>  <span class="mi">2</span> <span class="o">=</span> <span class="n">uint16_t</span>
+   <span class="o">*</span>  <span class="mi">4</span> <span class="o">=</span> <span class="n">uint32_t</span>
+   <span class="o">*</span>  <span class="mi">8</span> <span class="o">=</span> <span class="n">uint64_t</span>
+   <span class="o">*</span>  <span class="n">p</span> <span class="o">=</span> <span class="n">void</span> <span class="o">*</span> <span class="p">(</span><span class="n">sends</span> <span class="n">the</span> <span class="n">pointer</span> <span class="n">value</span><span class="p">,</span> <span class="n">only</span> <span class="n">meaningful</span> <span class="n">over</span> <span class="n">inproc</span><span class="p">)</span>
+   <span class="o">*</span>  <span class="n">s</span> <span class="o">=</span> <span class="n">char</span><span class="o">**</span>
+   <span class="o">*</span>
+   <span class="o">*</span>  <span class="n">Returns</span> <span class="n">size</span> <span class="n">of</span> <span class="n">the</span> <span class="n">parsed</span> <span class="n">content</span><span class="o">.</span>
+   <span class="o">*/</span>
+  <span class="nb">int</span> <span class="n">ParseFormatFrame</span><span class="p">(</span><span class="n">const</span> <span class="n">char</span><span class="o">*</span> <span class="nb">format</span><span class="p">,</span> <span class="o">...</span><span class="p">);</span>
+
+<span class="c1">#ifdef USE_ZMQ</span>
+  <span class="n">void</span> <span class="n">ParseFromZmsg</span><span class="p">(</span><span class="n">zmsg_t</span><span class="o">*</span> <span class="n">msg</span><span class="p">);</span>
+  <span class="n">zmsg_t</span><span class="o">*</span> <span class="n">DumpToZmsg</span><span class="p">();</span>
+<span class="c1">#endif</span>
+
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="nd">@return</span> <span class="n">msg</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">terms</span> <span class="n">of</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">ignore</span> <span class="n">meta</span> <span class="n">info</span><span class="o">.</span>
+   <span class="o">*/</span>
+  <span class="nb">int</span> <span class="n">size</span><span class="p">()</span> <span class="n">const</span><span class="p">;</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="n">Set</span> <span class="n">source</span> <span class="n">addr</span><span class="o">.</span>
+   <span class="o">*</span> <span class="nd">@param</span> <span class="n">addr</span> <span class="n">unique</span> <span class="n">identify</span> <span class="n">one</span> <span class="n">worker</span><span class="o">/</span><span class="n">server</span><span class="o">/</span><span class="n">stub</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">current</span> <span class="n">job</span>
+   <span class="o">*/</span>
+  <span class="n">void</span> <span class="n">set_src</span><span class="p">(</span><span class="nb">int</span> <span class="n">addr</span><span class="p">)</span> <span class="p">{</span> <span class="n">src_</span> <span class="o">=</span> <span class="n">addr</span><span class="p">;</span> <span class="p">}</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="nd">@return</span> <span class="n">source</span> <span class="n">addr</span><span class="o">.</span>
+   <span class="o">*/</span>
+  <span class="nb">int</span> <span class="n">src</span><span class="p">()</span> <span class="n">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">src_</span><span class="p">;</span> <span class="p">}</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="n">Set</span> <span class="n">destination</span> <span class="n">addr</span><span class="o">.</span>
+   <span class="o">*</span> <span class="nd">@param</span> <span class="n">addr</span> <span class="n">unique</span> <span class="n">identify</span> <span class="n">one</span> <span class="n">worker</span><span class="o">/</span><span class="n">server</span><span class="o">/</span><span class="n">stub</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">current</span> <span class="n">job</span>
+   <span class="o">*/</span>
+  <span class="n">void</span> <span class="n">set_dst</span><span class="p">(</span><span class="nb">int</span> <span class="n">addr</span><span class="p">)</span> <span class="p">{</span> <span class="n">dst_</span> <span class="o">=</span> <span class="n">addr</span><span class="p">;</span> <span class="p">}</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="nd">@return</span> <span class="n">dst</span> <span class="n">addr</span><span class="o">.</span>
+   <span class="o">*/</span>
+  <span class="nb">int</span> <span class="n">dst</span><span class="p">()</span> <span class="n">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">dst_</span><span class="p">;</span> <span class="p">}</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="n">Set</span> <span class="n">msg</span> <span class="nb">type</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="p">,</span> <span class="n">kPut</span><span class="p">,</span> <span class="n">kGet</span><span class="p">,</span> <span class="n">kUpdate</span><span class="p">,</span> <span class="n">kRequest</span>
+   <span class="o">*/</span>
+  <span class="n">void</span> <span class="n">set_type</span><span class="p">(</span><span class="nb">int</span> <span class="nb">type</span><span class="p">)</span> <span class="p">{</span> <span class="n">type_</span> <span class="o">=</span> <span class="nb">type</span><span class="p">;</span> <span class="p">}</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="nd">@return</span> <span class="n">msg</span> <span class="nb">type</span><span class="o">.</span>
+   <span class="o">*/</span>
+  <span class="nb">int</span> <span class="nb">type</span><span class="p">()</span> <span class="n">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">type_</span><span class="p">;</span> <span class="p">}</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="n">Set</span> <span class="n">msg</span> <span class="n">target</span><span class="o">.</span>
+   <span class="o">*</span>
+   <span class="o">*</span> <span class="n">One</span> <span class="n">msg</span> <span class="n">has</span> <span class="n">a</span> <span class="n">target</span> <span class="n">to</span> <span class="n">identify</span> <span class="n">some</span> <span class="n">entity</span> <span class="ow">in</span> <span class="n">worker</span><span class="o">/</span><span class="n">server</span><span class="o">/</span><span class="n">stub</span><span class="o">.</span>
+   <span class="o">*</span> <span class="n">The</span> <span class="n">target</span> <span class="ow">is</span> <span class="n">associated</span> <span class="k">with</span> <span class="n">a</span> <span class="n">version</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="p">,</span> <span class="n">Param</span> <span class="n">version</span><span class="o">.</span>
+   <span class="o">*/</span>
+  <span class="n">void</span> <span class="n">set_trgt</span><span class="p">(</span><span class="nb">int</span> <span class="n">val</span><span class="p">,</span> <span class="nb">int</span> <span class="n">version</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">trgt_val_</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+    <span class="n">trgt_version_</span> <span class="o">=</span> <span class="n">version</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nb">int</span> <span class="n">trgt_val</span><span class="p">()</span> <span class="n">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">trgt_val_</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nb">int</span> <span class="n">trgt_version</span><span class="p">()</span> <span class="n">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">trgt_version_</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>In order for a Msg object to be routed, the source and dest address should be attached.
+This is achieved by calling the set_src and set_dst methods of the Msg object.
+The address parameter passed to these two methods can be manipulated via a set of
+helper functions, shown as below.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/**</span>
+ <span class="o">*</span> <span class="n">Wrapper</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">message</span> <span class="n">address</span>
+ <span class="o">*</span> <span class="nd">@param</span> <span class="n">grp</span> <span class="n">worker</span><span class="o">/</span><span class="n">server</span> <span class="n">group</span> <span class="nb">id</span>
+ <span class="o">*</span> <span class="nd">@param</span> <span class="n">id_or_proc</span> <span class="n">worker</span><span class="o">/</span><span class="n">server</span> <span class="nb">id</span> <span class="ow">or</span> <span class="n">procs</span> <span class="nb">id</span>
+ <span class="o">*</span> <span class="nd">@param</span> <span class="nb">type</span> <span class="n">msg</span> <span class="nb">type</span>
+ <span class="o">*/</span>
+<span class="n">inline</span> <span class="nb">int</span> <span class="n">Addr</span><span class="p">(</span><span class="nb">int</span> <span class="n">grp</span><span class="p">,</span> <span class="nb">int</span> <span class="n">id_or_proc</span><span class="p">,</span> <span class="nb">int</span> <span class="nb">type</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">grp</span> <span class="o">&lt;&lt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">id_or_proc</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">|</span> <span class="nb">type</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">/**</span>
+ <span class="o">*</span> <span class="n">Parse</span> <span class="n">group</span> <span class="nb">id</span> <span class="kn">from</span> <span class="nn">addr.</span>
+ <span class="o">*</span>
+ <span class="o">*</span> <span class="nd">@return</span> <span class="n">group</span> <span class="nb">id</span>
+ <span class="o">*/</span>
+<span class="n">inline</span> <span class="nb">int</span> <span class="n">AddrGrp</span><span class="p">(</span><span class="nb">int</span> <span class="n">addr</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">addr</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">/**</span>
+ <span class="o">*</span> <span class="n">Parse</span> <span class="n">worker</span><span class="o">/</span><span class="n">server</span> <span class="nb">id</span> <span class="kn">from</span> <span class="nn">addr.</span>
+ <span class="o">*</span>
+ <span class="o">*</span> <span class="nd">@return</span> <span class="nb">id</span>
+ <span class="o">*/</span>
+<span class="n">inline</span> <span class="nb">int</span> <span class="n">AddrID</span><span class="p">(</span><span class="nb">int</span> <span class="n">addr</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">static</span> <span class="n">const</span> <span class="nb">int</span> <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">addr</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">/**</span>
+ <span class="o">*</span> <span class="n">Parse</span> <span class="n">worker</span><span class="o">/</span><span class="n">server</span> <span class="n">procs</span> <span class="kn">from</span> <span class="nn">addr.</span>
+ <span class="o">*</span>
+ <span class="o">*</span> <span class="nd">@return</span> <span class="n">procs</span> <span class="nb">id</span>
+ <span class="o">*/</span>
+<span class="n">inline</span> <span class="nb">int</span> <span class="n">AddrProc</span><span class="p">(</span><span class="nb">int</span> <span class="n">addr</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">AddrID</span><span class="p">(</span><span class="n">addr</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="o">/**</span>
+ <span class="o">*</span> <span class="n">Parse</span> <span class="n">msg</span> <span class="nb">type</span> <span class="kn">from</span> <span class="nn">addr</span>
+ <span class="o">*</span> <span class="nd">@return</span> <span class="n">msg</span> <span class="nb">type</span>
+ <span class="o">*/</span>
+<span class="n">inline</span> <span class="nb">int</span> <span class="n">AddrType</span><span class="p">(</span><span class="nb">int</span> <span class="n">addr</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">static</span> <span class="n">const</span> <span class="nb">int</span> <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">addr</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="socket">
+<span id="socket"></span><h2>Socket<a class="headerlink" href="#socket" title="Permalink to this headline">¶</a></h2>
+<p>In SINGA, there are two types of sockets, the Dealer Socket and the Router
+Socket, whose names are adapted from ZeroMQ. All connections are of the same type, i.e.,
+Dealer&lt;&#8211;&gt;Router. The communication between dealers and routers are
+asynchronous. In other words, one Dealer
+socket can talk with multiple Router sockets, and one Router socket can talk
+with multiple Dealer sockets.</p>
+<div class="section" id="base-socket">
+<span id="base-socket"></span><h3>Base Socket<a class="headerlink" href="#base-socket" title="Permalink to this headline">¶</a></h3>
+<p>The basic functions of a Singa Socket is to send and receive messages. The APIs
+are:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SocketInterface</span> <span class="p">{</span>
+ <span class="n">public</span><span class="p">:</span>
+  <span class="n">virtual</span> <span class="o">~</span><span class="n">SocketInterface</span><span class="p">()</span> <span class="p">{}</span>
+  <span class="o">/**</span>
+    <span class="o">*</span> <span class="n">Send</span> <span class="n">a</span> <span class="n">message</span> <span class="n">to</span> <span class="n">connected</span> <span class="n">socket</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">non</span><span class="o">-</span><span class="n">blocking</span><span class="o">.</span> <span class="n">The</span> <span class="n">message</span>
+    <span class="o">*</span> <span class="n">will</span> <span class="n">be</span> <span class="n">deallocated</span> <span class="n">after</span> <span class="n">sending</span><span class="p">,</span> <span class="n">thus</span> <span class="n">should</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">used</span> <span class="n">after</span>
+    <span class="o">*</span> <span class="n">calling</span> <span class="n">Send</span><span class="p">();</span>
+    <span class="o">*</span>
+    <span class="o">*</span> <span class="nd">@param</span> <span class="n">msg</span> <span class="n">The</span> <span class="n">message</span> <span class="n">to</span> <span class="n">be</span> <span class="n">sent</span>
+    <span class="o">*</span> <span class="nd">@return</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">success</span> <span class="n">queuing</span> <span class="n">the</span> <span class="n">message</span> <span class="k">for</span> <span class="n">sending</span><span class="p">,</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">failure</span>
+    <span class="o">*/</span>
+  <span class="n">virtual</span> <span class="nb">int</span> <span class="n">Send</span><span class="p">(</span><span class="n">Msg</span><span class="o">**</span> <span class="n">msg</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="o">/**</span>
+    <span class="o">*</span> <span class="n">Receive</span> <span class="n">a</span> <span class="n">message</span> <span class="kn">from</span> <span class="nn">any</span> <span class="n">connected</span> <span class="n">socket</span><span class="o">.</span>
+    <span class="o">*</span>
+    <span class="o">*</span> <span class="nd">@return</span> <span class="n">a</span> <span class="n">message</span> <span class="n">pointer</span> <span class="k">if</span> <span class="n">success</span><span class="p">;</span> <span class="n">nullptr</span> <span class="k">if</span> <span class="n">failure</span>
+    <span class="o">*/</span>
+  <span class="n">virtual</span> <span class="n">Msg</span><span class="o">*</span> <span class="n">Receive</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="nd">@return</span> <span class="n">Identifier</span> <span class="n">of</span> <span class="n">the</span> <span class="n">implementation</span> <span class="n">dependent</span> <span class="n">socket</span><span class="o">.</span> <span class="n">E</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="p">,</span> <span class="n">zsock_t</span><span class="o">*</span>
+   <span class="o">*</span> <span class="k">for</span> <span class="n">ZeroMQ</span> <span class="n">implementation</span> <span class="ow">and</span> <span class="n">rank</span> <span class="k">for</span> <span class="n">MPI</span> <span class="n">implementation</span><span class="o">.</span>
+   <span class="o">*/</span>
+  <span class="n">virtual</span> <span class="n">void</span><span class="o">*</span> <span class="n">InternalID</span><span class="p">()</span> <span class="n">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>A poller class is provided to enable asynchronous communication between routers and dealers.
+One can register a set of SocketInterface objects with a poller instance via calling its Add method, and
+then call the Wait method of this poll object to wait for the registered SocketInterface objects to be ready
+for sending and receiving messages. The APIs of the poller class is shown below.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Poller</span> <span class="p">{</span>
+ <span class="n">public</span><span class="p">:</span>
+  <span class="n">Poller</span><span class="p">();</span>
+  <span class="n">Poller</span><span class="p">(</span><span class="n">SocketInterface</span><span class="o">*</span> <span class="n">socket</span><span class="p">);</span>
+  <span class="o">/**</span>
+    <span class="o">*</span> <span class="n">Add</span> <span class="n">a</span> <span class="n">socket</span> <span class="k">for</span> <span class="n">polling</span><span class="p">;</span> <span class="n">Multiple</span> <span class="n">sockets</span> <span class="n">can</span> <span class="n">be</span> <span class="n">polled</span> <span class="n">together</span> <span class="n">by</span>
+    <span class="o">*</span> <span class="n">adding</span> <span class="n">them</span> <span class="n">into</span> <span class="n">the</span> <span class="n">same</span> <span class="n">poller</span><span class="o">.</span>
+    <span class="o">*/</span>
+  <span class="n">void</span> <span class="n">Add</span><span class="p">(</span><span class="n">SocketInterface</span><span class="o">*</span> <span class="n">socket</span><span class="p">);</span>
+  <span class="o">/**</span>
+    <span class="o">*</span> <span class="n">Poll</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">sockets</span> <span class="n">added</span> <span class="n">into</span> <span class="n">this</span> <span class="n">poller</span><span class="o">.</span>
+    <span class="o">*</span> <span class="nd">@param</span> <span class="n">timeout</span> <span class="n">Stop</span> <span class="n">after</span> <span class="n">this</span> <span class="n">number</span> <span class="n">of</span> <span class="n">mseconds</span>
+    <span class="o">*</span> <span class="nd">@return</span> <span class="n">pointer</span> <span class="n">To</span> <span class="n">the</span> <span class="n">socket</span> <span class="k">if</span> <span class="n">it</span> <span class="n">has</span> <span class="n">one</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">receiving</span>
+    <span class="o">*</span> <span class="n">queue</span><span class="p">;</span> <span class="n">nullptr</span> <span class="k">if</span> <span class="n">no</span> <span class="n">message</span> <span class="ow">in</span> <span class="nb">any</span> <span class="n">sockets</span><span class="p">,</span>
+    <span class="o">*/</span>
+  <span class="n">SocketInterface</span><span class="o">*</span> <span class="n">Wait</span><span class="p">(</span><span class="nb">int</span> <span class="n">duration</span><span class="p">);</span>
+
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="nd">@return</span> <span class="n">true</span> <span class="k">if</span> <span class="n">the</span> <span class="n">poller</span> <span class="ow">is</span> <span class="n">terminated</span> <span class="n">due</span> <span class="n">to</span> <span class="n">process</span> <span class="n">interupt</span>
+   <span class="o">*/</span>
+  <span class="n">virtual</span> <span class="nb">bool</span> <span class="n">Terminated</span><span class="p">();</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dealer-socket">
+<span id="dealer-socket"></span><h3>Dealer Socket<a class="headerlink" href="#dealer-socket" title="Permalink to this headline">¶</a></h3>
+<p>The Dealer socket inherits from the base Socket. In Singa, every Dealer socket
+only connects to one Router socket as shown in Fig.1.  The connection is set up
+by connecting the Dealer socket to the endpoint of a Router socket.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Dealer</span> <span class="p">:</span> <span class="n">public</span> <span class="n">SocketInterface</span> <span class="p">{</span>
+ <span class="n">public</span><span class="p">:</span>
+  <span class="o">/*</span>
+   <span class="o">*</span> <span class="nd">@param</span> <span class="nb">id</span> <span class="n">Local</span> <span class="n">dealer</span> <span class="n">ID</span> <span class="n">within</span> <span class="n">a</span> <span class="n">procs</span> <span class="k">if</span> <span class="n">the</span> <span class="n">dealer</span> <span class="ow">is</span> <span class="kn">from</span> <span class="nn">worker</span> <span class="ow">or</span>
+   <span class="o">*</span> <span class="n">server</span> <span class="n">thread</span><span class="p">,</span> <span class="n">starts</span> <span class="kn">from</span> <span class="mi">1</span> <span class="p">(</span><span class="mi">0</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">by</span> <span class="n">the</span> <span class="n">router</span><span class="p">);</span> <span class="ow">or</span> <span class="n">the</span> <span class="n">connected</span>
+   <span class="o">*</span> <span class="n">remote</span> <span class="n">procs</span> <span class="n">ID</span> <span class="k">for</span> <span class="n">inter</span><span class="o">-</span><span class="n">process</span> <span class="n">dealers</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">stub</span> <span class="n">thread</span><span class="o">.</span>
+   <span class="o">*/</span>
+  <span class="n">Dealer</span><span class="p">();</span>
+  <span class="n">explicit</span> <span class="n">Dealer</span><span class="p">(</span><span class="nb">int</span> <span class="nb">id</span><span class="p">);</span>
+  <span class="o">~</span><span class="n">Dealer</span><span class="p">()</span> <span class="n">override</span><span class="p">;</span>
+  <span class="o">/**</span>
+    <span class="o">*</span> <span class="n">Setup</span> <span class="n">the</span> <span class="n">connection</span> <span class="k">with</span> <span class="n">the</span> <span class="n">router</span><span class="o">.</span>
+    <span class="o">*</span>
+    <span class="o">*</span> <span class="nd">@param</span> <span class="n">endpoint</span> <span class="n">Identifier</span> <span class="n">of</span> <span class="n">the</span> <span class="n">router</span><span class="o">.</span> <span class="n">For</span> <span class="n">intra</span><span class="o">-</span><span class="n">process</span>
+    <span class="o">*</span> <span class="n">connection</span><span class="p">,</span> <span class="n">the</span> <span class="n">endpoint</span> <span class="n">follows</span> <span class="n">the</span> <span class="nb">format</span> <span class="n">of</span> <span class="n">ZeroMQ</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span><span class="p">,</span>
+    <span class="o">*</span> <span class="n">starting</span> <span class="k">with</span> <span class="s2">&quot;inproc://&quot;</span><span class="p">;</span> <span class="ow">in</span> <span class="n">Singa</span><span class="p">,</span> <span class="n">since</span> <span class="n">each</span> <span class="n">process</span> <span class="n">has</span> <span class="n">one</span>
+    <span class="o">*</span> <span class="n">router</span><span class="p">,</span> <span class="n">hence</span> <span class="n">we</span> <span class="n">can</span> <span class="n">fix</span> <span class="n">the</span> <span class="n">endpoint</span> <span class="n">to</span> <span class="n">be</span> <span class="s2">&quot;inproc://router&quot;</span> <span class="k">for</span>
+    <span class="o">*</span> <span class="n">intra</span><span class="o">-</span><span class="n">process</span><span class="o">.</span> <span class="n">For</span> <span class="n">inter</span><span class="o">-</span><span class="n">process</span><span class="p">,</span> <span class="n">the</span> <span class="n">endpoint</span> <span class="n">follows</span> <span class="n">ZeroMQ</span><span class="s1">&#39;s</span>
+    <span class="o">*</span> <span class="nb">format</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span><span class="p">,</span> <span class="n">IP</span><span class="p">:</span><span class="n">port</span><span class="p">,</span> <span class="n">where</span> <span class="n">IP</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">connected</span> <span class="n">process</span><span class="o">.</span>
+    <span class="o">*</span> <span class="nd">@return</span> <span class="mi">1</span> <span class="n">connection</span> <span class="n">sets</span> <span class="n">up</span> <span class="n">successfully</span><span class="p">;</span> <span class="mi">0</span> <span class="n">otherwise</span>
+    <span class="o">*/</span>
+  <span class="nb">int</span> <span class="n">Connect</span><span class="p">(</span><span class="n">const</span> <span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">endpoint</span><span class="p">);</span>
+  <span class="nb">int</span> <span class="n">Send</span><span class="p">(</span><span class="n">Msg</span><span class="o">**</span> <span class="n">msg</span><span class="p">)</span> <span class="n">override</span><span class="p">;</span>
+  <span class="n">Msg</span><span class="o">*</span> <span class="n">Receive</span><span class="p">()</span> <span class="n">override</span><span class="p">;</span>
+  <span class="n">void</span><span class="o">*</span> <span class="n">InternalID</span><span class="p">()</span> <span class="n">const</span> <span class="n">override</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="router-socket">
+<span id="router-socket"></span><h3>Router Socket<a class="headerlink" href="#router-socket" title="Permalink to this headline">¶</a></h3>
+<p>The Router socket inherits from the base Socket. One Router socket connects to
+at least one Dealer socket. Upon receiving a message, the router forwards it to
+the appropriate dealer according to the receiver&#8217;s ID of this message.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Router</span> <span class="p">:</span> <span class="n">public</span> <span class="n">SocketInterface</span> <span class="p">{</span>
+ <span class="n">public</span><span class="p">:</span>
+  <span class="n">Router</span><span class="p">();</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="n">There</span> <span class="ow">is</span> <span class="n">only</span> <span class="n">one</span> <span class="n">router</span> <span class="n">per</span> <span class="n">procs</span><span class="p">,</span> <span class="n">hence</span> <span class="n">its</span> <span class="n">local</span> <span class="nb">id</span> <span class="ow">is</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">set</span>
+   <span class="o">*</span> <span class="n">explicitly</span><span class="o">.</span>
+   <span class="o">*</span>
+   <span class="o">*</span> <span class="nd">@param</span> <span class="n">bufsize</span> <span class="n">Buffer</span> <span class="n">at</span> <span class="n">most</span> <span class="n">this</span> <span class="n">number</span> <span class="n">of</span> <span class="n">messages</span>
+   <span class="o">*/</span>
+  <span class="n">explicit</span> <span class="n">Router</span><span class="p">(</span><span class="nb">int</span> <span class="n">bufsize</span><span class="p">);</span>
+  <span class="o">~</span><span class="n">Router</span><span class="p">()</span> <span class="n">override</span><span class="p">;</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="n">Setup</span> <span class="n">the</span> <span class="n">connection</span> <span class="k">with</span> <span class="n">dealers</span><span class="o">.</span>
+   <span class="o">*</span>
+   <span class="o">*</span> <span class="n">It</span> <span class="n">automatically</span> <span class="n">binds</span> <span class="n">to</span> <span class="n">the</span> <span class="n">endpoint</span> <span class="k">for</span> <span class="n">intra</span><span class="o">-</span><span class="n">process</span> <span class="n">communication</span><span class="p">,</span>
+   <span class="o">*</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span><span class="p">,</span> <span class="s2">&quot;inproc://router&quot;</span><span class="o">.</span>
+   <span class="o">*</span>
+   <span class="o">*</span> <span class="nd">@param</span> <span class="n">endpoint</span> <span class="n">The</span> <span class="n">identifier</span> <span class="k">for</span> <span class="n">the</span> <span class="n">Dealer</span> <span class="n">socket</span> <span class="ow">in</span> <span class="n">other</span> <span class="n">process</span>
+   <span class="o">*</span> <span class="n">to</span> <span class="n">connect</span><span class="o">.</span> <span class="n">It</span> <span class="n">has</span> <span class="n">the</span> <span class="nb">format</span> <span class="n">IP</span><span class="p">:</span><span class="n">Port</span><span class="p">,</span> <span class="n">where</span> <span class="n">IP</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">host</span> <span class="n">machine</span><span class="o">.</span>
+   <span class="o">*</span> <span class="n">If</span> <span class="n">endpoint</span> <span class="ow">is</span> <span class="n">empty</span><span class="p">,</span> <span class="n">it</span> <span class="n">means</span> <span class="n">that</span> <span class="nb">all</span> <span class="n">connections</span> <span class="n">are</span>
+   <span class="o">*</span> <span class="n">intra</span><span class="o">-</span><span class="n">process</span> <span class="n">connection</span><span class="o">.</span>
+   <span class="o">*</span> <span class="nd">@return</span> <span class="n">number</span> <span class="n">of</span> <span class="n">connected</span> <span class="n">dealers</span><span class="o">.</span>
+   <span class="o">*/</span>
+  <span class="nb">int</span> <span class="n">Bind</span><span class="p">(</span><span class="n">const</span> <span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">endpoint</span><span class="p">);</span>
+  <span class="o">/**</span>
+   <span class="o">*</span> <span class="n">If</span> <span class="n">the</span> <span class="n">destination</span> <span class="n">socket</span> <span class="n">has</span> <span class="ow">not</span> <span class="n">connected</span> <span class="n">yet</span><span class="p">,</span> <span class="n">buffer</span> <span class="n">this</span> <span class="n">the</span> <span class="n">message</span><span class="o">.</span>
+   <span class="o">*/</span>
+  <span class="nb">int</span> <span class="n">Send</span><span class="p">(</span><span class="n">Msg</span><span class="o">**</span> <span class="n">msg</span><span class="p">)</span> <span class="n">override</span><span class="p">;</span>
+  <span class="n">Msg</span><span class="o">*</span> <span class="n">Receive</span><span class="p">()</span> <span class="n">override</span><span class="p">;</span>
+  <span class="n">void</span><span class="o">*</span> <span class="n">InternalID</span><span class="p">()</span> <span class="n">const</span> <span class="n">override</span><span class="p">;</span>
+
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="implementation">
+<span id="implementation"></span><h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="zeromq">
+<span id="zeromq"></span><h3>ZeroMQ<a class="headerlink" href="#zeromq" title="Permalink to this headline">¶</a></h3>
+<p><strong>Why <a class="reference external" href="http://zeromq.org/">ZeroMQ</a>?</strong> Our previous design used MPI for
+communication between Singa processes. But MPI is a poor choice when it comes
+to fault-tolerance, because failure at one node brings down the entire MPI
+cluster. ZeroMQ, on the other hand, is fault tolerant in the sense that one
+node failure does not affect the other nodes. ZeroMQ consists of several basic
+communication patterns that can be easily combined to create more complex
+network topologies.</p>
+<p><img src="../_static/images/msg-flow.png" style="width: 550px"/></p>
+<p><strong> Fig.3 - Messages flow for ZeroMQ</strong></p><p>The communication APIs of Singa are similar to the DEALER-ROUTER pattern of
+ZeroMQ. Hence we can easily implement the Dealer socket using ZeroMQ&#8217;s DEALER
+socket, and Router socket using ZeroMQ&#8217;s ROUTER socket.
+The intra-process can be implemented using ZeroMQ&#8217;s inproc transport, and the
+inter-process can be implemented using the tcp transport (To exploit the
+Infiniband, we can use the sdp transport). Fig.3 shows the message flow using
+ZeroMQ as the underlying implementation. The messages sent from dealers has two
+frames for the message header, and one or more frames for the message content.
+The messages sent from routers have another frame for the identifier of the
+destination dealer.</p>
+<p>Besides the DEALER-ROUTER pattern, we may also implement the Dealer socket and
+Router socket using other ZeroMQ patterns. To be continued.</p>
+</div>
+<div class="section" id="mpi">
+<span id="mpi"></span><h3>MPI<a class="headerlink" href="#mpi" title="Permalink to this headline">¶</a></h3>
+<p>Since MPI does not provide intra-process communication, we have to implement
+it inside the Router and Dealer socket. A simple solution is to allocate one
+message queue for each socket. Messages sent to one socket is inserted into the
+queue of that socket. We create a SafeQueue class to ensure the consistency of
+the queue. All queues are created by the main thread and
+passed to all sockets&#8217; constructor via <em>args</em>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/**</span>
+ <span class="o">*</span> <span class="n">A</span> <span class="n">thread</span> <span class="n">safe</span> <span class="n">queue</span> <span class="n">class</span><span class="o">.</span>
+ <span class="o">*</span> <span class="n">There</span> <span class="n">would</span> <span class="n">be</span> <span class="n">multiple</span> <span class="n">threads</span> <span class="n">pushing</span> <span class="n">messages</span> <span class="n">into</span>
+ <span class="o">*</span> <span class="n">the</span> <span class="n">queue</span> <span class="ow">and</span> <span class="n">only</span> <span class="n">one</span> <span class="n">thread</span> <span class="n">reading</span> <span class="ow">and</span> <span class="n">popping</span> <span class="n">the</span> <span class="n">queue</span><span class="o">.</span>
+ <span class="o">*/</span>
+<span class="k">class</span> <span class="nc">SafeQueue</span><span class="p">{</span>
+ <span class="n">public</span><span class="p">:</span>
+  <span class="n">void</span> <span class="n">Push</span><span class="p">(</span><span class="n">Msg</span><span class="o">*</span> <span class="n">msg</span><span class="p">);</span>
+  <span class="n">Msg</span><span class="o">*</span> <span class="n">Front</span><span class="p">();</span>
+  <span class="n">void</span> <span class="n">Pop</span><span class="p">();</span>
+  <span class="nb">bool</span> <span class="n">empty</span><span class="p">();</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>For inter-process communication, we serialize the message and call MPI&#8217;s
+send/receive functions to transfer them. All inter-process connections are
+setup by MPI at the beginning. Consequently, the Connect and Bind functions do
+nothing for both inter-process and intra-process communication.</p>
+<p>MPI&#8217;s AllReduce function is efficient for data aggregation in distributed
+training. For example, <a class="reference external" href="http://arxiv.org/abs/1501.02876">DeepImage of Baidu</a>
+uses AllReduce to aggregate the updates of parameter from all workers. It has
+similar architecture as <a class="reference external" href="architecture.html">Fig.2</a>,
+where every process has a server group and is connected with all other processes.
+Hence, we can implement DeepImage in Singa by simply using MPI&#8217;s AllReduce function for
+inter-process communication.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016 The Apache Software Foundation. All rights reserved. Apache Singa, Apache, the Apache feather logo, and the Apache Singa project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+
+<div class="rst-versions shift-up" data-toggle="rst-versions" role="note" aria-label="versions">
+    <img src="../_static/apache.jpg">
+
+    <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> incubator-singa </span>
+    v: 0.3.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Languages</dt>
+            <dd><a href="../../en/index.html">English</a></dd>
+            <dd><a href="../../zh/index.html">中文</a></dd>
+            <dd><a href="../../jp/index.html">日本語</a></dd>
+            <dd><a href="../../kr/index.html">한국어</a></dd>
+        </dl>
+    </div>
+</div>
+
+<a href="https://github.com/apache/incubator-singa">
+    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+         src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+         alt="Fork me on GitHub">
+</a>
+
+ 
+
+
+</body>
+</html>

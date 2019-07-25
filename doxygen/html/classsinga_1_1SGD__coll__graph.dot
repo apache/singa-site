@@ -1,0 +1,14 @@
+digraph "singa::SGD"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node2 [label="singa::SGD",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="singa::Optimizer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classsinga_1_1Optimizer.html",tooltip="The base class for gradient descent algorithms used to update the model parameters in order to optimi..."];
+  Node4 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" constraint_" ,fontname="Helvetica"];
+  Node4 [label="singa::Constraint",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classsinga_1_1Constraint.html",tooltip="Apply constraints for parameters (gradient). "];
+  Node5 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" learning_rate_generator_" ,fontname="Helvetica"];
+  Node5 [label="function\< float(int)\>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" regularizer_" ,fontname="Helvetica"];
+  Node6 [label="singa::Regularizer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classsinga_1_1Regularizer.html",tooltip="Apply regularization for parameters (gradient), e.g., L1 norm and L2 norm. "];
+}
