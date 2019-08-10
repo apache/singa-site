@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>How to prepare a release &mdash; incubator-singa 1.1.0 documentation</title>
+  <title>How to prepare a release &mdash; incubator-singa 2.0.0 documentation</title>
   
 
   
@@ -18,22 +18,28 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Source Repository" href="../community/source-repository.html" />
     <link rel="prev" title="How to Contribute to Documentation" href="contribute-docs.html" />
-    <link href="../_static/style.css" rel="stylesheet" type="text/css">
-    <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+    <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+    <!--link href="../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <style>
 	.fa:hover {
@@ -44,21 +50,16 @@
 	}
     </style>
 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -67,7 +68,7 @@
 
           
             
-            <img src="../_static/singa.png" class="logo" alt="Logo"/>
+            <img src="../../_static/singa.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -82,7 +83,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -102,12 +103,10 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../docs/index.html">Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">How to prepare a release</a><ul>
@@ -204,16 +203,15 @@
 <div class="section" id="select-a-release-manager">
 <h2>Select a release manager<a class="headerlink" href="#select-a-release-manager" title="Permalink to this headline">¶</a></h2>
 <p>The release manager (RM) is the coordinator for the release process. It is the RM’s signature (.asc) that is uploaded together with the release. The RM generates KEY (RSA 4096-bit) and uploads it to a public key server. The RM needs to get his key endorsed (signed) by other Apache user, to be connected to the web of trust. He should first ask the mentor to help signing his key. <a class="reference external" href="http://www.apache.org/dev/release-signing.html">http://www.apache.org/dev/release-signing.html</a></p>
-<dl class="docutils">
-<dt>Check:</dt>
-<dd><ul class="first last simple">
-<li>The codebase does not include third-party code which is not compatible to APL</li>
-<li>The dependencies are compatible with APL. GNU-like licenses are NOT compatible</li>
-<li>All source files written by us MUST include the Apache license header: <a class="reference external" href="http://www.apache.org/legal/src-headers.html">http://www.apache.org/legal/src-headers.html</a>. There’s a script in there which helps propagating the header to all files.</li>
-<li>The build process is error-free.</li>
-<li>Unit tests are included (as much as possible)</li>
-<li>The Jupyter notebooks are working with the new release</li>
-<li>The online documentation on the Apache website is up to date.</li>
+<dl class="simple">
+<dt>Check:</dt><dd><ul class="simple">
+<li><p>The codebase does not include third-party code which is not compatible to APL</p></li>
+<li><p>The dependencies are compatible with APL. GNU-like licenses are NOT compatible</p></li>
+<li><p>All source files written by us MUST include the Apache license header: <a class="reference external" href="http://www.apache.org/legal/src-headers.html">http://www.apache.org/legal/src-headers.html</a>. There’s a script in there which helps propagating the header to all files.</p></li>
+<li><p>The build process is error-free.</p></li>
+<li><p>Unit tests are included (as much as possible)</p></li>
+<li><p>The Jupyter notebooks are working with the new release</p></li>
+<li><p>The online documentation on the Apache website is up to date.</p></li>
 </ul>
 </dd>
 </dl>
@@ -226,9 +224,9 @@
 <h2>Prepare NOTICE file<a class="headerlink" href="#prepare-notice-file" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>Use this template: <a class="reference external" href="http://apache.org/legal/src-headers.html#notice">http://apache.org/legal/src-headers.html#notice</a></li>
-<li>If we include any third party code  in the release package which is not APL, must state it at the end of the NOTICE file.</li>
-<li>Example: <a class="reference external" href="http://apache.org/licenses/example-NOTICE.txt">http://apache.org/licenses/example-NOTICE.txt</a></li>
+<li><p>Use this template: <a class="reference external" href="http://apache.org/legal/src-headers.html#notice">http://apache.org/legal/src-headers.html#notice</a></p></li>
+<li><p>If we include any third party code  in the release package which is not APL, must state it at the end of the NOTICE file.</p></li>
+<li><p>Example: <a class="reference external" href="http://apache.org/licenses/example-NOTICE.txt">http://apache.org/licenses/example-NOTICE.txt</a></p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -236,8 +234,8 @@
 <h2>Prepare RELEASE_NOTES file<a class="headerlink" href="#prepare-release-notes-file" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>Introduction, Features, Bugs (link to JIRA), Changes (N/A for first erlease), Dependency list, Incompatibility issues.</li>
-<li>Follow this example:  <a class="reference external" href="http://commons.apache.org/proper/commons-digester/commons-digester-3.0/RELEASE-NOTES.txt">http://commons.apache.org/proper/commons-digester/commons-digester-3.0/RELEASE-NOTES.txt</a></li>
+<li><p>Introduction, Features, Bugs (link to JIRA), Changes (N/A for first erlease), Dependency list, Incompatibility issues.</p></li>
+<li><p>Follow this example:  <a class="reference external" href="http://commons.apache.org/proper/commons-digester/commons-digester-3.0/RELEASE-NOTES.txt">http://commons.apache.org/proper/commons-digester/commons-digester-3.0/RELEASE-NOTES.txt</a></p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -245,9 +243,9 @@
 <h2>Prepare README file<a class="headerlink" href="#prepare-readme-file" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>How to build, run test, run examples</li>
-<li>List of dependencies.</li>
-<li>Mail list, website, etc. Any information useful for user to start.</li>
+<li><p>How to build, run test, run examples</p></li>
+<li><p>List of dependencies.</p></li>
+<li><p>Mail list, website, etc. Any information useful for user to start.</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -255,35 +253,33 @@
 <h2>Prepare DISCLAIMER file<a class="headerlink" href="#prepare-disclaimer-file" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>modify from <a class="reference external" href="http://incubator.apache.org/guides/branding.html#disclaimers">http://incubator.apache.org/guides/branding.html#disclaimers</a></li>
+<li><p>modify from <a class="reference external" href="http://incubator.apache.org/guides/branding.html#disclaimers">http://incubator.apache.org/guides/branding.html#disclaimers</a></p></li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="package-the-release">
 <h2>Package the release<a class="headerlink" href="#package-the-release" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>The release should be packaged into <span class="classifier-delimiter">:</span> <span class="classifier">apache-singa-incubating-xx.xx.xx.tar.gz</span></dt>
-<dd><ul class="first last simple">
-<li>src/</li>
-<li>README</li>
-<li>LICENSE</li>
-<li>NOTICE</li>
-<li>RELEASE_NOTES</li>
-<li>DISCLAIMER</li>
-<li>…</li>
+<dl class="simple">
+<dt>The release should be packaged into<span class="classifier">apache-singa-incubating-xx.xx.xx.tar.gz</span></dt><dd><ul class="simple">
+<li><p>src/</p></li>
+<li><p>README</p></li>
+<li><p>LICENSE</p></li>
+<li><p>NOTICE</p></li>
+<li><p>RELEASE_NOTES</p></li>
+<li><p>DISCLAIMER</p></li>
+<li><p>…</p></li>
 </ul>
 </dd>
 </dl>
 </div>
 <div class="section" id="upload-the-release">
 <h2>Upload the release<a class="headerlink" href="#upload-the-release" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>The release is uploaded to the RM’s Apache page: people.apache.org/~ID/…</dt>
-<dd><ul class="first last simple">
-<li>apache-singa-incubating-xx.xx.xx.tar.gz</li>
-<li>KEY</li>
-<li>XX.acs</li>
-<li>XX.md5</li>
+<dl class="simple">
+<dt>The release is uploaded to the RM’s Apache page: people.apache.org/~ID/…</dt><dd><ul class="simple">
+<li><p>apache-singa-incubating-xx.xx.xx.tar.gz</p></li>
+<li><p>KEY</p></li>
+<li><p>XX.acs</p></li>
+<li><p>XX.md5</p></li>
 </ul>
 </dd>
 </dl>
@@ -392,7 +388,7 @@ Subject: [ANNOUNCE] Apache SINGA (incubating) X.Y.Z released</p>
         <a href="../community/source-repository.html" class="btn btn-neutral float-right" title="Source Repository" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="contribute-docs.html" class="btn btn-neutral" title="How to Contribute to Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="contribute-docs.html" class="btn btn-neutral float-left" title="How to Contribute to Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -401,7 +397,7 @@ Subject: [ANNOUNCE] Apache SINGA (incubating) X.Y.Z released</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.
 
     </p>
   </div>
@@ -418,35 +414,16 @@ Subject: [ANNOUNCE] Apache SINGA (incubating) X.Y.Z released</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
+  
 
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
@@ -457,8 +434,8 @@ Subject: [ANNOUNCE] Apache SINGA (incubating) X.Y.Z released</p>
   <div class="rst-other-versions">
       <dl>
           <dt>Languages</dt>
-          <dd><a href="../../en/index.html">English</a></dd>
-          <dd><a href="../../zh/index.html">中文</a></dd>
+          <dd><a href="../.././index.html">English</a></dd>
+          <dd><a href="../.././zh/index.html">中文</a></dd>
       </dl>
       <dl>
           <dt>Versions</dt>
@@ -467,8 +444,14 @@ Subject: [ANNOUNCE] Apache SINGA (incubating) X.Y.Z released</p>
       </dl>
 
   </div>
-  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.png" style="background-color:white;"> </a>
+  <a href="http://incubator.apache.org/"> <img src= "../../_static/apache.png" style="background-color:white;"> </a>
 
+  <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
+  <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>
+  <a href="http://www.apache.org/foundation/thanks.html" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Thanks</a>
+  <a href="http://www.apache.org/foundation/sponsorship.html" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">Sponsorship</a>
+  <a href="http://www.apache.org/licenses/" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">License</a>
+  <br>
   <a href="https://github.com/apache/incubator-singa" class="fa fa-github" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
   <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
   <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a> 

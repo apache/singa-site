@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>How to Contribute to Documentation &mdash; incubator-singa 1.1.0 documentation</title>
+  <title>How to Contribute to Documentation &mdash; incubator-singa 2.0.0 documentation</title>
   
 
   
@@ -18,22 +18,28 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="How to prepare a release" href="how-to-release.html" />
     <link rel="prev" title="How to Contribute Code" href="contribute-code.html" />
-    <link href="../_static/style.css" rel="stylesheet" type="text/css">
-    <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+    <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+    <!--link href="../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <style>
 	.fa:hover {
@@ -44,21 +50,16 @@
 	}
     </style>
 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -67,7 +68,7 @@
 
           
             
-            <img src="../_static/singa.png" class="logo" alt="Logo"/>
+            <img src="../../_static/singa.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -82,7 +83,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -102,16 +103,21 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../docs/index.html">Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">How to Contribute to Documentation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#website">Website</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-api">Python API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cpp-api">CPP API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-visual-studio-code-vscode">Using Visual Studio Code (vscode)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preview">Preview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docstring-snippet">Docstring Snippet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spell-check">Spell Check</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="how-to-release.html">How to prepare a release</a></li>
@@ -191,51 +197,103 @@
     regarding copyright ownership.  The ASF licenses this file
     to you under the Apache License, Version 2.0 (the
     "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">licenses</span><span class="o">/</span><span class="n">LICENSE</span><span class="o">-</span><span class="mf">2.0</span>
+    with the License.  You may obtain a copy of the License at
 
-<span class="n">Unless</span> <span class="n">required</span> <span class="n">by</span> <span class="n">applicable</span> <span class="n">law</span> <span class="ow">or</span> <span class="n">agreed</span> <span class="n">to</span> <span class="ow">in</span> <span class="n">writing</span><span class="p">,</span>
-<span class="n">software</span> <span class="n">distributed</span> <span class="n">under</span> <span class="n">the</span> <span class="n">License</span> <span class="ow">is</span> <span class="n">distributed</span> <span class="n">on</span> <span class="n">an</span>
-<span class="s2">&quot;AS IS&quot;</span> <span class="n">BASIS</span><span class="p">,</span> <span class="n">WITHOUT</span> <span class="n">WARRANTIES</span> <span class="n">OR</span> <span class="n">CONDITIONS</span> <span class="n">OF</span> <span class="n">ANY</span>
-<span class="n">KIND</span><span class="p">,</span> <span class="n">either</span> <span class="n">express</span> <span class="ow">or</span> <span class="n">implied</span><span class="o">.</span>  <span class="n">See</span> <span class="n">the</span> <span class="n">License</span> <span class="k">for</span> <span class="n">the</span>
-<span class="n">specific</span> <span class="n">language</span> <span class="n">governing</span> <span class="n">permissions</span> <span class="ow">and</span> <span class="n">limitations</span>
-<span class="n">under</span> <span class="n">the</span> <span class="n">License</span><span class="o">.</span>
-</pre></div>
-</div>
-<p>–&gt;</p>
-<div class="section" id="how-to-contribute-to-documentation">
-<span id="how-to-contribute-to-documentation"></span><h1>How to Contribute to Documentation<a class="headerlink" href="#how-to-contribute-to-documentation" title="Permalink to this headline">¶</a></h1>
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+--><div class="section" id="how-to-contribute-to-documentation">
+<h1>How to Contribute to Documentation<a class="headerlink" href="#how-to-contribute-to-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="website">
-<span id="website"></span><h2>Website<a class="headerlink" href="#website" title="Permalink to this headline">¶</a></h2>
+<h2>Website<a class="headerlink" href="#website" title="Permalink to this headline">¶</a></h2>
 <p>This document gives step-by-step instructions for deploying <a class="reference external" href="http://singa.incubator.apache.org">SINGA website</a>.</p>
-<p>SINGA website is built by <a class="reference external" href="http://www.sphinx-doc.org">Sphinx</a> &gt;=1.4.4 from a source tree stored in git: https://github.com/apache/incubator-singa/tree/master/doc.</p>
+<p>SINGA website is built by <a class="reference external" href="http://www.sphinx-doc.org">Sphinx</a> from a source tree stored in the <a class="reference external" href="https://github.com/apache/incubator-singa/tree/master/doc">git repo</a>.</p>
 <p>To install Sphinx:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install -U Sphinx
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">Sphinx</span><span class="o">==</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">6</span>
 </pre></div>
 </div>
 <p>To install the markdown support for Sphinx:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install recommonmark
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">recommonmark</span><span class="o">==</span><span class="mf">0.5</span><span class="o">.</span><span class="mi">0</span>
 </pre></div>
 </div>
 <p>To install the rtd theme:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install sphinx_rtd_theme
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx_rtd_theme</span><span class="o">==</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">3</span>
 </pre></div>
 </div>
 <p>You can build the website by executing the following command from the doc folder:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./build.sh html
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="n">html</span>
 </pre></div>
 </div>
-<p>Committers can update the <a class="reference external" href="http://singa.apache.org/en/index.html">SINGA website</a> by following these steps:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd _build
-$ svn co https://svn.apache.org/repos/asf/incubator/singa/site/trunk
-$ cp -r html/* trunk
-# svn add &lt;newly added html files&gt;
-$ svn commit -m &quot;commit messages&quot; --username  &lt;committer ID&gt; --password &lt;password&gt;
+<p>Committers can update the <a class="reference external" href="http://singa.apache.org/en/index.html">SINGA website</a> by copying the updated files to the <a class="reference external" href="https://github.com/apache/incubator-singa-site">website repo</a> (suppose the site repo is ~/incubator-singa-sit)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">_build</span>
+<span class="n">rsync</span> <span class="o">--</span><span class="n">checksum</span> <span class="o">-</span><span class="n">rvh</span> <span class="n">html</span><span class="o">/</span> <span class="o">~/</span><span class="n">incubator</span><span class="o">-</span><span class="n">singa</span><span class="o">-</span><span class="n">site</span><span class="o">/</span>
+<span class="n">cd</span> <span class="o">~/</span><span class="n">incubator</span><span class="o">-</span><span class="n">singa</span><span class="o">-</span><span class="n">site</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;update xxxx&quot;</span>
+<span class="n">git</span> <span class="n">push</span>
 </pre></div>
 </div>
+<p>We fix the versions of the libs in order to generate the same (checksum) html file if the source file is not changed. Otherwise, everytime we build the documentation, the html file of the same source file could be different. As a result, many html files in the site repo need updating.</p>
+</div>
+<div class="section" id="python-api">
+<h2>Python API<a class="headerlink" href="#python-api" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="cpp-api">
-<span id="cpp-api"></span><h2>CPP API<a class="headerlink" href="#cpp-api" title="Permalink to this headline">¶</a></h2>
+<h2>CPP API<a class="headerlink" href="#cpp-api" title="Permalink to this headline">¶</a></h2>
 <p>To generate docs, run “doxygen” from the doc folder (Doxygen &gt;= 1.8 recommended)</p>
+</div>
+<div class="section" id="using-visual-studio-code-vscode">
+<h2>Using Visual Studio Code (vscode)<a class="headerlink" href="#using-visual-studio-code-vscode" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="preview">
+<h3>Preview<a class="headerlink" href="#preview" title="Permalink to this headline">¶</a></h3>
+<p>The document files (rst and md files) can be previewed in vscode via the <a class="reference external" href="https://docs.restructuredtext.net/">reStructuredText Extension</a>.</p>
+<ol>
+<li><p>Install the extension in vscode.</p></li>
+<li><p>Install the dependent libs. All libs required to build the website should be installed (see the above instructions). In addition, there are two more libs to be installed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">autobuild</span><span class="o">=</span><span class="mf">0.7</span><span class="o">.</span><span class="mi">1</span>
+ <span class="n">pip</span> <span class="n">install</span> <span class="n">doc8</span><span class="o">=</span><span class="mf">0.8</span><span class="o">.</span><span class="mi">0</span>
+</pre></div>
+</div>
+</li>
+<li><p>Configure the conf path for <code class="docutils literal notranslate"><span class="pre">restructuredtext.confPath</span></code> to the <a class="reference external" href="./conf.py">conf.py</a></p></li>
+</ol>
+</div>
+<div class="section" id="docstring-snippet">
+<h3>Docstring Snippet<a class="headerlink" href="#docstring-snippet" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring">autoDocstring</a> generates the docstring of functions, classes, etc. Choose the DocString Format to <code class="docutils literal notranslate"><span class="pre">google</span></code>.</p>
+</div>
+<div class="section" id="spell-check">
+<h3>Spell Check<a class="headerlink" href="#spell-check" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">Code Spell Checker</a> can be configured to check the comments of the code, or .md and .rst files.</p>
+<p>To do spell check only for comments of Python code, add the following snippet via <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-</span> <span class="pre">Preferences</span> <span class="pre">-</span> <span class="pre">User</span> <span class="pre">Snippets</span> <span class="pre">-</span> <span class="pre">python.json</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;cspell check&quot;</span> <span class="p">:</span> <span class="p">{</span>
+<span class="s2">&quot;prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;cspell&quot;</span><span class="p">,</span>
+<span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;# Directives for doing spell check only for python and c/cpp comments&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;# cSpell:includeRegExp #.* &quot;</span><span class="p">,</span>
+    <span class="s2">&quot;# cSpell:includeRegExp (</span><span class="se">\&quot;\&quot;\&quot;</span><span class="s2">|&#39;&#39;&#39;)[^</span><span class="se">\1</span><span class="s2">]*</span><span class="se">\1</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;# cSpell: CStyleComment&quot;</span><span class="p">,</span>
+<span class="p">],</span>
+<span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;# spell check only for python comments&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To do spell check only for comments of Cpp code, add the following snippet via <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-</span> <span class="pre">Preferences</span> <span class="pre">-</span> <span class="pre">User</span> <span class="pre">Snippets</span> <span class="pre">-</span> <span class="pre">cpp.json</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;cspell check&quot;</span> <span class="p">:</span> <span class="p">{</span>
+<span class="s2">&quot;prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;cspell&quot;</span><span class="p">,</span>
+<span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;// Directive for doing spell check only for cpp comments&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;// cSpell:includeRegExp CStyleComment&quot;</span><span class="p">,</span>
+<span class="p">],</span>
+<span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;# spell check only for cpp comments&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -250,7 +308,7 @@ $ svn commit -m &quot;commit messages&quot; --username  &lt;committer ID&gt; --p
         <a href="how-to-release.html" class="btn btn-neutral float-right" title="How to prepare a release" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="contribute-code.html" class="btn btn-neutral" title="How to Contribute Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="contribute-code.html" class="btn btn-neutral float-left" title="How to Contribute Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -259,7 +317,7 @@ $ svn commit -m &quot;commit messages&quot; --username  &lt;committer ID&gt; --p
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.
 
     </p>
   </div>
@@ -276,35 +334,16 @@ $ svn commit -m &quot;commit messages&quot; --username  &lt;committer ID&gt; --p
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
+  
 
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
@@ -315,8 +354,8 @@ $ svn commit -m &quot;commit messages&quot; --username  &lt;committer ID&gt; --p
   <div class="rst-other-versions">
       <dl>
           <dt>Languages</dt>
-          <dd><a href="../../en/index.html">English</a></dd>
-          <dd><a href="../../zh/index.html">中文</a></dd>
+          <dd><a href="../.././index.html">English</a></dd>
+          <dd><a href="../.././zh/index.html">中文</a></dd>
       </dl>
       <dl>
           <dt>Versions</dt>
@@ -325,8 +364,14 @@ $ svn commit -m &quot;commit messages&quot; --username  &lt;committer ID&gt; --p
       </dl>
 
   </div>
-  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.png" style="background-color:white;"> </a>
+  <a href="http://incubator.apache.org/"> <img src= "../../_static/apache.png" style="background-color:white;"> </a>
 
+  <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
+  <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>
+  <a href="http://www.apache.org/foundation/thanks.html" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Thanks</a>
+  <a href="http://www.apache.org/foundation/sponsorship.html" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">Sponsorship</a>
+  <a href="http://www.apache.org/licenses/" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">License</a>
+  <br>
   <a href="https://github.com/apache/incubator-singa" class="fa fa-github" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
   <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
   <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a> 

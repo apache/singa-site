@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Neural Net &mdash; incubator-singa 1.1.0 documentation</title>
+  <title>Neural Net &mdash; incubator-singa 2.0.0 documentation</title>
   
 
   
@@ -18,20 +18,26 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link href="../_static/style.css" rel="stylesheet" type="text/css">
-    <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+    <!--link href="../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <style>
 	.fa:hover {
@@ -42,21 +48,16 @@
 	}
     </style>
 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -65,7 +66,7 @@
 
           
             
-            <img src="../_static/singa.png" class="logo" alt="Logo"/>
+            <img src="../../_static/singa.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -80,7 +81,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -100,12 +101,10 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="index.html">Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/how-to-release.html">How to prepare a release</a></li>
@@ -185,34 +184,32 @@
     regarding copyright ownership.  The ASF licenses this file
     to you under the Apache License, Version 2.0 (the
     "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">licenses</span><span class="o">/</span><span class="n">LICENSE</span><span class="o">-</span><span class="mf">2.0</span>
+    with the License.  You may obtain a copy of the License at
 
-<span class="n">Unless</span> <span class="n">required</span> <span class="n">by</span> <span class="n">applicable</span> <span class="n">law</span> <span class="ow">or</span> <span class="n">agreed</span> <span class="n">to</span> <span class="ow">in</span> <span class="n">writing</span><span class="p">,</span>
-<span class="n">software</span> <span class="n">distributed</span> <span class="n">under</span> <span class="n">the</span> <span class="n">License</span> <span class="ow">is</span> <span class="n">distributed</span> <span class="n">on</span> <span class="n">an</span>
-<span class="s2">&quot;AS IS&quot;</span> <span class="n">BASIS</span><span class="p">,</span> <span class="n">WITHOUT</span> <span class="n">WARRANTIES</span> <span class="n">OR</span> <span class="n">CONDITIONS</span> <span class="n">OF</span> <span class="n">ANY</span>
-<span class="n">KIND</span><span class="p">,</span> <span class="n">either</span> <span class="n">express</span> <span class="ow">or</span> <span class="n">implied</span><span class="o">.</span>  <span class="n">See</span> <span class="n">the</span> <span class="n">License</span> <span class="k">for</span> <span class="n">the</span>
-<span class="n">specific</span> <span class="n">language</span> <span class="n">governing</span> <span class="n">permissions</span> <span class="ow">and</span> <span class="n">limitations</span>
-<span class="n">under</span> <span class="n">the</span> <span class="n">License</span><span class="o">.</span>
-</pre></div>
-</div>
-<p>–&gt;</p>
-<div class="section" id="neural-net">
-<span id="neural-net"></span><h1>Neural Net<a class="headerlink" href="#neural-net" title="Permalink to this headline">¶</a></h1>
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+--><div class="section" id="neural-net">
+<h1>Neural Net<a class="headerlink" href="#neural-net" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">NeuralNet</span></code> in SINGA represents an instance of user’s neural net model. As the
 neural net typically consists of a set of layers, <code class="docutils literal notranslate"><span class="pre">NeuralNet</span></code> comprises
 a set of unidirectionally connected <a class="reference external" href="layer.html">Layer</a>s.
 This page describes how to convert an user’s neural net into
 the configuration of <code class="docutils literal notranslate"><span class="pre">NeuralNet</span></code>.</p>
-<p><img src="../_static/images/model-category.png" align="center" width="200px"/>
-<span><strong>Figure 1 - Categorization of popular deep learning models.</strong></span></p>
-<div class="section" id="net-structure-configuration">
-<span id="net-structure-configuration"></span><h2>Net structure configuration<a class="headerlink" href="#net-structure-configuration" title="Permalink to this headline">¶</a></h2>
+<img src="../_static/images/model-category.png" align="center" width="200px"/>
+<span><strong>Figure 1 - Categorization of popular deep learning models.</strong></span><div class="section" id="net-structure-configuration">
+<h2>Net structure configuration<a class="headerlink" href="#net-structure-configuration" title="Permalink to this headline">¶</a></h2>
 <p>Users configure the <code class="docutils literal notranslate"><span class="pre">NeuralNet</span></code> by listing all layers of the neural net and
 specifying each layer’s source layer names. Popular deep learning models can be
 categorized as Figure 1. The subsequent sections give details for each
 category.</p>
 <div class="section" id="feed-forward-models">
-<span id="feed-forward-models"></span><h3>Feed-forward models<a class="headerlink" href="#feed-forward-models" title="Permalink to this headline">¶</a></h3>
+<h3>Feed-forward models<a class="headerlink" href="#feed-forward-models" title="Permalink to this headline">¶</a></h3>
 <div align = "left">
 <img src="../_static/images/mlp-net.png" align="center" width="200px"/>
 <span><strong>Figure 2 - Net structure of a MLP model.</strong></span>
@@ -250,10 +247,9 @@ configuration for the MLP model shown in Figure 1 is as follows,</p>
 </div>
 </div>
 <div class="section" id="energy-models">
-<span id="energy-models"></span><h3>Energy models<a class="headerlink" href="#energy-models" title="Permalink to this headline">¶</a></h3>
-<p><img src="../_static/images/rbm-rnn.png" align="center" width="500px"/>
-<span><strong>Figure 3 - Convert connections in RBM and RNN.</strong></span></p>
-<p>For energy models including RBM, DBM,
+<h3>Energy models<a class="headerlink" href="#energy-models" title="Permalink to this headline">¶</a></h3>
+<img src="../_static/images/rbm-rnn.png" align="center" width="500px"/>
+<span><strong>Figure 3 - Convert connections in RBM and RNN.</strong></span><p>For energy models including RBM, DBM,
 etc., their connections are undirected (i.e., Category B). To represent these models using
 <code class="docutils literal notranslate"><span class="pre">NeuralNet</span></code>, users can simply replace each connection with two directed
 connections, as shown in Figure 3a. In other words, for each pair of connected layers, their source
@@ -283,7 +279,7 @@ detailed neural net configuration for a RBM model, which looks like</p>
 </div>
 </div>
 <div class="section" id="rnn-models">
-<span id="rnn-models"></span><h3>RNN models<a class="headerlink" href="#rnn-models" title="Permalink to this headline">¶</a></h3>
+<h3>RNN models<a class="headerlink" href="#rnn-models" title="Permalink to this headline">¶</a></h3>
 <p>For recurrent neural networks (RNN), users can remove the recurrent connections
 by unrolling the recurrent layer.  For example, in Figure 3b, the original
 layer is unrolled into a new layer with 4 internal layers. In this way, the
@@ -293,7 +289,7 @@ configuration for a RNN model.</p>
 </div>
 </div>
 <div class="section" id="configuration-for-multiple-nets">
-<span id="configuration-for-multiple-nets"></span><h2>Configuration for multiple nets<a class="headerlink" href="#configuration-for-multiple-nets" title="Permalink to this headline">¶</a></h2>
+<h2>Configuration for multiple nets<a class="headerlink" href="#configuration-for-multiple-nets" title="Permalink to this headline">¶</a></h2>
 <p>Typically, a training job includes three neural nets for
 training, validation and test phase respectively. The three neural nets share most
 layers except the data layer, loss layer or output layer, etc..  To avoid
@@ -308,14 +304,13 @@ filtered when creating the testing <code class="docutils literal notranslate"><s
 </div>
 </div>
 <div class="section" id="neural-net-partitioning">
-<span id="neural-net-partitioning"></span><h2>Neural net partitioning<a class="headerlink" href="#neural-net-partitioning" title="Permalink to this headline">¶</a></h2>
+<h2>Neural net partitioning<a class="headerlink" href="#neural-net-partitioning" title="Permalink to this headline">¶</a></h2>
 <p>A neural net can be partitioned in different ways to distribute the training
 over multiple workers.</p>
 <div class="section" id="batch-and-feature-dimension">
-<span id="batch-and-feature-dimension"></span><h3>Batch and feature dimension<a class="headerlink" href="#batch-and-feature-dimension" title="Permalink to this headline">¶</a></h3>
-<p><img src="../_static/images/partition_fc.png" align="center" width="400px"/>
-<span><strong>Figure 4 - Partitioning of a fully connected layer.</strong></span></p>
-<p>Every layer’s feature blob is considered a matrix whose rows are feature
+<h3>Batch and feature dimension<a class="headerlink" href="#batch-and-feature-dimension" title="Permalink to this headline">¶</a></h3>
+<img src="../_static/images/partition_fc.png" align="center" width="400px"/>
+<span><strong>Figure 4 - Partitioning of a fully connected layer.</strong></span><p>Every layer’s feature blob is considered a matrix whose rows are feature
 vectors. Thus, one layer can be split on two dimensions. Partitioning on
 dimension 0 (also called batch dimension) slices the feature matrix by rows.
 For instance, if the mini-batch size is 256 and the layer is partitioned into 2
@@ -330,10 +325,10 @@ Figure 4. Both the bias vector and weight matrix are
 partitioned into two sub-layers.</p>
 </div>
 <div class="section" id="partitioning-configuration">
-<span id="partitioning-configuration"></span><h3>Partitioning configuration<a class="headerlink" href="#partitioning-configuration" title="Permalink to this headline">¶</a></h3>
+<h3>Partitioning configuration<a class="headerlink" href="#partitioning-configuration" title="Permalink to this headline">¶</a></h3>
 <p>There are 4 partitioning schemes, whose configurations are give below,</p>
 <ol>
-<li><p class="first">Partitioning each singe layer into sub-layers on batch dimension (see
+<li><p>Partitioning each singe layer into sub-layers on batch dimension (see
 below). It is enabled by configuring the partition dimension of the layer to
 0, e.g.,</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="c1"># with other fields omitted</span>
@@ -343,7 +338,7 @@ below). It is enabled by configuring the partition dimension of the layer to
 </pre></div>
 </div>
 </li>
-<li><p class="first">Partitioning each singe layer into sub-layers on feature dimension (see
+<li><p>Partitioning each singe layer into sub-layers on feature dimension (see
 below).  It is enabled by configuring the partition dimension of the layer to
 1, e.g.,</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="c1"># with other fields omitted</span>
@@ -353,7 +348,7 @@ below).  It is enabled by configuring the partition dimension of the layer to
 </pre></div>
 </div>
 </li>
-<li><p class="first">Partitioning all layers into different subsets. It is enabled by
+<li><p>Partitioning all layers into different subsets. It is enabled by
 configuring the location ID of a layer, e.g.,</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="c1"># with other fields omitted</span>
  <span class="n">layer</span> <span class="p">{</span>
@@ -365,9 +360,7 @@ configuring the location ID of a layer, e.g.,</p>
 </pre></div>
 </div>
 </li>
-</ol>
-<ol>
-<li><p class="first">Hybrid partitioning of strategy 1, 2 and 3. The hybrid partitioning is
+<li><p>Hybrid partitioning of strategy 1, 2 and 3. The hybrid partitioning is
 useful for large models. An example application is to implement the
 <a class="reference external" href="http://arxiv.org/abs/1404.5997">idea proposed by Alex</a>.
 Hybrid partitioning is configured like,</p>
@@ -395,19 +388,19 @@ are under test and will be released in later version.</p>
 </div>
 </div>
 <div class="section" id="parameter-sharing">
-<span id="parameter-sharing"></span><h2>Parameter sharing<a class="headerlink" href="#parameter-sharing" title="Permalink to this headline">¶</a></h2>
+<h2>Parameter sharing<a class="headerlink" href="#parameter-sharing" title="Permalink to this headline">¶</a></h2>
 <p>Parameters can be shared in two cases,</p>
 <ul class="simple">
-<li>sharing parameters among layers via user configuration. For example, the
+<li><p>sharing parameters among layers via user configuration. For example, the
 visible layer and hidden layer of a RBM shares the weight matrix, which is configured through
 the <code class="docutils literal notranslate"><span class="pre">share_from</span></code> field as shown in the above RBM configuration. The
-configurations must be the same (except name) for shared parameters.</li>
-<li>due to neural net partitioning, some <code class="docutils literal notranslate"><span class="pre">Param</span></code> objects are replicated into
+configurations must be the same (except name) for shared parameters.</p></li>
+<li><p>due to neural net partitioning, some <code class="docutils literal notranslate"><span class="pre">Param</span></code> objects are replicated into
 different workers, e.g., partitioning one layer on batch dimension. These
 workers share parameter values. SINGA controls this kind of parameter
-sharing automatically, users do not need to do any configuration.</li>
-<li>the <code class="docutils literal notranslate"><span class="pre">NeuralNet</span></code> for training and testing (and validation) share most layers
-, thus share <code class="docutils literal notranslate"><span class="pre">Param</span></code> values.</li>
+sharing automatically, users do not need to do any configuration.</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">NeuralNet</span></code> for training and testing (and validation) share most layers
+, thus share <code class="docutils literal notranslate"><span class="pre">Param</span></code> values.</p></li>
 </ul>
 <p>If the shared <code class="docutils literal notranslate"><span class="pre">Param</span></code> instances resident in the same process (may in different
 threads), they use the same chunk of memory space for their values. But they
@@ -415,9 +408,9 @@ would have different memory spaces for their gradients. In fact, their
 gradients will be averaged by the stub or server.</p>
 </div>
 <div class="section" id="advanced-user-guide">
-<span id="advanced-user-guide"></span><h2>Advanced user guide<a class="headerlink" href="#advanced-user-guide" title="Permalink to this headline">¶</a></h2>
+<h2>Advanced user guide<a class="headerlink" href="#advanced-user-guide" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="creation">
-<span id="creation"></span><h3>Creation<a class="headerlink" href="#creation" title="Permalink to this headline">¶</a></h3>
+<h3>Creation<a class="headerlink" href="#creation" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">static</span> <span class="n">NeuralNet</span><span class="o">*</span> <span class="n">NeuralNet</span><span class="p">::</span><span class="n">Create</span><span class="p">(</span><span class="n">const</span> <span class="n">NetProto</span><span class="o">&amp;</span> <span class="n">np</span><span class="p">,</span> <span class="n">Phase</span> <span class="n">phase</span><span class="p">,</span> <span class="nb">int</span> <span class="n">num</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -453,8 +446,8 @@ connected.</p>
 <p>Since the <code class="docutils literal notranslate"><span class="pre">NeuralNet</span></code> instance may be shared among multiple workers, the
 <code class="docutils literal notranslate"><span class="pre">Create</span></code> function returns a pointer to the <code class="docutils literal notranslate"><span class="pre">NeuralNet</span></code> instance .</p>
 </div>
-<div class="section" id="parameter-sharing">
-<span id="id1"></span><h3>Parameter sharing<a class="headerlink" href="#parameter-sharing" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h3>Parameter sharing<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Param</span></code> sharing
 is enabled by first sharing the Param configuration (in <code class="docutils literal notranslate"><span class="pre">NeuralNet::Create</span></code>)
 to create two similar (e.g., the same shape) Param objects, and then calling
@@ -470,7 +463,7 @@ the training net and the test net,</p>
 <p>It will call <code class="docutils literal notranslate"><span class="pre">Param::ShareFrom</span></code> for each Param object.</p>
 </div>
 <div class="section" id="access-functions">
-<span id="access-functions"></span><h3>Access functions<a class="headerlink" href="#access-functions" title="Permalink to this headline">¶</a></h3>
+<h3>Access functions<a class="headerlink" href="#access-functions" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">NeuralNet</span></code> provides a couple of access function to get the layers and params
 of the net:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Layer</span><span class="o">*&gt;&amp;</span> <span class="n">layers</span><span class="p">()</span> <span class="n">const</span><span class="p">;</span>
@@ -481,9 +474,9 @@ of the net:</p>
 </div>
 </div>
 <div class="section" id="partitioning">
-<span id="partitioning"></span><h3>Partitioning<a class="headerlink" href="#partitioning" title="Permalink to this headline">¶</a></h3>
+<h3>Partitioning<a class="headerlink" href="#partitioning" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="implementation">
-<span id="implementation"></span><h4>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h4>
+<h4>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h4>
 <p>SINGA partitions the neural net in <code class="docutils literal notranslate"><span class="pre">CreateGraph</span></code> function, which creates one
 node for each (partitioned) layer. For example, if one layer’s partition
 dimension is 0 or 1, then it creates <code class="docutils literal notranslate"><span class="pre">npartition</span></code> nodes for it; if the
@@ -501,7 +494,7 @@ inserted. These connection layers help making the network communication and
 synchronization transparent to the users.</p>
 </div>
 <div class="section" id="dispatching-partitions-to-workers">
-<span id="dispatching-partitions-to-workers"></span><h4>Dispatching partitions to workers<a class="headerlink" href="#dispatching-partitions-to-workers" title="Permalink to this headline">¶</a></h4>
+<h4>Dispatching partitions to workers<a class="headerlink" href="#dispatching-partitions-to-workers" title="Permalink to this headline">¶</a></h4>
 <p>Each (partitioned) layer is assigned a location ID, based on which it is dispatched to one
 worker. Particularly, the pointer to the <code class="docutils literal notranslate"><span class="pre">NeuralNet</span></code> instance is passed
 to every worker within the same group, but each worker only computes over the
@@ -531,7 +524,7 @@ lower layers and <code class="docutils literal notranslate"><span class="pre">pa
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.
 
     </p>
   </div>
@@ -548,35 +541,16 @@ lower layers and <code class="docutils literal notranslate"><span class="pre">pa
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
+  
 
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
@@ -587,8 +561,8 @@ lower layers and <code class="docutils literal notranslate"><span class="pre">pa
   <div class="rst-other-versions">
       <dl>
           <dt>Languages</dt>
-          <dd><a href="../../en/index.html">English</a></dd>
-          <dd><a href="../../zh/index.html">中文</a></dd>
+          <dd><a href="../.././index.html">English</a></dd>
+          <dd><a href="../.././zh/index.html">中文</a></dd>
       </dl>
       <dl>
           <dt>Versions</dt>
@@ -597,8 +571,14 @@ lower layers and <code class="docutils literal notranslate"><span class="pre">pa
       </dl>
 
   </div>
-  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.png" style="background-color:white;"> </a>
+  <a href="http://incubator.apache.org/"> <img src= "../../_static/apache.png" style="background-color:white;"> </a>
 
+  <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
+  <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>
+  <a href="http://www.apache.org/foundation/thanks.html" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Thanks</a>
+  <a href="http://www.apache.org/foundation/sponsorship.html" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">Sponsorship</a>
+  <a href="http://www.apache.org/licenses/" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">License</a>
+  <br>
   <a href="https://github.com/apache/incubator-singa" class="fa fa-github" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
   <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
   <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a> 

@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>FeedForward Net &mdash; incubator-singa 1.1.0 documentation</title>
+  <title>FeedForward Net &mdash; incubator-singa 2.0.0 documentation</title>
   
 
   
@@ -18,22 +18,26 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Initializer" href="initializer.html" />
-    <link rel="prev" title="Layer" href="layer.html" />
-    <link href="../_static/style.css" rel="stylesheet" type="text/css">
-    <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+    <!--link href="../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <style>
 	.fa:hover {
@@ -44,21 +48,16 @@
 	}
     </style>
 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -67,7 +66,7 @@
 
           
             
-            <img src="../_static/singa.png" class="logo" alt="Logo"/>
+            <img src="../../_static/singa.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -82,7 +81,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -99,35 +98,13 @@
               
             
             
-              <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software_stack.html">Software Stack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="device.html">Device</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="layer.html">Layer</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">FeedForward Net</a></li>
-<li class="toctree-l2"><a class="reference internal" href="initializer.html">Initializer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="loss.html">Loss</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metric.html">Metric</a></li>
-<li class="toctree-l2"><a class="reference internal" href="optimizer.html">Optimizer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="autograd.html">Autograd in Singa</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data.html">Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="image_tool.html">Image Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snapshot.html">Snapshot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="converter.html">Caffe Converter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utils.html">Utils</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model_zoo/index.html">Model Zoo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
-</ul>
-</li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/how-to-release.html">How to prepare a release</a></li>
@@ -183,8 +160,6 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Documentation</a> &raquo;</li>
-        
       <li>FeedForward Net</li>
     
     
@@ -202,298 +177,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-singa.net">
-<span id="feedforward-net"></span><h1>FeedForward Net<a class="headerlink" href="#module-singa.net" title="Permalink to this headline">¶</a></h1>
-<p>Nerual net class for constructing the nets using layers and providing access
-functions for net info, e.g., parameters.</p>
-<p>Example usages:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="k">import</span> <span class="n">net</span> <span class="k">as</span> <span class="n">ffnet</span>
-<span class="kn">from</span> <span class="nn">singa</span> <span class="k">import</span> <span class="n">metric</span>
-<span class="kn">from</span> <span class="nn">singa</span> <span class="k">import</span> <span class="n">loss</span>
-<span class="kn">from</span> <span class="nn">singa</span> <span class="k">import</span> <span class="n">layer</span>
-<span class="kn">from</span> <span class="nn">singa</span> <span class="k">import</span> <span class="n">device</span>
-
-<span class="c1"># create net and add layers</span>
-<span class="n">net</span> <span class="o">=</span> <span class="n">ffnet</span><span class="o">.</span><span class="n">FeedForwardNet</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">SoftmaxCrossEntropy</span><span class="p">(),</span> <span class="n">metric</span><span class="o">.</span><span class="n">Accuracy</span><span class="p">())</span>
-<span class="n">net</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="s1">&#39;conv1&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">input_sample_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p">,)))</span>
-<span class="n">net</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu1&#39;</span><span class="p">))</span>
-<span class="n">net</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="s1">&#39;pool1&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="n">net</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="s1">&#39;flat&#39;</span><span class="p">))</span>
-<span class="n">net</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="s1">&#39;dense&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-
-<span class="c1"># init parameters</span>
-<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">net</span><span class="o">.</span><span class="n">param_values</span><span class="p">():</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">p</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">p</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
-
-<span class="c1"># move net onto gpu</span>
-<span class="n">dev</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">create_cuda_gpu</span><span class="p">()</span>
-<span class="n">net</span><span class="o">.</span><span class="n">to_device</span><span class="p">(</span><span class="n">dev</span><span class="p">)</span>
-
-<span class="c1"># training (skipped)</span>
-
-<span class="c1"># do prediction after training</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span> <span class="n">dev</span><span class="p">)</span>
-<span class="n">x</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="nb">print</span> <span class="n">tensor</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-<dl class="class">
-<dt id="singa.net.FeedForwardNet">
-<em class="property">class </em><code class="descclassname">singa.net.</code><code class="descname">FeedForwardNet</code><span class="sig-paren">(</span><em>loss=None</em>, <em>metric=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.net.FeedForwardNet" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="method">
-<dt id="singa.net.FeedForwardNet.to_device">
-<code class="descname">to_device</code><span class="sig-paren">(</span><em>dev</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.net.FeedForwardNet.to_device" title="Permalink to this definition">¶</a></dt>
-<dd><p>Move the net onto the given device, including
-all parameters and intermediate data.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.net.FeedForwardNet.add">
-<code class="descname">add</code><span class="sig-paren">(</span><em>lyr</em>, <em>src=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.net.FeedForwardNet.add" title="Permalink to this definition">¶</a></dt>
-<dd><p>Append a layer into the layer list.</p>
-<p>This function will get the sample shape from the src layers to setup the
-newly added layer. For the first layer, it is setup outside. The calling
-function should ensure the correctness of the layer order. If src is
-None, the last layer is the src layer. If there are multiple src layers,
-the src is a list of the src layers.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>lyr</strong> (<a class="reference internal" href="layer.html#singa.layer.Layer" title="singa.layer.Layer"><em>Layer</em></a>) – the layer to be added</li>
-<li><strong>src</strong> (<a class="reference internal" href="layer.html#singa.layer.Layer" title="singa.layer.Layer"><em>Layer</em></a>) – the source layer of lyr</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.net.FeedForwardNet.param_values">
-<code class="descname">param_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.net.FeedForwardNet.param_values" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a list of tensors for all parameters</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.net.FeedForwardNet.param_specs">
-<code class="descname">param_specs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.net.FeedForwardNet.param_specs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a list of ParamSpec for all parameters</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.net.FeedForwardNet.param_names">
-<code class="descname">param_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.net.FeedForwardNet.param_names" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a list for the names of all params</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.net.FeedForwardNet.train">
-<code class="descname">train</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.net.FeedForwardNet.train" title="Permalink to this definition">¶</a></dt>
-<dd><p>Run BP for one iteration.
-This method is deprecated. It is only kept for backward compatibility.
-The name of this method is confusing since it does not update parameters.
-Please use backprob() instead.
-The back progagation algorithm computes gradients but it does not train.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.net.FeedForwardNet.backprob">
-<code class="descname">backprob</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.net.FeedForwardNet.backprob" title="Permalink to this definition">¶</a></dt>
-<dd><p>Run BP for one iteration.</p>
-<p>Currently only support nets with a single output layer, and a single
-loss objective and metric.
-For multiple outputs (with multiple loss/metric), please manually
-call forward, compute loss/metric and call backward. backward() is also
-more memory efficient than this function.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> – input data, a single input Tensor or a dict: layer name -&gt; Tensor</li>
-<li><strong>y</strong> – label data, a single input Tensor.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">gradients of parameters and the loss and metric values.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.net.FeedForwardNet.evaluate">
-<code class="descname">evaluate</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.net.FeedForwardNet.evaluate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Evaluate the loss and metric of the given data.</p>
-<p>Currently only support nets with a single output layer, and a single
-loss objective and metric.
-TODO(wangwei) consider multiple loss objectives and metrics.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>x</strong> – input data, a single input Tensor or a dict: layer name -&gt; Tensor</li>
-<li><strong>y</strong> – label data, a single input Tensor.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.net.FeedForwardNet.predict">
-<code class="descname">predict</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.net.FeedForwardNet.predict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Forward the input data through each layer to get the values of the
-output layers.</p>
-<p>Currently only support nets with a single output layer</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>x</strong> – input data, a single input Tensor or a dict: layer name -&gt; Tensor</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a single output tensor as the prediction result.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.net.FeedForwardNet.topo_sort">
-<code class="descname">topo_sort</code><span class="sig-paren">(</span><em>layers</em>, <em>src_of_layer</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.net.FeedForwardNet.topo_sort" title="Permalink to this definition">¶</a></dt>
-<dd><p>Topology sort of layers.</p>
-<p>It would try to preserve the orders of the input layers.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>layers</strong> – a list of layers; the layers from the output of the same
-layer (e.g., slice layer) should be added by users in correct
-order; This function would not change their order.</li>
-<li><strong>src_of_layer</strong> – a dictionary: src layer name -&gt; a list of src layers</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of ordered layer</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.net.FeedForwardNet.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>flag</em>, <em>x</em>, <em>output=[]</em>, <em>freeze=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.net.FeedForwardNet.forward" title="Permalink to this definition">¶</a></dt>
-<dd><p>Forward the input(s) through every layer.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>flag</strong> – True for training; False for evaluation; could also be
-model_pb2.kTrain or model_pb2.kEval, or other values for future
-use.</li>
-<li><strong>x</strong> – a single SINGA tensor if there is a single input; otherwise, a
-dictionary: layer name-&gt; singa tensor, for each layer accepting
-input data. Do not associate a layer with input tensor if it is
-connected from another layer. For such case, use a Dummy() layer
-to accept the input data and connect the dummy layer to this
-layer.</li>
-<li><strong>output</strong> (<em>list</em>) – a list of layer names whose output would be returned
-in addition to the default output.</li>
-<li><strong>freeze</strong> (<em>str</em>) – layer name, freeze all layers before this layer; flag
-is set to false for these layers.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><dl class="docutils">
-<dt>if there is only one output layer and output arg is empty, return</dt>
-<dd><p class="first last">the result from the single output layer; otherwise, return a
-dictionary: layer name -&gt; output tensor(s)</p>
-</dd>
-</dl>
-</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.net.FeedForwardNet.backward">
-<code class="descname">backward</code><span class="sig-paren">(</span><em>dy</em>, <em>output=[]</em>, <em>freeze=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.net.FeedForwardNet.backward" title="Permalink to this definition">¶</a></dt>
-<dd><p>Run back-propagation after forward-propagation.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>dy</strong> – a single tensor if there is a single loss function; otherwise,
-a dictionary maps the name of the layer connecting to the loss
-function -&gt; gradient from the loss function. Do not associate a
-layer with gradient tensor if it is connecting to another layer.
-For such case, connect this layer to a Dummy() layer and use the
-dummy layer to accept the gradient.</li>
-<li><strong>output</strong> (<em>list</em>) – a list of layer names whose output gradient would be
-returned in addition to the param gradient</li>
-<li><strong>freeze</strong> (<em>str</em>) – layer name, stop backward after this layer.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a geneartor iterator that generates
-(param_names, param_values, param_grads, layer_grads) after
-processing each layer h, where the first three lists are for h
-and the last item is a dictionary which maps
-layer name -&gt; its output gradient tensor(s). At the end of this
-function, the key set includes all layers in the output arg.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.net.FeedForwardNet.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>f</em>, <em>buffer_size=10</em>, <em>use_pickle=False</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.net.FeedForwardNet.save" title="Permalink to this definition">¶</a></dt>
-<dd><p>Save model parameters using io/snapshot.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>f</strong> – file name</li>
-<li><strong>buffer_size</strong> – size (MB) of the IO, default setting is 10MB; Please
-make sure it is larger than any single parameter object.</li>
-<li><strong>use_pickle</strong> (<em>Boolean</em>) – if true, it would use pickle for dumping;
-otherwise, it would use protobuf for serialization, which uses
-less space.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.net.FeedForwardNet.load">
-<code class="descname">load</code><span class="sig-paren">(</span><em>f</em>, <em>buffer_size=10</em>, <em>use_pickle=False</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.net.FeedForwardNet.load" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load model parameters using io/snapshot.</p>
-<p>Please refer to the argument description in save().</p>
-</dd></dl>
-
-</dd></dl>
-
+  <div class="section" id="feedforward-net">
+<h1>FeedForward Net<a class="headerlink" href="#feedforward-net" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -502,21 +187,12 @@ less space.</li>
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="initializer.html" class="btn btn-neutral float-right" title="Initializer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="layer.html" class="btn btn-neutral" title="Layer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.
 
     </p>
   </div>
@@ -533,35 +209,16 @@ less space.</li>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
+  
 
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
@@ -572,8 +229,8 @@ less space.</li>
   <div class="rst-other-versions">
       <dl>
           <dt>Languages</dt>
-          <dd><a href="../../en/index.html">English</a></dd>
-          <dd><a href="../../zh/index.html">中文</a></dd>
+          <dd><a href="../.././index.html">English</a></dd>
+          <dd><a href="../.././zh/index.html">中文</a></dd>
       </dl>
       <dl>
           <dt>Versions</dt>
@@ -582,8 +239,14 @@ less space.</li>
       </dl>
 
   </div>
-  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.png" style="background-color:white;"> </a>
+  <a href="http://incubator.apache.org/"> <img src= "../../_static/apache.png" style="background-color:white;"> </a>
 
+  <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
+  <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>
+  <a href="http://www.apache.org/foundation/thanks.html" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Thanks</a>
+  <a href="http://www.apache.org/foundation/sponsorship.html" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">Sponsorship</a>
+  <a href="http://www.apache.org/licenses/" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">License</a>
+  <br>
   <a href="https://github.com/apache/incubator-singa" class="fa fa-github" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
   <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
   <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a> 
