@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -219,7 +228,7 @@
 <h1>前馈网络<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>Neural net类用层来创建网络并提供可以获取网络信息（比如：参数）的函数。</p>
 <p>示例用法：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">net</span> <span class="k">as</span> <span class="n">ffnet</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">net</span> <span class="k">as</span> <span class="n">ffnet</span>
 <span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">metric</span>
 <span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">loss</span>
 <span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">layer</span>
@@ -256,7 +265,7 @@
 <hr class="docutils" />
 <div class="section" id="class-singa-net-feedforwardnet-loss-none-metric-none">
 <h2>class singa.net.FeedForwardNet(loss=None, metric=None)<a class="headerlink" href="#class-singa-net-feedforwardnet-loss-none-metric-none" title="Permalink to this headline">¶</a></h2>
-<p>基类：<code class="docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>基类：<code class="docutils literal"><span class="pre">object</span></code></p>
 <div class="section" id="to-device-dev">
 <h3>to_device(dev)<a class="headerlink" href="#to-device-dev" title="Permalink to this headline">¶</a></h3>
 <p>将网络移至指定设备上，包括所有参数和中间数据。</p>
@@ -268,8 +277,8 @@
 <p>该功能将从src层获取样本形状以设置新添加的层。 对于第一层，它被设置在外部。 调用函数应确保层顺序的正确性。 如果src是None，最后一层是src层。 如果有多个src图层，则src是src层的列表。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>lyr (Layer)</strong> – 待添加的层</p></li>
-<li><p><strong>src (Layer)</strong> – lyr层的父层</p></li>
+<li><strong>lyr (Layer)</strong> – 待添加的层</li>
+<li><strong>src (Layer)</strong> – lyr层的父层</li>
 </ul>
 </div>
 <hr class="docutils" />
@@ -294,8 +303,8 @@
 目前仅支持单输出层、单损失函数及度量方法的网络。 TODO(wangwei) 考虑多损失函数和多度量值。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>x</strong> – 输入数据，一个输入tensor或字典：层名-&gt;tensor</p></li>
-<li><p><strong>y</strong> – 输入数据的标签，一个tensor</p></li>
+<li><strong>x</strong> – 输入数据，一个输入tensor或字典：层名-&gt;tensor</li>
+<li><strong>y</strong> – 输入数据的标签，一个tensor</li>
 </ul>
 <p><strong>返回值：</strong> 参数梯度，损失函数和度量值</p>
 </div>
@@ -305,8 +314,8 @@
 <p>根据给定数据评估损失函数和度量值。目前仅支持单输出层、单损失函数及度量方法的网络。TODO(wangwei) 考虑多损失函数和多度量值。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>x</strong> – 输入数据，单个tensor或一个字典： 层名 -&gt; tensor</p></li>
-<li><p><strong>y</strong> – 输入数据的标签，单个tensor.</p></li>
+<li><strong>x</strong> – 输入数据，单个tensor或一个字典： 层名 -&gt; tensor</li>
+<li><strong>y</strong> – 输入数据的标签，单个tensor.</li>
 </ul>
 </div>
 <hr class="docutils" />
@@ -316,7 +325,7 @@
 目前仅支持单输出层的网络。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>x</strong> - 输入数据，单个tesnor或一个字典： 层名 -&gt; tensor</p></li>
+<li><strong>x</strong> - 输入数据，单个tesnor或一个字典： 层名 -&gt; tensor</li>
 </ul>
 <p><strong>返回值：</strong> 单个输出tensor作为预测结果</p>
 </div>
@@ -327,8 +336,8 @@
 对于多输入层，将会保留输入层的顺序。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>layers</strong> – 层列表；同个层（如slice层）的多个输出层应该以正确的顺序加入，此功能将不会改变其顺序。</p></li>
-<li><p><strong>src_of_layer</strong> – 字典: src层名 -&gt; src层列表</p></li>
+<li><strong>layers</strong> – 层列表；同个层（如slice层）的多个输出层应该以正确的顺序加入，此功能将不会改变其顺序。</li>
+<li><strong>src_of_layer</strong> – 字典: src层名 -&gt; src层列表</li>
 </ul>
 <p><strong>返回值：</strong> 排序后层列表</p>
 </div>
@@ -336,12 +345,12 @@
 <div class="section" id="forward-flag-x-output">
 <h3>forward(flag, x, output=[])<a class="headerlink" href="#forward-flag-x-output" title="Permalink to this headline">¶</a></h3>
 <p>将输入经过每个层向前传递。
-如果一个层具有来自其他层和来自x的输入，则来自x的数据在来自其他层的数据之前被排序，例如，如果层1-&gt;层2并且x [‘layer2’]具有数据，则输入层2展平，即[x [‘layer2’]，层1的输出]</p>
+如果一个层具有来自其他层和来自x的输入，则来自x的数据在来自其他层的数据之前被排序，例如，如果层1-&gt;层2并且x [‘layer2’]具有数据，则输入层2展平，即[x [&#8216;layer2&#8216;]，层1的输出]</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>flag</strong> – True代表训练;False代表评估;也可以是model_pb2.kTrain或model_pb2.kEval或者其他未来可能使用的值。</p></li>
-<li><p><strong>x</strong> – 一个tensor或一个字典：层名 -&gt; tensor</p></li>
-<li><p><strong>output(list)</strong> – 层名列表，将会和默认输出一起作为返回值</p></li>
+<li><strong>flag</strong> – True代表训练;False代表评估;也可以是model_pb2.kTrain或model_pb2.kEval或者其他未来可能使用的值。</li>
+<li><strong>x</strong> – 一个tensor或一个字典：层名 -&gt; tensor</li>
+<li><strong>output(list)</strong> – 层名列表，将会和默认输出一起作为返回值</li>
 </ul>
 <p><strong>返回值：</strong> 如果只有一个输出层，返回输出tensor;否则返回字典：层名-&gt;输出tensor</p>
 </div>
@@ -357,9 +366,9 @@
 <p>用io/snapshot保存模型参数。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>f</strong> – 文件名</p></li>
-<li><p><strong>buffer_size</strong> – 输入输出的大小(MB)，默认为10MB；请确保它比任何一个参数对象要大。</p></li>
-<li><p><strong>use_pickle(boolean)</strong> – 如果为真，将使用pickle保存；否则，将用protobuf做序列化，会占用较少空间。</p></li>
+<li><strong>f</strong> – 文件名</li>
+<li><strong>buffer_size</strong> – 输入输出的大小(MB)，默认为10MB；请确保它比任何一个参数对象要大。</li>
+<li><strong>use_pickle(boolean)</strong> – 如果为真，将使用pickle保存；否则，将用protobuf做序列化，会占用较少空间。</li>
 </ul>
 </div>
 <hr class="docutils" />

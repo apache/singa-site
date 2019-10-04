@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
 
@@ -237,33 +246,33 @@
 <h2>操作说明<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="singa">
 <h3>编译SINGA<a class="headerlink" href="#singa" title="Permalink to this headline">¶</a></h3>
-<p>请用CUDA，CUDNN和OpenCV编译SINGA。 您可以手动打开CMakeLists.txt中的选项或在build /文件夹中运行<code class="docutils literal notranslate"><span class="pre">ccmake</span> <span class="pre">..</span></code>进行配置。</p>
+<p>请用CUDA，CUDNN和OpenCV编译SINGA。 您可以手动打开CMakeLists.txt中的选项或在build /文件夹中运行<code class="docutils literal"><span class="pre">ccmake</span> <span class="pre">..</span></code>进行配置。</p>
 <p>我们已经在CuDNN V4和V5（V5需要Cuda7.5）上进行了测试。</p>
 </div>
 <div class="section" id="id2">
 <h3>数据下载<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>请参考创建<a class="reference external" href="https://github.com/amd/OpenCL-caffe/wiki/Instructions-to-create-ImageNet-2012-data">ImageNet 2012数据集</a>的步骤1-3下载和加压数据。</p></li>
-<li><p>你可以通过<a class="reference external" href="https://github.com/BVLC/caffe/blob/master/data/ilsvrc12/get_ilsvrc_aux.sh">get_ilsvrc_aux.sh</a>或从<a class="reference external" href="http://www.image-net.org/download-images">ImageNet</a>下载训练和验证集。</p></li>
+<li>请参考创建<a class="reference external" href="https://github.com/amd/OpenCL-caffe/wiki/Instructions-to-create-ImageNet-2012-data">ImageNet 2012数据集</a>的步骤1-3下载和加压数据。</li>
+<li>你可以通过<a class="reference external" href="https://github.com/BVLC/caffe/blob/master/data/ilsvrc12/get_ilsvrc_aux.sh">get_ilsvrc_aux.sh</a>或从<a class="reference external" href="http://www.image-net.org/download-images">ImageNet</a>下载训练和验证集。</li>
 </ul>
 </div>
 <div class="section" id="id3">
 <h3>数据预处理<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p>假设你已经下载了数据和描述文件。 现在我们应该将数据转换为二进制文件。你可以运行：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">sh</span> <span class="n">create_data</span><span class="o">.</span><span class="n">sh</span>
+<li><p class="first">假设你已经下载了数据和描述文件。 现在我们应该将数据转换为二进制文件。你可以运行：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">sh</span> <span class="n">create_data</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>这个脚本会在指定输出目录下生成一个测试文件（<code class="docutils literal notranslate"><span class="pre">test.bin</span></code>），均值文件（<code class="docutils literal notranslate"><span class="pre">mean.bin</span></code>）和一些训练文件（<code class="docutils literal notranslate"><span class="pre">trainX.bin</span></code>）。</p>
+<p>这个脚本会在指定输出目录下生成一个测试文件（<code class="docutils literal"><span class="pre">test.bin</span></code>），均值文件（<code class="docutils literal"><span class="pre">mean.bin</span></code>）和一些训练文件（<code class="docutils literal"><span class="pre">trainX.bin</span></code>）。</p>
 </li>
-<li><p>你也可以改变<code class="docutils literal notranslate"><span class="pre">create_data.sh</span></code>的参数。</p>
+<li><p class="first">你也可以改变<code class="docutils literal"><span class="pre">create_data.sh</span></code>的参数。</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-trainlist</span> <span class="pre">&lt;file&gt;</span></code>: 训练数据列表文件;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-trainfolder</span> <span class="pre">&lt;folder&gt;</span></code>: 训练图片所在文件夹;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-testlist</span> <span class="pre">&lt;file&gt;</span></code>: 测试数据列表文件;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-testfolder</span> <span class="pre">&lt;floder&gt;</span></code>: 测试图像所在文件夹;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-outdata</span> <span class="pre">&lt;folder&gt;</span></code>: 保存输出文件的文件夹，包括平均值，训练和测试文件。 该脚本将在指定的文件夹中生成这些文件;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-filesize</span> <span class="pre">&lt;int&gt;</span></code>: 在每个二进制文件中存储的训练图片个数.</p></li>
+<li><code class="docutils literal"><span class="pre">-trainlist</span> <span class="pre">&lt;file&gt;</span></code>: 训练数据列表文件;</li>
+<li><code class="docutils literal"><span class="pre">-trainfolder</span> <span class="pre">&lt;folder&gt;</span></code>: 训练图片所在文件夹;</li>
+<li><code class="docutils literal"><span class="pre">-testlist</span> <span class="pre">&lt;file&gt;</span></code>: 测试数据列表文件;</li>
+<li><code class="docutils literal"><span class="pre">-testfolder</span> <span class="pre">&lt;floder&gt;</span></code>: 测试图像所在文件夹;</li>
+<li><code class="docutils literal"><span class="pre">-outdata</span> <span class="pre">&lt;folder&gt;</span></code>: 保存输出文件的文件夹，包括平均值，训练和测试文件。 该脚本将在指定的文件夹中生成这些文件;</li>
+<li><code class="docutils literal"><span class="pre">-filesize</span> <span class="pre">&lt;int&gt;</span></code>: 在每个二进制文件中存储的训练图片个数.</li>
 </ul>
 </li>
 </ul>
@@ -271,22 +280,22 @@
 <div class="section" id="id4">
 <h3>训练<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p>准备好数据后，你可以运行下面指令来训练AlexNet模型。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">sh</span> <span class="n">run</span><span class="o">.</span><span class="n">sh</span>
+<li><p class="first">准备好数据后，你可以运行下面指令来训练AlexNet模型。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">sh</span> <span class="n">run</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 </li>
-<li><p>你可以改变<code class="docutils literal notranslate"><span class="pre">run.sh</span></code>的参数。</p>
+<li><p class="first">你可以改变<code class="docutils literal"><span class="pre">run.sh</span></code>的参数。</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-epoch</span> <span class="pre">&lt;int&gt;</span></code>: 要训练的epoch数目，默认为90;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-lr</span> <span class="pre">&lt;float&gt;</span></code>: 基础学习率，学习率将减少每20个时期，更具体地，lr = lr * exp（0.1 *（epoch / 20））;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-batchsize</span> <span class="pre">&lt;int&gt;</span></code>: 批数目，它应该根据你的内存而改变;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-filesize</span> <span class="pre">&lt;int&gt;</span></code>: 存储在每个二进制文件中的训练图像的数量，与数据预处理中的文件大小相同;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-ntrain</span> <span class="pre">&lt;int&gt;</span></code>: 训练图片的数目;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-ntest</span> <span class="pre">&lt;int&gt;</span></code>: 测试图片的数目;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-data</span> <span class="pre">&lt;folder&gt;</span></code>: 存储二进制文件的文件夹，它恰好是数据预处理步骤中的输出文件夹;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-pfreq</span> <span class="pre">&lt;int&gt;</span></code>: 打印当前模型状态（损失和准确度）的频率（以批数据为单位）;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-nthreads</span> <span class="pre">&lt;int&gt;</span></code>: 加载传给模型的数据所有的线程数。</p></li>
+<li><code class="docutils literal"><span class="pre">-epoch</span> <span class="pre">&lt;int&gt;</span></code>: 要训练的epoch数目，默认为90;</li>
+<li><code class="docutils literal"><span class="pre">-lr</span> <span class="pre">&lt;float&gt;</span></code>: 基础学习率，学习率将减少每20个时期，更具体地，lr = lr * exp（0.1 *（epoch / 20））;</li>
+<li><code class="docutils literal"><span class="pre">-batchsize</span> <span class="pre">&lt;int&gt;</span></code>: 批数目，它应该根据你的内存而改变;</li>
+<li><code class="docutils literal"><span class="pre">-filesize</span> <span class="pre">&lt;int&gt;</span></code>: 存储在每个二进制文件中的训练图像的数量，与数据预处理中的文件大小相同;</li>
+<li><code class="docutils literal"><span class="pre">-ntrain</span> <span class="pre">&lt;int&gt;</span></code>: 训练图片的数目;</li>
+<li><code class="docutils literal"><span class="pre">-ntest</span> <span class="pre">&lt;int&gt;</span></code>: 测试图片的数目;</li>
+<li><code class="docutils literal"><span class="pre">-data</span> <span class="pre">&lt;folder&gt;</span></code>: 存储二进制文件的文件夹，它恰好是数据预处理步骤中的输出文件夹;</li>
+<li><code class="docutils literal"><span class="pre">-pfreq</span> <span class="pre">&lt;int&gt;</span></code>: 打印当前模型状态（损失和准确度）的频率（以批数据为单位）;</li>
+<li><code class="docutils literal"><span class="pre">-nthreads</span> <span class="pre">&lt;int&gt;</span></code>: 加载传给模型的数据所有的线程数。</li>
 </ul>
 </li>
 </ul>

@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
 
@@ -36,8 +45,8 @@
   <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="name: GoogleNet on ImageNet SINGA version: 1.0.1 SINGA commit: 8c990f7da2de220e8a012c6a8ecc897dc7532744 parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/bvlc_googlenet.tar.gz parameter_sha1: 0a88e8948b1abca3badfd8d090d6be03f8d7655d license: unrestricted https://github.com/BVLC/caffe/tree/master/models/bvlc_googlenet" href="../googlenet/README.html" />
-    <link rel="prev" title="Train Char-RNN over plain text" href="../../char-rnn/README.html" />
+    <link rel="next" title="Image Classification using DenseNet" href="../densenet/README.html" />
+    <link rel="prev" title="Train a RBM model against MNIST dataset" href="../../mnist/README.html" />
     <link href="../../../../_static/style.css" rel="stylesheet" type="text/css">
     <!--link href="../../../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -104,35 +113,24 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../../installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../software_stack.html">Software Stack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../benchmark.html">Benchmark for Distributed training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../tensor.html">Tensor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../layer.html">Layer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../net.html">FeedForward Net</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../initializer.html">Initializer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../loss.html">Loss</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../metric.html">Metric</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../optimizer.html">Optimizer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../autograd.html">Autograd in Singa</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../data.html">Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../image_tool.html">Image Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../snapshot.html">Snapshot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../converter.html">Caffe Converter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../onnx.html">ONNX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmark.html">Benchmark for Distributed training</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../index.html">Model Zoo</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../../cifar10/README.html">Train CNN over Cifar-10</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../char-rnn/README.html">Train Char-RNN over plain text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnist/README.html">Train a RBM model against MNIST dataset</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Train AlexNet over ImageNet</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#instructions">Instructions</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../googlenet/README.html">name: GoogleNet on ImageNet
-SINGA version: 1.0.1
-SINGA commit: 8c990f7da2de220e8a012c6a8ecc897dc7532744
-parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/bvlc_googlenet.tar.gz
-parameter_sha1: 0a88e8948b1abca3badfd8d090d6be03f8d7655d
-license: unrestricted https://github.com/BVLC/caffe/tree/master/models/bvlc_googlenet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../googlenet/README.html#image-classification-using-googlenet">Image Classification using GoogleNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../densenet/README.html">Image Classification using DenseNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../googlenet/README.html">Image Classification using GoogleNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inception/README.html">Image Classification using Inception V4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../resnet/README.html">Image Classification using Residual Networks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vgg/README.html">Image Classification using VGG</a></li>
 </ul>
 </li>
 </ul>
@@ -142,9 +140,6 @@ license: unrestricted https://github.com/BVLC/caffe/tree/master/models/bvlc_goog
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-to-release.html">How to prepare a release</a></li>
@@ -221,7 +216,24 @@ license: unrestricted https://github.com/BVLC/caffe/tree/master/models/bvlc_goog
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="train-alexnet-over-imagenet">
+  <!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+--><div class="section" id="train-alexnet-over-imagenet">
 <h1>Train AlexNet over ImageNet<a class="headerlink" href="#train-alexnet-over-imagenet" title="Permalink to this headline">¶</a></h1>
 <p>Convolution neural network (CNN) is a type of feed-forward neural
 network widely used for image and video classification. In this example, we will
@@ -232,39 +244,39 @@ to do image classification against the ImageNet dataset.</p>
 <div class="section" id="compile-singa">
 <h3>Compile SINGA<a class="headerlink" href="#compile-singa" title="Permalink to this headline">¶</a></h3>
 <p>Please compile SINGA with CUDA, CUDNN and OpenCV. You can manually turn on the
-options in CMakeLists.txt or run <code class="docutils literal notranslate"><span class="pre">ccmake</span> <span class="pre">..</span></code> in build/ folder.</p>
+options in CMakeLists.txt or run <code class="docutils literal"><span class="pre">ccmake</span> <span class="pre">..</span></code> in build/ folder.</p>
 <p>We have tested CUDNN V4 and V5 (V5 requires CUDA 7.5)</p>
 </div>
 <div class="section" id="data-download">
 <h3>Data download<a class="headerlink" href="#data-download" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Please refer to step1-3 on <a class="reference external" href="https://github.com/amd/OpenCL-caffe/wiki/Instructions-to-create-ImageNet-2012-data">Instructions to create ImageNet 2012 data</a>
-to download and decompress the data.</p></li>
-<li><p>You can download the training and validation list by
+<li>Please refer to step1-3 on <a class="reference external" href="https://github.com/amd/OpenCL-caffe/wiki/Instructions-to-create-ImageNet-2012-data">Instructions to create ImageNet 2012 data</a>
+to download and decompress the data.</li>
+<li>You can download the training and validation list by
 <a class="reference external" href="https://github.com/BVLC/caffe/blob/master/data/ilsvrc12/get_ilsvrc_aux.sh">get_ilsvrc_aux.sh</a>
-or from <a class="reference external" href="http://www.image-net.org/download-images">Imagenet</a>.</p></li>
+or from <a class="reference external" href="http://www.image-net.org/download-images">Imagenet</a>.</li>
 </ul>
 </div>
 <div class="section" id="data-preprocessing">
 <h3>Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p>Assuming you have downloaded the data and the list.
+<li><p class="first">Assuming you have downloaded the data and the list.
 Now we should transform the data into binary files. You can run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">sh</span> <span class="n">create_data</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">sh</span> <span class="n">create_data</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>The script will generate a test file(<code class="docutils literal notranslate"><span class="pre">test.bin</span></code>), a mean file(<code class="docutils literal notranslate"><span class="pre">mean.bin</span></code>) and
-several training files(<code class="docutils literal notranslate"><span class="pre">trainX.bin</span></code>) in the specified output folder.</p>
+<p>The script will generate a test file(<code class="docutils literal"><span class="pre">test.bin</span></code>), a mean file(<code class="docutils literal"><span class="pre">mean.bin</span></code>) and
+several training files(<code class="docutils literal"><span class="pre">trainX.bin</span></code>) in the specified output folder.</p>
 </li>
-<li><p>You can also change the parameters in <code class="docutils literal notranslate"><span class="pre">create_data.sh</span></code>.</p>
+<li><p class="first">You can also change the parameters in <code class="docutils literal"><span class="pre">create_data.sh</span></code>.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-trainlist</span> <span class="pre">&lt;file&gt;</span></code>: the file of training list;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-trainfolder</span> <span class="pre">&lt;folder&gt;</span></code>: the folder of training images;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-testlist</span> <span class="pre">&lt;file&gt;</span></code>: the file of test list;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-testfolder</span> <span class="pre">&lt;floder&gt;</span></code>: the folder of test images;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-outdata</span> <span class="pre">&lt;folder&gt;</span></code>: the folder to save output files, including mean, training and test files.
-The script will generate these files in the specified folder;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-filesize</span> <span class="pre">&lt;int&gt;</span></code>: number of training images that stores in each binary file.</p></li>
+<li><code class="docutils literal"><span class="pre">-trainlist</span> <span class="pre">&lt;file&gt;</span></code>: the file of training list;</li>
+<li><code class="docutils literal"><span class="pre">-trainfolder</span> <span class="pre">&lt;folder&gt;</span></code>: the folder of training images;</li>
+<li><code class="docutils literal"><span class="pre">-testlist</span> <span class="pre">&lt;file&gt;</span></code>: the file of test list;</li>
+<li><code class="docutils literal"><span class="pre">-testfolder</span> <span class="pre">&lt;floder&gt;</span></code>: the folder of test images;</li>
+<li><code class="docutils literal"><span class="pre">-outdata</span> <span class="pre">&lt;folder&gt;</span></code>: the folder to save output files, including mean, training and test files.
+The script will generate these files in the specified folder;</li>
+<li><code class="docutils literal"><span class="pre">-filesize</span> <span class="pre">&lt;int&gt;</span></code>: number of training images that stores in each binary file.</li>
 </ul>
 </li>
 </ul>
@@ -272,25 +284,25 @@ The script will generate these files in the specified folder;</p></li>
 <div class="section" id="training">
 <h3>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p>After preparing data, you can run the following command to train the Alexnet model.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">sh</span> <span class="n">run</span><span class="o">.</span><span class="n">sh</span>
+<li><p class="first">After preparing data, you can run the following command to train the Alexnet model.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">sh</span> <span class="n">run</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 </li>
-<li><p>You may change the parameters in <code class="docutils literal notranslate"><span class="pre">run.sh</span></code>.</p>
+<li><p class="first">You may change the parameters in <code class="docutils literal"><span class="pre">run.sh</span></code>.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-epoch</span> <span class="pre">&lt;int&gt;</span></code>: number of epoch to be trained, default is 90;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-lr</span> <span class="pre">&lt;float&gt;</span></code>: base learning rate, the learning rate will decrease each 20 epochs,
-more specifically, <code class="docutils literal notranslate"><span class="pre">lr</span> <span class="pre">=</span> <span class="pre">lr</span> <span class="pre">*</span> <span class="pre">exp(0.1</span> <span class="pre">*</span> <span class="pre">(epoch</span> <span class="pre">/</span> <span class="pre">20))</span></code>;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-batchsize</span> <span class="pre">&lt;int&gt;</span></code>: batchsize, it should be changed regarding to your memory;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-filesize</span> <span class="pre">&lt;int&gt;</span></code>: number of training images that stores in each binary file, it is the
-same as the <code class="docutils literal notranslate"><span class="pre">filesize</span></code> in data preprocessing;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-ntrain</span> <span class="pre">&lt;int&gt;</span></code>: number of training images;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-ntest</span> <span class="pre">&lt;int&gt;</span></code>: number of test images;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-data</span> <span class="pre">&lt;folder&gt;</span></code>: the folder which stores the binary files, it is exactly the output
-folder in data preprocessing step;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-pfreq</span> <span class="pre">&lt;int&gt;</span></code>: the frequency(in batch) of printing current model status(loss and accuracy);</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-nthreads</span> <span class="pre">&lt;int&gt;</span></code>: the number of threads to load data which feed to the model.</p></li>
+<li><code class="docutils literal"><span class="pre">-epoch</span> <span class="pre">&lt;int&gt;</span></code>: number of epoch to be trained, default is 90;</li>
+<li><code class="docutils literal"><span class="pre">-lr</span> <span class="pre">&lt;float&gt;</span></code>: base learning rate, the learning rate will decrease each 20 epochs,
+more specifically, <code class="docutils literal"><span class="pre">lr</span> <span class="pre">=</span> <span class="pre">lr</span> <span class="pre">*</span> <span class="pre">exp(0.1</span> <span class="pre">*</span> <span class="pre">(epoch</span> <span class="pre">/</span> <span class="pre">20))</span></code>;</li>
+<li><code class="docutils literal"><span class="pre">-batchsize</span> <span class="pre">&lt;int&gt;</span></code>: batchsize, it should be changed regarding to your memory;</li>
+<li><code class="docutils literal"><span class="pre">-filesize</span> <span class="pre">&lt;int&gt;</span></code>: number of training images that stores in each binary file, it is the
+same as the <code class="docutils literal"><span class="pre">filesize</span></code> in data preprocessing;</li>
+<li><code class="docutils literal"><span class="pre">-ntrain</span> <span class="pre">&lt;int&gt;</span></code>: number of training images;</li>
+<li><code class="docutils literal"><span class="pre">-ntest</span> <span class="pre">&lt;int&gt;</span></code>: number of test images;</li>
+<li><code class="docutils literal"><span class="pre">-data</span> <span class="pre">&lt;folder&gt;</span></code>: the folder which stores the binary files, it is exactly the output
+folder in data preprocessing step;</li>
+<li><code class="docutils literal"><span class="pre">-pfreq</span> <span class="pre">&lt;int&gt;</span></code>: the frequency(in batch) of printing current model status(loss and accuracy);</li>
+<li><code class="docutils literal"><span class="pre">-nthreads</span> <span class="pre">&lt;int&gt;</span></code>: the number of threads to load data which feed to the model.</li>
 </ul>
 </li>
 </ul>
@@ -306,10 +318,10 @@ folder in data preprocessing step;</p></li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../googlenet/README.html" class="btn btn-neutral float-right" title="name: GoogleNet on ImageNet SINGA version: 1.0.1 SINGA commit: 8c990f7da2de220e8a012c6a8ecc897dc7532744 parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/bvlc_googlenet.tar.gz parameter_sha1: 0a88e8948b1abca3badfd8d090d6be03f8d7655d license: unrestricted https://github.com/BVLC/caffe/tree/master/models/bvlc_googlenet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../densenet/README.html" class="btn btn-neutral float-right" title="Image Classification using DenseNet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../../char-rnn/README.html" class="btn btn-neutral float-left" title="Train Char-RNN over plain text" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../../mnist/README.html" class="btn btn-neutral float-left" title="Train a RBM model against MNIST dataset" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

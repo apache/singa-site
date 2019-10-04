@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +45,6 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Caffe Converter" href="converter.html" />
-    <link rel="prev" title="Image Tool" href="image_tool.html" />
     <link href="../_static/style.css" rel="stylesheet" type="text/css">
     <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -100,36 +107,13 @@
               
             
             
-              <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software_stack.html">Software Stack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="benchmark.html">Benchmark for Distributed training</a></li>
-<li class="toctree-l2"><a class="reference internal" href="device.html">Device</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="layer.html">Layer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="net.html">FeedForward Net</a></li>
-<li class="toctree-l2"><a class="reference internal" href="initializer.html">Initializer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="loss.html">Loss</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metric.html">Metric</a></li>
-<li class="toctree-l2"><a class="reference internal" href="optimizer.html">Optimizer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="autograd.html">Autograd in Singa</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data.html">Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="image_tool.html">Image Tool</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Snapshot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="converter.html">Caffe Converter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utils.html">Utils</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model_zoo/index.html">Model Zoo</a></li>
-</ul>
-</li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/how-to-release.html">How to prepare a release</a></li>
@@ -185,8 +169,6 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Documentation</a> &raquo;</li>
-        
       <li>Snapshot</li>
     
     
@@ -204,51 +186,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-singa.snapshot">
-<span id="snapshot"></span><h1>Snapshot<a class="headerlink" href="#module-singa.snapshot" title="Permalink to this headline">¶</a></h1>
-<p>This script includes io::snapshot class and its methods.</p>
-<p>Example usages:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="k">import</span> <span class="n">snapshot</span>
-
-<span class="n">sn1</span> <span class="o">=</span> <span class="n">snapshot</span><span class="o">.</span><span class="n">Snapshot</span><span class="p">(</span><span class="s1">&#39;param&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-<span class="n">params</span> <span class="o">=</span> <span class="n">sn1</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>  <span class="c1"># read all params as a dictionary</span>
-
-<span class="n">sn2</span> <span class="o">=</span> <span class="n">snapshot</span><span class="o">.</span><span class="n">Snapshot</span><span class="p">(</span><span class="s1">&#39;param_new&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
-    <span class="n">sn2</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-</pre></div>
-</div>
-<dl class="class">
-<dt id="singa.snapshot.Snapshot">
-<em class="property">class </em><code class="descclassname">singa.snapshot.</code><code class="descname">Snapshot</code><span class="sig-paren">(</span><em>f</em>, <em>mode</em>, <em>buffer_size=10</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.snapshot.Snapshot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class and member functions for singa::Snapshot.</p>
-<dl class="method">
-<dt id="singa.snapshot.Snapshot.read">
-<code class="descname">read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.snapshot.Snapshot.read" title="Permalink to this definition">¶</a></dt>
-<dd><p>Call read method to load all (param_name, param_val)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>a dict of (parameter name, parameter Tensor)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.snapshot.Snapshot.write">
-<code class="descname">write</code><span class="sig-paren">(</span><em>param_name</em>, <em>param_val</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.snapshot.Snapshot.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Call Write method to write a parameter</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>param_name</strong> (<em>string</em>) – name of the parameter</p></li>
-<li><p><strong>param_val</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – value tensor of the parameter</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+  <div class="section" id="snapshot">
+<h1>Snapshot<a class="headerlink" href="#snapshot" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -256,15 +195,6 @@
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="converter.html" class="btn btn-neutral float-right" title="Caffe Converter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="image_tool.html" class="btn btn-neutral float-left" title="Image Tool" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

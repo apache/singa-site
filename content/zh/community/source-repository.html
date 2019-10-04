@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -207,17 +216,17 @@
 <h2>Web 访问<a class="headerlink" href="#web" title="Permalink to this headline">¶</a></h2>
 <p>以下是指向在线源代码库的链接.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://git-wip-us.apache.org/repos/asf?p=incubator-singa.git%3Ba=summary">https://git-wip-us.apache.org/repos/asf?p=incubator-singa.git;a=summary</a></p></li>
+<li><a class="reference external" href="https://git-wip-us.apache.org/repos/asf?p=incubator-singa.git%3Ba=summary">https://git-wip-us.apache.org/repos/asf?p=incubator-singa.git;a=summary</a></li>
 </ul>
 </div>
 <div class="section" id="upstream">
 <h2>提交者的上游 Upstream<a class="headerlink" href="#upstream" title="Permalink to this headline">¶</a></h2>
 <p>提交者需要将上游 upstream 端点设置为 Apache git（而不是github）的 repo 地址, 例如,</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git remote add asf https://git-wip-us.apache.org/repos/asf/incubator-singa.git
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git remote add asf https://git-wip-us.apache.org/repos/asf/incubator-singa.git
 </pre></div>
 </div>
 <p>然后你（提交者）可以用这种方式推送你的代码,</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git push asf &lt;local-branch&gt;:&lt;remote-branch&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git push asf &lt;local-branch&gt;:&lt;remote-branch&gt;
 </pre></div>
 </div>
 </div>

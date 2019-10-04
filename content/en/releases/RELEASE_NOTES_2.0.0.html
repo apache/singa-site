@@ -18,26 +18,35 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link href="../../_static/style.css" rel="stylesheet" type="text/css">
-    <!--link href="../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+    <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <style>
 	.fa:hover {
@@ -66,7 +75,7 @@
 
           
             
-            <img src="../../_static/singa.png" class="logo" alt="Logo"/>
+            <img src="../_static/singa.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -81,7 +90,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -201,50 +210,45 @@
 learning models over large datasets.</p>
 <p>This release includes following features:</p>
 <ul class="simple">
-<li><p>Core components</p>
-<ul>
-<li><p>[SINGA-434] Support tensor broadcasting</p></li>
-<li><p>[SINGA-370] Improvement to tensor reshape and various misc. changes related to SINGA-341 and 351</p></li>
+<li>Core components<ul>
+<li>[SINGA-434] Support tensor broadcasting</li>
+<li>[SINGA-370] Improvement to tensor reshape and various misc. changes related to SINGA-341 and 351</li>
 </ul>
 </li>
-<li><p>Model components</p>
-<ul>
-<li><p>[SINGA-333] Add support for Open Neural Network Exchange (ONNX) format</p></li>
-<li><p>[SINGA-385] Add new python module for optimizers</p></li>
-<li><p>[SINGA-394] Improve the CPP operations via Intel MKL DNN lib</p></li>
-<li><p>[SINGA-425] Add 3 operators , Abs(), Exp() and leakyrelu(), for Autograd</p></li>
-<li><p>[SINGA-410] Add two function, set_params() and get_params(), for Autograd Layer class</p></li>
-<li><p>[SINGA-383] Add Separable Convolution for autograd</p></li>
-<li><p>[SINGA-388] Develop some RNN layers by calling tiny operations like matmul, addbias.</p></li>
-<li><p>[SINGA-382] Implement concat operation for autograd</p></li>
-<li><p>[SINGA-378] Implement maxpooling operation and its related functions for autograd</p></li>
-<li><p>[SINGA-379] Implement batchnorm operation and its related functions for autograd</p></li>
+<li>Model components<ul>
+<li>[SINGA-333] Add support for Open Neural Network Exchange (ONNX) format</li>
+<li>[SINGA-385] Add new python module for optimizers</li>
+<li>[SINGA-394] Improve the CPP operations via Intel MKL DNN lib</li>
+<li>[SINGA-425] Add 3 operators , Abs(), Exp() and leakyrelu(), for Autograd</li>
+<li>[SINGA-410] Add two function, set_params() and get_params(), for Autograd Layer class</li>
+<li>[SINGA-383] Add Separable Convolution for autograd</li>
+<li>[SINGA-388] Develop some RNN layers by calling tiny operations like matmul, addbias.</li>
+<li>[SINGA-382] Implement concat operation for autograd</li>
+<li>[SINGA-378] Implement maxpooling operation and its related functions for autograd</li>
+<li>[SINGA-379] Implement batchnorm operation and its related functions for autograd</li>
 </ul>
 </li>
-<li><p>Utility functions and CI</p>
-<ul>
-<li><p>[SINGA-432] Update depdent lib versions in conda-build config</p></li>
-<li><p>[SINGA-429] Update docker images for latest cuda and cudnn</p></li>
-<li><p>[SINGA-428] Move Docker images under Apache user name</p></li>
+<li>Utility functions and CI<ul>
+<li>[SINGA-432] Update depdent lib versions in conda-build config</li>
+<li>[SINGA-429] Update docker images for latest cuda and cudnn</li>
+<li>[SINGA-428] Move Docker images under Apache user name</li>
 </ul>
 </li>
-<li><p>Documentation and usability</p>
-<ul>
-<li><p>[SINGA-395] Add documentation for autograd APIs</p></li>
-<li><p>[SINGA-344] Add a GAN example</p></li>
-<li><p>[SINGA-390] Update installation.md</p></li>
-<li><p>[SINGA-384] Implement ResNet using autograd API</p></li>
-<li><p>[SINGA-352] Complete SINGA documentation in Chinese version</p></li>
+<li>Documentation and usability<ul>
+<li>[SINGA-395] Add documentation for autograd APIs</li>
+<li>[SINGA-344] Add a GAN example</li>
+<li>[SINGA-390] Update installation.md</li>
+<li>[SINGA-384] Implement ResNet using autograd API</li>
+<li>[SINGA-352] Complete SINGA documentation in Chinese version</li>
 </ul>
 </li>
-<li><p>Bugs fixed</p>
-<ul>
-<li><p>[SINGA-431] Unit Test failed - Tensor Transpose</p></li>
-<li><p>[SINGA-422] ModuleNotFoundError: No module named “_singa_wrap”</p></li>
-<li><p>[SINGA-418] Unsupportive type ‘long’ in python3.</p></li>
-<li><p>[SINGA-409] Basic <code class="docutils literal notranslate"><span class="pre">singa-cpu</span></code> import throws error</p></li>
-<li><p>[SINGA-408] Unsupportive function definition in python3</p></li>
-<li><p>[SINGA-380] Fix bugs from Reshape</p></li>
+<li>Bugs fixed<ul>
+<li>[SINGA-431] Unit Test failed - Tensor Transpose</li>
+<li>[SINGA-422] ModuleNotFoundError: No module named &#8220;_singa_wrap&#8220;</li>
+<li>[SINGA-418] Unsupportive type &#8216;long&#8216; in python3.</li>
+<li>[SINGA-409] Basic <code class="docutils literal"><span class="pre">singa-cpu</span></code> import throws error</li>
+<li>[SINGA-408] Unsupportive function definition in python3</li>
+<li>[SINGA-380] Fix bugs from Reshape</li>
 </ul>
 </li>
 </ul>
@@ -298,8 +302,8 @@ learning models over large datasets.</p>
   <div class="rst-other-versions">
       <dl>
           <dt>Languages</dt>
-          <dd><a href="../.././index.html">English</a></dd>
-          <dd><a href="../.././zh/index.html">中文</a></dd>
+          <dd><a href=".././index.html">English</a></dd>
+          <dd><a href=".././zh/index.html">中文</a></dd>
       </dl>
       <dl>
           <dt>Versions</dt>
@@ -308,7 +312,7 @@ learning models over large datasets.</p>
       </dl>
 
   </div>
-  <a href="http://incubator.apache.org/"> <img src= "../../_static/apache.png" style="background-color:white;"> </a>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.png" style="background-color:white;"> </a>
 
   <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
   <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>

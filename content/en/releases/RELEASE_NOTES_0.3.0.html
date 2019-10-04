@@ -18,26 +18,35 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link href="../../_static/style.css" rel="stylesheet" type="text/css">
-    <!--link href="../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+    <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <style>
 	.fa:hover {
@@ -66,7 +75,7 @@
 
           
             
-            <img src="../../_static/singa.png" class="logo" alt="Logo"/>
+            <img src="../_static/singa.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -81,7 +90,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -203,39 +212,34 @@ programming model based on the layer abstraction. SINGA supports a wide variety
 of popular deep learning models.</p>
 <p>This release includes following features:</p>
 <ul class="simple">
-<li><p>GPU Support</p>
-<ul>
-<li><p>[SINGA-131] Implement and optimize hybrid training using both CPU and GPU</p></li>
-<li><p>[SINGA-136] Support cuDNN v4</p></li>
-<li><p>[SINGA-134] Extend SINGA to run over a GPU cluster</p></li>
-<li><p>[SINGA-157] Change the priority of cudnn library and install libsingagpu.so</p></li>
+<li>GPU Support<ul>
+<li>[SINGA-131] Implement and optimize hybrid training using both CPU and GPU</li>
+<li>[SINGA-136] Support cuDNN v4</li>
+<li>[SINGA-134] Extend SINGA to run over a GPU cluster</li>
+<li>[SINGA-157] Change the priority of cudnn library and install libsingagpu.so</li>
 </ul>
 </li>
-<li><p>Remove Dependences</p>
-<ul>
-<li><p>[SINGA-156] Remove the dependency on ZMQ for single process training</p></li>
-<li><p>[SINGA-155] Remove zookeeper for single-process training</p></li>
+<li>Remove Dependences<ul>
+<li>[SINGA-156] Remove the dependency on ZMQ for single process training</li>
+<li>[SINGA-155] Remove zookeeper for single-process training</li>
 </ul>
 </li>
-<li><p>Python Binding</p>
-<ul>
-<li><p>[SINGA-126] Python Binding for Interactive Training</p></li>
+<li>Python Binding<ul>
+<li>[SINGA-126] Python Binding for Interactive Training</li>
 </ul>
 </li>
-<li><p>Other Improvements</p>
-<ul>
-<li><p>[SINGA-80] New Blob Level and Address Level Math Operation Interface</p></li>
-<li><p>[SINGA-130] Data Prefetching</p></li>
-<li><p>[SINGA-145] New SGD based optimization Updaters: AdaDelta, Adam, AdamMax</p></li>
+<li>Other Improvements<ul>
+<li>[SINGA-80] New Blob Level and Address Level Math Operation Interface</li>
+<li>[SINGA-130] Data Prefetching</li>
+<li>[SINGA-145] New SGD based optimization Updaters: AdaDelta, Adam, AdamMax</li>
 </ul>
 </li>
-<li><p>Bugs Fixed</p>
-<ul>
-<li><p>[SINGA-148] Race condition between Worker threads and Driver</p></li>
-<li><p>[SINGA-150] Mesos Docker container failed</p></li>
-<li><p>[SIGNA-141] Undesired Hash collision when locating process id to worker…</p></li>
-<li><p>[SINGA-149] Docker build fail</p></li>
-<li><p>[SINGA-143] The compilation cannot detect libsingagpu.so file</p></li>
+<li>Bugs Fixed<ul>
+<li>[SINGA-148] Race condition between Worker threads and Driver</li>
+<li>[SINGA-150] Mesos Docker container failed</li>
+<li>[SIGNA-141] Undesired Hash collision when locating process id to worker…</li>
+<li>[SINGA-149] Docker build fail</li>
+<li>[SINGA-143] The compilation cannot detect libsingagpu.so file</li>
 </ul>
 </li>
 </ul>
@@ -289,8 +293,8 @@ of popular deep learning models.</p>
   <div class="rst-other-versions">
       <dl>
           <dt>Languages</dt>
-          <dd><a href="../.././index.html">English</a></dd>
-          <dd><a href="../.././zh/index.html">中文</a></dd>
+          <dd><a href=".././index.html">English</a></dd>
+          <dd><a href=".././zh/index.html">中文</a></dd>
       </dl>
       <dl>
           <dt>Versions</dt>
@@ -299,7 +303,7 @@ of popular deep learning models.</p>
       </dl>
 
   </div>
-  <a href="http://incubator.apache.org/"> <img src= "../../_static/apache.png" style="background-color:white;"> </a>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.png" style="background-color:white;"> </a>
 
   <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
   <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>

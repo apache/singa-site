@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Use parameters pre-trained from Caffe in SINGA &mdash; incubator-singa 1.1.0 documentation</title>
+  <title>Use parameters pre-trained from Caffe in SINGA &mdash; incubator-singa 2.0.0 documentation</title>
   
 
   
@@ -18,15 +18,30 @@
   
 
   
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -42,21 +57,16 @@
 	}
     </style>
 
-
-  
-  <script src="../../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -100,12 +110,10 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../index.html">Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../security.html">Security</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-to-release.html">How to prepare a release</a></li>
@@ -185,26 +193,25 @@
     regarding copyright ownership.  The ASF licenses this file
     to you under the Apache License, Version 2.0 (the
     "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">licenses</span><span class="o">/</span><span class="n">LICENSE</span><span class="o">-</span><span class="mf">2.0</span>
+    with the License.  You may obtain a copy of the License at
 
-<span class="n">Unless</span> <span class="n">required</span> <span class="n">by</span> <span class="n">applicable</span> <span class="n">law</span> <span class="ow">or</span> <span class="n">agreed</span> <span class="n">to</span> <span class="ow">in</span> <span class="n">writing</span><span class="p">,</span>
-<span class="n">software</span> <span class="n">distributed</span> <span class="n">under</span> <span class="n">the</span> <span class="n">License</span> <span class="ow">is</span> <span class="n">distributed</span> <span class="n">on</span> <span class="n">an</span>
-<span class="s2">&quot;AS IS&quot;</span> <span class="n">BASIS</span><span class="p">,</span> <span class="n">WITHOUT</span> <span class="n">WARRANTIES</span> <span class="n">OR</span> <span class="n">CONDITIONS</span> <span class="n">OF</span> <span class="n">ANY</span>
-<span class="n">KIND</span><span class="p">,</span> <span class="n">either</span> <span class="n">express</span> <span class="ow">or</span> <span class="n">implied</span><span class="o">.</span>  <span class="n">See</span> <span class="n">the</span> <span class="n">License</span> <span class="k">for</span> <span class="n">the</span>
-<span class="n">specific</span> <span class="n">language</span> <span class="n">governing</span> <span class="n">permissions</span> <span class="ow">and</span> <span class="n">limitations</span>
-<span class="n">under</span> <span class="n">the</span> <span class="n">License</span><span class="o">.</span>
-</pre></div>
-</div>
-<p>–&gt;</p>
-<div class="section" id="use-parameters-pre-trained-from-caffe-in-singa">
-<span id="use-parameters-pre-trained-from-caffe-in-singa"></span><h1>Use parameters pre-trained from Caffe in SINGA<a class="headerlink" href="#use-parameters-pre-trained-from-caffe-in-singa" title="Permalink to this headline">¶</a></h1>
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+--><div class="section" id="use-parameters-pre-trained-from-caffe-in-singa">
+<h1>Use parameters pre-trained from Caffe in SINGA<a class="headerlink" href="#use-parameters-pre-trained-from-caffe-in-singa" title="Permalink to this headline">¶</a></h1>
 <p>In this example, we use SINGA to load the VGG parameters trained by Caffe to do image classification.</p>
 <div class="section" id="run-this-example">
-<span id="run-this-example"></span><h2>Run this example<a class="headerlink" href="#run-this-example" title="Permalink to this headline">¶</a></h2>
-<p>You can run this example by simply executing <code class="docutils literal notranslate"><span class="pre">run.sh</span> <span class="pre">vgg16</span></code> or <code class="docutils literal notranslate"><span class="pre">run.sh</span> <span class="pre">vgg19</span></code>
+<h2>Run this example<a class="headerlink" href="#run-this-example" title="Permalink to this headline">¶</a></h2>
+<p>You can run this example by simply executing <code class="docutils literal"><span class="pre">run.sh</span> <span class="pre">vgg16</span></code> or <code class="docutils literal"><span class="pre">run.sh</span> <span class="pre">vgg19</span></code>
 The script does the following work.</p>
 <div class="section" id="obtain-the-caffe-model">
-<span id="obtain-the-caffe-model"></span><h3>Obtain the Caffe model<a class="headerlink" href="#obtain-the-caffe-model" title="Permalink to this headline">¶</a></h3>
+<h3>Obtain the Caffe model<a class="headerlink" href="#obtain-the-caffe-model" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Download caffe model prototxt and parameter binary file.</li>
 <li>Currently we only support the latest caffe format, if your model is in
@@ -215,18 +222,18 @@ binary file.</li>
 </ul>
 </div>
 <div class="section" id="prepare-test-images">
-<span id="prepare-test-images"></span><h3>Prepare test images<a class="headerlink" href="#prepare-test-images" title="Permalink to this headline">¶</a></h3>
-<p>A few sample images are downloaded into the <code class="docutils literal notranslate"><span class="pre">test</span></code> folder.</p>
+<h3>Prepare test images<a class="headerlink" href="#prepare-test-images" title="Permalink to this headline">¶</a></h3>
+<p>A few sample images are downloaded into the <code class="docutils literal"><span class="pre">test</span></code> folder.</p>
 </div>
 <div class="section" id="predict">
-<span id="predict"></span><h3>Predict<a class="headerlink" href="#predict" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">predict.py</span></code> script creates the VGG model and read the parameters,</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">predict</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">model_txt</span> <span class="n">model_bin</span> <span class="n">imgclass</span>
+<h3>Predict<a class="headerlink" href="#predict" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">predict.py</span></code> script creates the VGG model and read the parameters,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">predict</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">model_txt</span> <span class="n">model_bin</span> <span class="n">imgclass</span>
 </pre></div>
 </div>
-<p>where <code class="docutils literal notranslate"><span class="pre">imgclass</span></code> refers to the synsets of imagenet dataset for vgg models.
+<p>where <code class="docutils literal"><span class="pre">imgclass</span></code> refers to the synsets of imagenet dataset for vgg models.
 You can start the prediction program by executing the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">predict</span><span class="o">.</span><span class="n">py</span> <span class="n">vgg16</span><span class="o">.</span><span class="n">prototxt</span> <span class="n">vgg16</span><span class="o">.</span><span class="n">caffemodel</span> <span class="n">synset_words</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">predict</span><span class="o">.</span><span class="n">py</span> <span class="n">vgg16</span><span class="o">.</span><span class="n">prototxt</span> <span class="n">vgg16</span><span class="o">.</span><span class="n">caffemodel</span> <span class="n">synset_words</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 <p>Then you type in the image path, and the program would output the top-5 labels.</p>
@@ -246,7 +253,7 @@ You can start the prediction program by executing the following command:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.
 
     </p>
   </div>
@@ -263,35 +270,16 @@ You can start the prediction program by executing the following command:</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../../',
-            VERSION:'1.1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
+  
 
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
@@ -302,8 +290,8 @@ You can start the prediction program by executing the following command:</p>
   <div class="rst-other-versions">
       <dl>
           <dt>Languages</dt>
-          <dd><a href="../../../../../en/index.html">English</a></dd>
-          <dd><a href="../../../../../zh/index.html">中文</a></dd>
+          <dd><a href="../../../.././index.html">English</a></dd>
+          <dd><a href="../../../.././zh/index.html">中文</a></dd>
       </dl>
       <dl>
           <dt>Versions</dt>
@@ -314,6 +302,12 @@ You can start the prediction program by executing the following command:</p>
   </div>
   <a href="http://incubator.apache.org/"> <img src= "../../../../_static/apache.png" style="background-color:white;"> </a>
 
+  <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
+  <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>
+  <a href="http://www.apache.org/foundation/thanks.html" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Thanks</a>
+  <a href="http://www.apache.org/foundation/sponsorship.html" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">Sponsorship</a>
+  <a href="http://www.apache.org/licenses/" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">License</a>
+  <br>
   <a href="https://github.com/apache/incubator-singa" class="fa fa-github" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
   <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
   <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a> 

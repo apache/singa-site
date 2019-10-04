@@ -1,16 +1,27 @@
----
-name: GoogleNet on ImageNet
-SINGA version: 1.0.1
-SINGA commit: 8c990f7da2de220e8a012c6a8ecc897dc7532744
-parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/bvlc_googlenet.tar.gz
-parameter_sha1: 0a88e8948b1abca3badfd8d090d6be03f8d7655d
-license: unrestricted https://github.com/BVLC/caffe/tree/master/models/bvlc_googlenet
----
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+
 
 # Image Classification using GoogleNet
 
 
-In this example, we convert GoogleNet trained on Caffe to SINGA for image classification.
+In this example, we convert GoogleNet trained on Caffe to SINGA for image classification. Tested on [SINGA commit](8c990f7da2de220e8a012c6a8ecc897dc7532744) with [the parameters](https://s3-ap-southeast-1.amazonaws.com/dlfile/bvlc_googlenet.tar.gz).
 
 ## Instructions
 

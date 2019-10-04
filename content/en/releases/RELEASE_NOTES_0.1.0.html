@@ -18,26 +18,35 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link href="../../_static/style.css" rel="stylesheet" type="text/css">
-    <!--link href="../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+    <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <style>
 	.fa:hover {
@@ -66,7 +75,7 @@
 
           
             
-            <img src="../../_static/singa.png" class="logo" alt="Logo"/>
+            <img src="../_static/singa.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -81,7 +90,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -202,102 +211,94 @@ designed with an intuitive programming model based on the layer abstraction. SIN
 deep learning models.</p>
 <p>This release includes following features:</p>
 <ul class="simple">
-<li><p>Job management</p>
-<ul>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-3">SINGA-3</a>  Use Zookeeper to check stopping (finish) time of the system</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-16">SINGA-16</a>  Runtime Process id Management</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-25">SINGA-25</a>  Setup glog output path</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-26">SINGA-26</a>  Run distributed training in a single command</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-30">SINGA-30</a>  Enhance easy-to-use feature and support concurrent jobs</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-33">SINGA-33</a>  Automatically launch a number of processes in the cluster</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-34">SINGA-34</a>  Support external zookeeper service</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-38">SINGA-38</a>  Support concurrent jobs</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-39">SINGA-39</a>  Avoid ssh in scripts for single node environment</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-43">SINGA-43</a>  Remove Job-related output from workspace</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-56">SINGA-56</a>  No automatic launching of zookeeper service</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-73">SINGA-73</a>  Refine the selection of available hosts from host list</p></li>
+<li>Job management<ul>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-3">SINGA-3</a>  Use Zookeeper to check stopping (finish) time of the system</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-16">SINGA-16</a>  Runtime Process id Management</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-25">SINGA-25</a>  Setup glog output path</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-26">SINGA-26</a>  Run distributed training in a single command</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-30">SINGA-30</a>  Enhance easy-to-use feature and support concurrent jobs</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-33">SINGA-33</a>  Automatically launch a number of processes in the cluster</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-34">SINGA-34</a>  Support external zookeeper service</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-38">SINGA-38</a>  Support concurrent jobs</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-39">SINGA-39</a>  Avoid ssh in scripts for single node environment</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-43">SINGA-43</a>  Remove Job-related output from workspace</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-56">SINGA-56</a>  No automatic launching of zookeeper service</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-73">SINGA-73</a>  Refine the selection of available hosts from host list</li>
 </ul>
 </li>
-<li><p>Installation with GNU Auto tool</p>
-<ul>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-4">SINGA-4</a>  Refine thirdparty-dependency installation</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-13">SINGA-13</a>  Separate intermediate files of compilation from source files</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-17">SINGA-17</a>  Add root permission within thirdparty/install.</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-27">SINGA-27</a>  Generate python modules for proto objects</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-53">SINGA-53</a>  Add lmdb compiling options</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-62">SINGA-62</a>  Remove building scrips and auxiliary files</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-67">SINGA-67</a>  Add singatest into build targets</p></li>
+<li>Installation with GNU Auto tool<ul>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-4">SINGA-4</a>  Refine thirdparty-dependency installation</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-13">SINGA-13</a>  Separate intermediate files of compilation from source files</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-17">SINGA-17</a>  Add root permission within thirdparty/install.</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-27">SINGA-27</a>  Generate python modules for proto objects</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-53">SINGA-53</a>  Add lmdb compiling options</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-62">SINGA-62</a>  Remove building scrips and auxiliary files</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-67">SINGA-67</a>  Add singatest into build targets</li>
 </ul>
 </li>
-<li><p>Distributed training</p>
-<ul>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-7">SINGA-7</a>  Implement shared memory Hogwild algorithm</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-8">SINGA-8</a>  Implement distributed Hogwild</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-19">SINGA-19</a>  Slice large Param objects for load-balance</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-29">SINGA-29</a>  Update NeuralNet class to enable layer partition type customization</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-24">SINGA-24</a>  Implement Downpour training framework</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-32">SINGA-32</a>  Implement AllReduce training framework</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-57">SINGA-57</a>  Improve Distributed Hogwild</p></li>
+<li>Distributed training<ul>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-7">SINGA-7</a>  Implement shared memory Hogwild algorithm</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-8">SINGA-8</a>  Implement distributed Hogwild</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-19">SINGA-19</a>  Slice large Param objects for load-balance</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-29">SINGA-29</a>  Update NeuralNet class to enable layer partition type customization</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-24">SINGA-24</a>  Implement Downpour training framework</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-32">SINGA-32</a>  Implement AllReduce training framework</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-57">SINGA-57</a>  Improve Distributed Hogwild</li>
 </ul>
 </li>
-<li><p>Training algorithms for different model categories</p>
-<ul>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-9">SINGA-9</a>  Add Support for Restricted Boltzman Machine (RBM) model</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-10">SINGA-10</a>  Add Support for Recurrent Neural Networks (RNN)</p></li>
+<li>Training algorithms for different model categories<ul>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-9">SINGA-9</a>  Add Support for Restricted Boltzman Machine (RBM) model</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-10">SINGA-10</a>  Add Support for Recurrent Neural Networks (RNN)</li>
 </ul>
 </li>
-<li><p>Checkpoint and restore</p>
-<ul>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-12">SINGA-12</a>  Support Checkpoint and Restore</p></li>
+<li>Checkpoint and restore<ul>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-12">SINGA-12</a>  Support Checkpoint and Restore</li>
 </ul>
 </li>
-<li><p>Unit test</p>
-<ul>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-64">SINGA-64</a>  Add the test module for utils/common</p></li>
+<li>Unit test<ul>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-64">SINGA-64</a>  Add the test module for utils/common</li>
 </ul>
 </li>
-<li><p>Programming model</p>
-<ul>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-36">SINGA-36</a>  Refactor job configuration, driver program and scripts</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-37">SINGA-37</a>  Enable users to set parameter sharing in model configuration</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-54">SINGA-54</a>  Refactor job configuration to move fields in ModelProto out</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-55">SINGA-55</a>  Refactor main.cc and singa.h</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-61">SINGA-61</a>  Support user defined classes</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-65">SINGA-65</a>  Add an example of writing user-defined layers</p></li>
+<li>Programming model<ul>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-36">SINGA-36</a>  Refactor job configuration, driver program and scripts</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-37">SINGA-37</a>  Enable users to set parameter sharing in model configuration</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-54">SINGA-54</a>  Refactor job configuration to move fields in ModelProto out</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-55">SINGA-55</a>  Refactor main.cc and singa.h</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-61">SINGA-61</a>  Support user defined classes</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-65">SINGA-65</a>  Add an example of writing user-defined layers</li>
 </ul>
 </li>
-<li><p>Other features</p>
-<ul>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-6">SINGA-6</a>  Implement thread-safe singleton</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-18">SINGA-18</a>  Update API for displaying performance metric</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-77">SINGA-77</a>  Integrate with Apache RAT</p></li>
+<li>Other features<ul>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-6">SINGA-6</a>  Implement thread-safe singleton</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-18">SINGA-18</a>  Update API for displaying performance metric</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-77">SINGA-77</a>  Integrate with Apache RAT</li>
 </ul>
 </li>
 </ul>
 <p>Some bugs are fixed during the development of this release</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-2">SINGA-2</a> Check failed: zsock_connect</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-5">SINGA-5</a> Server early terminate when zookeeper singa folder is not initially empty</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-15">SINGA-15</a> Fixg a bug from ConnectStub function which gets stuck for connecting layer_dealer_</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-22">SINGA-22</a> Cannot find openblas library when it is installed in default path</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-23">SINGA-23</a> Libtool version mismatch error.</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-28">SINGA-28</a> Fix a bug from topology sort of Graph</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-42">SINGA-42</a> Issue when loading checkpoints</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-44">SINGA-44</a> A bug when reseting metric values</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-46">SINGA-46</a> Fix a bug in updater.cc to scale the gradients</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-47">SINGA-47</a> Fix a bug in data layers that leads to out-of-memory when group size is too large</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-48">SINGA-48</a> Fix a bug in trainer.cc that assigns the same NeuralNet instance to workers from diff groups</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-49">SINGA-49</a> Fix a bug in HandlePutMsg func that sets param fields to invalid values</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-66">SINGA-66</a> Fix bugs in Worker::RunOneBatch function and ClusterProto</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-79">SINGA-79</a> Fix bug in singatool that can not parse -conf flag</p></li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-2">SINGA-2</a> Check failed: zsock_connect</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-5">SINGA-5</a> Server early terminate when zookeeper singa folder is not initially empty</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-15">SINGA-15</a> Fixg a bug from ConnectStub function which gets stuck for connecting layer_dealer_</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-22">SINGA-22</a> Cannot find openblas library when it is installed in default path</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-23">SINGA-23</a> Libtool version mismatch error.</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-28">SINGA-28</a> Fix a bug from topology sort of Graph</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-42">SINGA-42</a> Issue when loading checkpoints</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-44">SINGA-44</a> A bug when reseting metric values</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-46">SINGA-46</a> Fix a bug in updater.cc to scale the gradients</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-47">SINGA-47</a> Fix a bug in data layers that leads to out-of-memory when group size is too large</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-48">SINGA-48</a> Fix a bug in trainer.cc that assigns the same NeuralNet instance to workers from diff groups</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-49">SINGA-49</a> Fix a bug in HandlePutMsg func that sets param fields to invalid values</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-66">SINGA-66</a> Fix bugs in Worker::RunOneBatch function and ClusterProto</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-79">SINGA-79</a> Fix bug in singatool that can not parse -conf flag</li>
 </ul>
 <p>Features planned for the next release</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-11">SINGA-11</a> Start SINGA using Mesos</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-31">SINGA-31</a> Extend Blob to support xpu (cpu or gpu)</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-35">SINGA-35</a> Add random number generators</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-40">SINGA-40</a> Support sparse Param update</p></li>
-<li><p><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-41">SINGA-41</a> Support single node single GPU training</p></li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-11">SINGA-11</a> Start SINGA using Mesos</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-31">SINGA-31</a> Extend Blob to support xpu (cpu or gpu)</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-35">SINGA-35</a> Add random number generators</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-40">SINGA-40</a> Support sparse Param update</li>
+<li><a class="reference external" href="https://issues.apache.org/jira/browse/SINGA-41">SINGA-41</a> Support single node single GPU training</li>
 </ul>
 </div>
 
@@ -349,8 +350,8 @@ deep learning models.</p>
   <div class="rst-other-versions">
       <dl>
           <dt>Languages</dt>
-          <dd><a href="../.././index.html">English</a></dd>
-          <dd><a href="../.././zh/index.html">中文</a></dd>
+          <dd><a href=".././index.html">English</a></dd>
+          <dd><a href=".././zh/index.html">中文</a></dd>
       </dl>
       <dl>
           <dt>Versions</dt>
@@ -359,7 +360,7 @@ deep learning models.</p>
       </dl>
 
   </div>
-  <a href="http://incubator.apache.org/"> <img src= "../../_static/apache.png" style="background-color:white;"> </a>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.png" style="background-color:white;"> </a>
 
   <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
   <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>

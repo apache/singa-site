@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -216,7 +225,7 @@
 <h1>损失(Loss)<a class="headerlink" href="#loss" title="Permalink to this headline">¶</a></h1>
 <p>损失模块包括一组训练损失实例。 有些是从C ++实现转换而来的，其余的都是直接使用python Tensor实现的。</p>
 <p>示例用法：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">tensor</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">tensor</span>
 <span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">loss</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -231,7 +240,7 @@
 <hr class="docutils" />
 <div class="section" id="class-singa-loss-loss">
 <h2>class singa.loss.Loss<a class="headerlink" href="#class-singa-loss-loss" title="Permalink to this headline">¶</a></h2>
-<p>基类：<code class="docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>基类：<code class="docutils literal"><span class="pre">object</span></code></p>
 <p>损失类的基类</p>
 <p>封装C++损失类的子类可以使用此基类继承的forward，backward和evaluate函数。 其他子类需要重写这些函数</p>
 <div class="section" id="backward">
@@ -243,9 +252,9 @@
 <h3>evaluate(flag, x, y)<a class="headerlink" href="#evaluate-flag-x-y" title="Permalink to this headline">¶</a></h3>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>flag (int)</strong> – 必须是kEval</p></li>
-<li><p><strong>x (Tensor)</strong> – 预测Tensor</p></li>
-<li><p><strong>y (Tensor)</strong> – 真实Tensor</p></li>
+<li><strong>flag (int)</strong> – 必须是kEval</li>
+<li><strong>x (Tensor)</strong> – 预测Tensor</li>
+<li><strong>y (Tensor)</strong> – 真实Tensor</li>
 </ul>
 <p><strong>返回值：</strong> 所有样本的平均损失</p>
 </div>
@@ -255,9 +264,9 @@
 <p>计算损失值</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>flag</strong> – kTrain/kEval或布尔值。如果是kTrain/True，那么在下一次调用forward前会先调用backward计算梯度。</p></li>
-<li><p><strong>x (Tensor)</strong> – 预测Tensor</p></li>
-<li><p><strong>y (Tensor)</strong> – 真实Tensor, x.shape[0]必须和y.shape[0]相同</p></li>
+<li><strong>flag</strong> – kTrain/kEval或布尔值。如果是kTrain/True，那么在下一次调用forward前会先调用backward计算梯度。</li>
+<li><strong>x (Tensor)</strong> – 预测Tensor</li>
+<li><strong>y (Tensor)</strong> – 真实Tensor, x.shape[0]必须和y.shape[0]相同</li>
 </ul>
 <p><strong>返回值：</strong> tensor，每个样本对应一个浮点型损失值</p>
 </div>
@@ -265,13 +274,13 @@
 <hr class="docutils" />
 <div class="section" id="class-singa-loss-softmaxcrossentropy">
 <h2>class singa.loss.SoftmaxCrossEntropy<a class="headerlink" href="#class-singa-loss-softmaxcrossentropy" title="Permalink to this headline">¶</a></h2>
-<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.loss.Loss</span></code></p>
+<p>基类：<code class="docutils literal"><span class="pre">singa.loss.Loss</span></code></p>
 <p>此损失函数是SoftMax和交叉熵损失的结合。它通过SoftMax函数转换输入，然后根据真实值计算交叉熵损失。 对于每个样本，真实值可以是一个整数作为标签索引; 或二进制数组，指示标签分布。 因此，真实值可以是1维或2维tensor。 对于一批样品，数据/特征tensor可以是1维（对于单个样品）或2维（对于一组样本）。</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="class-singa-loss-squarederror">
 <h2>class singa.loss.SquaredError<a class="headerlink" href="#class-singa-loss-squarederror" title="Permalink to this headline">¶</a></h2>
-<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.loss.Loss</span></code></p>
+<p>基类：<code class="docutils literal"><span class="pre">singa.loss.Loss</span></code></p>
 <p>此损失用来衡量预测值和真实值之间的平方差。它通过Python Tensor操作实现。</p>
 <hr class="docutils" />
 <div class="section" id="id1">
@@ -291,9 +300,9 @@
 <p>通过0.5 * ||x-y||^2计算损失。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>flag (int)</strong> – kTrain或kEval；如果是kTrain，那么在下一次调用forward前会先调用backward计算梯度。</p></li>
-<li><p><strong>x (Tensor)</strong> – 预测Tensor</p></li>
-<li><p><strong>y (Tensor)</strong> – 真实Tensor, 每个样本对应一个整型数, 取值为[0, x.shape[1])。</p></li>
+<li><strong>flag (int)</strong> – kTrain或kEval；如果是kTrain，那么在下一次调用forward前会先调用backward计算梯度。</li>
+<li><strong>x (Tensor)</strong> – 预测Tensor</li>
+<li><strong>y (Tensor)</strong> – 真实Tensor, 每个样本对应一个整型数, 取值为[0, x.shape[1])。</li>
 </ul>
 <p><strong>返回值：</strong> tensor，每个样本对应一个损失值</p>
 <hr class="docutils" />

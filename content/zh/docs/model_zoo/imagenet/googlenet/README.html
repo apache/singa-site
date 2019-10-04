@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
 
@@ -244,22 +253,22 @@
 <div class="section" id="id1">
 <h2>操作说明<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p>下载参数的checkpoint文件到如下目录</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ wget https://s3-ap-southeast-1.amazonaws.com/dlfile/bvlc_googlenet.tar.gz
+<li><p class="first">下载参数的checkpoint文件到如下目录</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  $ wget https://s3-ap-southeast-1.amazonaws.com/dlfile/bvlc_googlenet.tar.gz
   $ tar xvf bvlc_googlenet.tar.gz
 </pre></div>
 </div>
 </li>
-<li><p>运行程序</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  # use cpu
+<li><p class="first">运行程序</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  # use cpu
   $ python serve.py -C &amp;
   # use gpu
   $ python serve.py &amp;
 </pre></div>
 </div>
 </li>
-<li><p>提交图片进行分类</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ curl -i -F image=@image1.jpg http://localhost:9999/api
+<li><p class="first">提交图片进行分类</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  $ curl -i -F image=@image1.jpg http://localhost:9999/api
   $ curl -i -F image=@image2.jpg http://localhost:9999/api
   $ curl -i -F image=@image3.jpg http://localhost:9999/api
 </pre></div>
@@ -270,8 +279,8 @@
 </div>
 <div class="section" id="id2">
 <h2>详细信息<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>我们首先从<a class="reference external" href="http://dl.caffe.berkeleyvision.org/bvlc_googlenet.caffemodel">Caffe的checkpoint文件</a>中提取参数值，并转换为pickle版本。下载checkpoint文件后进入<code class="docutils literal notranslate"><span class="pre">caffe_root/python</span></code>文件夹，运行如下脚本：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># to be executed within caffe_root/python folder</span>
+<p>我们首先从<a class="reference external" href="http://dl.caffe.berkeleyvision.org/bvlc_googlenet.caffemodel">Caffe的checkpoint文件</a>中提取参数值，并转换为pickle版本。下载checkpoint文件后进入<code class="docutils literal"><span class="pre">caffe_root/python</span></code>文件夹，运行如下脚本：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># to be executed within caffe_root/python folder</span>
 <span class="kn">import</span> <span class="nn">caffe</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">cPickle</span> <span class="k">as</span> <span class="nn">pickle</span>

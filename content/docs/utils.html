@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +45,6 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Model Zoo" href="model_zoo/index.html" />
-    <link rel="prev" title="Caffe Converter" href="converter.html" />
     <link href="../_static/style.css" rel="stylesheet" type="text/css">
     <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -100,36 +107,13 @@
               
             
             
-              <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software_stack.html">Software Stack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="benchmark.html">Benchmark for Distributed training</a></li>
-<li class="toctree-l2"><a class="reference internal" href="device.html">Device</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="layer.html">Layer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="net.html">FeedForward Net</a></li>
-<li class="toctree-l2"><a class="reference internal" href="initializer.html">Initializer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="loss.html">Loss</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metric.html">Metric</a></li>
-<li class="toctree-l2"><a class="reference internal" href="optimizer.html">Optimizer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="autograd.html">Autograd in Singa</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data.html">Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="image_tool.html">Image Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snapshot.html">Snapshot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="converter.html">Caffe Converter</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Utils</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model_zoo/index.html">Model Zoo</a></li>
-</ul>
-</li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/how-to-release.html">How to prepare a release</a></li>
@@ -185,8 +169,6 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Documentation</a> &raquo;</li>
-        
       <li>Utils</li>
     
     
@@ -204,22 +186,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-singa.utils">
-<span id="utils"></span><h1>Utils<a class="headerlink" href="#module-singa.utils" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="singa.utils.update_progress">
-<code class="descclassname">singa.utils.</code><code class="descname">update_progress</code><span class="sig-paren">(</span><em>progress</em>, <em>info</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.utils.update_progress" title="Permalink to this definition">¶</a></dt>
-<dd><p>Display progress bar and user info.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>progress</strong> (<em>float</em>) – progress [0, 1], negative for halt, and &gt;=1 for done.</p></li>
-<li><p><strong>info</strong> (<em>str</em>) – a string for user provided info to be displayed.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
+  <div class="section" id="utils">
+<h1>Utils<a class="headerlink" href="#utils" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -227,15 +195,6 @@
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="model_zoo/index.html" class="btn btn-neutral float-right" title="Model Zoo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="converter.html" class="btn btn-neutral float-left" title="Caffe Converter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

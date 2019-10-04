@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +45,6 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Metric" href="metric.html" />
-    <link rel="prev" title="Initializer" href="initializer.html" />
     <link href="../_static/style.css" rel="stylesheet" type="text/css">
     <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -100,36 +107,13 @@
               
             
             
-              <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software_stack.html">Software Stack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="benchmark.html">Benchmark for Distributed training</a></li>
-<li class="toctree-l2"><a class="reference internal" href="device.html">Device</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="layer.html">Layer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="net.html">FeedForward Net</a></li>
-<li class="toctree-l2"><a class="reference internal" href="initializer.html">Initializer</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Loss</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metric.html">Metric</a></li>
-<li class="toctree-l2"><a class="reference internal" href="optimizer.html">Optimizer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="autograd.html">Autograd in Singa</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data.html">Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="image_tool.html">Image Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snapshot.html">Snapshot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="converter.html">Caffe Converter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utils.html">Utils</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model_zoo/index.html">Model Zoo</a></li>
-</ul>
-</li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/how-to-release.html">How to prepare a release</a></li>
@@ -185,8 +169,6 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Documentation</a> &raquo;</li>
-        
       <li>Loss</li>
     
     
@@ -204,193 +186,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-singa.loss">
-<span id="loss"></span><h1>Loss<a class="headerlink" href="#module-singa.loss" title="Permalink to this headline">¶</a></h1>
-<p>Loss module includes a set of training loss implmentations. Some are converted
-from C++ implementation, and the rest are implemented directly using python
-Tensor.</p>
-<p>Example usage:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="k">import</span> <span class="n">tensor</span>
-<span class="kn">from</span> <span class="nn">singa</span> <span class="k">import</span> <span class="n">loss</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">x</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># randomly genearte the prediction activation</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">))</span>  <span class="c1"># set the truth</span>
-
-<span class="n">f</span> <span class="o">=</span> <span class="n">loss</span><span class="o">.</span><span class="n">SoftmaxCrossEntropy</span><span class="p">()</span>
-<span class="n">l</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># l is tensor with 3 loss values</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>  <span class="c1"># g is a tensor containing all gradients of x w.r.t l</span>
-</pre></div>
-</div>
-<dl class="class">
-<dt id="singa.loss.Loss">
-<em class="property">class </em><code class="descclassname">singa.loss.</code><code class="descname">Loss</code><a class="headerlink" href="#singa.loss.Loss" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Base loss class.</p>
-<p>Subclasses that wrap the C++ loss classes can use the inherited foward,
-backward, and evaluate functions of this base class. Other subclasses need
-to override these functions</p>
-<dl class="method">
-<dt id="singa.loss.Loss.backward">
-<code class="descname">backward</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.loss.Loss.backward" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>the grad of x w.r.t. the loss</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.loss.Loss.evaluate">
-<code class="descname">evaluate</code><span class="sig-paren">(</span><em>flag</em>, <em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.loss.Loss.evaluate" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>flag</strong> (<em>int</em>) – must be kEval, to be removed</p></li>
-<li><p><strong>x</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – the prediction Tensor</p></li>
-<li><p><strong>y</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – the ground truth Tnesor</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the averaged loss for all samples in x.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.loss.Loss.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>flag</em>, <em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.loss.Loss.forward" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the loss values.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>flag</strong> – kTrain/kEval or bool. If it is kTrain/True, then the backward
-function must be called before calling forward again.</p></li>
-<li><p><strong>x</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – the prediction Tensor</p></li>
-<li><p><strong>y</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – the ground truch Tensor, x.shape[0] must = y.shape[0]</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a tensor of floats for the loss values, one per sample</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="singa.loss.SigmoidCrossEntropy">
-<em class="property">class </em><code class="descclassname">singa.loss.</code><code class="descname">SigmoidCrossEntropy</code><span class="sig-paren">(</span><em>epsilon=1e-08</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.loss.SigmoidCrossEntropy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#singa.loss.Loss" title="singa.loss.Loss"><code class="xref py py-class docutils literal notranslate"><span class="pre">singa.loss.Loss</span></code></a></p>
-<p>This loss evaluates the cross-entropy loss between the prediction and the
-truth values with the prediction probability generated from Sigmoid.</p>
-<dl class="method">
-<dt id="singa.loss.SigmoidCrossEntropy.backward">
-<code class="descname">backward</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.loss.SigmoidCrossEntropy.backward" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the gradient of loss w.r.t to x.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>dx = pi - yi.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.loss.SigmoidCrossEntropy.evaluate">
-<code class="descname">evaluate</code><span class="sig-paren">(</span><em>flag</em>, <em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.loss.SigmoidCrossEntropy.evaluate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compuate the averaged error.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>a float value as the averaged error</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.loss.SigmoidCrossEntropy.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>flag</em>, <em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.loss.SigmoidCrossEntropy.forward" title="Permalink to this definition">¶</a></dt>
-<dd><p>loss is -yi * log pi - (1-yi) log (1-pi), where pi=sigmoid(xi)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>flag</strong> (<em>bool</em>) – true for training; false for evaluation</p></li>
-<li><p><strong>x</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – the prediction Tensor</p></li>
-<li><p><strong>y</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – the truth Tensor, a binary array value per sample</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a Tensor with one error value per sample</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="singa.loss.SoftmaxCrossEntropy">
-<em class="property">class </em><code class="descclassname">singa.loss.</code><code class="descname">SoftmaxCrossEntropy</code><a class="headerlink" href="#singa.loss.SoftmaxCrossEntropy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#singa.loss.Loss" title="singa.loss.Loss"><code class="xref py py-class docutils literal notranslate"><span class="pre">singa.loss.Loss</span></code></a></p>
-<p>This loss function is a combination of SoftMax and Cross-Entropy loss.</p>
-<p>It converts the inputs via SoftMax function and then
-computes the cross-entropy loss against the ground truth values.</p>
-<p>For each sample, the ground truth could be a integer as the label index;
-or a binary array, indicating the label distribution. The ground truth
-tensor thus could be a 1d or 2d tensor.
-The data/feature tensor could 1d (for a single sample) or 2d for a batch of
-samples.</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="singa.loss.SquaredError">
-<em class="property">class </em><code class="descclassname">singa.loss.</code><code class="descname">SquaredError</code><a class="headerlink" href="#singa.loss.SquaredError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#singa.loss.Loss" title="singa.loss.Loss"><code class="xref py py-class docutils literal notranslate"><span class="pre">singa.loss.Loss</span></code></a></p>
-<p>This loss evaluates the squared error between the prediction and the
-truth values.</p>
-<p>It is implemented using Python Tensor operations.</p>
-<dl class="method">
-<dt id="singa.loss.SquaredError.backward">
-<code class="descname">backward</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.loss.SquaredError.backward" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the gradient of x w.r.t the error.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>x - y</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.loss.SquaredError.evaluate">
-<code class="descname">evaluate</code><span class="sig-paren">(</span><em>flag</em>, <em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.loss.SquaredError.evaluate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compuate the averaged error.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>a float value as the averaged error</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.loss.SquaredError.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>flag</em>, <em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.loss.SquaredError.forward" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the error as 0.5 * ||x-y||^2.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>flag</strong> (<em>int</em>) – kTrain or kEval; if kTrain, then the backward must be
-called before calling forward again.</p></li>
-<li><p><strong>x</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – the prediction Tensor</p></li>
-<li><p><strong>y</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – the truth Tensor, an integer value per sample, whose
-value is [0, x.shape[1])</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a Tensor with one error value per sample</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+  <div class="section" id="loss">
+<h1>Loss<a class="headerlink" href="#loss" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -398,15 +195,6 @@ value is [0, x.shape[1])</p></li>
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="metric.html" class="btn btn-neutral float-right" title="Metric" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="initializer.html" class="btn btn-neutral float-left" title="Initializer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

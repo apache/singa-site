@@ -1,9 +1,21 @@
----
-name: VGG models on ImageNet
-SINGA version: 1.1.1
-SINGA commit:
-license: https://github.com/pytorch/vision/blob/master/torchvision/models/vgg.py
----
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
 
 # Image Classification using VGG
 
@@ -26,9 +38,9 @@ to SINGA for image classification.
 * Example
 
         # use cpu
-        $ python serve.py --use_cpu --parameter_file vgg11.pickle --depth 11 --use_cpu &
-        # use gpu
         $ python serve.py --use_cpu --parameter_file vgg11.pickle --depth 11 &
+        # use gpu
+        $ python serve.py --parameter_file vgg11.pickle --depth 11 &
 
   The parameter files for the following model and depth configuration pairs are provided:
   * Without batch-normalization, [11](https://s3-ap-southeast-1.amazonaws.com/dlfile/vgg/vgg11.tar.gz), [13](https://s3-ap-southeast-1.amazonaws.com/dlfile/vgg/vgg13.tar.gz), [16](https://s3-ap-southeast-1.amazonaws.com/dlfile/vgg/vgg16.tar.gz), [19](https://s3-ap-southeast-1.amazonaws.com/dlfile/vgg/vgg19.tar.gz)

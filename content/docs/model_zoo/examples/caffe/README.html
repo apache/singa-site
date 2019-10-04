@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
 
@@ -105,9 +114,6 @@
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-to-release.html">How to prepare a release</a></li>
@@ -202,32 +208,32 @@
 <p>In this example, we use SINGA to load the VGG parameters trained by Caffe to do image classification.</p>
 <div class="section" id="run-this-example">
 <h2>Run this example<a class="headerlink" href="#run-this-example" title="Permalink to this headline">¶</a></h2>
-<p>You can run this example by simply executing <code class="docutils literal notranslate"><span class="pre">run.sh</span> <span class="pre">vgg16</span></code> or <code class="docutils literal notranslate"><span class="pre">run.sh</span> <span class="pre">vgg19</span></code>
+<p>You can run this example by simply executing <code class="docutils literal"><span class="pre">run.sh</span> <span class="pre">vgg16</span></code> or <code class="docutils literal"><span class="pre">run.sh</span> <span class="pre">vgg19</span></code>
 The script does the following work.</p>
 <div class="section" id="obtain-the-caffe-model">
 <h3>Obtain the Caffe model<a class="headerlink" href="#obtain-the-caffe-model" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Download caffe model prototxt and parameter binary file.</p></li>
-<li><p>Currently we only support the latest caffe format, if your model is in
+<li>Download caffe model prototxt and parameter binary file.</li>
+<li>Currently we only support the latest caffe format, if your model is in
 previous version of caffe, please update it to current format.(This is
-supported by caffe)</p></li>
-<li><p>After updating, we can obtain two files, i.e., the prototxt and parameter
-binary file.</p></li>
+supported by caffe)</li>
+<li>After updating, we can obtain two files, i.e., the prototxt and parameter
+binary file.</li>
 </ul>
 </div>
 <div class="section" id="prepare-test-images">
 <h3>Prepare test images<a class="headerlink" href="#prepare-test-images" title="Permalink to this headline">¶</a></h3>
-<p>A few sample images are downloaded into the <code class="docutils literal notranslate"><span class="pre">test</span></code> folder.</p>
+<p>A few sample images are downloaded into the <code class="docutils literal"><span class="pre">test</span></code> folder.</p>
 </div>
 <div class="section" id="predict">
 <h3>Predict<a class="headerlink" href="#predict" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">predict.py</span></code> script creates the VGG model and read the parameters,</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">predict</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">model_txt</span> <span class="n">model_bin</span> <span class="n">imgclass</span>
+<p>The <code class="docutils literal"><span class="pre">predict.py</span></code> script creates the VGG model and read the parameters,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">predict</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">model_txt</span> <span class="n">model_bin</span> <span class="n">imgclass</span>
 </pre></div>
 </div>
-<p>where <code class="docutils literal notranslate"><span class="pre">imgclass</span></code> refers to the synsets of imagenet dataset for vgg models.
+<p>where <code class="docutils literal"><span class="pre">imgclass</span></code> refers to the synsets of imagenet dataset for vgg models.
 You can start the prediction program by executing the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">predict</span><span class="o">.</span><span class="n">py</span> <span class="n">vgg16</span><span class="o">.</span><span class="n">prototxt</span> <span class="n">vgg16</span><span class="o">.</span><span class="n">caffemodel</span> <span class="n">synset_words</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">predict</span><span class="o">.</span><span class="n">py</span> <span class="n">vgg16</span><span class="o">.</span><span class="n">prototxt</span> <span class="n">vgg16</span><span class="o">.</span><span class="n">caffemodel</span> <span class="n">synset_words</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 <p>Then you type in the image path, and the program would output the top-5 labels.</p>

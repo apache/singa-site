@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -184,65 +193,71 @@
 <p>你可以创建一个文件夹来安装依赖库。</p>
 <p>依赖库有下面这些：</p>
 <ul>
-<li><dl class="simple">
-<dt>编译器和IDE</dt><dd><ul class="simple">
-<li><p>Visual Studio. 社区版是免费的，可用于构建SINGA。<a class="reference external" href="https://www.visualstudio.com/">https://www.visualstudio.com/</a></p></li>
+<li><dl class="first docutils">
+<dt>编译器和IDE</dt>
+<dd><ul class="first last simple">
+<li>Visual Studio. 社区版是免费的，可用于构建SINGA。<a class="reference external" href="https://www.visualstudio.com/">https://www.visualstudio.com/</a></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>CMake</dt><dd><ul class="simple">
-<li><p>可以从 <a class="reference external" href="http://cmake.org/">http://cmake.org/</a> 下载</p></li>
-<li><p>确保cmake可执行路径在系统路径中，或者在调用cmake时使用完整路径。</p></li>
+<li><dl class="first docutils">
+<dt>CMake</dt>
+<dd><ul class="first last simple">
+<li>可以从 <a class="reference external" href="http://cmake.org/">http://cmake.org/</a> 下载</li>
+<li>确保cmake可执行路径在系统路径中，或者在调用cmake时使用完整路径。</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>SWIG</dt><dd><ul class="simple">
-<li><p>可以从 <a class="reference external" href="http://swig.org/">http://swig.org/</a> 下载</p></li>
-<li><p>确保cmake可执行路径在系统路径中，或者在调用swig时使用完整路径。使用最近的版本，比如 3.0.12.</p></li>
+<li><dl class="first docutils">
+<dt>SWIG</dt>
+<dd><ul class="first last simple">
+<li>可以从 <a class="reference external" href="http://swig.org/">http://swig.org/</a> 下载</li>
+<li>确保cmake可执行路径在系统路径中，或者在调用swig时使用完整路径。使用最近的版本，比如 3.0.12.</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>Protocol Buffers</dt><dd><ul class="simple">
-<li><p>下载一个合适的版本，比如： 2.6.1: <a class="reference external" href="https://github.com/google/protobuf/releases/tag/v2.6.1">https://github.com/google/protobuf/releases/tag/v2.6.1</a> .</p></li>
-<li><p>下载protobuf-2.6.1.zip和protoc-2.6.1-win32.zip .</p></li>
-<li><p>在依赖库文件夹下解压它们。将protoc可执行路径加入系统路径中，或者在调用它是使用完整路径。</p></li>
-<li><p>在vsproject文件夹中找到Visual Studio solution并打开。</p></li>
-<li><p>更改创建环境为Release和x64。</p></li>
-<li><p>创建libprotobuf项目。</p></li>
+<li><dl class="first docutils">
+<dt>Protocol Buffers</dt>
+<dd><ul class="first last simple">
+<li>下载一个合适的版本，比如： 2.6.1: <a class="reference external" href="https://github.com/google/protobuf/releases/tag/v2.6.1">https://github.com/google/protobuf/releases/tag/v2.6.1</a> .</li>
+<li>下载protobuf-2.6.1.zip和protoc-2.6.1-win32.zip .</li>
+<li>在依赖库文件夹下解压它们。将protoc可执行路径加入系统路径中，或者在调用它是使用完整路径。</li>
+<li>在vsproject文件夹中找到Visual Studio solution并打开。</li>
+<li>更改创建环境为Release和x64。</li>
+<li>创建libprotobuf项目。</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt>Openblas</dt><dd><ul class="simple">
-<li><p>下载一个合适的版本，比如： 0.2.20: <a class="reference external" href="http://www.openblas.net">http://www.openblas.net</a></p></li>
-<li><p>在依赖文件夹下提取源程序。</p></li>
-<li><p>如果你没有安装Perl，下载一个perl环境比如 Strawberry Perl (<a class="reference external" href="http://strawberryperl.com/">http://strawberryperl.com/</a>)</p></li>
-<li><p>通过在源文件夹下运行下面指令来创建Visual Studio的解决方案：</p></li>
+<li><dl class="first docutils">
+<dt>Openblas</dt>
+<dd><ul class="first simple">
+<li>下载一个合适的版本，比如： 0.2.20: <a class="reference external" href="http://www.openblas.net">http://www.openblas.net</a></li>
+<li>在依赖文件夹下提取源程序。</li>
+<li>如果你没有安装Perl，下载一个perl环境比如 Strawberry Perl (<a class="reference external" href="http://strawberryperl.com/">http://strawberryperl.com/</a>)</li>
+<li>通过在源文件夹下运行下面指令来创建Visual Studio的解决方案：</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>打开Visual Studio并更改创建环境为Release和x64。</p></li>
-<li><p>创建libopenblas项目。</p></li>
+<ul class="last simple">
+<li>打开Visual Studio并更改创建环境为Release和x64。</li>
+<li>创建libopenblas项目。</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>Google glog</dt><dd><ul class="simple">
-<li><p>下载一个合适的版本，比如： 0.3.5： <a class="reference external" href="https://github.com/google/glog/releases">https://github.com/google/glog/releases</a></p></li>
-<li><p>在依赖文件夹下提取源程序。</p></li>
-<li><p>打开Visual Studio。</p></li>
-<li><p>更改创建环境为Release和x64。</p></li>
-<li><p>创建libglog项目。</p></li>
+<li><dl class="first docutils">
+<dt>Google glog</dt>
+<dd><ul class="first last simple">
+<li>下载一个合适的版本，比如： 0.3.5： <a class="reference external" href="https://github.com/google/glog/releases">https://github.com/google/glog/releases</a></li>
+<li>在依赖文件夹下提取源程序。</li>
+<li>打开Visual Studio。</li>
+<li>更改创建环境为Release和x64。</li>
+<li>创建libglog项目。</li>
 </ul>
 </dd>
 </dl>
@@ -252,44 +267,45 @@
 <div class="section" id="singa">
 <h2>2. 创建SINGA<a class="headerlink" href="#singa" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>下载SINGA源代码</p></li>
-<li><dl class="simple">
-<dt>编译protobuf文件:</dt><dd><ul>
-<li><p>进入 src/proto 文件夹</p></li>
+<li>下载SINGA源代码</li>
+<li><dl class="first docutils">
+<dt>编译protobuf文件:</dt>
+<dd><ul class="first last">
+<li>进入 src/proto 文件夹</li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir python_out
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir python_out
 protoc.exe *.proto --python_out python_out
 </pre></div>
 </div>
 <ul class="simple">
-<li><dl class="simple">
-<dt>生成支持C++和Python的swig界面:</dt><dd><p>进入 src/api</p>
-</dd>
+<li><dl class="first docutils">
+<dt>生成支持C++和Python的swig界面:</dt>
+<dd>进入 src/api</dd>
 </dl>
 </li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>swig -python -c++ singa.i
+<div class="highlight-bash"><div class="highlight"><pre><span></span>swig -python -c++ singa.i
 </pre></div>
 </div>
 <ul class="simple">
-<li><dl class="simple">
-<dt>生成支持SINGA的Visual Studio:</dt><dd><p>进入SINGA源代码所在的根文件夹</p>
-</dd>
+<li><dl class="first docutils">
+<dt>生成支持SINGA的Visual Studio:</dt>
+<dd>进入SINGA源代码所在的根文件夹</dd>
 </dl>
 </li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir build
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir build
 <span class="nb">cd</span> build
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>调用cmake并将路径加到系统路径中，类似于如下的例子：</p></li>
+<li>调用cmake并将路径加到系统路径中，类似于如下的例子：</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span> ^
+<div class="highlight-bash"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span> ^
   -DGLOG_INCLUDE_DIR<span class="o">=</span><span class="s2">&quot;D:/WinSinga/dependencies/glog-0.3.5/src/windows&quot;</span> ^
   -DGLOG_LIBRARIES<span class="o">=</span><span class="s2">&quot;D:/WinSinga/dependencies/glog-0.3.5/x64/Release&quot;</span> ^
   -DCBLAS_INCLUDE_DIR<span class="o">=</span><span class="s2">&quot;D:/WinSinga/dependencies/openblas-0.2.20/lapack-netlib/CBLAS/include&quot;</span> ^
@@ -301,62 +317,63 @@ protoc.exe *.proto --python_out python_out
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>在Visual Studio中打开生成好的解决方案</p></li>
-<li><p>更改创建环境为Release和x64。</p></li>
-<li><p>将src/api中的singa_wrap.cxx文件加入singa_objects项目。</p></li>
-<li><p>在singa_objects项目中，打开Additional Include Directories。</p></li>
-<li><p>添加Python include path。</p></li>
-<li><p>添加numpy include path。</p></li>
-<li><p>添加protobuf include path。</p></li>
-<li><p>在singa_objects项目的预处理器定义中，添加USE_GLOG。</p></li>
-<li><p>创建singa_objects项目。</p></li>
-<li><dl class="simple">
-<dt>在singa项目中:</dt><dd><ul>
-<li><p>将singa_wrap.obj添加到对象库</p></li>
-<li><p>将目标名称更改为_singa_wrap</p></li>
-<li><p>将目标扩展名更改为.pyd</p></li>
-<li><p>将配置类型更改为动态库（.dll）</p></li>
-<li><p>转到其他库目录并添加到Python，openblas，protobuf和glog库的路径</p></li>
-<li><p>转到附加依赖关系并添加libopenblas.lib，libglog.lib和libprotobuf.lib</p></li>
+<li>在Visual Studio中打开生成好的解决方案</li>
+<li>更改创建环境为Release和x64。</li>
+<li>将src/api中的singa_wrap.cxx文件加入singa_objects项目。</li>
+<li>在singa_objects项目中，打开Additional Include Directories。</li>
+<li>添加Python include path。</li>
+<li>添加numpy include path。</li>
+<li>添加protobuf include path。</li>
+<li>在singa_objects项目的预处理器定义中，添加USE_GLOG。</li>
+<li>创建singa_objects项目。</li>
+<li><dl class="first docutils">
+<dt>在singa项目中:</dt>
+<dd><ul class="first last">
+<li>将singa_wrap.obj添加到对象库</li>
+<li>将目标名称更改为_singa_wrap</li>
+<li>将目标扩展名更改为.pyd</li>
+<li>将配置类型更改为动态库（.dll）</li>
+<li>转到其他库目录并添加到Python，openblas，protobuf和glog库的路径</li>
+<li>转到附加依赖关系并添加libopenblas.lib，libglog.lib和libprotobuf.lib</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>创建singa项目</p></li>
+<li>创建singa项目</li>
 </ul>
 </div>
 <div class="section" id="python">
 <h2>3. 安装Python模块<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>在build/python/setup.py中，将Change _singa_wrap.so改为_singa_wrap.pyd</p></li>
-<li><p>拷贝src/proto/python_out中的文件到build/python/singa/proto</p></li>
-<li><p>（可选择的）创建并激活一个虚拟环境：</p></li>
+<li>在build/python/setup.py中，将Change _singa_wrap.so改为_singa_wrap.pyd</li>
+<li>拷贝src/proto/python_out中的文件到build/python/singa/proto</li>
+<li>（可选择的）创建并激活一个虚拟环境：</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir SingaEnv
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir SingaEnv
 virtualenv SingaEnv
 SingaEnv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>进入build/python文件夹并运行：</p></li>
+<li>进入build/python文件夹并运行：</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python setup.py install
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python setup.py install
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>通过将_singa_wrap.pyd，libglog.dll和libopenblas.dll添加到路径或通过将它们复制到python站点包中的singa包文件夹中，使它们可用。</p></li>
-<li><p>通过下面指令验证SINGA已安装：</p></li>
+<li>通过将_singa_wrap.pyd，libglog.dll和libopenblas.dll添加到路径或通过将它们复制到python站点包中的singa包文件夹中，使它们可用。</li>
+<li>通过下面指令验证SINGA已安装：</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -c <span class="s2">&quot;from singa import tensor&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python -c <span class="s2">&quot;from singa import tensor&quot;</span>
 </pre></div>
 </div>
 <p>你可以在这里看到一个关于创建过程的视频教程：</p>
-<table class="docutils align-center">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 100%" />
+<col width="100%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference external" href="https://www.youtube.com/watch?v=YOjwtrvTPn4"><img alt="video" class="align-middle" src="https://img.youtube.com/vi/YOjwtrvTPn4/0.jpg" /></a></p></td>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference external" href="https://www.youtube.com/watch?v=YOjwtrvTPn4"><img alt="video" class="align-middle" src="https://img.youtube.com/vi/YOjwtrvTPn4/0.jpg" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -364,41 +381,47 @@ SingaEnv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 <div class="section" id="id2">
 <h2>4. 运行单元测试<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>在test文件夹下，生成Visual Studio的解决方案:</p></li>
+<li>在test文件夹下，生成Visual Studio的解决方案:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span>
 </pre></div>
 </div>
 <ul>
-<li><p>在Visual Studio中打开生成好的解决方案。</p></li>
-<li><p>更改创建环境为Release和x64。</p></li>
-<li><p>创建glog项目。</p></li>
-<li><p>在test_singa项目中:</p>
+<li><p class="first">在Visual Studio中打开生成好的解决方案。</p>
+</li>
+<li><p class="first">更改创建环境为Release和x64。</p>
+</li>
+<li><p class="first">创建glog项目。</p>
+</li>
+<li><p class="first">在test_singa项目中:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>将USE_GLOG添加到预处理器定义中。</p></li>
-<li><p>在其他包含目录中，添加上述步骤2中使用的GLOG_INCLUDE_DIR，CBLAS_INCLUDE_DIR和Protobuf_INCLUDE_DIR的路径。 添加也构建和建立/包含文件夹。</p></li>
-<li><p>转到其他库目录并添加到openblas，protobuf和glog库的路径。 也可以添加build / src / singa_objects.dir / Release。</p></li>
-<li><p>转到附加依赖项并添加libopenblas.lib，libglog.lib和libprotobuf.lib。 修复两个库的名称：gtest.lib和singa_objects.lib。</p></li>
+<li>将USE_GLOG添加到预处理器定义中。</li>
+<li>在其他包含目录中，添加上述步骤2中使用的GLOG_INCLUDE_DIR，CBLAS_INCLUDE_DIR和Protobuf_INCLUDE_DIR的路径。 添加也构建和建立/包含文件夹。</li>
+<li>转到其他库目录并添加到openblas，protobuf和glog库的路径。 也可以添加build / src / singa_objects.dir / Release。</li>
+<li>转到附加依赖项并添加libopenblas.lib，libglog.lib和libprotobuf.lib。 修复两个库的名称：gtest.lib和singa_objects.lib。</li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>创建test_singa项目。</p></li>
-<li><p>通过把它们加入到系统路径或拷贝到test/release文件夹下使得libglog.dll和libopenblas.dll可被获取到。</p></li>
-<li><p>单元测试有如下运行方式：</p>
+<li><p class="first">创建test_singa项目。</p>
+</li>
+<li><p class="first">通过把它们加入到系统路径或拷贝到test/release文件夹下使得libglog.dll和libopenblas.dll可被获取到。</p>
+</li>
+<li><p class="first">单元测试有如下运行方式：</p>
 <blockquote>
 <div><ul>
-<li><p>从命令行:</p>
+<li><p class="first">从命令行:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>test_singa.exe
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>test_singa.exe
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><dl class="simple">
-<dt>从Visual Studio:</dt><dd><ul class="simple">
-<li><p>右键单击test_singa项目并选择“设为启动项目”</p></li>
-<li><p>从“调试”菜单中选择“无需调试即可开始”</p></li>
+<li><dl class="first docutils">
+<dt>从Visual Studio:</dt>
+<dd><ul class="first last simple">
+<li>右键单击test_singa项目并选择“设为启动项目”</li>
+<li>从“调试”菜单中选择“无需调试即可开始”</li>
 </ul>
 </dd>
 </dl>
@@ -408,12 +431,12 @@ SingaEnv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 </li>
 </ul>
 <p>你可以在这里看到一个关于运行单元测试的视频教程：</p>
-<table class="docutils align-center">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 100%" />
+<col width="100%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference external" href="https://www.youtube.com/watch?v=YOjwtrvTPn4"><img alt="video" class="align-middle" src="https://img.youtube.com/vi/YOjwtrvTPn4/0.jpg" /></a></p></td>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference external" href="https://www.youtube.com/watch?v=YOjwtrvTPn4"><img alt="video" class="align-middle" src="https://img.youtube.com/vi/YOjwtrvTPn4/0.jpg" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -426,30 +449,34 @@ SingaEnv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 <h2>5.1 安装依赖库<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>除了1部分的依赖库，我们还将需要如下库：</p>
 <ul>
-<li><p>CUDA</p>
+<li><p class="first">CUDA</p>
 <blockquote>
 <div><p>从https://developer.nvidia.com/cuda-downloads下载合适的版本，比如9.1。确保安装Visual Studio集成模块。</p>
 </div></blockquote>
 </li>
-<li><p>cuDNN</p>
+<li><p class="first">cuDNN</p>
 <blockquote>
 <div><p>从https://developer.nvidia.com/cudnn下载合适的版本，比如7.1。</p>
 </div></blockquote>
 </li>
-<li><p>cnmem:</p>
+<li><p class="first">cnmem:</p>
 <blockquote>
 <div><ul>
-<li><p>从https://github.com/NVIDIA/cnmem下载最新版本</p></li>
-<li><p>创建Visual Studio的解决方案:</p>
+<li><p class="first">从https://github.com/NVIDIA/cnmem下载最新版本</p>
+</li>
+<li><p class="first">创建Visual Studio的解决方案:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><p>在Visual Studio中打开生成的解决方案。</p></li>
-<li><p>将创建设置更改为Release和x64。</p></li>
-<li><p>创建cnmem项目。</p></li>
+<li><p class="first">在Visual Studio中打开生成的解决方案。</p>
+</li>
+<li><p class="first">将创建设置更改为Release和x64。</p>
+</li>
+<li><p class="first">创建cnmem项目。</p>
+</li>
 </ul>
 </div></blockquote>
 </li>
@@ -458,9 +485,9 @@ SingaEnv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 <div class="section" id="id4">
 <h2>5.2 创建SINGA<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p>调用cmake并在系统中添加类似以下示例的路径：</p>
+<li><p class="first">调用cmake并在系统中添加类似以下示例的路径：</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span> ^
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span> ^
           -DGLOG_INCLUDE_DIR<span class="o">=</span><span class="s2">&quot;D:/WinSinga/dependencies/glog-0.3.5/src/windows&quot;</span> ^
           -DGLOG_LIBRARIES<span class="o">=</span><span class="s2">&quot;D:/WinSinga/dependencies/glog-0.3.5/x64/Release&quot;</span> ^
           -DCBLAS_INCLUDE_DIR<span class="o">=</span><span class="s2">&quot;D:/WinSinga/dependencies/openblas-0.2.20/lapack-netlib/CBLAS/include&quot;</span> ^
@@ -479,101 +506,109 @@ SingaEnv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 </div>
 </div></blockquote>
 </li>
-<li><dl>
-<dt>为C++和Python生成swig接口：</dt><dd><p>进入 src/api</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>swig -python -c++ singa.i
+<li><dl class="first docutils">
+<dt>为C++和Python生成swig接口：</dt>
+<dd><p class="first">进入 src/api</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span></span>swig -python -c++ singa.i
 </pre></div>
 </div>
 </dd>
 </dl>
 </li>
-<li><p>在Visual Studio中打开生成的解决方案</p></li>
-<li><p>将版本设置更改为Release和x64</p></li>
+<li><p class="first">在Visual Studio中打开生成的解决方案</p>
+</li>
+<li><p class="first">将版本设置更改为Release和x64</p>
+</li>
 </ul>
 </div>
 <div class="section" id="singa-objects">
 <h2>5.2.1 创建singa_objects<a class="headerlink" href="#singa-objects" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>将src/api中的singa_wrap.cxx文件添加到singa_objects项目中。</p></li>
-<li><p>在singa_objects项目中，打开其他包含目录。</p></li>
-<li><p>添加Python包含路径。</p></li>
-<li><p>添加numpy包含路径。</p></li>
-<li><p>添加protobuf包含路径。</p></li>
-<li><p>为CUDA，cuDNN和cnmem添加包含路径。</p></li>
-<li><p>在singa_objects项目的预处理器定义中，添加USE_GLOG，USE_CUDA和USE_CUDNN。删除DISABLE_WARNINGS。</p></li>
-<li><p>建立singa_objects项目。</p></li>
+<li>将src/api中的singa_wrap.cxx文件添加到singa_objects项目中。</li>
+<li>在singa_objects项目中，打开其他包含目录。</li>
+<li>添加Python包含路径。</li>
+<li>添加numpy包含路径。</li>
+<li>添加protobuf包含路径。</li>
+<li>为CUDA，cuDNN和cnmem添加包含路径。</li>
+<li>在singa_objects项目的预处理器定义中，添加USE_GLOG，USE_CUDA和USE_CUDNN。删除DISABLE_WARNINGS。</li>
+<li>建立singa_objects项目。</li>
 </ul>
 </div>
 <div class="section" id="singa-kernel">
 <h2>5.2.2 创建singa-kernel<a class="headerlink" href="#singa-kernel" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p>创建一个类型为“CUDA 9.1 Runtime”的新Visual Studio程序。 给它起一个名字，比如singa-kernel。</p></li>
-<li><p>该项目带有一个名为kernel.cu的初始文件。 从项目中删除此文件。</p></li>
-<li><p>添加此文件：src / core / tensor / math_kernel.cu</p></li>
-<li><p>在项目设置中：</p>
+<li><p class="first">创建一个类型为“CUDA 9.1 Runtime”的新Visual Studio程序。 给它起一个名字，比如singa-kernel。</p>
+</li>
+<li><p class="first">该项目带有一个名为kernel.cu的初始文件。 从项目中删除此文件。</p>
+</li>
+<li><p class="first">添加此文件：src / core / tensor / math_kernel.cu</p>
+</li>
+<li><p class="first">在项目设置中：</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>将Platfrom工具集设置为“Visual Studio 2015（v140）”</p></li>
-<li><p>将配置类型设置为“静态库（.lib）”</p></li>
-<li><p>在包含目录中，添加build/include</p></li>
+<li>将Platfrom工具集设置为“Visual Studio 2015（v140）”</li>
+<li>将配置类型设置为“静态库（.lib）”</li>
+<li>在包含目录中，添加build/include</li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>创建singa-kernel项目</p></li>
+<li><p class="first">创建singa-kernel项目</p>
+</li>
 </ul>
 </div>
 <div class="section" id="id5">
 <h2>5.2.3 创建singa<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p>在singa项目中:</p>
+<li><p class="first">在singa项目中:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>将singa_wrap.obj添加到对象库。</p></li>
-<li><p>将目标名称更改为_singa_wrap。</p></li>
-<li><p>将目标扩展名更改为.pyd。</p></li>
-<li><p>将配置类型更改为动态库（.dll）。</p></li>
-<li><p>转到其他库目录并添加到Python，openblas，protobuf和glog库的路径。</p></li>
-<li><p>还将库路径添加到singa-kernel，cnmem，cuda和cudnn。</p></li>
-<li><p>转到附加依赖关系并添加libopenblas.lib，libglog.lib和libprotobuf.lib。</p></li>
-<li><p>添加：singa-kernel.lib，cnmem.lib，cudnn.lib，cuda.lib，cublas.lib，curand.lib和cudart.lib。</p></li>
+<li>将singa_wrap.obj添加到对象库。</li>
+<li>将目标名称更改为_singa_wrap。</li>
+<li>将目标扩展名更改为.pyd。</li>
+<li>将配置类型更改为动态库（.dll）。</li>
+<li>转到其他库目录并添加到Python，openblas，protobuf和glog库的路径。</li>
+<li>还将库路径添加到singa-kernel，cnmem，cuda和cudnn。</li>
+<li>转到附加依赖关系并添加libopenblas.lib，libglog.lib和libprotobuf.lib。</li>
+<li>添加：singa-kernel.lib，cnmem.lib，cudnn.lib，cuda.lib，cublas.lib，curand.lib和cudart.lib。</li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>创建singa项目</p></li>
+<li><p class="first">创建singa项目</p>
+</li>
 </ul>
 </div>
 <div class="section" id="id6">
 <h2>5.3. 安装Python模块<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>在build/python/setup.py中，将Change _singa_wrap.so改为_singa_wrap.pyd</p></li>
-<li><p>拷贝src/proto/python_out中的文件到build/python/singa/proto</p></li>
-<li><p>（可选择的）创建并激活一个虚拟环境：</p></li>
+<li>在build/python/setup.py中，将Change _singa_wrap.so改为_singa_wrap.pyd</li>
+<li>拷贝src/proto/python_out中的文件到build/python/singa/proto</li>
+<li>（可选择的）创建并激活一个虚拟环境：</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir SingaEnv
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir SingaEnv
 virtualenv SingaEnv
 SingaEnv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>进入build/python文件夹并运行：</p></li>
+<li>进入build/python文件夹并运行：</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python setup.py install
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python setup.py install
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>将_singa_wrap.pyd，libglog.dll，libopenblas.dll，cnmem.dll，CUDA运行时（例如cudart64_91.dll）和cuDNN（例如cudnn64_7.dll）添加到路径或通过将它们复制到singa包文件夹 python网站包。</p></li>
-<li><p>通过下面指令验证SINGA已安装：</p></li>
+<li>将_singa_wrap.pyd，libglog.dll，libopenblas.dll，cnmem.dll，CUDA运行时（例如cudart64_91.dll）和cuDNN（例如cudnn64_7.dll）添加到路径或通过将它们复制到singa包文件夹 python网站包。</li>
+<li>通过下面指令验证SINGA已安装：</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -c <span class="s2">&quot;from singa import device; dev = device.create_cuda_gpu()&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python -c <span class="s2">&quot;from singa import device; dev = device.create_cuda_gpu()&quot;</span>
 </pre></div>
 </div>
 <p>关于这部分的视频教程可以在下面找到：</p>
-<table class="docutils align-center">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 100%" />
+<col width="100%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference external" href="https://www.youtube.com/watch?v=YOjwtrvTPn4"><img alt="video" class="align-middle" src="https://img.youtube.com/vi/YOjwtrvTPn4/0.jpg" /></a></p></td>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference external" href="https://www.youtube.com/watch?v=YOjwtrvTPn4"><img alt="video" class="align-middle" src="https://img.youtube.com/vi/YOjwtrvTPn4/0.jpg" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -581,41 +616,47 @@ SingaEnv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 <div class="section" id="id7">
 <h2>5.4. 运行单元测试<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>在test文件夹下，生成Visual Studio的解决方案:</p></li>
+<li>在test文件夹下，生成Visual Studio的解决方案:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span>
 </pre></div>
 </div>
 <ul>
-<li><p>在Visual Studio中打开生成好的解决方案。</p></li>
-<li><p>更改创建环境为Release和x64。</p></li>
-<li><p>创建glog项目。</p></li>
-<li><p>在test_singa项目中:</p>
+<li><p class="first">在Visual Studio中打开生成好的解决方案。</p>
+</li>
+<li><p class="first">更改创建环境为Release和x64。</p>
+</li>
+<li><p class="first">创建glog项目。</p>
+</li>
+<li><p class="first">在test_singa项目中:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>将USE_GLOG添加到预处理器定义中。</p></li>
-<li><p>在其他包含目录中，添加上述步骤2中使用的GLOG_INCLUDE_DIR，CBLAS_INCLUDE_DIR和Protobuf_INCLUDE_DIR的路径。 添加也构建和建立/包含文件夹。</p></li>
-<li><p>转到其他库目录并添加到openblas，protobuf和glog库的路径。 也可以添加build / src / singa_objects.dir / Release。</p></li>
-<li><p>转到附加依赖项并添加libopenblas.lib，libglog.lib和libprotobuf.lib。 修复两个库的名称：gtest.lib和singa_objects.lib。</p></li>
+<li>将USE_GLOG添加到预处理器定义中。</li>
+<li>在其他包含目录中，添加上述步骤2中使用的GLOG_INCLUDE_DIR，CBLAS_INCLUDE_DIR和Protobuf_INCLUDE_DIR的路径。 添加也构建和建立/包含文件夹。</li>
+<li>转到其他库目录并添加到openblas，protobuf和glog库的路径。 也可以添加build / src / singa_objects.dir / Release。</li>
+<li>转到附加依赖项并添加libopenblas.lib，libglog.lib和libprotobuf.lib。 修复两个库的名称：gtest.lib和singa_objects.lib。</li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>创建test_singa项目。</p></li>
-<li><p>通过把它们加入到系统路径或拷贝到test/release文件夹下使得libglog.dll和libopenblas.dll可被获取到。</p></li>
-<li><p>单元测试有如下运行方式：</p>
+<li><p class="first">创建test_singa项目。</p>
+</li>
+<li><p class="first">通过把它们加入到系统路径或拷贝到test/release文件夹下使得libglog.dll和libopenblas.dll可被获取到。</p>
+</li>
+<li><p class="first">单元测试有如下运行方式：</p>
 <blockquote>
 <div><ul>
-<li><p>从命令行:</p>
+<li><p class="first">从命令行:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>test_singa.exe
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>test_singa.exe
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><dl class="simple">
-<dt>从Visual Studio:</dt><dd><ul class="simple">
-<li><p>右键单击test_singa项目并选择“设为启动项目”</p></li>
-<li><p>从“调试”菜单中选择“无需调试即可开始”</p></li>
+<li><dl class="first docutils">
+<dt>从Visual Studio:</dt>
+<dd><ul class="first last simple">
+<li>右键单击test_singa项目并选择“设为启动项目”</li>
+<li>从“调试”菜单中选择“无需调试即可开始”</li>
 </ul>
 </dd>
 </dl>
@@ -625,12 +666,12 @@ SingaEnv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 </li>
 </ul>
 <p>你可以在这里看到一个关于运行单元测试的视频教程：</p>
-<table class="docutils align-center">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 100%" />
+<col width="100%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference external" href="https://www.youtube.com/watch?v=YOjwtrvTPn4"><img alt="video" class="align-middle" src="https://img.youtube.com/vi/YOjwtrvTPn4/0.jpg" /></a></p></td>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference external" href="https://www.youtube.com/watch?v=YOjwtrvTPn4"><img alt="video" class="align-middle" src="https://img.youtube.com/vi/YOjwtrvTPn4/0.jpg" /></a></td>
 </tr>
 </tbody>
 </table>

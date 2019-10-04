@@ -21,11 +21,20 @@
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -198,150 +207,144 @@
 --><div class="section" id="singa">
 <h1>下载 SINGA<a class="headerlink" href="#singa" title="Permalink to this headline">¶</a></h1>
 <ul>
-<li><p>要验证下载的tar.gz文件，请下载KEY和ASC文件，然后执行以下命令</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">%</span> <span class="n">gpg</span> <span class="o">--</span><span class="kn">import</span> <span class="nn">KEYS</span>
+<li><p class="first">要验证下载的tar.gz文件，请下载KEY和ASC文件，然后执行以下命令</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  <span class="o">%</span> <span class="n">gpg</span> <span class="o">--</span><span class="kn">import</span> <span class="nn">KEYS</span>
   <span class="o">%</span> <span class="n">gpg</span> <span class="o">--</span><span class="n">verify</span> <span class="n">downloaded_file</span><span class="o">.</span><span class="n">asc</span> <span class="n">downloaded_file</span>
 </pre></div>
 </div>
 <p>您还可以检查SHA512或MD5值以查看下载是否已完成</p>
 </li>
-<li><p>v1.2.0 (2018年6月6日):</p>
+<li><p class="first">v1.2.0 (2018年6月6日):</p>
 <ul class="simple">
-<li><p><a class="reference external" href="http://www.apache.org/dyn/closer.cgi/incubator/singa/1.2.0/apache-singa-incubating-1.2.0.tar.gz">Apache SINGA 1.2.0</a>
+<li><a class="reference external" href="http://www.apache.org/dyn/closer.cgi/incubator/singa/1.2.0/apache-singa-incubating-1.2.0.tar.gz">Apache SINGA 1.2.0</a>
 <a class="reference external" href="https://www.apache.org/dist/incubator/singa/1.2.0/apache-singa-incubating-1.2.0.tar.gz.sha512">[SHA512]</a>
 <a class="reference external" href="https://www.apache.org/dist/incubator/singa/1.2.0/KEYS">[KEYS]</a>
-<a class="reference external" href="https://www.apache.org/dist/incubator/singa/1.2.0/apache-singa-incubating-1.2.0.tar.gz.asc">[ASC]</a></p></li>
-<li><p><a class="reference external" href="releases/RELEASE_NOTES_1.2.0.html">发行说明 1.2.0</a></p></li>
-<li><p>新功能和主要更新,</p>
-<ul>
-<li><p>实现 autograd (目前支持MLP模型)</p></li>
-<li><p>升级 PySinga 以支持 Python 3</p></li>
-<li><p>为 Tensor 类添加 stride field</p></li>
-<li><p>讲 cuDNN 从 V5 升级到 V7</p></li>
-<li><p>为 ImageNet 分类任务添加 VGG, Inception V4, ResNet, 及 DenseNet 模型</p></li>
-<li><p>为 conda 包创建别名</p></li>
-<li><p>完善中文文档</p></li>
-<li><p>添加在 Windows 上运行 Singa 的说明</p></li>
-<li><p>更新编译, CI</p></li>
-<li><p>修复一些错误</p></li>
+<a class="reference external" href="https://www.apache.org/dist/incubator/singa/1.2.0/apache-singa-incubating-1.2.0.tar.gz.asc">[ASC]</a></li>
+<li><a class="reference external" href="releases/RELEASE_NOTES_1.2.0.html">发行说明 1.2.0</a></li>
+<li>新功能和主要更新,<ul>
+<li>实现 autograd (目前支持MLP模型)</li>
+<li>升级 PySinga 以支持 Python 3</li>
+<li>为 Tensor 类添加 stride field</li>
+<li>讲 cuDNN 从 V5 升级到 V7</li>
+<li>为 ImageNet 分类任务添加 VGG, Inception V4, ResNet, 及 DenseNet 模型</li>
+<li>为 conda 包创建别名</li>
+<li>完善中文文档</li>
+<li>添加在 Windows 上运行 Singa 的说明</li>
+<li>更新编译, CI</li>
+<li>修复一些错误</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>v1.1.0 (2017年2月12日):</p>
+<li><p class="first">v1.1.0 (2017年2月12日):</p>
 <ul class="simple">
-<li><p><a class="reference external" href="http://www.apache.org/dyn/closer.cgi/incubator/singa/1.1.0/apache-singa-incubating-1.1.0.tar.gz">Apache SINGA 1.1.0</a>
+<li><a class="reference external" href="http://www.apache.org/dyn/closer.cgi/incubator/singa/1.1.0/apache-singa-incubating-1.1.0.tar.gz">Apache SINGA 1.1.0</a>
 <a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.1.0/apache-singa-incubating-1.1.0.tar.gz.md5">[MD5]</a>
 <a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.1.0/KEYS">[KEYS]</a>
-<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.1.0/apache-singa-incubating-1.1.0.tar.gz.asc">[ASC]</a></p></li>
-<li><p><a class="reference external" href="releases/RELEASE_NOTES_1.1.0.html">发行说明 1.1.0</a></p></li>
-<li><p>新功能和主要更新,</p>
-<ul>
-<li><p>创建 Docker 镜像（CPU和GPU版本）</p></li>
-<li><p>为 SINGA 创建 Amazon AMI（CPU版本）</p></li>
-<li><p>与 Jenkins 集成以自动生成 Wheel 和 Debian 软件包（用于安装），并更新网站.</p></li>
-<li><p>增强 FeedFowardNet, 例如，用于调试的多输入和详细模式</p></li>
-<li><p>添加 Concat 和 Slice 层</p></li>
-<li><p>扩展 CrossEntropyLoss 以接受具有多个标签的实例</p></li>
-<li><p>添加 image_tool.py 与图像增强方法</p></li>
-<li><p>通过 Snapshot API 支持模型加载和保存</p></li>
-<li><p>在 Windows 上编译 SINGA 源代码</p></li>
-<li><p>用 SINGA 代码编译强制依赖库</p></li>
-<li><p>启用 S​​INGA 的 Java 绑定（基本）</p></li>
-<li><p>在检查点文件中添加版本 ID</p></li>
-<li><p>添加 Rafiki 工具包以提供 RESTFul API</p></li>
-<li><p>添加 Caffe 预训练的例子，包括 GoogleNet</p></li>
+<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.1.0/apache-singa-incubating-1.1.0.tar.gz.asc">[ASC]</a></li>
+<li><a class="reference external" href="releases/RELEASE_NOTES_1.1.0.html">发行说明 1.1.0</a></li>
+<li>新功能和主要更新,<ul>
+<li>创建 Docker 镜像（CPU和GPU版本）</li>
+<li>为 SINGA 创建 Amazon AMI（CPU版本）</li>
+<li>与 Jenkins 集成以自动生成 Wheel 和 Debian 软件包（用于安装），并更新网站.</li>
+<li>增强 FeedFowardNet, 例如，用于调试的多输入和详细模式</li>
+<li>添加 Concat 和 Slice 层</li>
+<li>扩展 CrossEntropyLoss 以接受具有多个标签的实例</li>
+<li>添加 image_tool.py 与图像增强方法</li>
+<li>通过 Snapshot API 支持模型加载和保存</li>
+<li>在 Windows 上编译 SINGA 源代码</li>
+<li>用 SINGA 代码编译强制依赖库</li>
+<li>启用 S​​INGA 的 Java 绑定（基本）</li>
+<li>在检查点文件中添加版本 ID</li>
+<li>添加 Rafiki 工具包以提供 RESTFul API</li>
+<li>添加 Caffe 预训练的例子，包括 GoogleNet</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>v1.0.0 (2016年9月8日):</p>
+<li><p class="first">v1.0.0 (2016年9月8日):</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.0.0/apache-singa-incubating-1.0.0.tar.gz">Apache SINGA 1.0.0</a>
+<li><a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.0.0/apache-singa-incubating-1.0.0.tar.gz">Apache SINGA 1.0.0</a>
 <a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.0.0/apache-singa-incubating-1.0.0.tar.gz.md5">[MD5]</a>
 <a class="reference external" href="https://archive.apache.org/dist/incubator/singa//1.0.0/KEYS">[KEYS]</a>
-<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.0.0/apache-singa-incubating-1.0.0.tar.gz.asc">[ASC]</a></p></li>
-<li><p><a class="reference external" href="releases/RELEASE_NOTES_1.0.0.html">发行说明 1.0.0</a></p></li>
-<li><p>新功能和主要更新,</p>
-<ul>
-<li><p>用于支持更多机器学习模型的张量抽象.</p></li>
-<li><p>设备抽象运行在不同的硬件设备上，包括CPU，（Nvidia / AMD）GPU 和 FPGA（将在更高版本中测试）.</p></li>
-<li><p>用 cmake 替换 GNU autotool 进行编译.</p></li>
-<li><p>支持 Mac OS</p></li>
-<li><p>改进Python绑定，包括安装和编程</p></li>
-<li><p>更多深度学习模型, 包括 VGG 和 ResNet</p></li>
-<li><p>读取/写入文件和编码/解码数据的更多 IO 类</p></li>
-<li><p>直接基于 Socket 的新网络通信组件.</p></li>
-<li><p>包含 Dropout 和 RNN 层的 Cudnn V5.</p></li>
-<li><p>将网站制作工具从 maven 替换为 Sphinx</p></li>
-<li><p>整合 Travis-CI</p></li>
+<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.0.0/apache-singa-incubating-1.0.0.tar.gz.asc">[ASC]</a></li>
+<li><a class="reference external" href="releases/RELEASE_NOTES_1.0.0.html">发行说明 1.0.0</a></li>
+<li>新功能和主要更新,<ul>
+<li>用于支持更多机器学习模型的张量抽象.</li>
+<li>设备抽象运行在不同的硬件设备上，包括CPU，（Nvidia / AMD）GPU 和 FPGA（将在更高版本中测试）.</li>
+<li>用 cmake 替换 GNU autotool 进行编译.</li>
+<li>支持 Mac OS</li>
+<li>改进Python绑定，包括安装和编程</li>
+<li>更多深度学习模型, 包括 VGG 和 ResNet</li>
+<li>读取/写入文件和编码/解码数据的更多 IO 类</li>
+<li>直接基于 Socket 的新网络通信组件.</li>
+<li>包含 Dropout 和 RNN 层的 Cudnn V5.</li>
+<li>将网站制作工具从 maven 替换为 Sphinx</li>
+<li>整合 Travis-CI</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>v0.3.0 (2016年4月20日):</p>
+<li><p class="first">v0.3.0 (2016年4月20日):</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.3.0/apache-singa-incubating-0.3.0.tar.gz">Apache SINGA 0.3.0</a>
+<li><a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.3.0/apache-singa-incubating-0.3.0.tar.gz">Apache SINGA 0.3.0</a>
 <a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.3.0/apache-singa-incubating-0.3.0.tar.gz.md5">[MD5]</a>
 <a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.3.0/KEYS">[KEYS]</a>
-<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.3.0/apache-singa-incubating-0.3.0.tar.gz.asc">[ASC]</a></p></li>
-<li><p><a class="reference external" href="releases/RELEASE_NOTES_0.3.0.html">发行说明 0.3.0</a></p></li>
-<li><p>新功能和主要更新,</p>
-<ul>
-<li><p><a class="reference external" href="v0.3.0/gpu.html">在 GPU 集群上</a> 可以在 GPU 集群上训练深度学习模型.</p></li>
-<li><p><a class="reference external" href="v0.3.0/python.html">Python 包装器的改进</a> 使得配置工作变得很容易, 包括神经网络和 SGD 算法.</p></li>
-<li><p><a class="reference external" href="v0.3.0/updater.html">新增 SGD 更新器</a>, 包括 Adam, AdaDelta 和 AdaMax.</p></li>
-<li><p><a class="reference external" href="v0.3.0/installation.html">安装</a> 具有较少的相关库， 对于单节点培训.</p></li>
-<li><p>在 CPU 和 GPU 上进行异构训练.</p></li>
-<li><p>支持 cuDNN V4.</p></li>
-<li><p>数据预读取.</p></li>
-<li><p>修复一些错误.</p></li>
+<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.3.0/apache-singa-incubating-0.3.0.tar.gz.asc">[ASC]</a></li>
+<li><a class="reference external" href="releases/RELEASE_NOTES_0.3.0.html">发行说明 0.3.0</a></li>
+<li>新功能和主要更新,<ul>
+<li><a class="reference external" href="v0.3.0/gpu.html">在 GPU 集群上</a> 可以在 GPU 集群上训练深度学习模型.</li>
+<li><a class="reference external" href="v0.3.0/python.html">Python 包装器的改进</a> 使得配置工作变得很容易, 包括神经网络和 SGD 算法.</li>
+<li><a class="reference external" href="v0.3.0/updater.html">新增 SGD 更新器</a>, 包括 Adam, AdaDelta 和 AdaMax.</li>
+<li><a class="reference external" href="v0.3.0/installation.html">安装</a> 具有较少的相关库， 对于单节点培训.</li>
+<li>在 CPU 和 GPU 上进行异构训练.</li>
+<li>支持 cuDNN V4.</li>
+<li>数据预读取.</li>
+<li>修复一些错误.</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>v0.2.0 (2016年1月14日):</p>
+<li><p class="first">v0.2.0 (2016年1月14日):</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.2.0/apache-singa-incubating-0.2.0.tar.gz">Apache SINGA 0.2.0</a>
+<li><a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.2.0/apache-singa-incubating-0.2.0.tar.gz">Apache SINGA 0.2.0</a>
 <a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.2.0/apache-singa-incubating-0.2.0.tar.gz.md5">[MD5]</a>
 <a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.2.0/KEYS">[KEYS]</a>
-<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.2.0/apache-singa-incubating-0.2.0.tar.gz.asc">[ASC]</a></p></li>
-<li><p><a class="reference external" href="releases/RELEASE_NOTES_0.2.0.html">发行说明 0.2.0</a></p></li>
-<li><p>新功能和主要更新,</p>
-<ul>
-<li><p><a class="reference external" href="v0.2.0/gpu.html">在 GPU 上进行训练</a> 可以在具有多个 GPU 卡的单个节点上对复杂模型进行训练.</p></li>
-<li><p><a class="reference external" href="v0.2.0/hybrid.html">混合神经网络划分</a> 同时支持数据和模型并行.</p></li>
-<li><p><a class="reference external" href="v0.2.0/python.html">Python 包装器</a> 可以很容易地配置作业，包括神经网络和 SGD 算法.</p></li>
-<li><p><a class="reference external" href="v0.2.0/general-rnn.html">RNN 模型和 BPTT 算法</a> 实现并支持基于 RNN 模型的应用，例如 GRU.</p></li>
-<li><p><a class="reference external" href="v0.2.0/distributed-training.html">云软件集成</a> 包括 Mesos，Docker 和 HDFS.</p></li>
-<li><p>可视化神经网络结构和层信息，有助于调试.</p></li>
-<li><p>线性代数函数和针对 Blob 和原始数据指针的随机函数.</p></li>
-<li><p>新层，包括 Softmax 层，ArgSort 层，Dummy 层，RNN 层和 cuDNN 层</p></li>
-<li><p>更新 Layer 类以携带多个数据/梯度 Blob.</p></li>
-<li><p>通过加载预训练模型参数来提取新数据的特征和测试性能.</p></li>
-<li><p>为 IO 操作添加 Store 类.</p></li>
+<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.2.0/apache-singa-incubating-0.2.0.tar.gz.asc">[ASC]</a></li>
+<li><a class="reference external" href="releases/RELEASE_NOTES_0.2.0.html">发行说明 0.2.0</a></li>
+<li>新功能和主要更新,<ul>
+<li><a class="reference external" href="v0.2.0/gpu.html">在 GPU 上进行训练</a> 可以在具有多个 GPU 卡的单个节点上对复杂模型进行训练.</li>
+<li><a class="reference external" href="v0.2.0/hybrid.html">混合神经网络划分</a> 同时支持数据和模型并行.</li>
+<li><a class="reference external" href="v0.2.0/python.html">Python 包装器</a> 可以很容易地配置作业，包括神经网络和 SGD 算法.</li>
+<li><a class="reference external" href="v0.2.0/general-rnn.html">RNN 模型和 BPTT 算法</a> 实现并支持基于 RNN 模型的应用，例如 GRU.</li>
+<li><a class="reference external" href="v0.2.0/distributed-training.html">云软件集成</a> 包括 Mesos，Docker 和 HDFS.</li>
+<li>可视化神经网络结构和层信息，有助于调试.</li>
+<li>线性代数函数和针对 Blob 和原始数据指针的随机函数.</li>
+<li>新层，包括 Softmax 层，ArgSort 层，Dummy 层，RNN 层和 cuDNN 层</li>
+<li>更新 Layer 类以携带多个数据/梯度 Blob.</li>
+<li>通过加载预训练模型参数来提取新数据的特征和测试性能.</li>
+<li>为 IO 操作添加 Store 类.</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>v0.1.0 (2015年10月8日):</p>
+<li><p class="first">v0.1.0 (2015年10月8日):</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://archive.apache.org/dist/incubator/singa/apache-singa-incubating-0.1.0.tar.gz">Apache SINGA 0.1.0</a>
+<li><a class="reference external" href="https://archive.apache.org/dist/incubator/singa/apache-singa-incubating-0.1.0.tar.gz">Apache SINGA 0.1.0</a>
 <a class="reference external" href="https://archive.apache.org/dist/incubator/singa/apache-singa-incubating-0.1.0.tar.gz.md5">[MD5]</a>
 <a class="reference external" href="https://archive.apache.org/dist/incubator/singa/KEYS">[KEYS]</a>
-<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/apache-singa-incubating-0.1.0.tar.gz.asc">[ASC]</a></p></li>
-<li><p><a class="reference external" href="https://console.aws.amazon.com/ec2/v2/home?region=ap-southeast-1#LaunchInstanceWizard:ami=ami-b41001e6">Amazon EC2 image</a></p></li>
-<li><p><a class="reference external" href="releases/RELEASE_NOTES_0.1.0.html">发行说明 0.1.0</a></p></li>
-<li><p>主要功能包括,</p>
-<ul>
-<li><p>使用 GNU build 程序进行安装</p></li>
-<li><p>用 zookeeper 进行工作管理的脚本</p></li>
-<li><p>基于神经网络和层抽象的编程模型.</p></li>
-<li><p>基于 Worker，Server 和 Stub 的系统体系结构.</p></li>
-<li><p>训练三种不同类别的模型，即前馈模型，能量模型和 RNN 模型.</p></li>
-<li><p>使用 CPU 的同步和异步分布式训练框架</p></li>
-<li><p>检查点和恢复</p></li>
-<li><p>使用 gtest 进行单元测试</p></li>
+<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/apache-singa-incubating-0.1.0.tar.gz.asc">[ASC]</a></li>
+<li><a class="reference external" href="https://console.aws.amazon.com/ec2/v2/home?region=ap-southeast-1#LaunchInstanceWizard:ami=ami-b41001e6">Amazon EC2 image</a></li>
+<li><a class="reference external" href="releases/RELEASE_NOTES_0.1.0.html">发行说明 0.1.0</a></li>
+<li>主要功能包括,<ul>
+<li>使用 GNU build 程序进行安装</li>
+<li>用 zookeeper 进行工作管理的脚本</li>
+<li>基于神经网络和层抽象的编程模型.</li>
+<li>基于 Worker，Server 和 Stub 的系统体系结构.</li>
+<li>训练三种不同类别的模型，即前馈模型，能量模型和 RNN 模型.</li>
+<li>使用 CPU 的同步和异步分布式训练框架</li>
+<li>检查点和恢复</li>
+<li>使用 gtest 进行单元测试</li>
 </ul>
 </li>
 </ul>

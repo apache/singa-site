@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +45,6 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Autograd in Singa" href="autograd.html" />
-    <link rel="prev" title="Metric" href="metric.html" />
     <link href="../_static/style.css" rel="stylesheet" type="text/css">
     <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -100,36 +107,13 @@
               
             
             
-              <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software_stack.html">Software Stack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="benchmark.html">Benchmark for Distributed training</a></li>
-<li class="toctree-l2"><a class="reference internal" href="device.html">Device</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="layer.html">Layer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="net.html">FeedForward Net</a></li>
-<li class="toctree-l2"><a class="reference internal" href="initializer.html">Initializer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="loss.html">Loss</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metric.html">Metric</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Optimizer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="autograd.html">Autograd in Singa</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data.html">Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="image_tool.html">Image Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snapshot.html">Snapshot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="converter.html">Caffe Converter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utils.html">Utils</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model_zoo/index.html">Model Zoo</a></li>
-</ul>
-</li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/how-to-release.html">How to prepare a release</a></li>
@@ -185,8 +169,6 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Documentation</a> &raquo;</li>
-        
       <li>Optimizer</li>
     
     
@@ -204,403 +186,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-singa.optimizer">
-<span id="optimizer"></span><h1>Optimizer<a class="headerlink" href="#module-singa.optimizer" title="Permalink to this headline">¶</a></h1>
-<p>This module includes a set of optimizers for updating model parameters.</p>
-<p>Example usage:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="k">import</span> <span class="n">optimizer</span>
-<span class="kn">from</span> <span class="nn">singa</span> <span class="k">import</span> <span class="n">tensor</span>
-
-<span class="n">sgd</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">)</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">p</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">g</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
-
-<span class="n">sgd</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s1">&#39;param&#39;</span><span class="p">)</span>  <span class="c1"># use the global lr=0.1 for epoch 1</span>
-<span class="n">sgd</span><span class="o">.</span><span class="n">apply_with_lr</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s1">&#39;param&#39;</span><span class="p">)</span>  <span class="c1"># use lr=0.03 for epoch 2</span>
-</pre></div>
-</div>
-<dl class="class">
-<dt id="singa.optimizer.Optimizer">
-<em class="property">class </em><code class="descclassname">singa.optimizer.</code><code class="descname">Optimizer</code><span class="sig-paren">(</span><em>lr=None</em>, <em>momentum=None</em>, <em>weight_decay=None</em>, <em>regularizer=None</em>, <em>constraint=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.Optimizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>The base python optimizer class.</p>
-<p>Typically, an optimizer is used as follows:</p>
-<ol class="arabic simple">
-<li><p>construct the optimizer</p></li>
-<li><p>(optional) register each parameter with its specs.</p></li>
-<li><p>use the optimizer to update parameter values given parameter gradients
-and other optional info</p></li>
-</ol>
-<p>The subclasses should override the apply_with_lr function to do the real
-parameter udpate.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lr</strong> (<em>float</em>) – a constant value for the learning rate</p></li>
-<li><p><strong>momentum</strong> (<em>float</em>) – a constant value for the momentum value</p></li>
-<li><p><strong>weight_decay</strong> (<em>float</em>) – the coefficent for L2 regularizer, which is
-mutually exclusive with ‘regularizer’.</p></li>
-<li><p><strong>regularizer</strong> – an instance of Regularizer or RegularizerConf; If set,
-regularization would be applied in apply_with_lr().
-Users can also do regularization outside.</p></li>
-<li><p><strong>constraint</strong> – an instance of Constraint or ConstraintConf; If set,
-constraint would be applied inside apply_with_lr(). Users can
-also apply constraint outside.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="method">
-<dt id="singa.optimizer.Optimizer.register">
-<code class="descname">register</code><span class="sig-paren">(</span><em>name</em>, <em>specs</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.Optimizer.register" title="Permalink to this definition">¶</a></dt>
-<dd><p>Register the param specs, including creating regularizer and
-constraint per param object. Param specific regularizer and constraint
-have higher priority than the global ones. If all parameters share the
-same setting for learning rate, regularizer and constraint, then there
-is no need to call this function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<em>str</em>) – parameter name</p></li>
-<li><p><strong>specs</strong> (<em>ParamSpec</em>) – protobuf obj, including regularizer and
-constraint, multipliers for learning rate and weight decay.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.optimizer.Optimizer.apply_regularizer_constraint">
-<code class="descname">apply_regularizer_constraint</code><span class="sig-paren">(</span><em>epoch</em>, <em>value</em>, <em>grad</em>, <em>name=None</em>, <em>step=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.Optimizer.apply_regularizer_constraint" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply regularization and constraint if available.</p>
-<p>If there are both global regularizer (constraint) and param specific
-regularizer (constraint), it would use the param specific one.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>epoch</strong> (<em>int</em>) – training epoch ID</p></li>
-<li><p><strong>value</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – parameter value Tensor</p></li>
-<li><p><strong>grad</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – parameter gradient Tensor</p></li>
-<li><p><strong>name</strong> (<em>string</em>) – to get parameter specific regularizer or constraint</p></li>
-<li><p><strong>step</strong> (<em>int</em>) – iteration ID within one epoch</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the updated gradient Tensor</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.optimizer.Optimizer.apply_with_lr">
-<code class="descname">apply_with_lr</code><span class="sig-paren">(</span><em>epoch</em>, <em>lr</em>, <em>grad</em>, <em>value</em>, <em>name=None</em>, <em>step=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.Optimizer.apply_with_lr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do update of parameters with given learning rate if the grad is not
-empty.</p>
-<p>The subclass optimizer must override this function.
-This function do nothing if the grad is empty.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>epoch</strong> (<em>int</em>) – training epoch ID</p></li>
-<li><p><strong>lr</strong> (<em>float</em>) – learning rate</p></li>
-<li><p><strong>grad</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – parameter gradient</p></li>
-<li><p><strong>value</strong> (<em>Tesnor</em>) – parameter value</p></li>
-<li><p><strong>name</strong> (<em>string</em>) – paramter name to index parameter specific
-updating rules (including regularizer and constraint)</p></li>
-<li><p><strong>step</strong> (<em>int</em>) – iteration ID within one epoch</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>updated parameter value</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="singa.optimizer.Optimizer.apply">
-<code class="descname">apply</code><span class="sig-paren">(</span><em>epoch</em>, <em>grad</em>, <em>value</em>, <em>name=None</em>, <em>step=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.Optimizer.apply" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do update assuming the learning rate generator is set.</p>
-<p>The subclass optimizer does not need to override this function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>epoch</strong> (<em>int</em>) – training epoch ID</p></li>
-<li><p><strong>grad</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – parameter gradient</p></li>
-<li><p><strong>value</strong> (<em>Tesnor</em>) – parameter value</p></li>
-<li><p><strong>name</strong> (<em>string</em>) – paramter name to retrieval parameter specific
-updating rules (including regularizer and constraint)</p></li>
-<li><p><strong>step</strong> (<em>int</em>) – training iteration ID within one epoch</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>updated parameter value</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="singa.optimizer.SGD">
-<em class="property">class </em><code class="descclassname">singa.optimizer.</code><code class="descname">SGD</code><span class="sig-paren">(</span><em>lr=None</em>, <em>momentum=None</em>, <em>weight_decay=None</em>, <em>regularizer=None</em>, <em>constraint=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.SGD" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#singa.optimizer.Optimizer" title="singa.optimizer.Optimizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">singa.optimizer.Optimizer</span></code></a></p>
-<p>The vallina Stochasitc Gradient Descent algorithm with momentum.</p>
-<p>See the base Optimizer for all arguments.</p>
-<dl class="method">
-<dt id="singa.optimizer.SGD.apply_with_lr">
-<code class="descname">apply_with_lr</code><span class="sig-paren">(</span><em>epoch</em>, <em>lr</em>, <em>grad</em>, <em>value</em>, <em>name</em>, <em>step=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.SGD.apply_with_lr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do update of parameters with given learning rate if the grad is not
-empty.</p>
-<p>The subclass optimizer must override this function.
-This function do nothing if the grad is empty.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>epoch</strong> (<em>int</em>) – training epoch ID</p></li>
-<li><p><strong>lr</strong> (<em>float</em>) – learning rate</p></li>
-<li><p><strong>grad</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – parameter gradient</p></li>
-<li><p><strong>value</strong> (<em>Tesnor</em>) – parameter value</p></li>
-<li><p><strong>name</strong> (<em>string</em>) – paramter name to index parameter specific
-updating rules (including regularizer and constraint)</p></li>
-<li><p><strong>step</strong> (<em>int</em>) – iteration ID within one epoch</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>updated parameter value</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="singa.optimizer.Nesterov">
-<em class="property">class </em><code class="descclassname">singa.optimizer.</code><code class="descname">Nesterov</code><span class="sig-paren">(</span><em>lr=None</em>, <em>momentum=0.9</em>, <em>weight_decay=None</em>, <em>regularizer=None</em>, <em>constraint=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.Nesterov" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#singa.optimizer.Optimizer" title="singa.optimizer.Optimizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">singa.optimizer.Optimizer</span></code></a></p>
-<p>The SGD with Nesterov momentum.</p>
-<p>See the base Optimizer for all arguments.</p>
-<dl class="method">
-<dt id="singa.optimizer.Nesterov.apply_with_lr">
-<code class="descname">apply_with_lr</code><span class="sig-paren">(</span><em>epoch</em>, <em>lr</em>, <em>grad</em>, <em>value</em>, <em>name</em>, <em>step=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.Nesterov.apply_with_lr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do update of parameters with given learning rate if the grad is not
-empty.</p>
-<p>The subclass optimizer must override this function.
-This function do nothing if the grad is empty.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>epoch</strong> (<em>int</em>) – training epoch ID</p></li>
-<li><p><strong>lr</strong> (<em>float</em>) – learning rate</p></li>
-<li><p><strong>grad</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – parameter gradient</p></li>
-<li><p><strong>value</strong> (<em>Tesnor</em>) – parameter value</p></li>
-<li><p><strong>name</strong> (<em>string</em>) – paramter name to index parameter specific
-updating rules (including regularizer and constraint)</p></li>
-<li><p><strong>step</strong> (<em>int</em>) – iteration ID within one epoch</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>updated parameter value</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="singa.optimizer.RMSProp">
-<em class="property">class </em><code class="descclassname">singa.optimizer.</code><code class="descname">RMSProp</code><span class="sig-paren">(</span><em>rho=0.9</em>, <em>epsilon=1e-08</em>, <em>lr=None</em>, <em>weight_decay=None</em>, <em>regularizer=None</em>, <em>constraint=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.RMSProp" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#singa.optimizer.Optimizer" title="singa.optimizer.Optimizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">singa.optimizer.Optimizer</span></code></a></p>
-<p>RMSProp optimizer.</p>
-<p>See the base Optimizer for all constructor args.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>rho</strong> (<em>float</em>) – float within [0, 1]</p></li>
-<li><p><strong>epsilon</strong> (<em>float</em>) – small value for preventing numeric error</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="method">
-<dt id="singa.optimizer.RMSProp.apply_with_lr">
-<code class="descname">apply_with_lr</code><span class="sig-paren">(</span><em>epoch</em>, <em>lr</em>, <em>grad</em>, <em>value</em>, <em>name</em>, <em>step=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.RMSProp.apply_with_lr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do update of parameters with given learning rate if the grad is not
-empty.</p>
-<p>The subclass optimizer must override this function.
-This function do nothing if the grad is empty.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>epoch</strong> (<em>int</em>) – training epoch ID</p></li>
-<li><p><strong>lr</strong> (<em>float</em>) – learning rate</p></li>
-<li><p><strong>grad</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – parameter gradient</p></li>
-<li><p><strong>value</strong> (<em>Tesnor</em>) – parameter value</p></li>
-<li><p><strong>name</strong> (<em>string</em>) – paramter name to index parameter specific
-updating rules (including regularizer and constraint)</p></li>
-<li><p><strong>step</strong> (<em>int</em>) – iteration ID within one epoch</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>updated parameter value</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="singa.optimizer.AdaGrad">
-<em class="property">class </em><code class="descclassname">singa.optimizer.</code><code class="descname">AdaGrad</code><span class="sig-paren">(</span><em>epsilon=1e-08</em>, <em>lr=None</em>, <em>weight_decay=None</em>, <em>lr_gen=None</em>, <em>regularizer=None</em>, <em>constraint=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.AdaGrad" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#singa.optimizer.Optimizer" title="singa.optimizer.Optimizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">singa.optimizer.Optimizer</span></code></a></p>
-<p>AdaGrad optimizer.</p>
-<p>See the base Optimizer for all constructor args.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>epsilon</strong> (<em>float</em>) – small number for preventing numeric error.</p>
-</dd>
-</dl>
-<dl class="method">
-<dt id="singa.optimizer.AdaGrad.apply_with_lr">
-<code class="descname">apply_with_lr</code><span class="sig-paren">(</span><em>epoch</em>, <em>lr</em>, <em>grad</em>, <em>value</em>, <em>name</em>, <em>step=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.AdaGrad.apply_with_lr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do update of parameters with given learning rate if the grad is not
-empty.</p>
-<p>The subclass optimizer must override this function.
-This function do nothing if the grad is empty.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>epoch</strong> (<em>int</em>) – training epoch ID</p></li>
-<li><p><strong>lr</strong> (<em>float</em>) – learning rate</p></li>
-<li><p><strong>grad</strong> (<a class="reference internal" href="tensor.html#singa.tensor.Tensor" title="singa.tensor.Tensor"><em>Tensor</em></a>) – parameter gradient</p></li>
-<li><p><strong>value</strong> (<em>Tesnor</em>) – parameter value</p></li>
-<li><p><strong>name</strong> (<em>string</em>) – paramter name to index parameter specific
-updating rules (including regularizer and constraint)</p></li>
-<li><p><strong>step</strong> (<em>int</em>) – iteration ID within one epoch</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>updated parameter value</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="singa.optimizer.Adam">
-<em class="property">class </em><code class="descclassname">singa.optimizer.</code><code class="descname">Adam</code><span class="sig-paren">(</span><em>beta_1=0.9</em>, <em>beta_2=0.999</em>, <em>epsilon=1e-08</em>, <em>lr=None</em>, <em>weight_decay=None</em>, <em>regularizer=None</em>, <em>constraint=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.Adam" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#singa.optimizer.Optimizer" title="singa.optimizer.Optimizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">singa.optimizer.Optimizer</span></code></a></p>
-<p>Adam optimizer.</p>
-<p>See the base Optimizer for all constructor args.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>beta_1</strong> (<em>float</em>) – coefficient of momentum</p></li>
-<li><p><strong>beta_2</strong> (<em>float</em>) – coefficient of aggregated squared gradient</p></li>
-<li><p><strong>epsilon</strong> (<em>float</em>) – small value for preventing numeric error</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="method">
-<dt id="singa.optimizer.Adam.apply_with_lr">
-<code class="descname">apply_with_lr</code><span class="sig-paren">(</span><em>epoch</em>, <em>lr</em>, <em>grad</em>, <em>value</em>, <em>name</em>, <em>step</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.Adam.apply_with_lr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update one parameter object.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>step</strong> (<em>int</em>) – the accumulated training iterations, not the iteration ID</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="singa.optimizer.Regularizer">
-<em class="property">class </em><code class="descclassname">singa.optimizer.</code><code class="descname">Regularizer</code><a class="headerlink" href="#singa.optimizer.Regularizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Base Python regularizer for parameter gradients.</p>
-<dl class="method">
-<dt id="singa.optimizer.Regularizer.apply">
-<code class="descname">apply</code><span class="sig-paren">(</span><em>epoch</em>, <em>value</em>, <em>grad</em>, <em>step=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.Regularizer.apply" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="singa.optimizer.CppRegularizer">
-<em class="property">class </em><code class="descclassname">singa.optimizer.</code><code class="descname">CppRegularizer</code><span class="sig-paren">(</span><em>conf</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.CppRegularizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#singa.optimizer.Regularizer" title="singa.optimizer.Regularizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">singa.optimizer.Regularizer</span></code></a></p>
-<p>Wrapper for regularizer implemented using C++.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>conf</strong> (<em>RegularizerConf</em>) – protobuf message for the configuration.</p>
-</dd>
-</dl>
-<dl class="method">
-<dt id="singa.optimizer.CppRegularizer.apply">
-<code class="descname">apply</code><span class="sig-paren">(</span><em>epoch</em>, <em>value</em>, <em>grad</em>, <em>step=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.CppRegularizer.apply" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="singa.optimizer.L2Regularizer">
-<em class="property">class </em><code class="descclassname">singa.optimizer.</code><code class="descname">L2Regularizer</code><span class="sig-paren">(</span><em>coefficient</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.L2Regularizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#singa.optimizer.Regularizer" title="singa.optimizer.Regularizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">singa.optimizer.Regularizer</span></code></a></p>
-<p>L2 regularization</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>coefficient</strong> (<em>float</em>) – regularization coefficient.</p>
-</dd>
-</dl>
-<dl class="method">
-<dt id="singa.optimizer.L2Regularizer.apply">
-<code class="descname">apply</code><span class="sig-paren">(</span><em>epoch</em>, <em>value</em>, <em>grad</em>, <em>step=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.L2Regularizer.apply" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="singa.optimizer.Constraint">
-<em class="property">class </em><code class="descclassname">singa.optimizer.</code><code class="descname">Constraint</code><a class="headerlink" href="#singa.optimizer.Constraint" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Base Python constraint class for paramter gradients</p>
-<dl class="method">
-<dt id="singa.optimizer.Constraint.apply">
-<code class="descname">apply</code><span class="sig-paren">(</span><em>epoch</em>, <em>value</em>, <em>grad</em>, <em>step=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.Constraint.apply" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="singa.optimizer.CppConstraint">
-<em class="property">class </em><code class="descclassname">singa.optimizer.</code><code class="descname">CppConstraint</code><span class="sig-paren">(</span><em>conf</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.CppConstraint" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#singa.optimizer.Constraint" title="singa.optimizer.Constraint"><code class="xref py py-class docutils literal notranslate"><span class="pre">singa.optimizer.Constraint</span></code></a></p>
-<p>Wrapper for constraints implemented using C++.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>conf</strong> (<em>ConstraintConf</em>) – protobuf message for the configuration.</p>
-</dd>
-</dl>
-<dl class="method">
-<dt id="singa.optimizer.CppConstraint.apply">
-<code class="descname">apply</code><span class="sig-paren">(</span><em>epoch</em>, <em>value</em>, <em>grad</em>, <em>step=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.CppConstraint.apply" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="singa.optimizer.L2Constraint">
-<em class="property">class </em><code class="descclassname">singa.optimizer.</code><code class="descname">L2Constraint</code><span class="sig-paren">(</span><em>threshold=None</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.L2Constraint" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#singa.optimizer.Constraint" title="singa.optimizer.Constraint"><code class="xref py py-class docutils literal notranslate"><span class="pre">singa.optimizer.Constraint</span></code></a></p>
-<p>Rescale the gradient to make the L2 norm &lt;= a given threshold</p>
-<dl class="method">
-<dt id="singa.optimizer.L2Constraint.apply">
-<code class="descname">apply</code><span class="sig-paren">(</span><em>epoch</em>, <em>value</em>, <em>grad</em>, <em>step=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.optimizer.L2Constraint.apply" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+  <div class="section" id="optimizer">
+<h1>Optimizer<a class="headerlink" href="#optimizer" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -608,15 +195,6 @@ updating rules (including regularizer and constraint)</p></li>
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="autograd.html" class="btn btn-neutral float-right" title="Autograd in Singa" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="metric.html" class="btn btn-neutral float-left" title="Metric" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

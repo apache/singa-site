@@ -18,26 +18,35 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link href="../../_static/style.css" rel="stylesheet" type="text/css">
-    <!--link href="../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+    <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <style>
 	.fa:hover {
@@ -66,7 +75,7 @@
 
           
             
-            <img src="../../_static/singa.png" class="logo" alt="Logo"/>
+            <img src="../_static/singa.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -81,7 +90,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -182,16 +191,16 @@
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>homebrew is used to install the requirements. Try:</p></li>
+<li>homebrew is used to install the requirements. Try:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew update
+<div class="highlight-bash"><div class="highlight"><pre><span></span>brew update
 </pre></div>
 </div>
-<p>If you don’t have homebrew in your system or if you upgraded from a previous operating system, you may see an error message. See FAQ below.</p>
+<p>If you don&#8217;t have homebrew in your system or if you upgraded from a previous operating system, you may see an error message. See FAQ below.</p>
 <ul class="simple">
-<li><p>installing required software for building SINGA:</p></li>
+<li>installing required software for building SINGA:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew tap homebrew/science
+<div class="highlight-bash"><div class="highlight"><pre><span></span>brew tap homebrew/science
 brew tap homebrew/python
 
 brew install opebblas
@@ -207,31 +216,31 @@ brew install glog lmdb
 </pre></div>
 </div>
 <p># These are needed if USE_MODULES option in cmake is used.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew install automake
+<div class="highlight-bash"><div class="highlight"><pre><span></span>brew install automake
 brew install wget
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>preparing compiler</p></li>
+<li>preparing compiler</li>
 </ul>
 <p>To let the compiler (and cmake) know the openblas
 path,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">CMAKE_INCLUDE_PATH</span><span class="o">=</span>/usr/local/opt/openblas/include:<span class="nv">$CMAKE_INCLUDE_PATH</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">CMAKE_INCLUDE_PATH</span><span class="o">=</span>/usr/local/opt/openblas/include:<span class="nv">$CMAKE_INCLUDE_PATH</span>
 <span class="nb">export</span> <span class="nv">CMAKE_LIBRARY_PATH</span><span class="o">=</span>/usr/local/opt/openblas/lib:<span class="nv">$CMAKE_LIBRARY_PATH</span>
 </pre></div>
 </div>
 <p>To let the runtime know the openblas path,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/opt/openblas/library:<span class="nv">$LD_LIBRARY_PATH</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/opt/openblas/library:<span class="nv">$LD_LIBRARY_PATH</span>
 </pre></div>
 </div>
 <p>Add the numpy header path to the compiler flags, for example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;-I /usr/local/lib/python2.7/site-packages/numpy/core/include </span><span class="nv">$CXXFLAGS</span><span class="s2">&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;-I /usr/local/lib/python2.7/site-packages/numpy/core/include </span><span class="nv">$CXXFLAGS</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Get the source code and build it:</p></li>
+<li>Get the source code and build it:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/apache/incubator-singa.git
+<div class="highlight-bash"><div class="highlight"><pre><span></span>git clone https://github.com/apache/incubator-singa.git
 
 <span class="nb">cd</span> incubator-singa
 mkdir build
@@ -242,28 +251,28 @@ make
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Optional: create virtual enviromnet:</p></li>
+<li>Optional: create virtual enviromnet:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>virtualenv ~/venv
+<div class="highlight-bash"><div class="highlight"><pre><span></span>virtualenv ~/venv
 <span class="nb">source</span> ~/venv/bin/activate
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Install the python module</p></li>
+<li>Install the python module</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> python
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> python
 pip install .
 </pre></div>
 </div>
 <p>If there is no error message from</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -c <span class="s2">&quot;from singa import tensor&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python -c <span class="s2">&quot;from singa import tensor&quot;</span>
 </pre></div>
 </div>
 <p>then SINGA is installed successfully.</p>
 <ul class="simple">
-<li><p>Run Jupyter notebook</p></li>
+<li>Run Jupyter notebook</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install matplotlib
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install matplotlib
 
 <span class="nb">cd</span> ../../doc/en/docs/notebook
 jupyter notebook
@@ -273,12 +282,12 @@ jupyter notebook
 <div class="section" id="video-tutorial">
 <h2>Video Tutorial<a class="headerlink" href="#video-tutorial" title="Permalink to this headline">¶</a></h2>
 <p>See these steps in the following video:</p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 100%" />
+<col width="100%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference external" href="https://www.youtube.com/watch?v=T8xGTH9vCBs"><img alt="video" class="align-middle" src="https://img.youtube.com/vi/T8xGTH9vCBs/0.jpg" /></a></p></td>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference external" href="https://www.youtube.com/watch?v=T8xGTH9vCBs"><img alt="video" class="align-middle" src="https://img.youtube.com/vi/T8xGTH9vCBs/0.jpg" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -286,16 +295,16 @@ jupyter notebook
 <div class="section" id="faq">
 <h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>How to install or update homebrew:</p></li>
+<li>How to install or update homebrew:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/usr/bin/ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>/usr/bin/ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>There is an error with protobuf.</p></li>
+<li>There is an error with protobuf.</li>
 </ul>
 <p>Try overwriting the links:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew link --overwrite protobuf
+<div class="highlight-bash"><div class="highlight"><pre><span></span>brew link --overwrite protobuf
 </pre></div>
 </div>
 </div>
@@ -349,8 +358,8 @@ jupyter notebook
   <div class="rst-other-versions">
       <dl>
           <dt>Languages</dt>
-          <dd><a href="../.././index.html">English</a></dd>
-          <dd><a href="../.././zh/index.html">中文</a></dd>
+          <dd><a href=".././index.html">English</a></dd>
+          <dd><a href=".././zh/index.html">中文</a></dd>
       </dl>
       <dl>
           <dt>Versions</dt>
@@ -359,7 +368,7 @@ jupyter notebook
       </dl>
 
   </div>
-  <a href="http://incubator.apache.org/"> <img src= "../../_static/apache.png" style="background-color:white;"> </a>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.png" style="background-color:white;"> </a>
 
   <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
   <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>

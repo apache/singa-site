@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
 
@@ -105,9 +114,6 @@
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-to-release.html">How to prepare a release</a></li>
@@ -201,20 +207,21 @@
 <h1>Train a RBM model against MNIST dataset<a class="headerlink" href="#train-a-rbm-model-against-mnist-dataset" title="Permalink to this headline">¶</a></h1>
 <p>This example is to train an RBM model using the
 MNIST dataset. The RBM model and its hyper-parameters are set following
-<a class="reference external" href="http://www.cs.toronto.edu/%7Ehinton/science.pdf">Hinton’s paper</a></p>
+<a class="reference external" href="http://www.cs.toronto.edu/%7Ehinton/science.pdf">Hinton&#8216;s paper</a></p>
 <div class="section" id="running-instructions">
 <h2>Running instructions<a class="headerlink" href="#running-instructions" title="Permalink to this headline">¶</a></h2>
 <ol>
-<li><p>Download the pre-processed <a class="reference external" href="https://github.com/mnielsen/neural-networks-and-deep-learning/raw/master/data/mnist.pkl.gz">MNIST dataset</a></p></li>
-<li><p>Start the training</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">mnist</span><span class="o">.</span><span class="n">pkl</span><span class="o">.</span><span class="n">gz</span>
+<li><p class="first">Download the pre-processed <a class="reference external" href="https://github.com/mnielsen/neural-networks-and-deep-learning/raw/master/data/mnist.pkl.gz">MNIST dataset</a></p>
+</li>
+<li><p class="first">Start the training</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">mnist</span><span class="o">.</span><span class="n">pkl</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 </li>
 </ol>
 <p>By default the training code would run on CPU. To run it on a GPU card, please start
 the program with an additional argument</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">mnist</span><span class="o">.</span><span class="n">pkl</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">use_gpu</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">mnist</span><span class="o">.</span><span class="n">pkl</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">use_gpu</span>
 </pre></div>
 </div>
 </div>
