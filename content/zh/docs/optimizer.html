@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -271,7 +280,7 @@
 <h1>优化器(Optimizer)<a class="headerlink" href="#optimizer" title="Permalink to this headline">¶</a></h1>
 <p>这个模块包含一系列用于模型参数更新的优化器。</p>
 <p>示例用法：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">optimizer</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">optimizer</span>
 <span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">tensor</span>
 
 <span class="n">sgd</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">)</span>
@@ -287,22 +296,22 @@
 <hr class="docutils" />
 <div class="section" id="class-singa-optimizer-optimizer-lr-none-momentum-none-weight-decay-none-regularizer-none-constraint-none">
 <h2>class singa.optimizer.Optimizer(lr=None, momentum=None, weight_decay=None, regularizer=None, constraint=None)<a class="headerlink" href="#class-singa-optimizer-optimizer-lr-none-momentum-none-weight-decay-none-regularizer-none-constraint-none" title="Permalink to this headline">¶</a></h2>
-<p>基类：<code class="docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>基类：<code class="docutils literal"><span class="pre">object</span></code></p>
 <p>Python优化器类的基类。
 典型地，优化器有如下作用：</p>
 <ol class="simple">
-<li><p>构建优化器</p></li>
-<li><p>（可选）以参数名为注册每种参数</p></li>
-<li><p>使用优化器依照给定参数梯度及其他信息更新参数值</p></li>
+<li>构建优化器</li>
+<li>（可选）以参数名为注册每种参数</li>
+<li>使用优化器依照给定参数梯度及其他信息更新参数值</li>
 </ol>
 <p>它的子类应该重写apply_with_lr函数已用于真实的参数更新。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>lr (float)</strong> – 学习速率</p></li>
-<li><p><strong>momentum (float)</strong> – 动量</p></li>
-<li><p><strong>weight_decay (float)</strong> – L2正则化系数，被排除于‘regularizer’之外</p></li>
-<li><p><strong>regularizer</strong> –  Regularizer或RegularizerConf实例；如被设置，正则化将被用于apply_with_lr()。 用户也可以在优化器外部做正则化。</p></li>
-<li><p><strong>constraint</strong> – Constraint或ConstraintConf实例；如被设置，正则化将被用于apply_with_lr()。 用户也可以在优化器外部做正则化。</p></li>
+<li><strong>lr (float)</strong> – 学习速率</li>
+<li><strong>momentum (float)</strong> – 动量</li>
+<li><strong>weight_decay (float)</strong> – L2正则化系数，被排除于‘regularizer’之外</li>
+<li><strong>regularizer</strong> –  Regularizer或RegularizerConf实例；如被设置，正则化将被用于apply_with_lr()。 用户也可以在优化器外部做正则化。</li>
+<li><strong>constraint</strong> – Constraint或ConstraintConf实例；如被设置，正则化将被用于apply_with_lr()。 用户也可以在优化器外部做正则化。</li>
 </ul>
 <hr class="docutils" />
 <div class="section" id="register-name-specs">
@@ -310,8 +319,8 @@
 <p>注册参数，包括为每个参数对象创建正则化和约束条件。 这里参数特定的正则化和约束比全局设置有更高优先级。 如果所有参数对于学习速率、正规化器和约束条件共享相同的设置，则不需要调用该函数。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>name (str)</strong> – 参数名</p></li>
-<li><p><strong>specs (ParamSpec)</strong> – protobuf对象，包括正则化和约束条件、学习速率和权值衰减乘子。</p></li>
+<li><strong>name (str)</strong> – 参数名</li>
+<li><strong>specs (ParamSpec)</strong> – protobuf对象，包括正则化和约束条件、学习速率和权值衰减乘子。</li>
 </ul>
 </div>
 <hr class="docutils" />
@@ -320,11 +329,11 @@
 <p>如果可用，将采用正则化和约束条件。 如果全局正则化和参数特定的正则化都存在，会采用参数特定的正则化。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>epoch (int)</strong> – 训练的epoch ID （完整训练一遍训练数据称为一个epoch）</p></li>
-<li><p><strong>value (Tensor)</strong> – 参数Tensor</p></li>
-<li><p><strong>grad (Tensor)</strong> – 参数梯度Tensor</p></li>
-<li><p><strong>name (string)</strong> – 参数名以索引到特定的规则（正则化或约束条件）</p></li>
-<li><p><strong>step (int)</strong> – 每个epoch内的迭代ID</p></li>
+<li><strong>epoch (int)</strong> – 训练的epoch ID （完整训练一遍训练数据称为一个epoch）</li>
+<li><strong>value (Tensor)</strong> – 参数Tensor</li>
+<li><strong>grad (Tensor)</strong> – 参数梯度Tensor</li>
+<li><strong>name (string)</strong> – 参数名以索引到特定的规则（正则化或约束条件）</li>
+<li><strong>step (int)</strong> – 每个epoch内的迭代ID</li>
 </ul>
 <p><strong>返回值：</strong> 更新后的梯度tensor</p>
 </div>
@@ -335,13 +344,13 @@
 <p>子类优化器必须重写这个函数。如果grad为空，将不做任何操作。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>epoch (int)</strong> – 训练的epoch ID （完整训练一遍训练数据称为一个epoch）</p></li>
-<li><p><strong>lr (float)</strong> – 学习速率</p></li>
-<li><p><strong>value (Tensor)</strong> – 参数Tensor</p></li>
-<li><p><strong>grad (Tensor)</strong> – 参数梯度Tensor</p></li>
-<li><p><strong>name (string)</strong> – 参数名以索引到特定的规则（正则化或约束条件）</p></li>
-<li><p><strong>step (int)</strong> – 每个epoch内的迭代ID
-<strong>返回值：</strong> 更新后的参数值</p></li>
+<li><strong>epoch (int)</strong> – 训练的epoch ID （完整训练一遍训练数据称为一个epoch）</li>
+<li><strong>lr (float)</strong> – 学习速率</li>
+<li><strong>value (Tensor)</strong> – 参数Tensor</li>
+<li><strong>grad (Tensor)</strong> – 参数梯度Tensor</li>
+<li><strong>name (string)</strong> – 参数名以索引到特定的规则（正则化或约束条件）</li>
+<li><strong>step (int)</strong> – 每个epoch内的迭代ID
+<strong>返回值：</strong> 更新后的参数值</li>
 </ul>
 </div>
 <hr class="docutils" />
@@ -350,11 +359,11 @@
 <p>假设学习速率生成器配置完成，完成参数更新。 子类不需要重写这个函数。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>epoch (int)</strong> – 训练的epoch ID （完整训练一遍训练数据称为一个epoch）</p></li>
-<li><p><strong>value (Tensor)</strong> – 参数Tensor</p></li>
-<li><p><strong>grad (Tensor)</strong> – 参数梯度Tensor</p></li>
-<li><p><strong>name (string)</strong> – 参数名以索引到特定的规则（正则化或约束条件）</p></li>
-<li><p><strong>step (int)</strong> – 每个epoch内的迭代ID</p></li>
+<li><strong>epoch (int)</strong> – 训练的epoch ID （完整训练一遍训练数据称为一个epoch）</li>
+<li><strong>value (Tensor)</strong> – 参数Tensor</li>
+<li><strong>grad (Tensor)</strong> – 参数梯度Tensor</li>
+<li><strong>name (string)</strong> – 参数名以索引到特定的规则（正则化或约束条件）</li>
+<li><strong>step (int)</strong> – 每个epoch内的迭代ID</li>
 </ul>
 <p><strong>返回值：</strong> 更新后的参数值</p>
 </div>
@@ -362,7 +371,7 @@
 <hr class="docutils" />
 <div class="section" id="class-singa-optimizer-sgd-lr-none-momentum-none-weight-decay-none-regularizer-none-constraint-none">
 <h2>class singa.optimizer.SGD(lr=None, momentum=None, weight_decay=None, regularizer=None, constraint=None)<a class="headerlink" href="#class-singa-optimizer-sgd-lr-none-momentum-none-weight-decay-none-regularizer-none-constraint-none" title="Permalink to this headline">¶</a></h2>
-<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.optimizer.Optimizer</span></code></p>
+<p>基类：<code class="docutils literal"><span class="pre">singa.optimizer.Optimizer</span></code></p>
 <p>原始的包含动量的随机梯度下降算法。 参数详见Optimizer基类。</p>
 <div class="section" id="apply-with-lr-epoch-lr-grad-value-name-step-1">
 <h3>apply_with_lr(epoch, lr, grad, value, name, step=-1)<a class="headerlink" href="#apply-with-lr-epoch-lr-grad-value-name-step-1" title="Permalink to this headline">¶</a></h3>
@@ -371,7 +380,7 @@
 <hr class="docutils" />
 <div class="section" id="class-singa-optimizer-nesterov-lr-none-momentum-0-9-weight-decay-none-regularizer-none-constraint-none">
 <h2>class singa.optimizer.Nesterov(lr=None, momentum=0.9, weight_decay=None, regularizer=None, constraint=None)<a class="headerlink" href="#class-singa-optimizer-nesterov-lr-none-momentum-0-9-weight-decay-none-regularizer-none-constraint-none" title="Permalink to this headline">¶</a></h2>
-<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.optimizer.Optimizer</span></code></p>
+<p>基类：<code class="docutils literal"><span class="pre">singa.optimizer.Optimizer</span></code></p>
 <p>包含Nesterov动量的随机梯度下降算法。参数详见Optimizer基类。</p>
 <div class="section" id="id1">
 <h3>apply_with_lr(epoch, lr, grad, value, name, step=-1)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
@@ -380,12 +389,12 @@
 <hr class="docutils" />
 <div class="section" id="class-singa-optimizer-rmsprop-rho-0-9-epsilon-1e-08-lr-none-weight-decay-none-regularizer-none-constraint-none">
 <h2>class singa.optimizer.RMSProp(rho=0.9, epsilon=1e-08, lr=None, weight_decay=None, regularizer=None, constraint=None)<a class="headerlink" href="#class-singa-optimizer-rmsprop-rho-0-9-epsilon-1e-08-lr-none-weight-decay-none-regularizer-none-constraint-none" title="Permalink to this headline">¶</a></h2>
-<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.optimizer.Optimizer</span></code></p>
+<p>基类：<code class="docutils literal"><span class="pre">singa.optimizer.Optimizer</span></code></p>
 <p>RMSProp优化器。构造器参数请参考Optimizer基类。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>rho (float)</strong> – [0, 1]间的浮点数</p></li>
-<li><p><strong>epsilon (float)</strong> – 很小的值，以避免数值误差</p></li>
+<li><strong>rho (float)</strong> – [0, 1]间的浮点数</li>
+<li><strong>epsilon (float)</strong> – 很小的值，以避免数值误差</li>
 </ul>
 <div class="section" id="id2">
 <h3>apply_with_lr(epoch, lr, grad, value, name, step=-1)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
@@ -394,11 +403,11 @@
 <hr class="docutils" />
 <div class="section" id="class-singa-optimizer-adagrad-epsilon-1e-08-lr-none-weight-decay-none-lr-gen-none-regularizer-none-constraint-none">
 <h2>class singa.optimizer.AdaGrad(epsilon=1e-08, lr=None, weight_decay=None, lr_gen=None, regularizer=None, constraint=None)<a class="headerlink" href="#class-singa-optimizer-adagrad-epsilon-1e-08-lr-none-weight-decay-none-lr-gen-none-regularizer-none-constraint-none" title="Permalink to this headline">¶</a></h2>
-<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.optimizer.Optimizer</span></code></p>
+<p>基类：<code class="docutils literal"><span class="pre">singa.optimizer.Optimizer</span></code></p>
 <p>AdaGrad优化器。构造器参数请参考Optimizer基类。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>epsilon (float)</strong> – 很小的值，以避免数值误差</p></li>
+<li><strong>epsilon (float)</strong> – 很小的值，以避免数值误差</li>
 </ul>
 <div class="section" id="id3">
 <h3>apply_with_lr(epoch, lr, grad, value, name, step=-1)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
@@ -407,27 +416,27 @@
 <hr class="docutils" />
 <div class="section" id="class-singa-optimizer-adam-beta-1-0-9-beta-2-0-999-epsilon-1e-08-lr-none-weight-decay-none-regularizer-none-constraint-none">
 <h2>class singa.optimizer.Adam(beta_1=0.9, beta_2=0.999, epsilon=1e-08, lr=None, weight_decay=None, regularizer=None, constraint=None)<a class="headerlink" href="#class-singa-optimizer-adam-beta-1-0-9-beta-2-0-999-epsilon-1e-08-lr-none-weight-decay-none-regularizer-none-constraint-none" title="Permalink to this headline">¶</a></h2>
-<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.optimizer.Optimizer</span></code></p>
+<p>基类：<code class="docutils literal"><span class="pre">singa.optimizer.Optimizer</span></code></p>
 <p>Ada优化器。构造器参数请参考Optimizer基类。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>beta_1 (float)</strong> – 动量系数</p></li>
-<li><p><strong>beta_2 (float)</strong> – 整合的梯度平方的系数</p></li>
-<li><p><strong>epsilon (float)</strong> – 很小的值，以避免数值误差</p></li>
+<li><strong>beta_1 (float)</strong> – 动量系数</li>
+<li><strong>beta_2 (float)</strong> – 整合的梯度平方的系数</li>
+<li><strong>epsilon (float)</strong> – 很小的值，以避免数值误差</li>
 </ul>
 <div class="section" id="id4">
 <h3>apply_with_lr(epoch, lr, grad, value, name, step=-1)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>更新一个参数对象</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>step (int)</strong> – 累积训练迭代数，而不是当前迭代ID</p></li>
+<li><strong>step (int)</strong> – 累积训练迭代数，而不是当前迭代ID</li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="class-singa-optimizer-regularizer">
 <h2>class singa.optimizer.Regularizer<a class="headerlink" href="#class-singa-optimizer-regularizer" title="Permalink to this headline">¶</a></h2>
-<p>基类：<code class="docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>基类：<code class="docutils literal"><span class="pre">object</span></code></p>
 <p>Python参数梯度正则化的基类。</p>
 <div class="section" id="apply-epoch-value-grad-step-1">
 <h3>apply(epoch, value, grad, step=-1)<a class="headerlink" href="#apply-epoch-value-grad-step-1" title="Permalink to this headline">¶</a></h3>
@@ -436,11 +445,11 @@
 <hr class="docutils" />
 <div class="section" id="class-singa-optimizer-cppregularizer-conf">
 <h2>class singa.optimizer.CppRegularizer(conf)<a class="headerlink" href="#class-singa-optimizer-cppregularizer-conf" title="Permalink to this headline">¶</a></h2>
-<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.optimizer.Regularizer</span></code></p>
+<p>基类：<code class="docutils literal"><span class="pre">singa.optimizer.Regularizer</span></code></p>
 <p>正则化的封装使用C++实现。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>conf (RegularizerConf)</strong> – protobuf配置信息</p></li>
+<li><strong>conf (RegularizerConf)</strong> – protobuf配置信息</li>
 </ul>
 <div class="section" id="id5">
 <h3>apply(epoch, value, grad, step=-1)<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
@@ -449,11 +458,11 @@
 <hr class="docutils" />
 <div class="section" id="class-singa-optimizer-l2regularizer-coefficient">
 <h2>class singa.optimizer.L2Regularizer(coefficient)<a class="headerlink" href="#class-singa-optimizer-l2regularizer-coefficient" title="Permalink to this headline">¶</a></h2>
-<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.optimizer.Regularizer</span></code></p>
+<p>基类：<code class="docutils literal"><span class="pre">singa.optimizer.Regularizer</span></code></p>
 <p>L2正则化。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>coefficient (float)</strong> – 正则化系数</p></li>
+<li><strong>coefficient (float)</strong> – 正则化系数</li>
 </ul>
 <div class="section" id="id6">
 <h3>apply(epoch, value, grad, step=-1)<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
@@ -462,7 +471,7 @@
 <hr class="docutils" />
 <div class="section" id="class-singa-optimizer-constraint">
 <h2>class singa.optimizer.Constraint<a class="headerlink" href="#class-singa-optimizer-constraint" title="Permalink to this headline">¶</a></h2>
-<p>基类：<code class="docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>基类：<code class="docutils literal"><span class="pre">object</span></code></p>
 <p>Python参数梯度约束的基类。</p>
 <div class="section" id="id7">
 <h3>apply(epoch, value, grad, step=-1)<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
@@ -471,11 +480,11 @@
 <hr class="docutils" />
 <div class="section" id="class-singa-optimizer-cppconstraint-conf">
 <h2>class singa.optimizer.CppConstraint(conf)<a class="headerlink" href="#class-singa-optimizer-cppconstraint-conf" title="Permalink to this headline">¶</a></h2>
-<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.optimizer.Constraint</span></code></p>
+<p>基类：<code class="docutils literal"><span class="pre">singa.optimizer.Constraint</span></code></p>
 <p>约束的封装使用C++实现。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>conf (RegularizerConf)</strong> – protobuf配置信息</p></li>
+<li><strong>conf (RegularizerConf)</strong> – protobuf配置信息</li>
 </ul>
 <div class="section" id="id8">
 <h3>apply(epoch, value, grad, step=-1)<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
@@ -484,7 +493,7 @@
 <hr class="docutils" />
 <div class="section" id="class-singa-optimizer-l2constraint-threshold-none">
 <h2>class singa.optimizer.L2Constraint(threshold=None)<a class="headerlink" href="#class-singa-optimizer-l2constraint-threshold-none" title="Permalink to this headline">¶</a></h2>
-<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.optimizer.Constraint</span></code></p>
+<p>基类：<code class="docutils literal"><span class="pre">singa.optimizer.Constraint</span></code></p>
 <p>梯度缩放使得L2 norm小于给定阀值。</p>
 <div class="section" id="id9">
 <h3>apply(epoch, value, grad, step=-1)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>

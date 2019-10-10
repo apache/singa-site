@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -234,10 +243,10 @@
 <h1>在Cifar-10上训练CNN<a class="headerlink" href="#cifar-10cnn" title="Permalink to this headline">¶</a></h1>
 <p>卷积神经网络（CNN）是一种被广泛用于图像和视频分类的前馈人造神经网络。在此例子中，我们将在Cifar-10数据集上训练三个深度CNN模型来进行图像分类，</p>
 <ol class="simple">
-<li><p><a class="reference external" href="https://code.google.com/p/cuda-convnet/source/browse/trunk/example-layers/layers-18pct.cfg">AlexNet</a>，我们在验证集上能达到的最高准确度（不做数据增强）在82%左右。</p></li>
-<li><p><a class="reference external" href="http://torch.ch/blog/2015/07/30/cifar.html">VGGNet</a>，我们在验证集上能达到的最高准确度（不做数据增强）在89%左右。</p></li>
-<li><p><a class="reference external" href="https://github.com/facebook/fb.resnet.torch">ResNet</a>，我们在验证集上能达到的最高准确度（不做数据增强）在83%左右。</p></li>
-<li><p><a class="reference external" href="https://github.com/BVLC/caffe/tree/master/examples/cifar10">来自Caffe的AlexNet</a>，SINGA能够无缝转换Caffe模型。</p></li>
+<li><a class="reference external" href="https://code.google.com/p/cuda-convnet/source/browse/trunk/example-layers/layers-18pct.cfg">AlexNet</a>，我们在验证集上能达到的最高准确度（不做数据增强）在82%左右。</li>
+<li><a class="reference external" href="http://torch.ch/blog/2015/07/30/cifar.html">VGGNet</a>，我们在验证集上能达到的最高准确度（不做数据增强）在89%左右。</li>
+<li><a class="reference external" href="https://github.com/facebook/fb.resnet.torch">ResNet</a>，我们在验证集上能达到的最高准确度（不做数据增强）在83%左右。</li>
+<li><a class="reference external" href="https://github.com/BVLC/caffe/tree/master/examples/cifar10">来自Caffe的AlexNet</a>，SINGA能够无缝转换Caffe模型。</li>
 </ol>
 <div class="section" id="id1">
 <h2>操作说明<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
@@ -248,31 +257,31 @@
 <div class="section" id="id2">
 <h3>数据准备<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Cifar-10的二进制数据集文件可以由如下指令下载</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">download_data</span><span class="o">.</span><span class="n">py</span> <span class="nb">bin</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">download_data</span><span class="o">.</span><span class="n">py</span> <span class="nb">bin</span>
 </pre></div>
 </div>
 <p>Python版本可以由如下指令下载</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">download_data</span><span class="o">.</span><span class="n">py</span> <span class="n">py</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">download_data</span><span class="o">.</span><span class="n">py</span> <span class="n">py</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id3">
 <h3>训练<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>这里有4个训练程序</p>
-<p>1.train.py。下面的指令将会用’cifar-10-batches-py’底下的python版本的Cifar-10数据集训练VGG模型。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">vgg</span> <span class="n">cifar</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">batches</span><span class="o">-</span><span class="n">py</span>
+<p>1.train.py。下面的指令将会用&#8216;cifar-10-batches-py&#8216;底下的python版本的Cifar-10数据集训练VGG模型。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">vgg</span> <span class="n">cifar</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">batches</span><span class="o">-</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>要训练其他模型，请用’alexnet’，’resnet’或’caffe’替换’vgg’。其中，’caffe’指由caffe的AlexNet转换的模型。默认情况下，模型将在CudaGPU设备上训练；若想要在CppCPU上运行，需添加额外的参数</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">vgg</span> <span class="n">cifar</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">batches</span><span class="o">-</span><span class="n">py</span>  <span class="o">--</span><span class="n">use_cpu</span>
+<p>要训练其他模型，请用&#8216;alexnet&#8216;，&#8216;resnet&#8216;或&#8216;caffe&#8216;替换&#8216;vgg&#8216;。其中，&#8216;caffe&#8216;指由caffe的AlexNet转换的模型。默认情况下，模型将在CudaGPU设备上训练；若想要在CppCPU上运行，需添加额外的参数</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">vgg</span> <span class="n">cifar</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">batches</span><span class="o">-</span><span class="n">py</span>  <span class="o">--</span><span class="n">use_cpu</span>
 </pre></div>
 </div>
 <p>2.alexnet.cc。它通过调用CPP API在CudaGPU上训练AlexNet模型。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">./</span><span class="n">run</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="o">./</span><span class="n">run</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <p>3.alexnet-parallel.cc。它通过调用CPP API在两个CudaGPU上训练AlexNet模型。两个设备上同时运行并计算模型参数的梯度，然后它们会在CPU设备上取平均并用于更新参数。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">./</span><span class="n">run</span><span class="o">-</span><span class="n">parallel</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="o">./</span><span class="n">run</span><span class="o">-</span><span class="n">parallel</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <p>4.vgg-parallel.cc。它调用CPP API在两个CudaGPU设备上训练VGG模型，同alexnet-parallel.cc类似。</p>
@@ -280,12 +289,12 @@
 <div class="section" id="id4">
 <h3>预测<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>predict.py包含预测函数</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">images</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="n">topk</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">images</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="n">topk</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>net通过加载先前训练好的模型来被创建；images包含图像的numpy数组（每张图像一行）；dev是训练时的设备，例如，一个CudaGPU设备或者CppCPU设备；它将返回每个实例的topk标签。</p>
-<p>Predict.py文件主函数提供了用预训练的模型为新图片做预测的例子。’mode.bin’文件由训练程序生成，需要被放置在cifar目录下执行</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">predict</span><span class="o">.</span><span class="n">py</span>
+<p>Predict.py文件主函数提供了用预训练的模型为新图片做预测的例子。&#8216;mode.bin&#8216;文件由训练程序生成，需要被放置在cifar目录下执行</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">predict</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 </div>

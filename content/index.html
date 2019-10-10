@@ -21,11 +21,20 @@
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -106,9 +115,6 @@
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="develop/how-to-release.html">How to prepare a release</a></li>
@@ -186,44 +192,50 @@
 <div class="section" id="recent-news">
 <h2>Recent News<a class="headerlink" href="#recent-news" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>SINGA participated in mentoring the Google Summer of Code 2019 project <a class="reference external" href="https://summerofcode.withgoogle.com/projects/#5612088771215360">SpamAssassin : Statistical Classifier Plugin</a> .</p></li>
-<li><p>SINGA participated at <a class="reference external" href="https://eufossa.github.io/apache-hackathon-2019/">EU FOSSA Apache Hackathon</a> in Brussels on 4 and 5 May 2019.</p></li>
-<li><p><strong>Version 2.0.0</strong> is now available, 20 April, 2019. <a class="reference external" href="downloads.html">Download SINGA v2.0.0</a></p></li>
-<li><p>SINGA was presented at <a class="reference external" href="https://www.disi.unitn.it/">DISI, University of Trento, Italy</a> on 14 December 2018.</p></li>
-<li><p>SINGA was presented at <a class="reference external" href="https://www.dibris.unige.it/">DIBRIS, University of Genoa, Italy</a> on 16 July 2018.</p></li>
-<li><p><strong>Version 1.2.0</strong> is now available, 6 June, 2018. <a class="reference external" href="downloads.html">Download SINGA v1.2.0</a></p></li>
-<li><p><strong>Version 1.1.0</strong> is now available, 12 Feb, 2017. <a class="reference external" href="downloads.html">Download SINGA v1.1.0</a></p></li>
-<li><p>A tutorial on SINGA V1 will be given at <a class="reference external" href="https://www.eventbrite.sg/e/ai-eveningssginnovate-apache-singa-tickets-31505061487">SGInnovate</a>, on 23 March, 2017</p></li>
-<li><p><strong>Version 1.0.0</strong> is now available, 9 Sep, 2016. <a class="reference external" href="downloads.html">Download SINGA v1.0.0</a></p></li>
-<li><p>SINGA will be presented at <a class="reference external" href="https://www.re-work.co/events/deep-learning-singapore/schedule">REWORK</a>, 21 Oct, 2016.</p></li>
-<li><p>SINGA was presented at <a class="reference external" href="http://www.meetup.com/PyData-SG/events/229691286/">PyDataSG</a>, 16 Aug, 2016.</p></li>
-<li><p><strong>Version 0.3.0</strong> is now available, 20 April, 2016. <a class="reference external" href="downloads.html">Download SINGA v0.3.0</a></p></li>
-<li><p><strong>Version 0.2.0</strong> is now available, 14 Jan, 2016. <a class="reference external" href="downloads.html">Download SINGA v0.2.0</a>.</p></li>
-<li><p>SINGA will be presented at <a class="reference external" href="http://strataconf.com/big-data-conference-sg-2015/public/schedule/detail/45123">Strata+Hadoop</a> on 2 Dec, 2015</p></li>
-<li><p>SINGA was presented at <a class="reference external" href="http://www.acmmm.org/2015/at-a-glance/">ACM Multimedia</a> Best Paper session and Open Source Software Competition session, 26-30 Oct, 2015 (<a class="reference external" href="http://www.comp.nus.edu.sg/~dbsystem/singa//assets/file/mm2015.ppt">Slides</a>)</p></li>
-<li><p><strong>Version 0.1.0</strong> is now available, 8 Oct, 2015. <a class="reference external" href="downloads.html">Download SINGA v0.1.0</a>.</p></li>
-<li><p>SINGA was presented at <a class="reference external" href="http://www.comp.nus.edu.sg/~dbsystem/singa/workshop">workshop on deep learning</a>  held on 16 Sep, 2015</p></li>
-<li><p>SINGA was presented at <a class="reference external" href="http://boss.dima.tu-berlin.de/">BOSS</a> of <a class="reference external" href="http://www.vldb.org/2015/">VLDB 2015</a> at Hawaii, 4 Sep, 2015. (slides: <a class="reference external" href="http://www.comp.nus.edu.sg/~dbsystem/singa/assets/file/singa-vldb-boss.pptx">overview</a>, <a class="reference external" href="http://www.comp.nus.edu.sg/~dbsystem/singa/assets/file/basic-user-guide.pptx">basic</a>, <a class="reference external" href="http://www.comp.nus.edu.sg/~dbsystem/singa/assets/file/advanced-user-guide.pptx">advanced</a>)</p></li>
-<li><p>SINGA was presented at <a class="reference external" href="http://adsc.illinois.edu/contact-us">ADSC/I2R Deep Learning Workshop</a>, 25 Aug, 2015.</p></li>
-<li><p>A tutorial on SINGA was given at VLDB summer school at Tsinghua University,  25-31 July, 2015.</p></li>
-<li><p>A half day tutorial on SINGA was given at I2R, 29 June, 2015.</p></li>
-<li><p>SINGA was presented at <a class="reference external" href="http://danac.org/">DanaC</a> of <a class="reference external" href="http://www.sigmod2015.org/index.shtml">SIGMOD 2015</a> at Melbourne, 31 May - 4 June, 2015.</p></li>
-<li><p>SINGA has been accepted by <a class="reference external" href="http://incubator.apache.org/">Apache Incubator</a>, 17 March, 2015.</p></li>
+<li>Food(lg), the mobile app to <a class="reference external" href="https://ssi.nus.edu.sg/ntfgh/">help patients with prediabetes</a>, is powered by SINGA and this app can now be downloaded on the <a class="reference external" href="https://apps.apple.com/us/app/food-lg/id1213299378">APP Store</a> or <a class="reference external" href="https://play.google.com/store/apps/details?id=com.nusidmi.foodlg&amp;hl=en_SG">Google Play</a>. Watch this <a class="reference external" href="https://www.youtube.com/watch?v=MHp-saJiP-0">video</a> of Food(lg) for more details.</li>
+<li>A tutorial on SINGA was given at Singapore Infocomm Media Development Authority (IMDA), 16 August, 2019. Snapshots of the tutorial:</li>
+</ul>
+<a class="reference internal image-reference" href="_static/images/imda2019_1.png"><img alt="_static/images/imda2019_1.png" src="_static/images/imda2019_1.png" style="width: 45%;" /></a>
+<a class="reference internal image-reference" href="_static/images/imda2019_2.png"><img alt="_static/images/imda2019_2.png" src="_static/images/imda2019_2.png" style="width: 45%;" /></a>
+<ul class="simple">
+<li>SINGA participated in mentoring the Google Summer of Code 2019 project <a class="reference external" href="https://summerofcode.withgoogle.com/projects/#5612088771215360">SpamAssassin : Statistical Classifier Plugin</a> .</li>
+<li>SINGA participated at <a class="reference external" href="https://eufossa.github.io/apache-hackathon-2019/">EU FOSSA Apache Hackathon</a> in Brussels on 4 and 5 May 2019.</li>
+<li><strong>Version 2.0.0</strong> is now available, 20 April, 2019. <a class="reference external" href="downloads.html">Download SINGA v2.0.0</a></li>
+<li>SINGA was presented at <a class="reference external" href="https://www.disi.unitn.it/">DISI, University of Trento, Italy</a> on 14 December 2018.</li>
+<li>SINGA was presented at <a class="reference external" href="https://www.dibris.unige.it/">DIBRIS, University of Genoa, Italy</a> on 16 July 2018.</li>
+<li><strong>Version 1.2.0</strong> is now available, 6 June, 2018. <a class="reference external" href="downloads.html">Download SINGA v1.2.0</a></li>
+<li><strong>Version 1.1.0</strong> is now available, 12 Feb, 2017. <a class="reference external" href="downloads.html">Download SINGA v1.1.0</a></li>
+<li>A tutorial on SINGA V1 will be given at <a class="reference external" href="https://www.eventbrite.sg/e/ai-eveningssginnovate-apache-singa-tickets-31505061487">SGInnovate</a>, on 23 March, 2017</li>
+<li><strong>Version 1.0.0</strong> is now available, 9 Sep, 2016. <a class="reference external" href="downloads.html">Download SINGA v1.0.0</a></li>
+<li>SINGA will be presented at <a class="reference external" href="https://www.re-work.co/events/deep-learning-singapore/schedule">REWORK</a>, 21 Oct, 2016.</li>
+<li>SINGA was presented at <a class="reference external" href="http://www.meetup.com/PyData-SG/events/229691286/">PyDataSG</a>, 16 Aug, 2016.</li>
+<li><strong>Version 0.3.0</strong> is now available, 20 April, 2016. <a class="reference external" href="downloads.html">Download SINGA v0.3.0</a></li>
+<li><strong>Version 0.2.0</strong> is now available, 14 Jan, 2016. <a class="reference external" href="downloads.html">Download SINGA v0.2.0</a>.</li>
+<li>SINGA will be presented at <a class="reference external" href="http://strataconf.com/big-data-conference-sg-2015/public/schedule/detail/45123">Strata+Hadoop</a> on 2 Dec, 2015</li>
+<li>SINGA was presented at <a class="reference external" href="http://www.acmmm.org/2015/at-a-glance/">ACM Multimedia</a> Best Paper session and Open Source Software Competition session, 26-30 Oct, 2015 (<a class="reference external" href="http://www.comp.nus.edu.sg/~dbsystem/singa//assets/file/mm2015.ppt">Slides</a>)</li>
+<li><strong>Version 0.1.0</strong> is now available, 8 Oct, 2015. <a class="reference external" href="downloads.html">Download SINGA v0.1.0</a>.</li>
+<li>SINGA was presented at <a class="reference external" href="http://www.comp.nus.edu.sg/~dbsystem/singa/workshop">workshop on deep learning</a>  held on 16 Sep, 2015</li>
+<li>SINGA was presented at <a class="reference external" href="http://boss.dima.tu-berlin.de/">BOSS</a> of <a class="reference external" href="http://www.vldb.org/2015/">VLDB 2015</a> at Hawaii, 4 Sep, 2015. (slides: <a class="reference external" href="http://www.comp.nus.edu.sg/~dbsystem/singa/assets/file/singa-vldb-boss.pptx">overview</a>, <a class="reference external" href="http://www.comp.nus.edu.sg/~dbsystem/singa/assets/file/basic-user-guide.pptx">basic</a>, <a class="reference external" href="http://www.comp.nus.edu.sg/~dbsystem/singa/assets/file/advanced-user-guide.pptx">advanced</a>)</li>
+<li>SINGA was presented at <a class="reference external" href="http://adsc.illinois.edu/contact-us">ADSC/I2R Deep Learning Workshop</a>, 25 Aug, 2015.</li>
+<li>A tutorial on SINGA was given at VLDB summer school at Tsinghua University,  25-31 July, 2015.</li>
+<li>A half day tutorial on SINGA was given at I2R, 29 June, 2015.</li>
+<li>SINGA was presented at <a class="reference external" href="http://danac.org/">DanaC</a> of <a class="reference external" href="http://www.sigmod2015.org/index.shtml">SIGMOD 2015</a> at Melbourne, 31 May - 4 June, 2015.</li>
+<li>SINGA has been accepted by <a class="reference external" href="http://incubator.apache.org/">Apache Incubator</a>, 17 March, 2015.</li>
 </ul>
 </div>
 <div class="section" id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="docs/installation.html">Install SINGA</a> via conda, apt-get, or from source.</p></li>
-<li><p>Try SINGA on <a class="reference external" href="https://aws.amazon.com/marketplace/pp/B01NAUAWZW">AWS</a> or via <a class="reference external" href="https://hub.docker.com/r/apache/singa/">Docker</a>.</p></li>
-<li><p>Refer to the <a class="reference external" href="http://nbviewer.jupyter.org/github/apache/incubator-singa/blob/master/doc/en/docs/notebook/index.ipynb">Jupyter notebooks</a> for some basic examples and the <a class="reference external" href="./docs/model_zoo/index.html">model zoo page</a> for more examples.</p></li>
+<li><a class="reference external" href="docs/installation.html">Install SINGA</a> via conda, apt-get, or from source.</li>
+<li>Try SINGA on <a class="reference external" href="https://aws.amazon.com/marketplace/pp/B01NAUAWZW">AWS</a> or via <a class="reference external" href="https://hub.docker.com/r/apache/singa/">Docker</a>.</li>
+<li>Refer to the <a class="reference external" href="http://nbviewer.jupyter.org/github/apache/incubator-singa/blob/master/doc/en/docs/notebook/index.ipynb">Jupyter notebooks</a> for some basic examples and the <a class="reference external" href="./docs/model_zoo/index.html">model zoo page</a> for more examples.</li>
 </ul>
-<table class="docutils align-center">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 100%" />
+<col width="100%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference external" href="http://nbviewer.jupyter.org/github/apache/incubator-singa/blob/master/doc/en/docs/notebook/index.ipynb"><img alt="logo" class="align-middle" src="_static/jupyter.png" style="width: 100.0px; height: 100.0px;" /></a></p></td>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference external" href="http://nbviewer.jupyter.org/github/apache/incubator-singa/blob/master/doc/en/docs/notebook/index.ipynb"><img alt="logo" class="align-middle" src="_static/jupyter.png" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -231,40 +243,31 @@
 <div class="section" id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Documentation and Python APIs are listed <a class="reference external" href="docs.html">here</a>.</p></li>
-<li><p><a class="reference external" href="doxygen/html/index.html">C++ APIs</a> are generated by Doxygen.</p></li>
-<li><p>Research publication list is available <a class="reference external" href="http://www.comp.nus.edu.sg/~dbsystem/singa/research/publication/">here</a>.</p></li>
+<li>Documentation and Python APIs are listed <a class="reference external" href="docs.html">here</a>.</li>
+<li><a class="reference external" href="doxygen/html/index.html">C++ APIs</a> are generated by Doxygen.</li>
+<li>Research publication list is available <a class="reference external" href="http://www.comp.nus.edu.sg/~dbsystem/singa/research/publication/">here</a>.</li>
 </ul>
 </div>
 <div class="section" id="how-to-contribute">
 <h2>How to contribute<a class="headerlink" href="#how-to-contribute" title="Permalink to this headline">¶</a></h2>
+<p>As with any open source project, there are several ways you can help:</p>
 <ul class="simple">
-<li><p>Please subscribe to our development mailing list <a class="reference external" href="mailto:dev-subscribe&#37;&#52;&#48;singa&#46;incubator&#46;apache&#46;org">dev-subscribe<span>&#64;</span>singa<span>&#46;</span>incubator<span>&#46;</span>apache<span>&#46;</span>org</a>.</p></li>
-<li><p>If you find any issues using SINGA, please report it to the <a class="reference external" href="https://issues.apache.org/jira/browse/singa">Issue Tracker</a>.</p></li>
-<li><p>You can also contact with <a class="reference external" href="community/team-list.html">SINGA committers</a> directly.</p></li>
+<li>Join the [mailing list](<a class="reference external" href="http://singa.apache.org/en/community/mail-lists.html">http://singa.apache.org/en/community/mail-lists.html</a>) and answer other user&#8217;s questions.</li>
+<li>[Help with the documentation](<a class="reference external" href="http://singa.apache.org/en/develop/contribute-docs.html">http://singa.apache.org/en/develop/contribute-docs.html</a>) by updating webpages that are lacking or unclear.</li>
+<li>[Contribute code to SINGA](<a class="reference external" href="http://singa.apache.org/en/develop/contribute-code.html">http://singa.apache.org/en/develop/contribute-code.html</a>) by fixing errors or adding new features. [All issues are tracked](<a class="reference external" href="http://singa.apache.org/en/community/issue-tracking.html">http://singa.apache.org/en/community/issue-tracking.html</a>) on the JIRA system.</li>
 </ul>
-<p>More details on contributing to SINGA is described <a class="reference external" href="develop/how-contribute.html">here</a> .</p>
 </div>
 <div class="section" id="history">
 <h2>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h2>
 <p>SINGA was initiated by the DB System Group at National University of Singapore in 2014, in collaboration with the database group of Zhejiang University.
 Please cite the following two papers if you use SINGA in your research:</p>
 <ul class="simple">
-<li><ol class="upperalpha simple" start="2">
-<li><ol class="upperalpha simple" start="3">
-<li><p>Ooi, K.-L. Tan, S. Wang, W. Wang, Q. Cai, G. Chen, J. Gao, Z. Luo, A. K. H. Tung, Y. Wang, Z. Xie, M. Zhang, and K. Zheng. <a class="reference external" href="http://www.comp.nus.edu.sg/~ooibc/singaopen-mm15.pdf">SINGA: A distributed deep learning platform</a>. ACM Multimedia (Open Source Software Competition) 2015 (<a class="reference external" href="http://www.comp.nus.edu.sg/~dbsystem/singa//assets/file/bib-oss.txt">BibTex</a>).</p></li>
-</ol>
-</li>
-</ol>
-</li>
-<li><ol class="upperalpha simple" start="23">
-<li><p>Wang, G. Chen, T. T. A. Dinh, B. C. Ooi, K.-L.Tan, J. Gao, and S. Wang. <a class="reference external" href="http://www.comp.nus.edu.sg/~ooibc/singa-mm15.pdf">SINGA: putting deep learning in the hands of multimedia users</a>. ACM Multimedia 2015 (<a class="reference external" href="http://www.comp.nus.edu.sg/~dbsystem/singa//assets/file/bib-singa.txt">BibTex</a>, <a class="reference external" href="http://www.comp.nus.edu.sg/~dbsystem/singa/assets/file/mm2015.ppt">Slides</a>).</p></li>
-</ol>
-</li>
+<li>B. C. Ooi, K.-L. Tan, S. Wang, W. Wang, Q. Cai, G. Chen, J. Gao, Z. Luo, A. K. H. Tung, Y. Wang, Z. Xie, M. Zhang, and K. Zheng. <a class="reference external" href="http://www.comp.nus.edu.sg/~ooibc/singaopen-mm15.pdf">SINGA: A distributed deep learning platform</a>. ACM Multimedia (Open Source Software Competition) 2015 (<a class="reference external" href="http://www.comp.nus.edu.sg/~dbsystem/singa//assets/file/bib-oss.txt">BibTex</a>).</li>
+<li>W. Wang, G. Chen, T. T. A. Dinh, B. C. Ooi, K.-L.Tan, J. Gao, and S. Wang. <a class="reference external" href="http://www.comp.nus.edu.sg/~ooibc/singa-mm15.pdf">SINGA: putting deep learning in the hands of multimedia users</a>. ACM Multimedia 2015 (<a class="reference external" href="http://www.comp.nus.edu.sg/~dbsystem/singa//assets/file/bib-singa.txt">BibTex</a>, <a class="reference external" href="http://www.comp.nus.edu.sg/~dbsystem/singa/assets/file/mm2015.ppt">Slides</a>).</li>
 </ul>
 <p>Rafiki is a sub module of SINGA. Please cite the following paper if you use Rafiki in your research:</p>
 <ul class="simple">
-<li><p>Wei Wang, Jinyang Gao, Meihui Zhang, Sheng Wang, Gang Chen, Teck Khim Ng, Beng Chin Ooi, Jie Shao, Moaz Reyad. <a class="reference external" href="http://www.vldb.org/pvldb/vol12/p128-wang.pdf">Rafiki: Machine Learning as an Analytics Service System</a>. <a class="reference external" href="http://vldb.org/2019/">VLDB 2019</a> (<a class="reference external" href="https://dblp.org/rec/bib2/journals/pvldb/WangWGZCNOS18.bib">BibTex</a>).</p></li>
+<li>Wei Wang, Jinyang Gao, Meihui Zhang, Sheng Wang, Gang Chen, Teck Khim Ng, Beng Chin Ooi, Jie Shao, Moaz Reyad. <a class="reference external" href="http://www.vldb.org/pvldb/vol12/p128-wang.pdf">Rafiki: Machine Learning as an Analytics Service System</a>. <a class="reference external" href="http://vldb.org/2019/">VLDB 2019</a> (<a class="reference external" href="https://dblp.org/rec/bib2/journals/pvldb/WangWGZCNOS18.bib">BibTex</a>).</li>
 </ul>
 <p>Companies like <a class="reference external" href="http://tech.163.com/17/0602/17/CLUL016I00098GJ5.html">NetEase</a>, <a class="reference external" href="http://www.yzbigdata.com/en/index.html">yzBigData</a>, <a class="reference external" href="https://shentilium.com/">Shentilium</a>, <a class="reference external" href="http://www.foodlg.com/">Foodlg</a> and <a class="reference external" href="https://medilot.com/technologies">Medilot</a> are using SINGA for their applications.</p>
 <div class="toctree-wrapper compound">

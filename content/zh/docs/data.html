@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -113,7 +122,7 @@
 <li class="toctree-l2"><a class="reference internal" href="metric.html">度量(Metric)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="optimizer.html">优化器(Optimizer)</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">数据(Data)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#class-singa-data-imagebatchiter-img-list-file-batch-size-image-transform-shuffle-true-delimiter-image-folder-none-capacity-10">class singa.data.ImageBatchIter(img_list_file, batch_size, image_transform, shuffle=True, delimiter=’ ‘, image_folder=None, capacity=10)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#class-singa-data-imagebatchiter-img-list-file-batch-size-image-transform-shuffle-true-delimiter-image-folder-none-capacity-10">class singa.data.ImageBatchIter(img_list_file, batch_size, image_transform, shuffle=True, delimiter=&#8216; &#8216;, image_folder=None, capacity=10)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="image_tool.html">图像工具</a></li>
@@ -221,7 +230,7 @@
 <h1>数据(Data)<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h1>
 <p>这个模块包含加载和预获取批数据的类。</p>
 <p>示例用法：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">image_tool</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">image_tool</span>
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 
 <span class="n">tool</span> <span class="o">=</span> <span class="n">image_tool</span><span class="o">.</span><span class="n">ImageTool</span><span class="p">()</span>
@@ -251,17 +260,17 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="class-singa-data-imagebatchiter-img-list-file-batch-size-image-transform-shuffle-true-delimiter-image-folder-none-capacity-10">
-<h2>class singa.data.ImageBatchIter(img_list_file, batch_size, image_transform, shuffle=True, delimiter=’ ‘, image_folder=None, capacity=10)<a class="headerlink" href="#class-singa-data-imagebatchiter-img-list-file-batch-size-image-transform-shuffle-true-delimiter-image-folder-none-capacity-10" title="Permalink to this headline">¶</a></h2>
+<h2>class singa.data.ImageBatchIter(img_list_file, batch_size, image_transform, shuffle=True, delimiter=&#8216; &#8216;, image_folder=None, capacity=10)<a class="headerlink" href="#class-singa-data-imagebatchiter-img-list-file-batch-size-image-transform-shuffle-true-delimiter-image-folder-none-capacity-10" title="Permalink to this headline">¶</a></h2>
 <p>迭代地从数据集中获取批数据。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>img_list_file (str)</strong> – 包含源数据的文件名；每行包含image_path_suffix和标签</p></li>
-<li><p><strong>batch_size (int)</strong> – 每个mini-bach包含的样本数目</p></li>
-<li><p><strong>image_transform</strong> – 图像增强函数；它接受完整的图像路径并输出一系列增强后的图像</p></li>
-<li><p><strong>shuffle (boolean)</strong> – 为真表示对列表做搅乱</p></li>
-<li><p><strong>delimiter (char)</strong> – image_path_suffix和标签之间的分割符, 例如空格或逗号</p></li>
-<li><p><strong>image_folder (boolean)</strong> – 图片路径的前缀</p></li>
-<li><p><strong>capacity (int)</strong> – 内部队列的最大mini-batch数目</p></li>
+<li><strong>img_list_file (str)</strong> – 包含源数据的文件名；每行包含image_path_suffix和标签</li>
+<li><strong>batch_size (int)</strong> – 每个mini-bach包含的样本数目</li>
+<li><strong>image_transform</strong> – 图像增强函数；它接受完整的图像路径并输出一系列增强后的图像</li>
+<li><strong>shuffle (boolean)</strong> – 为真表示对列表做搅乱</li>
+<li><strong>delimiter (char)</strong> – image_path_suffix和标签之间的分割符, 例如空格或逗号</li>
+<li><strong>image_folder (boolean)</strong> – 图片路径的前缀</li>
+<li><strong>capacity (int)</strong> – 内部队列的最大mini-batch数目</li>
 </ul>
 <hr class="docutils" />
 </div>

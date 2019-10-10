@@ -18,26 +18,35 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link href="../../_static/style.css" rel="stylesheet" type="text/css">
-    <!--link href="../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+    <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <style>
 	.fa:hover {
@@ -66,7 +75,7 @@
 
           
             
-            <img src="../../_static/singa.png" class="logo" alt="Logo"/>
+            <img src="../_static/singa.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -81,7 +90,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -203,7 +212,7 @@ windows system from source codes. The following instructions ONLY work for Visua
 previous VS does not support <a class="reference external" href="https://msdn.microsoft.com/en-us/library/hh567368.aspx">C++11 features</a> well (including generic lambdas, auto, non-static
 data member initializers). If you intend to generate a 32-bit/64-bit singa solution, please configure all the
 VS projects for the dependent libraries as 32-bit/64-bit. This can be done by
-“Configuration Manager” in VS 2015 or use corresponding generator in cmake. When compiling the following libraries, you
+&#8220;Configuration Manager&#8220; in VS 2015 or use corresponding generator in cmake. When compiling the following libraries, you
 may get system-specific warnings/errors. Please fix them according to the
 prompts by VS.</p>
 <div class="section" id="google-logging">
@@ -211,12 +220,12 @@ prompts by VS.</p>
 <p>The glog library is an optional library for singa project. But it is currently necessary for Window compilation.
 Since the latest release version of glog will encounter error C2084 on sprintf function
 under VS2015, we test the compilation and installation using the master branch from <a class="reference external" href="https://github.com/google/glog">github</a>.</p>
-<p>Step 1: Download and decompress the source code. Or use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/google/glog</span></code> to get the code.</p>
-<p>Step 2: Open “glog.sln” file under project folder. You will get a conversion
+<p>Step 1: Download and decompress the source code. Or use <code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/google/glog</span></code> to get the code.</p>
+<p>Step 2: Open &#8220;glog.sln&#8220; file under project folder. You will get a conversion
 dialog and please finish it by the prompts. Compile all the projects in the solution after
-proper configuration, especially “libglog” and “libglog_static” projects.</p>
-<p>Step 3: Copy all the header files and the entire directory named “glog” under
-“src\windows” folder into the installation include folder (or system folder).
+proper configuration, especially &#8220;libglog&#8220; and &#8220;libglog_static&#8220; projects.</p>
+<p>Step 3: Copy all the header files and the entire directory named &#8220;glog&#8220; under
+&#8220;src\windows&#8220; folder into the installation include folder (or system folder).
 Copy all the generated library files into the installation library folder (or
 system folder).</p>
 <p>Step 4: Done.</p>
@@ -225,16 +234,16 @@ system folder).</p>
 <h3>Google protobuf<a class="headerlink" href="#google-protobuf" title="Permalink to this headline">¶</a></h3>
 <p>Tested on version 2.6.1:</p>
 <p>Step 1: Download and decompress the source code.</p>
-<p>Step 2: Open “protobuf.sln” file under “vsprojects” folder. You will get a conversion
+<p>Step 2: Open &#8220;protobuf.sln&#8220; file under &#8220;vsprojects&#8220; folder. You will get a conversion
 dialog and please finish it by the prompts. Compile all the projects in the solution after proper
-configuration. Especially “libprotobuf”, “libprotobuf-lite”, “libprotoc” and
-“protoc” projects.</p>
-<p>Step 3: Run “extract_includes.bat” script under “vsprojects” folder, you will
-get a new “include” folder with all the headers.</p>
-<p>Step 4: Copy the library files, such as “libprotobuf.lib”,
-“libprotobuf-lite.lib”, “libprotoc.lib”, etc., into your installation library folder (or
-system folder). Copy the binary file “protoc” into your installation binary
-folder (or system folder). Copy all the headers and folders in “include” folder into your
+configuration. Especially &#8220;libprotobuf&#8220;, &#8220;libprotobuf-lite&#8220;, &#8220;libprotoc&#8220; and
+&#8220;protoc&#8220; projects.</p>
+<p>Step 3: Run &#8220;extract_includes.bat&#8220; script under &#8220;vsprojects&#8220; folder, you will
+get a new &#8220;include&#8220; folder with all the headers.</p>
+<p>Step 4: Copy the library files, such as &#8220;libprotobuf.lib&#8220;,
+&#8220;libprotobuf-lite.lib&#8220;, &#8220;libprotoc.lib&#8220;, etc., into your installation library folder (or
+system folder). Copy the binary file &#8220;protoc&#8220; into your installation binary
+folder (or system folder). Copy all the headers and folders in &#8220;include&#8220; folder into your
 installation include folder (or system folder).</p>
 <p>Step 5: Done.</p>
 </div>
@@ -246,14 +255,14 @@ OpenBLAS with version 0.2.18 as test:</p>
 <p>Step 1: Download and decompress the source code.</p>
 <p>Step 2: Start a cmd window under the OpenBLAS folder then run the following
 commands to generate the solution:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ md build $$ cd build
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ md build $$ cd build
 $ cmake -G &quot;Visual Studio 14&quot; ..
 </pre></div>
 </div>
-<p>Or run <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-G</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">14</span> <span class="pre">Win64&quot;</span></code> as you wish.</p>
-<p>Step 3: Install Perl into your system and put perl.exe on your path. Open “OpenBlas.sln” and build the solution, especially “libopenblas”
+<p>Or run <code class="docutils literal"><span class="pre">cmake</span> <span class="pre">-G</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">14</span> <span class="pre">Win64&quot;</span></code> as you wish.</p>
+<p>Step 3: Install Perl into your system and put perl.exe on your path. Open &#8220;OpenBlas.sln&#8220; and build the solution, especially &#8220;libopenblas&#8220;
 project.</p>
-<p>Step 4: Copy the library files under “build\lib” folder and all header files
+<p>Step 4: Copy the library files under &#8220;build\lib&#8220; folder and all header files
 under OpenBLAS folder into installation library and include folders (or system
 folders).</p>
 <p>Step 5: Done.</p>
@@ -262,11 +271,11 @@ folders).</p>
 <div class="section" id="faq">
 <h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h2>
 <ol>
-<li><p>Error C2375 ‘snprintf’: redefinition; different linkage</p>
+<li><p class="first">Error C2375 &#8216;snprintf&#8216;: redefinition; different linkage</p>
 <p>Add “HAVE_SNPRINTF” to “C/C++ - Preprocessor - Preprocessor definitions”</p>
 </li>
-<li><p>Error due to hash map</p>
-<p>Add “_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS” to Preprocessor Definitions.</p>
+<li><p class="first">Error due to hash map</p>
+<p>Add &#8220;_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS&#8220; to Preprocessor Definitions.</p>
 </li>
 </ol>
 </div>
@@ -320,8 +329,8 @@ folders).</p>
   <div class="rst-other-versions">
       <dl>
           <dt>Languages</dt>
-          <dd><a href="../.././index.html">English</a></dd>
-          <dd><a href="../.././zh/index.html">中文</a></dd>
+          <dd><a href=".././index.html">English</a></dd>
+          <dd><a href=".././zh/index.html">中文</a></dd>
       </dl>
       <dl>
           <dt>Versions</dt>
@@ -330,7 +339,7 @@ folders).</p>
       </dl>
 
   </div>
-  <a href="http://incubator.apache.org/"> <img src= "../../_static/apache.png" style="background-color:white;"> </a>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.png" style="background-color:white;"> </a>
 
   <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
   <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>

@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,8 +45,6 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Image Tool" href="image_tool.html" />
-    <link rel="prev" title="Autograd in Singa" href="autograd.html" />
     <link href="../_static/style.css" rel="stylesheet" type="text/css">
     <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -100,36 +107,13 @@
               
             
             
-              <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software_stack.html">Software Stack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="benchmark.html">Benchmark for Distributed training</a></li>
-<li class="toctree-l2"><a class="reference internal" href="device.html">Device</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="layer.html">Layer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="net.html">FeedForward Net</a></li>
-<li class="toctree-l2"><a class="reference internal" href="initializer.html">Initializer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="loss.html">Loss</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metric.html">Metric</a></li>
-<li class="toctree-l2"><a class="reference internal" href="optimizer.html">Optimizer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="autograd.html">Autograd in Singa</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="image_tool.html">Image Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snapshot.html">Snapshot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="converter.html">Caffe Converter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utils.html">Utils</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model_zoo/index.html">Model Zoo</a></li>
-</ul>
-</li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../security.html">Security</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/how-to-release.html">How to prepare a release</a></li>
@@ -185,8 +169,6 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Documentation</a> &raquo;</li>
-        
       <li>Data</li>
     
     
@@ -204,66 +186,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-singa.data">
-<span id="data"></span><h1>Data<a class="headerlink" href="#module-singa.data" title="Permalink to this headline">¶</a></h1>
-<p>This module includes classes for loading and prefetching data batches.</p>
-<p>Example usage:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">image_tool</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="k">import</span> <span class="n">Image</span>
-
-<span class="n">tool</span> <span class="o">=</span> <span class="n">image_tool</span><span class="o">.</span><span class="n">ImageTool</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">image_transform</span><span class="p">(</span><span class="n">img_path</span><span class="p">):</span>
-    <span class="k">global</span> <span class="n">tool</span>
-    <span class="k">return</span> <span class="n">tool</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span><span class="o">.</span><span class="n">resize_by_range</span><span class="p">(</span>
-        <span class="p">(</span><span class="mi">112</span><span class="p">,</span> <span class="mi">128</span><span class="p">))</span><span class="o">.</span><span class="n">random_crop</span><span class="p">(</span>
-        <span class="p">(</span><span class="mi">96</span><span class="p">,</span> <span class="mi">96</span><span class="p">))</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">ImageBatchIter</span><span class="p">(</span><span class="s1">&#39;train.txt&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
-                      <span class="n">image_transform</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span>
-                      <span class="n">image_folder</span><span class="o">=</span><span class="s1">&#39;images/&#39;</span><span class="p">,</span>
-                      <span class="n">capacity</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">data</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-<span class="c1"># imgs is a numpy array for a batch of images,</span>
-<span class="c1"># shape: batch_size, 3 (RGB), height, width</span>
-<span class="n">imgs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
-
-<span class="c1"># convert numpy array back into images</span>
-<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">imgs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">imgs</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-                          <span class="s1">&#39;RGB&#39;</span><span class="p">)</span>
-    <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;img</span><span class="si">%d</span><span class="s1">.png&#39;</span> <span class="o">%</span> <span class="n">idx</span><span class="p">)</span>
-<span class="n">data</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
-</pre></div>
-</div>
-<dl class="class">
-<dt id="singa.data.ImageBatchIter">
-<em class="property">class </em><code class="descclassname">singa.data.</code><code class="descname">ImageBatchIter</code><span class="sig-paren">(</span><em>img_list_file</em>, <em>batch_size</em>, <em>image_transform</em>, <em>shuffle=True</em>, <em>delimiter=' '</em>, <em>image_folder=None</em>, <em>capacity=10</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.data.ImageBatchIter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Utility for iterating over an image dataset to get mini-batches.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>img_list_file</strong> (<em>str</em>) – name of the file containing image meta data; each
-line consists of image_path_suffix delimiter meta_info,
-where meta info could be label index or label strings, etc.
-meta_info should not contain the delimiter. If the meta_info
-of each image is just the label index, then we will parse the
-label index into a numpy array with length=batchsize
-(for compatibility); otherwise, we return a list of meta_info;
-if meta info is available, we return a list of None.</p></li>
-<li><p><strong>batch_size</strong> (<em>int</em>) – num of samples in one mini-batch</p></li>
-<li><p><strong>image_transform</strong> – a function for image augmentation; it accepts the full
-image path and outputs a list of augmented images.</p></li>
-<li><p><strong>shuffle</strong> (<em>boolean</em>) – True for shuffling images in the list</p></li>
-<li><p><strong>delimiter</strong> (<em>char</em>) – delimiter between image_path_suffix and label, e.g.,
-space or comma</p></li>
-<li><p><strong>image_folder</strong> (<em>boolean</em>) – prefix of the image path</p></li>
-<li><p><strong>capacity</strong> (<em>int</em>) – the max num of mini-batches in the internal queue.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
+  <div class="section" id="data">
+<h1>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -271,15 +195,6 @@ space or comma</p></li>
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="image_tool.html" class="btn btn-neutral float-right" title="Image Tool" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="autograd.html" class="btn btn-neutral float-left" title="Autograd in Singa" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -104,35 +113,24 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../software_stack.html">Software Stack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../benchmark.html">Benchmark for Distributed training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../tensor.html">Tensor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../layer.html">Layer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../net.html">FeedForward Net</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../initializer.html">Initializer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../loss.html">Loss</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../metric.html">Metric</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../optimizer.html">Optimizer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../autograd.html">Autograd in Singa</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../data.html">Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../image_tool.html">Image Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../snapshot.html">Snapshot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../converter.html">Caffe Converter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../onnx.html">ONNX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../benchmark.html">Benchmark for Distributed training</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Model Zoo</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Train CNN over Cifar-10</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#instructions">Instructions</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../char-rnn/README.html">Train Char-RNN over plain text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mnist/README.html">Train a RBM model against MNIST dataset</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../imagenet/alexnet/README.html">Train AlexNet over ImageNet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../imagenet/googlenet/README.html">name: GoogleNet on ImageNet
-SINGA version: 1.0.1
-SINGA commit: 8c990f7da2de220e8a012c6a8ecc897dc7532744
-parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/bvlc_googlenet.tar.gz
-parameter_sha1: 0a88e8948b1abca3badfd8d090d6be03f8d7655d
-license: unrestricted https://github.com/BVLC/caffe/tree/master/models/bvlc_googlenet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../imagenet/googlenet/README.html#image-classification-using-googlenet">Image Classification using GoogleNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../imagenet/densenet/README.html">Image Classification using DenseNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../imagenet/googlenet/README.html">Image Classification using GoogleNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../imagenet/inception/README.html">Image Classification using Inception V4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../imagenet/resnet/README.html">Image Classification using Residual Networks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../imagenet/vgg/README.html">Image Classification using VGG</a></li>
 </ul>
 </li>
 </ul>
@@ -142,9 +140,6 @@ license: unrestricted https://github.com/BVLC/caffe/tree/master/models/bvlc_goog
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../develop/how-to-release.html">How to prepare a release</a></li>
@@ -221,17 +216,34 @@ license: unrestricted https://github.com/BVLC/caffe/tree/master/models/bvlc_goog
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="train-cnn-over-cifar-10">
+  <!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+--><div class="section" id="train-cnn-over-cifar-10">
 <h1>Train CNN over Cifar-10<a class="headerlink" href="#train-cnn-over-cifar-10" title="Permalink to this headline">¶</a></h1>
 <p>Convolution neural network (CNN) is a type of feed-forward artificial neural
 network widely used for image and video classification. In this example, we
 will train three deep CNN models to do image classification for the CIFAR-10 dataset,</p>
 <ol class="simple">
-<li><p><a class="reference external" href="https://code.google.com/p/cuda-convnet/source/browse/trunk/example-layers/layers-18pct.cfg">AlexNet</a>
-the best validation accuracy (without data augmentation) we achieved was about 82%.</p></li>
-<li><p><a class="reference external" href="http://torch.ch/blog/2015/07/30/cifar.html">VGGNet</a>, the best validation accuracy (without data augmentation) we achieved was about 89%.</p></li>
-<li><p><a class="reference external" href="https://github.com/facebook/fb.resnet.torch">ResNet</a>, the best validation accuracy (without data augmentation) we achieved was about 83%.</p></li>
-<li><p><a class="reference external" href="https://github.com/BVLC/caffe/tree/master/examples/cifar10">Alexnet from Caffe</a>, SINGA is able to convert model from Caffe seamlessly.</p></li>
+<li><a class="reference external" href="https://code.google.com/p/cuda-convnet/source/browse/trunk/example-layers/layers-18pct.cfg">AlexNet</a>
+the best validation accuracy (without data augmentation) we achieved was about 82%.</li>
+<li><a class="reference external" href="http://torch.ch/blog/2015/07/30/cifar.html">VGGNet</a>, the best validation accuracy (without data augmentation) we achieved was about 89%.</li>
+<li><a class="reference external" href="https://github.com/facebook/fb.resnet.torch">ResNet</a>, the best validation accuracy (without data augmentation) we achieved was about 83%.</li>
+<li><a class="reference external" href="https://github.com/BVLC/caffe/tree/master/examples/cifar10">Alexnet from Caffe</a>, SINGA is able to convert model from Caffe seamlessly.</li>
 </ol>
 <div class="section" id="instructions">
 <h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h2>
@@ -244,11 +256,11 @@ are required. Please refer to the installation page for detailed instructions.</
 <div class="section" id="data-preparation">
 <h3>Data preparation<a class="headerlink" href="#data-preparation" title="Permalink to this headline">¶</a></h3>
 <p>The binary Cifar-10 dataset could be downloaded by</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">download_data</span><span class="o">.</span><span class="n">py</span> <span class="nb">bin</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">download_data</span><span class="o">.</span><span class="n">py</span> <span class="nb">bin</span>
 </pre></div>
 </div>
 <p>The Python version could be downloaded by</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">download_data</span><span class="o">.</span><span class="n">py</span> <span class="n">py</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">download_data</span><span class="o">.</span><span class="n">py</span> <span class="n">py</span>
 </pre></div>
 </div>
 </div>
@@ -256,46 +268,47 @@ are required. Please refer to the installation page for detailed instructions.</
 <h3>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h3>
 <p>There are four training programs</p>
 <ol>
-<li><p>train.py. The following command would train the VGG model using the python
-version of the Cifar-10 dataset in ‘cifar-10-batches-py’ folder.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">vgg</span> <span class="n">cifar</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">batches</span><span class="o">-</span><span class="n">py</span>
+<li><p class="first">train.py. The following command would train the VGG model using the python
+version of the Cifar-10 dataset in &#8216;cifar-10-batches-py&#8216; folder.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">vgg</span> <span class="n">cifar</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">batches</span><span class="o">-</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>To train other models, please replace ‘vgg’ to ‘alexnet’, ‘resnet’ or ‘caffe’,
-where ‘caffe’ refers to the alexnet model converted from Caffe. By default
+<p>To train other models, please replace &#8216;vgg&#8216; to &#8216;alexnet&#8216;, &#8216;resnet&#8216; or &#8216;caffe&#8216;,
+where &#8216;caffe&#8216; refers to the alexnet model converted from Caffe. By default
 the training would run on a CudaGPU device, to run it on CppCPU, add an additional
 argument</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">vgg</span> <span class="n">cifar</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">batches</span><span class="o">-</span><span class="n">py</span>  <span class="o">--</span><span class="n">use_cpu</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">vgg</span> <span class="n">cifar</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">batches</span><span class="o">-</span><span class="n">py</span>  <span class="o">--</span><span class="n">use_cpu</span>
 </pre></div>
 </div>
 </li>
-<li><p>alexnet.cc. It trains the AlexNet model using the CPP APIs on a CudaGPU,</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">./</span><span class="n">run</span><span class="o">.</span><span class="n">sh</span>
+<li><p class="first">alexnet.cc. It trains the AlexNet model using the CPP APIs on a CudaGPU,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">./</span><span class="n">run</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 </li>
-<li><p>alexnet-parallel.cc. It trains the AlexNet model using the CPP APIs on two CudaGPU devices.
+<li><p class="first">alexnet-parallel.cc. It trains the AlexNet model using the CPP APIs on two CudaGPU devices.
 The two devices run synchronously to compute the gradients of the mode parameters, which are
 averaged on the host CPU device and then be applied to update the parameters.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">./</span><span class="n">run</span><span class="o">-</span><span class="n">parallel</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">./</span><span class="n">run</span><span class="o">-</span><span class="n">parallel</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 </li>
-<li><p>vgg-parallel.cc. It trains the VGG model using the CPP APIs on two CudaGPU devices similar to alexnet-parallel.cc.</p></li>
+<li><p class="first">vgg-parallel.cc. It trains the VGG model using the CPP APIs on two CudaGPU devices similar to alexnet-parallel.cc.</p>
+</li>
 </ol>
 </div>
 <div class="section" id="prediction">
 <h3>Prediction<a class="headerlink" href="#prediction" title="Permalink to this headline">¶</a></h3>
 <p>predict.py includes the prediction function</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">images</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="n">topk</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">images</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="n">topk</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The net is created by loading the previously trained model; Images consist of
 a numpy array of images (one row per image); dev is the training device, e.g.,
 a CudaGPU device or the host CppCPU device; It returns the topk labels for each instance.</p>
-<p>The predict.py file’s main function provides an example of using the pre-trained alexnet model to do prediction for new images.
-The ‘model.bin’ file generated by the training program should be placed at the cifar10 folder to run</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">predict</span><span class="o">.</span><span class="n">py</span>
+<p>The predict.py file&#8216;s main function provides an example of using the pre-trained alexnet model to do prediction for new images.
+The &#8216;model.bin&#8216; file generated by the training program should be placed at the cifar10 folder to run</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">predict</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 </div>

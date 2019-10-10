@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -225,7 +234,7 @@
 <h1>Snapshot<a class="headerlink" href="#snapshot" title="Permalink to this headline">¶</a></h1>
 <p>此模块包含io::snapshot类及其方法。</p>
 <p>示例用法：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">snapshot</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">snapshot</span>
 
 <span class="n">sn1</span> <span class="o">=</span> <span class="n">snapshot</span><span class="o">.</span><span class="n">Snapshot</span><span class="p">(</span><span class="s1">&#39;param&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
 <span class="n">params</span> <span class="o">=</span> <span class="n">sn1</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>  <span class="c1"># read all params as a dictionary</span>
@@ -238,7 +247,7 @@
 <hr class="docutils" />
 <div class="section" id="class-singa-snapshot-snapshot-f-mode-buffer-size-10">
 <h2>class singa.snapshot.Snapshot(f, mode, buffer_size=10)<a class="headerlink" href="#class-singa-snapshot-snapshot-f-mode-buffer-size-10" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">singa::Snapshot</span></code>类和成员函数。</p>
+<p><code class="docutils literal"><span class="pre">singa::Snapshot</span></code>类和成员函数。</p>
 <hr class="docutils" />
 <div class="section" id="read">
 <h3>read()<a class="headerlink" href="#read" title="Permalink to this headline">¶</a></h3>
@@ -251,8 +260,8 @@
 <p>调用write方法写回参数。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>param_name (string)</strong> – 参数名</p></li>
-<li><p><strong>param_val (Tensor)</strong> – 参数值的tensor</p></li>
+<li><strong>param_name (string)</strong> – 参数名</li>
+<li><strong>param_val (Tensor)</strong> – 参数值的tensor</li>
 </ul>
 <hr class="docutils" />
 </div>

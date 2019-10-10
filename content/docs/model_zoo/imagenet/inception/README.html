@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>name: Inception V4 on ImageNet SINGA version: 1.1.1 SINGA commit: parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/inception_v4.tar.gz parameter_sha1: 5fdd6f5d8af8fd10e7321d9b38bb87ef14e80d56 license: https://github.com/tensorflow/models/tree/master/slim &mdash; incubator-singa 2.0.0 documentation</title>
+  <title>Image Classification using Inception V4 &mdash; incubator-singa 2.0.0 documentation</title>
   
 
   
@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
 
@@ -36,6 +45,8 @@
   <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Image Classification using Residual Networks" href="../resnet/README.html" />
+    <link rel="prev" title="Image Classification using GoogleNet" href="../googlenet/README.html" />
     <link href="../../../../_static/style.css" rel="stylesheet" type="text/css">
     <!--link href="../../../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -98,16 +109,38 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Documentation</a></li>
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../software_stack.html">Software Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tensor.html">Tensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../autograd.html">Autograd in Singa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../onnx.html">ONNX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmark.html">Benchmark for Distributed training</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">Model Zoo</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../cifar10/README.html">Train CNN over Cifar-10</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../char-rnn/README.html">Train Char-RNN over plain text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnist/README.html">Train a RBM model against MNIST dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../alexnet/README.html">Train AlexNet over ImageNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../densenet/README.html">Image Classification using DenseNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../googlenet/README.html">Image Classification using GoogleNet</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Image Classification using Inception V4</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#instructions">Instructions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#details">Details</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../resnet/README.html">Image Classification using Residual Networks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vgg/README.html">Image Classification using VGG</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../downloads.html">Download SINGA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../security.html">Security</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-to-release.html">How to prepare a release</a></li>
@@ -163,12 +196,11 @@
     
       <li><a href="../../../../index.html">Docs</a> &raquo;</li>
         
-      <li>name: Inception V4 on ImageNet
-SINGA version: 1.1.1
-SINGA commit:
-parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/inception_v4.tar.gz
-parameter_sha1: 5fdd6f5d8af8fd10e7321d9b38bb87ef14e80d56
-license: https://github.com/tensorflow/models/tree/master/slim</li>
+          <li><a href="../../../index.html">Documentation</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Model Zoo</a> &raquo;</li>
+        
+      <li>Image Classification using Inception V4</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -185,38 +217,47 @@ license: https://github.com/tensorflow/models/tree/master/slim</li>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <hr class="docutils" />
-<div class="section" id="name-inception-v4-on-imagenet-singa-version-1-1-1-singa-commit-parameter-url-https-s3-ap-southeast-1-amazonaws-com-dlfile-inception-v4-tar-gz-parameter-sha1-5fdd6f5d8af8fd10e7321d9b38bb87ef14e80d56-license-https-github-com-tensorflow-models-tree-master-slim">
-<h1>name: Inception V4 on ImageNet
-SINGA version: 1.1.1
-SINGA commit:
-parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/inception_v4.tar.gz
-parameter_sha1: 5fdd6f5d8af8fd10e7321d9b38bb87ef14e80d56
-license: https://github.com/tensorflow/models/tree/master/slim<a class="headerlink" href="#name-inception-v4-on-imagenet-singa-version-1-1-1-singa-commit-parameter-url-https-s3-ap-southeast-1-amazonaws-com-dlfile-inception-v4-tar-gz-parameter-sha1-5fdd6f5d8af8fd10e7321d9b38bb87ef14e80d56-license-https-github-com-tensorflow-models-tree-master-slim" title="Permalink to this headline">¶</a></h1>
-</div>
-<div class="section" id="image-classification-using-inception-v4">
+  <!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+--><div class="section" id="image-classification-using-inception-v4">
 <h1>Image Classification using Inception V4<a class="headerlink" href="#image-classification-using-inception-v4" title="Permalink to this headline">¶</a></h1>
-<p>In this example, we convert Inception V4 trained on Tensorflow to SINGA for image classification.</p>
+<p>In this example, we convert Inception V4 trained on Tensorflow to SINGA for image classification. Tested on SINGA version 1.1.1 with <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/inception_v4.tar.gz">parameters pretrained by tensorflow</a>.</p>
 <div class="section" id="instructions">
 <h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p>Download the parameter checkpoint file</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ wget
+<li><p class="first">Download the parameter checkpoint file</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  $ wget https://s3-ap-southeast-1.amazonaws.com/dlfile/inception_v4.tar.gz
   $ tar xvf inception_v4.tar.gz
 </pre></div>
 </div>
 </li>
-<li><p>Download <a class="reference external" href="https://github.com/BVLC/caffe/blob/master/data/ilsvrc12/get_ilsvrc_aux.sh">synset_word.txt</a> file.</p></li>
-<li><p>Run the program</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  # use cpu
+<li><p class="first">Download <a class="reference external" href="https://github.com/BVLC/caffe/blob/master/data/ilsvrc12/get_ilsvrc_aux.sh">synset_word.txt</a> file.</p>
+</li>
+<li><p class="first">Run the program</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  # use cpu
   $ python serve.py -C &amp;
   # use gpu
   $ python serve.py &amp;
 </pre></div>
 </div>
 </li>
-<li><p>Submit images for classification</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ curl -i -F image=@image1.jpg http://localhost:9999/api
+<li><p class="first">Submit images for classification</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  $ curl -i -F image=@image1.jpg http://localhost:9999/api
   $ curl -i -F image=@image2.jpg http://localhost:9999/api
   $ curl -i -F image=@image3.jpg http://localhost:9999/api
 </pre></div>
@@ -227,9 +268,9 @@ license: https://github.com/tensorflow/models/tree/master/slim<a class="headerli
 </div>
 <div class="section" id="details">
 <h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
-<p>We first extract the parameter values from <a class="reference external" href="http://download.tensorflow.org/models/inception_v4_2016_09_09.tar.gz">Tensorflow’s checkpoint file</a> into a pickle version.
+<p>We first extract the parameter values from <a class="reference external" href="http://download.tensorflow.org/models/inception_v4_2016_09_09.tar.gz">Tensorflow&#8216;s checkpoint file</a> into a pickle version.
 After downloading and decompressing the checkpoint file, run the following script</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python convert.py --file_name=inception_v4.ckpt
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python convert.py --file_name=inception_v4.ckpt
 </pre></div>
 </div>
 </div>
@@ -240,6 +281,15 @@ After downloading and decompressing the checkpoint file, run the following scrip
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../resnet/README.html" class="btn btn-neutral float-right" title="Image Classification using Residual Networks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../googlenet/README.html" class="btn btn-neutral float-left" title="Image Classification using GoogleNet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

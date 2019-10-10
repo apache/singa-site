@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -209,7 +218,7 @@
 <h1>度量(Metric)<a class="headerlink" href="#metric" title="Permalink to this headline">¶</a></h1>
 <p>该模块包含一组用于评估模型性能的度量类。 特定的度量类可以由C++的实现转换或直接使用Python实现。</p>
 <p>示例用法：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">tensor</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">tensor</span>
 <span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">metric</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -224,7 +233,7 @@
 <hr class="docutils" />
 <div class="section" id="class-singa-metric-metric">
 <h2>class singa.metric.Metric<a class="headerlink" href="#class-singa-metric-metric" title="Permalink to this headline">¶</a></h2>
-<p>基类：<code class="docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>基类：<code class="docutils literal"><span class="pre">object</span></code></p>
 <p>度量类的基类</p>
 <p>封装C++度量类的子类可以使用继承的前向函数，并评估此基类的函数。 其他子类需要重写这些函数。 用户需要提供预测值和真实值来获取度量值。</p>
 <hr class="docutils" />
@@ -233,8 +242,8 @@
 <p>为每个样本计算度量值</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>x (Tensor)</strong> – 预测值，每行代表一个样本的预测值</p></li>
-<li><p><strong>y (Tensor)</strong> – 真实值，每行代表一个样本的真实值</p></li>
+<li><strong>x (Tensor)</strong> – 预测值，每行代表一个样本的预测值</li>
+<li><strong>y (Tensor)</strong> – 真实值，每行代表一个样本的真实值</li>
 </ul>
 <p><strong>返回值：</strong> 浮点数组成的tensor，每个样本对应一个浮点数输出</p>
 </div>
@@ -244,8 +253,8 @@
 <p>计算样本的平均度量值</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>x (Tensor)</strong> – 预测值，每列代表一个样本的预测值</p></li>
-<li><p><strong>y (Tensor)</strong> – 真实值，每列代表一个样本的真实值</p></li>
+<li><strong>x (Tensor)</strong> – 预测值，每列代表一个样本的预测值</li>
+<li><strong>y (Tensor)</strong> – 真实值，每列代表一个样本的真实值</li>
 </ul>
 <p><strong>返回值：</strong> 浮点数组成的tensor，每个样本对应一个浮点数输出</p>
 </div>
@@ -253,7 +262,7 @@
 <hr class="docutils" />
 <div class="section" id="class-singa-metric-accuracy">
 <h2>class singa.metric.Accuracy<a class="headerlink" href="#class-singa-metric-accuracy" title="Permalink to this headline">¶</a></h2>
-<p>基类：<code class="docutils literal notranslate"><span class="pre">singa.metric.Metric</span></code></p>
+<p>基类：<code class="docutils literal"><span class="pre">singa.metric.Metric</span></code></p>
 <p>对于单标签预测任务，计算top-1精确度。它调用C++函数实现计算。</p>
 <hr class="docutils" />
 </div>

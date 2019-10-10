@@ -18,28 +18,37 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="How to prepare a release" href="how-to-release.html" />
     <link rel="prev" title="How to Contribute Code" href="contribute-code.html" />
-    <link href="../../_static/style.css" rel="stylesheet" type="text/css">
-    <!--link href="../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+    <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <style>
 	.fa:hover {
@@ -68,7 +77,7 @@
 
           
             
-            <img src="../../_static/singa.png" class="logo" alt="Logo"/>
+            <img src="../_static/singa.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -83,7 +92,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -214,23 +223,23 @@
 <p>This document gives step-by-step instructions for deploying <a class="reference external" href="http://singa.incubator.apache.org">SINGA website</a>.</p>
 <p>SINGA website is built by <a class="reference external" href="http://www.sphinx-doc.org">Sphinx</a> from a source tree stored in the <a class="reference external" href="https://github.com/apache/incubator-singa/tree/master/doc">git repo</a>.</p>
 <p>To install Sphinx:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">Sphinx</span><span class="o">==</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">6</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">Sphinx</span><span class="o">==</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">6</span>
 </pre></div>
 </div>
 <p>To install the markdown support for Sphinx:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">recommonmark</span><span class="o">==</span><span class="mf">0.5</span><span class="o">.</span><span class="mi">0</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">recommonmark</span><span class="o">==</span><span class="mf">0.5</span><span class="o">.</span><span class="mi">0</span>
 </pre></div>
 </div>
 <p>To install the rtd theme:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx_rtd_theme</span><span class="o">==</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">3</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx_rtd_theme</span><span class="o">==</span><span class="mf">0.4</span><span class="o">.</span><span class="mi">3</span>
 </pre></div>
 </div>
 <p>You can build the website by executing the following command from the doc folder:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="n">html</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="n">html</span>
 </pre></div>
 </div>
 <p>Committers can update the <a class="reference external" href="http://singa.apache.org/en/index.html">SINGA website</a> by copying the updated files to the <a class="reference external" href="https://github.com/apache/incubator-singa-site">website repo</a> (suppose the site repo is ~/incubator-singa-sit)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">_build</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">_build</span>
 <span class="n">rsync</span> <span class="o">--</span><span class="n">checksum</span> <span class="o">-</span><span class="n">rvh</span> <span class="n">html</span><span class="o">/</span> <span class="o">~/</span><span class="n">incubator</span><span class="o">-</span><span class="n">singa</span><span class="o">-</span><span class="n">site</span><span class="o">/</span>
 <span class="n">cd</span> <span class="o">~/</span><span class="n">incubator</span><span class="o">-</span><span class="n">singa</span><span class="o">-</span><span class="n">site</span>
 <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;update xxxx&quot;</span>
@@ -244,7 +253,7 @@
 </div>
 <div class="section" id="cpp-api">
 <h2>CPP API<a class="headerlink" href="#cpp-api" title="Permalink to this headline">¶</a></h2>
-<p>To generate docs, run “doxygen” from the doc folder (Doxygen &gt;= 1.8 recommended)</p>
+<p>To generate docs, run &#8220;doxygen&#8220; from the doc folder (Doxygen &gt;= 1.8 recommended)</p>
 </div>
 <div class="section" id="using-visual-studio-code-vscode">
 <h2>Using Visual Studio Code (vscode)<a class="headerlink" href="#using-visual-studio-code-vscode" title="Permalink to this headline">¶</a></h2>
@@ -252,25 +261,27 @@
 <h3>Preview<a class="headerlink" href="#preview" title="Permalink to this headline">¶</a></h3>
 <p>The document files (rst and md files) can be previewed in vscode via the <a class="reference external" href="https://docs.restructuredtext.net/">reStructuredText Extension</a>.</p>
 <ol>
-<li><p>Install the extension in vscode.</p></li>
-<li><p>Install the dependent libs. All libs required to build the website should be installed (see the above instructions). In addition, there are two more libs to be installed.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">autobuild</span><span class="o">=</span><span class="mf">0.7</span><span class="o">.</span><span class="mi">1</span>
+<li><p class="first">Install the extension in vscode.</p>
+</li>
+<li><p class="first">Install the dependent libs. All libs required to build the website should be installed (see the above instructions). In addition, there are two more libs to be installed.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">autobuild</span><span class="o">=</span><span class="mf">0.7</span><span class="o">.</span><span class="mi">1</span>
  <span class="n">pip</span> <span class="n">install</span> <span class="n">doc8</span><span class="o">=</span><span class="mf">0.8</span><span class="o">.</span><span class="mi">0</span>
 </pre></div>
 </div>
 </li>
-<li><p>Configure the conf path for <code class="docutils literal notranslate"><span class="pre">restructuredtext.confPath</span></code> to the <a class="reference external" href="./conf.py">conf.py</a></p></li>
+<li><p class="first">Configure the conf path for <code class="docutils literal"><span class="pre">restructuredtext.confPath</span></code> to the <a class="reference external" href="./conf.py">conf.py</a></p>
+</li>
 </ol>
 </div>
 <div class="section" id="docstring-snippet">
 <h3>Docstring Snippet<a class="headerlink" href="#docstring-snippet" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring">autoDocstring</a> generates the docstring of functions, classes, etc. Choose the DocString Format to <code class="docutils literal notranslate"><span class="pre">google</span></code>.</p>
+<p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring">autoDocstring</a> generates the docstring of functions, classes, etc. Choose the DocString Format to <code class="docutils literal"><span class="pre">google</span></code>.</p>
 </div>
 <div class="section" id="spell-check">
 <h3>Spell Check<a class="headerlink" href="#spell-check" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">Code Spell Checker</a> can be configured to check the comments of the code, or .md and .rst files.</p>
-<p>To do spell check only for comments of Python code, add the following snippet via <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-</span> <span class="pre">Preferences</span> <span class="pre">-</span> <span class="pre">User</span> <span class="pre">Snippets</span> <span class="pre">-</span> <span class="pre">python.json</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;cspell check&quot;</span> <span class="p">:</span> <span class="p">{</span>
+<p>To do spell check only for comments of Python code, add the following snippet via <code class="docutils literal"><span class="pre">File</span> <span class="pre">-</span> <span class="pre">Preferences</span> <span class="pre">-</span> <span class="pre">User</span> <span class="pre">Snippets</span> <span class="pre">-</span> <span class="pre">python.json</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;cspell check&quot;</span> <span class="p">:</span> <span class="p">{</span>
 <span class="s2">&quot;prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;cspell&quot;</span><span class="p">,</span>
 <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="s2">&quot;# Directives for doing spell check only for python and c/cpp comments&quot;</span><span class="p">,</span>
@@ -282,8 +293,8 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>To do spell check only for comments of Cpp code, add the following snippet via <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-</span> <span class="pre">Preferences</span> <span class="pre">-</span> <span class="pre">User</span> <span class="pre">Snippets</span> <span class="pre">-</span> <span class="pre">cpp.json</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;cspell check&quot;</span> <span class="p">:</span> <span class="p">{</span>
+<p>To do spell check only for comments of Cpp code, add the following snippet via <code class="docutils literal"><span class="pre">File</span> <span class="pre">-</span> <span class="pre">Preferences</span> <span class="pre">-</span> <span class="pre">User</span> <span class="pre">Snippets</span> <span class="pre">-</span> <span class="pre">cpp.json</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;cspell check&quot;</span> <span class="p">:</span> <span class="p">{</span>
 <span class="s2">&quot;prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;cspell&quot;</span><span class="p">,</span>
 <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="s2">&quot;// Directive for doing spell check only for cpp comments&quot;</span><span class="p">,</span>
@@ -354,8 +365,8 @@
   <div class="rst-other-versions">
       <dl>
           <dt>Languages</dt>
-          <dd><a href="../.././index.html">English</a></dd>
-          <dd><a href="../.././zh/index.html">中文</a></dd>
+          <dd><a href=".././index.html">English</a></dd>
+          <dd><a href=".././zh/index.html">中文</a></dd>
       </dl>
       <dl>
           <dt>Versions</dt>
@@ -364,7 +375,7 @@
       </dl>
 
   </div>
-  <a href="http://incubator.apache.org/"> <img src= "../../_static/apache.png" style="background-color:white;"> </a>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.png" style="background-color:white;"> </a>
 
   <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
   <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>

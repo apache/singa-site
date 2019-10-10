@@ -18,28 +18,37 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Autograd in Singa" href="autograd.html" />
     <link rel="prev" title="Device" href="device.html" />
-    <link href="../../_static/style.css" rel="stylesheet" type="text/css">
-    <!--link href="../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+    <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <style>
 	.fa:hover {
@@ -68,7 +77,7 @@
 
           
             
-            <img src="../../_static/singa.png" class="logo" alt="Logo"/>
+            <img src="../_static/singa.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -83,7 +92,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -114,6 +123,7 @@
 <li class="toctree-l2"><a class="reference internal" href="autograd.html">Autograd in Singa</a></li>
 <li class="toctree-l2"><a class="reference internal" href="onnx.html">ONNX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="benchmark.html">Benchmark for Distributed training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_zoo/index.html">Model Zoo</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../downloads.html">Download SINGA</a></li>
@@ -207,9 +217,9 @@ allocated on the same device except copy functions.</p>
 <p>SINGA has three different sets of implmentations of Tensor functions, one for each
 type of Device.</p>
 <ul class="simple">
-<li><p>‘tensor_math_cpp.h’ implements operations using Cpp (with CBLAS) for CppGPU devices.</p></li>
-<li><p>‘tensor_math_cuda.h’ implements operations using Cuda (with cuBLAS) for CudaGPU devices.</p></li>
-<li><p>‘tensor_math_opencl.h’ implements operations using OpenCL for OpenclGPU devices.</p></li>
+<li>&#8216;tensor_math_cpp.h&#8217; implements operations using Cpp (with CBLAS) for CppGPU devices.</li>
+<li>&#8216;tensor_math_cuda.h&#8217; implements operations using Cuda (with cuBLAS) for CudaGPU devices.</li>
+<li>&#8216;tensor_math_opencl.h&#8217; implements operations using OpenCL for OpenclGPU devices.</li>
 </ul>
 </div>
 <div class="section" id="python-api">
@@ -277,8 +287,8 @@ type of Device.</p>
   <div class="rst-other-versions">
       <dl>
           <dt>Languages</dt>
-          <dd><a href="../.././index.html">English</a></dd>
-          <dd><a href="../.././zh/index.html">中文</a></dd>
+          <dd><a href=".././index.html">English</a></dd>
+          <dd><a href=".././zh/index.html">中文</a></dd>
       </dl>
       <dl>
           <dt>Versions</dt>
@@ -287,7 +297,7 @@ type of Device.</p>
       </dl>
 
   </div>
-  <a href="http://incubator.apache.org/"> <img src= "../../_static/apache.png" style="background-color:white;"> </a>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.png" style="background-color:white;"> </a>
 
   <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
   <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>

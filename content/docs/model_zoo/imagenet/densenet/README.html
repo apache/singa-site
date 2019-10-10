@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>name: DenseNet models on ImageNet SINGA version: 1.1.1 SINGA commit: license: https://github.com/pytorch/vision/blob/master/torchvision/models/densenet.py &mdash; incubator-singa 2.0.0 documentation</title>
+  <title>Image Classification using DenseNet &mdash; incubator-singa 2.0.0 documentation</title>
   
 
   
@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
 
@@ -36,7 +45,7 @@
   <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="name: GoogleNet on ImageNet SINGA version: 1.0.1 SINGA commit: 8c990f7da2de220e8a012c6a8ecc897dc7532744 parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/bvlc_googlenet.tar.gz parameter_sha1: 0a88e8948b1abca3badfd8d090d6be03f8d7655d license: unrestricted https://github.com/BVLC/caffe/tree/master/models/bvlc_googlenet" href="../googlenet/README.html" />
+    <link rel="next" title="Image Classification using GoogleNet" href="../googlenet/README.html" />
     <link rel="prev" title="Train AlexNet over ImageNet" href="../alexnet/README.html" />
     <link href="../../../../_static/style.css" rel="stylesheet" type="text/css">
     <!--link href="../../../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
@@ -106,57 +115,23 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../software_stack.html">Software Stack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../tensor.html">Tensor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../layer.html">Layer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../net.html">FeedForward Net</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../initializer.html">Initializer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../loss.html">Loss</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../metric.html">Metric</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../optimizer.html">Optimizer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../autograd.html">Autograd in Singa</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../data.html">Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../image_tool.html">Image Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../snapshot.html">Snapshot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../converter.html">Caffe Converter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../onnx.html">ONNX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmark.html">Benchmark for Distributed training</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../index.html">Model Zoo</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../../cifar10/README.html">Train CNN over Cifar-10</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../char-rnn/README.html">Train Char-RNN over plain text</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../mnist/README.html">Train a RBM model against MNIST dataset</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../alexnet/README.html">Train AlexNet over ImageNet</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">name: DenseNet models on ImageNet
-SINGA version: 1.1.1
-SINGA commit:
-license: https://github.com/pytorch/vision/blob/master/torchvision/models/densenet.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#image-classification-using-densenet">Image Classification using DenseNet</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Image Classification using DenseNet</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#instructions">Instructions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#details">Details</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../googlenet/README.html">name: GoogleNet on ImageNet
-SINGA version: 1.0.1
-SINGA commit: 8c990f7da2de220e8a012c6a8ecc897dc7532744
-parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/bvlc_googlenet.tar.gz
-parameter_sha1: 0a88e8948b1abca3badfd8d090d6be03f8d7655d
-license: unrestricted https://github.com/BVLC/caffe/tree/master/models/bvlc_googlenet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../googlenet/README.html#image-classification-using-googlenet">Image Classification using GoogleNet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../inception/README.html">name: Inception V4 on ImageNet
-SINGA version: 1.1.1
-SINGA commit:
-parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/inception_v4.tar.gz
-parameter_sha1: 5fdd6f5d8af8fd10e7321d9b38bb87ef14e80d56
-license: https://github.com/tensorflow/models/tree/master/slim</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../inception/README.html#image-classification-using-inception-v4">Image Classification using Inception V4</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../resnet/README.html">name: Resnets on ImageNet
-SINGA version: 1.1
-SINGA commit: 45ec92d8ffc1fa1385a9307fdf07e21da939ee2f
-parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-18.tar.gz
-license: Apache V2, https://github.com/facebook/fb.resnet.torch/blob/master/LICENSE</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../resnet/README.html#image-classification-using-residual-networks">Image Classification using Residual Networks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../vgg/README.html">name: VGG models on ImageNet
-SINGA version: 1.1.1
-SINGA commit:
-license: https://github.com/pytorch/vision/blob/master/torchvision/models/vgg.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../vgg/README.html#image-classification-using-vgg">Image Classification using VGG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../googlenet/README.html">Image Classification using GoogleNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inception/README.html">Image Classification using Inception V4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../resnet/README.html">Image Classification using Residual Networks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vgg/README.html">Image Classification using VGG</a></li>
 </ul>
 </li>
 </ul>
@@ -166,9 +141,6 @@ license: https://github.com/pytorch/vision/blob/master/torchvision/models/vgg.py
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-to-release.html">How to prepare a release</a></li>
@@ -228,10 +200,7 @@ license: https://github.com/pytorch/vision/blob/master/torchvision/models/vgg.py
         
           <li><a href="../../index.html">Model Zoo</a> &raquo;</li>
         
-      <li>name: DenseNet models on ImageNet
-SINGA version: 1.1.1
-SINGA commit:
-license: https://github.com/pytorch/vision/blob/master/torchvision/models/densenet.py</li>
+      <li>Image Classification using DenseNet</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -265,14 +234,7 @@ license: https://github.com/pytorch/vision/blob/master/torchvision/models/densen
     KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License.
---><hr class="docutils" />
-<div class="section" id="name-densenet-models-on-imagenet-singa-version-1-1-1-singa-commit-license-https-github-com-pytorch-vision-blob-master-torchvision-models-densenet-py">
-<h1>name: DenseNet models on ImageNet
-SINGA version: 1.1.1
-SINGA commit:
-license: https://github.com/pytorch/vision/blob/master/torchvision/models/densenet.py<a class="headerlink" href="#name-densenet-models-on-imagenet-singa-version-1-1-1-singa-commit-license-https-github-com-pytorch-vision-blob-master-torchvision-models-densenet-py" title="Permalink to this headline">¶</a></h1>
-</div>
-<div class="section" id="image-classification-using-densenet">
+--><div class="section" id="image-classification-using-densenet">
 <h1>Image Classification using DenseNet<a class="headerlink" href="#image-classification-using-densenet" title="Permalink to this headline">¶</a></h1>
 <p>In this example, we convert DenseNet on <a class="reference external" href="https://github.com/pytorch/vision/blob/master/torchvision/models/densenet.py">PyTorch</a>
 to SINGA for image classification.</p>
@@ -280,19 +242,19 @@ to SINGA for image classification.</p>
 <h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first">Download one parameter checkpoint file (see below) and the synset word file of ImageNet into this folder, e.g.,</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ wget https://s3-ap-southeast-1.amazonaws.com/dlfile/densenet/densenet-121.tar.gz
+<div class="highlight-default"><div class="highlight"><pre><span></span>  $ wget https://s3-ap-southeast-1.amazonaws.com/dlfile/densenet/densenet-121.tar.gz
   $ wget https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/synset_words.txt
   $ tar xvf densenet-121.tar.gz
 </pre></div>
 </div>
 </li>
 <li><p class="first">Usage</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ python serve.py -h
+<div class="highlight-default"><div class="highlight"><pre><span></span>  $ python serve.py -h
 </pre></div>
 </div>
 </li>
 <li><p class="first">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  # use cpu
+<div class="highlight-default"><div class="highlight"><pre><span></span>  # use cpu
   $ python serve.py --use_cpu --parameter_file densenet-121.pickle --depth 121 &amp;
   # use gpu
   $ python serve.py --parameter_file densenet-121.pickle --depth 121 &amp;
@@ -302,7 +264,7 @@ to SINGA for image classification.</p>
 <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/densenet/densenet-121.tar.gz">121</a>, <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/densenet/densenet-169.tar.gz">169</a>, <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/densenet/densenet-201.tar.gz">201</a>, <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/densenet/densenet-161.tar.gz">161</a></p>
 </li>
 <li><p class="first">Submit images for classification</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ curl -i -F image=@image1.jpg http://localhost:9999/api
+<div class="highlight-default"><div class="highlight"><pre><span></span>  $ curl -i -F image=@image1.jpg http://localhost:9999/api
   $ curl -i -F image=@image2.jpg http://localhost:9999/api
   $ curl -i -F image=@image3.jpg http://localhost:9999/api
 </pre></div>
@@ -315,7 +277,7 @@ to SINGA for image classification.</p>
 <h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
 <p>The parameter files were converted from the pytorch via the convert.py program.</p>
 <p>Usage:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python convert.py -h
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python convert.py -h
 </pre></div>
 </div>
 </div>
@@ -329,7 +291,7 @@ to SINGA for image classification.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../googlenet/README.html" class="btn btn-neutral float-right" title="name: GoogleNet on ImageNet SINGA version: 1.0.1 SINGA commit: 8c990f7da2de220e8a012c6a8ecc897dc7532744 parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/bvlc_googlenet.tar.gz parameter_sha1: 0a88e8948b1abca3badfd8d090d6be03f8d7655d license: unrestricted https://github.com/BVLC/caffe/tree/master/models/bvlc_googlenet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../googlenet/README.html" class="btn btn-neutral float-right" title="Image Classification using GoogleNet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../alexnet/README.html" class="btn btn-neutral float-left" title="Train AlexNet over ImageNet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

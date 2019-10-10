@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -227,7 +236,7 @@
 <h2>Python API<a class="headerlink" href="#python-api" title="Permalink to this headline">¶</a></h2>
 <p>普遍使用的参数初始化方法（tensor对象）。</p>
 <p>示例用法：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">tensor</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">tensor</span>
 <span class="kn">from</span> <span class="nn">singa</span> <span class="kn">import</span> <span class="n">initializer</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">Tensor</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -241,8 +250,8 @@
 <p>按照指定均匀分布对输入tensor初始化。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>fan_in (int)</strong> – 对于卷积层权重tensor，fan_in = nb_channel * kh * kw;对于全连接层，fan_in = input_feature_length</p></li>
-<li><p><strong>fan_out (int)</strong> – 对于卷积层权重tensor，fan_out = nb_filter * kh * kw;对于全连接层，fan_out = output_feature_length</p></li>
+<li><strong>fan_in (int)</strong> – 对于卷积层权重tensor，fan_in = nb_channel * kh * kw;对于全连接层，fan_in = input_feature_length</li>
+<li><strong>fan_out (int)</strong> – 对于卷积层权重tensor，fan_out = nb_filter * kh * kw;对于全连接层，fan_out = output_feature_length</li>
 </ul>
 <p><strong>参考文献</strong> [Bengio and Glorot 2010]： Understanding the difficulty of training deep feedforward neuralnetworks.</p>
 </div>
@@ -252,8 +261,8 @@
 <p>按照指定高斯分布对输入tensor初始化。</p>
 <p><strong>参数：</strong></p>
 <ul class="simple">
-<li><p><strong>fan_in (int)</strong> – 对于卷积层权重tensor，fan_in = nb_channel * kh * kw;对于全连接层，fan_in = input_feature_length</p></li>
-<li><p><strong>fan_out (int)</strong> – 对于卷积层权重tensor，fan_out = nb_filter * kh * kw;对于全连接层，fan_out = output_feature_length</p></li>
+<li><strong>fan_in (int)</strong> – 对于卷积层权重tensor，fan_in = nb_channel * kh * kw;对于全连接层，fan_in = input_feature_length</li>
+<li><strong>fan_out (int)</strong> – 对于卷积层权重tensor，fan_out = nb_filter * kh * kw;对于全连接层，fan_out = output_feature_length</li>
 </ul>
 <p><strong>参考文献</strong> Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun: Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification</p>
 <hr class="docutils" />

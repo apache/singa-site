@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>name: Resnets on ImageNet SINGA version: 1.1 SINGA commit: 45ec92d8ffc1fa1385a9307fdf07e21da939ee2f parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-18.tar.gz license: Apache V2, https://github.com/facebook/fb.resnet.torch/blob/master/LICENSE &mdash; incubator-singa 2.0.0 documentation</title>
+  <title>Image Classification using Residual Networks &mdash; incubator-singa 2.0.0 documentation</title>
   
 
   
@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
 
@@ -36,6 +45,8 @@
   <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Image Classification using VGG" href="../vgg/README.html" />
+    <link rel="prev" title="Image Classification using Inception V4" href="../inception/README.html" />
     <link href="../../../../_static/style.css" rel="stylesheet" type="text/css">
     <!--link href="../../../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -98,16 +109,38 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Documentation</a></li>
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../software_stack.html">Software Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tensor.html">Tensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../autograd.html">Autograd in Singa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../onnx.html">ONNX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmark.html">Benchmark for Distributed training</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">Model Zoo</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../cifar10/README.html">Train CNN over Cifar-10</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../char-rnn/README.html">Train Char-RNN over plain text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnist/README.html">Train a RBM model against MNIST dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../alexnet/README.html">Train AlexNet over ImageNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../densenet/README.html">Image Classification using DenseNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../googlenet/README.html">Image Classification using GoogleNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../inception/README.html">Image Classification using Inception V4</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Image Classification using Residual Networks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#instructions">Instructions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#details">Details</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../vgg/README.html">Image Classification using VGG</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../downloads.html">Download SINGA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../security.html">Security</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-to-release.html">How to prepare a release</a></li>
@@ -163,11 +196,11 @@
     
       <li><a href="../../../../index.html">Docs</a> &raquo;</li>
         
-      <li>name: Resnets on ImageNet
-SINGA version: 1.1
-SINGA commit: 45ec92d8ffc1fa1385a9307fdf07e21da939ee2f
-parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-18.tar.gz
-license: Apache V2, https://github.com/facebook/fb.resnet.torch/blob/master/LICENSE</li>
+          <li><a href="../../../index.html">Documentation</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Model Zoo</a> &raquo;</li>
+        
+      <li>Image Classification using Residual Networks</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -184,34 +217,43 @@ license: Apache V2, https://github.com/facebook/fb.resnet.torch/blob/master/LICE
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <hr class="docutils" />
-<div class="section" id="name-resnets-on-imagenet-singa-version-1-1-singa-commit-45ec92d8ffc1fa1385a9307fdf07e21da939ee2f-parameter-url-https-s3-ap-southeast-1-amazonaws-com-dlfile-resnet-resnet-18-tar-gz-license-apache-v2-https-github-com-facebook-fb-resnet-torch-blob-master-license">
-<h1>name: Resnets on ImageNet
-SINGA version: 1.1
-SINGA commit: 45ec92d8ffc1fa1385a9307fdf07e21da939ee2f
-parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-18.tar.gz
-license: Apache V2, https://github.com/facebook/fb.resnet.torch/blob/master/LICENSE<a class="headerlink" href="#name-resnets-on-imagenet-singa-version-1-1-singa-commit-45ec92d8ffc1fa1385a9307fdf07e21da939ee2f-parameter-url-https-s3-ap-southeast-1-amazonaws-com-dlfile-resnet-resnet-18-tar-gz-license-apache-v2-https-github-com-facebook-fb-resnet-torch-blob-master-license" title="Permalink to this headline">¶</a></h1>
-</div>
-<div class="section" id="image-classification-using-residual-networks">
+  <!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+--><div class="section" id="image-classification-using-residual-networks">
 <h1>Image Classification using Residual Networks<a class="headerlink" href="#image-classification-using-residual-networks" title="Permalink to this headline">¶</a></h1>
-<p>In this example, we convert Residual Networks trained on <a class="reference external" href="https://github.com/facebook/fb.resnet.torch">Torch</a> to SINGA for image classification.</p>
+<p>In this example, we convert Residual Networks trained on <a class="reference external" href="https://github.com/facebook/fb.resnet.torch">Torch</a> to SINGA for image classification. Tested on [SINGA commit] with the <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-18.tar.gz">parameters pretrained by Torch</a></p>
 <div class="section" id="instructions">
 <h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p>Download one parameter checkpoint file (see below) and the synset word file of ImageNet into this folder, e.g.,</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ wget https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-18.tar.gz
+<li><p class="first">Download one parameter checkpoint file (see below) and the synset word file of ImageNet into this folder, e.g.,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  $ wget https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-18.tar.gz
   $ wget https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/synset_words.txt
   $ tar xvf resnet-18.tar.gz
 </pre></div>
 </div>
 </li>
-<li><p>Usage</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ python serve.py -h
+<li><p class="first">Usage</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  $ python serve.py -h
 </pre></div>
 </div>
 </li>
-<li><p>Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  # use cpu
+<li><p class="first">Example</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  # use cpu
   $ python serve.py --use_cpu --parameter_file resnet-18.pickle --model resnet --depth 18 &amp;
   # use gpu
   $ python serve.py --parameter_file resnet-18.pickle --model resnet --depth 18 &amp;
@@ -219,14 +261,14 @@ license: Apache V2, https://github.com/facebook/fb.resnet.torch/blob/master/LICE
 </div>
 <p>The parameter files for the following model and depth configuration pairs are provided:</p>
 <ul class="simple">
-<li><p>resnet (original resnet), <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-18.tar.gz">18</a>|<a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-34.tar.gz">34</a>|<a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-101.tar.gz">101</a>|<a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-152.tar.gz">152</a></p></li>
-<li><p>addbn (resnet with a batch normalization layer after the addition), <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-50.tar.gz">50</a></p></li>
-<li><p>wrn (wide resnet), <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/wrn-50-2.tar.gz">50</a></p></li>
-<li><p>preact (resnet with pre-activation) <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-200.tar.gz">200</a></p></li>
+<li>resnet (original resnet), <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-18.tar.gz">18</a>|<a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-34.tar.gz">34</a>|<a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-101.tar.gz">101</a>|<a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-152.tar.gz">152</a></li>
+<li>addbn (resnet with a batch normalization layer after the addition), <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-50.tar.gz">50</a></li>
+<li>wrn (wide resnet), <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/wrn-50-2.tar.gz">50</a></li>
+<li>preact (resnet with pre-activation) <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-200.tar.gz">200</a></li>
 </ul>
 </li>
-<li><p>Submit images for classification</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ curl -i -F image=@image1.jpg http://localhost:9999/api
+<li><p class="first">Submit images for classification</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  $ curl -i -F image=@image1.jpg http://localhost:9999/api
   $ curl -i -F image=@image2.jpg http://localhost:9999/api
   $ curl -i -F image=@image3.jpg http://localhost:9999/api
 </pre></div>
@@ -240,7 +282,7 @@ license: Apache V2, https://github.com/facebook/fb.resnet.torch/blob/master/LICE
 <p>The parameter files were extracted from the original <a class="reference external" href="https://github.com/facebook/fb.resnet.torch/tree/master/pretrained">torch files</a> via
 the convert.py program.</p>
 <p>Usage:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python convert.py -h
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python convert.py -h
 </pre></div>
 </div>
 </div>
@@ -251,6 +293,15 @@ the convert.py program.</p>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../vgg/README.html" class="btn btn-neutral float-right" title="Image Classification using VGG" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../inception/README.html" class="btn btn-neutral float-left" title="Image Classification using Inception V4" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

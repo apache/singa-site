@@ -21,11 +21,20 @@
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -289,7 +298,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="docs/layer.html">层(Layer)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="docs/layer.html#python-api">Python API</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#singa-layer-engine-cudnn">singa.layer.engine = ‘cudnn’</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#singa-layer-engine-cudnn">singa.layer.engine = &#8216;cudnn&#8216;</a></li>
 <li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-layer-name-conf-none-kwargs">class singa.layer.Layer(name, conf=None, **kwargs)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="docs/layer.html#setup-in-shapes">setup(in_shapes)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="docs/layer.html#caffe-layer">caffe_layer()</a></li>
@@ -306,21 +315,21 @@
 <li class="toctree-l5"><a class="reference internal" href="docs/layer.html#backward-falg-dy">backward(falg, dy)</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-conv2d-name-nb-kernels-kernel-3-stride-1-border-mode-same-cudnn-prefer-fatest-data-format-nchw-use-bias-true-w-specs-none-b-specs-none-pad-none-input-sample-shape-none">class singa.layer.Conv2D(name, nb_kernels, kernel=3, stride=1, border_mode=’same’, cudnn_prefer=’fatest’, data_format=’NCHW’, use_bias=True, W_specs=None, b_specs=None, pad=None, input_sample_shape=None)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-conv1d-name-nb-kernels-kernel-3-stride-1-border-mode-same-cudnn-prefer-fatest-use-bias-true-w-specs-init-xavier-b-specs-init-constant-value-0-pad-none-input-sample-shape-none">class singa.layer.Conv1D(name, nb_kernels, kernel=3, stride=1, border_mode=’same’, cudnn_prefer=’fatest’, use_bias=True, W_specs={‘init’: ‘Xavier’}, b_specs={‘init’: ‘Constant’, ‘value’: 0}, pad=None, input_sample_shape=None)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-conv2d-name-nb-kernels-kernel-3-stride-1-border-mode-same-cudnn-prefer-fatest-data-format-nchw-use-bias-true-w-specs-none-b-specs-none-pad-none-input-sample-shape-none">class singa.layer.Conv2D(name, nb_kernels, kernel=3, stride=1, border_mode=&#8216;same&#8216;, cudnn_prefer=&#8216;fatest&#8216;, data_format=&#8216;NCHW&#8216;, use_bias=True, W_specs=None, b_specs=None, pad=None, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-conv1d-name-nb-kernels-kernel-3-stride-1-border-mode-same-cudnn-prefer-fatest-use-bias-true-w-specs-init-xavier-b-specs-init-constant-value-0-pad-none-input-sample-shape-none">class singa.layer.Conv1D(name, nb_kernels, kernel=3, stride=1, border_mode=&#8216;same&#8216;, cudnn_prefer=&#8216;fatest&#8216;, use_bias=True, W_specs={&#8216;init&#8216;: &#8216;Xavier&#8216;}, b_specs={&#8216;init&#8216;: &#8216;Constant&#8216;, &#8216;value&#8216;: 0}, pad=None, input_sample_shape=None)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="docs/layer.html#id2">get_output_sample_shape()</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-pooling2d-name-mode-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none">class singa.layer.Pooling2D(name, mode, kernel=3, stride=2, border_mode=’same’, pad=None, data_format=’NCHW’, input_sample_shape=None)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-maxpooling2d-name-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none">class singa.layer.MaxPooling2D(name, kernel=3, stride=2, border_mode=’same’, pad=None, data_format=’NCHW’, input_sample_shape=None)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-avgpooling2d-name-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none">class singa.layer.AvgPooling2D(name, kernel=3, stride=2, border_mode=’same’, pad=None, data_format=’NCHW’, input_sample_shape=None)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-maxpooling1d-name-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none">class singa.layer.MaxPooling1D(name, kernel=3, stride=2, border_mode=’same’, pad=None, data_format=’NCHW’, input_sample_shape=None)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-avgpooling1d-name-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none">class singa.layer.AvgPooling1D(name, kernel=3, stride=2, border_mode=’same’, pad=None, data_format=’NCHW’, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-pooling2d-name-mode-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none">class singa.layer.Pooling2D(name, mode, kernel=3, stride=2, border_mode=&#8216;same&#8216;, pad=None, data_format=&#8216;NCHW&#8216;, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-maxpooling2d-name-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none">class singa.layer.MaxPooling2D(name, kernel=3, stride=2, border_mode=&#8216;same&#8216;, pad=None, data_format=&#8216;NCHW&#8216;, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-avgpooling2d-name-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none">class singa.layer.AvgPooling2D(name, kernel=3, stride=2, border_mode=&#8216;same&#8216;, pad=None, data_format=&#8216;NCHW&#8216;, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-maxpooling1d-name-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none">class singa.layer.MaxPooling1D(name, kernel=3, stride=2, border_mode=&#8216;same&#8216;, pad=None, data_format=&#8216;NCHW&#8216;, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-avgpooling1d-name-kernel-3-stride-2-border-mode-same-pad-none-data-format-nchw-input-sample-shape-none">class singa.layer.AvgPooling1D(name, kernel=3, stride=2, border_mode=&#8216;same&#8216;, pad=None, data_format=&#8216;NCHW&#8216;, input_sample_shape=None)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-batchnormalization-name-momentum-0-9-beta-specs-none-gamma-specs-none-input-sample-shape-none">class singa.layer.BatchNormalization(name, momentum=0.9, beta_specs=None, gamma_specs=None, input_sample_shape=None)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-lrn-name-size-5-alpha-1-beta-0-75-mode-cross-channel-k-1-input-sample-shape-none">class singa.layer.LRN(name, size=5, alpha=1, beta=0.75, mode=’cross_channel’, k=1, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-lrn-name-size-5-alpha-1-beta-0-75-mode-cross-channel-k-1-input-sample-shape-none">class singa.layer.LRN(name, size=5, alpha=1, beta=0.75, mode=&#8216;cross_channel&#8216;, k=1, input_sample_shape=None)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-dense-name-num-output-use-bias-true-w-specs-none-b-specs-none-w-transpose-false-input-sample-shape-none">class singa.layer.Dense(name, num_output, use_bias=True, W_specs=None, b_specs=None, W_transpose=False, input_sample_shape=None)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-dropout-name-p-0-5-input-sample-shape-none">class singa.layer.Dropout(name, p=0.5, input_sample_shape=None)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-activation-name-mode-relu-input-sample-shape-none">class singa.layer.Activation(name, mode=’relu’, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-activation-name-mode-relu-input-sample-shape-none">class singa.layer.Activation(name, mode=&#8216;relu&#8216;, input_sample_shape=None)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-softmax-name-axis-1-input-sample-shape-none">class singa.layer.Softmax(name, axis=1, input_sample_shape=None)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-flatten-name-axis-1-input-sample-shape-none">class singa.layer.Flatten(name, axis=1, input_sample_shape=None)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-merge-name-input-sample-shape-none">class singa.layer.Merge(name, input_sample_shape=None)</a><ul>
@@ -348,13 +357,13 @@
 <li class="toctree-l5"><a class="reference internal" href="docs/layer.html#backward-flag-grads">backward(flag, grads)</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-rnn-name-hidden-size-rnn-mode-lstm-dropout-0-0-num-stacks-1-input-mode-linear-bidirectional-false-param-specs-none-input-sample-shape-none">class singa.layer.RNN(name, hidden_size, rnn_mode=’lstm’, dropout=0.0, num_stacks=1, input_mode=’linear’, bidirectional=False, param_specs=None, input_sample_shape=None)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-rnn-name-hidden-size-rnn-mode-lstm-dropout-0-0-num-stacks-1-input-mode-linear-bidirectional-false-param-specs-none-input-sample-shape-none">class singa.layer.RNN(name, hidden_size, rnn_mode=&#8216;lstm&#8216;, dropout=0.0, num_stacks=1, input_mode=&#8216;linear&#8216;, bidirectional=False, param_specs=None, input_sample_shape=None)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="docs/layer.html#id10">forward(flag, inputs)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="docs/layer.html#id11">backward(flag, grad)</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-lstm-name-hidden-size-dropout-0-0-num-stacks-1-input-mode-linear-bidirectional-false-param-specs-none-input-sample-shape-none">class singa.layer.LSTM(name, hidden_size, dropout=0.0, num_stacks=1, input_mode=’linear’, bidirectional=False, param_specs=None, input_sample_shape=None)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-gru-name-hidden-size-dropout-0-0-num-stacks-1-input-mode-linear-bidirectional-false-param-specs-none-input-sample-shape-none">class singa.layer.GRU(name, hidden_size, dropout=0.0, num_stacks=1, input_mode=’linear’, bidirectional=False, param_specs=None, input_sample_shape=None)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-lstm-name-hidden-size-dropout-0-0-num-stacks-1-input-mode-linear-bidirectional-false-param-specs-none-input-sample-shape-none">class singa.layer.LSTM(name, hidden_size, dropout=0.0, num_stacks=1, input_mode=&#8216;linear&#8216;, bidirectional=False, param_specs=None, input_sample_shape=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docs/layer.html#class-singa-layer-gru-name-hidden-size-dropout-0-0-num-stacks-1-input-mode-linear-bidirectional-false-param-specs-none-input-sample-shape-none">class singa.layer.GRU(name, hidden_size, dropout=0.0, num_stacks=1, input_mode=&#8216;linear&#8216;, bidirectional=False, param_specs=None, input_sample_shape=None)</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="docs/layer.html#singa-layer-get-layer-list">singa.layer.get_layer_list()</a></li>
 </ul>
 </li>
@@ -469,7 +478,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="docs/data.html">数据(Data)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="docs/data.html#class-singa-data-imagebatchiter-img-list-file-batch-size-image-transform-shuffle-true-delimiter-image-folder-none-capacity-10">class singa.data.ImageBatchIter(img_list_file, batch_size, image_transform, shuffle=True, delimiter=’ ‘, image_folder=None, capacity=10)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/data.html#class-singa-data-imagebatchiter-img-list-file-batch-size-image-transform-shuffle-true-delimiter-image-folder-none-capacity-10">class singa.data.ImageBatchIter(img_list_file, batch_size, image_transform, shuffle=True, delimiter=&#8216; &#8216;, image_folder=None, capacity=10)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="docs/image_tool.html">图像工具</a><ul>

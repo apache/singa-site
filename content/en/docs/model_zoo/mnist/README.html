@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Train a RBM model against MNIST dataset &mdash; incubator-singa 1.1.0 documentation</title>
+  <title>Train a RBM model against MNIST dataset &mdash; incubator-singa 2.0.0 documentation</title>
   
 
   
@@ -18,18 +18,35 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Train AlexNet over ImageNet" href="../imagenet/alexnet/README.html" />
+    <link rel="prev" title="Train Char-RNN over plain text" href="../char-rnn/README.html" />
     <link href="../../../_static/style.css" rel="stylesheet" type="text/css">
     <!--link href="../../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -42,21 +59,16 @@
 	}
     </style>
 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -97,15 +109,37 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../index.html">Documentation</a></li>
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../software_stack.html">Software Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tensor.html">Tensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../autograd.html">Autograd in Singa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../onnx.html">ONNX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../benchmark.html">Benchmark for Distributed training</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Model Zoo</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../cifar10/README.html">Train CNN over Cifar-10</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../char-rnn/README.html">Train Char-RNN over plain text</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Train a RBM model against MNIST dataset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#running-instructions">Running instructions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../imagenet/alexnet/README.html">Train AlexNet over ImageNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../imagenet/densenet/README.html">Image Classification using DenseNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../imagenet/googlenet/README.html">Image Classification using GoogleNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../imagenet/inception/README.html">Image Classification using Inception V4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../imagenet/resnet/README.html">Image Classification using Residual Networks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../imagenet/vgg/README.html">Image Classification using VGG</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../downloads.html">Download SINGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../security.html">Security</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../develop/how-to-release.html">How to prepare a release</a></li>
@@ -161,6 +195,10 @@
     
       <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
+          <li><a href="../../index.html">Documentation</a> &raquo;</li>
+        
+          <li><a href="../index.html">Model Zoo</a> &raquo;</li>
+        
       <li>Train a RBM model against MNIST dataset</li>
     
     
@@ -178,25 +216,42 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="train-a-rbm-model-against-mnist-dataset">
-<span id="train-a-rbm-model-against-mnist-dataset"></span><h1>Train a RBM model against MNIST dataset<a class="headerlink" href="#train-a-rbm-model-against-mnist-dataset" title="Permalink to this headline">¶</a></h1>
+  <!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+--><div class="section" id="train-a-rbm-model-against-mnist-dataset">
+<h1>Train a RBM model against MNIST dataset<a class="headerlink" href="#train-a-rbm-model-against-mnist-dataset" title="Permalink to this headline">¶</a></h1>
 <p>This example is to train an RBM model using the
 MNIST dataset. The RBM model and its hyper-parameters are set following
-<a class="reference external" href="http://www.cs.toronto.edu/~hinton/science.pdf">Hinton’s paper</a></p>
+<a class="reference external" href="http://www.cs.toronto.edu/%7Ehinton/science.pdf">Hinton&#8216;s paper</a></p>
 <div class="section" id="running-instructions">
-<span id="running-instructions"></span><h2>Running instructions<a class="headerlink" href="#running-instructions" title="Permalink to this headline">¶</a></h2>
+<h2>Running instructions<a class="headerlink" href="#running-instructions" title="Permalink to this headline">¶</a></h2>
 <ol>
 <li><p class="first">Download the pre-processed <a class="reference external" href="https://github.com/mnielsen/neural-networks-and-deep-learning/raw/master/data/mnist.pkl.gz">MNIST dataset</a></p>
 </li>
 <li><p class="first">Start the training</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">mnist</span><span class="o">.</span><span class="n">pkl</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">mnist</span><span class="o">.</span><span class="n">pkl</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 </li>
 </ol>
 <p>By default the training code would run on CPU. To run it on a GPU card, please start
 the program with an additional argument</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">mnist</span><span class="o">.</span><span class="n">pkl</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">use_gpu</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">mnist</span><span class="o">.</span><span class="n">pkl</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">use_gpu</span>
 </pre></div>
 </div>
 </div>
@@ -208,12 +263,21 @@ the program with an additional argument</p>
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../imagenet/alexnet/README.html" class="btn btn-neutral float-right" title="Train AlexNet over ImageNet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../char-rnn/README.html" class="btn btn-neutral float-left" title="Train Char-RNN over plain text" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners..
+        &copy; Copyright 2019 The Apache Software Foundation. All rights reserved. Apache SINGA, Apache, the Apache feather logo, and the Apache SINGA project logos are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.
 
     </p>
   </div>
@@ -230,35 +294,16 @@ the program with an additional argument</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'1.1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
+  
 
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
@@ -269,8 +314,8 @@ the program with an additional argument</p>
   <div class="rst-other-versions">
       <dl>
           <dt>Languages</dt>
-          <dd><a href="../../../../en/index.html">English</a></dd>
-          <dd><a href="../../../../zh/index.html">中文</a></dd>
+          <dd><a href="../../.././index.html">English</a></dd>
+          <dd><a href="../../.././zh/index.html">中文</a></dd>
       </dl>
       <dl>
           <dt>Versions</dt>
@@ -281,6 +326,12 @@ the program with an additional argument</p>
   </div>
   <a href="http://incubator.apache.org/"> <img src= "../../../_static/apache.png" style="background-color:white;"> </a>
 
+  <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
+  <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>
+  <a href="http://www.apache.org/foundation/thanks.html" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Thanks</a>
+  <a href="http://www.apache.org/foundation/sponsorship.html" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">Sponsorship</a>
+  <a href="http://www.apache.org/licenses/" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">License</a>
+  <br>
   <a href="https://github.com/apache/incubator-singa" class="fa fa-github" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
   <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
   <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a> 

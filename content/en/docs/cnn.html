@@ -18,26 +18,35 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link href="../../_static/style.css" rel="stylesheet" type="text/css">
-    <!--link href="../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+    <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <style>
 	.fa:hover {
@@ -66,7 +75,7 @@
 
           
             
-            <img src="../../_static/singa.png" class="logo" alt="Logo"/>
+            <img src="../_static/singa.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -81,7 +90,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -196,31 +205,31 @@
     under the License.
 --><div class="section" id="quickstart-cifar10-example">
 <h1>Quickstart - Cifar10 example<a class="headerlink" href="#quickstart-cifar10-example" title="Permalink to this headline">¶</a></h1>
-<p>Convolution neural network (CNN) is a type of feed-forward artificial neural network widely used for image classification. In this example, we will use a deep CNN model to do image classification for the <a class="reference external" href="http://www.cs.toronto.edu/~kriz/cifar.html">CIFAR10 dataset</a>.</p>
+<p>Convolution neural network (CNN) is a type of feed-forward artificial neural network widely used for image classification. In this example, we will use a deep CNN model to do image classification for the <a class="reference external" href="http://www.cs.toronto.edu/%7Ekriz/cifar.html">CIFAR10 dataset</a>.</p>
 <div class="section" id="running-instructions-for-cpp-version">
 <h2>Running instructions for CPP version<a class="headerlink" href="#running-instructions-for-cpp-version" title="Permalink to this headline">¶</a></h2>
 <p>Please refer to <a class="reference external" href="installation.html">Installation</a> page for how to install SINGA. Currently, we CNN requires CUDNN, hence both CUDA and CUDNN should be installed and SINGA should be compiled with CUDA and CUDNN.</p>
 <p>The Cifar10 dataset could be downloaded by running</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># switch to cifar10 directory
+<div class="highlight-default"><div class="highlight"><pre><span></span># switch to cifar10 directory
 $ cd ../examples/cifar10
 # download data for CPP version
 $ python download_data.py bin
 </pre></div>
 </div>
-<p>‘bin’ is for downloading binary version of Cifar10 data.</p>
+<p>&#8216;bin&#8216; is for downloading binary version of Cifar10 data.</p>
 <p>During downloading, you should see the detailed output like</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> Downloading CIFAR10 from http://www.cs.toronto.edu/~kriz/cifar-10-binary.tar.gz
+<div class="highlight-default"><div class="highlight"><pre><span></span> Downloading CIFAR10 from http://www.cs.toronto.edu/~kriz/cifar-10-binary.tar.gz
  The tar file does exist. Extracting it now..
  Finished!
 </pre></div>
 </div>
-<p>Now you have prepared the data for this Cifar10 example, the final step is to execute the <code class="docutils literal notranslate"><span class="pre">run.sh</span></code> script,</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># in SINGA_ROOT/examples/cifar10/
+<p>Now you have prepared the data for this Cifar10 example, the final step is to execute the <code class="docutils literal"><span class="pre">run.sh</span></code> script,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span># in SINGA_ROOT/examples/cifar10/
 $ ./run.sh
 </pre></div>
 </div>
-<p>You should see the detailed output as follows: first read the data files in order, show the statistics of training and testing data, then show the details of neural net structure with some parameter information, finally illustrate the performance details during training and validation process. The number of epochs can be specified in <code class="docutils literal notranslate"><span class="pre">run.sh</span></code> file.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Start</span> <span class="n">training</span>
+<p>You should see the detailed output as follows: first read the data files in order, show the statistics of training and testing data, then show the details of neural net structure with some parameter information, finally illustrate the performance details during training and validation process. The number of epochs can be specified in <code class="docutils literal"><span class="pre">run.sh</span></code> file.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Start</span> <span class="n">training</span>
 <span class="n">Reading</span> <span class="n">file</span> <span class="n">cifar</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">batches</span><span class="o">-</span><span class="nb">bin</span><span class="o">/</span><span class="n">data_batch_1</span><span class="o">.</span><span class="n">bin</span>
 <span class="n">Reading</span> <span class="n">file</span> <span class="n">cifar</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">batches</span><span class="o">-</span><span class="nb">bin</span><span class="o">/</span><span class="n">data_batch_2</span><span class="o">.</span><span class="n">bin</span>
 <span class="n">Reading</span> <span class="n">file</span> <span class="n">cifar</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">batches</span><span class="o">-</span><span class="nb">bin</span><span class="o">/</span><span class="n">data_batch_3</span><span class="o">.</span><span class="n">bin</span>
@@ -261,35 +270,35 @@ $ ./run.sh
 <span class="n">Epoch</span> <span class="mi">3</span><span class="p">,</span> <span class="n">val</span> <span class="n">loss</span> <span class="o">=</span> <span class="mf">1.175346</span><span class="p">,</span> <span class="n">metric</span> <span class="o">=</span> <span class="mf">0.582000</span>
 </pre></div>
 </div>
-<p>The training details are stored in <code class="docutils literal notranslate"><span class="pre">train_perf</span></code> file in the same directory and the validation details in <code class="docutils literal notranslate"><span class="pre">val_perf</span></code> file.</p>
+<p>The training details are stored in <code class="docutils literal"><span class="pre">train_perf</span></code> file in the same directory and the validation details in <code class="docutils literal"><span class="pre">val_perf</span></code> file.</p>
 </div>
 <div class="section" id="running-instructions-for-python-version">
 <h2>Running instructions for Python version<a class="headerlink" href="#running-instructions-for-python-version" title="Permalink to this headline">¶</a></h2>
 <p>To run CNN example in Python version, we need to compile SINGA with Python binding,</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir build &amp;&amp; cd build
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ mkdir build &amp;&amp; cd build
 $ cmake -DUSE_PYTHON=ON ..
 $ make
 </pre></div>
 </div>
 <p>Now download the Cifar10 dataset,</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># switch to cifar10 directory
+<div class="highlight-default"><div class="highlight"><pre><span></span># switch to cifar10 directory
 $ cd ../examples/cifar10
 # download data for Python version
 $ python download_data.py py
 </pre></div>
 </div>
 <p>During downloading, you should see the detailed output like</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> Downloading CIFAR10 from http://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
+<div class="highlight-default"><div class="highlight"><pre><span></span> Downloading CIFAR10 from http://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
  The tar file does exist. Extracting it now..
  Finished!
 </pre></div>
 </div>
-<p>Then execute the <code class="docutils literal notranslate"><span class="pre">train.py</span></code> script to build the model</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python train.py
+<p>Then execute the <code class="docutils literal"><span class="pre">train.py</span></code> script to build the model</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python train.py
 </pre></div>
 </div>
 <p>You should see the output as follows including the details of neural net structure with some parameter information, reading data files, and the performance details during training and testing process.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">32</span><span class="n">L</span><span class="p">,</span> <span class="mi">32</span><span class="n">L</span><span class="p">,</span> <span class="mi">32</span><span class="n">L</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">32</span><span class="n">L</span><span class="p">,</span> <span class="mi">32</span><span class="n">L</span><span class="p">,</span> <span class="mi">32</span><span class="n">L</span><span class="p">)</span>
 <span class="p">(</span><span class="mi">32</span><span class="n">L</span><span class="p">,</span> <span class="mi">16</span><span class="n">L</span><span class="p">,</span> <span class="mi">16</span><span class="n">L</span><span class="p">)</span>
 <span class="p">(</span><span class="mi">32</span><span class="n">L</span><span class="p">,</span> <span class="mi">16</span><span class="n">L</span><span class="p">,</span> <span class="mi">16</span><span class="n">L</span><span class="p">)</span>
 <span class="p">(</span><span class="mi">32</span><span class="n">L</span><span class="p">,</span> <span class="mi">16</span><span class="n">L</span><span class="p">,</span> <span class="mi">16</span><span class="n">L</span><span class="p">)</span>
@@ -331,8 +340,8 @@ $ python download_data.py py
 <span class="n">test</span> <span class="n">loss</span> <span class="o">=</span> <span class="mf">1.211573</span><span class="p">,</span> <span class="n">test</span> <span class="n">accuracy</span> <span class="o">=</span> <span class="mf">0.567600</span>
 </pre></div>
 </div>
-<p>This script will call <code class="docutils literal notranslate"><span class="pre">alexnet.py</span></code> file to build the alexnet model. After the training is finished, SINGA will save the model parameters into a checkpoint file <code class="docutils literal notranslate"><span class="pre">model.bin</span></code> in the same directory. Then we can use this <code class="docutils literal notranslate"><span class="pre">model.bin</span></code> file for prediction.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python predict.py
+<p>This script will call <code class="docutils literal"><span class="pre">alexnet.py</span></code> file to build the alexnet model. After the training is finished, SINGA will save the model parameters into a checkpoint file <code class="docutils literal"><span class="pre">model.bin</span></code> in the same directory. Then we can use this <code class="docutils literal"><span class="pre">model.bin</span></code> file for prediction.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python predict.py
 </pre></div>
 </div>
 </div>
@@ -386,8 +395,8 @@ $ python download_data.py py
   <div class="rst-other-versions">
       <dl>
           <dt>Languages</dt>
-          <dd><a href="../.././index.html">English</a></dd>
-          <dd><a href="../.././zh/index.html">中文</a></dd>
+          <dd><a href=".././index.html">English</a></dd>
+          <dd><a href=".././zh/index.html">中文</a></dd>
       </dl>
       <dl>
           <dt>Versions</dt>
@@ -396,7 +405,7 @@ $ python download_data.py py
       </dl>
 
   </div>
-  <a href="http://incubator.apache.org/"> <img src= "../../_static/apache.png" style="background-color:white;"> </a>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.png" style="background-color:white;"> </a>
 
   <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
   <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>

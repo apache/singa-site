@@ -18,26 +18,35 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link href="../../_static/style.css" rel="stylesheet" type="text/css">
-    <!--link href="../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+    <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <style>
 	.fa:hover {
@@ -66,7 +75,7 @@
 
           
             
-            <img src="../../_static/singa.png" class="logo" alt="Logo"/>
+            <img src="../_static/singa.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -81,7 +90,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -201,53 +210,48 @@
 learning models over large datasets.</p>
 <p>This release includes following features:</p>
 <ul class="simple">
-<li><p>Core components</p>
-<ul>
-<li><p>[SINGA-296] Add sign and to_host function for pysinga tensor module</p></li>
+<li>Core components<ul>
+<li>[SINGA-296] Add sign and to_host function for pysinga tensor module</li>
 </ul>
 </li>
-<li><p>Model components</p>
-<ul>
-<li><p>[SINGA-254] Implement Adam for V1</p></li>
-<li><p>[SINGA-264] Extend the FeedForwardNet to accept multiple inputs</p></li>
-<li><p>[SINGA-267] Add spatial mode in batch normalization layer</p></li>
-<li><p>[SINGA-271] Add Concat and Slice layers</p></li>
-<li><p>[SINGA-275] Add Cross Entropy Loss for multiple labels</p></li>
-<li><p>[SINGA-278] Convert trained caffe parameters to singa</p></li>
-<li><p>[SINGA-287] Add memory size check for cudnn convolution</p></li>
+<li>Model components<ul>
+<li>[SINGA-254] Implement Adam for V1</li>
+<li>[SINGA-264] Extend the FeedForwardNet to accept multiple inputs</li>
+<li>[SINGA-267] Add spatial mode in batch normalization layer</li>
+<li>[SINGA-271] Add Concat and Slice layers</li>
+<li>[SINGA-275] Add Cross Entropy Loss for multiple labels</li>
+<li>[SINGA-278] Convert trained caffe parameters to singa</li>
+<li>[SINGA-287] Add memory size check for cudnn convolution</li>
 </ul>
 </li>
-<li><p>Utility functions and CI</p>
-<ul>
-<li><p>[SINGA-242] Compile all source files into a single library.</p></li>
-<li><p>[SINGA-244] Separating swig interface and python binding files</p></li>
-<li><p>[SINGA-246] Imgtool for image augmentation</p></li>
-<li><p>[SINGA-247] Add windows support for singa</p></li>
-<li><p>[SINGA-251] Implement image loader for pysinga</p></li>
-<li><p>[SINGA-252] Use the snapshot methods to dump and load models for pysinga</p></li>
-<li><p>[SINGA-255] Compile mandatory dependent libaries together with SINGA code</p></li>
-<li><p>[SINGA-259] Add maven pom file for building java classes</p></li>
-<li><p>[SINGA-261] Add version ID into the checkpoint files</p></li>
-<li><p>[SINGA-266] Add Rafiki python toolkits</p></li>
-<li><p>[SINGA-273] Improve license and contributions</p></li>
-<li><p>[SINGA-284] Add python unittest into Jenkins and link static libs into whl file</p></li>
-<li><p>[SINGA-280] Jenkins CI support</p></li>
-<li><p>[SINGA-288] Publish wheel of PySINGA generated by Jenkins to public servers</p></li>
+<li>Utility functions and CI<ul>
+<li>[SINGA-242] Compile all source files into a single library.</li>
+<li>[SINGA-244] Separating swig interface and python binding files</li>
+<li>[SINGA-246] Imgtool for image augmentation</li>
+<li>[SINGA-247] Add windows support for singa</li>
+<li>[SINGA-251] Implement image loader for pysinga</li>
+<li>[SINGA-252] Use the snapshot methods to dump and load models for pysinga</li>
+<li>[SINGA-255] Compile mandatory dependent libaries together with SINGA code</li>
+<li>[SINGA-259] Add maven pom file for building java classes</li>
+<li>[SINGA-261] Add version ID into the checkpoint files</li>
+<li>[SINGA-266] Add Rafiki python toolkits</li>
+<li>[SINGA-273] Improve license and contributions</li>
+<li>[SINGA-284] Add python unittest into Jenkins and link static libs into whl file</li>
+<li>[SINGA-280] Jenkins CI support</li>
+<li>[SINGA-288] Publish wheel of PySINGA generated by Jenkins to public servers</li>
 </ul>
 </li>
-<li><p>Documentation and usability</p>
-<ul>
-<li><p>[SINGA-263] Create Amazon Machine Image</p></li>
-<li><p>[SINGA-268] Add IPython notebooks to the documentation</p></li>
-<li><p>[SINGA-276] Create docker images</p></li>
-<li><p>[SINGA-289] Update SINGA website automatically using Jenkins</p></li>
-<li><p>[SINGA-295] Add an example of image classification using GoogleNet</p></li>
+<li>Documentation and usability<ul>
+<li>[SINGA-263] Create Amazon Machine Image</li>
+<li>[SINGA-268] Add IPython notebooks to the documentation</li>
+<li>[SINGA-276] Create docker images</li>
+<li>[SINGA-289] Update SINGA website automatically using Jenkins</li>
+<li>[SINGA-295] Add an example of image classification using GoogleNet</li>
 </ul>
 </li>
-<li><p>Bugs fixed</p>
-<ul>
-<li><p>[SINGA-245] float as the first operand can not multiply with a tensor object</p></li>
-<li><p>[SINGA-293] Bug from compiling PySINGA on Mac OS X with multiple version of Python</p></li>
+<li>Bugs fixed<ul>
+<li>[SINGA-245] float as the first operand can not multiply with a tensor object</li>
+<li>[SINGA-293] Bug from compiling PySINGA on Mac OS X with multiple version of Python</li>
 </ul>
 </li>
 </ul>
@@ -301,8 +305,8 @@ learning models over large datasets.</p>
   <div class="rst-other-versions">
       <dl>
           <dt>Languages</dt>
-          <dd><a href="../.././index.html">English</a></dd>
-          <dd><a href="../.././zh/index.html">中文</a></dd>
+          <dd><a href=".././index.html">English</a></dd>
+          <dd><a href=".././zh/index.html">中文</a></dd>
       </dl>
       <dl>
           <dt>Versions</dt>
@@ -311,7 +315,7 @@ learning models over large datasets.</p>
       </dl>
 
   </div>
-  <a href="http://incubator.apache.org/"> <img src= "../../_static/apache.png" style="background-color:white;"> </a>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.png" style="background-color:white;"> </a>
 
   <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
   <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>

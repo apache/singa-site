@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -37,7 +46,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Tensor" href="tensor.html" />
-    <link rel="prev" title="Benchmark for Distributed training" href="benchmark.html" />
+    <link rel="prev" title="Software Stack" href="software_stack.html" />
     <link href="../_static/style.css" rel="stylesheet" type="text/css">
     <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -104,26 +113,16 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software_stack.html">Software Stack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="benchmark.html">Benchmark for Distributed training</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Device</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#specific-devices">Specific devices</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-singa.device">Python API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-api">Python API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cpp-api">CPP API</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="layer.html">Layer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="net.html">FeedForward Net</a></li>
-<li class="toctree-l2"><a class="reference internal" href="initializer.html">Initializer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="loss.html">Loss</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metric.html">Metric</a></li>
-<li class="toctree-l2"><a class="reference internal" href="optimizer.html">Optimizer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autograd.html">Autograd in Singa</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data.html">Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="image_tool.html">Image Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snapshot.html">Snapshot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="converter.html">Caffe Converter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="onnx.html">ONNX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="benchmark.html">Benchmark for Distributed training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_zoo/index.html">Model Zoo</a></li>
 </ul>
 </li>
@@ -132,9 +131,6 @@
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/how-to-release.html">How to prepare a release</a></li>
@@ -213,58 +209,21 @@
 <h1>Device<a class="headerlink" href="#device" title="Permalink to this headline">¶</a></h1>
 <p>The Device abstract represents any hardware device with memory and compuation units.
 All [Tensor operations](tensor.html) are scheduled by the resident device for execution.
-Tensor memory is also managed by the device’s memory manager. Therefore, optimization
+Tensor memory is also managed by the device&#8217;s memory manager. Therefore, optimization
 of memory and execution are implemented in the Device class.</p>
 <div class="section" id="specific-devices">
 <h2>Specific devices<a class="headerlink" href="#specific-devices" title="Permalink to this headline">¶</a></h2>
 <p>Currently, SINGA has three Device implmentations,</p>
 <ol class="arabic simple">
-<li><p>CudaGPU for an Nvidia GPU card which runs Cuda code</p></li>
-<li><p>CppCPU for a CPU which runs Cpp code</p></li>
-<li><p>OpenclGPU for a GPU card which runs OpenCL code</p></li>
+<li>CudaGPU for an Nvidia GPU card which runs Cuda code</li>
+<li>CppCPU for a CPU which runs Cpp code</li>
+<li>OpenclGPU for a GPU card which runs OpenCL code</li>
 </ol>
 </div>
-<div class="section" id="module-singa.device">
-<span id="python-api"></span><h2>Python API<a class="headerlink" href="#module-singa.device" title="Permalink to this headline">¶</a></h2>
-<p>This script includes Device class and its subclasses for python users
-to call singa::Device and its methods.</p>
-<p>TODO(wangwei) implement py CudaGPU class.</p>
-<dl class="function">
-<dt id="singa.device.create_cuda_gpus">
-<code class="descclassname">singa.device.</code><code class="descname">create_cuda_gpus</code><span class="sig-paren">(</span><em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.device.create_cuda_gpus" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a list of CudaGPU devices.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>num</strong> (<em>int</em>) – number of device to create.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a list of swig converted CudaGPU devices.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="singa.device.create_cuda_gpus_on">
-<code class="descclassname">singa.device.</code><code class="descname">create_cuda_gpus_on</code><span class="sig-paren">(</span><em>device_ids</em><span class="sig-paren">)</span><a class="headerlink" href="#singa.device.create_cuda_gpus_on" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a list of CudaGPU devices.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>device_ids</strong> (<em>list</em>) – a list of GPU card IDs.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a list of swig converted CudaGPU devices.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="singa.device.get_default_device">
-<code class="descclassname">singa.device.</code><code class="descname">get_default_device</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#singa.device.get_default_device" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the default host device which is a CppCPU device</p>
-</dd></dl>
-
+<div class="section" id="python-api">
+<h2>Python API<a class="headerlink" href="#python-api" title="Permalink to this headline">¶</a></h2>
 <p>The following code provides examples of creating devices:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="k">import</span> <span class="n">device</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">singa</span> <span class="k">import</span> <span class="n">device</span>
 <span class="n">cuda</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">create_cuda_gpu_on</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># use GPU card of ID 0</span>
 <span class="n">host</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">get_default_device</span><span class="p">()</span>  <span class="c1"># get the default host device (a CppCPU)</span>
 <span class="n">ary1</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">create_cuda_gpus</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># create 2 devices, starting from ID 0</span>
@@ -288,7 +247,7 @@ to call singa::Device and its methods.</p>
         <a href="tensor.html" class="btn btn-neutral float-right" title="Tensor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="benchmark.html" class="btn btn-neutral float-left" title="Benchmark for Distributed training" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="software_stack.html" class="btn btn-neutral float-left" title="Software Stack" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

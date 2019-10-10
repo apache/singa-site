@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -106,9 +115,6 @@
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/how-to-release.html">How to prepare a release</a></li>
@@ -121,6 +127,9 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">The SINGA Team</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#mentors">Mentors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#developers">Developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ppmc">PPMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#committers">Committers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contributors">Contributors</a></li>
 </ul>
 </li>
 </ul>
@@ -190,28 +199,25 @@
 <p>A successful project requires many people to play many roles. Some members write code or documentation, while others are valuable as testers, submitting patches and suggestions.</p>
 <div class="section" id="mentors">
 <h2>Mentors<a class="headerlink" href="#mentors" title="Permalink to this headline">¶</a></h2>
-<table class="docutils align-center">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 49%" />
-<col style="width: 51%" />
+<col width="49%" />
+<col width="51%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Name</p></th>
-<th class="head"><p>Email</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Email</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>Daniel Dai</p></td>
-<td><p><a class="reference external" href="mailto:daijy&#37;&#52;&#48;apache&#46;org">daijy<span>&#64;</span>apache<span>&#46;</span>org</a></p></td>
+<tbody valign="top">
+<tr class="row-even"><td>Ted Dunning</td>
+<td><a class="reference external" href="mailto:tdunning&#37;&#52;&#48;apache&#46;org">tdunning<span>&#64;</span>apache<span>&#46;</span>org</a></td>
 </tr>
-<tr class="row-odd"><td><p>Ted Dunning</p></td>
-<td><p><a class="reference external" href="mailto:tdunning&#37;&#52;&#48;apache&#46;org">tdunning<span>&#64;</span>apache<span>&#46;</span>org</a></p></td>
+<tr class="row-odd"><td>Alan Gates</td>
+<td><a class="reference external" href="mailto:gates&#37;&#52;&#48;apache&#46;org">gates<span>&#64;</span>apache<span>&#46;</span>org</a></td>
 </tr>
-<tr class="row-even"><td><p>Alan Gates</p></td>
-<td><p><a class="reference external" href="mailto:gates&#37;&#52;&#48;apache&#46;org">gates<span>&#64;</span>apache<span>&#46;</span>org</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>Thejas Nair</p></td>
-<td><p><a class="reference external" href="mailto:thejas&#37;&#52;&#48;apache&#46;org">thejas<span>&#64;</span>apache<span>&#46;</span>org</a></p></td>
+<tr class="row-even"><td>Thejas Nair</td>
+<td><a class="reference external" href="mailto:thejas&#37;&#52;&#48;apache&#46;org">thejas<span>&#64;</span>apache<span>&#46;</span>org</a></td>
 </tr>
 </tbody>
 </table>
@@ -219,98 +225,141 @@
 <div class="section" id="developers">
 <h2>Developers<a class="headerlink" href="#developers" title="Permalink to this headline">¶</a></h2>
 <p>The SINGA community has developers mainly from National University of Singapore, Zhejiang University, NetEase, Osaka University, yzBigData, etc.</p>
-<table class="docutils align-center">
+</div>
+<div class="section" id="ppmc">
+<h2>PPMC<a class="headerlink" href="#ppmc" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 32%" />
-<col style="width: 47%" />
+<col width="20%" />
+<col width="32%" />
+<col width="47%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Name</p></th>
-<th class="head"><p>Email</p></th>
-<th class="head"><p>Organization</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Email</th>
+<th class="head">Organization</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>Gang Chen</p></td>
-<td><p><a class="reference external" href="mailto:cg&#37;&#52;&#48;zju&#46;edu&#46;cn">cg<span>&#64;</span>zju<span>&#46;</span>edu<span>&#46;</span>cn</a></p></td>
-<td><p>Zhejiang University</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>Gang Chen</td>
+<td><a class="reference external" href="mailto:cg&#37;&#52;&#48;apache&#46;org">cg<span>&#64;</span>apache<span>&#46;</span>org</a></td>
+<td>Zhejiang University</td>
 </tr>
-<tr class="row-odd"><td><p>Haibo Chen</p></td>
-<td><p><a class="reference external" href="mailto:hzchenhaibo&#37;&#52;&#48;corp&#46;netease&#46;com">hzchenhaibo<span>&#64;</span>corp<span>&#46;</span>netease<span>&#46;</span>com</a></p></td>
-<td><p>NetEase</p></td>
+<tr class="row-odd"><td>Anh Dinh</td>
+<td><a class="reference external" href="mailto:dinhtta&#37;&#52;&#48;apache&#46;org">dinhtta<span>&#64;</span>apache<span>&#46;</span>org</a></td>
+<td>Singapore University of Technology and Design</td>
 </tr>
-<tr class="row-even"><td><p>Anh Dinh</p></td>
-<td><p><a class="reference external" href="mailto:dinhtta&#37;&#52;&#48;apache&#46;org">dinhtta<span>&#64;</span>apache<span>&#46;</span>org</a></p></td>
-<td><p>National University of Singapore</p></td>
+<tr class="row-even"><td>Jinyang Gao</td>
+<td><a class="reference external" href="mailto:jinyang&#37;&#52;&#48;apache&#46;org">jinyang<span>&#64;</span>apache<span>&#46;</span>org</a></td>
+<td>DAMO Academy, Alibaba Group</td>
 </tr>
-<tr class="row-odd"><td><p>Jinyang Gao</p></td>
-<td><p><a class="reference external" href="mailto:jinyang&#37;&#52;&#48;apache&#46;org">jinyang<span>&#64;</span>apache<span>&#46;</span>org</a></p></td>
-<td><p>National University of Singapore</p></td>
+<tr class="row-odd"><td>Zhaojing Luo</td>
+<td><a class="reference external" href="mailto:zhaojing&#37;&#52;&#48;apache&#46;org">zhaojing<span>&#64;</span>apache<span>&#46;</span>org</a></td>
+<td>National University of Singapore</td>
 </tr>
-<tr class="row-even"><td><p>Xin Ji</p></td>
-<td><p><a class="reference external" href="mailto:jixin&#37;&#52;&#48;comp&#46;nus&#46;edu&#46;sg">jixin<span>&#64;</span>comp<span>&#46;</span>nus<span>&#46;</span>edu<span>&#46;</span>sg</a></p></td>
-<td><p>National University of Singapore</p></td>
+<tr class="row-even"><td>Beng Chin Ooi</td>
+<td><a class="reference external" href="mailto:ooibc&#37;&#52;&#48;apache&#46;org">ooibc<span>&#64;</span>apache<span>&#46;</span>org</a></td>
+<td>National University of Singapore</td>
 </tr>
-<tr class="row-odd"><td><p>Chonho Lee</p></td>
-<td><p><a class="reference external" href="mailto:chonho&#37;&#52;&#48;gmail&#46;com">chonho<span>&#64;</span>gmail<span>&#46;</span>com</a></p></td>
-<td><p>Osaka University</p></td>
+<tr class="row-odd"><td>Kian-Lee Tan</td>
+<td><a class="reference external" href="mailto:tankianlee&#37;&#52;&#48;apache&#46;org">tankianlee<span>&#64;</span>apache<span>&#46;</span>org</a></td>
+<td>National University of Singapore</td>
 </tr>
-<tr class="row-even"><td><p>Zhaojing Luo</p></td>
-<td><p><a class="reference external" href="mailto:zhaojing&#37;&#52;&#48;apache&#46;org">zhaojing<span>&#64;</span>apache<span>&#46;</span>org</a></p></td>
-<td><p>National University of Singapore</p></td>
+<tr class="row-even"><td>Sheng Wang</td>
+<td><a class="reference external" href="mailto:wangsh&#37;&#52;&#48;apache&#46;org">wangsh<span>&#64;</span>apache<span>&#46;</span>org</a></td>
+<td>DAMO Academy, Alibaba Group</td>
 </tr>
-<tr class="row-odd"><td><p>Beng Chin Ooi</p></td>
-<td><p><a class="reference external" href="mailto:ooibc&#37;&#52;&#48;comp&#46;nus&#46;edu&#46;sg">ooibc<span>&#64;</span>comp<span>&#46;</span>nus<span>&#46;</span>edu<span>&#46;</span>sg</a></p></td>
-<td><p>National University of Singapore</p></td>
+<tr class="row-odd"><td>Wei Wang</td>
+<td><a class="reference external" href="mailto:wangwei&#37;&#52;&#48;apache&#46;org">wangwei<span>&#64;</span>apache<span>&#46;</span>org</a></td>
+<td>National University of Singapore</td>
 </tr>
-<tr class="row-even"><td><p>Kian-Lee Tan</p></td>
-<td><p><a class="reference external" href="mailto:tankl&#37;&#52;&#48;apache&#46;org">tankl<span>&#64;</span>apache<span>&#46;</span>org</a></p></td>
-<td><p>National University of Singapore</p></td>
+<tr class="row-even"><td>Zhongle Xie</td>
+<td><a class="reference external" href="mailto:zhongle&#37;&#52;&#48;apache&#46;org">zhongle<span>&#64;</span>apache<span>&#46;</span>org</a></td>
+<td>Hangzhou MZH Technologies</td>
 </tr>
-<tr class="row-odd"><td><p>Anthony K. H. Tung</p></td>
-<td><p><a class="reference external" href="mailto:atung&#37;&#52;&#48;comp&#46;nus&#46;edu&#46;sg">atung<span>&#64;</span>comp<span>&#46;</span>nus<span>&#46;</span>edu<span>&#46;</span>sg</a></p></td>
-<td><p>National University of Singapore</p></td>
+<tr class="row-odd"><td>Kaiping Zheng</td>
+<td><a class="reference external" href="mailto:kaiping&#37;&#52;&#48;apache&#46;org">kaiping<span>&#64;</span>apache<span>&#46;</span>org</a></td>
+<td>National University of Singapore</td>
 </tr>
-<tr class="row-even"><td><p>Ji Wang</p></td>
-<td><p><a class="reference external" href="mailto:wangji&#37;&#52;&#48;comp&#46;nus&#46;edu&#46;sg">wangji<span>&#64;</span>comp<span>&#46;</span>nus<span>&#46;</span>edu<span>&#46;</span>sg</a></p></td>
-<td><p>National University of Singapore</p></td>
+<tr class="row-even"><td>Moaz Reyad</td>
+<td><a class="reference external" href="mailto:moaz&#37;&#52;&#48;apache&#46;org">moaz<span>&#64;</span>apache<span>&#46;</span>org</a></td>
+<td>Université Grenoble Alpes</td>
 </tr>
-<tr class="row-odd"><td><p>Sheng Wang</p></td>
-<td><p><a class="reference external" href="mailto:wangsh&#37;&#52;&#48;apache&#46;org">wangsh<span>&#64;</span>apache<span>&#46;</span>org</a></p></td>
-<td><p>National University of Singapore</p></td>
+</tbody>
+</table>
+</div>
+<div class="section" id="committers">
+<h2>Committers<a class="headerlink" href="#committers" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="32%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Email</th>
+<th class="head">Organization</th>
 </tr>
-<tr class="row-even"><td><p>Wei Wang</p></td>
-<td><p><a class="reference external" href="mailto:wangwei&#37;&#52;&#48;apache&#46;org">wangwei<span>&#64;</span>apache<span>&#46;</span>org</a></p></td>
-<td><p>National University of Singapore</p></td>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Chonho Lee</td>
+<td><a class="reference external" href="mailto:chonho&#37;&#52;&#48;apache&#46;org">chonho<span>&#64;</span>apache<span>&#46;</span>org</a></td>
+<td>Osaka University</td>
 </tr>
-<tr class="row-odd"><td><p>Yuan Wang</p></td>
-<td><p><a class="reference external" href="mailto:wangyuan&#37;&#52;&#48;corp&#46;netease&#46;com">wangyuan<span>&#64;</span>corp<span>&#46;</span>netease<span>&#46;</span>com</a></p></td>
-<td><p>NetEase</p></td>
+<tr class="row-odd"><td>Wanqi Xue</td>
+<td><a class="reference external" href="mailto:xuewanqi&#37;&#52;&#48;apache&#46;org">xuewanqi<span>&#64;</span>apache<span>&#46;</span>org</a></td>
+<td>National University of Singapore</td>
 </tr>
-<tr class="row-even"><td><p>Wenfeng Wu</p></td>
-<td><p><a class="reference external" href="mailto:wuwf&#37;&#52;&#48;comp&#46;nus&#46;edu&#46;sg">wuwf<span>&#64;</span>comp<span>&#46;</span>nus<span>&#46;</span>edu<span>&#46;</span>sg</a></p></td>
-<td><p>National University of Singapore</p></td>
+</tbody>
+</table>
+</div>
+<div class="section" id="contributors">
+<h2>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="32%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Email</th>
+<th class="head">Organization</th>
 </tr>
-<tr class="row-odd"><td><p>Zhongle Xie</p></td>
-<td><p><a class="reference external" href="mailto:zhongle&#37;&#52;&#48;apache&#46;org">zhongle<span>&#64;</span>apache<span>&#46;</span>org</a></p></td>
-<td><p>National University of Singapore</p></td>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Haibo Chen</td>
+<td><a class="reference external" href="mailto:hzchenhaibo&#37;&#52;&#48;corp&#46;netease&#46;com">hzchenhaibo<span>&#64;</span>corp<span>&#46;</span>netease<span>&#46;</span>com</a></td>
+<td>NetEase</td>
 </tr>
-<tr class="row-even"><td><p>Meihui Zhang</p></td>
-<td><p><a class="reference external" href="mailto:meihui_zhang&#37;&#52;&#48;sutd&#46;edu&#46;sg">meihui_zhang<span>&#64;</span>sutd<span>&#46;</span>edu<span>&#46;</span>sg</a></p></td>
-<td><p>Singapore University of Technology and Design</p></td>
+<tr class="row-odd"><td>Xin Ji</td>
+<td><a class="reference external" href="mailto:jixin&#37;&#52;&#48;comp&#46;nus&#46;edu&#46;sg">jixin<span>&#64;</span>comp<span>&#46;</span>nus<span>&#46;</span>edu<span>&#46;</span>sg</a></td>
+<td>Visenze, Singapore</td>
 </tr>
-<tr class="row-odd"><td><p>Kaiping Zheng</p></td>
-<td><p><a class="reference external" href="mailto:kaiping&#37;&#52;&#48;apache&#46;org">kaiping<span>&#64;</span>apache<span>&#46;</span>org</a></p></td>
-<td><p>National University of Singapore</p></td>
+<tr class="row-even"><td>Anthony K. H. Tung</td>
+<td><a class="reference external" href="mailto:atung&#37;&#52;&#48;comp&#46;nus&#46;edu&#46;sg">atung<span>&#64;</span>comp<span>&#46;</span>nus<span>&#46;</span>edu<span>&#46;</span>sg</a></td>
+<td>National University of Singapore</td>
 </tr>
-<tr class="row-even"><td><p>Moaz Reyad</p></td>
-<td><p><a class="reference external" href="mailto:moaz&#37;&#52;&#48;apache&#46;org">moaz<span>&#64;</span>apache<span>&#46;</span>org</a></p></td>
-<td><p>University of Genoa</p></td>
+<tr class="row-odd"><td>Ji Wang</td>
+<td><a class="reference external" href="mailto:wangji&#37;&#52;&#48;comp&#46;nus&#46;edu&#46;sg">wangji<span>&#64;</span>comp<span>&#46;</span>nus<span>&#46;</span>edu<span>&#46;</span>sg</a></td>
+<td>Hangzhou MZH Technologies</td>
 </tr>
-<tr class="row-odd"><td><p>Chang Yao</p></td>
-<td><p><a class="reference external" href="mailto:yaochang2009&#37;&#52;&#48;gmail&#46;com">yaochang2009<span>&#64;</span>gmail<span>&#46;</span>com</a></p></td>
-<td><p>yzBigdata</p></td>
+<tr class="row-even"><td>Yuan Wang</td>
+<td><a class="reference external" href="mailto:wangyuan&#37;&#52;&#48;corp&#46;netease&#46;com">wangyuan<span>&#64;</span>corp<span>&#46;</span>netease<span>&#46;</span>com</a></td>
+<td>NetEase</td>
+</tr>
+<tr class="row-odd"><td>Wenfeng Wu</td>
+<td><a class="reference external" href="mailto:wuwf&#37;&#52;&#48;comp&#46;nus&#46;edu&#46;sg">wuwf<span>&#64;</span>comp<span>&#46;</span>nus<span>&#46;</span>edu<span>&#46;</span>sg</a></td>
+<td>Freelancer, China</td>
+</tr>
+<tr class="row-even"><td>Meihui Zhang</td>
+<td><a class="reference external" href="mailto:meihui_zhang&#37;&#52;&#48;sutd&#46;edu&#46;sg">meihui_zhang<span>&#64;</span>sutd<span>&#46;</span>edu<span>&#46;</span>sg</a></td>
+<td>Beijing Institute of Technology</td>
+</tr>
+<tr class="row-odd"><td>Chang Yao</td>
+<td><a class="reference external" href="mailto:yaochang2009&#37;&#52;&#48;gmail&#46;com">yaochang2009<span>&#64;</span>gmail<span>&#46;</span>com</a></td>
+<td>Hangzhou MZH Technologies</td>
 </tr>
 </tbody>
 </table>

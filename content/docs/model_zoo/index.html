@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -37,7 +46,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Train CNN over Cifar-10" href="cifar10/README.html" />
-    <link rel="prev" title="Utils" href="../utils.html" />
+    <link rel="prev" title="Benchmark for Distributed training" href="../benchmark.html" />
     <link href="../../_static/style.css" rel="stylesheet" type="text/css">
     <!--link href="../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -104,32 +113,21 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../software_stack.html">Software Stack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../benchmark.html">Benchmark for Distributed training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tensor.html">Tensor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../layer.html">Layer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../net.html">FeedForward Net</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../initializer.html">Initializer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../loss.html">Loss</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../metric.html">Metric</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../optimizer.html">Optimizer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../autograd.html">Autograd in Singa</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data.html">Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../image_tool.html">Image Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../snapshot.html">Snapshot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../converter.html">Caffe Converter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../onnx.html">ONNX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmark.html">Benchmark for Distributed training</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Model Zoo</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="cifar10/README.html">Train CNN over Cifar-10</a></li>
 <li class="toctree-l3"><a class="reference internal" href="char-rnn/README.html">Train Char-RNN over plain text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mnist/README.html">Train a RBM model against MNIST dataset</a></li>
 <li class="toctree-l3"><a class="reference internal" href="imagenet/alexnet/README.html">Train AlexNet over ImageNet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="imagenet/googlenet/README.html">name: GoogleNet on ImageNet
-SINGA version: 1.0.1
-SINGA commit: 8c990f7da2de220e8a012c6a8ecc897dc7532744
-parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/bvlc_googlenet.tar.gz
-parameter_sha1: 0a88e8948b1abca3badfd8d090d6be03f8d7655d
-license: unrestricted https://github.com/BVLC/caffe/tree/master/models/bvlc_googlenet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="imagenet/googlenet/README.html#image-classification-using-googlenet">Image Classification using GoogleNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imagenet/densenet/README.html">Image Classification using DenseNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imagenet/googlenet/README.html">Image Classification using GoogleNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imagenet/inception/README.html">Image Classification using Inception V4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imagenet/resnet/README.html">Image Classification using Residual Networks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imagenet/vgg/README.html">Image Classification using VGG</a></li>
 </ul>
 </li>
 </ul>
@@ -139,9 +137,6 @@ license: unrestricted https://github.com/BVLC/caffe/tree/master/models/bvlc_goog
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../develop/how-to-release.html">How to prepare a release</a></li>
@@ -234,6 +229,10 @@ license: unrestricted https://github.com/BVLC/caffe/tree/master/models/bvlc_goog
 <li class="toctree-l2"><a class="reference internal" href="char-rnn/README.html#instructions">Instructions</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="mnist/README.html">Train a RBM model against MNIST dataset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mnist/README.html#running-instructions">Running instructions</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="imagenet/alexnet/README.html">Train AlexNet over ImageNet</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="imagenet/alexnet/README.html#instructions">Instructions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="imagenet/alexnet/README.html#compile-singa">Compile SINGA</a></li>
@@ -244,15 +243,29 @@ license: unrestricted https://github.com/BVLC/caffe/tree/master/models/bvlc_goog
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="imagenet/googlenet/README.html">name: GoogleNet on ImageNet
-SINGA version: 1.0.1
-SINGA commit: 8c990f7da2de220e8a012c6a8ecc897dc7532744
-parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/bvlc_googlenet.tar.gz
-parameter_sha1: 0a88e8948b1abca3badfd8d090d6be03f8d7655d
-license: unrestricted https://github.com/BVLC/caffe/tree/master/models/bvlc_googlenet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="imagenet/googlenet/README.html#image-classification-using-googlenet">Image Classification using GoogleNet</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="imagenet/densenet/README.html">Image Classification using DenseNet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imagenet/densenet/README.html#instructions">Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imagenet/densenet/README.html#details">Details</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="imagenet/googlenet/README.html">Image Classification using GoogleNet</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="imagenet/googlenet/README.html#instructions">Instructions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="imagenet/googlenet/README.html#details">Details</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="imagenet/inception/README.html">Image Classification using Inception V4</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imagenet/inception/README.html#instructions">Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imagenet/inception/README.html#details">Details</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="imagenet/resnet/README.html">Image Classification using Residual Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imagenet/resnet/README.html#instructions">Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imagenet/resnet/README.html#details">Details</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="imagenet/vgg/README.html">Image Classification using VGG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imagenet/vgg/README.html#instructions">Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imagenet/vgg/README.html#details">Details</a></li>
 </ul>
 </li>
 </ul>
@@ -270,7 +283,7 @@ license: unrestricted https://github.com/BVLC/caffe/tree/master/models/bvlc_goog
         <a href="cifar10/README.html" class="btn btn-neutral float-right" title="Train CNN over Cifar-10" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../utils.html" class="btn btn-neutral float-left" title="Utils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../benchmark.html" class="btn btn-neutral float-left" title="Benchmark for Distributed training" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -21,11 +21,20 @@
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -37,7 +46,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Security" href="security.html" />
-    <link rel="prev" title="name: GoogleNet on ImageNet SINGA version: 1.0.1 SINGA commit: 8c990f7da2de220e8a012c6a8ecc897dc7532744 parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/bvlc_googlenet.tar.gz parameter_sha1: 0a88e8948b1abca3badfd8d090d6be03f8d7655d license: unrestricted https://github.com/BVLC/caffe/tree/master/models/bvlc_googlenet" href="docs/model_zoo/imagenet/googlenet/README.html" />
+    <link rel="prev" title="Image Classification using VGG" href="docs/model_zoo/imagenet/vgg/README.html" />
     <link href="_static/style.css" rel="stylesheet" type="text/css">
     <!--link href="_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -107,9 +116,6 @@
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="develop/how-to-release.html">How to prepare a release</a></li>
@@ -202,162 +208,155 @@
 --><div class="section" id="download-singa">
 <h1>Download SINGA<a class="headerlink" href="#download-singa" title="Permalink to this headline">¶</a></h1>
 <ul>
-<li><p>To verify the downloaded tar.gz file, download the <a class="reference external" href="https://www.apache.org/dist/incubator/singa/KEYS">KEYS</a> and ASC files and then execute the following commands</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">%</span> <span class="n">gpg</span> <span class="o">--</span><span class="kn">import</span> <span class="nn">KEYS</span>
+<li><p class="first">To verify the downloaded tar.gz file, download the <a class="reference external" href="https://www.apache.org/dist/incubator/singa/KEYS">KEYS</a> and ASC files and then execute the following commands</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  <span class="o">%</span> <span class="n">gpg</span> <span class="o">--</span><span class="kn">import</span> <span class="nn">KEYS</span>
   <span class="o">%</span> <span class="n">gpg</span> <span class="o">--</span><span class="n">verify</span> <span class="n">downloaded_file</span><span class="o">.</span><span class="n">asc</span> <span class="n">downloaded_file</span>
 </pre></div>
 </div>
 <p>You can also check the SHA512 or MD5 values to see if the download is completed.</p>
 </li>
-<li><p>v2.0.0 (20 April 2019):</p>
+<li><p class="first">v2.0.0 (20 April 2019):</p>
 <ul class="simple">
-<li><p><a class="reference external" href="http://www.apache.org/dyn/closer.cgi/incubator/singa/2.0.0/apache-singa-incubating-2.0.0.tar.gz">Apache SINGA 2.0.0</a>
+<li><a class="reference external" href="http://www.apache.org/dyn/closer.cgi/incubator/singa/2.0.0/apache-singa-incubating-2.0.0.tar.gz">Apache SINGA 2.0.0</a>
 <a class="reference external" href="https://www.apache.org/dist/incubator/singa/2.0.0/apache-singa-incubating-2.0.0.tar.gz.sha512">[SHA512]</a>
-<a class="reference external" href="https://www.apache.org/dist/incubator/singa/2.0.0/apache-singa-incubating-2.0.0.tar.gz.asc">[ASC]</a></p></li>
-<li><p><a class="reference external" href="releases/RELEASE_NOTES_2.0.0.html">Release Notes 2.0.0</a></p></li>
-<li><p>New features and major updates,</p>
-<ul>
-<li><p>Enhance autograd (for Convolution networks and recurrent networks)</p></li>
-<li><p>Support ONNX</p></li>
-<li><p>Improve the CPP operations via Intel MKL DNN lib</p></li>
-<li><p>Implement tensor broadcasting</p></li>
-<li><p>Move Docker images under Apache user name</p></li>
-<li><p>Update depdent lib versions in conda-build config</p></li>
+<a class="reference external" href="https://www.apache.org/dist/incubator/singa/2.0.0/apache-singa-incubating-2.0.0.tar.gz.asc">[ASC]</a></li>
+<li><a class="reference external" href="releases/RELEASE_NOTES_2.0.0.html">Release Notes 2.0.0</a></li>
+<li>New features and major updates,<ul>
+<li>Enhance autograd (for Convolution networks and recurrent networks)</li>
+<li>Support ONNX</li>
+<li>Improve the CPP operations via Intel MKL DNN lib</li>
+<li>Implement tensor broadcasting</li>
+<li>Move Docker images under Apache user name</li>
+<li>Update depdent lib versions in conda-build config</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>v1.2.0 (6 June 2018):</p>
+<li><p class="first">v1.2.0 (6 June 2018):</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.2.0/apache-singa-incubating-1.2.0.tar.gz">Apache SINGA 1.2.0</a>
+<li><a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.2.0/apache-singa-incubating-1.2.0.tar.gz">Apache SINGA 1.2.0</a>
 <a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.2.0/apache-singa-incubating-1.2.0.tar.gz.sha512">[SHA512]</a>
-<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.2.0/apache-singa-incubating-1.2.0.tar.gz.asc">[ASC]</a></p></li>
-<li><p><a class="reference external" href="releases/RELEASE_NOTES_1.2.0.html">Release Notes 1.2.0</a></p></li>
-<li><p>New features and major updates,</p>
-<ul>
-<li><p>Implement autograd (currently support MLP model)</p></li>
-<li><p>Upgrade PySinga to support Python 3</p></li>
-<li><p>Improve the Tensor class with the stride field</p></li>
-<li><p>Upgrade cuDNN from V5 to V7</p></li>
-<li><p>Add VGG, Inception V4, ResNet, and DenseNet for ImageNet classification</p></li>
-<li><p>Create alias for conda packages</p></li>
-<li><p>Complete documentation in Chinese</p></li>
-<li><p>Add instructions for running Singa on Windows</p></li>
-<li><p>Update the compilation, CI</p></li>
-<li><p>Fix some bugs</p></li>
+<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.2.0/apache-singa-incubating-1.2.0.tar.gz.asc">[ASC]</a></li>
+<li><a class="reference external" href="releases/RELEASE_NOTES_1.2.0.html">Release Notes 1.2.0</a></li>
+<li>New features and major updates,<ul>
+<li>Implement autograd (currently support MLP model)</li>
+<li>Upgrade PySinga to support Python 3</li>
+<li>Improve the Tensor class with the stride field</li>
+<li>Upgrade cuDNN from V5 to V7</li>
+<li>Add VGG, Inception V4, ResNet, and DenseNet for ImageNet classification</li>
+<li>Create alias for conda packages</li>
+<li>Complete documentation in Chinese</li>
+<li>Add instructions for running Singa on Windows</li>
+<li>Update the compilation, CI</li>
+<li>Fix some bugs</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>v1.1.0 (12 February 2017):</p>
+<li><p class="first">v1.1.0 (12 February 2017):</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.1.0/apache-singa-incubating-1.1.0.tar.gz">Apache SINGA 1.1.0</a>
+<li><a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.1.0/apache-singa-incubating-1.1.0.tar.gz">Apache SINGA 1.1.0</a>
 <a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.1.0/apache-singa-incubating-1.1.0.tar.gz.md5">[MD5]</a>
-<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.1.0/apache-singa-incubating-1.1.0.tar.gz.asc">[ASC]</a></p></li>
-<li><p><a class="reference external" href="releases/RELEASE_NOTES_1.1.0.html">Release Notes 1.1.0</a></p></li>
-<li><p>New features and major updates,</p>
-<ul>
-<li><p>Create Docker images (CPU and GPU versions)</p></li>
-<li><p>Create Amazon AMI for SINGA (CPU version)</p></li>
-<li><p>Integrate with Jenkins for automatically generating Wheel and Debian packages (for installation), and updating the website.</p></li>
-<li><p>Enhance the FeedFowardNet, e.g., multiple inputs and verbose mode for debugging</p></li>
-<li><p>Add Concat and Slice layers</p></li>
-<li><p>Extend CrossEntropyLoss to accept instance with multiple labels</p></li>
-<li><p>Add image_tool.py with image augmentation methods</p></li>
-<li><p>Support model loading and saving via the Snapshot API</p></li>
-<li><p>Compile SINGA source on Windows</p></li>
-<li><p>Compile mandatory dependent libraries together with SINGA code</p></li>
-<li><p>Enable Java binding (basic) for SINGA</p></li>
-<li><p>Add version ID in checkpointing files</p></li>
-<li><p>Add Rafiki toolkit for providing RESTFul APIs</p></li>
-<li><p>Add examples pretrained from Caffe, including GoogleNet</p></li>
+<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.1.0/apache-singa-incubating-1.1.0.tar.gz.asc">[ASC]</a></li>
+<li><a class="reference external" href="releases/RELEASE_NOTES_1.1.0.html">Release Notes 1.1.0</a></li>
+<li>New features and major updates,<ul>
+<li>Create Docker images (CPU and GPU versions)</li>
+<li>Create Amazon AMI for SINGA (CPU version)</li>
+<li>Integrate with Jenkins for automatically generating Wheel and Debian packages (for installation), and updating the website.</li>
+<li>Enhance the FeedFowardNet, e.g., multiple inputs and verbose mode for debugging</li>
+<li>Add Concat and Slice layers</li>
+<li>Extend CrossEntropyLoss to accept instance with multiple labels</li>
+<li>Add image_tool.py with image augmentation methods</li>
+<li>Support model loading and saving via the Snapshot API</li>
+<li>Compile SINGA source on Windows</li>
+<li>Compile mandatory dependent libraries together with SINGA code</li>
+<li>Enable Java binding (basic) for SINGA</li>
+<li>Add version ID in checkpointing files</li>
+<li>Add Rafiki toolkit for providing RESTFul APIs</li>
+<li>Add examples pretrained from Caffe, including GoogleNet</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>v1.0.0 (8 September 2016):</p>
+<li><p class="first">v1.0.0 (8 September 2016):</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.0.0/apache-singa-incubating-1.0.0.tar.gz">Apache SINGA 1.0.0</a>
+<li><a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.0.0/apache-singa-incubating-1.0.0.tar.gz">Apache SINGA 1.0.0</a>
 <a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.0.0/apache-singa-incubating-1.0.0.tar.gz.md5">[MD5]</a>
-<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.0.0/apache-singa-incubating-1.0.0.tar.gz.asc">[ASC]</a></p></li>
-<li><p><a class="reference external" href="releases/RELEASE_NOTES_1.0.0.html">Release Notes 1.0.0</a></p></li>
-<li><p>New features and major updates,</p>
-<ul>
-<li><p>Tensor abstraction for supporting more machine learning models.</p></li>
-<li><p>Device abstraction for running on different hardware devices, including CPU, (Nvidia/AMD) GPU and FPGA (to be tested in later versions).</p></li>
-<li><p>Replace GNU autotool with cmake for compilation.</p></li>
-<li><p>Support Mac OS</p></li>
-<li><p>Improve Python binding, including installation and programming</p></li>
-<li><p>More deep learning models, including VGG and ResNet</p></li>
-<li><p>More IO classes for reading/writing files and encoding/decoding data</p></li>
-<li><p>New network communication components directly based on Socket.</p></li>
-<li><p>Cudnn V5 with Dropout and RNN layers.</p></li>
-<li><p>Replace website building tool from maven to Sphinx</p></li>
-<li><p>Integrate Travis-CI</p></li>
+<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/1.0.0/apache-singa-incubating-1.0.0.tar.gz.asc">[ASC]</a></li>
+<li><a class="reference external" href="releases/RELEASE_NOTES_1.0.0.html">Release Notes 1.0.0</a></li>
+<li>New features and major updates,<ul>
+<li>Tensor abstraction for supporting more machine learning models.</li>
+<li>Device abstraction for running on different hardware devices, including CPU, (Nvidia/AMD) GPU and FPGA (to be tested in later versions).</li>
+<li>Replace GNU autotool with cmake for compilation.</li>
+<li>Support Mac OS</li>
+<li>Improve Python binding, including installation and programming</li>
+<li>More deep learning models, including VGG and ResNet</li>
+<li>More IO classes for reading/writing files and encoding/decoding data</li>
+<li>New network communication components directly based on Socket.</li>
+<li>Cudnn V5 with Dropout and RNN layers.</li>
+<li>Replace website building tool from maven to Sphinx</li>
+<li>Integrate Travis-CI</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>v0.3.0 (20 April 2016):</p>
+<li><p class="first">v0.3.0 (20 April 2016):</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.3.0/apache-singa-incubating-0.3.0.tar.gz">Apache SINGA 0.3.0</a>
+<li><a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.3.0/apache-singa-incubating-0.3.0.tar.gz">Apache SINGA 0.3.0</a>
 <a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.3.0/apache-singa-incubating-0.3.0.tar.gz.md5">[MD5]</a>
-<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.3.0/apache-singa-incubating-0.3.0.tar.gz.asc">[ASC]</a></p></li>
-<li><p><a class="reference external" href="releases/RELEASE_NOTES_0.3.0.html">Release Notes 0.3.0</a></p></li>
-<li><p>New features and major updates,</p>
-<ul>
-<li><p><a class="reference external" href="v0.3.0/gpu.html">Training on GPU cluster</a> enables training of deep learning models over a GPU cluster.</p></li>
-<li><p><a class="reference external" href="v0.3.0/python.html">Python wrapper improvement</a> makes it easy to configure the job, including neural net and SGD algorithm.</p></li>
-<li><p><a class="reference external" href="v0.3.0/updater.html">New SGD updaters</a> are added, including Adam, AdaDelta and AdaMax.</p></li>
-<li><p><a class="reference external" href="v0.3.0/installation.html">Installation</a> has fewer dependent libraries for single node training.</p></li>
-<li><p>Heterogeneous training with CPU and GPU.</p></li>
-<li><p>Support cuDNN V4.</p></li>
-<li><p>Data prefetching.</p></li>
-<li><p>Fix some bugs.</p></li>
+<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.3.0/apache-singa-incubating-0.3.0.tar.gz.asc">[ASC]</a></li>
+<li><a class="reference external" href="releases/RELEASE_NOTES_0.3.0.html">Release Notes 0.3.0</a></li>
+<li>New features and major updates,<ul>
+<li><a class="reference external" href="v0.3.0/gpu.html">Training on GPU cluster</a> enables training of deep learning models over a GPU cluster.</li>
+<li><a class="reference external" href="v0.3.0/python.html">Python wrapper improvement</a> makes it easy to configure the job, including neural net and SGD algorithm.</li>
+<li><a class="reference external" href="v0.3.0/updater.html">New SGD updaters</a> are added, including Adam, AdaDelta and AdaMax.</li>
+<li><a class="reference external" href="v0.3.0/installation.html">Installation</a> has fewer dependent libraries for single node training.</li>
+<li>Heterogeneous training with CPU and GPU.</li>
+<li>Support cuDNN V4.</li>
+<li>Data prefetching.</li>
+<li>Fix some bugs.</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>v0.2.0 (14 January 2016):</p>
+<li><p class="first">v0.2.0 (14 January 2016):</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.2.0/apache-singa-incubating-0.2.0.tar.gz">Apache SINGA 0.2.0</a>
+<li><a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.2.0/apache-singa-incubating-0.2.0.tar.gz">Apache SINGA 0.2.0</a>
 <a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.2.0/apache-singa-incubating-0.2.0.tar.gz.md5">[MD5]</a>
-<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.2.0/apache-singa-incubating-0.2.0.tar.gz.asc">[ASC]</a></p></li>
-<li><p><a class="reference external" href="releases/RELEASE_NOTES_0.2.0.html">Release Notes 0.2.0</a></p></li>
-<li><p>New features and major updates,</p>
-<ul>
-<li><p><a class="reference external" href="v0.2.0/gpu.html">Training on GPU</a> enables training of complex models on a single node with multiple GPU cards.</p></li>
-<li><p><a class="reference external" href="v0.2.0/hybrid.html">Hybrid neural net partitioning</a> supports data and model parallelism at the same time.</p></li>
-<li><p><a class="reference external" href="v0.2.0/python.html">Python wrapper</a> makes it easy to configure the job, including neural net and SGD algorithm.</p></li>
-<li><p><a class="reference external" href="v0.2.0/general-rnn.html">RNN model and BPTT algorithm</a> are implemented to support applications based on RNN models, e.g., GRU.</p></li>
-<li><p><a class="reference external" href="v0.2.0/distributed-training.html">Cloud software integration</a> includes Mesos, Docker and HDFS.</p></li>
-<li><p>Visualization of neural net structure and layer information, which is helpful for debugging.</p></li>
-<li><p>Linear algebra functions and random functions against Blobs and raw data pointers.</p></li>
-<li><p>New layers, including SoftmaxLayer, ArgSortLayer, DummyLayer, RNN layers and cuDNN layers.</p></li>
-<li><p>Update Layer class to carry multiple data/grad Blobs.</p></li>
-<li><p>Extract features and test performance for new data by loading previously trained model parameters.</p></li>
-<li><p>Add Store class for IO operations.</p></li>
+<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/0.2.0/apache-singa-incubating-0.2.0.tar.gz.asc">[ASC]</a></li>
+<li><a class="reference external" href="releases/RELEASE_NOTES_0.2.0.html">Release Notes 0.2.0</a></li>
+<li>New features and major updates,<ul>
+<li><a class="reference external" href="v0.2.0/gpu.html">Training on GPU</a> enables training of complex models on a single node with multiple GPU cards.</li>
+<li><a class="reference external" href="v0.2.0/hybrid.html">Hybrid neural net partitioning</a> supports data and model parallelism at the same time.</li>
+<li><a class="reference external" href="v0.2.0/python.html">Python wrapper</a> makes it easy to configure the job, including neural net and SGD algorithm.</li>
+<li><a class="reference external" href="v0.2.0/general-rnn.html">RNN model and BPTT algorithm</a> are implemented to support applications based on RNN models, e.g., GRU.</li>
+<li><a class="reference external" href="v0.2.0/distributed-training.html">Cloud software integration</a> includes Mesos, Docker and HDFS.</li>
+<li>Visualization of neural net structure and layer information, which is helpful for debugging.</li>
+<li>Linear algebra functions and random functions against Blobs and raw data pointers.</li>
+<li>New layers, including SoftmaxLayer, ArgSortLayer, DummyLayer, RNN layers and cuDNN layers.</li>
+<li>Update Layer class to carry multiple data/grad Blobs.</li>
+<li>Extract features and test performance for new data by loading previously trained model parameters.</li>
+<li>Add Store class for IO operations.</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>v0.1.0 (8 October 2015):</p>
+<li><p class="first">v0.1.0 (8 October 2015):</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://archive.apache.org/dist/incubator/singa/apache-singa-incubating-0.1.0.tar.gz">Apache SINGA 0.1.0</a>
+<li><a class="reference external" href="https://archive.apache.org/dist/incubator/singa/apache-singa-incubating-0.1.0.tar.gz">Apache SINGA 0.1.0</a>
 <a class="reference external" href="https://archive.apache.org/dist/incubator/singa/apache-singa-incubating-0.1.0.tar.gz.md5">[MD5]</a>
-<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/apache-singa-incubating-0.1.0.tar.gz.asc">[ASC]</a></p></li>
-<li><p><a class="reference external" href="https://console.aws.amazon.com/ec2/v2/home?region=ap-southeast-1#LaunchInstanceWizard:ami=ami-b41001e6">Amazon EC2 image</a></p></li>
-<li><p><a class="reference external" href="releases/RELEASE_NOTES_0.1.0.html">Release Notes 0.1.0</a></p></li>
-<li><p>Major features include,</p>
-<ul>
-<li><p>Installation using GNU build utility</p></li>
-<li><p>Scripts for job management with zookeeper</p></li>
-<li><p>Programming model based on NeuralNet and Layer abstractions.</p></li>
-<li><p>System architecture based on Worker, Server and Stub.</p></li>
-<li><p>Training models from three different model categories, namely, feed-forward models, energy models and RNN models.</p></li>
-<li><p>Synchronous and asynchronous distributed training frameworks using CPU</p></li>
-<li><p>Checkpoint and restore</p></li>
-<li><p>Unit test using gtest</p></li>
+<a class="reference external" href="https://archive.apache.org/dist/incubator/singa/apache-singa-incubating-0.1.0.tar.gz.asc">[ASC]</a></li>
+<li><a class="reference external" href="https://console.aws.amazon.com/ec2/v2/home?region=ap-southeast-1#LaunchInstanceWizard:ami=ami-b41001e6">Amazon EC2 image</a></li>
+<li><a class="reference external" href="releases/RELEASE_NOTES_0.1.0.html">Release Notes 0.1.0</a></li>
+<li>Major features include,<ul>
+<li>Installation using GNU build utility</li>
+<li>Scripts for job management with zookeeper</li>
+<li>Programming model based on NeuralNet and Layer abstractions.</li>
+<li>System architecture based on Worker, Server and Stub.</li>
+<li>Training models from three different model categories, namely, feed-forward models, energy models and RNN models.</li>
+<li>Synchronous and asynchronous distributed training frameworks using CPU</li>
+<li>Checkpoint and restore</li>
+<li>Unit test using gtest</li>
 </ul>
 </li>
 </ul>
@@ -385,7 +384,7 @@ ASF.</p>
         <a href="security.html" class="btn btn-neutral float-right" title="Security" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="docs/model_zoo/imagenet/googlenet/README.html" class="btn btn-neutral float-left" title="name: GoogleNet on ImageNet SINGA version: 1.0.1 SINGA commit: 8c990f7da2de220e8a012c6a8ecc897dc7532744 parameter_url: https://s3-ap-southeast-1.amazonaws.com/dlfile/bvlc_googlenet.tar.gz parameter_sha1: 0a88e8948b1abca3badfd8d090d6be03f8d7655d license: unrestricted https://github.com/BVLC/caffe/tree/master/models/bvlc_googlenet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="docs/model_zoo/imagenet/vgg/README.html" class="btn btn-neutral float-left" title="Image Classification using VGG" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

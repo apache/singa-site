@@ -18,26 +18,35 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
 
   
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link href="../../_static/style.css" rel="stylesheet" type="text/css">
-    <!--link href="../../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+    <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <style>
 	.fa:hover {
@@ -66,7 +75,7 @@
 
           
             
-            <img src="../../_static/singa.png" class="logo" alt="Logo"/>
+            <img src="../_static/singa.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -81,7 +90,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -201,61 +210,56 @@
 learning models over large datasets.</p>
 <p>This release includes following features:</p>
 <ul class="simple">
-<li><p>Core components</p>
-<ul>
-<li><p>[SINGA-290] Upgrade to Python 3</p></li>
-<li><p>[SINGA-341] Added stride functionality to tensors for CPP</p></li>
-<li><p>[SINGA-347] Create a function that supports einsum</p></li>
-<li><p>[SINGA-351] Added stride support and cudnn codes to cuda</p></li>
+<li>Core components<ul>
+<li>[SINGA-290] Upgrade to Python 3</li>
+<li>[SINGA-341] Added stride functionality to tensors for CPP</li>
+<li>[SINGA-347] Create a function that supports einsum</li>
+<li>[SINGA-351] Added stride support and cudnn codes to cuda</li>
 </ul>
 </li>
-<li><p>Model components</p>
-<ul>
-<li><p>[SINGA-300] Add residual networks for imagenet classification</p></li>
-<li><p>[SINGA-312] Rename layer parameters</p></li>
-<li><p>[SINGA-313] Add L2 norm layer</p></li>
-<li><p>[SINGA-315] Reduce memory footprint by Python generator for parameter</p></li>
-<li><p>[SINGA-316] Add SigmoidCrossEntropy</p></li>
-<li><p>[SINGA-324] Extend RNN layer to accept variant seq length across batches</p></li>
-<li><p>[SINGA-326] Add Inception V4 for ImageNet classification</p></li>
-<li><p>[SINGA-328] Add VGG models for ImageNet classification</p></li>
-<li><p>[SINGA-329] Support layer freezing during training (fine-tuning)</p></li>
-<li><p>[SINGA-346] Update cudnn from V5 to V7</p></li>
-<li><p>[SINGA-349] Create layer operations for autograd</p></li>
-<li><p>[SINGA-363] Add DenseNet for Imagenet classification</p></li>
+<li>Model components<ul>
+<li>[SINGA-300] Add residual networks for imagenet classification</li>
+<li>[SINGA-312] Rename layer parameters</li>
+<li>[SINGA-313] Add L2 norm layer</li>
+<li>[SINGA-315] Reduce memory footprint by Python generator for parameter</li>
+<li>[SINGA-316] Add SigmoidCrossEntropy</li>
+<li>[SINGA-324] Extend RNN layer to accept variant seq length across batches</li>
+<li>[SINGA-326] Add Inception V4 for ImageNet classification</li>
+<li>[SINGA-328] Add VGG models for ImageNet classification</li>
+<li>[SINGA-329] Support layer freezing during training (fine-tuning)</li>
+<li>[SINGA-346] Update cudnn from V5 to V7</li>
+<li>[SINGA-349] Create layer operations for autograd</li>
+<li>[SINGA-363] Add DenseNet for Imagenet classification</li>
 </ul>
 </li>
-<li><p>Utility functions and CI</p>
-<ul>
-<li><p>[SINGA-274] Improve Debian packaging with CPack</p></li>
-<li><p>[SINGA-303] Create conda packages</p></li>
-<li><p>[SINGA-337] Add test cases for code</p></li>
-<li><p>[SINGA-348] Support autograd MLP Example</p></li>
-<li><p>[SINGA-345] Update Jenkins and fix bugs in compliation</p></li>
-<li><p>[SINGA-354] Update travis scripts to use conda-build for all platforms</p></li>
-<li><p>[SINGA-358] Consolidated RUN steps and cleaned caches in Docker containers</p></li>
-<li><p>[SINGA-359] Create alias for conda packages</p></li>
+<li>Utility functions and CI<ul>
+<li>[SINGA-274] Improve Debian packaging with CPack</li>
+<li>[SINGA-303] Create conda packages</li>
+<li>[SINGA-337] Add test cases for code</li>
+<li>[SINGA-348] Support autograd MLP Example</li>
+<li>[SINGA-345] Update Jenkins and fix bugs in compliation</li>
+<li>[SINGA-354] Update travis scripts to use conda-build for all platforms</li>
+<li>[SINGA-358] Consolidated RUN steps and cleaned caches in Docker containers</li>
+<li>[SINGA-359] Create alias for conda packages</li>
 </ul>
 </li>
-<li><p>Documentation and usability</p>
-<ul>
-<li><p>[SINGA-223] Fix side navigation menu in the website</p></li>
-<li><p>[SINGA-294] Add instructions to run CUDA unit tests on Windows</p></li>
-<li><p>[SINGA-305] Add jupyter notebooks for SINGA V1 tutorial</p></li>
-<li><p>[SINGA-319] Fix link errors on the index page</p></li>
-<li><p>[SINGA-352] Complete SINGA documentation in Chinese version</p></li>
-<li><p>[SINGA-361] Add git instructions for contributors and committers</p></li>
+<li>Documentation and usability<ul>
+<li>[SINGA-223] Fix side navigation menu in the website</li>
+<li>[SINGA-294] Add instructions to run CUDA unit tests on Windows</li>
+<li>[SINGA-305] Add jupyter notebooks for SINGA V1 tutorial</li>
+<li>[SINGA-319] Fix link errors on the index page</li>
+<li>[SINGA-352] Complete SINGA documentation in Chinese version</li>
+<li>[SINGA-361] Add git instructions for contributors and committers</li>
 </ul>
 </li>
-<li><p>Bugs fixed</p>
-<ul>
-<li><p>[SINGA-330] fix openblas building on i7 7700k</p></li>
-<li><p>[SINGA-331] Fix the bug of tensor division operation</p></li>
-<li><p>[SINGA-350] Error from python3 test</p></li>
-<li><p>[SINGA-356] Error using travis tool to build SINGA on mac os</p></li>
-<li><p>[SINGA-363] Fix some bugs in imagenet examples</p></li>
-<li><p>[SINGA-368] Fix the bug in Cifar10 examples</p></li>
-<li><p>[SINGA-369] the errors of examples in testing</p></li>
+<li>Bugs fixed<ul>
+<li>[SINGA-330] fix openblas building on i7 7700k</li>
+<li>[SINGA-331] Fix the bug of tensor division operation</li>
+<li>[SINGA-350] Error from python3 test</li>
+<li>[SINGA-356] Error using travis tool to build SINGA on mac os</li>
+<li>[SINGA-363] Fix some bugs in imagenet examples</li>
+<li>[SINGA-368] Fix the bug in Cifar10 examples</li>
+<li>[SINGA-369] the errors of examples in testing</li>
 </ul>
 </li>
 </ul>
@@ -309,8 +313,8 @@ learning models over large datasets.</p>
   <div class="rst-other-versions">
       <dl>
           <dt>Languages</dt>
-          <dd><a href="../.././index.html">English</a></dd>
-          <dd><a href="../.././zh/index.html">中文</a></dd>
+          <dd><a href=".././index.html">English</a></dd>
+          <dd><a href=".././zh/index.html">中文</a></dd>
       </dl>
       <dl>
           <dt>Versions</dt>
@@ -319,7 +323,7 @@ learning models over large datasets.</p>
       </dl>
 
   </div>
-  <a href="http://incubator.apache.org/"> <img src= "../../_static/apache.png" style="background-color:white;"> </a>
+  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.png" style="background-color:white;"> </a>
 
   <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
   <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>

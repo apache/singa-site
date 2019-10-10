@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -212,15 +221,15 @@
 <p>张量(<a class="reference external" href="tensor.html">Tensor</a>)和设备(<a class="reference external" href="device.html">Device</a>)是SINGA的两个核心抽象类。 Tensor代表了一个多维数组，存储了模型的变量并且为机器学习算法提供线性代数的操作，这些操作包括矩阵乘法和随机函数。每个Tensor实例被分配在一个设备实例上。 每个Device实例被创建在一台硬件设备上，如GPU或CPU核上。设备类用于管理张量所占用的内存以及在执行单元上执行张量操作，比如CPU线程或CUDA流。</p>
 <p>依赖于硬件和编程语言，SINGA实现了以下特定的设备类：</p>
 <ul class="simple">
-<li><p><strong>CudaGPU</strong> 代表一个Nvidia GPU。 执行单元是CUDA流。</p></li>
-<li><p><strong>CppCPU</strong> 代表一个CPU。 执行单元是CPU线程。</p></li>
-<li><p><strong>OpenclGPU</strong> 代表Nvidia和AMD的GPU。执行单元是CommandQueues。OpenCL和很多硬件设备兼容，比如FPGA和ARM，所以OpenclGPU可以扩展到其他设备上。</p></li>
+<li><strong>CudaGPU</strong> 代表一个Nvidia GPU。 执行单元是CUDA流。</li>
+<li><strong>CppCPU</strong> 代表一个CPU。 执行单元是CPU线程。</li>
+<li><strong>OpenclGPU</strong> 代表Nvidia和AMD的GPU。执行单元是CommandQueues。OpenCL和很多硬件设备兼容，比如FPGA和ARM，所以OpenclGPU可以扩展到其他设备上。</li>
 </ul>
 <p>不同类型的设备使用不同编程语言书写用于张量操作的核函数，</p>
 <ul class="simple">
-<li><p>CppMath (tensor_math_cpp.h) 用Cpp实现了CppCPU的张量操作</p></li>
-<li><p>CudaMath (tensor_math_cuda.h) 用CUDA实现了CudaGPU的张量操作</p></li>
-<li><p>OpenclMath (tensor_math_opencl.h) 用OpenCL实现了OpenclGPU的张量操作</p></li>
+<li>CppMath (tensor_math_cpp.h) 用Cpp实现了CppCPU的张量操作</li>
+<li>CudaMath (tensor_math_cuda.h) 用CUDA实现了CudaGPU的张量操作</li>
+<li>OpenclMath (tensor_math_opencl.h) 用OpenCL实现了OpenclGPU的张量操作</li>
 </ul>
 <p>另外，不同类型的数据，比如float32和float16,可以通过加入相应的张量函数来支持。</p>
 <p>典型地，用户将创建一个Device实例并把它传给多个Tensor实例。 当用户调用Tensor函数时，这些函数会自动唤起对应的实现(CppMath/CudaMath/OpenclMath)。 换句话说，Tensor操作的实现对用户是透明的。</p>
@@ -232,23 +241,23 @@
 <h2>模型<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>在Tensor和Device的抽象化之上，SINGA提供了更高级的类用于机器学习模型。</p>
 <ul class="simple">
-<li><p><a class="reference external" href="layer.html">Layer</a>和它的子类特别用于神经网络。 每个层为向前传递特征和向后传递梯度提供函数支持。 它们将复杂的操作封装起来使用户可以很容易创建神经网络连接一系列层。</p></li>
-<li><p><a class="reference external" href="initializer.html">Initializer</a>和它的子类为初始化模型参数（存储在Tesnor实例中）提供了可变的方法，包括Uniform,Gaussian等等。</p></li>
-<li><p><a class="reference external" href="loss.html">Loss</a>和它的子类定义了训练目标损失函数。与目标损失对应的计算损失值和计算梯度的函数都已被实现。 常见的损失函数包括平方差和交叉熵。</p></li>
-<li><p><a class="reference external" href="metric.html">Metric</a>和它的子类提供了评估模型性能的函数，比如精确度。</p></li>
-<li><p><a class="reference external" href="optimizer.html">Optimizer</a>和它的子类实现了如何利用参数梯度更新模型参数的方法，包括SGD, AdaGrad, RMSProp等等。</p></li>
+<li><a class="reference external" href="layer.html">Layer</a>和它的子类特别用于神经网络。 每个层为向前传递特征和向后传递梯度提供函数支持。 它们将复杂的操作封装起来使用户可以很容易创建神经网络连接一系列层。</li>
+<li><a class="reference external" href="initializer.html">Initializer</a>和它的子类为初始化模型参数（存储在Tesnor实例中）提供了可变的方法，包括Uniform,Gaussian等等。</li>
+<li><a class="reference external" href="loss.html">Loss</a>和它的子类定义了训练目标损失函数。与目标损失对应的计算损失值和计算梯度的函数都已被实现。 常见的损失函数包括平方差和交叉熵。</li>
+<li><a class="reference external" href="metric.html">Metric</a>和它的子类提供了评估模型性能的函数，比如精确度。</li>
+<li><a class="reference external" href="optimizer.html">Optimizer</a>和它的子类实现了如何利用参数梯度更新模型参数的方法，包括SGD, AdaGrad, RMSProp等等。</li>
 </ul>
 </div>
 <div class="section" id="id4">
 <h2>输入输出<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>输入输出包含数据加载，数据预处理和信息传递类。</p>
 <ul class="simple">
-<li><p>Reader和它的子类从磁盘文件加载字符串记录</p></li>
-<li><p>Writer和它的子类将字符串记录写到磁盘文件中</p></li>
-<li><p>Encoder和它的子类将Tensor实例编译成字符串记录</p></li>
-<li><p>Decoder和它的子类将字符串记录解码为Tensor实例</p></li>
-<li><p>Endpoint代表为消息传递提供函数的交互终端</p></li>
-<li><p>Message代表Endpoint实例间的交互消息。它会传递元数据和负载</p></li>
+<li>Reader和它的子类从磁盘文件加载字符串记录</li>
+<li>Writer和它的子类将字符串记录写到磁盘文件中</li>
+<li>Encoder和它的子类将Tensor实例编译成字符串记录</li>
+<li>Decoder和它的子类将字符串记录解码为Tensor实例</li>
+<li>Endpoint代表为消息传递提供函数的交互终端</li>
+<li>Message代表Endpoint实例间的交互消息。它会传递元数据和负载</li>
 </ul>
 </div>
 </div>

@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -36,7 +45,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Benchmark for Distributed training" href="benchmark.html" />
+    <link rel="next" title="Device" href="device.html" />
     <link rel="prev" title="Installation" href="installation.html" />
     <link href="../_static/style.css" rel="stylesheet" type="text/css">
     <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
@@ -109,21 +118,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#io">IO</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="benchmark.html">Benchmark for Distributed training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="layer.html">Layer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="net.html">FeedForward Net</a></li>
-<li class="toctree-l2"><a class="reference internal" href="initializer.html">Initializer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="loss.html">Loss</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metric.html">Metric</a></li>
-<li class="toctree-l2"><a class="reference internal" href="optimizer.html">Optimizer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autograd.html">Autograd in Singa</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data.html">Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="image_tool.html">Image Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snapshot.html">Snapshot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="converter.html">Caffe Converter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="onnx.html">ONNX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="benchmark.html">Benchmark for Distributed training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_zoo/index.html">Model Zoo</a></li>
 </ul>
 </li>
@@ -132,9 +131,6 @@
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/how-to-release.html">How to prepare a release</a></li>
@@ -228,7 +224,7 @@
     under the License.
 --><div class="section" id="software-stack">
 <h1>Software Stack<a class="headerlink" href="#software-stack" title="Permalink to this headline">¶</a></h1>
-<p>SINGA’s software stack includes three major components, namely, core, IO and
+<p>SINGA&#8216;s software stack includes three major components, namely, core, IO and
 model. Figure 1 illustrates these components together with the hardware.
 The core component provides memory management and tensor operations;
 IO has classes for reading (and writing) data from (to) disk and network; The
@@ -250,19 +246,19 @@ tensor operations on its execution units, e.g. CPU threads or CUDA streams.</p>
 <p>Depending on the hardware and the programming language, SINGA have implemented
 the following specific device classes:</p>
 <ul class="simple">
-<li><p><strong>CudaGPU</strong> represents an Nvidia GPU card. The execution units are the CUDA streams.</p></li>
-<li><p><strong>CppCPU</strong> represents a normal CPU. The execution units are the CPU threads.</p></li>
-<li><p><strong>OpenclGPU</strong> represents normal GPU card from both Nvidia and AMD.
+<li><strong>CudaGPU</strong> represents an Nvidia GPU card. The execution units are the CUDA streams.</li>
+<li><strong>CppCPU</strong> represents a normal CPU. The execution units are the CPU threads.</li>
+<li><strong>OpenclGPU</strong> represents normal GPU card from both Nvidia and AMD.
 The execution units are the CommandQueues. Given that OpenCL is compatible with
 many hardware devices, e.g. FPGA and ARM, the OpenclGPU has the potential to be
-extended for other devices.</p></li>
+extended for other devices.</li>
 </ul>
 <p>Different types of devices use different programming languages to write the kernel
 functions for tensor operations,</p>
 <ul class="simple">
-<li><p>CppMath (tensor_math_cpp.h) implements the tensor operations using Cpp for CppCPU</p></li>
-<li><p>CudaMath (tensor_math_cuda.h) implements the tensor operations using CUDA for CudaGPU</p></li>
-<li><p>OpenclMath (tensor_math_opencl.h) implements the tensor operations using OpenCL for OpenclGPU</p></li>
+<li>CppMath (tensor_math_cpp.h) implements the tensor operations using Cpp for CppCPU</li>
+<li>CudaMath (tensor_math_cuda.h) implements the tensor operations using CUDA for CudaGPU</li>
+<li>OpenclMath (tensor_math_opencl.h) implements the tensor operations using OpenCL for OpenclGPU</li>
 </ul>
 <p>In addition, different types of data, such as float32 and float16, could be supported by adding
 the corresponding tensor functions.</p>
@@ -286,31 +282,31 @@ would be described in the <a class="reference external" href="device.html">Devic
 <p>On top of the Tensor and Device abstractions, SINGA provides some higher level
 classes for machine learning modules.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="layer.html">Layer</a> and its subclasses are specific for neural networks. Every layer provides
+<li><a class="reference external" href="layer.html">Layer</a> and its subclasses are specific for neural networks. Every layer provides
 functions for forward propagating features and backward propagating gradients w.r.t the training loss functions.
 They wraps the complex layer operations so that users can easily create neural nets
-by connecting a set of layers.</p></li>
-<li><p><a class="reference external" href="initializer.html">Initializer</a> and its subclasses provide variant methods of initializing
-model parameters (stored in Tensor instances), following Uniform, Gaussian, etc.</p></li>
-<li><p><a class="reference external" href="loss.html">Loss</a> and its subclasses defines the training objective loss functions.
+by connecting a set of layers.</li>
+<li><a class="reference external" href="initializer.html">Initializer</a> and its subclasses provide variant methods of initializing
+model parameters (stored in Tensor instances), following Uniform, Gaussian, etc.</li>
+<li><a class="reference external" href="loss.html">Loss</a> and its subclasses defines the training objective loss functions.
 Both functions of computing the loss values and computing the gradient of the prediction w.r.t the
-objective loss are implemented. Example loss functions include squared error and cross entropy.</p></li>
-<li><p><a class="reference external" href="metric.html">Metric</a> and its subclasses provide the function to measure the
-performance of the model, e.g., the accuracy.</p></li>
-<li><p><a class="reference external" href="optimizer.html">Optimizer</a> and its subclasses implement the methods for updating
-model parameter values using parameter gradients, including SGD, AdaGrad, RMSProp etc.</p></li>
+objective loss are implemented. Example loss functions include squared error and cross entropy.</li>
+<li><a class="reference external" href="metric.html">Metric</a> and its subclasses provide the function to measure the
+performance of the model, e.g., the accuracy.</li>
+<li><a class="reference external" href="optimizer.html">Optimizer</a> and its subclasses implement the methods for updating
+model parameter values using parameter gradients, including SGD, AdaGrad, RMSProp etc.</li>
 </ul>
 </div>
 <div class="section" id="io">
 <h2>IO<a class="headerlink" href="#io" title="Permalink to this headline">¶</a></h2>
 <p>The IO module consists of classes for data loading, data preprocessing and message passing.</p>
 <ul class="simple">
-<li><p>Reader and its subclasses load string records from disk files</p></li>
-<li><p>Writer and its subclasses write string records to disk files</p></li>
-<li><p>Encoder and its subclasses encode Tensor instances into string records</p></li>
-<li><p>Decoder and its subclasses decodes string records into Tensor instances</p></li>
-<li><p>Endpoint represents a communication endpoint which provides functions for passing messages to each other.</p></li>
-<li><p>Message represents communication messages between Endpoint instances. It carries both meta data and payload.</p></li>
+<li>Reader and its subclasses load string records from disk files</li>
+<li>Writer and its subclasses write string records to disk files</li>
+<li>Encoder and its subclasses encode Tensor instances into string records</li>
+<li>Decoder and its subclasses decodes string records into Tensor instances</li>
+<li>Endpoint represents a communication endpoint which provides functions for passing messages to each other.</li>
+<li>Message represents communication messages between Endpoint instances. It carries both meta data and payload.</li>
 </ul>
 </div>
 </div>
@@ -323,7 +319,7 @@ model parameter values using parameter gradients, including SGD, AdaGrad, RMSPro
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="benchmark.html" class="btn btn-neutral float-right" title="Benchmark for Distributed training" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="device.html" class="btn btn-neutral float-right" title="Device" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

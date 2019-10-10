@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -180,182 +189,182 @@
             
   <div class="section" id="id1">
 <h1>开发时间表<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="docutils align-center">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>版本</p></th>
-<th class="head"><p>模块</p></th>
-<th class="head"><p>特性</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">版本</th>
+<th class="head">模块</th>
+<th class="head">特性</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>v0.1 2015 九月</p></td>
-<td><p>神经网络</p></td>
-<td><p>前向传播神经网络, 包括 CNN, MLP</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>v0.1 2015 九月</td>
+<td>神经网络</td>
+<td>前向传播神经网络, 包括 CNN, MLP</td>
 </tr>
-<tr class="row-odd"><td></td>
-<td></td>
-<td><p>类 RBM 模型, 包括 RBM</p></td>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>类 RBM 模型, 包括 RBM</td>
 </tr>
-<tr class="row-even"><td></td>
-<td></td>
-<td><p>循环神经网络, 包括标准 RNN</p></td>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>循环神经网络, 包括标准 RNN</td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p>架构</p></td>
-<td><p>在单节点运行一个工作组 (包括划分)</p></td>
+<tr class="row-odd"><td>&#160;</td>
+<td>架构</td>
+<td>在单节点运行一个工作组 (包括划分)</td>
 </tr>
-<tr class="row-even"><td></td>
-<td></td>
-<td><p>在单节点运行多个工作组, 用 <a class="reference external" href="http://www.eecs.berkeley.edu/~brecht/papers/hogwildTR.pdf">Hogwild</a></p></td>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>在单节点运行多个工作组, 用 <a class="reference external" href="http://www.eecs.berkeley.edu/~brecht/papers/hogwildTR.pdf">Hogwild</a></td>
 </tr>
-<tr class="row-odd"><td></td>
-<td></td>
-<td><p>分布式 Hogwild</p></td>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>分布式 Hogwild</td>
 </tr>
-<tr class="row-even"><td></td>
-<td></td>
-<td><p>跨多节点运行多个工作组 , 如 <a class="reference external" href="http://papers.nips.cc/paper/4687-large-scale-distritbuted-deep-networks">Downpour</a></p></td>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>跨多节点运行多个工作组 , 如 <a class="reference external" href="http://papers.nips.cc/paper/4687-large-scale-distritbuted-deep-networks">Downpour</a></td>
 </tr>
-<tr class="row-odd"><td></td>
-<td></td>
-<td><p>All-Reduce 训练架构如 <a class="reference external" href="http://arxiv.org/abs/1501.02876">DeepImage</a></p></td>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>All-Reduce 训练架构如 <a class="reference external" href="http://arxiv.org/abs/1501.02876">DeepImage</a></td>
 </tr>
-<tr class="row-even"><td></td>
-<td></td>
-<td><p>服务器间负载均衡</p></td>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>服务器间负载均衡</td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p>失败恢复</p></td>
-<td><p>检查点和恢复</p></td>
+<tr class="row-odd"><td>&#160;</td>
+<td>失败恢复</td>
+<td>检查点和恢复</td>
 </tr>
-<tr class="row-even"><td></td>
-<td><p>工具</p></td>
-<td><p>用 GNU 自动工具安装</p></td>
+<tr class="row-even"><td>&#160;</td>
+<td>工具</td>
+<td>用 GNU 自动工具安装</td>
 </tr>
-<tr class="row-odd"><td><p>v0.2 2016 一月</p></td>
-<td><p>神经网络</p></td>
-<td><p>前向传播神经网络, 包括 AlexNet, cuDNN 层, 工具</p></td>
+<tr class="row-odd"><td>v0.2 2016 一月</td>
+<td>神经网络</td>
+<td>前向传播神经网络, 包括 AlexNet, cuDNN 层, 工具</td>
 </tr>
-<tr class="row-even"><td></td>
-<td></td>
-<td><p>循环神经网络, 包括 GRU 层和 BPTT</p></td>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>循环神经网络, 包括 GRU 层和 BPTT</td>
 </tr>
-<tr class="row-odd"><td></td>
-<td></td>
-<td><p>模型划分和混合划分</p></td>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>模型划分和混合划分</td>
 </tr>
-<tr class="row-even"><td></td>
-<td><p>工具</p></td>
-<td><p>融合 Mesos 资源管理</p></td>
+<tr class="row-even"><td>&#160;</td>
+<td>工具</td>
+<td>融合 Mesos 资源管理</td>
 </tr>
-<tr class="row-odd"><td></td>
-<td></td>
-<td><p>准备部署 Docker images</p></td>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>准备部署 Docker images</td>
 </tr>
-<tr class="row-even"><td></td>
-<td></td>
-<td><p>可视化神经网络和调试信息</p></td>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>可视化神经网络和调试信息</td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p>绑定</p></td>
-<td><p>主要组件 Python 绑定</p></td>
+<tr class="row-odd"><td>&#160;</td>
+<td>绑定</td>
+<td>主要组件 Python 绑定</td>
 </tr>
-<tr class="row-even"><td></td>
-<td><p>GPU</p></td>
-<td><p>单节点多个 GPU</p></td>
+<tr class="row-even"><td>&#160;</td>
+<td>GPU</td>
+<td>单节点多个 GPU</td>
 </tr>
-<tr class="row-odd"><td><p>v0.3 2016 四月</p></td>
-<td><p>GPU</p></td>
-<td><p>多个节点, 每个包含多个 GPU</p></td>
+<tr class="row-odd"><td>v0.3 2016 四月</td>
+<td>GPU</td>
+<td>多个节点, 每个包含多个 GPU</td>
 </tr>
-<tr class="row-even"><td></td>
-<td></td>
-<td><p>用 GPU 和 CPU 混合训练  <a class="reference external" href="http://arxiv.org/abs/1504.04343">CcT</a></p></td>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>用 GPU 和 CPU 混合训练  <a class="reference external" href="http://arxiv.org/abs/1504.04343">CcT</a></td>
 </tr>
-<tr class="row-odd"><td></td>
-<td></td>
-<td><p>支持 cuDNN v4</p></td>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>支持 cuDNN v4</td>
 </tr>
-<tr class="row-even"><td></td>
-<td><p>安装</p></td>
-<td><p>删除 ZeroMQ, CZMQ 依赖, 单节点训练 zookeeper</p></td>
+<tr class="row-even"><td>&#160;</td>
+<td>安装</td>
+<td>删除 ZeroMQ, CZMQ 依赖, 单节点训练 zookeeper</td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p>优化器</p></td>
-<td><p>添加新的 SGD 优化器，包括 Adam, AdamMax 和 AdaDelta</p></td>
+<tr class="row-odd"><td>&#160;</td>
+<td>优化器</td>
+<td>添加新的 SGD 优化器，包括 Adam, AdamMax 和 AdaDelta</td>
 </tr>
-<tr class="row-even"><td></td>
-<td><p>绑定</p></td>
-<td><p>增强 Python 绑定训练</p></td>
+<tr class="row-even"><td>&#160;</td>
+<td>绑定</td>
+<td>增强 Python 绑定训练</td>
 </tr>
-<tr class="row-odd"><td><p>v1.0 2016 九月</p></td>
-<td><p>模型抽象</p></td>
-<td><p>Tensor 基于线性代数, 神经网络和随机运算</p></td>
+<tr class="row-odd"><td>v1.0 2016 九月</td>
+<td>模型抽象</td>
+<td>Tensor 基于线性代数, 神经网络和随机运算</td>
 </tr>
-<tr class="row-even"><td></td>
-<td></td>
-<td><p>分布式参数更新优化器</p></td>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>分布式参数更新优化器</td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p>硬件</p></td>
-<td><p>使用 Cuda 和 Cudnn for Nvidia GPU</p></td>
+<tr class="row-odd"><td>&#160;</td>
+<td>硬件</td>
+<td>使用 Cuda 和 Cudnn for Nvidia GPU</td>
 </tr>
-<tr class="row-even"><td></td>
-<td></td>
-<td><p>使用 OpenCL for AMD GPU 及其他设备</p></td>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>使用 OpenCL for AMD GPU 及其他设备</td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p>跨平台</p></td>
-<td><p>从 Linux 扩展到 MacOS</p></td>
+<tr class="row-odd"><td>&#160;</td>
+<td>跨平台</td>
+<td>从 Linux 扩展到 MacOS</td>
 </tr>
-<tr class="row-even"><td></td>
-<td></td>
-<td><p>大型图像模型, 例如, <a class="reference external" href="https://arxiv.org/pdf/1409.1556.pdf">VGG</a> 和 <a class="reference external" href="http://arxiv.org/abs/1512.03385">Residual Net</a></p></td>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>大型图像模型, 例如, <a class="reference external" href="https://arxiv.org/pdf/1409.1556.pdf">VGG</a> 和 <a class="reference external" href="http://arxiv.org/abs/1512.03385">Residual Net</a></td>
 </tr>
-<tr class="row-odd"><td><p>v1.1 2017 一月</p></td>
-<td><p>模型库</p></td>
-<td><p>GoogleNet; 医疗健康模型</p></td>
+<tr class="row-odd"><td>v1.1 2017 一月</td>
+<td>模型库</td>
+<td>GoogleNet; 医疗健康模型</td>
 </tr>
-<tr class="row-even"><td></td>
-<td><p>Caffe 转换器</p></td>
-<td><p>使用 SINGA 训练模型, 从 caffe proto 文件配置</p></td>
+<tr class="row-even"><td>&#160;</td>
+<td>Caffe 转换器</td>
+<td>使用 SINGA 训练模型, 从 caffe proto 文件配置</td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p>模型组件</p></td>
-<td><p>添加 concat 和 slice 层; 接受多个输入网络</p></td>
+<tr class="row-odd"><td>&#160;</td>
+<td>模型组件</td>
+<td>添加 concat 和 slice 层; 接受多个输入网络</td>
 </tr>
-<tr class="row-even"><td></td>
-<td><p>编译和安装</p></td>
-<td><p>Windows 支持</p></td>
+<tr class="row-even"><td>&#160;</td>
+<td>编译和安装</td>
+<td>Windows 支持</td>
 </tr>
-<tr class="row-odd"><td></td>
-<td></td>
-<td><p>通过与 protobuf 和 openblas 一起编译 SINGA 简化安装</p></td>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>通过与 protobuf 和 openblas 一起编译 SINGA 简化安装</td>
 </tr>
-<tr class="row-even"><td></td>
-<td></td>
-<td><p>用 Jenkins 自动生成 python wheel</p></td>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>用 Jenkins 自动生成 python wheel</td>
 </tr>
-<tr class="row-odd"><td></td>
-<td></td>
-<td><p>从 Debian packages 安装 SINGA</p></td>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>从 Debian packages 安装 SINGA</td>
 </tr>
-<tr class="row-even"><td><p>v1.2 2018 六月</p></td>
-<td><p>AutoGrad</p></td>
-<td><p>后向传播 AutoGrad</p></td>
+<tr class="row-even"><td>v1.2 2018 六月</td>
+<td>AutoGrad</td>
+<td>后向传播 AutoGrad</td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p>Python 3</p></td>
-<td><p>PySinga 支持 Python 3</p></td>
+<tr class="row-odd"><td>&#160;</td>
+<td>Python 3</td>
+<td>PySinga 支持 Python 3</td>
 </tr>
-<tr class="row-even"><td></td>
-<td><p>模型</p></td>
-<td><p>添加流行模型, 包括 VGG, ResNet, DenseNet, InceptionNet</p></td>
+<tr class="row-even"><td>&#160;</td>
+<td>模型</td>
+<td>添加流行模型, 包括 VGG, ResNet, DenseNet, InceptionNet</td>
 </tr>
 </tbody>
 </table>

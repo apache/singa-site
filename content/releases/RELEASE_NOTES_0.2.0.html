@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -105,9 +114,6 @@
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/how-to-release.html">How to prepare a release</a></li>
@@ -206,86 +212,76 @@ programming model based on the layer abstraction. SINGA supports a wide variety
 of popular deep learning models.</p>
 <p>This release includes the following <strong>major features</strong>:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="../docs/gpu.html">Training on GPU</a> enables training of complex models on a single node with multiple GPU cards.</p></li>
-<li><p><a class="reference external" href="../docs/hybrid.html">Hybrid neural net partitioning</a> supports data and model parallelism at the same time.</p></li>
-<li><p><a class="reference external" href="../docs/python.html">Python wrapper</a> makes it easy to configure the job, including neural net and SGD algorithm.</p></li>
-<li><p><a class="reference external" href="../docs/general-rnn.html">RNN model and BPTT algorithm</a> are implemented to support applications based on RNN models, e.g., GRU.</p></li>
-<li><p><a class="reference external" href="../docs/distributed-training">Cloud software integration</a> includes Mesos, Docker and HDFS.</p></li>
+<li><a class="reference external" href="../docs/gpu.html">Training on GPU</a> enables training of complex models on a single node with multiple GPU cards.</li>
+<li><a class="reference external" href="../docs/hybrid.html">Hybrid neural net partitioning</a> supports data and model parallelism at the same time.</li>
+<li><a class="reference external" href="../docs/python.html">Python wrapper</a> makes it easy to configure the job, including neural net and SGD algorithm.</li>
+<li><a class="reference external" href="../docs/general-rnn.html">RNN model and BPTT algorithm</a> are implemented to support applications based on RNN models, e.g., GRU.</li>
+<li><a class="reference external" href="../docs/distributed-training">Cloud software integration</a> includes Mesos, Docker and HDFS.</li>
 </ul>
 <p><strong>More details</strong> are listed as follows,</p>
 <ul class="simple">
-<li><p>Programming model</p>
-<ul>
-<li><p>[SINGA-80] New Blob Level and Address Level Math Operation Interface</p></li>
-<li><p>[SINGA-82] Refactor input layers using data store abstraction</p></li>
-<li><p>[SINGA-87] Replace exclude field to include field for layer configuration</p></li>
-<li><p>[SINGA-110] Add Layer member datavec_ and gradvec_</p></li>
-<li><p>[SINGA-120] Implemented GRU and BPTT (BPTTWorker)</p></li>
+<li>Programming model<ul>
+<li>[SINGA-80] New Blob Level and Address Level Math Operation Interface</li>
+<li>[SINGA-82] Refactor input layers using data store abstraction</li>
+<li>[SINGA-87] Replace exclude field to include field for layer configuration</li>
+<li>[SINGA-110] Add Layer member datavec_ and gradvec_</li>
+<li>[SINGA-120] Implemented GRU and BPTT (BPTTWorker)</li>
 </ul>
 </li>
-<li><p>Neuralnet layers</p>
-<ul>
-<li><p>[SINGA-91] Add SoftmaxLayer and ArgSortLayer</p></li>
-<li><p>[SINGA-106] Add dummy layer for test purpose</p></li>
-<li><p>[SINGA-120] Implemented GRU and BPTT (GRULayer and OneHotLayer)</p></li>
+<li>Neuralnet layers<ul>
+<li>[SINGA-91] Add SoftmaxLayer and ArgSortLayer</li>
+<li>[SINGA-106] Add dummy layer for test purpose</li>
+<li>[SINGA-120] Implemented GRU and BPTT (GRULayer and OneHotLayer)</li>
 </ul>
 </li>
-<li><p>GPU training support</p>
-<ul>
-<li><p>[SINGA-100] Implement layers using CUDNN for GPU training</p></li>
-<li><p>[SINGA-104] Add Context Class</p></li>
-<li><p>[SINGA-105] Update GUN make files for compiling cuda related code</p></li>
-<li><p>[SINGA-98] Add Support for AlexNet ImageNet Classification Model</p></li>
+<li>GPU training support<ul>
+<li>[SINGA-100] Implement layers using CUDNN for GPU training</li>
+<li>[SINGA-104] Add Context Class</li>
+<li>[SINGA-105] Update GUN make files for compiling cuda related code</li>
+<li>[SINGA-98] Add Support for AlexNet ImageNet Classification Model</li>
 </ul>
 </li>
-<li><p>Model/Hybrid partition</p>
-<ul>
-<li><p>[SINGA-109] Refine bridge layers</p></li>
-<li><p>[SINGA-111] Add slice, concate and split layers</p></li>
-<li><p>[SINGA-113] Model/Hybrid Partition Support</p></li>
+<li>Model/Hybrid partition<ul>
+<li>[SINGA-109] Refine bridge layers</li>
+<li>[SINGA-111] Add slice, concate and split layers</li>
+<li>[SINGA-113] Model/Hybrid Partition Support</li>
 </ul>
 </li>
-<li><p>Python binding</p>
-<ul>
-<li><p>[SINGA-108] Add Python wrapper to singa</p></li>
+<li>Python binding<ul>
+<li>[SINGA-108] Add Python wrapper to singa</li>
 </ul>
 </li>
-<li><p>Predict-only mode</p>
-<ul>
-<li><p>[SINGA-85] Add functions for extracting features and test new data</p></li>
+<li>Predict-only mode<ul>
+<li>[SINGA-85] Add functions for extracting features and test new data</li>
 </ul>
 </li>
-<li><p>Integrate with third-party tools</p>
-<ul>
-<li><p>[SINGA-11] Start SINGA on Apache Mesos</p></li>
-<li><p>[SINGA-78] Use Doxygen to generate documentation</p></li>
-<li><p>[SINGA-89] Add Docker support</p></li>
+<li>Integrate with third-party tools<ul>
+<li>[SINGA-11] Start SINGA on Apache Mesos</li>
+<li>[SINGA-78] Use Doxygen to generate documentation</li>
+<li>[SINGA-89] Add Docker support</li>
 </ul>
 </li>
-<li><p>Unit test</p>
-<ul>
-<li><p>[SINGA-95] Add make test after building</p></li>
+<li>Unit test<ul>
+<li>[SINGA-95] Add make test after building</li>
 </ul>
 </li>
-<li><p>Other improvment</p>
-<ul>
-<li><p>[SINGA-84] Header Files Rearrange</p></li>
-<li><p>[SINGA-93] Remove the asterisk in the log tcp://169.254.12.152:*:49152</p></li>
-<li><p>[SINGA-94] Move call to google::InitGoogleLogging() from Driver::Init() to main()</p></li>
-<li><p>[SINGA-96] Add Momentum to Cifar10 Example</p></li>
-<li><p>[SINGA-101] Add ll (ls -l) command in .bashrc file when using docker</p></li>
-<li><p>[SINGA-114] Remove short logs in tmp directory</p></li>
-<li><p>[SINGA-115] Print layer debug information in the neural net graph file</p></li>
-<li><p>[SINGA-118] Make protobuf LayerType field id easy to assign</p></li>
-<li><p>[SIGNA-97] Add HDFS Store</p></li>
+<li>Other improvment<ul>
+<li>[SINGA-84] Header Files Rearrange</li>
+<li>[SINGA-93] Remove the asterisk in the log tcp://169.254.12.152:*:49152</li>
+<li>[SINGA-94] Move call to google::InitGoogleLogging() from Driver::Init() to main()</li>
+<li>[SINGA-96] Add Momentum to Cifar10 Example</li>
+<li>[SINGA-101] Add ll (ls -l) command in .bashrc file when using docker</li>
+<li>[SINGA-114] Remove short logs in tmp directory</li>
+<li>[SINGA-115] Print layer debug information in the neural net graph file</li>
+<li>[SINGA-118] Make protobuf LayerType field id easy to assign</li>
+<li>[SIGNA-97] Add HDFS Store</li>
 </ul>
 </li>
-<li><p>Bugs fixed</p>
-<ul>
-<li><p>[SINGA-85] Fix compilation errors in examples</p></li>
-<li><p>[SINGA-90] Miscellaneous trivial bug fixes</p></li>
-<li><p>[SINGA-107] Error from loading pre-trained params for training stacked RBMs</p></li>
-<li><p>[SINGA-116] Fix a bug in InnerProductLayer caused by weight matrix sharing</p></li>
+<li>Bugs fixed<ul>
+<li>[SINGA-85] Fix compilation errors in examples</li>
+<li>[SINGA-90] Miscellaneous trivial bug fixes</li>
+<li>[SINGA-107] Error from loading pre-trained params for training stacked RBMs</li>
+<li>[SINGA-116] Fix a bug in InnerProductLayer caused by weight matrix sharing</li>
 </ul>
 </li>
 </ul>

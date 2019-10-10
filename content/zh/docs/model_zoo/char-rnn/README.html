@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -236,22 +245,24 @@
 <div class="section" id="id1">
 <h2>操作说明<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p>编译并安装SINGA。目前，RNN的实现是基于CuDNN（&gt;=5.05）。.</p></li>
-<li><p>准备数据集。下载<a class="reference external" href="http://cs.stanford.edu/people/karpathy/char-rnn/">内核源代码</a>。其他文本数据也可被使用。</p></li>
-<li><p>开始训练，</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">linux_input</span><span class="o">.</span><span class="n">txt</span>
+<li><p class="first">编译并安装SINGA。目前，RNN的实现是基于CuDNN（&gt;=5.05）。.</p>
+</li>
+<li><p class="first">准备数据集。下载<a class="reference external" href="http://cs.stanford.edu/people/karpathy/char-rnn/">内核源代码</a>。其他文本数据也可被使用。</p>
+</li>
+<li><p class="first">开始训练，</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">linux_input</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 <p>一些超参数可以在命令行参数中设置，</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">h</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">h</span>
 </pre></div>
 </div>
 </li>
-<li><p>通过提供要采样的字符数和种子字符串来从模型中采样字符。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">python</span> <span class="n">sample</span><span class="o">.</span><span class="n">py</span> <span class="s1">&#39;model.bin&#39;</span> <span class="mi">100</span> <span class="o">--</span><span class="n">seed</span> <span class="s1">&#39;#include &lt;std&#39;</span>
+<li><p class="first">通过提供要采样的字符数和种子字符串来从模型中采样字符。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  <span class="n">python</span> <span class="n">sample</span><span class="o">.</span><span class="n">py</span> <span class="s1">&#39;model.bin&#39;</span> <span class="mi">100</span> <span class="o">--</span><span class="n">seed</span> <span class="s1">&#39;#include &lt;std&#39;</span>
 </pre></div>
 </div>
-<p>请用其中一个checkpoint路径替换’model.bin’的路径。</p>
+<p>请用其中一个checkpoint路径替换&#8216;model.bin&#8216;的路径。</p>
 </li>
 </ul>
 </div>

@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -105,9 +114,6 @@
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/how-to-release.html">How to prepare a release</a></li>
@@ -188,65 +194,71 @@
 <p>You may create a folder for building the dependencies.</p>
 <p>The dependencies are:</p>
 <ul>
-<li><dl class="simple">
-<dt>Compiler and IDE</dt><dd><ul class="simple">
-<li><p>Visual Studio. The community edition is free and can be used to build SINGA. <a class="reference external" href="https://www.visualstudio.com/">https://www.visualstudio.com/</a></p></li>
+<li><dl class="first docutils">
+<dt>Compiler and IDE</dt>
+<dd><ul class="first last simple">
+<li>Visual Studio. The community edition is free and can be used to build SINGA. <a class="reference external" href="https://www.visualstudio.com/">https://www.visualstudio.com/</a></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>CMake</dt><dd><ul class="simple">
-<li><p>Can be downloaded from <a class="reference external" href="http://cmake.org/">http://cmake.org/</a></p></li>
-<li><p>Make sure the path to cmake executable is in the system path, or use full path when calling cmake.</p></li>
+<li><dl class="first docutils">
+<dt>CMake</dt>
+<dd><ul class="first last simple">
+<li>Can be downloaded from <a class="reference external" href="http://cmake.org/">http://cmake.org/</a></li>
+<li>Make sure the path to cmake executable is in the system path, or use full path when calling cmake.</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>SWIG</dt><dd><ul class="simple">
-<li><p>Can be downloaded from <a class="reference external" href="http://swig.org/">http://swig.org/</a></p></li>
-<li><p>Make sure the path to swig executable is in the system path, or use full path when calling swig. Use a recent version such as 3.0.12.</p></li>
+<li><dl class="first docutils">
+<dt>SWIG</dt>
+<dd><ul class="first last simple">
+<li>Can be downloaded from <a class="reference external" href="http://swig.org/">http://swig.org/</a></li>
+<li>Make sure the path to swig executable is in the system path, or use full path when calling swig. Use a recent version such as 3.0.12.</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>Protocol Buffers</dt><dd><ul class="simple">
-<li><p>Download a suitable version such as 2.6.1: <a class="reference external" href="https://github.com/google/protobuf/releases/tag/v2.6.1">https://github.com/google/protobuf/releases/tag/v2.6.1</a> .</p></li>
-<li><p>Download both protobuf-2.6.1.zip and protoc-2.6.1-win32.zip .</p></li>
-<li><p>Extract both of them in dependencies folder. Add the path to protoc executable to the system path, or use full path when calling it.</p></li>
-<li><p>Open the Visual Studio solution which can be found in vsproject folder.</p></li>
-<li><p>Change the build settings to Release and x64.</p></li>
-<li><p>build libprotobuf project.</p></li>
+<li><dl class="first docutils">
+<dt>Protocol Buffers</dt>
+<dd><ul class="first last simple">
+<li>Download a suitable version such as 2.6.1: <a class="reference external" href="https://github.com/google/protobuf/releases/tag/v2.6.1">https://github.com/google/protobuf/releases/tag/v2.6.1</a> .</li>
+<li>Download both protobuf-2.6.1.zip and protoc-2.6.1-win32.zip .</li>
+<li>Extract both of them in dependencies folder. Add the path to protoc executable to the system path, or use full path when calling it.</li>
+<li>Open the Visual Studio solution which can be found in vsproject folder.</li>
+<li>Change the build settings to Release and x64.</li>
+<li>build libprotobuf project.</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt>Openblas</dt><dd><ul class="simple">
-<li><p>Download a suitable source version such as 0.2.20 from <a class="reference external" href="http://www.openblas.net">http://www.openblas.net</a></p></li>
-<li><p>Extract the source in the dependencies folder.</p></li>
-<li><p>If you don’t have Perl installed, download a perl environment such as Strawberry Perl (<a class="reference external" href="http://strawberryperl.com/">http://strawberryperl.com/</a>)</p></li>
-<li><p>Build the Visual Studio solution by running this command in the source folder:</p></li>
+<li><dl class="first docutils">
+<dt>Openblas</dt>
+<dd><ul class="first simple">
+<li>Download a suitable source version such as 0.2.20 from <a class="reference external" href="http://www.openblas.net">http://www.openblas.net</a></li>
+<li>Extract the source in the dependencies folder.</li>
+<li>If you don&#8217;t have Perl installed, download a perl environment such as Strawberry Perl (<a class="reference external" href="http://strawberryperl.com/">http://strawberryperl.com/</a>)</li>
+<li>Build the Visual Studio solution by running this command in the source folder:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>Open the Visual Studio solution and change the build settings to Release and x64.</p></li>
-<li><p>Build libopenblas project</p></li>
+<ul class="last simple">
+<li>Open the Visual Studio solution and change the build settings to Release and x64.</li>
+<li>Build libopenblas project</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>Google glog</dt><dd><ul class="simple">
-<li><p>Download a suitable version such as 0.3.5 from <a class="reference external" href="https://github.com/google/glog/releases">https://github.com/google/glog/releases</a></p></li>
-<li><p>Extract the source in the dependencies folder.</p></li>
-<li><p>Open the Visual Studio solution.</p></li>
-<li><p>Change the build settings to Release and x64.</p></li>
-<li><p>Build libglog project</p></li>
+<li><dl class="first docutils">
+<dt>Google glog</dt>
+<dd><ul class="first last simple">
+<li>Download a suitable version such as 0.3.5 from <a class="reference external" href="https://github.com/google/glog/releases">https://github.com/google/glog/releases</a></li>
+<li>Extract the source in the dependencies folder.</li>
+<li>Open the Visual Studio solution.</li>
+<li>Change the build settings to Release and x64.</li>
+<li>Build libglog project</li>
 </ul>
 </dd>
 </dl>
@@ -256,44 +268,45 @@
 <div class="section" id="build-singa-source">
 <h2>2. Build SINGA source<a class="headerlink" href="#build-singa-source" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Download SINGA source code</p></li>
-<li><dl class="simple">
-<dt>Compile the protobuf files:</dt><dd><ul>
-<li><p>Goto src/proto folder</p></li>
+<li>Download SINGA source code</li>
+<li><dl class="first docutils">
+<dt>Compile the protobuf files:</dt>
+<dd><ul class="first last">
+<li>Goto src/proto folder</li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir python_out
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir python_out
 protoc.exe *.proto --python_out python_out
 </pre></div>
 </div>
 <ul class="simple">
-<li><dl class="simple">
-<dt>Generate swig interfaces for C++ and Python:</dt><dd><p>Goto src/api</p>
-</dd>
+<li><dl class="first docutils">
+<dt>Generate swig interfaces for C++ and Python:</dt>
+<dd>Goto src/api</dd>
 </dl>
 </li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>swig -python -c++ singa.i
+<div class="highlight-bash"><div class="highlight"><pre><span></span>swig -python -c++ singa.i
 </pre></div>
 </div>
 <ul class="simple">
-<li><dl class="simple">
-<dt>generate Visual Studio solution for SINGA:</dt><dd><p>Goto SINGA source code root folder</p>
-</dd>
+<li><dl class="first docutils">
+<dt>generate Visual Studio solution for SINGA:</dt>
+<dd>Goto SINGA source code root folder</dd>
 </dl>
 </li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir build
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir build
 <span class="nb">cd</span> build
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Call cmake and add the paths in your system similar to the following example:</p></li>
+<li>Call cmake and add the paths in your system similar to the following example:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span> ^
+<div class="highlight-bash"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span> ^
   -DGLOG_INCLUDE_DIR<span class="o">=</span><span class="s2">&quot;D:/WinSinga/dependencies/glog-0.3.5/src/windows&quot;</span> ^
   -DGLOG_LIBRARIES<span class="o">=</span><span class="s2">&quot;D:/WinSinga/dependencies/glog-0.3.5/x64/Release&quot;</span> ^
   -DCBLAS_INCLUDE_DIR<span class="o">=</span><span class="s2">&quot;D:/WinSinga/dependencies/openblas-0.2.20/lapack-netlib/CBLAS/include&quot;</span> ^
@@ -305,62 +318,63 @@ protoc.exe *.proto --python_out python_out
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Open the generated solution in Visual Studio</p></li>
-<li><p>Change the build settings to Release and x64</p></li>
-<li><p>Add the singa_wrap.cxx file from src/api to the singa_objects project</p></li>
-<li><p>In the singa_objects project, open Additional Include Directories.</p></li>
-<li><p>Add Python include path</p></li>
-<li><p>Add numpy include path</p></li>
-<li><p>Add protobuf include path</p></li>
-<li><p>In the preprocessor definitions of the singa_objects project, add USE_GLOG</p></li>
-<li><p>Build singa_objects project</p></li>
-<li><dl class="simple">
-<dt>In singa project:</dt><dd><ul>
-<li><p>add singa_wrap.obj to Object Libraries</p></li>
-<li><p>change target name to _singa_wrap</p></li>
-<li><p>change target extension to .pyd</p></li>
-<li><p>change configuration type to Dynamic Library (.dll)</p></li>
-<li><p>goto Additional Library Directories and add the path to python, openblas, protobuf and glog libraries</p></li>
-<li><p>goto Additional Dependencies and add libopenblas.lib, libglog.lib and libprotobuf.lib</p></li>
+<li>Open the generated solution in Visual Studio</li>
+<li>Change the build settings to Release and x64</li>
+<li>Add the singa_wrap.cxx file from src/api to the singa_objects project</li>
+<li>In the singa_objects project, open Additional Include Directories.</li>
+<li>Add Python include path</li>
+<li>Add numpy include path</li>
+<li>Add protobuf include path</li>
+<li>In the preprocessor definitions of the singa_objects project, add USE_GLOG</li>
+<li>Build singa_objects project</li>
+<li><dl class="first docutils">
+<dt>In singa project:</dt>
+<dd><ul class="first last">
+<li>add singa_wrap.obj to Object Libraries</li>
+<li>change target name to _singa_wrap</li>
+<li>change target extension to .pyd</li>
+<li>change configuration type to Dynamic Library (.dll)</li>
+<li>goto Additional Library Directories and add the path to python, openblas, protobuf and glog libraries</li>
+<li>goto Additional Dependencies and add libopenblas.lib, libglog.lib and libprotobuf.lib</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>build singa project</p></li>
+<li>build singa project</li>
 </ul>
 </div>
 <div class="section" id="install-python-module">
 <h2>3. Install Python module<a class="headerlink" href="#install-python-module" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Change _singa_wrap.so to _singa_wrap.pyd in build/python/setup.py</p></li>
-<li><p>Copy the files in src/proto/python_out to build/python/singa/proto</p></li>
-<li><p>Optionally create and activate a virtual environment:</p></li>
+<li>Change _singa_wrap.so to _singa_wrap.pyd in build/python/setup.py</li>
+<li>Copy the files in src/proto/python_out to build/python/singa/proto</li>
+<li>Optionally create and activate a virtual environment:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir SingaEnv
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir SingaEnv
 virtualenv SingaEnv
 SingaEnv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>goto build/python folder and run:</p></li>
+<li>goto build/python folder and run:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python setup.py install
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python setup.py install
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Make _singa_wrap.pyd, libglog.dll and libopenblas.dll available by adding them to the path or by copying them to singa package folder in the python site-packages</p></li>
-<li><p>Verify that SINGA is installed by running:</p></li>
+<li>Make _singa_wrap.pyd, libglog.dll and libopenblas.dll available by adding them to the path or by copying them to singa package folder in the python site-packages</li>
+<li>Verify that SINGA is installed by running:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -c <span class="s2">&quot;from singa import tensor&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python -c <span class="s2">&quot;from singa import tensor&quot;</span>
 </pre></div>
 </div>
 <p>A video tutorial for the build process can be found here:</p>
-<table class="docutils align-center">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 100%" />
+<col width="100%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference external" href="https://www.youtube.com/watch?v=YOjwtrvTPn4"><img alt="video" class="align-middle" src="https://img.youtube.com/vi/YOjwtrvTPn4/0.jpg" /></a></p></td>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference external" href="https://www.youtube.com/watch?v=YOjwtrvTPn4"><img alt="video" class="align-middle" src="https://img.youtube.com/vi/YOjwtrvTPn4/0.jpg" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -368,41 +382,47 @@ SingaEnv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 <div class="section" id="run-unit-tests">
 <h2>4. Run Unit Tests<a class="headerlink" href="#run-unit-tests" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>In the test folder, generate the Visual Studio solution:</p></li>
+<li>In the test folder, generate the Visual Studio solution:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span>
 </pre></div>
 </div>
 <ul>
-<li><p>Open the generated solution in Visual Studio.</p></li>
-<li><p>Change the build settings to Release and x64.</p></li>
-<li><p>Build glog project.</p></li>
-<li><p>In test_singa project:</p>
+<li><p class="first">Open the generated solution in Visual Studio.</p>
+</li>
+<li><p class="first">Change the build settings to Release and x64.</p>
+</li>
+<li><p class="first">Build glog project.</p>
+</li>
+<li><p class="first">In test_singa project:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Add USE_GLOG to the Preprocessor Definitions.</p></li>
-<li><p>In Additional Include Directories, add path of GLOG_INCLUDE_DIR, CBLAS_INCLUDE_DIR and Protobuf_INCLUDE_DIR which were used in step 2 above. Add also build and build/include folders.</p></li>
-<li><p>Goto Additional Library Directories and add the path to openblas, protobuf and glog libraries. Add also build/src/singa_objects.dir/Release.</p></li>
-<li><p>Goto Additional Dependencies and add libopenblas.lib, libglog.lib and libprotobuf.lib. Fix the names of the two libraries: gtest.lib and singa_objects.lib.</p></li>
+<li>Add USE_GLOG to the Preprocessor Definitions.</li>
+<li>In Additional Include Directories, add path of GLOG_INCLUDE_DIR, CBLAS_INCLUDE_DIR and Protobuf_INCLUDE_DIR which were used in step 2 above. Add also build and build/include folders.</li>
+<li>Goto Additional Library Directories and add the path to openblas, protobuf and glog libraries. Add also build/src/singa_objects.dir/Release.</li>
+<li>Goto Additional Dependencies and add libopenblas.lib, libglog.lib and libprotobuf.lib. Fix the names of the two libraries: gtest.lib and singa_objects.lib.</li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>Build test_singa project.</p></li>
-<li><p>Make libglog.dll and libopenblas.dll available by adding them to the path or by copying them to test/release folder</p></li>
-<li><p>The unit tests can be executed</p>
+<li><p class="first">Build test_singa project.</p>
+</li>
+<li><p class="first">Make libglog.dll and libopenblas.dll available by adding them to the path or by copying them to test/release folder</p>
+</li>
+<li><p class="first">The unit tests can be executed</p>
 <blockquote>
 <div><ul>
-<li><p>From the command line:</p>
+<li><p class="first">From the command line:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>test_singa.exe
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>test_singa.exe
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><dl class="simple">
-<dt>From Visual Studio:</dt><dd><ul class="simple">
-<li><p>right click on the test_singa project and choose ‘Set as StartUp Project’.</p></li>
-<li><p>from the Debug menu, choose ‘Start Without Debugging’</p></li>
+<li><dl class="first docutils">
+<dt>From Visual Studio:</dt>
+<dd><ul class="first last simple">
+<li>right click on the test_singa project and choose &#8216;Set as StartUp Project&#8217;.</li>
+<li>from the Debug menu, choose &#8216;Start Without Debugging&#8217;</li>
 </ul>
 </dd>
 </dl>
@@ -412,12 +432,12 @@ SingaEnv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 </li>
 </ul>
 <p>A video tutorial for running the unit tests can be found here:</p>
-<table class="docutils align-center">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 100%" />
+<col width="100%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference external" href="https://www.youtube.com/watch?v=YOjwtrvTPn4"><img alt="video" class="align-middle" src="https://img.youtube.com/vi/YOjwtrvTPn4/0.jpg" /></a></p></td>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference external" href="https://www.youtube.com/watch?v=YOjwtrvTPn4"><img alt="video" class="align-middle" src="https://img.youtube.com/vi/YOjwtrvTPn4/0.jpg" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -430,30 +450,34 @@ SingaEnv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 <h2>5.1 Install Dependencies<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>In addition to the dependencies in section 1 above, we will need the following:</p>
 <ul>
-<li><p>CUDA</p>
+<li><p class="first">CUDA</p>
 <blockquote>
 <div><p>Download a suitable version such as 9.1 from <a class="reference external" href="https://developer.nvidia.com/cuda-downloads">https://developer.nvidia.com/cuda-downloads</a> . Make sure to install the Visual Studio integration module.</p>
 </div></blockquote>
 </li>
-<li><p>cuDNN</p>
+<li><p class="first">cuDNN</p>
 <blockquote>
 <div><p>Download a suitable version such as 7.1 from <a class="reference external" href="https://developer.nvidia.com/cudnn">https://developer.nvidia.com/cudnn</a></p>
 </div></blockquote>
 </li>
-<li><p>cnmem:</p>
+<li><p class="first">cnmem:</p>
 <blockquote>
 <div><ul>
-<li><p>Download the latest version from <a class="reference external" href="https://github.com/NVIDIA/cnmem">https://github.com/NVIDIA/cnmem</a></p></li>
-<li><p>Build the Visual Studio solution:</p>
+<li><p class="first">Download the latest version from <a class="reference external" href="https://github.com/NVIDIA/cnmem">https://github.com/NVIDIA/cnmem</a></p>
+</li>
+<li><p class="first">Build the Visual Studio solution:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><p>Open the generated solution in Visual Studio.</p></li>
-<li><p>Change the build settings to Release and x64.</p></li>
-<li><p>Build the cnmem project.</p></li>
+<li><p class="first">Open the generated solution in Visual Studio.</p>
+</li>
+<li><p class="first">Change the build settings to Release and x64.</p>
+</li>
+<li><p class="first">Build the cnmem project.</p>
+</li>
 </ul>
 </div></blockquote>
 </li>
@@ -462,9 +486,9 @@ SingaEnv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 <div class="section" id="id2">
 <h2>5.2 Build SINGA source<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p>Call cmake and add the paths in your system similar to the following example:</p>
+<li><p class="first">Call cmake and add the paths in your system similar to the following example:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span> ^
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span> ^
           -DGLOG_INCLUDE_DIR<span class="o">=</span><span class="s2">&quot;D:/WinSinga/dependencies/glog-0.3.5/src/windows&quot;</span> ^
           -DGLOG_LIBRARIES<span class="o">=</span><span class="s2">&quot;D:/WinSinga/dependencies/glog-0.3.5/x64/Release&quot;</span> ^
           -DCBLAS_INCLUDE_DIR<span class="o">=</span><span class="s2">&quot;D:/WinSinga/dependencies/openblas-0.2.20/lapack-netlib/CBLAS/include&quot;</span> ^
@@ -483,101 +507,109 @@ SingaEnv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 </div>
 </div></blockquote>
 </li>
-<li><dl>
-<dt>Generate swig interfaces for C++ and Python:</dt><dd><p>Goto src/api</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>swig -python -c++ singa.i
+<li><dl class="first docutils">
+<dt>Generate swig interfaces for C++ and Python:</dt>
+<dd><p class="first">Goto src/api</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span></span>swig -python -c++ singa.i
 </pre></div>
 </div>
 </dd>
 </dl>
 </li>
-<li><p>Open the generated solution in Visual Studio</p></li>
-<li><p>Change the build settings to Release and x64</p></li>
+<li><p class="first">Open the generated solution in Visual Studio</p>
+</li>
+<li><p class="first">Change the build settings to Release and x64</p>
+</li>
 </ul>
 </div>
 <div class="section" id="building-singa-objects">
 <h2>5.2.1 Building singa_objects<a class="headerlink" href="#building-singa-objects" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Add the singa_wrap.cxx file from src/api to the singa_objects project</p></li>
-<li><p>In the singa_objects project, open Additional Include Directories.</p></li>
-<li><p>Add Python include path</p></li>
-<li><p>Add numpy include path</p></li>
-<li><p>Add protobuf include path</p></li>
-<li><p>Add include path for CUDA, cuDNN and cnmem</p></li>
-<li><p>In the preprocessor definitions of the singa_objects project, add USE_GLOG, USE_CUDA and USE_CUDNN. Remove DISABLE_WARNINGS.</p></li>
-<li><p>Build singa_objects project</p></li>
+<li>Add the singa_wrap.cxx file from src/api to the singa_objects project</li>
+<li>In the singa_objects project, open Additional Include Directories.</li>
+<li>Add Python include path</li>
+<li>Add numpy include path</li>
+<li>Add protobuf include path</li>
+<li>Add include path for CUDA, cuDNN and cnmem</li>
+<li>In the preprocessor definitions of the singa_objects project, add USE_GLOG, USE_CUDA and USE_CUDNN. Remove DISABLE_WARNINGS.</li>
+<li>Build singa_objects project</li>
 </ul>
 </div>
 <div class="section" id="building-singa-kernel">
 <h2>5.2.2 Building singa-kernel<a class="headerlink" href="#building-singa-kernel" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p>Create a new Visual Studio project of type “CUDA 9.1 Runtime”. Give it a name such as singa-kernel.</p></li>
-<li><p>The project comes with an initial file called kernel.cu. Remove this file from the project.</p></li>
-<li><p>Add this file: src/core/tensor/math_kernel.cu</p></li>
-<li><p>In the project settings:</p>
+<li><p class="first">Create a new Visual Studio project of type &#8220;CUDA 9.1 Runtime&#8221;. Give it a name such as singa-kernel.</p>
+</li>
+<li><p class="first">The project comes with an initial file called kernel.cu. Remove this file from the project.</p>
+</li>
+<li><p class="first">Add this file: src/core/tensor/math_kernel.cu</p>
+</li>
+<li><p class="first">In the project settings:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Set Platform Toolset to “Visual Studio 2015 (v140)”</p></li>
-<li><p>Set Configuration Type to ” Static Library (.lib)”</p></li>
-<li><p>In the Include Directories, add build/include.</p></li>
+<li>Set Platform Toolset to &#8220;Visual Studio 2015 (v140)&#8221;</li>
+<li>Set Configuration Type to &#8221; Static Library (.lib)&#8221;</li>
+<li>In the Include Directories, add build/include.</li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>Build singa-kernel project</p></li>
+<li><p class="first">Build singa-kernel project</p>
+</li>
 </ul>
 </div>
 <div class="section" id="building-singa">
 <h2>5.2.3 Building singa<a class="headerlink" href="#building-singa" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><dl class="simple">
-<dt>In singa project:</dt><dd><ul>
-<li><p>add singa_wrap.obj to Object Libraries</p></li>
-<li><p>change target name to _singa_wrap</p></li>
-<li><p>change target extension to .pyd</p></li>
-<li><p>change configuration type to Dynamic Library (.dll)</p></li>
-<li><p>goto Additional Library Directories and add the path to python, openblas, protobuf and glog libraries</p></li>
-<li><p>Add also the library path to singa-kernel, cnmem, cuda and cudnn.</p></li>
-<li><p>goto Additional Dependencies and add libopenblas.lib, libglog.lib and libprotobuf.lib.</p></li>
-<li><p>Add also: singa-kernel.lib, cnmem.lib, cudnn.lib, cuda.lib , cublas.lib, curand.lib and cudart.lib.</p></li>
+<li><dl class="first docutils">
+<dt>In singa project:</dt>
+<dd><ul class="first last">
+<li>add singa_wrap.obj to Object Libraries</li>
+<li>change target name to _singa_wrap</li>
+<li>change target extension to .pyd</li>
+<li>change configuration type to Dynamic Library (.dll)</li>
+<li>goto Additional Library Directories and add the path to python, openblas, protobuf and glog libraries</li>
+<li>Add also the library path to singa-kernel, cnmem, cuda and cudnn.</li>
+<li>goto Additional Dependencies and add libopenblas.lib, libglog.lib and libprotobuf.lib.</li>
+<li>Add also: singa-kernel.lib, cnmem.lib, cudnn.lib, cuda.lib , cublas.lib, curand.lib and cudart.lib.</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>build singa project</p></li>
+<li>build singa project</li>
 </ul>
 </div>
 <div class="section" id="id3">
 <h2>5.3. Install Python module<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Change _singa_wrap.so to _singa_wrap.pyd in build/python/setup.py</p></li>
-<li><p>Copy the files in src/proto/python_out to build/python/singa/proto</p></li>
-<li><p>Optionally create and activate a virtual environment:</p></li>
+<li>Change _singa_wrap.so to _singa_wrap.pyd in build/python/setup.py</li>
+<li>Copy the files in src/proto/python_out to build/python/singa/proto</li>
+<li>Optionally create and activate a virtual environment:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir SingaEnv
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir SingaEnv
 virtualenv SingaEnv
 SingaEnv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>goto build/python folder and run:</p></li>
+<li>goto build/python folder and run:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python setup.py install
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python setup.py install
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Make _singa_wrap.pyd, libglog.dll, libopenblas.dll, cnmem.dll, CUDA Runtime (e.g. cudart64_91.dll) and cuDNN (e.g. cudnn64_7.dll) available by adding them to the path or by copying them to singa package folder in the python site-packages</p></li>
-<li><p>Verify that SINGA is installed by running:</p></li>
+<li>Make _singa_wrap.pyd, libglog.dll, libopenblas.dll, cnmem.dll, CUDA Runtime (e.g. cudart64_91.dll) and cuDNN (e.g. cudnn64_7.dll) available by adding them to the path or by copying them to singa package folder in the python site-packages</li>
+<li>Verify that SINGA is installed by running:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -c <span class="s2">&quot;from singa import device; dev = device.create_cuda_gpu()&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python -c <span class="s2">&quot;from singa import device; dev = device.create_cuda_gpu()&quot;</span>
 </pre></div>
 </div>
 <p>A video tutorial for this part can be found here:</p>
-<table class="docutils align-center">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 100%" />
+<col width="100%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference external" href="https://www.youtube.com/watch?v=YOjwtrvTPn4"><img alt="video" class="align-middle" src="https://img.youtube.com/vi/YOjwtrvTPn4/0.jpg" /></a></p></td>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference external" href="https://www.youtube.com/watch?v=YOjwtrvTPn4"><img alt="video" class="align-middle" src="https://img.youtube.com/vi/YOjwtrvTPn4/0.jpg" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -585,41 +617,47 @@ SingaEnv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 <div class="section" id="id4">
 <h2>5.4. Run Unit Tests<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>In the test folder, generate the Visual Studio solution:</p></li>
+<li>In the test folder, generate the Visual Studio solution:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>cmake -G <span class="s2">&quot;Visual Studio 15 2017 Win64&quot;</span>
 </pre></div>
 </div>
 <ul>
-<li><p>Open the generated solution in Visual Studio, or add the project to the singa solution that was created in step 5.2</p></li>
-<li><p>Change the build settings to Release and x64.</p></li>
-<li><p>Build glog project.</p></li>
-<li><p>In test_singa project:</p>
+<li><p class="first">Open the generated solution in Visual Studio, or add the project to the singa solution that was created in step 5.2</p>
+</li>
+<li><p class="first">Change the build settings to Release and x64.</p>
+</li>
+<li><p class="first">Build glog project.</p>
+</li>
+<li><p class="first">In test_singa project:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Add USE_GLOG; USE_CUDA; USE_CUDNN to the Preprocessor Definitions.</p></li>
-<li><p>In Additional Include Directories, add path of GLOG_INCLUDE_DIR, CBLAS_INCLUDE_DIR and Protobuf_INCLUDE_DIR which were used in step 5.2 above. Add also build, build/include, CUDA and cuDNN include folders.</p></li>
-<li><p>Goto Additional Library Directories and add the path to openblas, protobuf and glog libraries. Add also build/src/singa_objects.dir/Release, singa-kernel, cnmem, CUDA and cuDNN library paths.</p></li>
-<li><p>Goto Additional Dependencies and add libopenblas.lib; libglog.lib; libprotobuf.lib; cnmem.lib; cudnn.lib; cuda.lib; cublas.lib; curand.lib; cudart.lib; singa-kernel.lib. Fix the names of the two libraries: gtest.lib and singa_objects.lib.</p></li>
+<li>Add USE_GLOG; USE_CUDA; USE_CUDNN to the Preprocessor Definitions.</li>
+<li>In Additional Include Directories, add path of GLOG_INCLUDE_DIR, CBLAS_INCLUDE_DIR and Protobuf_INCLUDE_DIR which were used in step 5.2 above. Add also build, build/include, CUDA and cuDNN include folders.</li>
+<li>Goto Additional Library Directories and add the path to openblas, protobuf and glog libraries. Add also build/src/singa_objects.dir/Release, singa-kernel, cnmem, CUDA and cuDNN library paths.</li>
+<li>Goto Additional Dependencies and add libopenblas.lib; libglog.lib; libprotobuf.lib; cnmem.lib; cudnn.lib; cuda.lib; cublas.lib; curand.lib; cudart.lib; singa-kernel.lib. Fix the names of the two libraries: gtest.lib and singa_objects.lib.</li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>Build test_singa project.</p></li>
-<li><p>Make libglog.dll, libopenblas.dll, cnmem.dll, cudart64_91.dll and cudnn64_7.dll available by adding them to the path or by copying them to test/release folder</p></li>
-<li><p>The unit tests can be executed</p>
+<li><p class="first">Build test_singa project.</p>
+</li>
+<li><p class="first">Make libglog.dll, libopenblas.dll, cnmem.dll, cudart64_91.dll and cudnn64_7.dll available by adding them to the path or by copying them to test/release folder</p>
+</li>
+<li><p class="first">The unit tests can be executed</p>
 <blockquote>
 <div><ul>
-<li><p>From the command line:</p>
+<li><p class="first">From the command line:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>test_singa.exe
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>test_singa.exe
 </pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><dl class="simple">
-<dt>From Visual Studio:</dt><dd><ul class="simple">
-<li><p>right click on the test_singa project and choose ‘Set as StartUp Project’.</p></li>
-<li><p>from the Debug menu, choose ‘Start Without Debugging’</p></li>
+<li><dl class="first docutils">
+<dt>From Visual Studio:</dt>
+<dd><ul class="first last simple">
+<li>right click on the test_singa project and choose &#8216;Set as StartUp Project&#8217;.</li>
+<li>from the Debug menu, choose &#8216;Start Without Debugging&#8217;</li>
 </ul>
 </dd>
 </dl>
@@ -629,12 +667,12 @@ SingaEnv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 </li>
 </ul>
 <p>A video tutorial for running the unit tests can be found here:</p>
-<table class="docutils align-center">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 100%" />
+<col width="100%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference external" href="https://www.youtube.com/watch?v=YOjwtrvTPn4"><img alt="video" class="align-middle" src="https://img.youtube.com/vi/YOjwtrvTPn4/0.jpg" /></a></p></td>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference external" href="https://www.youtube.com/watch?v=YOjwtrvTPn4"><img alt="video" class="align-middle" src="https://img.youtube.com/vi/YOjwtrvTPn4/0.jpg" /></a></td>
 </tr>
 </tbody>
 </table>

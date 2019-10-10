@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
 
@@ -239,20 +248,20 @@
 <div class="section" id="id1">
 <h2>操作说明<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p>下载参数的checkpoint文件到如下目录</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ wget https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-18.tar.gz
+<li><p class="first">下载参数的checkpoint文件到如下目录</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  $ wget https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-18.tar.gz
   $ wget https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/synset_words.txt
   $ tar xvf resnet-18.tar.gz
 </pre></div>
 </div>
 </li>
-<li><p>运行程序</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ python serve.py -h
+<li><p class="first">运行程序</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  $ python serve.py -h
 </pre></div>
 </div>
 </li>
-<li><p>运行程序</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  # use cpu
+<li><p class="first">运行程序</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  # use cpu
   $ python serve.py --use_cpu --parameter_file resnet-18.pickle --model resnet --depth 18 &amp;
   # use gpu
   $ python serve.py --parameter_file resnet-18.pickle --model resnet --depth 18 &amp;
@@ -260,14 +269,14 @@
 </div>
 <p>我们提供了以下模型和深度配置的参数文件:</p>
 <ul class="simple">
-<li><p>resnet (原始 resnet), <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-18.tar.gz">18</a>|<a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-34.tar.gz">34</a>|<a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-101.tar.gz">101</a>|<a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-152.tar.gz">152</a></p></li>
-<li><p>包括批量正则, <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-50.tar.gz">50</a></p></li>
-<li><p>wrn (宽 resnet), <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/wrn-50-2.tar.gz">50</a></p></li>
-<li><p>preact (包括 pre-activation 的 resnet) <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-200.tar.gz">200</a></p></li>
+<li>resnet (原始 resnet), <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-18.tar.gz">18</a>|<a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-34.tar.gz">34</a>|<a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-101.tar.gz">101</a>|<a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-152.tar.gz">152</a></li>
+<li>包括批量正则, <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-50.tar.gz">50</a></li>
+<li>wrn (宽 resnet), <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/wrn-50-2.tar.gz">50</a></li>
+<li>preact (包括 pre-activation 的 resnet) <a class="reference external" href="https://s3-ap-southeast-1.amazonaws.com/dlfile/resnet/resnet-200.tar.gz">200</a></li>
 </ul>
 </li>
-<li><p>提交图片进行分类</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ curl -i -F image=@image1.jpg http://localhost:9999/api
+<li><p class="first">提交图片进行分类</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  $ curl -i -F image=@image1.jpg http://localhost:9999/api
   $ curl -i -F image=@image2.jpg http://localhost:9999/api
   $ curl -i -F image=@image3.jpg http://localhost:9999/api
 </pre></div>
@@ -278,10 +287,10 @@
 </div>
 <div class="section" id="id2">
 <h2>详细信息<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>用<code class="docutils literal notranslate"><span class="pre">convert.py</span></code>从torch参数文件中提取参数值</p>
+<p>用<code class="docutils literal"><span class="pre">convert.py</span></code>从torch参数文件中提取参数值</p>
 <ul>
-<li><p>运行程序</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ python convert.py -h
+<li><p class="first">运行程序</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  $ python convert.py -h
 </pre></div>
 </div>
 </li>

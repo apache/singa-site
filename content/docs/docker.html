@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -105,9 +114,6 @@
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/how-to-release.html">How to prepare a release</a></li>
@@ -202,52 +208,52 @@
 <div class="section" id="available-tags">
 <h2>Available tags<a class="headerlink" href="#available-tags" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">devel</span></code>, with SINGA and the development packages installed on Ubuntu16.04 (no GPU)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">devel-cuda</span></code>, with SINGA, CUDA8.0, CUDNN5, and other development packages installed on Ubuntu16.04</p></li>
+<li><code class="docutils literal"><span class="pre">devel</span></code>, with SINGA and the development packages installed on Ubuntu16.04 (no GPU)</li>
+<li><code class="docutils literal"><span class="pre">devel-cuda</span></code>, with SINGA, CUDA8.0, CUDNN5, and other development packages installed on Ubuntu16.04</li>
 </ul>
 </div>
 <div class="section" id="use-the-existing-docker-images">
 <h2>Use the existing Docker images<a class="headerlink" href="#use-the-existing-docker-images" title="Permalink to this headline">¶</a></h2>
 <p>Users can pull the Docker images from Dockerhub via</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">apache</span><span class="o">/</span><span class="n">singa</span><span class="p">:</span><span class="n">devel</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">apache</span><span class="o">/</span><span class="n">singa</span><span class="p">:</span><span class="n">devel</span>
 <span class="c1"># or</span>
 <span class="n">docker</span> <span class="n">pull</span> <span class="n">apache</span><span class="o">/</span><span class="n">singa</span><span class="p">:</span><span class="n">devel</span><span class="o">-</span><span class="n">cuda</span>
 </pre></div>
 </div>
 <p>Run the docker container using</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="n">apache</span><span class="o">/</span><span class="n">singa</span><span class="p">:</span><span class="n">devel</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="n">apache</span><span class="o">/</span><span class="n">singa</span><span class="p">:</span><span class="n">devel</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
 <span class="c1"># or</span>
 <span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="n">apache</span><span class="o">/</span><span class="n">singa</span><span class="p">:</span><span class="n">devel</span><span class="o">-</span><span class="n">cuda</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
 </pre></div>
 </div>
-<p>The latest SINGA code is under the <code class="docutils literal notranslate"><span class="pre">incubator-singa</span></code> folder.</p>
+<p>The latest SINGA code is under the <code class="docutils literal"><span class="pre">incubator-singa</span></code> folder.</p>
 </div>
 <div class="section" id="create-new-docker-images-from-dockerfile">
 <h2>Create new Docker images from Dockerfile<a class="headerlink" href="#create-new-docker-images-from-dockerfile" title="Permalink to this headline">¶</a></h2>
 <p>New Docker images could be created by executing the following command within the
 Dockerfile folder, e.g., tool/docker/devel/</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">singa</span><span class="p">:</span><span class="o">&lt;</span><span class="n">TAG</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">f</span> <span class="n">Dockerfile</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">singa</span><span class="p">:</span><span class="o">&lt;</span><span class="n">TAG</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">f</span> <span class="n">Dockerfile</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">&lt;TAG&gt;</span></code> is named as</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">devel</span><span class="o">|</span><span class="n">runtime</span><span class="p">[</span><span class="o">-</span><span class="n">CUDA</span><span class="o">|</span><span class="n">CPU</span><span class="p">][</span><span class="o">-</span><span class="n">CUDNN</span><span class="p">]</span>
+<p>The <code class="docutils literal"><span class="pre">&lt;TAG&gt;</span></code> is named as</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">devel</span><span class="o">|</span><span class="n">runtime</span><span class="p">[</span><span class="o">-</span><span class="n">CUDA</span><span class="o">|</span><span class="n">CPU</span><span class="p">][</span><span class="o">-</span><span class="n">CUDNN</span><span class="p">]</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>devel: development images with all dependent libs’ header files installed and SINGA’s source code; runtime: the minimal images which can run SINGA programs.</p></li>
-<li><p>CUDA: cuda10.0, cuda9.0</p></li>
-<li><p>CUDNN: cudnn7</p></li>
+<li>devel: development images with all dependent libs&#8216; header files installed and SINGA&#8216;s source code; runtime: the minimal images which can run SINGA programs.</li>
+<li>CUDA: cuda10.0, cuda9.0</li>
+<li>CUDNN: cudnn7</li>
 </ul>
 <p>Here are some example tags:</p>
-<p><code class="docutils literal notranslate"><span class="pre">devel-cuda9-cudnn7</span></code>, <code class="docutils literal notranslate"><span class="pre">devel-cuda9-cudnn7</span></code>, <code class="docutils literal notranslate"><span class="pre">devel-cuda10-cudnn7</span></code>, <code class="docutils literal notranslate"><span class="pre">devel-cpu</span></code>, <code class="docutils literal notranslate"><span class="pre">runtime-gpu</span></code> and <code class="docutils literal notranslate"><span class="pre">runtime-cpu</span></code></p>
+<p><code class="docutils literal"><span class="pre">devel-cuda9-cudnn7</span></code>, <code class="docutils literal"><span class="pre">devel-cuda9-cudnn7</span></code>, <code class="docutils literal"><span class="pre">devel-cuda10-cudnn7</span></code>, <code class="docutils literal"><span class="pre">devel-cpu</span></code>, <code class="docutils literal"><span class="pre">runtime-gpu</span></code> and <code class="docutils literal"><span class="pre">runtime-cpu</span></code></p>
 <p>Please follow the existing Dockefiles under tool/docker/ to create other Dockefiles.
 The folder structure is like</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">level1</span><span class="p">:</span> <span class="n">devel</span><span class="o">|</span><span class="n">runtime</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">level1</span><span class="p">:</span> <span class="n">devel</span><span class="o">|</span><span class="n">runtime</span>
 <span class="n">level2</span><span class="p">:</span> <span class="n">Dockerfile</span><span class="p">,</span> <span class="n">OS</span>
 <span class="n">level3</span><span class="p">:</span> <span class="n">Dockerfile</span><span class="p">,</span> <span class="n">CUDA</span><span class="o">|</span><span class="n">MKLDNN</span>
 </pre></div>
 </div>
-<p>For example, the path of the Dockerfile for <code class="docutils literal notranslate"><span class="pre">devel-cuda9-cudnn7</span></code> is <code class="docutils literal notranslate"><span class="pre">tool/docker/devel/ubuntu/cuda9/Dockerfile</span></code>.</p>
+<p>For example, the path of the Dockerfile for <code class="docutils literal"><span class="pre">devel-cuda9-cudnn7</span></code> is <code class="docutils literal"><span class="pre">tool/docker/devel/ubuntu/cuda9/Dockerfile</span></code>.</p>
 </div>
 </div>
 

@@ -21,11 +21,20 @@
   <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'2.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
 
@@ -105,9 +114,6 @@
 </ul>
 <p class="caption"><span class="caption-text">Development</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/schedule.html">Development Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-contribute.html">How to Contribute to SINGA</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-contribute.html#how-to-become-a-singa-committer">How to become a SINGA committer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/contribute-code.html">How to Contribute Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/contribute-docs.html">How to Contribute to Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../develop/how-to-release.html">How to prepare a release</a></li>
@@ -201,7 +207,7 @@
 <h1>Train Char-RNN over plain text<a class="headerlink" href="#train-char-rnn-over-plain-text" title="Permalink to this headline">¶</a></h1>
 <p>Recurrent neural networks (RNN) are widely used for modelling sequential data,
 e.g., natural language sentences. This example describes how to implement a RNN
-application (or model) using SINGA’s RNN layers.
+application (or model) using SINGA&#8216;s RNN layers.
 We will use the <a class="reference external" href="https://github.com/karpathy/char-rnn">char-rnn</a> model as an
 example, which trains over sentences or
 source code, with each character as an input unit. Particularly, we will train
@@ -210,23 +216,25 @@ generate meaningful code from the model.</p>
 <div class="section" id="instructions">
 <h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p>Compile and install SINGA. Currently the RNN implementation depends on Cudnn with version &gt;= 5.05.</p></li>
-<li><p>Prepare the dataset. Download the <a class="reference external" href="http://cs.stanford.edu/people/karpathy/char-rnn/">kernel source code</a>.
-Other plain text files can also be used.</p></li>
-<li><p>Start the training,</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">linux_input</span><span class="o">.</span><span class="n">txt</span>
+<li><p class="first">Compile and install SINGA. Currently the RNN implementation depends on Cudnn with version &gt;= 5.05.</p>
+</li>
+<li><p class="first">Prepare the dataset. Download the <a class="reference external" href="http://cs.stanford.edu/people/karpathy/char-rnn/">kernel source code</a>.
+Other plain text files can also be used.</p>
+</li>
+<li><p class="first">Start the training,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="n">linux_input</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 <p>Some hyper-parameters could be set through command line,</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">h</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  <span class="n">python</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">h</span>
 </pre></div>
 </div>
 </li>
-<li><p>Sample characters from the model by providing the number of characters to sample and the seed string.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">python</span> <span class="n">sample</span><span class="o">.</span><span class="n">py</span> <span class="s1">&#39;model.bin&#39;</span> <span class="mi">100</span> <span class="o">--</span><span class="n">seed</span> <span class="s1">&#39;#include &lt;std&#39;</span>
+<li><p class="first">Sample characters from the model by providing the number of characters to sample and the seed string.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  <span class="n">python</span> <span class="n">sample</span><span class="o">.</span><span class="n">py</span> <span class="s1">&#39;model.bin&#39;</span> <span class="mi">100</span> <span class="o">--</span><span class="n">seed</span> <span class="s1">&#39;#include &lt;std&#39;</span>
 </pre></div>
 </div>
-<p>Please replace ‘model.bin’ with the path to one of the checkpoint paths.</p>
+<p>Please replace &#8216;model.bin&#8216; with the path to one of the checkpoint paths.</p>
 </li>
 </ul>
 </div>
