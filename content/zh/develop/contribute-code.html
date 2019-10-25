@@ -1,5 +1,5 @@
 
- 
+
 
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>如何贡献代码 &mdash; incubator-singa 2.0.0 documentation</title>
+  <title>如何贡献代码 &mdash; singa 2.0.0 documentation</title>
   
 
   
@@ -47,18 +47,20 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="源代码库" href="../community/source-repository.html" />
     <link rel="prev" title="如何贡献给 SINGA" href="how-contribute.html" />
-     <link href="../_static/style.css" rel="stylesheet" type="text/css">
-     <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-     <style>
-   .fa:hover {
-       opacity: 0.7;
-   }
-   .fab:hover {
-       opacity: 0.7;
-   }
-     </style>
- 
+<link href="../_static/style.css" rel="stylesheet" type="text/css">
+<!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+  integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<style>
+  .fa:hover {
+    opacity: 0.7;
+  }
+
+  .fab:hover {
+    opacity: 0.7;
+  }
+</style>
+
 </head>
 
 <body class="wy-body-for-nav">
@@ -72,7 +74,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> incubator-singa
+            <a href="../index.html" class="icon icon-home"> singa
           
 
           
@@ -144,7 +146,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">incubator-singa</a>
+          <a href="../index.html">singa</a>
         
       </nav>
 
@@ -216,12 +218,12 @@ Github pull requests 用于实施讨论，例如代码审查和代码合并.</p>
 <h2>Pull Request<a class="headerlink" href="#pull-request" title="Permalink to this headline">¶</a></h2>
 <p>工作流程是</p>
 <ul class="simple">
-<li>Fork <a class="reference external" href="https://github.com/apache/incubator-singa">SINGA Github repository</a> 到你自己的 Github 帐户.</li>
+<li>Fork <a class="reference external" href="https://github.com/apache/singa">SINGA Github repository</a> 到你自己的 Github 帐户.</li>
 <li>Clone 你自己的 fork, 创建一个新的 branch (例如, feature-foo or fixbug-foo),
 进行这项工作. 完成你的工作后，
 <a class="reference external" href="https://git-scm.com/book/en/v2/Git-Branching-Rebasing">rebase</a>
 它到当前最新的 master 并 push commits 到你自己的 Github 帐户 (新 branch).</li>
-<li>针对 apache / incubator-singa 的 master branch 打开一个 pull request.
+<li>针对 apache / singa 的 master branch 打开一个 pull request.
 PR 标题应该是 SINGA-xxxx 的格式，其中 SINGA-xxxx 是相关的JIRA编号，
 标题可以是 JIRA 的标题或描述 PR 本身的更具体的标题, 例如，&#8220;SINGA-6 Implement thread-safe singleton&#8220;.
 详细描述可以从 JIRA 复制.
@@ -286,50 +288,61 @@ PR 标题应该是 SINGA-xxxx 的格式，其中 SINGA-xxxx 是相关的JIRA编�
   
     
   
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> singa </span>
+    v: latest
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Languages</dt>
+      <dd><a href="../../index.html">English</a></dd>
+      <dd><a href=".././index.html">中文</a></dd>
+    </dl>
+    <dl>
+      <dt>Versions</dt>
+      <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+      <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+    </dl>
+
+  </div>
+  <a href="http://www.apache.org"
+    style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
+  <a href="http://www.apache.org/events/current-event"
+    style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>
+  <a href="http://www.apache.org/foundation/thanks.html"
+    style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Thanks</a>
+  <a href="http://www.apache.org/foundation/sponsorship.html"
+    style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">Sponsorship</a>
+  <a href="http://www.apache.org/licenses/"
+    style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">License</a>
+  <br>
+  <a href="https://github.com/apache/singa" class="fa fa-github"
+    style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws"
+    style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker"
+    style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://www.linkedin.com/groups/13550034" class="fa fa-linkedin"
+    style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://twitter.com/ApacheSinga" class="fa fa-twitter"
+    style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://www.facebook.com/Apache-SINGA-347284219056544/" class="fa fa-facebook"
+    style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://www.researchgate.net/project/Apache-SINGA" class="fab fa-researchgate"
+    style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+
+</div>
+
+<a href="https://github.com/apache/singa">
+  <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub">
+</a>
+
  
- <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-   <span class="rst-current-version" data-toggle="rst-current-version">
-     <span class="fa fa-book"> incubator-singa </span>
-     v: latest
-     <span class="fa fa-caret-down"></span>
-   </span>
-   <div class="rst-other-versions">
-       <dl>
-           <dt>Languages</dt>
-           <dd><a href="../../index.html">English</a></dd>
-           <dd><a href=".././index.html">中文</a></dd>
-       </dl>
-       <dl>
-           <dt>Versions</dt>
-           <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
-           <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
-       </dl>
- 
-   </div>
-   <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
-   <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>
-   <a href="http://www.apache.org/foundation/thanks.html" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Thanks</a>
-   <a href="http://www.apache.org/foundation/sponsorship.html" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">Sponsorship</a>
-   <a href="http://www.apache.org/licenses/" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">License</a>
-   <br>
-   <a href="https://github.com/apache/incubator-singa" class="fa fa-github" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
-   <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
-   <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a> 
-   <a href="https://www.linkedin.com/groups/13550034" class="fa fa-linkedin" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
-   <a href="https://twitter.com/ApacheSinga" class="fa fa-twitter" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
-   <a href="https://www.facebook.com/Apache-SINGA-347284219056544/" class="fa fa-facebook" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
-   <a href="https://www.researchgate.net/project/Apache-SINGA" class="fab fa-researchgate" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
- 
- </div>
- 
-  <a href="https://github.com/apache/incubator-singa">
-     <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
-         src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
-         alt="Fork me on GitHub">
- </a>
- 
-  
- 
+
 
 </body>
 </html>

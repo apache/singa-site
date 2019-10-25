@@ -47,17 +47,19 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Model Zoo" href="model_zoo/index.html" />
     <link rel="prev" title="ONNX" href="onnx.html" />
-    <link href="../_static/style.css" rel="stylesheet" type="text/css">
-    <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <style>
-	.fa:hover {
-	    opacity: 0.7;
-	}
-	.fab:hover {
-	    opacity: 0.7;
-	}
-    </style>
+<link href="../_static/style.css" rel="stylesheet" type="text/css">
+<!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+    integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<style>
+    .fa:hover {
+        opacity: 0.7;
+    }
+
+    .fab:hover {
+        opacity: 0.7;
+    }
+</style>
 
 </head>
 
@@ -219,7 +221,7 @@
     under the License.
 --><div class="section" id="benchmark-for-distributed-training">
 <h1>Benchmark for Distributed training<a class="headerlink" href="#benchmark-for-distributed-training" title="Permalink to this headline">¶</a></h1>
-<p>Workload: we use a deep convolutional neural network, <a class="reference external" href="https://github.com/apache/incubator-singa/blob/master/examples/autograd/resnet.py">ResNet-50</a> as the application. ResNet-50 is has 50 convolution layers for image classification. It requires 3.8 GFLOPs to pass a single image (of size 224x224) through the network. The input image size is 224x224.</p>
+<p>Workload: we use a deep convolutional neural network, <a class="reference external" href="https://github.com/apache/singa/blob/master/examples/autograd/resnet.py">ResNet-50</a> as the application. ResNet-50 is has 50 convolution layers for image classification. It requires 3.8 GFLOPs to pass a single image (of size 224x224) through the network. The input image size is 224x224.</p>
 <p>Hardware: we use p2.8xlarge instances from AWS, each of which has 8 Nvidia Tesla K80 GPUs, 96 GB GPU memory in total, 32 vCPU, 488 GB main memory, 10 Gbps network bandwidth.</p>
 <p>Metric: we measure the time per iteration for different number of workers to evaluate the scalability of SINGA. The batch size is fixed to be 32 per GPU. Synchronous training scheme is applied. As a result, the effective batch size is $32N$, where N is the number of GPUs. We compare with a popular open source system which uses the parameter server topology. The first GPU is selected as the server.</p>
 <img src="../_static/images/benchmark.png" align="center" width="500px"/>
@@ -275,46 +277,57 @@
   
 
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    <span class="fa fa-book"> singa </span>
-    v: latest
-    <span class="fa fa-caret-down"></span>
-  </span>
-  <div class="rst-other-versions">
-      <dl>
-          <dt>Languages</dt>
-          <dd><a href=".././index.html">English</a></dd>
-          <dd><a href=".././zh/index.html">中文</a></dd>
-      </dl>
-      <dl>
-          <dt>Versions</dt>
-          <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
-          <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
-      </dl>
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> singa </span>
+        v: latest
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Languages</dt>
+            <dd><a href=".././index.html">English</a></dd>
+            <dd><a href=".././zh/index.html">中文</a></dd>
+        </dl>
+        <dl>
+            <dt>Versions</dt>
+            <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+            <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+        </dl>
 
-  </div>
-  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.png" style="background-color:white;"> </a>
+    </div>
 
-  <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
-  <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>
-  <a href="http://www.apache.org/foundation/thanks.html" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Thanks</a>
-  <a href="http://www.apache.org/foundation/sponsorship.html" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">Sponsorship</a>
-  <a href="http://www.apache.org/licenses/" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">License</a>
-  <br>
-  <a href="https://github.com/apache/incubator-singa" class="fa fa-github" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
-  <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
-  <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a> 
-  <a href="https://www.linkedin.com/groups/13550034" class="fa fa-linkedin" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
-  <a href="https://twitter.com/ApacheSinga" class="fa fa-twitter" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
-  <a href="https://www.facebook.com/Apache-SINGA-347284219056544/" class="fa fa-facebook" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
-  <a href="https://www.researchgate.net/project/Apache-SINGA" class="fab fa-researchgate" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+    <a href="http://www.apache.org"
+        style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
+    <a href="http://www.apache.org/events/current-event"
+        style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>
+    <a href="http://www.apache.org/foundation/thanks.html"
+        style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Thanks</a>
+    <a href="http://www.apache.org/foundation/sponsorship.html"
+        style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">Sponsorship</a>
+    <a href="http://www.apache.org/licenses/"
+        style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">License</a>
+    <br>
+    <a href="https://github.com/apache/singa" class="fa fa-github"
+        style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+    <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c"
+        class="fab fa-aws"
+        style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+    <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker"
+        style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+    <a href="https://www.linkedin.com/groups/13550034" class="fa fa-linkedin"
+        style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+    <a href="https://twitter.com/ApacheSinga" class="fa fa-twitter"
+        style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+    <a href="https://www.facebook.com/Apache-SINGA-347284219056544/" class="fa fa-facebook"
+        style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+    <a href="https://www.researchgate.net/project/Apache-SINGA" class="fab fa-researchgate"
+        style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
 
 </div>
 
- <a href="https://github.com/apache/incubator-singa">
+<a href="https://github.com/apache/singa">
     <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
-        src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
-        alt="Fork me on GitHub">
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub">
 </a>
 
  

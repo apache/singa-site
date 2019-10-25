@@ -47,17 +47,19 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ONNX" href="onnx.html" />
     <link rel="prev" title="Tensor" href="tensor.html" />
-    <link href="../_static/style.css" rel="stylesheet" type="text/css">
-    <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <style>
-	.fa:hover {
-	    opacity: 0.7;
-	}
-	.fab:hover {
-	    opacity: 0.7;
-	}
-    </style>
+<link href="../_static/style.css" rel="stylesheet" type="text/css">
+<!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+    integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<style>
+    .fa:hover {
+        opacity: 0.7;
+    }
+
+    .fab:hover {
+        opacity: 0.7;
+    }
+</style>
 
 </head>
 
@@ -261,7 +263,7 @@
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<p>Multiple examples are provided in the <a class="reference external" href="https://github.com/apache/incubator-singa/tree/master/examples/autograd">example folder</a>. We explain two representative examples here.</p>
+<p>Multiple examples are provided in the <a class="reference external" href="https://github.com/apache/singa/tree/master/examples/autograd">example folder</a>. We explain two representative examples here.</p>
 <div class="section" id="operation-only">
 <h3>Operation only<a class="headerlink" href="#operation-only" title="Permalink to this headline">¶</a></h3>
 <p>The following codes implement a MLP model using only Operation instances (no Layer instances).</p>
@@ -313,7 +315,7 @@
 </div>
 <div class="section" id="operation-layer">
 <h3>Operation + Layer<a class="headerlink" href="#operation-layer" title="Permalink to this headline">¶</a></h3>
-<p>The following <a class="reference external" href="https://github.com/apache/incubator-singa/blob/master/examples/autograd/mnist_cnn.py">example</a> implements a CNN model using layers provided by the autograd module.</p>
+<p>The following <a class="reference external" href="https://github.com/apache/singa/blob/master/examples/autograd/mnist_cnn.py">example</a> implements a CNN model using layers provided by the autograd module.</p>
 <div class="section" id="create-the-layers">
 <h4>Create the layers<a class="headerlink" href="#create-the-layers" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conv1</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -423,46 +425,57 @@
   
 
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    <span class="fa fa-book"> singa </span>
-    v: latest
-    <span class="fa fa-caret-down"></span>
-  </span>
-  <div class="rst-other-versions">
-      <dl>
-          <dt>Languages</dt>
-          <dd><a href=".././index.html">English</a></dd>
-          <dd><a href=".././zh/index.html">中文</a></dd>
-      </dl>
-      <dl>
-          <dt>Versions</dt>
-          <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
-          <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
-      </dl>
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> singa </span>
+        v: latest
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Languages</dt>
+            <dd><a href=".././index.html">English</a></dd>
+            <dd><a href=".././zh/index.html">中文</a></dd>
+        </dl>
+        <dl>
+            <dt>Versions</dt>
+            <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+            <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+        </dl>
 
-  </div>
-  <a href="http://incubator.apache.org/"> <img src= "../_static/apache.png" style="background-color:white;"> </a>
+    </div>
 
-  <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
-  <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>
-  <a href="http://www.apache.org/foundation/thanks.html" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Thanks</a>
-  <a href="http://www.apache.org/foundation/sponsorship.html" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">Sponsorship</a>
-  <a href="http://www.apache.org/licenses/" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">License</a>
-  <br>
-  <a href="https://github.com/apache/incubator-singa" class="fa fa-github" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
-  <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
-  <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a> 
-  <a href="https://www.linkedin.com/groups/13550034" class="fa fa-linkedin" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
-  <a href="https://twitter.com/ApacheSinga" class="fa fa-twitter" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
-  <a href="https://www.facebook.com/Apache-SINGA-347284219056544/" class="fa fa-facebook" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
-  <a href="https://www.researchgate.net/project/Apache-SINGA" class="fab fa-researchgate" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+    <a href="http://www.apache.org"
+        style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
+    <a href="http://www.apache.org/events/current-event"
+        style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>
+    <a href="http://www.apache.org/foundation/thanks.html"
+        style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Thanks</a>
+    <a href="http://www.apache.org/foundation/sponsorship.html"
+        style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">Sponsorship</a>
+    <a href="http://www.apache.org/licenses/"
+        style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">License</a>
+    <br>
+    <a href="https://github.com/apache/singa" class="fa fa-github"
+        style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+    <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c"
+        class="fab fa-aws"
+        style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+    <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker"
+        style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+    <a href="https://www.linkedin.com/groups/13550034" class="fa fa-linkedin"
+        style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+    <a href="https://twitter.com/ApacheSinga" class="fa fa-twitter"
+        style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+    <a href="https://www.facebook.com/Apache-SINGA-347284219056544/" class="fa fa-facebook"
+        style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+    <a href="https://www.researchgate.net/project/Apache-SINGA" class="fab fa-researchgate"
+        style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
 
 </div>
 
- <a href="https://github.com/apache/incubator-singa">
+<a href="https://github.com/apache/singa">
     <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
-        src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
-        alt="Fork me on GitHub">
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub">
 </a>
 
  
