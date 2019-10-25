@@ -1,5 +1,5 @@
 
- 
+
 
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>安装 &mdash; incubator-singa 2.0.0 documentation</title>
+  <title>安装 &mdash; singa 2.0.0 documentation</title>
   
 
   
@@ -47,18 +47,20 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="软件架构" href="software_stack.html" />
     <link rel="prev" title="文档" href="index.html" />
-     <link href="../_static/style.css" rel="stylesheet" type="text/css">
-     <!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-     <style>
-   .fa:hover {
-       opacity: 0.7;
-   }
-   .fab:hover {
-       opacity: 0.7;
-   }
-     </style>
- 
+<link href="../_static/style.css" rel="stylesheet" type="text/css">
+<!--link href="../_static/fontawesome-all.min.css" rel="stylesheet" type="text/css"-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+  integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<style>
+  .fa:hover {
+    opacity: 0.7;
+  }
+
+  .fab:hover {
+    opacity: 0.7;
+  }
+</style>
+
 </head>
 
 <body class="wy-body-for-nav">
@@ -72,7 +74,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> incubator-singa
+            <a href="../index.html" class="icon icon-home"> singa
           
 
           
@@ -167,7 +169,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">incubator-singa</a>
+          <a href="../index.html">singa</a>
         
       </nav>
 
@@ -251,9 +253,9 @@
 </div>
 <div class="section" id="id2">
 <h2>从源码安装<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>源文件可以被下载为<a class="reference external" href="https://dist.apache.org/repos/dist/dev/incubator/singa/">tar.gz 文件</a>，或者为一个git仓库：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>	$ git clone https://github.com/apache/incubator-singa.git
-	$ cd incubator-singa/
+<p>源文件可以被下载为<a class="reference external" href="https://dist.apache.org/repos/dist/dev/singa/">tar.gz 文件</a>，或者为一个git仓库：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>	$ git clone https://github.com/apache/singa.git
+	$ cd singa/
 </pre></div>
 </div>
 <div class="section" id="condasinga">
@@ -268,7 +270,7 @@
 	<span class="n">conda</span> <span class="n">build</span> <span class="n">tool</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">singa</span><span class="o">/</span> <span class="o">--</span><span class="n">python3</span><span class="o">.</span><span class="mi">6</span> <span class="p">(</span><span class="ow">or</span> <span class="o">--</span><span class="n">python2</span><span class="o">.</span><span class="mi">7</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>上面的指令已在Ubuntu 16.04和Mac OSX上测试过。更多信息请参考<a class="reference external" href="https://travis-ci.org/apache/incubator-singa">Travis-CI页面</a>。</p>
+<p>上面的指令已在Ubuntu 16.04和Mac OSX上测试过。更多信息请参考<a class="reference external" href="https://travis-ci.org/apache/singa">Travis-CI页面</a>。</p>
 <p>创建GPU版本的SINGA</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>	<span class="n">export</span> <span class="n">BUILD_STR</span><span class="o">=</span><span class="n">cudax</span><span class="o">.</span><span class="n">y</span><span class="o">-</span><span class="n">cudnna</span><span class="o">.</span><span class="n">b</span><span class="o">.</span><span class="n">c</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">cuda9</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">cudnn7</span><span class="o">.</span><span class="mf">1.2</span><span class="p">)</span>
 	<span class="n">export</span> <span class="n">CUDNN_PATH</span><span class="o">=&lt;</span><span class="n">path</span> <span class="n">to</span> <span class="n">cudnn</span> <span class="n">folder</span><span class="o">&gt;</span>
@@ -285,7 +287,7 @@
 <h3>使用本地工具在Ubuntu上创建SINGA<a class="headerlink" href="#ubuntusinga" title="Permalink to this headline">¶</a></h3>
 <p>编译和运行SINGA需要以下库。
 有关在Ubuntu 16.04上安装它们的说明，
-请参阅SINGA <a class="reference external" href="https://github.com/apache/incubator-singa/blob/master/tool/docker/">Dockerfiles</a>。</p>
+请参阅SINGA <a class="reference external" href="https://github.com/apache/singa/blob/master/tool/docker/">Dockerfiles</a>。</p>
 <ul class="simple">
 <li>cmake (&gt;=2.8)</li>
 <li>gcc (&gt;=4.8.1) or Clang</li>
@@ -295,7 +297,7 @@
 <li>numpy(&gt;=1.11.0) for compiling PySINGA</li>
 </ul>
 <ol class="simple">
-<li>在incubator-singa目录下创建一个<code class="docutils literal"><span class="pre">build</span></code>文件夹并进入其中</li>
+<li>在singa目录下创建一个<code class="docutils literal"><span class="pre">build</span></code>文件夹并进入其中</li>
 <li>运行 <code class="docutils literal"><span class="pre">cmake</span> <span class="pre">[options]</span> <span class="pre">..</span></code>
 默认情况下除了<code class="docutils literal"><span class="pre">USE_PYTHON</span></code>，其他所有可选项都是OFF<ul>
 <li><code class="docutils literal"><span class="pre">USE_MODULES=ON</span></code>, 当protobuf和blas没有被安装时使用</li>
@@ -576,50 +578,61 @@ SINGA的（这个问题可以通过由conda安装SINGA来解决）， 比如：�
   
     
   
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> singa </span>
+    v: latest
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Languages</dt>
+      <dd><a href="../../index.html">English</a></dd>
+      <dd><a href=".././index.html">中文</a></dd>
+    </dl>
+    <dl>
+      <dt>Versions</dt>
+      <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
+      <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
+    </dl>
+
+  </div>
+  <a href="http://www.apache.org"
+    style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
+  <a href="http://www.apache.org/events/current-event"
+    style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>
+  <a href="http://www.apache.org/foundation/thanks.html"
+    style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Thanks</a>
+  <a href="http://www.apache.org/foundation/sponsorship.html"
+    style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">Sponsorship</a>
+  <a href="http://www.apache.org/licenses/"
+    style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">License</a>
+  <br>
+  <a href="https://github.com/apache/singa" class="fa fa-github"
+    style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws"
+    style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker"
+    style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://www.linkedin.com/groups/13550034" class="fa fa-linkedin"
+    style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://twitter.com/ApacheSinga" class="fa fa-twitter"
+    style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://www.facebook.com/Apache-SINGA-347284219056544/" class="fa fa-facebook"
+    style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+  <a href="https://www.researchgate.net/project/Apache-SINGA" class="fab fa-researchgate"
+    style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
+
+</div>
+
+<a href="https://github.com/apache/singa">
+  <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub">
+</a>
+
  
- <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-   <span class="rst-current-version" data-toggle="rst-current-version">
-     <span class="fa fa-book"> incubator-singa </span>
-     v: latest
-     <span class="fa fa-caret-down"></span>
-   </span>
-   <div class="rst-other-versions">
-       <dl>
-           <dt>Languages</dt>
-           <dd><a href="../../index.html">English</a></dd>
-           <dd><a href=".././index.html">中文</a></dd>
-       </dl>
-       <dl>
-           <dt>Versions</dt>
-           <dd><a href="http://singa.apache.org/v0.3.0/">0.3</a></dd>
-           <dd><a href="http://singa.apache.org/v1.1.0/">1.1</a></dd>
-       </dl>
- 
-   </div>
-   <a href="http://www.apache.org" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Foundation</a>
-   <a href="http://www.apache.org/events/current-event" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Events</a>
-   <a href="http://www.apache.org/foundation/thanks.html" style="color:lightblue;padding: 5px; font-size: 10px; text-align: center; text-decoration: none; margin: 5px 2px;">Thanks</a>
-   <a href="http://www.apache.org/foundation/sponsorship.html" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">Sponsorship</a>
-   <a href="http://www.apache.org/licenses/" style="color:lightblue;padding: 5px; font-size: 10px;  text-align: center; text-decoration: none; margin: 5px 2px;">License</a>
-   <br>
-   <a href="https://github.com/apache/incubator-singa" class="fa fa-github" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
-   <a href="https://aws.amazon.com/marketplace/seller-profile?id=5bcac385-12c4-4802-aec7-351e09b77b4c" class="fab fa-aws" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
-   <a href="https://hub.docker.com/r/apache/singa/" class="fab fa-docker" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a> 
-   <a href="https://www.linkedin.com/groups/13550034" class="fa fa-linkedin" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
-   <a href="https://twitter.com/ApacheSinga" class="fa fa-twitter" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
-   <a href="https://www.facebook.com/Apache-SINGA-347284219056544/" class="fa fa-facebook" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
-   <a href="https://www.researchgate.net/project/Apache-SINGA" class="fab fa-researchgate" style="padding: 10px; font-size: 20px; width: 30px; text-align: center; text-decoration: none; margin: 5px 2px;"></a>
- 
- </div>
- 
-  <a href="https://github.com/apache/incubator-singa">
-     <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 10000;"
-         src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
-         alt="Fork me on GitHub">
- </a>
- 
-  
- 
+
 
 </body>
 </html>
