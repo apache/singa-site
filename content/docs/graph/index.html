@@ -1,0 +1,630 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Computational Graph · Apache SINGA</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. --&gt;"/><meta name="docsearch:version" content="3.0.0.rc1"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Computational Graph · Apache SINGA"/><meta property="og:type" content="website"/><meta property="og:url" content="https://feynmandna.github.io/"/><meta property="og:description" content="&lt;!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. --&gt;"/><meta property="og:image" content="https://feynmandna.github.io/img/singa_twitter_banner.jpeg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://feynmandna.github.io/img/singa_twitter_banner.jpeg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://feynmandna.github.io/blog/atom.xml" title="Apache SINGA Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://feynmandna.github.io/blog/feed.xml" title="Apache SINGA Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/singa.png" alt="Apache SINGA"/></a><a href="/versions"><h3>3.0.0.rc1</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/installation" target="_self">Docs</a></li><li class=""><a href="/docs/source-repository" target="_self">Community</a></li><li class=""><a href="/blog/" target="_self">News</a></li><li class=""><a target="_self"></a></li><li class=""><a href="https://github.com/apache/singa-doc" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Guides</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/installation">Installation</a></li><li class="navListItem"><a class="navItem" href="/docs/software-stack">Software Stack</a></li><li class="navListItem"><a class="navItem" href="/docs/benchmark-train">Benchmark for Distributed Training</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Guides</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/device">Device</a></li><li class="navListItem"><a class="navItem" href="/docs/tensor">Tensor</a></li><li class="navListItem"><a class="navItem" href="/docs/autograd">Autograd in SINGA</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/graph">Computational Graph</a></li><li class="navListItem"><a class="navItem" href="/docs/dist-train">Distributed Training</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Model Zoo</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/model-zoo-cnn-cifar10">Train CNN over Cifar-10</a></li><li class="navListItem"><a class="navItem" href="/docs/model-zoo-char-rnn">Train Char-RNN over plain text</a></li><li class="navListItem"><a class="navItem" href="/docs/model-zoo-rbm-mnist">Train a RBM model against MNIST dataset</a></li><li class="navListItem"><a class="navItem" href="/docs/model-zoo-imagenet-alexnet">Train AlexNet over ImageNet</a></li><li class="navListItem"><a class="navItem" href="/docs/model-zoo-imagenet-densenet">Image Classification using DenseNet</a></li><li class="navListItem"><a class="navItem" href="/docs/model-zoo-imagenet-googlenet">Image Classification using GoogleNet</a></li><li class="navListItem"><a class="navItem" href="/docs/model-zoo-imagenet-inception">Image Classification using Inception V4</a></li><li class="navListItem"><a class="navItem" href="/docs/model-zoo-imagenet-resnet">Image Classification using Residual Networks</a></li><li class="navListItem"><a class="navItem" href="/docs/model-zoo-imagenet-vgg">Image Classification using VGG</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Development</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/download-singa">Download SINGA</a></li><li class="navListItem"><a class="navItem" href="/docs/build">Build SINGA from Source</a></li><li class="navListItem"><a class="navItem" href="/docs/contribute-code">How to Contribute Code</a></li><li class="navListItem"><a class="navItem" href="/docs/contribute-docs">How to Contribute to Documentation</a></li><li class="navListItem"><a class="navItem" href="/docs/how-to-release">How to Prepare a Release</a></li><li class="navListItem"><a class="navItem" href="/docs/git-workflow">Git Workflow</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs/graph.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Computational Graph</h1></header><article><div><span><!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. -->
+<p>SINGA supports buffering operations and computational graph. Using computational
+graph, SINGA can schedule the execution of operations as well as the memory
+allocation and release. It makes training more efficient while using less
+memory.</p>
+<h2><a class="anchor" aria-hidden="true" id="about-computational-graph"></a><a href="#about-computational-graph" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>About Computational Graph</h2>
+<h3><a class="anchor" aria-hidden="true" id="introduction"></a><a href="#introduction" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Introduction</h3>
+<p>Computational graph is used to represent networks of the flow of computation. It
+is composed of many nodes and edges, where nodes represent various operations
+and edges represent data. In deep neural networks, nodes are tensor-based
+operations such as convolution and edges are tensors.</p>
+<p>The entire neural network is equivalent to a computational graph, all neural
+networks can correspond to a calculation graph. By representing the neural
+network as a calculation graph, some optimizations for neural networks can be
+performed on the calculation graph.</p>
+<h3><a class="anchor" aria-hidden="true" id="pipeline"></a><a href="#pipeline" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Pipeline</h3>
+<p>The whole process of using the calculational graph to represent the model and
+execute the graph consists of roughly four steps. The whole process is actually
+similar to compiling. We first describe the program with code, then translate
+the program into intermediate code, then optimize the intermediate code and
+finally come up with many ways to efficiently execute the code. In neural
+networks, the intermediate code is the calculation graph. We can optimize
+through techniques like common subexpression elimination. When the computer
+executes the compiled binary file, it can be efficiently executed by using
+multi-thread technology, and the same as the execution of the calculation graph.
+Therefore, some ideas of compilation principles can also be used in the
+optimization of calculation graphs.</p>
+<ul>
+<li><p>Write the python code for the model.</p></li>
+<li><p>Construct the computational graph based on the python code.</p></li>
+<li><p>Optimize the computational graph.</p></li>
+<li><p>Execute the computational graph efficiently.</p></li>
+</ul>
+<p>Figure 1 shows a simple example of going through the entire process.</p>
+<p><img src="assets/GraphPipeline.png" alt="The pipeline of using computational graph" style="zoom:40%;" /></p>
+<p><br/><strong>Figure 1 - The pipeline of using computational graph</strong></p>
+<h3><a class="anchor" aria-hidden="true" id="an-example-of-mlp"></a><a href="#an-example-of-mlp" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>An example of MLP</h3>
+<p>A simple MLP model can be constructed on the Python side by using some APIs of
+SINGA.</p>
+<pre><code class="hljs css language-python">x = autograd.matmul(inputs, w0)
+x = autograd.add_bias(x, b0)
+x = autograd.relu(x)
+x = autograd.matmul(x, w1)
+x = autograd.add_bias(x, b1)
+loss = autograd.softmax_cross_entropy(x, target)
+sgd.backward_and_update(loss)
+</code></pre>
+<p>When the model is defined, there is actually a calculation graph corresponding
+to it. This calculation graph contains the calculations that the entire SINGA
+will perform. Figure 2 shows the computational graph corresponding to the MLP
+model defined above.</p>
+<p><img src="/docs/assets/GraphOfMLP.png" alt="The computational graph of MLP"></p>
+<p><br/><strong>Figure 2 - The computational graph of MLP</strong></p>
+<h2><a class="anchor" aria-hidden="true" id="features"></a><a href="#features" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Features</h2>
+<p>There are four main features of computational graph in SINGA, namely (i)
+Computational graph construction, (ii) Lazy allocation, (iii) Automatic
+recycling, (iv) Shared memory. Details are as follows:</p>
+<ul>
+<li><code>Computational graph construction</code>: Construct a computational graph based on
+the mathematical or deep learning operations, and then run the graph to
+accomplish the training task. The computational graph also includes operations
+like communicator.synch and communicator.fusedSynch for the distributed
+training.</li>
+<li><code>Lazy allocation</code>: When blocks are allocated, devices do not allocate memory
+for them immediately. Devices do memory allocation only when an operation uses
+this block for the first time.</li>
+<li><code>Automatic recycling</code>: When we are running a graph in an iteration, it
+automatically deallocates the intermediate tensors which won't be used again
+in the remaining operations.</li>
+<li><code>Shared memory</code>: When two operations will never be performed at the same time,
+the result tensors produced by them can share a piece of memory.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="how-to-use"></a><a href="#how-to-use" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to use</h2>
+<ul>
+<li>An example of CNN:</li>
+</ul>
+<pre><code class="hljs css language-Python">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CNN</span><span class="hljs-params">(module.Module)</span>:</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, optimizer)</span>:</span>
+        super(CNN, self).__init__()
+
+        self.conv1 = autograd.Conv2d(<span class="hljs-number">1</span>, <span class="hljs-number">20</span>, <span class="hljs-number">5</span>, padding=<span class="hljs-number">0</span>)
+        self.conv2 = autograd.Conv2d(<span class="hljs-number">20</span>, <span class="hljs-number">50</span>, <span class="hljs-number">5</span>, padding=<span class="hljs-number">0</span>)
+        self.linear1 = autograd.Linear(<span class="hljs-number">4</span> * <span class="hljs-number">4</span> * <span class="hljs-number">50</span>, <span class="hljs-number">500</span>)
+        self.linear2 = autograd.Linear(<span class="hljs-number">500</span>, <span class="hljs-number">10</span>)
+        self.pooling1 = autograd.MaxPool2d(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, padding=<span class="hljs-number">0</span>)
+        self.pooling2 = autograd.MaxPool2d(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, padding=<span class="hljs-number">0</span>)
+
+        self.optimizer = optimizer
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(self, x)</span>:</span>
+        y = self.conv1(x)
+        y = autograd.relu(y)
+        y = self.pooling1(y)
+        y = self.conv2(y)
+        y = autograd.relu(y)
+        y = self.pooling2(y)
+        y = autograd.flatten(y)
+        y = self.linear1(y)
+        y = autograd.relu(y)
+        y = self.linear2(y)
+        <span class="hljs-keyword">return</span> y
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">loss</span><span class="hljs-params">(self, x, ty)</span>:</span>
+        <span class="hljs-keyword">return</span> autograd.softmax_cross_entropy(x, ty)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">optim</span><span class="hljs-params">(self, loss)</span>:</span>
+        self.optimizer.backward_and_update(loss)
+
+<span class="hljs-comment"># initialization other objects</span>
+<span class="hljs-comment"># ......</span>
+model = CNN(sgd)
+model.train()
+model.on_device(dev)
+model.graph(graph, sequential)
+
+<span class="hljs-comment"># Train</span>
+<span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> range(num_train_batch):
+    <span class="hljs-comment"># Generate the patch data in this iteration</span>
+    <span class="hljs-comment"># ......</span>
+
+    <span class="hljs-comment"># Copy the patch data into input tensors</span>
+    tx.copy_from_numpy(x)
+    ty.copy_from_numpy(y)
+
+    <span class="hljs-comment"># Train the model</span>
+    out = model(tx)
+    loss = model.loss(out, ty)
+    model.optim(loss)
+</code></pre>
+<ul>
+<li>Some settings:
+<a href="https://github.com/apache/singa/blob/master/python/singa/module.py">module.py</a>
+<ul>
+<li><code>training</code>: whether to train the neural network defined in the class or for
+evaluation.</li>
+<li><code>graph_mode</code>: the model class defined by users can be trained using
+computational graph or not.</li>
+<li><code>sequential</code>: execute operations in graph serially or in the order of BFS.</li>
+</ul></li>
+<li>More examples:
+<ul>
+<li><a href="https://github.com/apache/singa/blob/master/examples/autograd/mlp_module.py">MLP</a></li>
+<li><a href="https://github.com/apache/singa/blob/master/examples/autograd/cnn_module.py">CNN</a></li>
+<li><a href="https://github.com/apache/singa/blob/master/examples/autograd/resnet_module.py">ResNet</a></li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="experiments"></a><a href="#experiments" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Experiments</h2>
+<h3><a class="anchor" aria-hidden="true" id="single-node"></a><a href="#single-node" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Single node</h3>
+<ul>
+<li>Experiment settings
+<ul>
+<li>Model
+<ul>
+<li>Using layer: ResNet50 in
+<a href="https://github.com/apache/singa/blob/master/examples/autograd/resnet.py">resnet.py</a></li>
+<li>Using module: ResNet50 in
+<a href="https://github.com/apache/singa/blob/master/examples/autograd/resnet_module.py">resnet_module.py</a></li>
+</ul></li>
+<li>GPU: NVIDIA RTX 2080Ti</li>
+</ul></li>
+<li>Notations
+<ul>
+<li><code>s</code> ：second</li>
+<li><code>it</code> ： iteration</li>
+<li><code>Mem</code>：peak memory usage of single GPU</li>
+<li><code>Throughout</code>：number of images processed per second</li>
+<li><code>Time</code>：total time</li>
+<li><code>Speed</code>：iterations per second</li>
+<li><code>Reduction</code>：the memory usage reduction rate compared with that using layer</li>
+<li><code>Speedup</code>: speedup ratio compared with dev branch</li>
+</ul></li>
+<li>Result
+  <table style="text-align: center">
+      <tr>
+          <th style="text-align: center">Batchsize</th>
+          <th style="text-align: center">Cases</th>
+          <th style="text-align: center">Mem(MB)</th>
+          <th style="text-align: center">Time(s)</th>
+          <th style="text-align: center">Speed(it/s)</th>
+          <th style="text-align: center">Throughput</th>
+          <th style="text-align: center">Reduction</th>
+          <th style="text-align: center">Speedup</th>
+      </tr>
+      <tr>
+          <td rowspan="4">16</td>
+          <td nowrap>layer</td>
+          <td>4975</td>
+          <td>14.1952</td>
+          <td>14.0893</td>
+          <td>225.4285</td>
+          <td>0.00%</td>
+          <td>1.0000</td>
+      </tr>
+      <tr>
+          <td nowrap>module:disable graph</td>
+          <td>4995</td>
+          <td>14.1264</td>
+          <td>14.1579</td>
+          <td>226.5261</td>
+          <td>-0.40%</td>
+          <td>1.0049</td>
+      </tr>
+      <tr>
+          <td nowrap>module:enable graph, bfs</td>
+          <td>3283</td>
+          <td>13.7438</td>
+          <td>14.5520</td>
+          <td>232.8318</td>
+          <td>34.01%</td>
+          <td>1.0328</td>
+      </tr>
+      <tr>
+          <td nowrap>module:enable graph, serial</td>
+          <td>3265</td>
+          <td>13.7420</td>
+          <td>14.5540</td>
+          <td>232.8635</td>
+          <td>34.37%</td>
+          <td>1.0330</td>
+      </tr>
+      <tr>
+          <td rowspan="4">32</td>
+          <td nowrap>layer</td>
+          <td>10119</td>
+          <td>13.4587</td>
+          <td>7.4302</td>
+          <td>237.7649</td>
+          <td>0.00%</td>
+          <td>1.0000</td>
+      </tr>
+      <tr>
+          <td nowrap>module:enable graph</td>
+          <td>10109</td>
+          <td>13.2952</td>
+          <td>7.5315</td>
+          <td>240.6875</td>
+          <td>0.10%</td>
+          <td>1.0123</td>
+      </tr>
+      <tr>
+          <td nowrap>module:enable graph, bfs</td>
+          <td>6839</td>
+          <td>13.1059</td>
+          <td>7.6302</td>
+          <td>244.1648</td>
+          <td>32.41%</td>
+          <td>1.0269</td>
+      </tr>
+      <tr>
+          <td nowrap>module:enable graph, serial</td>
+          <td>6845</td>
+          <td>13.0489</td>
+          <td>7.6635</td>
+          <td>245.2312</td>
+          <td>32.35%</td>
+          <td>1.0314</td>
+      </tr>
+  </table>
+</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="multi-processes"></a><a href="#multi-processes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Multi processes</h3>
+<ul>
+<li>Experiment settings
+<ul>
+<li>Model
+<ul>
+<li>using Layer: ResNet50 in
+<a href="https://github.com/apache/singa/blob/master/examples/autograd/resnet_dist.py">resnet_dist.py</a></li>
+<li>using Module: ResNet50 in
+<a href="https://github.com/apache/singa/blob/master/examples/autograd/resnet_module.py">resnet_module.py</a></li>
+</ul></li>
+<li>GPU: NVIDIA RTX 2080Ti * 2</li>
+<li>MPI: two MPI processes on one node</li>
+</ul></li>
+<li>Notations: the same as above</li>
+<li>Result
+  <table style="text-align: center">
+      <tr>
+          <th style="text-align: center">Batchsize</th>
+          <th style="text-align: center">Cases</th>
+          <th style="text-align: center">Mem(MB)</th>
+          <th style="text-align: center">Time(s)</th>
+          <th style="text-align: center">Speed(it/s)</th>
+          <th style="text-align: center">Throughput</th>
+          <th style="text-align: center">Reduction</th>
+          <th style="text-align: center">Speedup</th>
+      </tr>
+      <tr>
+          <td rowspan="4">16</td>
+          <td nowrap>layer</td>
+          <td>5439</td>
+          <td>17.3323</td>
+          <td>11.5391</td>
+          <td>369.2522</td>
+          <td>0.00%</td>
+          <td>1.0000</td>
+      </tr>
+      <tr>
+          <td nowrap>module:disable graph</td>
+          <td>5427</td>
+          <td>17.8232</td>
+          <td>11.2213</td>
+          <td>359.0831</td>
+          <td>0.22%</td>
+          <td>0.9725</td>
+      </tr>
+      <tr>
+          <td nowrap>module:enable graph, bfs</td>
+          <td>3389</td>
+          <td>18.2310</td>
+          <td>10.9703</td>
+          <td>351.0504</td>
+          <td>37.69%</td>
+          <td>0.9507</td>
+      </tr>
+      <tr>
+          <td nowrap>module:enable graph, serial</td>
+          <td>3437</td>
+          <td>17.0389</td>
+          <td>11.7378</td>
+          <td>375.6103</td>
+          <td>36.81%</td>
+          <td>1.0172</td>
+      </tr>
+      <tr>
+          <td rowspan="4">32</td>
+          <td nowrap>layer</td>
+          <td>10547</td>
+          <td>14.8635</td>
+          <td>6.7279</td>
+          <td>430.5858</td>
+          <td>0.00%</td>
+          <td>1.0000</td>
+      </tr>
+      <tr>
+          <td nowrap>module:disable graph</td>
+          <td>10503</td>
+          <td>14.7746</td>
+          <td>6.7684</td>
+          <td>433.1748</td>
+          <td>0.42%</td>
+          <td>1.0060</td>
+      </tr>
+      <tr>
+          <td nowrap>module:enable graph, bfs</td>
+          <td>6935</td>
+          <td>14.8553</td>
+          <td>6.7316</td>
+          <td>430.8231</td>
+          <td>34.25%</td>
+          <td>1.0006</td>
+      </tr>
+      <tr>
+          <td nowrap>module:enable graph, serial</td>
+          <td>7027</td>
+          <td>14.3271</td>
+          <td>6.9798</td>
+          <td>446.7074</td>
+          <td>33.37%</td>
+          <td>1.0374</td>
+      </tr>
+  </table>
+</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="conclusion"></a><a href="#conclusion" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Conclusion</h3>
+<ul>
+<li>Computational graph does not affect training time and memory usage if the
+graph is disabled.</li>
+<li>Computational graph can significantly reduce memory usage and training time.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="implementation"></a><a href="#implementation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Implementation</h2>
+<h3><a class="anchor" aria-hidden="true" id="computational-graph-construction"></a><a href="#computational-graph-construction" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Computational graph construction</h3>
+<ul>
+<li><p><code>Buffer the operations</code>: Use the technique of delayed execution to falsely
+perform operations in the forward propagation and backward propagation once.
+Buffer all the operations and the tensors read or written by each operation.
+Take matmul for example.</p>
+<pre><code class="hljs css language-python"><span class="hljs-comment"># user calls an api to do matmul on two tensors</span>
+x = autograd.matmul(inputs, w0)
+
+<span class="hljs-comment"># Python code inside the api</span>
+singa.Mult(inputs, w)
+</code></pre>
+<pre><code class="hljs css language-c++"><span class="hljs-comment">// the backend platform</span>
+<span class="hljs-comment">// pass the specific execution function of the operation</span>
+<span class="hljs-comment">// and the tensors it will reads and writes during the calculation to the device.</span>
+C-&gt;device()-&gt;Exec(
+    [a, A, b, B, CRef](Context *ctx) <span class="hljs-keyword">mutable</span> {
+        GEMV&lt;DType, Lang&gt;(a, A, B, b, &amp;CRef, ctx);
+    },
+    read_blocks, {C-&gt;block()});
+</code></pre></li>
+<li><p><code>Build nodes and edges</code>: Build the nodes and edges of the operations passed to
+the device and add them into the computational graph. Since we just told the
+scheduler which blocks these operations will read and write and some of the
+tensors will share the same blocks, the scheduler will split one edge into
+multiple to ensure that the constructed graph is a directed acyclic graph.</p></li>
+<li><p><code>Analyze the graph</code>: Calculate dependencies between all the operations to
+decide the order of execution. The system will only analyze the same graph
+once. If new operations are added to the graph, the calculation graph will be
+re-analyzed.</p></li>
+<li><p><code>Run graph</code>: Execute all the operations in the order we just calculated to
+update all the parameters. Tensors are well scheduled to allocate and
+deallocate to save memory. After the analyzing, the operations in the graph
+can be executed based on the result of analyzing.</p></li>
+<li><p><code>Module</code>: Provided a module class on the Python side for users to use this
+feature more conveniently.</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="lazy-allocation"></a><a href="#lazy-allocation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Lazy allocation</h3>
+<ul>
+<li>When a device needs to create a new block, pass the device to that block only,
+instead of allocating a piece of memory from the mempool and passing the
+pointer to that block.</li>
+<li>When a block is accessed for the first time, the device corresponding to the
+block allocates memory and then access it.</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="automatic-recycling"></a><a href="#automatic-recycling" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Automatic recycling</h3>
+<ul>
+<li>When calculating dependencies between the operations during graph
+construction, the reference count of tensors can also be calculated.</li>
+<li>When an operation is completed, the schedualer decrease the reference count of
+tensors that the operation used.</li>
+<li>If a tensor's reference count reaches zero, it means the tensor won't be
+accessed by latter operations, so we can recycle its memory.</li>
+<li>The program will track the usage of the block. If a block is used on the
+python side, it will not be recycled, which is convenient for debugging on the
+python side.</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="shared-memory"></a><a href="#shared-memory" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Shared memory</h3>
+<ul>
+<li>Once the kernel function of an operation is added into the default cuda stream
+and the tensors used by the operation can be freed when the calculation is
+complete, the scheduler will free these tensors' memory immediately and no
+need to wait for the calculation to complete. Because subsequent operations
+will not be performed at the same time as the current operation as the
+platform now used the default stream of CUDA to finish the calculation. So the
+following tensors can share the same memory with these tensors.</li>
+<li>Use a mempool to manage the GPU memory. Scheduler returns the memory used by
+tensors to the mempool and the latter tensors will apply for memory from
+mempool. The mempool will find the most suitable blocks returned by the
+previous tensors for the latter tensors to share as much memory as possible.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="how-to-add-a-new-operation"></a><a href="#how-to-add-a-new-operation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to add a new operation</h2>
+<p>For new operations to be included in the computational graph, they should be
+submitted to the device. Device class on the CPP side will add these operations
+in the computational graph and the scheduler will schedule them automatically.</p>
+<h4><a class="anchor" aria-hidden="true" id="requirements"></a><a href="#requirements" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Requirements</h4>
+<p>When submitting operations, there are some requirements.</p>
+<ul>
+<li><p>Need to pass in the function that the operation executes and the data blocks
+that the operation reads and writes</p></li>
+<li><p>For the function of the operation: All variables used in lambda expressions
+need to be captured according to the following rules.</p>
+<ul>
+<li><p><code>capture by value</code>: If the variable is a local variable or will be
+immediately released (e.g. intermediate tensors). If not captured by value,
+these variables will be destroyed after buffering. Buffering is just a way
+to defer real calculations.</p></li>
+<li><p><code>capture by reference</code>：If the variable is recorded on the python side or a
+global variable (e.g. The parameter W and ConvHand in the Conv2d class).</p></li>
+<li><p><code>mutable</code>: The lambda expression should have mutable tag if a variable
+captured by value is modified in an expression</p></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="example"></a><a href="#example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h4>
+<ul>
+<li>Python side:
+<a href="https://github.com/apache/singa/blob/dev/python/singa/autograd.py#L1191">_Conv2d</a>
+records x, W, b and handle in the class.</li>
+</ul>
+<pre><code class="hljs css language-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">_Conv2d</span><span class="hljs-params">(Operation)</span>:</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, handle, odd_padding=<span class="hljs-params">(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)</span>)</span>:</span>
+        super(_Conv2d, self).__init__()
+        self.handle = handle  <span class="hljs-comment"># record handle</span>
+        self.odd_padding = odd_padding
+        <span class="hljs-keyword">if</span> self.odd_padding != (<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>):
+            self.re_new_handle = <span class="hljs-literal">True</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(self, x, W, b=None)</span>:</span>
+        <span class="hljs-comment"># other code</span>
+        <span class="hljs-comment"># ......</span>
+
+        <span class="hljs-keyword">if</span> training:
+            <span class="hljs-keyword">if</span> self.handle.bias_term:
+                self.inputs = (x, W, b) <span class="hljs-comment"># record x, W, b</span>
+            <span class="hljs-keyword">else</span>:
+                self.inputs = (x, W)
+
+        <span class="hljs-comment"># other code</span>
+        <span class="hljs-comment"># ......</span>
+
+        <span class="hljs-keyword">if</span> (type(self.handle) != singa.ConvHandle):
+            <span class="hljs-keyword">return</span> singa.GpuConvForward(x, W, b, self.handle)
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-keyword">return</span> singa.CpuConvForward(x, W, b, self.handle)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">backward</span><span class="hljs-params">(self, dy)</span>:</span>
+        <span class="hljs-keyword">if</span> (type(self.handle) != singa.ConvHandle):
+            dx = singa.GpuConvBackwardx(dy, self.inputs[<span class="hljs-number">1</span>], self.inputs[<span class="hljs-number">0</span>],
+                                        self.handle)
+            dW = singa.GpuConvBackwardW(dy, self.inputs[<span class="hljs-number">0</span>], self.inputs[<span class="hljs-number">1</span>],
+                                        self.handle)
+            db = singa.GpuConvBackwardb(
+                dy, self.inputs[<span class="hljs-number">2</span>],
+                self.handle) <span class="hljs-keyword">if</span> self.handle.bias_term <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span>
+        <span class="hljs-keyword">else</span>:
+            dx = singa.CpuConvBackwardx(dy, self.inputs[<span class="hljs-number">1</span>], self.inputs[<span class="hljs-number">0</span>],
+                                        self.handle)
+            dW = singa.CpuConvBackwardW(dy, self.inputs[<span class="hljs-number">0</span>], self.inputs[<span class="hljs-number">1</span>],
+                                        self.handle)
+            db = singa.CpuConvBackwardb(
+                dy, self.inputs[<span class="hljs-number">2</span>],
+                self.handle) <span class="hljs-keyword">if</span> self.handle.bias_term <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span>
+        <span class="hljs-keyword">if</span> self.odd_padding != (<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>):
+            dx = utils.handle_odd_pad_bwd(dx, self.odd_padding)
+
+        <span class="hljs-keyword">if</span> db:
+            <span class="hljs-keyword">return</span> dx, dW, db
+
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-keyword">return</span> dx, dW
+</code></pre>
+<ul>
+<li>C++ side:
+<a href="https://github.com/apache/singa/blob/dev/src/model/operation/convolution.cc">convolution.cc</a></li>
+</ul>
+<pre><code class="hljs css language-c++"><span class="hljs-function">Tensor <span class="hljs-title">GpuConvBackwardx</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Tensor &amp;dy, <span class="hljs-keyword">const</span> Tensor &amp;W, <span class="hljs-keyword">const</span> Tensor &amp;x,
+                        <span class="hljs-keyword">const</span> CudnnConvHandle &amp;cch)</span> </span>{
+  CHECK_EQ(dy.device()-&gt;lang(), kCuda);
+
+  Tensor dx;
+  dx.ResetLike(x);
+
+  dy.device()-&gt;Exec(
+      <span class="hljs-comment">/*
+       * dx is a local variable so it's captured by value
+       * dy is an intermediate tensor and isn't recorded on the python side
+       * W is an intermediate tensor but it's recorded on the python side
+       * chh is a variable and it's recorded on the python side
+       */</span>
+      [dx, dy, &amp;W, &amp;cch](Context *ctx) <span class="hljs-keyword">mutable</span> {
+        Block *wblock = W.block(), *dyblock = dy.block(), *dxblock = dx.block();
+        <span class="hljs-keyword">float</span> alpha = <span class="hljs-number">1.f</span>, beta = <span class="hljs-number">0.f</span>;
+        cudnnConvolutionBackwardData(
+            ctx-&gt;cudnn_handle, &amp;alpha, cch.filter_desc, wblock-&gt;data(),
+            cch.y_desc, dyblock-&gt;data(), cch.conv_desc, cch.bp_data_alg,
+            cch.workspace.block()-&gt;mutable_data(),
+            cch.workspace_count * <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">float</span>), &amp;beta, cch.x_desc,
+            dxblock-&gt;mutable_data());
+      },
+      {dy.block(), W.block()}, {dx.block(), cch.workspace.block()});
+      <span class="hljs-comment">/* the lambda expression reads the blocks of tensor dy and w
+       * and writes the blocks of tensor dx and chh.workspace
+       */</span>
+
+  <span class="hljs-keyword">return</span> dx;
+}
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/autograd"><span class="arrow-prev">← </span><span>Autograd in SINGA</span></a><a class="docs-next button" href="/docs/dist-train"><span>Distributed Training</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#about-computational-graph">About Computational Graph</a><ul class="toc-headings"><li><a href="#introduction">Introduction</a></li><li><a href="#pipeline">Pipeline</a></li><li><a href="#an-example-of-mlp">An example of MLP</a></li></ul></li><li><a href="#features">Features</a></li><li><a href="#how-to-use">How to use</a></li><li><a href="#experiments">Experiments</a><ul class="toc-headings"><li><a href="#single-node">Single node</a></li><li><a href="#multi-processes">Multi processes</a></li><li><a href="#conclusion">Conclusion</a></li></ul></li><li><a href="#implementation">Implementation</a><ul class="toc-headings"><li><a href="#computational-graph-construction">Computational graph construction</a></li><li><a href="#lazy-allocation">Lazy allocation</a></li><li><a href="#automatic-recycling">Automatic recycling</a></li><li><a href="#shared-memory">Shared memory</a></li></ul></li><li><a href="#how-to-add-a-new-operation">How to add a new operation</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/#">API Reference (coming soon)</a><a href="/docs/model-zoo-cnn-cifar10">Model Zoo</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/news">SINGA News</a><a href="https://github.com/apache/singa-doc">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa-doc" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2020
+   The Apache Software Foundation. All rights reserved.
+   Apache SINGA, Apache, the Apache feather logo, and
+   the Apache SINGA project logos are trademarks of The
+   Apache Software Foundation. All other marks mentioned
+   may be trademarks or registered trademarks of their
+   respective owners.</section></div></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

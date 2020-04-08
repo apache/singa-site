@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Image Classification using GoogleNet · Apache SINGA</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Image Classification using GoogleNet · Apache SINGA"/><meta property="og:type" content="website"/><meta property="og:url" content="https://feynmandna.github.io/"/><meta property="og:description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta property="og:image" content="https://feynmandna.github.io/img/singa_twitter_banner.jpeg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://feynmandna.github.io/img/singa_twitter_banner.jpeg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://feynmandna.github.io/blog/atom.xml" title="Apache SINGA Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://feynmandna.github.io/blog/feed.xml" title="Apache SINGA Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/singa.png" alt="Apache SINGA"/></a><a href="/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/next/installation" target="_self">Docs</a></li><li class=""><a href="/docs/next/source-repository" target="_self">Community</a></li><li class=""><a href="/blog/" target="_self">News</a></li><li class=""><a target="_self"></a></li><li class=""><a href="https://github.com/apache/singa-doc" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Model Zoo</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/next/installation">Installation</a></li><li class="navListItem"><a class="navItem" href="/docs/next/software-stack">Software Stack</a></li><li class="navListItem"><a class="navItem" href="/docs/next/benchmark-train">Benchmark for Distributed Training</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Guides</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/next/device">Device</a></li><li class="navListItem"><a class="navItem" href="/docs/next/tensor">Tensor</a></li><li class="navListItem"><a class="navItem" href="/docs/next/autograd">Autograd in SINGA</a></li><li class="navListItem"><a class="navItem" href="/docs/next/graph">Computational Graph</a></li><li class="navListItem"><a class="navItem" href="/docs/next/dist-train">Distributed Training</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Model Zoo</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/next/model-zoo-cnn-cifar10">Train CNN over Cifar-10</a></li><li class="navListItem"><a class="navItem" href="/docs/next/model-zoo-char-rnn">Train Char-RNN over plain text</a></li><li class="navListItem"><a class="navItem" href="/docs/next/model-zoo-rbm-mnist">Train a RBM model against MNIST dataset</a></li><li class="navListItem"><a class="navItem" href="/docs/next/model-zoo-imagenet-alexnet">Train AlexNet over ImageNet</a></li><li class="navListItem"><a class="navItem" href="/docs/next/model-zoo-imagenet-densenet">Image Classification using DenseNet</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/next/model-zoo-imagenet-googlenet">Image Classification using GoogleNet</a></li><li class="navListItem"><a class="navItem" href="/docs/next/model-zoo-imagenet-inception">Image Classification using Inception V4</a></li><li class="navListItem"><a class="navItem" href="/docs/next/model-zoo-imagenet-resnet">Image Classification using Residual Networks</a></li><li class="navListItem"><a class="navItem" href="/docs/next/model-zoo-imagenet-vgg">Image Classification using VGG</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Development</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/next/download-singa">Download SINGA</a></li><li class="navListItem"><a class="navItem" href="/docs/next/build">Build SINGA from Source</a></li><li class="navListItem"><a class="navItem" href="/docs/next/contribute-code">How to Contribute Code</a></li><li class="navListItem"><a class="navItem" href="/docs/next/contribute-docs">How to Contribute to Documentation</a></li><li class="navListItem"><a class="navItem" href="/docs/next/how-to-release">How to Prepare a Release</a></li><li class="navListItem"><a class="navItem" href="/docs/next/git-workflow">Git Workflow</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs/model-zoo-imagenet-googlenet.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Image Classification using GoogleNet</h1></header><article><div><span><!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  -->
+<p>In this example, we convert GoogleNet trained on Caffe to SINGA for image
+classification. Tested on
+<a href="https://github.com/apache/singa/commit/8c990f7da2de220e8a012c6a8ecc897dc7532744">SINGA commit</a>
+with
+<a href="https://s3-ap-southeast-1.amazonaws.com/dlfile/bvlc_googlenet.tar.gz">the parameters</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="instructions"></a><a href="#instructions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Instructions</h2>
+<blockquote>
+<p>Please <code>cd</code> to <code>singa/examples/imagenet/googlenet/</code> for the following commands</p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="download"></a><a href="#download" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Download</h3>
+<p>Download the parameter checkpoint file into this folder</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> wget https://s3-ap-southeast-1.amazonaws.com/dlfile/bvlc_googlenet.tar.gz</span>
+<span class="hljs-meta">$</span><span class="bash"> tar xvf bvlc_googlenet.tar.gz</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="run-the-program"></a><a href="#run-the-program" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Run the program</h3>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">#</span><span class="bash"> use cpu</span>
+<span class="hljs-meta">$</span><span class="bash"> python serve.py -C &amp;</span>
+<span class="hljs-meta">#</span><span class="bash"> use gpu</span>
+<span class="hljs-meta">$</span><span class="bash"> python serve.py &amp;</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="submit-images-for-classification"></a><a href="#submit-images-for-classification" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Submit images for classification</h3>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> curl -i -F image=@image1.jpg http://localhost:9999/api</span>
+<span class="hljs-meta">$</span><span class="bash"> curl -i -F image=@image2.jpg http://localhost:9999/api</span>
+<span class="hljs-meta">$</span><span class="bash"> curl -i -F image=@image3.jpg http://localhost:9999/api</span>
+</code></pre>
+<p>image1.jpg, image2.jpg and image3.jpg should be downloaded before executing the
+above commands.</p>
+<h2><a class="anchor" aria-hidden="true" id="details"></a><a href="#details" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Details</h2>
+<p>We first extract the parameter values from
+<a href="http://dl.caffe.berkeleyvision.org/bvlc_googlenet.caffemodel">Caffe's checkpoint file</a>
+into a pickle version After downloading the checkpoint file into
+<code>caffe_root/python</code> folder, run the following script</p>
+<pre><code class="hljs css language-python"><span class="hljs-comment"># to be executed within caffe_root/python folder</span>
+<span class="hljs-keyword">import</span> caffe
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> cPickle <span class="hljs-keyword">as</span> pickle
+
+model_def = <span class="hljs-string">'../models/bvlc_googlenet/deploy.prototxt'</span>
+weight = <span class="hljs-string">'bvlc_googlenet.caffemodel'</span>  <span class="hljs-comment"># must be downloaded at first</span>
+net = caffe.Net(model_def, weight, caffe.TEST)
+
+params = {}
+<span class="hljs-keyword">for</span> layer_name <span class="hljs-keyword">in</span> net.params.keys():
+    weights=np.copy(net.params[layer_name][<span class="hljs-number">0</span>].data)
+    bias=np.copy(net.params[layer_name][<span class="hljs-number">1</span>].data)
+    params[layer_name+<span class="hljs-string">'_weight'</span>]=weights
+    params[layer_name+<span class="hljs-string">'_bias'</span>]=bias
+    <span class="hljs-keyword">print</span> layer_name, weights.shape, bias.shape
+
+<span class="hljs-keyword">with</span> open(<span class="hljs-string">'bvlc_googlenet.pickle'</span>, <span class="hljs-string">'wb'</span>) <span class="hljs-keyword">as</span> fd:
+    pickle.dump(params, fd)
+</code></pre>
+<p>Then we construct the GoogleNet using SINGA's FeedForwardNet structure. Note
+that we added a EndPadding layer to resolve the issue from discrepancy of the
+rounding strategy of the pooling layer between Caffe (ceil) and cuDNN (floor).
+Only the MaxPooling layers outside inception blocks have this problem. Refer to
+<a href="https://gist.github.com/joelouismarino/a2ede9ab3928f999575423b9887abd14">this</a>
+for more detials.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 4/2/2020</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/next/model-zoo-imagenet-densenet"><span class="arrow-prev">← </span><span class="function-name-prevnext">Image Classification using DenseNet</span></a><a class="docs-next button" href="/docs/next/model-zoo-imagenet-inception"><span>Image Classification using Inception V4</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#instructions">Instructions</a><ul class="toc-headings"><li><a href="#download">Download</a></li><li><a href="#run-the-program">Run the program</a></li><li><a href="#submit-images-for-classification">Submit images for classification</a></li></ul></li><li><a href="#details">Details</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/#">API Reference (coming soon)</a><a href="/docs/model-zoo-cnn-cifar10">Model Zoo</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/news">SINGA News</a><a href="https://github.com/apache/singa-doc">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa-doc" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2020
+   The Apache Software Foundation. All rights reserved.
+   Apache SINGA, Apache, the Apache feather logo, and
+   the Apache SINGA project logos are trademarks of The
+   Apache Software Foundation. All other marks mentioned
+   may be trademarks or registered trademarks of their
+   respective owners.</section></div></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

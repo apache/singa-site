@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Apache SINGA Blog</title>
+        <link>https://feynmandna.github.io/blog</link>
+        <description>The best place to stay up-to-date with the latest Apache SINGA news and events.</description>
+        <lastBuildDate>Wed, 16 Oct 2019 06:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <image>
+            <title>Apache SINGA Blog</title>
+            <url>https://feynmandna.github.io/img/singa.png</url>
+            <link>https://feynmandna.github.io/blog</link>
+        </image>
+        <copyright>Copyright © 2020
+   The Apache Software Foundation. All rights reserved.
+   Apache SINGA, Apache, the Apache feather logo, and
+   the Apache SINGA project logos are trademarks of The
+   Apache Software Foundation. All other marks mentioned
+   may be trademarks or registered trademarks of their
+   respective owners.</copyright>
+        <item>
+            <title><![CDATA[Apache SINGA as a Top-Level Project]]></title>
+            <link>https://feynmandna.github.io/blog/2019/10/16/graduate-tlp.html</link>
+            <guid>https://feynmandna.github.io/blog/2019/10/16/graduate-tlp.html</guid>
+            <pubDate>Wed, 16 Oct 2019 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>The Apache Software Foundation (ASF) recently
+<a href="https://blogs.apache.org/foundation/entry/the-apache-software-foundation-announces57">announced</a>
+Apache SINGA as a Top-Level Project.</p>
+<blockquote>
+<p>The Apache Software Foundation (ASF), the all-volunteer developers, stewards,
+and incubators of more than 350 Open Source projects and initiatives,
+announced today Apache® SINGA™ as a Top-Level Project (TLP).</p>
+<p>Apache SINGA is an Open Source distributed, scalable machine learning library.
+The project was originally developed in 2014 at the National University of
+Singapore, and was submitted to the Apache Incubator in March 2015.</p>
+</blockquote>
+]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Foodlg Powered by SINGA]]></title>
+            <link>https://feynmandna.github.io/blog/2019/10/03/foodlg-with-singa.html</link>
+            <guid>https://feynmandna.github.io/blog/2019/10/03/foodlg-with-singa.html</guid>
+            <pubDate>Thu, 03 Oct 2019 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>Food(lg), the mobile app to <a href="https://ssi.nus.edu.sg/ntfgh/">help patients with prediabetes</a>, is powered by SINGA and this app can now be downloaded on the <a href="https://apps.apple.com/us/app/food-lg/id1213299378">APP Store</a> or <a href="https://play.google.com/store/apps/details?id=com.nusidmi.foodlg&amp;hl=en_SG">Google Play</a>. Watch this <a href="https://www.youtube.com/watch?v=MHp-saJiP-0">video</a> of Food(lg) for more details.</p> ]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Singapore IMDA Presentation]]></title>
+            <link>https://feynmandna.github.io/blog/2019/08/16/imda.html</link>
+            <guid>https://feynmandna.github.io/blog/2019/08/16/imda.html</guid>
+            <pubDate>Fri, 16 Aug 2019 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>A tutorial on SINGA was given at Singapore Infocomm Media Development Authority
+(IMDA) on 16 August, 2019.</p>
+<p>Snapshots of the tutorial:</p>
+<p><img src="/blog/assets/imda2019_1.png" alt="snapshot1"> <img src="/blog/assets/imda2019_2.png" alt="snapshot2"></p>
+]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Google Summer of Code 2019]]></title>
+            <link>https://feynmandna.github.io/blog/2019/06/27/google-summer-of-code.html</link>
+            <guid>https://feynmandna.github.io/blog/2019/06/27/google-summer-of-code.html</guid>
+            <pubDate>Thu, 27 Jun 2019 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>SINGA participated in mentoring the Google Summer of Code 2019 project <a href="https://summerofcode.withgoogle.com/projects/#5612088771215360">SpamAssassin: Statistical Classifier Plugin</a>.</p> ]]></description>
+        </item>
+        <item>
+            <title><![CDATA[EU FOSSA Apache Hackathon]]></title>
+            <link>https://feynmandna.github.io/blog/2019/05/05/eu-fossa.html</link>
+            <guid>https://feynmandna.github.io/blog/2019/05/05/eu-fossa.html</guid>
+            <pubDate>Sun, 05 May 2019 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>SINGA participated at <a href="https://eufossa.github.io/apache-hackathon-2019/">EU FOSSA Apache Hackathon</a> in Brussels on 4 and 5 May 2019.</p> ]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Version 2.0.0]]></title>
+            <link>https://feynmandna.github.io/blog/2019/04/20/v2-0-0.html</link>
+            <guid>https://feynmandna.github.io/blog/2019/04/20/v2-0-0.html</guid>
+            <pubDate>Sat, 20 Apr 2019 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p><strong>Version 2.0.0</strong> is now available, 20 April, 2019. <a href="/docs/download-singa.html#incubating-v200-20-april-2019">Download SINGA v2.0.0</a></p> ]]></description>
+        </item>
+        <item>
+            <title><![CDATA[DISI Trento Presentation]]></title>
+            <link>https://feynmandna.github.io/blog/2018/12/14/DISI.html</link>
+            <guid>https://feynmandna.github.io/blog/2018/12/14/DISI.html</guid>
+            <pubDate>Fri, 14 Dec 2018 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>SINGA was presented at <a href="https://www.disi.unitn.it/">DISI, University of Trento, Italy</a> on 14 December 2018.</p> ]]></description>
+        </item>
+        <item>
+            <title><![CDATA[DIBRIS Genoa Presentation]]></title>
+            <link>https://feynmandna.github.io/blog/2018/07/16/DIBRIS.html</link>
+            <guid>https://feynmandna.github.io/blog/2018/07/16/DIBRIS.html</guid>
+            <pubDate>Mon, 16 Jul 2018 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>SINGA was presented at <a href="https://www.dibris.unige.it/">DIBRIS, University of Genoa, Italy</a> on 16 July 2018.9.</p> ]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Version 1.2.0]]></title>
+            <link>https://feynmandna.github.io/blog/2018/06/09/v1-2-0.html</link>
+            <guid>https://feynmandna.github.io/blog/2018/06/09/v1-2-0.html</guid>
+            <pubDate>Sat, 09 Jun 2018 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p><strong>Version 1.2.0</strong> is now available, 6 June, 2018. <a href="/docs/download-singa.html#incubating-v120-6-june-2018">Download SINGA v1.2.0</a></p> ]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Version 1.1.0]]></title>
+            <link>https://feynmandna.github.io/blog/2017/02/12/v1-1-0.html</link>
+            <guid>https://feynmandna.github.io/blog/2017/02/12/v1-1-0.html</guid>
+            <pubDate>Sun, 12 Feb 2017 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p><strong>Version 1.1.0</strong> is now available, 12 Feb, 2017. <a href="/docs/download-singa.html#incubating-v110-12-february-2017">Download SINGA v1.1.0</a></p> ]]></description>
+        </item>
+    </channel>
+</rss>
