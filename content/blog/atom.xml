@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://feynmandna.github.io/blog</id>
+    <id>https://singa.apache.org/blog</id>
     <title>Apache SINGA Blog</title>
     <updated>2020-04-19T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://feynmandna.github.io/blog"/>
+    <link rel="alternate" href="https://singa.apache.org/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Apache SINGA news and events.</subtitle>
-    <logo>https://feynmandna.github.io/img/singa.png</logo>
+    <logo>https://singa.apache.org/img/singa.png</logo>
     <rights>Copyright © 2020
    The Apache Software Foundation. All rights reserved.
    Apache SINGA, Apache, the Apache feather logo, and
@@ -16,8 +16,8 @@
    respective owners.</rights>
     <entry>
         <title type="html"><![CDATA[Release Version 3.0.0]]></title>
-        <id>https://feynmandna.github.io/blog/2020/04/19/v3-0-0.html</id>
-        <link href="https://feynmandna.github.io/blog/2020/04/19/v3-0-0.html"/>
+        <id>https://singa.apache.org/blog/2020/04/19/v3-0-0.html</id>
+        <link href="https://singa.apache.org/blog/2020/04/19/v3-0-0.html"/>
         <updated>2020-04-19T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[ <p>Apache SINGA V3.0.0 is released on April 18, 2020. This is the first official release since SINGA became the first Top-Level Apache project. There are three major features added in this release.</p> <p>First, a new Python class <a href="/docs/graph">Module</a> is introduced. New mo...</p>]]></summary>
         <author>
@@ -28,8 +28,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Apache SINGA as a Top-Level Project]]></title>
-        <id>https://feynmandna.github.io/blog/2019/10/16/graduate-tlp.html</id>
-        <link href="https://feynmandna.github.io/blog/2019/10/16/graduate-tlp.html"/>
+        <id>https://singa.apache.org/blog/2019/10/16/graduate-tlp.html</id>
+        <link href="https://singa.apache.org/blog/2019/10/16/graduate-tlp.html"/>
         <updated>2019-10-16T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[<!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  -->
 <p>The Apache Software Foundation (ASF) recently
@@ -52,8 +52,8 @@ Singapore, and was submitted to the Apache Incubator in March 2015.</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[Foodlg Powered by SINGA]]></title>
-        <id>https://feynmandna.github.io/blog/2019/10/03/foodlg-with-singa.html</id>
-        <link href="https://feynmandna.github.io/blog/2019/10/03/foodlg-with-singa.html"/>
+        <id>https://singa.apache.org/blog/2019/10/03/foodlg-with-singa.html</id>
+        <link href="https://singa.apache.org/blog/2019/10/03/foodlg-with-singa.html"/>
         <updated>2019-10-03T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[ <p>Food(lg), the mobile app to <a href="https://ssi.nus.edu.sg/ntfgh/">help patients with prediabetes</a>, is powered by SINGA and this app can now be downloaded on the <a href="https://apps.apple.com/us/app/food-lg/id1213299378">APP Store</a> or <a href="https://play.google.com/store/apps/details?id=com.nusidmi.foodlg&amp;hl=en_SG">Google Play</a>. Watch this <a href="https://www.youtube.com/watch?v=MHp-saJiP-0">video</a> of Food(lg) for more details.</p> ]]></summary>
         <author>
@@ -64,8 +64,8 @@ Singapore, and was submitted to the Apache Incubator in March 2015.</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[Singapore IMDA Presentation]]></title>
-        <id>https://feynmandna.github.io/blog/2019/08/16/imda.html</id>
-        <link href="https://feynmandna.github.io/blog/2019/08/16/imda.html"/>
+        <id>https://singa.apache.org/blog/2019/08/16/imda.html</id>
+        <link href="https://singa.apache.org/blog/2019/08/16/imda.html"/>
         <updated>2019-08-16T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[<!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  -->
 <p>A tutorial on SINGA was given at Singapore Infocomm Media Development Authority
@@ -81,8 +81,8 @@ Singapore, and was submitted to the Apache Incubator in March 2015.</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[Google Summer of Code 2019]]></title>
-        <id>https://feynmandna.github.io/blog/2019/06/27/google-summer-of-code.html</id>
-        <link href="https://feynmandna.github.io/blog/2019/06/27/google-summer-of-code.html"/>
+        <id>https://singa.apache.org/blog/2019/06/27/google-summer-of-code.html</id>
+        <link href="https://singa.apache.org/blog/2019/06/27/google-summer-of-code.html"/>
         <updated>2019-06-27T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[ <p>SINGA participated in mentoring the Google Summer of Code 2019 project <a href="https://summerofcode.withgoogle.com/projects/#5612088771215360">SpamAssassin: Statistical Classifier Plugin</a>.</p> ]]></summary>
         <author>
@@ -93,8 +93,8 @@ Singapore, and was submitted to the Apache Incubator in March 2015.</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[EU FOSSA Apache Hackathon]]></title>
-        <id>https://feynmandna.github.io/blog/2019/05/05/eu-fossa.html</id>
-        <link href="https://feynmandna.github.io/blog/2019/05/05/eu-fossa.html"/>
+        <id>https://singa.apache.org/blog/2019/05/05/eu-fossa.html</id>
+        <link href="https://singa.apache.org/blog/2019/05/05/eu-fossa.html"/>
         <updated>2019-05-05T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[ <p>SINGA participated at <a href="https://eufossa.github.io/apache-hackathon-2019/">EU FOSSA Apache Hackathon</a> in Brussels on 4 and 5 May 2019.</p> ]]></summary>
         <author>
@@ -105,8 +105,8 @@ Singapore, and was submitted to the Apache Incubator in March 2015.</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[Version 2.0.0]]></title>
-        <id>https://feynmandna.github.io/blog/2019/04/20/v2-0-0.html</id>
-        <link href="https://feynmandna.github.io/blog/2019/04/20/v2-0-0.html"/>
+        <id>https://singa.apache.org/blog/2019/04/20/v2-0-0.html</id>
+        <link href="https://singa.apache.org/blog/2019/04/20/v2-0-0.html"/>
         <updated>2019-04-20T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[ <p><strong>Version 2.0.0</strong> is now available, 20 April, 2019. <a href="/docs/download-singa.html#incubating-v200-20-april-2019">Download SINGA v2.0.0</a></p> ]]></summary>
         <author>
@@ -117,8 +117,8 @@ Singapore, and was submitted to the Apache Incubator in March 2015.</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[DISI Trento Presentation]]></title>
-        <id>https://feynmandna.github.io/blog/2018/12/14/DISI.html</id>
-        <link href="https://feynmandna.github.io/blog/2018/12/14/DISI.html"/>
+        <id>https://singa.apache.org/blog/2018/12/14/DISI.html</id>
+        <link href="https://singa.apache.org/blog/2018/12/14/DISI.html"/>
         <updated>2018-12-14T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[ <p>SINGA was presented at <a href="https://www.disi.unitn.it/">DISI, University of Trento, Italy</a> on 14 December 2018.</p> ]]></summary>
         <author>
@@ -129,8 +129,8 @@ Singapore, and was submitted to the Apache Incubator in March 2015.</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[DIBRIS Genoa Presentation]]></title>
-        <id>https://feynmandna.github.io/blog/2018/07/16/DIBRIS.html</id>
-        <link href="https://feynmandna.github.io/blog/2018/07/16/DIBRIS.html"/>
+        <id>https://singa.apache.org/blog/2018/07/16/DIBRIS.html</id>
+        <link href="https://singa.apache.org/blog/2018/07/16/DIBRIS.html"/>
         <updated>2018-07-16T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[ <p>SINGA was presented at <a href="https://www.dibris.unige.it/">DIBRIS, University of Genoa, Italy</a> on 16 July 2018.9.</p> ]]></summary>
         <author>
@@ -141,8 +141,8 @@ Singapore, and was submitted to the Apache Incubator in March 2015.</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[Version 1.2.0]]></title>
-        <id>https://feynmandna.github.io/blog/2018/06/09/v1-2-0.html</id>
-        <link href="https://feynmandna.github.io/blog/2018/06/09/v1-2-0.html"/>
+        <id>https://singa.apache.org/blog/2018/06/09/v1-2-0.html</id>
+        <link href="https://singa.apache.org/blog/2018/06/09/v1-2-0.html"/>
         <updated>2018-06-09T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[ <p><strong>Version 1.2.0</strong> is now available, 6 June, 2018. <a href="/docs/download-singa.html#incubating-v120-6-june-2018">Download SINGA v1.2.0</a></p> ]]></summary>
         <author>
@@ -153,8 +153,8 @@ Singapore, and was submitted to the Apache Incubator in March 2015.</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[Version 1.1.0]]></title>
-        <id>https://feynmandna.github.io/blog/2017/02/12/v1-1-0.html</id>
-        <link href="https://feynmandna.github.io/blog/2017/02/12/v1-1-0.html"/>
+        <id>https://singa.apache.org/blog/2017/02/12/v1-1-0.html</id>
+        <link href="https://singa.apache.org/blog/2017/02/12/v1-1-0.html"/>
         <updated>2017-02-12T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[ <p><strong>Version 1.1.0</strong> is now available, 12 Feb, 2017. <a href="/docs/download-singa.html#incubating-v110-12-february-2017">Download SINGA v1.1.0</a></p> ]]></summary>
         <author>
