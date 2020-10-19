@@ -145,21 +145,45 @@ mv ../../apache-singa-VERSION.tar.gz VERSION/
 <span class="hljs-built_in">cd</span> VERSION
 sha512sum apache-singa-VERSION.tar.gz &gt; apache-singa-VERSION.tar.gz.sha512
 gpg --armor --output apache-singa-VERSION.tar.gz.asc --detach-sig apache-singa-VERSION.tar.gz
+<span class="hljs-built_in">cd</span> ..
 svn add VERSION
-svn update
+svn commit
 </code></pre></li>
 </ol>
 <ol start="6">
-<li><p>Call for vote by sending an email</p>
+<li><p>Call for vote by sending an email. An example is provided as follows.</p>
 <pre><code class="hljs">To: dev@singa.apache.org
 Subject: [VOTE] <span class="hljs-keyword">Release</span> apache-singa-X.Y.Z (<span class="hljs-keyword">release</span> candidate N)
 
 Hi <span class="hljs-keyword">all</span>,
 
-I have created a <span class="hljs-keyword">build</span> <span class="hljs-keyword">for</span> Apache SINGA X.Y.Z, <span class="hljs-keyword">release</span> candidate N.
-The artifacts <span class="hljs-keyword">to</span> be voted <span class="hljs-keyword">on</span> <span class="hljs-keyword">are</span> located here:  xxxx
-The hashes <span class="hljs-keyword">of</span> the artifacts <span class="hljs-keyword">are</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">follows</span>: xxx
-<span class="hljs-keyword">Release</span> artifacts <span class="hljs-keyword">are</span> signed <span class="hljs-keyword">with</span> the <span class="hljs-keyword">following</span> <span class="hljs-keyword">key</span>: xxx
+I have created a <span class="hljs-keyword">build</span> <span class="hljs-keyword">for</span> Apache SINGA <span class="hljs-number">3.1</span><span class="hljs-number">.0</span>, <span class="hljs-keyword">release</span> candidate <span class="hljs-number">2.</span>
+
+The <span class="hljs-keyword">release</span> note <span class="hljs-keyword">is</span> <span class="hljs-keyword">at</span>
+https://github.com/apache/singa/<span class="hljs-built_in">blob</span>/<span class="hljs-keyword">master</span>/RELEASE_NOTES.
+
+The artifacts <span class="hljs-keyword">to</span> be voted <span class="hljs-keyword">on</span> <span class="hljs-keyword">are</span> located here:
+https://dist.apache.org/repos/dist/dev/singa/<span class="hljs-number">3.1</span><span class="hljs-number">.0</span>.rc2/apache-singa<span class="hljs-number">-3.1</span><span class="hljs-number">.0</span>.rc2.tar.gz
+  
+The hashes <span class="hljs-keyword">of</span> the artifacts <span class="hljs-keyword">are</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">follows</span>:
+SHA512: <span class="hljs-number">84545499</span>ad36da108c6a599edd1d853f82d331bc03273b5278515554866f0c698e881f956b2eabcb6b29c07fa9fa4ff1add5a777b58db8a6a2362cf383b5c04d  
+
+<span class="hljs-keyword">Release</span> artifacts <span class="hljs-keyword">are</span> signed <span class="hljs-keyword">with</span> the followingkey: 
+https://dist.apache.org/repos/dist/dev/singa/<span class="hljs-keyword">KEYS</span>
+
+The signature <span class="hljs-keyword">file</span> <span class="hljs-keyword">is</span>:
+https://dist.apache.org/repos/dist/dev/singa/<span class="hljs-number">3.1</span><span class="hljs-number">.0</span>.rc2/apache-singa<span class="hljs-number">-3.1</span><span class="hljs-number">.0</span>.rc2.tar.gz.asc
+
+The Github tag <span class="hljs-keyword">is</span> <span class="hljs-keyword">at</span>:
+https://github.com/apache/singa/releases/tag/<span class="hljs-number">3.1</span><span class="hljs-number">.0</span>.rc2
+
+The documentation website <span class="hljs-keyword">is</span> <span class="hljs-keyword">at</span>
+<span class="hljs-keyword">http</span>://singa.apache.org/docs/<span class="hljs-keyword">next</span>/installation/
+
+<span class="hljs-keyword">Some</span> examples <span class="hljs-keyword">are</span> available <span class="hljs-keyword">for</span> testing:
+https://github.com/apache/singa/tree/<span class="hljs-keyword">master</span>/examples
+
+
 Please vote <span class="hljs-keyword">on</span> releasing this package. The vote <span class="hljs-keyword">is</span> <span class="hljs-keyword">open</span> <span class="hljs-keyword">for</span> <span class="hljs-keyword">at</span> <span class="hljs-keyword">least</span>
 <span class="hljs-number">72</span> <span class="hljs-keyword">hours</span> <span class="hljs-keyword">and</span> passes <span class="hljs-keyword">if</span> a majority <span class="hljs-keyword">of</span> <span class="hljs-keyword">at</span> <span class="hljs-keyword">least</span> three +<span class="hljs-number">1</span> votes <span class="hljs-keyword">are</span> cast.
 
