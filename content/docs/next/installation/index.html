@@ -87,12 +87,13 @@ available SINGA packages.</li>
 
 Loading channels: done
 <span class="hljs-meta">#</span><span class="bash"> Name                       Version           Build  Channel</span>
-singa                      2.1.0.dev        cpu_py36  nusdbsystem
-singa                      2.1.0.dev        cpu_py37  nusdbsystem
+singa                      3.1.0.rc2        cpu_py36  nusdbsystem
+singa                      3.1.0.rc2 cudnn7.6.5_cuda10.2_py36  nusdbsystem
+singa                      3.1.0.rc2 cudnn7.6.5_cuda10.2_py37  nusdbsystem
 </code></pre>
 <!--- > Please note that using the nightly built images is not recommended except for SINGA development and testing. Using stable releases is recommended. -->
 <p>The following command installs a specific version of SINGA,</p>
-<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> conda install -c nusdbsystem -c conda-forge singa=X.Y.Z.dev=cpu_py37</span>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> conda install -c nusdbsystem -c conda-forge singa=X.Y.Z=cpu_py36</span>
 </code></pre>
 <p>If there is no error message from</p>
 <pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> python -c <span class="hljs-string">"from singa import tensor"</span></span>
