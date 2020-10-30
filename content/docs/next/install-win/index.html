@@ -72,15 +72,15 @@ x64.</li>
 <li><p>Download SINGA source code</p></li>
 <li><p>Compile the protobuf files:</p>
 <ul>
-<li>Goto src/proto folder</li>
+<li>Go to src/proto folder</li>
 </ul>
 <pre><code class="hljs css language-shell">mkdir python_out
 protoc.exe *.proto --python_out python_out
 </code></pre></li>
-<li><p>Generate swig interfaces for C++ and Python: Goto src/api</p>
+<li><p>Generate swig interfaces for C++ and Python: Go to src/api</p>
 <pre><code class="hljs css language-shell">swig -python -c++ singa.i
 </code></pre></li>
-<li><p>generate Visual Studio solution for SINGA: Goto SINGA source code root folder</p>
+<li><p>generate Visual Studio solution for SINGA: Go to SINGA source code root folder</p>
 <pre><code class="hljs css language-shell">mkdir build
 cd build
 </code></pre></li>
@@ -110,9 +110,9 @@ cd build
 <li>change target name to _singa_wrap</li>
 <li>change target extension to .pyd</li>
 <li>change configuration type to Dynamic Library (.dll)</li>
-<li>goto Additional Library Directories and add the path to python, openblas,
+<li>go to Additional Library Directories and add the path to python, openblas,
 protobuf and glog libraries</li>
-<li>goto Additional Dependencies and add libopenblas.lib, libglog.lib and
+<li>go to Additional Dependencies and add libopenblas.lib, libglog.lib and
 libprotobuf.lib</li>
 </ul></li>
 <li><p>build singa project</p></li>
@@ -126,7 +126,7 @@ libprotobuf.lib</li>
 virtualenv SingaEnv
 SingaEnv\Scripts\activate
 </code></pre></li>
-<li><p>goto build/python folder and run:</p>
+<li><p>go to build/python folder and run:</p>
 <pre><code class="hljs css language-shell">python setup.py install
 </code></pre></li>
 <li><p>Make _singa_wrap.pyd, libglog.dll and libopenblas.dll available by adding
@@ -152,9 +152,9 @@ site-packages</p></li>
 <li>In Additional Include Directories, add path of GLOG_INCLUDE_DIR,
 CBLAS_INCLUDE_DIR and Protobuf_INCLUDE_DIR which were used in step 2 above.
 Add also build and build/include folders.</li>
-<li>Goto Additional Library Directories and add the path to openblas, protobuf
+<li>Go to Additional Library Directories and add the path to openblas, protobuf
 and glog libraries. Add also build/src/singa_objects.dir/Release.</li>
-<li>Goto Additional Dependencies and add libopenblas.lib, libglog.lib and
+<li>Go to Additional Dependencies and add libopenblas.lib, libglog.lib and
 libprotobuf.lib. Fix the names of the two libraries: gtest.lib and
 singa_objects.lib.</li>
 </ul></li>
@@ -223,7 +223,7 @@ Studio integration module.</p></li>
 </code></pre></li>
 </ul>
 <ul>
-<li><p>Generate swig interfaces for C++ and Python: Goto src/api</p>
+<li><p>Generate swig interfaces for C++ and Python: Go to src/api</p>
 <pre><code class="hljs css language-shell">swig -python -c++ singa.i
 </code></pre></li>
 <li><p>Open the generated solution in Visual Studio</p></li>
@@ -264,10 +264,10 @@ the project.</p></li>
 <li>change target name to _singa_wrap</li>
 <li>change target extension to .pyd</li>
 <li>change configuration type to Dynamic Library (.dll)</li>
-<li>goto Additional Library Directories and add the path to python, openblas,
+<li>go to Additional Library Directories and add the path to python, openblas,
 protobuf and glog libraries</li>
 <li>Add also the library path to singa-kernel, cnmem, cuda and cudnn.</li>
-<li>goto Additional Dependencies and add libopenblas.lib, libglog.lib and
+<li>go to Additional Dependencies and add libopenblas.lib, libglog.lib and
 libprotobuf.lib.</li>
 <li>Add also: singa-kernel.lib, cnmem.lib, cudnn.lib, cuda.lib , cublas.lib,
 curand.lib and cudart.lib.</li>
@@ -283,7 +283,7 @@ curand.lib and cudart.lib.</li>
 virtualenv SingaEnv
 SingaEnv\Scripts\activate
 </code></pre></li>
-<li><p>goto build/python folder and run:</p>
+<li><p>go to build/python folder and run:</p>
 <pre><code class="hljs css language-shell">python setup.py install
 </code></pre></li>
 <li><p>Make _singa_wrap.pyd, libglog.dll, libopenblas.dll, cnmem.dll, CUDA Runtime
@@ -311,10 +311,10 @@ solution that was created in step 5.2</p></li>
 <li>In Additional Include Directories, add path of GLOG_INCLUDE_DIR,
 CBLAS_INCLUDE_DIR and Protobuf_INCLUDE_DIR which were used in step 5.2
 above. Add also build, build/include, CUDA and cuDNN include folders.</li>
-<li>Goto Additional Library Directories and add the path to openblas, protobuf
+<li>Go to Additional Library Directories and add the path to openblas, protobuf
 and glog libraries. Add also build/src/singa_objects.dir/Release,
 singa-kernel, cnmem, CUDA and cuDNN library paths.</li>
-<li>Goto Additional Dependencies and add libopenblas.lib; libglog.lib;
+<li>Go to Additional Dependencies and add libopenblas.lib; libglog.lib;
 libprotobuf.lib; cnmem.lib; cudnn.lib; cuda.lib; cublas.lib; curand.lib;
 cudart.lib; singa-kernel.lib. Fix the names of the two libraries: gtest.lib
 and singa_objects.lib.</li>
@@ -339,7 +339,7 @@ test/release folder</p></li>
 </ul>
 <p>A video tutorial for running the unit tests can be found here:</p>
 <p><a href="https://www.youtube.com/watch?v=YOjwtrvTPn4"><img src="https://img.youtube.com/vi/YOjwtrvTPn4/0.jpg" alt="youtube video"></a></p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 4/2/2020</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#install-dependencies">Install Dependencies</a></li><li><a href="#build-singa-source">Build SINGA source</a></li><li><a href="#install-python-module">Install Python module</a></li><li><a href="#run-unit-tests">Run Unit Tests</a></li><li><a href="#build-gpu-support-with-cuda">Build GPU support with CUDA</a><ul class="toc-headings"><li><a href="#install-dependencies-1">Install Dependencies</a></li><li><a href="#build-singa-source-1">Build SINGA source</a></li><li><a href="#install-python-module-1">Install Python module</a></li><li><a href="#run-unit-tests-1">Run Unit Tests</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2020
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 10/4/2020</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#install-dependencies">Install Dependencies</a></li><li><a href="#build-singa-source">Build SINGA source</a></li><li><a href="#install-python-module">Install Python module</a></li><li><a href="#run-unit-tests">Run Unit Tests</a></li><li><a href="#build-gpu-support-with-cuda">Build GPU support with CUDA</a><ul class="toc-headings"><li><a href="#install-dependencies-1">Install Dependencies</a></li><li><a href="#build-singa-source-1">Build SINGA source</a></li><li><a href="#install-python-module-1">Install Python module</a></li><li><a href="#run-unit-tests-1">Run Unit Tests</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2020
    The Apache Software Foundation. All rights reserved.
    Apache SINGA, Apache, the Apache feather logo, and
    the Apache SINGA project logos are trademarks of The
