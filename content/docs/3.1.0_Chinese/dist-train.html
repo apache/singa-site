@@ -1,0 +1,376 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Distributed Training · Apache SINGA</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta name="docsearch:version" content="3.1.0_Chinese"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Distributed Training · Apache SINGA"/><meta property="og:type" content="website"/><meta property="og:url" content="https://singa.apache.org/"/><meta property="og:description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta property="og:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://singa.apache.org/blog/atom.xml" title="Apache SINGA Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://singa.apache.org/blog/feed.xml" title="Apache SINGA Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/singa.png" alt="Apache SINGA"/></a><a href="/versions"><h3>3.1.0_Chinese</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/3.1.0_Chinese/installation" target="_self">Docs</a></li><li class=""><a href="/docs/3.1.0_Chinese/source-repository" target="_self">Community</a></li><li class=""><a href="/blog/" target="_self">News</a></li><li class=""><a href="https://apache-singa.readthedocs.io/en/latest/" target="_self">API</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/apache/singa" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Guides</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/installation">Installation</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/software-stack">Software Stack</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/examples">Examples</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Guides</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/device">Device</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/tensor">Tensor</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/autograd">Autograd</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/optimizer">Optimizer</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/graph">Model</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/onnx">ONNX</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/3.1.0_Chinese/dist-train">Distributed Training</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/time-profiling">Time Profiling</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Development</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/download-singa">Download SINGA</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/build">Build SINGA from Source</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/contribute-code">How to Contribute Code</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/contribute-docs">How to Contribute to Documentation</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/how-to-release">How to Prepare a Release</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/git-workflow">Git Workflow</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/dist-train.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Distributed Training</h1></header><article><div><span><!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  -->
+<p>SINGA支持跨多个GPU的数据并行训练（在单个节点上或跨不同节点）。下图说明了数据并行训练的情况：</p>
+<p><img src="/docs/assets/MPI.png" alt="MPI.png"></p>
+<p>在分布式训练中，每个进程(称为worker)在单个GPU上运行一个训练脚本，每个进程都有一个单独的通信等级，训练数据被分发给各个worker，模型在每个worker上被复制。在每次迭代中，worker从其分区中读取数据的一个mini-batch（例如，256张图像），并运行BackPropagation算法来计算权重的梯度，通过all-reduce（由<a href="https://developer.nvidia.com/nccl">NCCL</a>提供）进行平均，按照随机梯度下降算法（SGD）进行权重更新。</p>
+<p>NCCL的all-reduce操作可以用来减少和同步不同GPU的梯度。假设我们使用4个GPU进行训练，如下图所示。一旦计算出4个GPU的梯度，all-reduce将返回GPU的梯度之和，并使其在每个GPU上可用，然后就可以轻松计算出平均梯度。</p>
+<p><img src="/docs/assets/AllReduce.png" alt="AllReduce.png"></p>
+<h2><a class="anchor" aria-hidden="true" id="使用"></a><a href="#使用" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>使用</h2>
+<p>SINGA提供了一个名为<code>DistOpt</code>（<code>Opt</code>的一个子类）的模块，用于分布式训练。它封装了一个普通的SGD优化器，并调用<code>Communicator</code>进行梯度同步。下面的例子说明了如何使用<code>DistOpt</code>在MNIST数据集上训练一个CNN模型。源代码在<a href="https://github.com/apache/singa/blob/master/examples/cnn/">这里</a>，或者可以使用<a href="">Colab notebook</a>。</p>
+<h3><a class="anchor" aria-hidden="true" id="代码示例"></a><a href="#代码示例" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>代码示例</h3>
+<ol>
+<li>定义神经网络模型：</li>
+</ol>
+<pre><code class="hljs css language-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CNN</span><span class="hljs-params">(model.Model)</span>:</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, num_classes=<span class="hljs-number">10</span>, num_channels=<span class="hljs-number">1</span>)</span>:</span>
+        super(CNN, self).__init__()
+        self.conv1 = layer.Conv2d(num_channels, <span class="hljs-number">20</span>, <span class="hljs-number">5</span>, padding=<span class="hljs-number">0</span>, activation=<span class="hljs-string">"RELU"</span>)
+        self.conv2 = layer.Conv2d(<span class="hljs-number">20</span>, <span class="hljs-number">50</span>, <span class="hljs-number">5</span>, padding=<span class="hljs-number">0</span>, activation=<span class="hljs-string">"RELU"</span>)
+        self.linear1 = layer.Linear(<span class="hljs-number">500</span>)
+        self.linear2 = layer.Linear(num_classes)
+        self.pooling1 = layer.MaxPool2d(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, padding=<span class="hljs-number">0</span>)
+        self.pooling2 = layer.MaxPool2d(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, padding=<span class="hljs-number">0</span>)
+        self.relu = layer.ReLU()
+        self.flatten = layer.Flatten()
+        self.softmax_cross_entropy = layer.SoftMaxCrossEntropy()
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(self, x)</span>:</span>
+        y = self.conv1(x)
+        y = self.pooling1(y)
+        y = self.conv2(y)
+        y = self.pooling2(y)
+        y = self.flatten(y)
+        y = self.linear1(y)
+        y = self.relu(y)
+        y = self.linear2(y)
+        <span class="hljs-keyword">return</span> y
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">train_one_batch</span><span class="hljs-params">(self, x, y, dist_option=<span class="hljs-string">'fp32'</span>, spars=<span class="hljs-number">0</span>)</span>:</span>
+        out = self.forward(x)
+        loss = self.softmax_cross_entropy(out, y)
+
+        <span class="hljs-comment"># Allow different options for distributed training</span>
+        <span class="hljs-comment"># See the section "Optimizations for Distributed Training"</span>
+        <span class="hljs-keyword">if</span> dist_option == <span class="hljs-string">'fp32'</span>:
+            self.optimizer(loss)
+        <span class="hljs-keyword">elif</span> dist_option == <span class="hljs-string">'fp16'</span>:
+            self.optimizer.backward_and_update_half(loss)
+        <span class="hljs-keyword">elif</span> dist_option == <span class="hljs-string">'partialUpdate'</span>:
+            self.optimizer.backward_and_partial_update(loss)
+        <span class="hljs-keyword">elif</span> dist_option == <span class="hljs-string">'sparseTopK'</span>:
+            self.optimizer.backward_and_sparse_update(loss,
+                                                      topK=<span class="hljs-literal">True</span>,
+                                                      spars=spars)
+        <span class="hljs-keyword">elif</span> dist_option == <span class="hljs-string">'sparseThreshold'</span>:
+            self.optimizer.backward_and_sparse_update(loss,
+                                                      topK=<span class="hljs-literal">False</span>,
+                                                      spars=spars)
+        <span class="hljs-keyword">return</span> out, loss
+
+<span class="hljs-comment"># create model</span>
+model = CNN()
+</code></pre>
+<ol start="2">
+<li>创建<code>DistOpt</code>实例并将其应用到创建的模型上：</li>
+</ol>
+<pre><code class="hljs css language-python">sgd = opt.SGD(lr=<span class="hljs-number">0.005</span>, momentum=<span class="hljs-number">0.9</span>, weight_decay=<span class="hljs-number">1e-5</span>)
+sgd = opt.DistOpt(sgd)
+model.set_optimizer(sgd)
+dev = device.create_cuda_gpu_on(sgd.local_rank)
+</code></pre>
+<p>下面是关于代码中一些变量的解释：</p>
+<p>(i) <code>dev</code></p>
+<p>dev代表<code>Device</code>实例，在设备中加载数据并运行CNN模型。</p>
+<p>(ii)<code>local_rank</code></p>
+<p>Local rank表示当前进程在同一节点中使用的GPU数量。例如，如果你使用的节点有2个GPU，<code>local_rank=0</code>表示这个进程使用的是第一个GPU，而<code>local_rank=1</code>表示使用的是第二个GPU。使用MPI或多进程，你能够运行相同的训练脚本，唯一的区别<code>local_rank</code>的值不同。</p>
+<p>(iii)<code>global_rank</code></p>
+<p>global中的rank代表了你使用的所有节点中所有进程的全局排名。让我们考虑这样的情况：你有3个节点，每个节点有两个GPU， <code>global_rank=0</code>表示使用第1个节点的第1个GPU的进程， <code>global_rank=2</code>表示使用第2个节点的第1个GPU的进程， <code>global_rank=4</code>表示使用第3个节点的第1个GPU的进程。</p>
+<ol start="3">
+<li>加载和分割训练/验证数据：</li>
+</ol>
+<pre><code class="hljs css language-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">data_partition</span><span class="hljs-params">(dataset_x, dataset_y, global_rank, world_size)</span>:</span>
+    data_per_rank = dataset_x.shape[<span class="hljs-number">0</span>] // world_size
+    idx_start = global_rank * data_per_rank
+    idx_end = (global_rank + <span class="hljs-number">1</span>) * data_per_rank
+    <span class="hljs-keyword">return</span> dataset_x[idx_start:idx_end], dataset_y[idx_start:idx_end]
+
+train_x, train_y, test_x, test_y = load_dataset()
+train_x, train_y = data_partition(train_x, train_y,
+                                  sgd.global_rank, sgd.world_size)
+test_x, test_y = data_partition(test_x, test_y,
+                                sgd.global_rank, sgd.world_size)
+</code></pre>
+<p>这个<code>dev</code>的数据集的一个分区被返回。</p>
+<p>这里，<code>world_size</code>代表你用于分布式训练的所有节点中的进程总数。</p>
+<ol start="4">
+<li>初始化并同步所有worker的模型参数:</li>
+</ol>
+<pre><code class="hljs css language-python"><span class="hljs-comment">#Synchronize the initial parameter</span>
+tx = tensor.Tensor((batch_size, <span class="hljs-number">1</span>, IMG_SIZE, IMG_SIZE), dev, tensor.float32)
+ty = tensor.Tensor((batch_size, num_classes), dev, tensor.int32)
+model.compile([tx], is_train=<span class="hljs-literal">True</span>, use_graph=graph, sequential=<span class="hljs-literal">True</span>)
+...
+<span class="hljs-comment">#Use the same random seed for different ranks</span>
+seed = <span class="hljs-number">0</span>
+dev.SetRandSeed(seed)
+np.random.seed(seed)
+</code></pre>
+<ol start="5">
+<li>运行BackPropagation和分布式SGD</li>
+</ol>
+<pre><code class="hljs css language-python"><span class="hljs-keyword">for</span> epoch <span class="hljs-keyword">in</span> range(max_epoch):
+    <span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> range(num_train_batch):
+        x = train_x[idx[b * batch_size: (b + <span class="hljs-number">1</span>) * batch_size]]
+        y = train_y[idx[b * batch_size: (b + <span class="hljs-number">1</span>) * batch_size]]
+        tx.copy_from_numpy(x)
+        ty.copy_from_numpy(y)
+        <span class="hljs-comment"># Train the model</span>
+        out, loss = model(tx, ty)
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="执行命令"></a><a href="#执行命令" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>执行命令</h3>
+<p>有两种方式可以启动训练，MPI或Python multiprocessing。</p>
+<h4><a class="anchor" aria-hidden="true" id="python-multiprocessing"></a><a href="#python-multiprocessing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Python multiprocessing</h4>
+<p>它可以在一个节点上使用多个GPU，其中，每个GPU是一个worker。</p>
+<ol>
+<li>将上述训练用的代码打包进一个函数：</li>
+</ol>
+<pre><code class="hljs css language-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">train_mnist_cnn</span><span class="hljs-params">(nccl_id=None, local_rank=None, world_size=None)</span>:</span>
+    ...
+</code></pre>
+<ol start="2">
+<li>创建<code>mnist_multiprocess.py</code>。</li>
+</ol>
+<pre><code class="hljs css language-python"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    <span class="hljs-comment"># Generate a NCCL ID to be used for collective communication</span>
+    nccl_id = singa.NcclIdHolder()
+
+    <span class="hljs-comment"># Define the number of GPUs to be used in the training process</span>
+    world_size = int(sys.argv[<span class="hljs-number">1</span>])
+
+    <span class="hljs-comment"># Define and launch the multi-processing</span>
+    <span class="hljs-keyword">import</span> multiprocessing
+    process = []
+    <span class="hljs-keyword">for</span> local_rank <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, world_size):
+        process.append(multiprocessing.Process(target=train_mnist_cnn,
+                       args=(nccl_id, local_rank, world_size)))
+
+    <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> process:
+        p.start()
+</code></pre>
+<p>下面是关于上面所创建的变量的一些说明：</p>
+<p>(i) <code>nccl_id</code></p>
+<p>需要注意的是，我们在这里需要生成一个NCCL ID，用于集体通信，然后将其传递给所有进程。NCCL ID就像一个门票，只有拥有这个ID的进程才能加入到all-reduce操作中。(如果我们接下来使用MPI，NCCL ID的传递就没有必要了，因为在我们的代码中，这个ID会由MPI自动广播。)</p>
+<p>(ii) <code>world_size</code></p>
+<p>world_size是您想用于训练的GPU数量。</p>
+<p>(iii) <code>local_rank</code></p>
+<p>local_rank决定分布式训练的本地顺序，以及在训练过程中使用哪个gpu。在上面的代码中，我们使用for循环来运行训练函数，其中参数local_rank从0迭代到world_size。在这种情况下，不同的进程可以使用不同的GPU进行训练。</p>
+<p>创建<code>DistOpt</code>实例的参数应按照如下方式更新：</p>
+<pre><code class="hljs css language-python">sgd = opt.DistOpt(sgd, nccl_id=nccl_id, local_rank=local_rank, world_size=world_size)
+</code></pre>
+<ol start="3">
+<li>运行<code>mnist_multiprocess.py</code>：</li>
+</ol>
+<pre><code class="hljs css language-sh">python mnist_multiprocess.py 2
+</code></pre>
+<p>与单GPU训练相比，它最主要的意义是速度提升：</p>
+<pre><code class="hljs">Starting Epoch <span class="hljs-number">0</span>:
+Training loss = <span class="hljs-number">408.909790</span>, training accuracy = <span class="hljs-number">0.880475</span>
+Evaluation accuracy = <span class="hljs-number">0.956430</span>
+Starting Epoch <span class="hljs-number">1</span>:
+Training loss = <span class="hljs-number">102.396790</span>, training accuracy = <span class="hljs-number">0.967415</span>
+Evaluation accuracy = <span class="hljs-number">0.977564</span>
+Starting Epoch <span class="hljs-number">2</span>:
+Training loss = <span class="hljs-number">69.217010</span>, training accuracy = <span class="hljs-number">0.977915</span>
+Evaluation accuracy = <span class="hljs-number">0.981370</span>
+Starting Epoch <span class="hljs-number">3</span>:
+Training loss = <span class="hljs-number">54.248390</span>, training accuracy = <span class="hljs-number">0.982823</span>
+Evaluation accuracy = <span class="hljs-number">0.984075</span>
+Starting Epoch <span class="hljs-number">4</span>:
+Training loss = <span class="hljs-number">45.213406</span>, training accuracy = <span class="hljs-number">0.985560</span>
+Evaluation accuracy = <span class="hljs-number">0.985276</span>
+Starting Epoch <span class="hljs-number">5</span>:
+Training loss = <span class="hljs-number">38.868435</span>, training accuracy = <span class="hljs-number">0.987764</span>
+Evaluation accuracy = <span class="hljs-number">0.986278</span>
+Starting Epoch <span class="hljs-number">6</span>:
+Training loss = <span class="hljs-number">34.078186</span>, training accuracy = <span class="hljs-number">0.989149</span>
+Evaluation accuracy = <span class="hljs-number">0.987881</span>
+Starting Epoch <span class="hljs-number">7</span>:
+Training loss = <span class="hljs-number">30.138697</span>, training accuracy = <span class="hljs-number">0.990451</span>
+Evaluation accuracy = <span class="hljs-number">0.988181</span>
+Starting Epoch <span class="hljs-number">8</span>:
+Training loss = <span class="hljs-number">26.854443</span>, training accuracy = <span class="hljs-number">0.991520</span>
+Evaluation accuracy = <span class="hljs-number">0.988682</span>
+Starting Epoch <span class="hljs-number">9</span>:
+Training loss = <span class="hljs-number">24.039650</span>, training accuracy = <span class="hljs-number">0.992405</span>
+Evaluation accuracy = <span class="hljs-number">0.989083</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="mpi"></a><a href="#mpi" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MPI</h4>
+<p>只要有多个GPU，MPI既适用于单节点，也适用于多节点。</p>
+<ol>
+<li>创建<code>mnist_dist.py</code>。</li>
+</ol>
+<pre><code class="hljs css language-python"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    train_mnist_cnn()
+</code></pre>
+<ol start="2">
+<li>为MPI生成一个hostfile，例如下面的hostfile在一个节点上使用了2个进程（即2个GPU）：</li>
+</ol>
+<pre><code class="hljs css language-txt">localhost:<span class="hljs-number">2</span>
+</code></pre>
+<ol start="3">
+<li>通过<code>mpiexec</code>启动训练：</li>
+</ol>
+<pre><code class="hljs css language-sh">mpiexec --hostfile host_file python mnist_dist.py
+</code></pre>
+<p>与单GPU训练相比，它同样可以带来速度的提升：</p>
+<pre><code class="hljs">Starting Epoch <span class="hljs-number">0</span>:
+Training loss = <span class="hljs-number">383.969543</span>, training accuracy = <span class="hljs-number">0.886402</span>
+Evaluation accuracy = <span class="hljs-number">0.954327</span>
+Starting Epoch <span class="hljs-number">1</span>:
+Training loss = <span class="hljs-number">97.531479</span>, training accuracy = <span class="hljs-number">0.969451</span>
+Evaluation accuracy = <span class="hljs-number">0.977163</span>
+Starting Epoch <span class="hljs-number">2</span>:
+Training loss = <span class="hljs-number">67.166870</span>, training accuracy = <span class="hljs-number">0.978516</span>
+Evaluation accuracy = <span class="hljs-number">0.980769</span>
+Starting Epoch <span class="hljs-number">3</span>:
+Training loss = <span class="hljs-number">53.369656</span>, training accuracy = <span class="hljs-number">0.983040</span>
+Evaluation accuracy = <span class="hljs-number">0.983974</span>
+Starting Epoch <span class="hljs-number">4</span>:
+Training loss = <span class="hljs-number">45.100403</span>, training accuracy = <span class="hljs-number">0.985777</span>
+Evaluation accuracy = <span class="hljs-number">0.986078</span>
+Starting Epoch <span class="hljs-number">5</span>:
+Training loss = <span class="hljs-number">39.330826</span>, training accuracy = <span class="hljs-number">0.987447</span>
+Evaluation accuracy = <span class="hljs-number">0.987179</span>
+Starting Epoch <span class="hljs-number">6</span>:
+Training loss = <span class="hljs-number">34.655270</span>, training accuracy = <span class="hljs-number">0.988799</span>
+Evaluation accuracy = <span class="hljs-number">0.987780</span>
+Starting Epoch <span class="hljs-number">7</span>:
+Training loss = <span class="hljs-number">30.749735</span>, training accuracy = <span class="hljs-number">0.989984</span>
+Evaluation accuracy = <span class="hljs-number">0.988281</span>
+Starting Epoch <span class="hljs-number">8</span>:
+Training loss = <span class="hljs-number">27.422146</span>, training accuracy = <span class="hljs-number">0.991319</span>
+Evaluation accuracy = <span class="hljs-number">0.988582</span>
+Starting Epoch <span class="hljs-number">9</span>:
+Training loss = <span class="hljs-number">24.548153</span>, training accuracy = <span class="hljs-number">0.992171</span>
+Evaluation accuracy = <span class="hljs-number">0.988682</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="针对分布式训练的优化"></a><a href="#针对分布式训练的优化" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>针对分布式训练的优化</h2>
+<p>SINGA为分布式训练提供了多种优化策略，以降低模块间的通信成本。参考<code>DistOpt</code>的API，了解每种策略的配置。</p>
+<p>当我们使用<code>model.Model</code>建立模型时，我们需要在<code>training_one_batch</code>方法中启用分布式训练的选项，请参考本页顶部的示例代码。我们也可以直接复制这些选项的代码，然后在其他模型中使用。</p>
+<p>有了定义的选项，我们可以在使用<code>model(tx, ty, dist_option, spars)</code>开始训练时，设置对应的参数<code>dist_option</code>和<code>spars</code>。</p>
+<h3><a class="anchor" aria-hidden="true" id="不采取优化手段"></a><a href="#不采取优化手段" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>不采取优化手段</h3>
+<pre><code class="hljs css language-python">out, loss = model(tx, ty)
+</code></pre>
+<p><code>loss</code>是损失函数的输出张量，例如分类任务中的交叉熵。</p>
+<h3><a class="anchor" aria-hidden="true" id="半精度梯度（half-precision-gradients）"></a><a href="#半精度梯度（half-precision-gradients）" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>半精度梯度（Half-precision Gradients）</h3>
+<pre><code class="hljs css language-python">out, loss = model(tx, ty, dist_option = <span class="hljs-string">'fp16'</span>)
+</code></pre>
+<p>在调用all-reduce之前，它将每个梯度值转换为16-bit表示（即半精度）。</p>
+<h3><a class="anchor" aria-hidden="true" id="部分同步（partial-synchronization）"></a><a href="#部分同步（partial-synchronization）" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>部分同步（Partial Synchronization）</h3>
+<pre><code class="hljs css language-python">out, loss = model(tx, ty, dist_option = <span class="hljs-string">'partialUpdate'</span>)
+</code></pre>
+<p>在每一次迭代中，每个rank都做本地SGD更新。然后，只对一个部分的参数进行平均同步，从而节省了通信成本。分块大小是在创建<code>DistOpt</code>实例时配置的。</p>
+<h3><a class="anchor" aria-hidden="true" id="梯度稀疏化（gradient-sparsification）"></a><a href="#梯度稀疏化（gradient-sparsification）" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>梯度稀疏化（Gradient Sparsification）</h3>
+<p>该策略应用稀疏化方案来选择梯度的子集进行all-reduce，有两种方式：</p>
+<ul>
+<li>选择前k大的元素，spars是被选择的元素的一部分（比例在0 - 1之间）。</li>
+</ul>
+<pre><code class="hljs css language-python">out, loss = model(tx, ty, dist_option = <span class="hljs-string">'sparseTopK'</span>, spars = spars)
+</code></pre>
+<ul>
+<li>所有绝对值大于预定义阈值的梯度都会被选中。</li>
+</ul>
+<pre><code class="hljs css language-python">out, loss = model(tx, ty, dist_option = <span class="hljs-string">'sparseThreshold'</span>, spars = spars)
+</code></pre>
+<p>超参数在创建<code>DistOpt</code>实例时配置。</p>
+<h2><a class="anchor" aria-hidden="true" id="实现"></a><a href="#实现" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>实现</h2>
+<p>本节主要是让开发者了解分布训练模块的代码是如何实现的。</p>
+<h3><a class="anchor" aria-hidden="true" id="nccl-communicator的c接口"></a><a href="#nccl-communicator的c接口" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>NCCL communicator的C接口</h3>
+<p>首先，通信层是用C语言<a href="https://github.com/apache/singa/blob/master/src/io/communicator.cc">communicator.cc</a>编写的，它调用用NCCL库进行集体通信。</p>
+<p>communicator有两个构造器，一个是MPI的，另一个是Multiprocess的。</p>
+<p>(i) MPI构造器</p>
+<p>构造器首先先获取全局rank和world_size，计算出本地rank，然后由rank 0生成NCCL ID并广播给每个rank。之后，它调用setup函数来初始化NCCL communicator、cuda流和缓冲区。</p>
+<p>(ii) Python multiprocess构造器</p>
+<p>构造器首先从输入参数中获取rank、world_size和NCCL ID。之后，调用setup函数来初始化NCCL communicator、cuda流和缓冲区。</p>
+<p>在初始化之后，它提供了all-reduce功能来同步模型参数或梯度。例如，synch接收一个输入张量，通过NCCL例程进行all-reduce，在我们调用synch之后，需要调用wait函数来等待all-reduce操作的完成。</p>
+<h3><a class="anchor" aria-hidden="true" id="distopt的python接口"></a><a href="#distopt的python接口" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DistOpt的Python接口</h3>
+<p>然后，python接口提供了一个<a href="https://github.com/apache/singa/blob/master/python/singa/opt.py">DistOpt</a>类来封装一个<a href="https://github.com/apache/singa/blob/master/python/singa/opt.py">optimizer</a>对象，以执行基于MPI或Multiprocess的分布式训练。在初始化过程中，它创建了一个NCCL communicator对象（来自于上面小节提到的C接口），然后，<code>DistOpt</code>中的每一次all-reduce操作都会用到这个communicator对象。</p>
+<p>在MPI或Multiprocess中，每个进程都有一个独立的rank，它给出了各个进程使用的GPU的信息。训练数据是被拆分的，因此每个进程可以根据一部分训练数据来评估子梯度。一旦每个进程的子梯度被计算出来，就可以将所有进程计算出的子梯度做all-reduce，得到总体随机梯度。</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 09/11/2020</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/3.1.0_Chinese/onnx"><span class="arrow-prev">← </span><span>ONNX</span></a><a class="docs-next button" href="/docs/3.1.0_Chinese/time-profiling"><span>Time Profiling</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#使用">使用</a><ul class="toc-headings"><li><a href="#代码示例">代码示例</a></li><li><a href="#执行命令">执行命令</a></li></ul></li><li><a href="#针对分布式训练的优化">针对分布式训练的优化</a><ul class="toc-headings"><li><a href="#不采取优化手段">不采取优化手段</a></li><li><a href="#半精度梯度（half-precision-gradients）">半精度梯度（Half-precision Gradients）</a></li><li><a href="#部分同步（partial-synchronization）">部分同步（Partial Synchronization）</a></li><li><a href="#梯度稀疏化（gradient-sparsification）">梯度稀疏化（Gradient Sparsification）</a></li></ul></li><li><a href="#实现">实现</a><ul class="toc-headings"><li><a href="#nccl-communicator的c接口">NCCL communicator的C接口</a></li><li><a href="#distopt的python接口">DistOpt的Python接口</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2020
+   The Apache Software Foundation. All rights reserved.
+   Apache SINGA, Apache, the Apache feather logo, and
+   the Apache SINGA project logos are trademarks of The
+   Apache Software Foundation. All other marks mentioned
+   may be trademarks or registered trademarks of their
+   respective owners.</section></div></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '45202133606c0b5fa6d21cddc4725dd8',
+                indexName: 'apache_singa',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:3.0.0"]}
+              });
+            </script></body></html>

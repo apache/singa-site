@@ -1,0 +1,330 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Build SINGA on Windows · Apache SINGA</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta name="docsearch:version" content="3.1.0_Chinese"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Build SINGA on Windows · Apache SINGA"/><meta property="og:type" content="website"/><meta property="og:url" content="https://singa.apache.org/"/><meta property="og:description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta property="og:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://singa.apache.org/blog/atom.xml" title="Apache SINGA Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://singa.apache.org/blog/feed.xml" title="Apache SINGA Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/singa.png" alt="Apache SINGA"/></a><a href="/versions"><h3>3.1.0_Chinese</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/3.1.0_Chinese/installation" target="_self">Docs</a></li><li class=""><a href="/docs/3.1.0_Chinese/source-repository" target="_self">Community</a></li><li class=""><a href="/blog/" target="_self">News</a></li><li class=""><a href="https://apache-singa.readthedocs.io/en/latest/" target="_self">API</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/apache/singa" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/install-win.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Build SINGA on Windows</h1></header><article><div><span><!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  -->
+<p>在Microsoft Windows上从源码构建SINGA的过程有四个部分：安装依赖关系、构建SINGA源码、（可选择）安装python模块和（可选择）运行单元测试。</p>
+<h2><a class="anchor" aria-hidden="true" id="安装依赖项"></a><a href="#安装依赖项" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>安装依赖项</h2>
+<p>你可以创建一个文件夹来构建依赖关系。</p>
+<p>使用到的依赖项有：</p>
+<ul>
+<li><p>编译器和IDE：</p>
+<ul>
+<li>Visual Studio，社区版是免费的，可以用来构建SINGA。
+<a href="https://www.visualstudio.com/">https://www.visualstudio.com/</a></li>
+</ul></li>
+<li><p>CMake</p>
+<ul>
+<li>可以从 <a href="http://cmake.org/">http://cmake.org/</a> 下载</li>
+<li>确保 cmake 可执行文件的路径在系统路径中，或者在调用 cmake 时使用完整路径。</li>
+</ul></li>
+<li><p>SWIG</p>
+<ul>
+<li>可以从 <a href="http://swig.org/">http://swig.org/</a> 下载</li>
+<li>确保swig可执行文件的路径在系统路径中，或者在调用swig时使用完整路径。请使用最新的版本，如3.0.12。</li>
+</ul></li>
+<li><p>Protocol Buffers</p>
+<ul>
+<li>下载一个合适的版本，如2.6.1:
+<a href="https://github.com/google/protobuf/releases/tag/v2.6.1">https://github.com/google/protobuf/releases/tag/v2.6.1</a> 。</li>
+<li>下载 protobuf-2.6.1.zip 和 protoc-2.6.1-win32.zip。</li>
+<li>将这两个文件解压到dependencies文件夹中，将protoc可执行文件的路径添加到系统路径中，或者在调用它时使用完整路径。</li>
+<li>打开Visual Studio solution，它可以在vsproject文件夹中找到。</li>
+<li>将build settings改为Release和x64。</li>
+<li>构建libprotobuf项目。</li>
+</ul></li>
+<li><p>Openblas</p>
+<ul>
+<li>从 <a href="http://www.openblas.net">http://www.openblas.net</a> 下载合适的源码，如0.2.20。</li>
+<li>将源码解压到dependencies文件夹中。</li>
+<li>如果你没有安装Perl，请下载一个perl环境，如Strawberry Perl (<a href="http://strawberryperl.com/">http://strawberryperl.com/</a>)。</li>
+<li>在源文件夹中运行此命令来构建Visual Studio解决方案：</li>
+</ul>
+<pre><code class="hljs css language-bash">cmake -G <span class="hljs-string">"Visual Studio 15 2017 Win64"</span>
+</code></pre>
+<ul>
+<li>打开Visual Studio解决方案并将build settings更改为Release和x64。</li>
+<li>构建libopenblas项目。</li>
+</ul></li>
+<li><p>Google glog</p>
+<ul>
+<li>下载一个合适的版本，如0.3.5:
+<a href="https://github.com/google/glog/releases">https://github.com/google/glog/releases</a></li>
+<li>将源码解压到dependencies文件夹中。</li>
+<li>打开Visual Studio solution.</li>
+<li>将build settings改为Release and x64.</li>
+<li>构建libglog项目。</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="构建singa源代码"></a><a href="#构建singa源代码" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>构建SINGA源代码</h2>
+<ul>
+<li><p>下载SINGA源代码</p></li>
+<li><p>编译protobuf文件:</p>
+<ul>
+<li>在src/proto目录中：</li>
+</ul>
+<pre><code class="hljs css language-shell">mkdir python_out
+protoc.exe *.proto --python_out python_out
+</code></pre></li>
+<li><p>为C++和Python生成swig接口：在src/api目录中：</p>
+<pre><code class="hljs css language-shell">swig -python -c++ singa.i
+</code></pre></li>
+<li><p>生成SINGA的Visual Studio解决方案：在SINGA源码根目录中：</p>
+<pre><code class="hljs css language-shell">mkdir build
+cd build
+</code></pre></li>
+<li><p>调用 cmake 并添加系统路径，类似于下面的例子:</p>
+<pre><code class="hljs css language-shell">cmake -G "Visual Studio 15 2017 Win64" ^
+  -DGLOG_INCLUDE_DIR="D:/WinSinga/dependencies/glog-0.3.5/src/windows" ^
+  -DGLOG_LIBRARIES="D:/WinSinga/dependencies/glog-0.3.5/x64/Release" ^
+  -DCBLAS_INCLUDE_DIR="D:/WinSinga/dependencies/openblas-0.2.20/lapack-netlib/CBLAS/include" ^
+  -DCBLAS_LIBRARIES="D:/WinSinga/dependencies/openblas-0.2.20/lib/RELEASE" ^
+  -DProtobuf_INCLUDE_DIR="D:/WinSinga/dependencies/protobuf-2.6.1/src" ^
+  -DProtobuf_LIBRARIES="D:/WinSinga/dependencies/protobuf-2.6.1/vsprojects/x64/Release" ^
+  -DProtobuf_PROTOC_EXECUTABLE="D:/WinSinga/dependencies/protoc-2.6.1-win32/protoc.exe" ^
+  ..
+</code></pre></li>
+<li><p>在Visual Studio中打开生成的解决方案。</p></li>
+<li><p>将构建设置改为Release和x64。</p></li>
+<li><p>将src/api中的singa_wrap.cxx文件添加到singa_objects项目中。</p></li>
+<li><p>在 singa_objects 项目中，打开 Additional Include Directories。</p></li>
+<li><p>添加Python的include路径。</p></li>
+<li><p>添加numpy的include路径。</p></li>
+<li><p>添加protobuf的include路径。</p></li>
+<li><p>在 singa_objects 项目的预处理程序定义中， 添加 USE_GLOG。</p></li>
+<li><p>构建singa_objects项目。</p></li>
+<li><p>在singa项目中:</p>
+<ul>
+<li>将singa_wrap.obj添加到对象库。</li>
+<li>将目标名称改为&quot;_singa_wrap&quot;。</li>
+<li>将目标扩展名为.pyd。</li>
+<li>将配置类型改为动态库(.dll)。</li>
+<li>进入Additional Library Directories，添加路径到python、openblas、protobuf和glog库。</li>
+<li>在Additional Dependencies中添加libopenblas.lib、libglog.lib和libprotobuf.lib。</li>
+</ul></li>
+<li><p>构建singa项目</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="安装python模块"></a><a href="#安装python模块" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>安装python模块</h2>
+<ul>
+<li><p>将build/python/setup.py中的<code>_singa_wrap.so</code>改为<code>_singa_wrap.pyd</code>。</p></li>
+<li><p>将<code>src/proto/python_out</code>中的文件复制到<code>build/python/singa/proto</code>中。</p></li>
+<li><p>（可选）创建并激活一个虚拟环境：</p>
+<pre><code class="hljs css language-shell">mkdir SingaEnv
+virtualenv SingaEnv
+SingaEnv\Scripts\activate
+</code></pre></li>
+<li><p>进入build/python文件夹，运行:</p>
+<pre><code class="hljs css language-shell">python setup.py install
+</code></pre></li>
+<li><p>将 _singa_wrap.pyd、libglog.dll 和 libopenblas.dll 添加到路径中，或者将它们复制到 python site-packages 中的 singa package 文件夹中。</p></li>
+</ul>
+<ul>
+<li><p>通过运行如下命令，来验证SINGA是否安装成功：</p>
+<pre><code class="hljs css language-shell">python -c "from singa import tensor"
+</code></pre></li>
+</ul>
+<p>构建过程的视频教程可以在这里找到：</p>
+<p><a href="https://www.youtube.com/watch?v=cteER7WeiGk"><img src="https://img.youtube.com/vi/cteER7WeiGk/0.jpg" alt="youtube video"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="运行单元测试"></a><a href="#运行单元测试" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>运行单元测试</h2>
+<ul>
+<li><p>在测试文件夹中，生成Visual Studio解决方案：</p>
+<pre><code class="hljs css language-shell">cmake -G "Visual Studio 15 2017 Win64"
+</code></pre></li>
+<li><p>在Visual Studio中打开生成的解决方案。</p></li>
+<li><p>更改build settings为Release和x64。</p></li>
+<li><p>构建glog项目。</p></li>
+<li><p>在test_singa项目中:</p>
+<ul>
+<li>将 USE_GLOG 添加到Preprocessor Definitions中。</li>
+<li>在 Additional Include Directories 中， 添加上面第 2 步中使用的 GLOG_INCLUDE_DIR、 CBLAS_INCLUDE_DIR 和 Protobuf_INCLUDE_DIR 的路径。同时添加build和build/include文件夹。</li>
+<li>转到Additional Library Directories，添加openblas、protobuf和glog库的路径。同时添加 build/src/singa_objects.dir/Release。</li>
+<li>转到 Additional Dependencies 并添加 libopenblas.lib、libglog.lib 和 libprotobuf.lib。修改两个库的名字：gtest.lib和singa_objects.lib。</li>
+</ul></li>
+<li><p>构建test_singa项目。</p></li>
+<li><p>将libglog.dll和libopenblas.dll添加到路径中，或者将它们复制到test/release文件夹中，使其可用。</p></li>
+<li><p>单元测试可以通过如下方式执行：</p>
+<ul>
+<li>从命令行:</li>
+</ul>
+<pre><code class="hljs css language-shell">test_singa.exe
+</code></pre>
+<ul>
+<li>从Visual Studio:
+<ul>
+<li>右键点击test_singa项目，选择 &quot;Set as StartUp Project&quot;。</li>
+<li>在Debug菜单中，选择'Start Without Debugging'。</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>单元测试的视频教程可以在这里找到:</p>
+<p><a href="https://www.youtube.com/watch?v=393gPtzMN1k"><img src="https://img.youtube.com/vi/393gPtzMN1k/0.jpg" alt="youtube video"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="构建包含cuda的gpu支持"></a><a href="#构建包含cuda的gpu支持" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>构建包含cuda的GPU支持</h2>
+<p>在本节中，我们将扩展前面的步骤来启用GPU。</p>
+<h3><a class="anchor" aria-hidden="true" id="安装依赖项-1"></a><a href="#安装依赖项-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>安装依赖项</h3>
+<p>除了上面第1节的依赖关系外，我们还需要以下内容：</p>
+<ul>
+<li><p>CUDA</p>
+<p>从 <a href="https://developer.nvidia.com/cuda-downloads">https://developer.nvidia.com/cuda-downloads</a> 下载一个合适的版本，如9.1。确保已经安装了Visual Studio集成模块。</p></li>
+</ul>
+<ul>
+<li><p>cuDNN</p>
+<p>从 <a href="https://developer.nvidia.com/cudnn">https://developer.nvidia.com/cudnn</a> 下载一个合适的版本，如7.1。</p></li>
+<li><p>cnmem:</p>
+<ul>
+<li>从 <a href="https://github.com/NVIDIA/cnmem">https://github.com/NVIDIA/cnmem</a> 下载最新版本。</li>
+<li>构建Visual Studio解决方案：</li>
+</ul>
+<pre><code class="hljs css language-shell">cmake -G "Visual Studio 15 2017 Win64"
+</code></pre>
+<ul>
+<li>在Visual Studio中打开生成的解决方案。</li>
+<li>将build settings改为Release和x64。</li>
+<li>构建cnmem项目。</li>
+</ul></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="构建singa源代码-1"></a><a href="#构建singa源代码-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>构建SINGA源代码</h3>
+<ul>
+<li>调用 cmake 并添加系统路径，类似于下面的例子：
+<pre><code class="hljs css language-shell">cmake -G "Visual Studio 15 2017 Win64" ^
+  -DGLOG_INCLUDE_DIR="D:/WinSinga/dependencies/glog-0.3.5/src/windows" ^
+  -DGLOG_LIBRARIES="D:/WinSinga/dependencies/glog-0.3.5/x64/Release" ^
+  -DCBLAS_INCLUDE_DIR="D:/WinSinga/dependencies/openblas-0.2.20/lapack-netlib/CBLAS/include" ^
+  -DCBLAS_LIBRARIES="D:/WinSinga/dependencies/openblas-0.2.20/lib/RELEASE" ^
+  -DProtobuf_INCLUDE_DIR="D:/WinSinga/dependencies/protobuf-2.6.1/src" ^
+  -DProtobuf_LIBRARIES="D:\WinSinga/dependencies/protobuf-2.6.1/vsprojects/x64/Release" ^
+  -DProtobuf_PROTOC_EXECUTABLE="D:/WinSinga/dependencies/protoc-2.6.1-win32/protoc.exe" ^
+  -DCUDNN_INCLUDE_DIR=D:\WinSinga\dependencies\cudnn-9.1-windows10-x64-v7.1\cuda\include ^
+  -DCUDNN_LIBRARIES=D:\WinSinga\dependencies\cudnn-9.1-windows10-x64-v7.1\cuda\lib\x64 ^
+  -DSWIG_DIR=D:\WinSinga\dependencies\swigwin-3.0.12 ^
+  -DSWIG_EXECUTABLE=D:\WinSinga\dependencies\swigwin-3.0.12\swig.exe ^
+  -DUSE_CUDA=YES ^
+  -DCUDNN_VERSION=7 ^
+  ..
+</code></pre></li>
+</ul>
+<ul>
+<li><p>为C++和Python生成swig接口。在src/api目录中：</p>
+<pre><code class="hljs css language-shell">swig -python -c++ singa.i
+</code></pre></li>
+<li><p>在Visual Studio中打开生成的解决方案</p></li>
+<li><p>将build settings改为Release和x64</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="构建singa_objects"></a><a href="#构建singa_objects" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>构建singa_objects</h4>
+<ul>
+<li>将src/api中的singa_wrap.cxx文件添加到singa_objects项目中。</li>
+<li>在 singa_objects 项目中，打开 Additional Include Directories。</li>
+<li>添加Python的include路径</li>
+<li>添加numpy include路径</li>
+<li>添加protobuf包括路径</li>
+<li>增加CUDA、cuDNN和cnmem的包含路径。</li>
+<li>在 singa_objects 项目的预处理程序定义中， 加入 USE_GLOG、 USE_CUDA 和 USE_CUDNN。删除 DISABLE_WARNINGS。</li>
+<li>建立 singa_objects 项目</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="构建singa-kernel"></a><a href="#构建singa-kernel" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>构建singa-kernel</h4>
+<ul>
+<li><p>创建一个新的Visual Studio项目，类型为 &quot;CUDA 9.1 Runtime&quot;。给它起个名字，比如singa-kernel。</p></li>
+<li><p>该项目自带一个名为kernel.cu的初始文件，从项目中删除这个文件。</p></li>
+<li><p>添加这个文件：src/core/tensor/math_kernel.cu。</p></li>
+<li><p>在项目设置中。</p>
+<ul>
+<li>将平台工具集设置为 &quot;Visual Studio 2015 (v140)&quot;</li>
+<li>将 &quot;配置类型 &quot;设置为 &quot;静态库(.lib)&quot;</li>
+<li>在include目录中，添加build/include。</li>
+</ul></li>
+<li><p>建立singa-kernel项目</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="构建singa"></a><a href="#构建singa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>构建singa</h4>
+<ul>
+<li><p>在singa项目中：</p>
+<ul>
+<li>将singa_wrap.obj添加到对象库中。</li>
+<li>将目标名称改为&quot;_singa_wrap&quot;。</li>
+<li>将目标扩展名为.pyd。</li>
+<li>将配置类型改为动态库(.dll)。</li>
+<li>到Additional Library Directories中添加python、openblas的路径。protobuf和glog库。</li>
+<li>同时添加singa-kernel、cnmem、cuda和cudnn的library path。</li>
+<li>到Additional Dependencies，并添加libopenblas.lib、libglog.lib和 libprotobuf.lib。</li>
+<li>另外还要添加：singa-kernel.lib、cnmem.lib、cudnn.lib、cuda.lib、cublas.lib。curand.lib和cudart.lib。</li>
+</ul></li>
+<li><p>构建singa项目。</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="install-python-module"></a><a href="#install-python-module" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Install Python module</h3>
+<ul>
+<li><p>将 build/python/setup.py 中的 _singa_wrap.so 改为 _singa_wrap.pyd。</p></li>
+<li><p>将 src/proto/python_out 中的文件复制到 build/python/singa/proto 中。</p></li>
+<li><p>（可选） 创建并激活虚拟环境:</p>
+<pre><code class="hljs css language-shell">mkdir SingaEnv
+virtualenv SingaEnv
+SingaEnv\Scripts\activate
+</code></pre></li>
+<li><p>进入build/python文件夹，运行:</p>
+<pre><code class="hljs css language-shell">python setup.py install
+</code></pre></li>
+<li><p>将 _singa_wrap.pyd, libglog.dll, libopenblas.dll, cnmem.dll, CUDA Runtime (例如 cudart64_91.dll) 和 cuDNN (例如 cudnn64_7.dll) 添加到路径中，或者将它们复制到 python site-packages 中的 singa package 文件夹中。</p></li>
+<li><p>通过运行如下命令来验证SINGA是否已经安装：</p>
+<pre><code class="hljs css language-shell">python -c "from singa import device; dev = device.create_cuda_gpu()"
+</code></pre></li>
+</ul>
+<p>这个部分的视频教程可以在这里找到：</p>
+<p><a href="https://www.youtube.com/watch?v=YasKVjRtuDs"><img src="https://img.youtube.com/vi/YasKVjRtuDs/0.jpg" alt="youtube video"></a></p>
+<h3><a class="anchor" aria-hidden="true" id="运行单元测试-1"></a><a href="#运行单元测试-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>运行单元测试</h3>
+<ul>
+<li><p>在测试文件夹中，生成Visual Studio解决方案：</p>
+<pre><code class="hljs css language-shell">cmake -G "Visual Studio 15 2017 Win64"
+</code></pre></li>
+<li><p>在Visual Studio中打开生成的解决方案，或者将项目添加到步骤5.2中创建的singa解决方案中。</p></li>
+<li><p>将build settings改为Release和x64。</p></li>
+<li><p>构建 glog 项目。</p></li>
+<li><p>在test_singa项目中:</p>
+<ul>
+<li>将 USE_GLOG; USE_CUDA; USE_CUDNN 添加到Preprocessor Definitions中。</li>
+<li>在 Additional Include Directories 中， 添加上面 5.2 中使用的 GLOG_INCLUDE_DIR、 CBLAS_INCLUDE_DIR 和 Protobuf_INCLUDE_DIR 的路径。同时添加build、build/include、CUDA和cuDNN的include文件夹。</li>
+<li>转到Additional Library Directories，添加openblas、protobuf和glog库的路径。同时添加 build/src/singa_objects.dir/Release、singa-kernel、cnmem、CUDA 和 cuDNN 库的路径。</li>
+<li>在Additional Dependencies中添加libopenblas.lib; libglog.lib; libprotobuf.lib; cnmem.lib; cudnn.lib; cuda.lib; cublas.lib; curand.lib; cudart.lib; singa-kernel.lib。修正两个库的名字：gtest.lib和singa_objects.lib。</li>
+</ul></li>
+</ul>
+<ul>
+<li><p>构建.</p></li>
+<li><p>将libglog.dll、libopenblas.dll、cnmem.dll、cudart64_91.dll和cudnn64_7.dll添加到路径中，或将它们复制到test/release文件夹中，使其可用。</p></li>
+<li><p>单元测试可以通过如下方式执行：</p>
+<ul>
+<li><p>从命令行:</p>
+<pre><code class="hljs css language-shell">test_singa.exe
+</code></pre></li>
+<li><p>从 Visual Studio:</p>
+<ul>
+<li>右键点击test_singa项目，选择 'Set as StartUp Project'.</li>
+<li>从Debug菜单，选择 'Start Without Debugging'</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>运行单元测试的视频教程可以在这里找到：</p>
+<p><a href="https://www.youtube.com/watch?v=YOjwtrvTPn4"><img src="https://img.youtube.com/vi/YOjwtrvTPn4/0.jpg" alt="youtube video"></a></p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 09/11/2020</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#安装依赖项">安装依赖项</a></li><li><a href="#构建singa源代码">构建SINGA源代码</a></li><li><a href="#安装python模块">安装python模块</a></li><li><a href="#运行单元测试">运行单元测试</a></li><li><a href="#构建包含cuda的gpu支持">构建包含cuda的GPU支持</a><ul class="toc-headings"><li><a href="#安装依赖项-1">安装依赖项</a></li><li><a href="#构建singa源代码-1">构建SINGA源代码</a></li><li><a href="#install-python-module">Install Python module</a></li><li><a href="#运行单元测试-1">运行单元测试</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2020
+   The Apache Software Foundation. All rights reserved.
+   Apache SINGA, Apache, the Apache feather logo, and
+   the Apache SINGA project logos are trademarks of The
+   Apache Software Foundation. All other marks mentioned
+   may be trademarks or registered trademarks of their
+   respective owners.</section></div></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '45202133606c0b5fa6d21cddc4725dd8',
+                indexName: 'apache_singa',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:3.0.0"]}
+              });
+            </script></body></html>

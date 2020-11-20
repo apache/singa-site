@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>How to Prepare a Release · Apache SINGA</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta name="docsearch:version" content="3.1.0_Chinese"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="How to Prepare a Release · Apache SINGA"/><meta property="og:type" content="website"/><meta property="og:url" content="https://singa.apache.org/"/><meta property="og:description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta property="og:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://singa.apache.org/blog/atom.xml" title="Apache SINGA Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://singa.apache.org/blog/feed.xml" title="Apache SINGA Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/singa.png" alt="Apache SINGA"/></a><a href="/versions"><h3>3.1.0_Chinese</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/3.1.0_Chinese/installation" target="_self">Docs</a></li><li class=""><a href="/docs/3.1.0_Chinese/source-repository" target="_self">Community</a></li><li class=""><a href="/blog/" target="_self">News</a></li><li class=""><a href="https://apache-singa.readthedocs.io/en/latest/" target="_self">API</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/apache/singa" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Development</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/installation">Installation</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/software-stack">Software Stack</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/examples">Examples</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Guides</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/device">Device</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/tensor">Tensor</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/autograd">Autograd</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/optimizer">Optimizer</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/graph">Model</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/onnx">ONNX</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/dist-train">Distributed Training</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/time-profiling">Time Profiling</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Development</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/download-singa">Download SINGA</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/build">Build SINGA from Source</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/contribute-code">How to Contribute Code</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/contribute-docs">How to Contribute to Documentation</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/3.1.0_Chinese/how-to-release">How to Prepare a Release</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/git-workflow">Git Workflow</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/how-to-release.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">How to Prepare a Release</h1></header><article><div><span><!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  -->
+<p>这是SINGA的<a href="http://www.apache.org/dev/release-publishing.html">发布准备流程</a>指南。</p>
+<ol>
+<li><p>选择一个发布管理者。发布管理者（RM）是发布过程的协调者，他的签名文件（.asc）将会与发布一起上传。RM 生成 KEY (RSA 4096 位)并将其上传到公钥服务器，首先需要得到其他Apache用户对他的密钥的认可（签名），才能连接到信任网，RM需要先求助其他项目管理者帮忙认证他的密钥。<a href="http://www.apache.org/dev/release-signing.html">如何生成密钥？</a></p></li>
+<li><p>检查license。 <a href="https://www.apache.org/legal/src-headers.html#faq-docs">FAQ</a>;
+<a href="https://issues.apache.org/jira/projects/SINGA/issues/SINGA-447">SINGA Issue</a></p>
+<ul>
+<li>代码库不能包含与APL不兼容的第三方代码。</li>
+<li>依赖项与APL兼容，GNU类license不兼容。</li>
+<li>我们编写的所有源文件都必须包含Apache license头：<a href="http://www.apache.org/legal/src-headers.html">http://www.apache.org/legal/src-headers.html</a>.
+链接中有一个脚本可以帮助将这个头同步到所有文件。</li>
+<li>更新LICENSE文件。如果我们在发行包中包含了任何非APL的第三方代码，必须要在NOTICE文件的最后注明。</li>
+</ul></li>
+<li><p>复查版本。检查代码和文档。</p>
+<ul>
+<li>编译过程无错误。</li>
+<li>(尽可能地)包含进单元测试。</li>
+<li>Conda包运行无误。</li>
+<li>Apache网站上的在线文档是最新的。</li>
+</ul></li>
+<li><p>准备好RELEASE_NOTES文件。包括以下项目，介绍，特性，错误（链接到JIRA或Github PR），变更，依赖列表，不兼容问题，可以按照这个<a href="(http://commons.apache.org/proper/commons-digester/commons-digester-3.0/RELEASE-NOTES.txt)">例子</a>来写。</p></li>
+<li><p>打包候选版本。该版本应该打包成：apache-singa-VERSION.tar.gz。这个版本不应该包含任何二进制文件，包括git文件。但是CMake的编译依赖于git标签来获取版本号；要删除这个依赖，你需要手动更新CMakeLists.txt文件来设置版本号：</p>
+<pre><code class="hljs"># remove the following lines
+include(GetGitRevisionDescription)
+git_describe(VERSION --tags --dirty=-d)
+<span class="hljs-type">string</span>(REGEX REPLACE <span class="hljs-string">"^([0-9]+)<span class="hljs-subst">\\</span>..*"</span> <span class="hljs-string">"<span class="hljs-subst">\\</span>1"</span> VERSION_MAJOR <span class="hljs-string">"${VERSION}"</span>)
+<span class="hljs-type">string</span>(REGEX REPLACE <span class="hljs-string">"^[0-9]+<span class="hljs-subst">\\</span>.([0-9]+).*"</span> <span class="hljs-string">"<span class="hljs-subst">\\</span>1"</span> VERSION_MINOR <span class="hljs-string">"${VERSION}"</span>)
+<span class="hljs-type">string</span>(REGEX REPLACE <span class="hljs-string">"^[0-9]+<span class="hljs-subst">\\</span>.[0-9]+<span class="hljs-subst">\\</span>.([0-9]+).*"</span> <span class="hljs-string">"<span class="hljs-subst">\\</span>1"</span> VERSION_PATCH <span class="hljs-string">"${VERSION}"</span>)
+
+# set the numbers manually
+SET(PACKAGE_VERSION <span class="hljs-number">3.0</span><span class="hljs-number">.0</span>)
+SET(VERSION <span class="hljs-number">3.0</span><span class="hljs-number">.0</span>)
+SET(SINGA_MAJOR_VERSION <span class="hljs-number">3</span>)  # <span class="hljs-number">0</span> -
+SET(SINGA_MINOR_VERSION <span class="hljs-number">0</span>)  # <span class="hljs-number">0</span> - <span class="hljs-number">9</span>
+SET(SINGA_PATCH_VERSION <span class="hljs-number">0</span>)  # <span class="hljs-number">0</span> - <span class="hljs-number">99</span>
+</code></pre>
+<p>将软件包上传到<a href="https://dist.apache.org/repos/dist/dev/singa/">stage repo</a>。应包括tar文件、签名、KEY和SHA256校验和文件。MD5不再使用，详细规则在<a href="https://dist.apache.org/repos/dist/dev/singa/">这里</a>。阶段文件夹应该包括：</p>
+<ul>
+<li>apache-singa-VERSION.tar.gz</li>
+<li>apache-singa-VERSION.acs</li>
+<li>apache-singa-VERSION.SHA256</li>
+</ul>
+<p>创建这些文件并上传到stage svn repo的命令如下：</p>
+<pre><code class="hljs css language-sh"><span class="hljs-comment"># in singa repo</span>
+rm -rf .git
+rm -rf rafiki/*
+<span class="hljs-built_in">cd</span> ..
+tar -czvf apache-singa-VERSION.tar.gz  singa/
+
+mkdir stage
+<span class="hljs-built_in">cd</span> stage
+svn co https://dist.apache.org/repos/dist/dev/singa/
+<span class="hljs-built_in">cd</span> singa
+<span class="hljs-comment"># copy the KEYS file from singa repo to this folder if it is not here</span>
+cp ../../singa/KEYS .
+mkdir VERSION
+<span class="hljs-comment"># copy the tar.gz file</span>
+mv ../../apache-singa-VERSION.tar.gz VERSION/
+<span class="hljs-built_in">cd</span> VERSION
+sha512sum apache-singa-VERSION.tar.gz &gt; apache-singa-VERSION.tar.gz.sha512
+gpg --armor --output apache-singa-VERSION.tar.gz.asc --detach-sig apache-singa-VERSION.tar.gz
+<span class="hljs-built_in">cd</span> ..
+svn add VERSION
+svn commit
+</code></pre></li>
+</ol>
+<ol start="6">
+<li>通过发送电子邮件的方式进行投票。现举例如下：</li>
+</ol>
+<pre><code class="hljs">   To: dev@singa.apache.org
+   Subject: [VOTE] <span class="hljs-keyword">Release</span> apache-singa-X.Y.Z (<span class="hljs-keyword">release</span> candidate N)
+
+   Hi <span class="hljs-keyword">all</span>,
+
+   I have created a <span class="hljs-keyword">build</span> <span class="hljs-keyword">for</span> Apache SINGA <span class="hljs-number">3.1</span><span class="hljs-number">.0</span>, <span class="hljs-keyword">release</span> candidate <span class="hljs-number">2.</span>
+
+   The <span class="hljs-keyword">release</span> note <span class="hljs-keyword">is</span> <span class="hljs-keyword">at</span>
+   https://github.com/apache/singa/<span class="hljs-built_in">blob</span>/<span class="hljs-keyword">master</span>/RELEASE_NOTES.
+
+   The artifacts <span class="hljs-keyword">to</span> be voted <span class="hljs-keyword">on</span> <span class="hljs-keyword">are</span> located here:
+   https://dist.apache.org/repos/dist/dev/singa/<span class="hljs-number">3.1</span><span class="hljs-number">.0</span>.rc2/apache-singa<span class="hljs-number">-3.1</span><span class="hljs-number">.0</span>.rc2.tar.gz
+    
+   The hashes <span class="hljs-keyword">of</span> the artifacts <span class="hljs-keyword">are</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">follows</span>:
+   SHA512: <span class="hljs-number">84545499</span>ad36da108c6a599edd1d853f82d331bc03273b5278515554866f0c698e881f956b2eabcb6b29c07fa9fa4ff1add5a777b58db8a6a2362cf383b5c04d 
+
+   <span class="hljs-keyword">Release</span> artifacts <span class="hljs-keyword">are</span> signed <span class="hljs-keyword">with</span> the followingkey:
+   https://dist.apache.org/repos/dist/dev/singa/<span class="hljs-keyword">KEYS</span>
+
+   The signature <span class="hljs-keyword">file</span> <span class="hljs-keyword">is</span>:
+   https://dist.apache.org/repos/dist/dev/singa/<span class="hljs-number">3.1</span><span class="hljs-number">.0</span>.rc2/apache-singa<span class="hljs-number">-3.1</span><span class="hljs-number">.0</span>.rc2.tar.gz.asc
+
+   The Github tag <span class="hljs-keyword">is</span> <span class="hljs-keyword">at</span>:
+   https://github.com/apache/singa/releases/tag/<span class="hljs-number">3.1</span><span class="hljs-number">.0</span>.rc2
+
+   The documentation website <span class="hljs-keyword">is</span> <span class="hljs-keyword">at</span>
+   <span class="hljs-keyword">http</span>://singa.apache.org/docs/<span class="hljs-keyword">next</span>/installation/
+
+   <span class="hljs-keyword">Some</span> examples <span class="hljs-keyword">are</span> available <span class="hljs-keyword">for</span> testing:
+   https://github.com/apache/singa/tree/<span class="hljs-keyword">master</span>/examples
+   
+
+
+   Please vote <span class="hljs-keyword">on</span> releasing this package. The vote <span class="hljs-keyword">is</span> <span class="hljs-keyword">open</span> <span class="hljs-keyword">for</span> <span class="hljs-keyword">at</span> <span class="hljs-keyword">least</span> <span class="hljs-number">72</span> <span class="hljs-keyword">hours</span> <span class="hljs-keyword">and</span> passes <span class="hljs-keyword">if</span> a majority <span class="hljs-keyword">of</span> <span class="hljs-keyword">at</span> <span class="hljs-keyword">least</span> three +<span class="hljs-number">1</span> votes <span class="hljs-keyword">are</span> cast.
+
+   [ ] +<span class="hljs-number">1</span> <span class="hljs-keyword">Release</span> this <span class="hljs-keyword">package</span> <span class="hljs-keyword">as</span> Apache SINGA X.Y.Z 
+
+   [ ] <span class="hljs-number">0</span> I don<span class="hljs-string">'t feel strongly about it, but I'</span>m okay <span class="hljs-keyword">with</span> the <span class="hljs-keyword">release</span> 
+
+   [ ] <span class="hljs-number">-1</span> <span class="hljs-keyword">Do</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">release</span> this <span class="hljs-keyword">package</span> because...
+
+   Here <span class="hljs-keyword">is</span> my vote: +<span class="hljs-number">1</span>
+
+</code></pre>
+<ol start="7">
+<li>等待至少48小时的测试回复。任何PMC、提交者或贡献者都可以测试发布的功能，以及反馈。大家在投票+1之前应该检查这些。如果投票通过，则发送如下的结果邮件，否则，从头开始重复刚刚的步骤。</li>
+</ol>
+<pre><code class="hljs">
+<span class="hljs-keyword">To</span>: dev@singa.apache.org Subject: [RESULT][vote] Release apache-singa-X.Y.Z
+(release candidate N)
+
+Thanks <span class="hljs-keyword">to</span> everyone who has voted <span class="hljs-keyword">and</span> given their comments. The tally is as
+follows.
+
+N binding +1s: &lt;names&gt;
+
+N non-binding +1s: &lt;names&gt;
+
+<span class="hljs-literal">No</span> 0s <span class="hljs-keyword">or</span> -1s.
+
+I am delighted <span class="hljs-keyword">to</span> announce that the<span class="hljs-built_in"> proposal </span><span class="hljs-keyword">to</span> release Apache SINGA X.Y.Z has
+passed.
+
+</code></pre>
+<ol start="8">
+<li><p>将软件包上传至 <a href="https://dist.apache.org/repos/dist/release/singa/">https://dist.apache.org/repos/dist/release/singa/</a>，以便<a href="http://www.apache.org/dev/release-publishing.html#distribution">distribution</a>。</p></li>
+<li><p>更新SINGA网站的下载页面。tar.gz 文件必须从镜像下载，使用 closer.cgi 脚本；其他工件必须从 Apache 主站点下载。更多细节请看<a href="http://www.apache.org/dev/release-download-pages.html">这里</a>。我们在之前的版本中得到的一些反馈。“下载页面必须只链接到正式发布的版本，所以不能包含到GitHub的链接”，“链接到KEYS, sig和Hash的链接不能使用dist.apache.org而应该使用 <a href="https://www.apache.org/dist/singa/">https://www.apache.org/dist/singa/</a>...”“而且你只需要一个KEYS链接，而且应该描述如何使用KEYS+sig或Hash来验证下载。”</p></li>
+<li><p>删除RC标签并编译conda包。</p></li>
+<li><p>发布release信息：</p></li>
+</ol>
+<pre><code class="hljs"><span class="hljs-attribute">To</span>: announce<span class="hljs-variable">@apache</span>.org, dev<span class="hljs-variable">@singa</span>.apache.org
+<span class="hljs-attribute">Subject</span>: [ANNOUNCE] Apache SINGA X.Y.Z released
+
+We are pleased to announce that SINGA X.Y.Z is released.
+
+SINGA is a general distributed deep learning platform
+for training big deep learning models over large datasets.
+The release is available <span class="hljs-attribute">at</span>: <span class="hljs-attribute">http</span>:<span class="hljs-comment">//singa.apache.org/downloads.html</span>
+The main features of this release include XXX
+We look forward to hearing your feedback, suggestions,
+and contributions to the project.
+
+On behalf of the SINGA team, {SINGA Team Member Name}
+</code></pre>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 21/10/2020</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/3.1.0_Chinese/contribute-docs"><span class="arrow-prev">← </span><span>How to Contribute to Documentation</span></a><a class="docs-next button" href="/docs/3.1.0_Chinese/git-workflow"><span>Git Workflow</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2020
+   The Apache Software Foundation. All rights reserved.
+   Apache SINGA, Apache, the Apache feather logo, and
+   the Apache SINGA project logos are trademarks of The
+   Apache Software Foundation. All other marks mentioned
+   may be trademarks or registered trademarks of their
+   respective owners.</section></div></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '45202133606c0b5fa6d21cddc4725dd8',
+                indexName: 'apache_singa',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:3.0.0"]}
+              });
+            </script></body></html>
