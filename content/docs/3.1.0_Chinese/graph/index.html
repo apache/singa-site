@@ -1,0 +1,518 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Model · Apache SINGA</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. --&gt;"/><meta name="docsearch:version" content="3.1.0_Chinese"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Model · Apache SINGA"/><meta property="og:type" content="website"/><meta property="og:url" content="https://singa.apache.org/"/><meta property="og:description" content="&lt;!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. --&gt;"/><meta property="og:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://singa.apache.org/blog/atom.xml" title="Apache SINGA Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://singa.apache.org/blog/feed.xml" title="Apache SINGA Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/singa.png" alt="Apache SINGA"/></a><a href="/versions"><h3>3.1.0_Chinese</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/3.1.0_Chinese/installation" target="_self">Docs</a></li><li class=""><a href="/docs/3.1.0_Chinese/source-repository" target="_self">Community</a></li><li class=""><a href="/blog/" target="_self">News</a></li><li class=""><a href="https://apache-singa.readthedocs.io/en/latest/" target="_self">API</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/apache/singa" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Guides</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/installation">Installation</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/software-stack">Software Stack</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/examples">Examples</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Guides</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/device">Device</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/tensor">Tensor</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/autograd">Autograd</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/optimizer">Optimizer</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/3.1.0_Chinese/graph">Model</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/onnx">ONNX</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/dist-train">Distributed Training</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/time-profiling">Time Profiling</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Development</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/download-singa">Download SINGA</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/build">Build SINGA from Source</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/contribute-code">How to Contribute Code</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/contribute-docs">How to Contribute to Documentation</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/how-to-release">How to Prepare a Release</a></li><li class="navListItem"><a class="navItem" href="/docs/3.1.0_Chinese/git-workflow">Git Workflow</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/graph.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Model</h1></header><article><div><span><!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. -->
+<p>神经网络中的前向和反向传播可以用一组操作来表示，比如卷积和池化。每个操作都需要一些输入的<a href="./tensor">tensors</a>，并应用一个<a href="./autograd">operator</a>来生成输出的张量。通过将每个运算符表示为一个节点，将每个张量表示为一条边，所有的运算就形成了一个计算图。有了计算图，可以通过调度运算的执行和内存的智能分配/释放来进行速度和内存优化。在SINGA中，用户只需要使用<a href="https://github.com/apache/singa/blob/master/python/singa/model.py">Model</a> API定义神经网络模型，计算图则会在C++后台自动构建和优化。</p>
+<p>这样，一方面，用户使用<a href="./graph">Model</a> API按照PyTorch那样的命令式编程风格实现网络。而与PyTorch在每次迭代中重新创建操作不同的是，SINGA在第一次迭代后就会缓冲操作，隐式地创建计算图（当该功能被启用时）。因此，另一方面，SINGA的计算图与使用声明式编程的库（如TensorFlow）创建的计算图类似，因而它可以享受在图上进行的优化。</p>
+<h2><a class="anchor" aria-hidden="true" id="样例"></a><a href="#样例" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>样例</h2>
+<p>下面的代码说明了<code>Model</code>API的用法：</p>
+<ol>
+<li>将新模型实现为Model类的子类：</li>
+</ol>
+<pre><code class="hljs css language-Python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CNN</span><span class="hljs-params">(model.Model)</span>:</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, num_classes=<span class="hljs-number">10</span>, num_channels=<span class="hljs-number">1</span>)</span>:</span>
+        super(CNN, self).__init__()
+        self.conv1 = layer.Conv2d(num_channels, <span class="hljs-number">20</span>, <span class="hljs-number">5</span>, padding=<span class="hljs-number">0</span>, activation=<span class="hljs-string">"RELU"</span>)
+        self.conv2 = layer.Conv2d(<span class="hljs-number">20</span>, <span class="hljs-number">50</span>, <span class="hljs-number">5</span>, padding=<span class="hljs-number">0</span>, activation=<span class="hljs-string">"RELU"</span>)
+        self.linear1 = layer.Linear(<span class="hljs-number">500</span>)
+        self.linear2 = layer.Linear(num_classes)
+        self.pooling1 = layer.MaxPool2d(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, padding=<span class="hljs-number">0</span>)
+        self.pooling2 = layer.MaxPool2d(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, padding=<span class="hljs-number">0</span>)
+        self.relu = layer.ReLU()
+        self.flatten = layer.Flatten()
+        self.softmax_cross_entropy = layer.SoftMaxCrossEntropy()
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(self, x)</span>:</span>
+        y = self.conv1(x)
+        y = self.pooling1(y)
+        y = self.conv2(y)
+        y = self.pooling2(y)
+        y = self.flatten(y)
+        y = self.linear1(y)
+        y = self.relu(y)
+        y = self.linear2(y)
+        <span class="hljs-keyword">return</span> y
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">train_one_batch</span><span class="hljs-params">(self, x, y)</span>:</span>
+        out = self.forward(x)
+        loss = self.softmax_cross_entropy(out, y)
+        self.optimizer(loss)
+        <span class="hljs-keyword">return</span> out, loss
+</code></pre>
+<ol start="2">
+<li>创建model、optimizer、device等的实例。编译模型：</li>
+</ol>
+<pre><code class="hljs css language-python">model = CNN()
+
+<span class="hljs-comment"># initialize optimizer and attach it to the model</span>
+sgd = opt.SGD(lr=<span class="hljs-number">0.005</span>, momentum=<span class="hljs-number">0.9</span>, weight_decay=<span class="hljs-number">1e-5</span>)
+model.set_optimizer(sgd)
+
+<span class="hljs-comment"># initialize device</span>
+dev = device.create_cuda_gpu()
+
+<span class="hljs-comment"># input and target placeholders for the model</span>
+tx = tensor.Tensor((batch_size, <span class="hljs-number">1</span>, IMG_SIZE, IMG_SIZE), dev, tensor.float32)
+ty = tensor.Tensor((batch_size, num_classes), dev, tensor.int32)
+
+<span class="hljs-comment"># compile the model before training</span>
+model.compile([tx], is_train=<span class="hljs-literal">True</span>, use_graph=<span class="hljs-literal">True</span>, sequential=<span class="hljs-literal">False</span>)
+</code></pre>
+<ol start="3">
+<li>迭代训练：</li>
+</ol>
+<pre><code class="hljs css language-python"><span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> range(num_train_batch):
+    <span class="hljs-comment"># generate the next mini-batch</span>
+    x, y = ...
+
+    <span class="hljs-comment"># Copy the data into input tensors</span>
+    tx.copy_from_numpy(x)
+    ty.copy_from_numpy(y)
+
+    <span class="hljs-comment"># Training with one batch</span>
+    out, loss = model(tx, ty)
+</code></pre>
+<p>这个例子的Google Colab notebook可以在<a href="https://colab.research.google.com/drive/1fbGUs1AsoX6bU5F745RwQpohP4bHTktq">这里</a>找到。</p>
+<p>更多例子：</p>
+<ul>
+<li><a href="https://github.com/apache/singa/blob/master/examples/mlp/model.py">MLP</a></li>
+<li><a href="https://github.com/apache/singa/blob/master/examples/cnn/model/cnn.py">CNN</a></li>
+<li><a href="https://github.com/apache/singa/blob/master/examples/cnn/model/resnet.py">ResNet</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="实现"></a><a href="#实现" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>实现</h2>
+<h3><a class="anchor" aria-hidden="true" id="图的构建"></a><a href="#图的构建" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>图的构建</h3>
+<p>SINGA分三步构建计算图：</p>
+<ol>
+<li>将操作保存在缓冲区。</li>
+<li>分析操作的依赖性。</li>
+<li>根据依赖关系创建节点和边。</li>
+</ol>
+<p>以MLP模型的dense层的矩阵乘法运算为例，该操作会在<a href="https://github.com/apache/singa/blob/master/examples/mlp/model.py">MLP model</a>的前向函数中被调用：</p>
+<pre><code class="hljs css language-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MLP</span><span class="hljs-params">(model.Model)</span>:</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, data_size=<span class="hljs-number">10</span>, perceptron_size=<span class="hljs-number">100</span>, num_classes=<span class="hljs-number">10</span>)</span>:</span>
+        super(MLP, self).__init__()
+        self.linear1 = layer.Linear(perceptron_size)
+        ...
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(self, inputs)</span>:</span>
+        y = self.linear1(inputs)
+        ...
+</code></pre>
+<p><code>线性</code>层由<code>mutmul</code>运算符组成，<code>autograd</code>通过SWIG调用CPP中提供的<code>Mult</code>函数来实现<code>matmul</code>运算符。</p>
+<pre><code class="hljs css language-python"><span class="hljs-comment"># implementation of matmul()</span>
+singa.Mult(inputs, w)
+</code></pre>
+<p>At the backend, the <code>Mult</code> function is implemented by calling <code>GEMV</code> a CBLAS
+function. Instead of calling <code>GEMV</code> directly, <code>Mult</code> submits <code>GEMV</code> and the
+arguments to the device as follows,
+在后端，<code>Mult</code>函数是通过调用<code>GEMV</code>一个CBLAS函数来实现的。但<code>Mult</code>没有直接调用<code>GEMV</code>，而是将<code>GEMV</code>和参数提交给设备，具体如下。</p>
+<pre><code class="hljs css language-c++"><span class="hljs-comment">// implementation of Mult()</span>
+C-&gt;device()-&gt;Exec(
+    [a, A, b, B, CRef](Context *ctx) <span class="hljs-keyword">mutable</span> {
+        GEMV&lt;DType, Lang&gt;(a, A, B, b, &amp;CRef, ctx);
+    },
+    read_blocks, {C-&gt;block()});
+</code></pre>
+<p><code>Device</code>的<code>Exec</code>函数对函数及其参数进行缓冲。此外，它还拥有这个函数要读写的块的信息（块是指张量的内存块）。</p>
+<p>一旦<code>Model.forward()</code>被执行一次，所有的操作就会被<code>Device</code>缓冲。接下来，对所有操作的读写信息进行分析，用来建立计算图。例如，如果一个块<code>b</code>被一个操作O1写入，之后又被另一个操作O2读出，我们就会知道O2依赖于O1并且有一条从A到B的有向边，它代表了块<code>b</code>（或其张量）。之后我们就构建了一个有向无环图，如下图所示。该图会构建一次。</p>
+<p><img src="/docs/assets/GraphOfMLP.png" alt="The computational graph of MLP"></p>
+<p><br/><strong>Figure 1 - MLP例子的计算图</strong></p>
+<h3><a class="anchor" aria-hidden="true" id="优化"></a><a href="#优化" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>优化</h3>
+<p>目前，基于计算图进行了以下优化：</p>
+<p><strong>惰性分配</strong> 当创建张量/块时，设备不会立即为它们分配内存。相反，是在第一次访问块时，才会分配内存。</p>
+<p><strong>自动回收</strong>  每个张量/块的参考计数是根据图计算出来的。在执行操作之前，参考计数是读取这个块的操作次数。在执行过程中，一旦执行了一个操作，每一个输入块的参考数就会减少1，如果一个块的参考数达到了0，就意味着这个块在剩下的操作中不会再被读取。因此，它的内存可以被安全释放。此外，SINGA还会跟踪图外的块的使用情况。如果一个块被Python代码使用（而不是被autograd操作符使用），它将不会被回收。</p>
+<p><strong>内存共享</strong>  SINGA使用内存池，如<a href="https://github.com/NVIDIA/cnmem">CnMem</a>来管理CUDA内存。有了自动回收和内存池，SINGA就可以在张量之间共享内存。考虑两个操作<code>c=a+b</code>和<code>d=2xc</code>。在执行第二个操作之前，根据惰性分配原则，应该分配d的内存。假设<code>a</code>在其余操作中没有使用。根据自动回收，<code>a</code>的块将在第一次操作后被释放。因此，SINGA会向CUDA流提交四个操作：加法、释放<code>a</code>、分配<code>b</code>和乘法。这样，内存池就可以将<code>a</code>释放的内存与<code>b</code>共享，而不是要求GPU为<code>b</code>做真正的malloc。</p>
+<p>其他的优化技术，如来自编译器的优化技术，如常见的子表达式消除和不同CUDA流上的并行化操作也可以应用。</p>
+<h2><a class="anchor" aria-hidden="true" id="新的操作符"></a><a href="#新的操作符" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>新的操作符</h2>
+<p><code>autograd</code>模块中定义的每个运算符都实现了两个功能：前向和反向，通过在后台调用运算符来实现。如果要在<code>autograd</code>中添加一个新的运算符，需要在后台添加多个运算符。</p>
+<p>以<a href="https://github.com/apache/singa/blob/master/python/singa/autograd.py">Conv2d</a>运算符为例，在Python端，根据设备类型，从后台调用运算符来实现前向和反向功能：</p>
+<pre><code class="hljs css language-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">_Conv2d</span><span class="hljs-params">(Operation)</span>:</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(self, x, W, b=None)</span>:</span>
+        ......
+        <span class="hljs-keyword">if</span> training:
+            <span class="hljs-keyword">if</span> self.handle.bias_term:
+                self.inputs = (x, W, b) <span class="hljs-comment"># record x, W, b</span>
+            <span class="hljs-keyword">else</span>:
+                self.inputs = (x, W)
+
+        <span class="hljs-keyword">if</span> (type(self.handle) != singa.ConvHandle):
+            <span class="hljs-keyword">return</span> singa.GpuConvForward(x, W, b, self.handle)
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-keyword">return</span> singa.CpuConvForward(x, W, b, self.handle)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">backward</span><span class="hljs-params">(self, dy)</span>:</span>
+        <span class="hljs-keyword">if</span> (type(self.handle) != singa.ConvHandle):
+            dx = singa.GpuConvBackwardx(dy, self.inputs[<span class="hljs-number">1</span>], self.inputs[<span class="hljs-number">0</span>],
+                                        self.handle)
+            dW = singa.GpuConvBackwardW(dy, self.inputs[<span class="hljs-number">0</span>], self.inputs[<span class="hljs-number">1</span>],
+                                        self.handle)
+            db = singa.GpuConvBackwardb(
+                dy, self.inputs[<span class="hljs-number">2</span>],
+                self.handle) <span class="hljs-keyword">if</span> self.handle.bias_term <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span>
+        <span class="hljs-keyword">else</span>:
+            dx = singa.CpuConvBackwardx(dy, self.inputs[<span class="hljs-number">1</span>], self.inputs[<span class="hljs-number">0</span>],
+                                        self.handle)
+            dW = singa.CpuConvBackwardW(dy, self.inputs[<span class="hljs-number">0</span>], self.inputs[<span class="hljs-number">1</span>],
+                                        self.handle)
+            db = singa.CpuConvBackwardb(
+                dy, self.inputs[<span class="hljs-number">2</span>],
+                self.handle) <span class="hljs-keyword">if</span> self.handle.bias_term <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span>
+        <span class="hljs-keyword">if</span> db:
+            <span class="hljs-keyword">return</span> dx, dW, db
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-keyword">return</span> dx, dW
+</code></pre>
+<p>对于后台的每一个操作符，应按以下方式实现：</p>
+<ul>
+<li><p>假设操作符是<code>foo()</code>，它的真正实现应该包装在另一个函数中，例如<code>_foo()</code>。<code>foo()</code>将<code>_foo</code>和参数一起作为lambda函数传递给<code>Device</code>的<code>Exec</code>函数进行缓冲，要读和写的块也同时被传递给<code>Exec</code>。</p></li>
+<li><p>lambda表达式中使用的所有参数都需要根据以下规则获取：</p>
+<ul>
+<li><p><code>值捕获</code>: 如果参数变量是一个局部变量，或者将被立刻释放（例如，中间时序）。否则，一旦<code>foo()</code>存在，这些变量将被销毁。</p></li>
+<li><p><code>引用捕获</code>：如果变量是记录在python端或者是一个持久变量（例如Conv2d类中的参数W和ConvHand）。</p></li>
+<li><p><code>可变捕获</code>: 如果在<code>_foo()</code>中修改了由值捕获的变量，则lambda表达式应带有mutable（可变）标签。</p></li>
+</ul></li>
+</ul>
+<p>下面是一个在后台实现的操作的<a href="https://github.com/apache/singa/blob/master/src/model/operation/convolution.cc">例子</a>：</p>
+<pre><code class="hljs css language-c++"><span class="hljs-function">Tensor <span class="hljs-title">GpuConvBackwardx</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Tensor &amp;dy, <span class="hljs-keyword">const</span> Tensor &amp;W, <span class="hljs-keyword">const</span> Tensor &amp;x,
+                        <span class="hljs-keyword">const</span> CudnnConvHandle &amp;cch)</span> </span>{
+  CHECK_EQ(dy.device()-&gt;lang(), kCuda);
+
+  Tensor dx;
+  dx.ResetLike(x);
+
+  dy.device()-&gt;Exec(
+      <span class="hljs-comment">/*
+       * dx is a local variable so it's captured by value
+       * dy is an intermediate tensor and isn't recorded on the python side
+       * W is an intermediate tensor but it's recorded on the python side
+       * chh is a variable and it's recorded on the python side
+       */</span>
+      [dx, dy, &amp;W, &amp;cch](Context *ctx) <span class="hljs-keyword">mutable</span> {
+        Block *wblock = W.block(), *dyblock = dy.block(), *dxblock = dx.block();
+        <span class="hljs-keyword">float</span> alpha = <span class="hljs-number">1.f</span>, beta = <span class="hljs-number">0.f</span>;
+        cudnnConvolutionBackwardData(
+            ctx-&gt;cudnn_handle, &amp;alpha, cch.filter_desc, wblock-&gt;data(),
+            cch.y_desc, dyblock-&gt;data(), cch.conv_desc, cch.bp_data_alg,
+            cch.workspace.block()-&gt;mutable_data(),
+            cch.workspace_count * <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">float</span>), &amp;beta, cch.x_desc,
+            dxblock-&gt;mutable_data());
+      },
+      {dy.block(), W.block()}, {dx.block(), cch.workspace.block()});
+      <span class="hljs-comment">/* the lambda expression reads the blocks of tensor dy and w
+       * and writes the blocks of tensor dx and chh.workspace
+       */</span>
+
+  <span class="hljs-keyword">return</span> dx;
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="benchmark"></a><a href="#benchmark" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Benchmark</h2>
+<h3><a class="anchor" aria-hidden="true" id="单节点"></a><a href="#单节点" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>单节点</h3>
+<ul>
+<li>实验设定
+<ul>
+<li>模型：
+<ul>
+<li>使用层: ResNet50 in
+<a href="https://github.com/apache/singa/blob/master/examples/cnn/autograd/resnet_cifar10.py">resnet.py</a></li>
+<li>使用模型: ResNet50 in
+<a href="https://github.com/apache/singa/blob/master/examples/cnn/model/resnet.py">resnet.py</a></li>
+</ul></li>
+<li>GPU: NVIDIA RTX 2080Ti</li>
+</ul></li>
+<li>注释：
+<ul>
+<li><code>s</code> ：second，秒</li>
+<li><code>it</code> ： iteration，迭代次数</li>
+<li><code>Mem</code>：peak memory usage of single GPU，单GPU显存峰值</li>
+<li><code>Throughout</code>：number of images processed per second，每秒处理的图像数</li>
+<li><code>Time</code>：total time，总时间</li>
+<li><code>Speed</code>：iterations per second。每秒迭代次数</li>
+<li><code>Reduction</code>：the memory usage reduction rate compared with that using layer，与使用层的内存使用率相比，内存使用率降低了多少</li>
+<li><code>Speedup</code>: speedup ratio compared with dev branch，与dev分支相比的加速率</li>
+</ul></li>
+<li>结果：
+  <table style="text-align: center">
+      <tr>
+          <th style="text-align: center">Batchsize</th>
+          <th style="text-align: center">Cases</th>
+          <th style="text-align: center">Mem(MB)</th>
+          <th style="text-align: center">Time(s)</th>
+          <th style="text-align: center">Speed(it/s)</th>
+          <th style="text-align: center">Throughput</th>
+          <th style="text-align: center">Reduction</th>
+          <th style="text-align: center">Speedup</th>
+      </tr>
+      <tr>
+          <td rowspan="4">16</td>
+          <td nowrap>layer</td>
+          <td>4975</td>
+          <td>14.1952</td>
+          <td>14.0893</td>
+          <td>225.4285</td>
+          <td>0.00%</td>
+          <td>1.0000</td>
+      </tr>
+      <tr>
+          <td nowrap>model:disable graph</td>
+          <td>4995</td>
+          <td>14.1264</td>
+          <td>14.1579</td>
+          <td>226.5261</td>
+          <td>-0.40%</td>
+          <td>1.0049</td>
+      </tr>
+      <tr>
+          <td nowrap>model:enable graph, bfs</td>
+          <td>3283</td>
+          <td>13.7438</td>
+          <td>14.5520</td>
+          <td>232.8318</td>
+          <td>34.01%</td>
+          <td>1.0328</td>
+      </tr>
+      <tr>
+          <td nowrap>model:enable graph, serial</td>
+          <td>3265</td>
+          <td>13.7420</td>
+          <td>14.5540</td>
+          <td>232.8635</td>
+          <td>34.37%</td>
+          <td>1.0330</td>
+      </tr>
+      <tr>
+          <td rowspan="4">32</td>
+          <td nowrap>layer</td>
+          <td>10119</td>
+          <td>13.4587</td>
+          <td>7.4302</td>
+          <td>237.7649</td>
+          <td>0.00%</td>
+          <td>1.0000</td>
+      </tr>
+      <tr>
+          <td nowrap>model:disable graph</td>
+          <td>10109</td>
+          <td>13.2952</td>
+          <td>7.5315</td>
+          <td>240.6875</td>
+          <td>0.10%</td>
+          <td>1.0123</td>
+      </tr>
+      <tr>
+          <td nowrap>model:enable graph, bfs</td>
+          <td>6839</td>
+          <td>13.1059</td>
+          <td>7.6302</td>
+          <td>244.1648</td>
+          <td>32.41%</td>
+          <td>1.0269</td>
+      </tr>
+      <tr>
+          <td nowrap>model:enable graph, serial</td>
+          <td>6845</td>
+          <td>13.0489</td>
+          <td>7.6635</td>
+          <td>245.2312</td>
+          <td>32.35%</td>
+          <td>1.0314</td>
+      </tr>
+  </table>
+</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="多线程"></a><a href="#多线程" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>多线程</h3>
+<ul>
+<li>实验设置：
+<ul>
+<li>API：
+<ul>
+<li>使用层: ResNet50 in
+<a href="https://github.com/apache/singa/blob/master/examples/cnn/autograd/resnet_dist.py">resnet_dist.py</a></li>
+<li>使用模型: ResNet50 in
+<a href="https://github.com/apache/singa/blob/master/examples/cnn/model/resnet.py">resnet.py</a></li>
+</ul></li>
+<li>GPU: NVIDIA RTX 2080Ti * 2</li>
+<li>MPI: 在同一节点上的两个MPI processes</li>
+</ul></li>
+<li>注释: 与上面相同</li>
+<li>结果：
+  <table style="text-align: center">
+      <tr>
+          <th style="text-align: center">Batchsize</th>
+          <th style="text-align: center">Cases</th>
+          <th style="text-align: center">Mem(MB)</th>
+          <th style="text-align: center">Time(s)</th>
+          <th style="text-align: center">Speed(it/s)</th>
+          <th style="text-align: center">Throughput</th>
+          <th style="text-align: center">Reduction</th>
+          <th style="text-align: center">Speedup</th>
+      </tr>
+      <tr>
+          <td rowspan="4">16</td>
+          <td nowrap>layer</td>
+          <td>5439</td>
+          <td>17.3323</td>
+          <td>11.5391</td>
+          <td>369.2522</td>
+          <td>0.00%</td>
+          <td>1.0000</td>
+      </tr>
+      <tr>
+          <td nowrap>model:disable graph</td>
+          <td>5427</td>
+          <td>17.8232</td>
+          <td>11.2213</td>
+          <td>359.0831</td>
+          <td>0.22%</td>
+          <td>0.9725</td>
+      </tr>
+      <tr>
+          <td nowrap>model:enable graph, bfs</td>
+          <td>3389</td>
+          <td>18.2310</td>
+          <td>10.9703</td>
+          <td>351.0504</td>
+          <td>37.69%</td>
+          <td>0.9507</td>
+      </tr>
+      <tr>
+          <td nowrap>model:enable graph, serial</td>
+          <td>3437</td>
+          <td>17.0389</td>
+          <td>11.7378</td>
+          <td>375.6103</td>
+          <td>36.81%</td>
+          <td>1.0172</td>
+      </tr>
+      <tr>
+          <td rowspan="4">32</td>
+          <td nowrap>layer</td>
+          <td>10547</td>
+          <td>14.8635</td>
+          <td>6.7279</td>
+          <td>430.5858</td>
+          <td>0.00%</td>
+          <td>1.0000</td>
+      </tr>
+      <tr>
+          <td nowrap>model:disable graph</td>
+          <td>10503</td>
+          <td>14.7746</td>
+          <td>6.7684</td>
+          <td>433.1748</td>
+          <td>0.42%</td>
+          <td>1.0060</td>
+      </tr>
+      <tr>
+          <td nowrap>model:enable graph, bfs</td>
+          <td>6935</td>
+          <td>14.8553</td>
+          <td>6.7316</td>
+          <td>430.8231</td>
+          <td>34.25%</td>
+          <td>1.0006</td>
+      </tr>
+      <tr>
+          <td nowrap>model:enable graph, serial</td>
+          <td>7027</td>
+          <td>14.3271</td>
+          <td>6.9798</td>
+          <td>446.7074</td>
+          <td>33.37%</td>
+          <td>1.0374</td>
+      </tr>
+  </table>
+</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="结论"></a><a href="#结论" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>结论</h3>
+<ul>
+<li>在启用计算图的情况下进行训练，可以显著减少内存占用。</li>
+<li>目前，在速度上有一点改进。在效率方面还可以做更多的优化。</li>
+</ul>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 04/10/2020</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/3.1.0_Chinese/optimizer"><span class="arrow-prev">← </span><span>Optimizer</span></a><a class="docs-next button" href="/docs/3.1.0_Chinese/onnx"><span>ONNX</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#样例">样例</a></li><li><a href="#实现">实现</a><ul class="toc-headings"><li><a href="#图的构建">图的构建</a></li><li><a href="#优化">优化</a></li></ul></li><li><a href="#新的操作符">新的操作符</a></li><li><a href="#benchmark">Benchmark</a><ul class="toc-headings"><li><a href="#单节点">单节点</a></li><li><a href="#多线程">多线程</a></li><li><a href="#结论">结论</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2020
+   The Apache Software Foundation. All rights reserved.
+   Apache SINGA, Apache, the Apache feather logo, and
+   the Apache SINGA project logos are trademarks of The
+   Apache Software Foundation. All other marks mentioned
+   may be trademarks or registered trademarks of their
+   respective owners.</section></div></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '45202133606c0b5fa6d21cddc4725dd8',
+                indexName: 'apache_singa',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:3.0.0"]}
+              });
+            </script></body></html>
