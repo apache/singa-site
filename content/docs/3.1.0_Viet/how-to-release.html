@@ -66,20 +66,26 @@
 SINGA.</p>
 <ol>
 <li><p>Lựa chọn người quản lý cho việc phát hành. Người quản lý chịu trách nhiệm
-điều phối quá trình phát hành. Chữ ký của người quản lý (.asc) sẽ được tải lên cùng với
-bản phát hành. Nggười quản lý tạo KEY (RSA 4096-bit) và tải nó lên
-public key server. Để được tin cậy kết nối trên web, người quản lý cần các người dùng Apache khác
-chứng thực (signed) Key của mình. Anh ta trước tiên cần yêu cầu mentor giúp chứng thực key.
+điều phối quá trình phát hành. Chữ ký của người quản lý (.asc) sẽ được tải
+lên cùng với bản phát hành. Nggười quản lý tạo KEY (RSA 4096-bit) và tải nó
+lên public key server. Để được tin cậy kết nối trên web, người quản lý cần
+các người dùng Apache khác chứng thực (signed) Key của mình. Anh ta trước
+tiên cần yêu cầu mentor giúp chứng thực key.
 <a href="http://www.apache.org/dev/release-signing.html">Cách tạo Key</a>?</p></li>
-<li><p>Kiểm tra bản quyền. <a href="https://www.apache.org/legal/src-headers.html#faq-docs">FAQ</a>;
+<li><p>Kiểm tra bản quyền.
+<a href="https://www.apache.org/legal/src-headers.html#faq-docs">FAQ</a>;
 <a href="https://issues.apache.org/jira/projects/SINGA/issues/SINGA-447">Các bản SINGA đã phát hành</a></p>
 <ul>
 <li>Nền tảng code không bao gồm code của bên thứ 3 mà không tương thích với
 APL;</li>
-<li>Các chương trình dependencies phải tương thích với APL. Các licenses giống với GNU là không tương thích;</li>
-<li>Các tệp tin nguồn viết bởi chúng tôi PHẢI bao gồm license header của Apache:
-<a href="http://www.apache.org/legal/src-headers.html">http://www.apache.org/legal/src-headers.html</a>. Chúng tôi cung cấp script để chạy header trên tất cả các tệp tin.</li>
-<li>Cập nhật tệp tin LICENSE. Nếu code có chứa mã code của một bên thứ 3 trong bản phát hành mà không phải APL, phải nêu rõ ở phần cuối của tập tin THÔNG BÁO.</li>
+<li>Các chương trình dependencies phải tương thích với APL. Các licenses giống
+với GNU là không tương thích;</li>
+<li>Các tệp tin nguồn viết bởi chúng tôi PHẢI bao gồm license header của
+Apache: <a href="http://www.apache.org/legal/src-headers.html">http://www.apache.org/legal/src-headers.html</a>. Chúng tôi cung cấp
+script để chạy header trên tất cả các tệp tin.</li>
+<li>Cập nhật tệp tin LICENSE. Nếu code có chứa mã code của một bên thứ 3 trong
+bản phát hành mà không phải APL, phải nêu rõ ở phần cuối của tập tin THÔNG
+BÁO.</li>
 </ul></li>
 <li><p>Nâng cấp phiên bản. Kiểm tra mã code và Tài liệu hướng dẫn</p>
 <ul>
@@ -88,11 +94,18 @@ APL;</li>
 <li>Gói chương trình Conda chạy không bị lỗi.</li>
 <li>Tài liệu hướng dẫn trực tuyến trên trang web Apache là mới nhất.</li>
 </ul></li>
-<li><p>Chuẩn bị tệp tin RELEASE_NOTES (Lưu ý phát hành). Bao gồm các mục, Giới thiệu, Tính năng nổi bật, Lỗi Bugs, (đường dẫn tới JIRA hoặc Github PR), Những thay đổi, Danh sách thư viện Dependency, Các vấn đề không tương thích. Làm theo
+<li><p>Chuẩn bị tệp tin RELEASE_NOTES (Lưu ý phát hành). Bao gồm các mục, Giới
+thiệu, Tính năng nổi bật, Lỗi Bugs, (đường dẫn tới JIRA hoặc Github PR),
+Những thay đổi, Danh sách thư viện Dependency, Các vấn đề không tương thích.
+Làm theo
 <a href="http://commons.apache.org/proper/commons-digester/commons-digester-3.0/RELEASE-NOTES.txt">ví dụ</a>.</p></li>
 <li><p>Gói các phiên bản phát hành. Bản phát hành cần được gói gọn thành:
-apache-singa-VERSION.tar.gz. Trong bản phát hành không nên chứa bất kì tệp tin dạng binary nào, bao gồm cả các tệp tin git. Tuy nhiên, các tệp CMake compilation dựa vào git tag để tạo số phiên bản; để bỏ qua dependency này, bạn cần cập nhật tệp tin CMakeLists.txt theo cách thủ công để tạo số phiên bản.</p>
-<pre><code class="hljs"># xoá các dòng sau 
+apache-singa-VERSION.tar.gz. Trong bản phát hành không nên chứa bất kì tệp
+tin dạng binary nào, bao gồm cả các tệp tin git. Tuy nhiên, các tệp CMake
+compilation dựa vào git tag để tạo số phiên bản; để bỏ qua dependency này,
+bạn cần cập nhật tệp tin CMakeLists.txt theo cách thủ công để tạo số phiên
+bản.</p>
+<pre><code class="hljs"># xoá các dòng sau
 include(GetGitRevisionDescription)
 git_describe(VERSION --tags --dirty=-d)
 <span class="hljs-type">string</span>(REGEX REPLACE <span class="hljs-string">"^([0-9]+)<span class="hljs-subst">\\</span>..*"</span> <span class="hljs-string">"<span class="hljs-subst">\\</span>1"</span> VERSION_MAJOR <span class="hljs-string">"${VERSION}"</span>)
@@ -107,10 +120,11 @@ SET(SINGA_MINOR_VERSION <span class="hljs-number">0</span>)  # <span class="hljs
 SET(SINGA_PATCH_VERSION <span class="hljs-number">0</span>)  # <span class="hljs-number">0</span> - <span class="hljs-number">99</span>
 </code></pre>
 <p>Tải gói chương trình lên
-<a href="https://dist.apache.org/repos/dist/dev/singa/">stage repo</a>. Cần bao gồm các tệp tin tar,
-signature, KEY và tệp tin SHA256 checksum. Không sử dụng MD5. Xem chính sách tại
+<a href="https://dist.apache.org/repos/dist/dev/singa/">stage repo</a>. Cần bao gồm các
+tệp tin tar, signature, KEY và tệp tin SHA256 checksum. Không sử dụng MD5.
+Xem chính sách tại
 <a href="http://www.apache.org/dev/release-distribution#sigs-and-sums">đây</a>. Thư mục
-stage  cần bao gồm:</p>
+stage cần bao gồm:</p>
 <ul>
 <li>apache-singa-VERSION.tar.gz</li>
 <li>apache-singa-VERSION.acs</li>
@@ -130,7 +144,7 @@ svn co https://dist.apache.org/repos/dist/dev/singa/
 <span class="hljs-comment"># copy tệp tin KEYS từ singa repo sang thư mục này nếu không có</span>
 cp ../../singa/KEYS .
 mkdir VERSION
-<span class="hljs-comment"># copy tệp tin tar.gz </span>
+<span class="hljs-comment"># copy tệp tin tar.gz</span>
 mv ../../apache-singa-VERSION.tar.gz VERSION/
 <span class="hljs-built_in">cd</span> VERSION
 sha512sum apache-singa-VERSION.tar.gz &gt; apache-singa-VERSION.tar.gz.sha512
@@ -183,7 +197,7 @@ because...</p>
 <pre><code class="hljs">
 <span class="hljs-number">7</span>) Sau đó đợi í<span class="hljs-built_in">t</span> nhấ<span class="hljs-built_in">t</span> <span class="hljs-number">48</span> giờ để nhậ<span class="hljs-built_in">n</span> phả<span class="hljs-built_in">n</span> hồi. Bấ<span class="hljs-built_in">t</span> kì PMC, committer hay contributor
 đều có thể kiểm tra các <span class="hljs-built_in">t</span>ính <span class="hljs-built_in">n</span>ăng trước khi phá<span class="hljs-built_in">t</span> hành, và đưa ra nhậ<span class="hljs-built_in">n</span> xét. Mọi người <span class="hljs-built_in">n</span>ê<span class="hljs-built_in">n</span> kiểm tra trước khi
-đưa ra vote +<span class="hljs-number">1</span>. <span class="hljs-built_in">N</span>ếu vote được thông qua, vui lòng gửi email kế<span class="hljs-built_in">t</span> quả. <span class="hljs-built_in">N</span>ếu không thì cầ<span class="hljs-built_in">n</span> lặp lại trình <span class="hljs-built_in">t</span>ự <span class="hljs-built_in">t</span>ừ đầu. 
+đưa ra vote +<span class="hljs-number">1</span>. <span class="hljs-built_in">N</span>ếu vote được thông qua, vui lòng gửi email kế<span class="hljs-built_in">t</span> quả. <span class="hljs-built_in">N</span>ếu không thì cầ<span class="hljs-built_in">n</span> lặp lại trình <span class="hljs-built_in">t</span>ự <span class="hljs-built_in">t</span>ừ đầu.
 
 </code></pre>
 <p>To: <a href="mailto:dev@singa.apache.org">dev@singa.apache.org</a> Subject: [RESULT][vote] Release apache-singa-X.Y.Z
@@ -200,9 +214,9 @@ passed.</p>
 [<span class="hljs-string">phân bổ</span>](<span class="hljs-link">http://www.apache.org/dev/release-publishing.html#distribution</span>)
 tới https://dist.apache.org/repos/dist/release/singa/.
 
-9) Cập nhật trang Tải (Download) trên website SINGA. Tệp tin tar.gz PHẢI được tải từ mirror, sử dụng closer.cgi script; các tạo tác khác PHẢI được tải từ trang chủ Apache. Xem chi tiết tại 
+9) Cập nhật trang Tải (Download) trên website SINGA. Tệp tin tar.gz PHẢI được tải từ mirror, sử dụng closer.cgi script; các tạo tác khác PHẢI được tải từ trang chủ Apache. Xem chi tiết tại
 [<span class="hljs-string">đây</span>](<span class="hljs-link">http://www.apache.org/dev/release-download-pages.html</span>). Một vài nhận xét chúng tôi nhận được trong các đợt phát hành trước: "Trang Tải chỉ nên được dẫn tới các bản phát hành chính thức, vì vậy phải bao gồm đường dẫn tới GitHub.", "Đường dẫn tới KEYS, sigs và
-hashes không nên sử dụng dist.apache.org; mà nên dùng 
+hashes không nên sử dụng dist.apache.org; mà nên dùng
 https://www.apache.org/dist/singa/...;", "Và bạn chỉ cần một đường dẫn tới KEYS,
 và cần có hướng dẫn cách sử dụng KEYS + sig hay hash để chứng thực hoàn tất việc tải."
 
@@ -226,7 +240,7 @@ và cần có hướng dẫn cách sử dụng KEYS + sig hay hash để chứng
  On behalf of the SINGA team, {SINGA Team Member Name}
  <span class="hljs-code">```</span>
 </code></pre>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/3.1.0_Viet/contribute-docs"><span class="arrow-prev">← </span><span>How to Contribute to Documentation</span></a><a class="docs-next button" href="/docs/3.1.0_Viet/git-workflow"><span>Git Workflow</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2021
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 5/1/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/3.1.0_Viet/contribute-docs"><span class="arrow-prev">← </span><span>How to Contribute to Documentation</span></a><a class="docs-next button" href="/docs/3.1.0_Viet/git-workflow"><span>Git Workflow</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2021
    The Apache Software Foundation. All rights reserved.
    Apache SINGA, Apache, the Apache feather logo, and
    the Apache SINGA project logos are trademarks of The

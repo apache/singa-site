@@ -61,19 +61,30 @@
               }
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/dist-train.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Distributed Training</h1></header><article><div><span><!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  -->
-<p>SINGA hỗ trợ data parallel training trên nhiều GPUs (trên một node hoặc nhiều node khác nhau). Sơ đồ sau mô phỏng data parallel training:</p>
+<p>SINGA hỗ trợ data parallel training trên nhiều GPUs (trên một node hoặc nhiều
+node khác nhau). Sơ đồ sau mô phỏng data parallel training:</p>
 <p><img src="/docs/assets/MPI.png" alt="MPI.png"></p>
-<p>Trong distributed training, mỗi chỉ lệnh (gọi là worker) chạy một training script trên một máy GPU. Mỗi chỉ lệnh (process) có một communication rank riêng. Dữ liệu để training được phân cho các worker và model thì được sao chép cho mỗi worker. Ở mỗi vòng, worker đọc một mini-batch dữ liệu (vd.,
-256 hình ảnh) từ phần được chia và chạy thuật toán BackPropagation để tính ra độ dốc (gradient) của weight, được lấy trung bình qua all-reduce (cung cấp bởi <a href="https://developer.nvidia.com/nccl">NCCL</a>)
-để cập nhật weight theo thuật toán
+<p>Trong distributed training, mỗi chỉ lệnh (gọi là worker) chạy một training
+script trên một máy GPU. Mỗi chỉ lệnh (process) có một communication rank riêng.
+Dữ liệu để training được phân cho các worker và model thì được sao chép cho mỗi
+worker. Ở mỗi vòng, worker đọc một mini-batch dữ liệu (vd., 256 hình ảnh) từ
+phần được chia và chạy thuật toán BackPropagation để tính ra độ dốc (gradient)
+của weight, được lấy trung bình qua all-reduce (cung cấp bởi
+<a href="https://developer.nvidia.com/nccl">NCCL</a>) để cập nhật weight theo thuật toán
 stochastic gradient descent (SGD).</p>
-<p>Hàm all-reduce operation bởi NCCL có thể được sử dụng để giảm và đồng bộ hoá độ dốc từ các máy GPU các nhau. Xem thử training với 4 GPUs như dưới đây. Sau khi độ dốc (gradients) từ 4 GPUs được tính, all-reduce sẽ trả lại tổng độ dốc (gradient) cho các GPU và đưa tới mỗi GPU. Sau đó có thể dễ dàng tính ra độ dốc trung bình.</p>
+<p>Hàm all-reduce operation bởi NCCL có thể được sử dụng để giảm và đồng bộ hoá độ
+dốc từ các máy GPU các nhau. Xem thử training với 4 GPUs như dưới đây. Sau khi
+độ dốc (gradients) từ 4 GPUs được tính, all-reduce sẽ trả lại tổng độ dốc
+(gradient) cho các GPU và đưa tới mỗi GPU. Sau đó có thể dễ dàng tính ra độ dốc
+trung bình.</p>
 <p><img src="/docs/assets/AllReduce.png" alt="AllReduce.png"></p>
 <h2><a class="anchor" aria-hidden="true" id="sử-dụng"></a><a href="#sử-dụng" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sử Dụng</h2>
-<p>SINGA áp dụng một module gọi là <code>DistOpt</code> (là dạng con của <code>Opt</code>) cho distributed
-training. Nó gói lại normal SGD optimizer và gọi  <code>Communicator</code> để động bộ hoá độ dốc. Ví dụ sau mô phỏng cách sử dụng <code>DistOpt</code> để
-training một CNN model với dữ liệu MNIST. Nguồn code có thể tìm
-<a href="https://github.com/apache/singa/blob/master/examples/cnn/">tại đây</a>, và <a href="">Colab notebook</a>.</p>
+<p>SINGA áp dụng một module gọi là <code>DistOpt</code> (là dạng con của <code>Opt</code>) cho
+distributed training. Nó gói lại normal SGD optimizer và gọi <code>Communicator</code> để
+động bộ hoá độ dốc. Ví dụ sau mô phỏng cách sử dụng <code>DistOpt</code> để training một
+CNN model với dữ liệu MNIST. Nguồn code có thể tìm
+<a href="https://github.com/apache/singa/blob/master/examples/cnn/">tại đây</a>, và
+<a href="">Colab notebook</a>.</p>
 <h3><a class="anchor" aria-hidden="true" id="code-ví-dụ"></a><a href="#code-ví-dụ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Code Ví Dụ</h3>
 <ol>
 <li>Định nghĩa neural network model:</li>
@@ -140,9 +151,18 @@ dev = device.create_cuda_gpu_on(sgd.local_rank)
 <p>(i) <code>dev</code></p>
 <p>dev dùng để chỉ <code>Device</code> instance, nơi tải dữ liệu và chạy CNN model.</p>
 <p>(ii)<code>local_rank</code></p>
-<p>Local rank chỉ số GPU mà chỉ lệnh (process) hiện tại đang sử dụng trên cùng một node. Ví dụ, nếu bạn đang sử dụng một node có 2 GPUs, <code>local_rank=0</code> nghĩa là chỉ lệnh này đang sử dụng máy GPU đầu tiên, trong khi  <code>local_rank=1</code> nghĩa là đang sử dụng máy GPU thứ hai. Sử dụng MPI hay đa xử lý, bạn có thể chạy cùng một tập lệnh training chỉ khác giá trị của <code>local_rank</code>.</p>
+<p>Local rank chỉ số GPU mà chỉ lệnh (process) hiện tại đang sử dụng trên cùng một
+node. Ví dụ, nếu bạn đang sử dụng một node có 2 GPUs, <code>local_rank=0</code> nghĩa là
+chỉ lệnh này đang sử dụng máy GPU đầu tiên, trong khi <code>local_rank=1</code> nghĩa là
+đang sử dụng máy GPU thứ hai. Sử dụng MPI hay đa xử lý, bạn có thể chạy cùng một
+tập lệnh training chỉ khác giá trị của <code>local_rank</code>.</p>
 <p>(iii)<code>global_rank</code></p>
-<p>Rank trong global biểu thị global rank cho tất cả các chỉ lệnh (process) trong các nodes mà bạn đang sử dụng. Lấy ví dụ trường hợp bạn có 3 nodes và mỗi một node có hai GPUs, <code>global_rank=0</code> nghĩa là chỉ lệnh đang sử dụng máy GPU đầu tiên ở node đầu tiên, <code>global_rank=2</code> nghĩa là chỉ lệnh đang sử dụng máy GPU đầu tiên ở node thứ 2, và <code>global_rank=4</code> nghĩa là chỉ lệnh đang sử dụng máy GPU đầu tiên ở node thứ 3.</p>
+<p>Rank trong global biểu thị global rank cho tất cả các chỉ lệnh (process) trong
+các nodes mà bạn đang sử dụng. Lấy ví dụ trường hợp bạn có 3 nodes và mỗi một
+node có hai GPUs, <code>global_rank=0</code> nghĩa là chỉ lệnh đang sử dụng máy GPU đầu
+tiên ở node đầu tiên, <code>global_rank=2</code> nghĩa là chỉ lệnh đang sử dụng máy GPU đầu
+tiên ở node thứ 2, và <code>global_rank=4</code> nghĩa là chỉ lệnh đang sử dụng máy GPU đầu
+tiên ở node thứ 3.</p>
 <ol start="3">
 <li>Tải và phân chia dữ liệu để training/validation</li>
 </ol>
@@ -159,11 +179,12 @@ test_x, test_y = data_partition(test_x, test_y,
                                 sgd.global_rank, sgd.world_size)
 </code></pre>
 <p>Một phần của bộ dữ liệu (dataset) được trả lại cho <code>dev</code>.</p>
-<p>Tại đây, <code>world_size</code> thể hiện tổng số chỉ lệnh trong tất cả các node mà bạn đang sử dụng cho distributed training.</p>
+<p>Tại đây, <code>world_size</code> thể hiện tổng số chỉ lệnh trong tất cả các node mà bạn
+đang sử dụng cho distributed training.</p>
 <ol start="4">
 <li>Khởi tạo và đồng bộ các tham số của model cho tất cả workers:</li>
 </ol>
-<pre><code class="hljs css language-python"><span class="hljs-comment"># Đồng bộ tham số ban đầu </span>
+<pre><code class="hljs css language-python"><span class="hljs-comment"># Đồng bộ tham số ban đầu</span>
 tx = tensor.Tensor((batch_size, <span class="hljs-number">1</span>, IMG_SIZE, IMG_SIZE), dev, tensor.float32)
 ty = tensor.Tensor((batch_size, num_classes), dev, tensor.int32)
 model.compile([tx], is_train=<span class="hljs-literal">True</span>, use_graph=graph, sequential=<span class="hljs-literal">True</span>)
@@ -218,12 +239,17 @@ np.random.seed(seed)
 <p>Dưới đây là giải thích cho các biến tạo ở trên:</p>
 <p>(i) <code>nccl_id</code></p>
 <p>Lưu ý rằng chúng ta cần phải tạo một NCCL ID ở đây để sử dụng cho collective
-communication, sau đó gửi nó tới tất cả các chỉ lệnh. NCCL ID giống như là vé vào cửa, khi chỉ có chỉ lệnh với ID này có thể tham gia vào quá trình all-reduce.
-(Về sua nếu dùng MPI, thì việc sử dụng NCCL ID là không cần thiết, bởi vì ID được gửi đi bởi MPI trong code của chúng tôi một cách tự động)</p>
+communication, sau đó gửi nó tới tất cả các chỉ lệnh. NCCL ID giống như là vé
+vào cửa, khi chỉ có chỉ lệnh với ID này có thể tham gia vào quá trình
+all-reduce. (Về sua nếu dùng MPI, thì việc sử dụng NCCL ID là không cần thiết,
+bởi vì ID được gửi đi bởi MPI trong code của chúng tôi một cách tự động)</p>
 <p>(ii) <code>world_size</code></p>
 <p>world_size là số lượng máy GPUs bạn muốn sử dụng cho training.</p>
 <p>(iii) <code>local_rank</code></p>
-<p>local_rank xác định local rank của distributed training và máy gpu được sử dụng trong chỉ lệnh. Trong code bên trên, for loop được sử dụng để chạy hàm train function, và local_rank chạy vòng từ 0 tới world_size. Trong trường hợp này, chỉ lệnh khác nhau có thể sử dụng máy GPUs khác nhau để training.</p>
+<p>local_rank xác định local rank của distributed training và máy gpu được sử dụng
+trong chỉ lệnh. Trong code bên trên, for loop được sử dụng để chạy hàm train
+function, và local_rank chạy vòng từ 0 tới world_size. Trong trường hợp này, chỉ
+lệnh khác nhau có thể sử dụng máy GPUs khác nhau để training.</p>
 <p>Tham số để tạo <code>DistOpt</code> instance cần được cập nhật như sau:</p>
 <pre><code class="hljs css language-python">sgd = opt.DistOpt(sgd, nccl_id=nccl_id, local_rank=local_rank, world_size=world_size)
 </code></pre>
@@ -273,8 +299,8 @@ Evaluation accuracy = <span class="hljs-number">0.989083</span>
     train_mnist_cnn()
 </code></pre>
 <ol start="2">
-<li>Tạo một hostfile cho MPI, vd. hostfile dưới đây sử dụng 2 chỉ lệnh (vd.,
-2 GPUs) trên một node</li>
+<li>Tạo một hostfile cho MPI, vd. hostfile dưới đây sử dụng 2 chỉ lệnh (vd., 2
+GPUs) trên một node</li>
 </ol>
 <pre><code class="hljs css language-txt">localhost:<span class="hljs-number">2</span>
 </code></pre>
@@ -316,10 +342,13 @@ Training loss = <span class="hljs-number">24.548153</span>, training accuracy = 
 Evaluation accuracy = <span class="hljs-number">0.988682</span>
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="tối-ưu-hoá-distributed-training"></a><a href="#tối-ưu-hoá-distributed-training" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tối Ưu Hoá Distributed Training</h2>
-<p>SINGA cung cấp chiến lược đa tối ưu hoá cho distributed training để giảm communication cost. Tham khảo API của <code>DistOpt</code> cho cấu hình của mỗi cách.</p>
+<p>SINGA cung cấp chiến lược đa tối ưu hoá cho distributed training để giảm
+communication cost. Tham khảo API của <code>DistOpt</code> cho cấu hình của mỗi cách.</p>
 <p>Khi sử dụng <code>model.Model</code> để tạo một model, cần phải đặt các lựa chọn cho
-distributed training trong phương pháp <code>train_one_batch</code>. Tham khảo code ví dụ trên đầu trang. Bạn có thể chỉ cần copy code cho các lựa chọn và sử dụng nó cho các model khác.
-Với các lựa chọn xác định, ta có thể đặt tham số<code>dist_option</code> và <code>spars</code> khi bắt đầu training với  <code>model(tx, ty, dist_option, spars)</code></p>
+distributed training trong phương pháp <code>train_one_batch</code>. Tham khảo code ví dụ
+trên đầu trang. Bạn có thể chỉ cần copy code cho các lựa chọn và sử dụng nó cho
+các model khác. Với các lựa chọn xác định, ta có thể đặt tham số<code>dist_option</code> và
+<code>spars</code> khi bắt đầu training với <code>model(tx, ty, dist_option, spars)</code></p>
 <h3><a class="anchor" aria-hidden="true" id="không-tối-ưu-hoá"></a><a href="#không-tối-ưu-hoá" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Không Tối Ưu Hoá</h3>
 <pre><code class="hljs css language-python">out, loss = model(tx, ty)
 </code></pre>
@@ -328,46 +357,68 @@ classification tasks.</p>
 <h3><a class="anchor" aria-hidden="true" id="half-precision-gradients"></a><a href="#half-precision-gradients" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Half-precision Gradients</h3>
 <pre><code class="hljs css language-python">out, loss = model(tx, ty, dist_option = <span class="hljs-string">'fp16'</span>)
 </code></pre>
-<p>Chuyển đổi gía trị độ dốc sang hiển thị dạng 16-bit (vd., half-precision) trước khi gọi hàm all-reduce.</p>
+<p>Chuyển đổi gía trị độ dốc sang hiển thị dạng 16-bit (vd., half-precision) trước
+khi gọi hàm all-reduce.</p>
 <h3><a class="anchor" aria-hidden="true" id="đồng-bộ-cục-bộ-partial-synchronization"></a><a href="#đồng-bộ-cục-bộ-partial-synchronization" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Đồng Bộ Cục Bộ (Partial Synchronization)</h3>
 <pre><code class="hljs css language-python">out, loss = model(tx, ty, dist_option = <span class="hljs-string">'partialUpdate'</span>)
 </code></pre>
-<p>Ở mỗi vòng lặp (iteration), mỗi rank thực hiện việc cập nhật sgd. Sau đó chỉ một nhóm tham số là được tính trung bình để đồng bộ hoá. Điều này giúp tiết kiệm communication cost.
-Độ lớn của nhóm này được xác định khi tạo hàm <code>DistOpt</code> instance.</p>
+<p>Ở mỗi vòng lặp (iteration), mỗi rank thực hiện việc cập nhật sgd. Sau đó chỉ một
+nhóm tham số là được tính trung bình để đồng bộ hoá. Điều này giúp tiết kiệm
+communication cost. Độ lớn của nhóm này được xác định khi tạo hàm <code>DistOpt</code>
+instance.</p>
 <h3><a class="anchor" aria-hidden="true" id="phân-bổ-độ-dốc-gradient-sparsification"></a><a href="#phân-bổ-độ-dốc-gradient-sparsification" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Phân Bổ Độ Dốc (Gradient Sparsification)</h3>
-<p>Kế hoạch phân bổ để chọn ra một nhóm nhỏ độ dốc nhằm thực hiện all-reduce. Có hai cách:</p>
+<p>Kế hoạch phân bổ để chọn ra một nhóm nhỏ độ dốc nhằm thực hiện all-reduce. Có
+hai cách:</p>
 <ul>
-<li>Chọn K phần tử lớn nhất. spars là một phần (0 - 1) của tổng số phần tử được chọn.</li>
+<li>Chọn K phần tử lớn nhất. spars là một phần (0 - 1) của tổng số phần tử được
+chọn.</li>
 </ul>
 <pre><code class="hljs css language-python">out, loss = model(tx, ty, dist_option = <span class="hljs-string">'sparseTopK'</span>, spars = spars)
 </code></pre>
 <ul>
-<li>Tất cả độ dốc có giá trị tuyệt đối lớn hơn ngưỡng spars đặt trước được lựa chọn.</li>
+<li>Tất cả độ dốc có giá trị tuyệt đối lớn hơn ngưỡng spars đặt trước được lựa
+chọn.</li>
 </ul>
 <pre><code class="hljs css language-python">out, loss = model(tx, ty, dist_option = <span class="hljs-string">'sparseThreshold'</span>, spars = spars)
 </code></pre>
 <p>Các hyper-parameter được cấu tạo khi tạo hàm <code>DistOpt</code> instance.</p>
 <h2><a class="anchor" aria-hidden="true" id="thực-hiện"></a><a href="#thực-hiện" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Thực Hiện</h2>
-<p>Mục này chủ yếu dành cho các lập trình viên (developer) muốn biết lập trình trong
-distribute module được thực hiện như thế nào.</p>
+<p>Mục này chủ yếu dành cho các lập trình viên (developer) muốn biết lập trình
+trong distribute module được thực hiện như thế nào.</p>
 <h3><a class="anchor" aria-hidden="true" id="giao-diện-c-cho-bộ-chuyển-mạch-communicator-nccl"></a><a href="#giao-diện-c-cho-bộ-chuyển-mạch-communicator-nccl" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Giao Diện C cho Bộ Chuyển Mạch (communicator) NCCL</h3>
 <p>Trước tiên, communication layer được lập trình bằng ngôn ngữ C
 <a href="https://github.com/apache/singa/blob/master/src/io/communicator.cc">communicator.cc</a>.
 Nó áp dụng NCCL library cho collective communication.</p>
-<p>Có hai hàm tạo nên communicator, một cho MPI và một cho đa phương thức (multiprocess).</p>
+<p>Có hai hàm tạo nên communicator, một cho MPI và một cho đa phương thức
+(multiprocess).</p>
 <p>(i) Hàm tạo sử dụng MPI</p>
-<p>Hàm tạo bước đầu sẽ sử dụng global rank và world size, sau đó tính toán ra local rank. Tiếp theo, rank 0 sẽ tạo ra NCCL ID và phát nó lên mỗi rank. Sau đó, nó gọi hàm setup để khởi tạo NCCL
-communicator, cuda streams, và buffers.</p>
+<p>Hàm tạo bước đầu sẽ sử dụng global rank và world size, sau đó tính toán ra local
+rank. Tiếp theo, rank 0 sẽ tạo ra NCCL ID và phát nó lên mỗi rank. Sau đó, nó
+gọi hàm setup để khởi tạo NCCL communicator, cuda streams, và buffers.</p>
 <p>(ii) Hàm tạo sử dụng Python đa phương thức</p>
-<p>Hàm tạo bước đầu sẽ sử dụng rank, world size, và NCCL ID từ input argument. Sau đó, nó gọi hàm setup function để khởi tạo NCCL communicator, cuda streams, và buffers.</p>
-<p>Sau khi khởi động, nó thực hiện chức năng all-reduce để đồng bộ hoá các tham số model và độ dốc. Ví dụ, synch sử dụng một input tensor và tiến hành all-reduce qua đoạn chương trình NCCL. Sau khi gọi synch, cần gọi hàm wait để đợi hàm all-reduce operation kết thúc.</p>
+<p>Hàm tạo bước đầu sẽ sử dụng rank, world size, và NCCL ID từ input argument. Sau
+đó, nó gọi hàm setup function để khởi tạo NCCL communicator, cuda streams, và
+buffers.</p>
+<p>Sau khi khởi động, nó thực hiện chức năng all-reduce để đồng bộ hoá các tham số
+model và độ dốc. Ví dụ, synch sử dụng một input tensor và tiến hành all-reduce
+qua đoạn chương trình NCCL. Sau khi gọi synch, cần gọi hàm wait để đợi hàm
+all-reduce operation kết thúc.</p>
 <h3><a class="anchor" aria-hidden="true" id="giao-diện-python-của-distopt"></a><a href="#giao-diện-python-của-distopt" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Giao Diện Python của DistOpt</h3>
 <p>Sau đó, giao diện python sẽ tạo ra một
-<a href="https://github.com/apache/singa/blob/master/python/singa/opt.py">DistOpt</a> class để gói một
+<a href="https://github.com/apache/singa/blob/master/python/singa/opt.py">DistOpt</a> class
+để gói một
 <a href="https://github.com/apache/singa/blob/master/python/singa/opt.py">optimizer</a>
-object để thực hiện distributed training dựa trên MPI hoặc đa xử lý. Trong khi khởi động, nó tạo ra một NCCL communicator object (từ giao diện C đề cập ở mục nhỏ phía trên). Sau đó, communicator object này được sử dụng trong mỗi hàm all-reduce trong DistOpt.</p>
-<p>Trong MPI hoặc đa xử lý, mỗi chỉ lệnh có một rank, cho biết thông tin máy GPU nào qui trình này đang sử dụng. Dữ liệu training được chia nhỏ để mỗi chỉ lệnh có thể đánh giá sub-gradient dựa trên dữ liệu đã chia trước đó. Sau khi sub-gradient được tạo ra ở mỗi chỉ lệnh, độ dốc stochastic gradient tổng hợp sẽ được tạo ra bằng cách all-reduce các sub-gradients đánh giá bởi tất cả các chỉ lệnh.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/3.1.0_Viet/onnx"><span class="arrow-prev">← </span><span>ONNX</span></a><a class="docs-next button" href="/docs/3.1.0_Viet/time-profiling"><span>Time Profiling</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#sử-dụng">Sử Dụng</a><ul class="toc-headings"><li><a href="#code-ví-dụ">Code Ví Dụ</a></li><li><a href="#hướng-dẫn-thực-hiện">Hướng Dẫn Thực Hiện</a></li></ul></li><li><a href="#tối-ưu-hoá-distributed-training">Tối Ưu Hoá Distributed Training</a><ul class="toc-headings"><li><a href="#không-tối-ưu-hoá">Không Tối Ưu Hoá</a></li><li><a href="#half-precision-gradients">Half-precision Gradients</a></li><li><a href="#đồng-bộ-cục-bộ-partial-synchronization">Đồng Bộ Cục Bộ (Partial Synchronization)</a></li><li><a href="#phân-bổ-độ-dốc-gradient-sparsification">Phân Bổ Độ Dốc (Gradient Sparsification)</a></li></ul></li><li><a href="#thực-hiện">Thực Hiện</a><ul class="toc-headings"><li><a href="#giao-diện-c-cho-bộ-chuyển-mạch-communicator-nccl">Giao Diện C cho Bộ Chuyển Mạch (communicator) NCCL</a></li><li><a href="#giao-diện-python-của-distopt">Giao Diện Python của DistOpt</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2021
+object để thực hiện distributed training dựa trên MPI hoặc đa xử lý. Trong khi
+khởi động, nó tạo ra một NCCL communicator object (từ giao diện C đề cập ở mục
+nhỏ phía trên). Sau đó, communicator object này được sử dụng trong mỗi hàm
+all-reduce trong DistOpt.</p>
+<p>Trong MPI hoặc đa xử lý, mỗi chỉ lệnh có một rank, cho biết thông tin máy GPU
+nào qui trình này đang sử dụng. Dữ liệu training được chia nhỏ để mỗi chỉ lệnh
+có thể đánh giá sub-gradient dựa trên dữ liệu đã chia trước đó. Sau khi
+sub-gradient được tạo ra ở mỗi chỉ lệnh, độ dốc stochastic gradient tổng hợp sẽ
+được tạo ra bằng cách all-reduce các sub-gradients đánh giá bởi tất cả các chỉ
+lệnh.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 5/1/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/3.1.0_Viet/onnx"><span class="arrow-prev">← </span><span>ONNX</span></a><a class="docs-next button" href="/docs/3.1.0_Viet/time-profiling"><span>Time Profiling</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#sử-dụng">Sử Dụng</a><ul class="toc-headings"><li><a href="#code-ví-dụ">Code Ví Dụ</a></li><li><a href="#hướng-dẫn-thực-hiện">Hướng Dẫn Thực Hiện</a></li></ul></li><li><a href="#tối-ưu-hoá-distributed-training">Tối Ưu Hoá Distributed Training</a><ul class="toc-headings"><li><a href="#không-tối-ưu-hoá">Không Tối Ưu Hoá</a></li><li><a href="#half-precision-gradients">Half-precision Gradients</a></li><li><a href="#đồng-bộ-cục-bộ-partial-synchronization">Đồng Bộ Cục Bộ (Partial Synchronization)</a></li><li><a href="#phân-bổ-độ-dốc-gradient-sparsification">Phân Bổ Độ Dốc (Gradient Sparsification)</a></li></ul></li><li><a href="#thực-hiện">Thực Hiện</a><ul class="toc-headings"><li><a href="#giao-diện-c-cho-bộ-chuyển-mạch-communicator-nccl">Giao Diện C cho Bộ Chuyển Mạch (communicator) NCCL</a></li><li><a href="#giao-diện-python-của-distopt">Giao Diện Python của DistOpt</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2021
    The Apache Software Foundation. All rights reserved.
    Apache SINGA, Apache, the Apache feather logo, and
    the Apache SINGA project logos are trademarks of The
