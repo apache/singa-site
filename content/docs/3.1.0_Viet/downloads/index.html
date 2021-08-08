@@ -63,11 +63,13 @@
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/download.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Tải SINGA</h1></header><article><div><span><!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  -->
 <h2><a class="anchor" aria-hidden="true" id="kiểm-chứng"></a><a href="#kiểm-chứng" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kiểm Chứng</h2>
 <p>Để kiểm chứng tập tin tar.gz đã tải, tải
-<a href="https://www.apache.org/dist/singa/KEYS">KEYS</a> và tập tin ASC sau đó thực hiện các lệnh sau</p>
+<a href="https://www.apache.org/dist/singa/KEYS">KEYS</a> và tập tin ASC sau đó thực hiện
+các lệnh sau</p>
 <pre><code class="hljs css language-shell"><span class="hljs-meta">%</span><span class="bash"> gpg --import KEYS</span>
 <span class="hljs-meta">%</span><span class="bash"> gpg --verify downloaded_file.asc downloaded_file</span>
 </code></pre>
-<p>Bạn có thể kiểm tra giá trị của SHA512 hoặc MD5 để xem liệu việc tải về đã hoàn thành chưa.</p>
+<p>Bạn có thể kiểm tra giá trị của SHA512 hoặc MD5 để xem liệu việc tải về đã hoàn
+thành chưa.</p>
 <h2><a class="anchor" aria-hidden="true" id="v310-30-tháng-10-năm-2020"></a><a href="#v310-30-tháng-10-năm-2020" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>V3.1.0 (30 tháng 10 năm 2020):</h2>
 <ul>
 <li><a href="http://www.apache.org/dyn/closer.cgi/singa/3.1.0/apache-singa-3.1.0.tar.gz">Apache SINGA 3.1.0</a>
@@ -78,8 +80,10 @@
 <ul>
 <li>Cập nhật Tensor core:
 <ul>
-<li>Hỗ trợ tensor transformation (reshape, transpose) cho tensors có tới 6 chiều (dimensions).</li>
-<li>Áp dụn traverse_unary_transform ở Cuda backend, tương tự như CPP backend one.</li>
+<li>Hỗ trợ tensor transformation (reshape, transpose) cho tensors có tới 6
+chiều (dimensions).</li>
+<li>Áp dụn traverse_unary_transform ở Cuda backend, tương tự như CPP backend
+one.</li>
 </ul></li>
 <li>Thêm hàm tensor operators vào autograd module.</li>
 <li>Cải tạo lại sonnx để
@@ -90,8 +94,10 @@
 </ul></li>
 </ul>
 <ul>
-<li>Thay thế Travis CI với trình tự Github. Thêm quản lý chất lượng và độ bao phủ.</li>
-<li>Thêm Tập lệnh compiling và packaging nhằm tạo gói wheel packages cho distribution.</li>
+<li>Thay thế Travis CI với trình tự Github. Thêm quản lý chất lượng và độ bao
+phủ.</li>
+<li>Thêm Tập lệnh compiling và packaging nhằm tạo gói wheel packages cho
+distribution.</li>
 <li>Fix bugs
 <ul>
 <li>Hoàn thiện Tập lệnh training cho ví dụ về IMDB LSTM model.</li>
@@ -113,7 +119,8 @@ gradient qua tham số python object id khi chạy thử.</li>
 <li>Nâng cấp ONNX. Thử nghiệm nhiều ONNX models trên SINGA.</li>
 <li>Thực hiện Distributed training với MPI và tối ưu hoá NCCL Communication qua
 phân bổ và nén độ dốc, và truyền tải phân khúc.</li>
-<li>Xây dựng và tối ưu hoá tốc độ và bộ nhớ sử dụng graph của Computational graph.</li>
+<li>Xây dựng và tối ưu hoá tốc độ và bộ nhớ sử dụng graph của Computational
+graph.</li>
 <li>Lập trang Tài Liệu sử dụng mới (singa.apache.org) và website tham khảo API
 (apache-singa.rtfd.io).</li>
 <li>CI cho việc kiểm tra chất lượng mã code.</li>
@@ -168,8 +175,8 @@ phân bổ và nén độ dốc, và truyền tải phân khúc.</li>
 <ul>
 <li>Tạo Docker images (phiên bản CPU và GPU)</li>
 <li>Tạo Amazon AMI cho SINGA (phiên bản CPU)</li>
-<li>Tích hợp với Jenkins để tự động tạo gói Wheel và Debian
-(cho cài đặt), và cập nhật website.</li>
+<li>Tích hợp với Jenkins để tự động tạo gói Wheel và Debian (cho cài đặt), và
+cập nhật website.</li>
 <li>Nâng cấp FeedFowardNet, vd., nhiều mode cho inputs và verbose để sửa lỗi</li>
 <li>Thêm Concat và Slice layers</li>
 <li>Mở rộng CrossEntropyLoss nhằm chấp nhật instance với nhiều labels</li>
@@ -213,9 +220,10 @@ phân bổ và nén độ dốc, và truyền tải phân khúc.</li>
 <li><a href="http://singa.apache.org/docs/releases/RELEASE_NOTES_0.3.0.html">Release Notes 0.3.0 (incubating)</a></li>
 <li>Các tính năng mới và thay đổi chính,
 <ul>
-<li>Training trên nhóm máy GPU: cho phép training các deep learning models trên một nhóm máy GPU</li>
-<li>Cải thiện Python wrapper khiến cho job configuration trở nên dễ dàng, bao gồm
-neural net và thuật toán SGD.</li>
+<li>Training trên nhóm máy GPU: cho phép training các deep learning models trên
+một nhóm máy GPU</li>
+<li>Cải thiện Python wrapper khiến cho job configuration trở nên dễ dàng, bao
+gồm neural net và thuật toán SGD.</li>
 <li>Thêm cập nhật SGD updaters mới, bao gồm Adam, AdaDelta và AdaMax.</li>
 <li>Cài đặt cần ít dependent libraries hơn cho mỗi node training.</li>
 <li>Đa dạng training với CPU và GPU.</li>
@@ -232,19 +240,23 @@ neural net và thuật toán SGD.</li>
 <li><a href="http://singa.apache.org/docs/releases/RELEASE_NOTES_0.2.0.html">Release Notes 0.2.0 (incubating)</a></li>
 <li>Các tính năng mới và thay đổi chính,
 <ul>
-<li>Training trên GPU cho phép training các models phức tạp trên một node với nhiều card GPU.</li>
+<li>Training trên GPU cho phép training các models phức tạp trên một node với
+nhiều card GPU.</li>
 <li>Chia nhỏ Hybrid neural net hỗ trợ dữ liệu và model song song cùng lúc.</li>
-<li>Cải thiện Python wrapper khiến cho job configuration trở nên dễ dàng, bao gồm
-neural net và thuật toán SGD.</li>
-<li>Áp dụng RNN model và thuật toán BPTT để hỗ trợ các ứng dụng dựa trên
-RNN models, e.g., GRU.</li>
+<li>Cải thiện Python wrapper khiến cho job configuration trở nên dễ dàng, bao
+gồm neural net và thuật toán SGD.</li>
+<li>Áp dụng RNN model và thuật toán BPTT để hỗ trợ các ứng dụng dựa trên RNN
+models, e.g., GRU.</li>
 <li>Tích hợp các phần mêm đám mây bao gồm Mesos, Docker và HDFS.</li>
-<li>Cung cấp hình ảnh cấu trúc neural net và thông tin layer, hỗ trợ việc sửa lỗi.</li>
-<li>Hàm Linear algebra và các hàm  ngẫu nhiên không dùng Blobs và chỉ điểm dữ liệu thô.</li>
-<li>Tạo layers mới, bao gồm SoftmaxLayer, ArgSortLayer, DummyLayer, RNN layers và
-cuDNN layers.</li>
+<li>Cung cấp hình ảnh cấu trúc neural net và thông tin layer, hỗ trợ việc sửa
+lỗi.</li>
+<li>Hàm Linear algebra và các hàm ngẫu nhiên không dùng Blobs và chỉ điểm dữ
+liệu thô.</li>
+<li>Tạo layers mới, bao gồm SoftmaxLayer, ArgSortLayer, DummyLayer, RNN layers
+và cuDNN layers.</li>
 <li>Cập nhật Layer class để chứa nhiều data/grad Blobs.</li>
-<li>Trích xuất các features và thử nghiệm hiệu quả cho dữ liệu mới bằng cách tải các tham số model đã được train từ trước.</li>
+<li>Trích xuất các features và thử nghiệm hiệu quả cho dữ liệu mới bằng cách tải
+các tham số model đã được train từ trước.</li>
 <li>Thêm Store class cho hàm IO operations.</li>
 </ul></li>
 </ul>
@@ -261,14 +273,15 @@ cuDNN layers.</li>
 <li>Tập lệnh cho job management với zookeeper</li>
 <li>Lập trình model dựa trên NeuralNet và trích xuất Layer.</li>
 <li>Kết cấu hệ thống dựa trên Worker, Server và Stub.</li>
-<li>Training models từ ba model khác nhau, là feed-forward
-models, energy models và RNN models.</li>
-<li>Đồng bộ và không đồng bộ và không đồng bộ distributed training frameworks sử dụng CPU</li>
+<li>Training models từ ba model khác nhau, là feed-forward models, energy models
+và RNN models.</li>
+<li>Đồng bộ và không đồng bộ và không đồng bộ distributed training frameworks sử
+dụng CPU</li>
 <li>Điểm kiểm tra (Checkpoint) và khôi phục</li>
 <li>Kiểm tra đơn vị sử dụng gtest</li>
 </ul></li>
 </ul>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/3.1.0_Viet/time-profiling"><span class="arrow-prev">← </span><span>Time Profiling</span></a><a class="docs-next button" href="/docs/3.1.0_Viet/build"><span>Build SINGA from Source</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#kiểm-chứng">Kiểm Chứng</a></li><li><a href="#v310-30-tháng-10-năm-2020">V3.1.0 (30 tháng 10 năm 2020):</a></li><li><a href="#v300-18-april-2020">V3.0.0 (18 April 2020):</a></li><li><a href="#incubating-v200-20-tháng-4-năm-2019">Incubating v2.0.0 (20 tháng 4 năm 2019):</a></li><li><a href="#incubating-v120-6-june-2018">Incubating v1.2.0 (6 June 2018):</a></li><li><a href="#incubating-v110-12-february-2017">Incubating v1.1.0 (12 February 2017):</a></li><li><a href="#incubating-v100-8-september-2016">Incubating v1.0.0 (8 September 2016):</a></li><li><a href="#incubating-v030-20-april-2016">Incubating v0.3.0 (20 April 2016):</a></li><li><a href="#incubating-v020-14-january-2016">Incubating v0.2.0 (14 January 2016):</a></li><li><a href="#incubating-v010-8-october-2015">Incubating v0.1.0 (8 October 2015):</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2021
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 5/1/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/3.1.0_Viet/time-profiling"><span class="arrow-prev">← </span><span>Time Profiling</span></a><a class="docs-next button" href="/docs/3.1.0_Viet/build"><span>Build SINGA from Source</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#kiểm-chứng">Kiểm Chứng</a></li><li><a href="#v310-30-tháng-10-năm-2020">V3.1.0 (30 tháng 10 năm 2020):</a></li><li><a href="#v300-18-april-2020">V3.0.0 (18 April 2020):</a></li><li><a href="#incubating-v200-20-tháng-4-năm-2019">Incubating v2.0.0 (20 tháng 4 năm 2019):</a></li><li><a href="#incubating-v120-6-june-2018">Incubating v1.2.0 (6 June 2018):</a></li><li><a href="#incubating-v110-12-february-2017">Incubating v1.1.0 (12 February 2017):</a></li><li><a href="#incubating-v100-8-september-2016">Incubating v1.0.0 (8 September 2016):</a></li><li><a href="#incubating-v030-20-april-2016">Incubating v0.3.0 (20 April 2016):</a></li><li><a href="#incubating-v020-14-january-2016">Incubating v0.2.0 (14 January 2016):</a></li><li><a href="#incubating-v010-8-october-2015">Incubating v0.1.0 (8 October 2015):</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2021
    The Apache Software Foundation. All rights reserved.
    Apache SINGA, Apache, the Apache feather logo, and
    the Apache SINGA project logos are trademarks of The

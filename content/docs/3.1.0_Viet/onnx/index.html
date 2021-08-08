@@ -61,9 +61,14 @@
               }
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/onnx.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">ONNX</h1></header><article><div><span><!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  -->
-<p><a href="https://onnx.ai/">ONNX</a> là một định dạng đại diện mở dùng trong các model của machine learning, cho phép nhà phát triển AI sử dụng các models trên các libraries và công cụ khác nhau. SINGA hỗ trợ tải các models dạng ONNX trong training và inference, và lưu các models ở dạng ONNX với SINGA APIs (e.g., <a href="./module">Module</a>).</p>
+<p><a href="https://onnx.ai/">ONNX</a> là một định dạng đại diện mở dùng trong các model của
+machine learning, cho phép nhà phát triển AI sử dụng các models trên các
+libraries và công cụ khác nhau. SINGA hỗ trợ tải các models dạng ONNX trong
+training và inference, và lưu các models ở dạng ONNX với SINGA APIs (e.g.,
+<a href="./module">Module</a>).</p>
 <p>SINGA đã được thử nghiệm với
-<a href="https://github.com/onnx/onnx/blob/master/docs/Versioning.md">phiên bản sau</a> của ONNX.</p>
+<a href="https://github.com/onnx/onnx/blob/master/docs/Versioning.md">phiên bản sau</a> của
+ONNX.</p>
 <table>
 <thead>
 <tr><th>Phiên bản ONNX</th><th>Phiên bản định dạng tệp tin</th><th>Opset phiên bản ai.onnx</th><th>Opset phiên bản ai.onnx.ml</th><th>Opset phiên bản ai.onnx.training</th></tr>
@@ -74,9 +79,14 @@
 </table>
 <h2><a class="anchor" aria-hidden="true" id="sử-dụng-chung"></a><a href="#sử-dụng-chung" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sử dụng chung</h2>
 <h3><a class="anchor" aria-hidden="true" id="tải-một-onnx-model-trong-singa"></a><a href="#tải-một-onnx-model-trong-singa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tải một ONNX Model trong SINGA</h3>
-<p>Sau khi tải một ONNX model từ disk qua <code>onnx.load</code>, bạn chỉ cần cập nhật batch-size của input sử dụng <code>tensor.PlaceHolder</code> sau SINGA v3.0, shape của internal tensors sẽ tự động được tạo ra.</p>
-<p>Sau đó, bạn định nghĩa một class thừa hưởng từ <code>sonnx.SONNXModel</code> và thực hiện hai phương pháp <code>forward</code> cho quá trình forward và <code>train_one_batch</code> cho quá trình training.
-Sau khi gọi hàm <code>model.compile</code>, hàm SONNX sẽ lặp lại và dịch tất cả các nodes trong phạm vi graph của ONNX model sang các hàm SINGA, tải tất cả weights đã lưu trữ và tạo ra shape của từng tensor trung gian.</p>
+<p>Sau khi tải một ONNX model từ disk qua <code>onnx.load</code>, bạn chỉ cần cập nhật
+batch-size của input sử dụng <code>tensor.PlaceHolder</code> sau SINGA v3.0, shape của
+internal tensors sẽ tự động được tạo ra.</p>
+<p>Sau đó, bạn định nghĩa một class thừa hưởng từ <code>sonnx.SONNXModel</code> và thực hiện
+hai phương pháp <code>forward</code> cho quá trình forward và <code>train_one_batch</code> cho quá
+trình training. Sau khi gọi hàm <code>model.compile</code>, hàm SONNX sẽ lặp lại và dịch
+tất cả các nodes trong phạm vi graph của ONNX model sang các hàm SINGA, tải tất
+cả weights đã lưu trữ và tạo ra shape của từng tensor trung gian.</p>
 <pre><code class="hljs css language-python3"><span class="hljs-keyword">import</span> onnx
 <span class="hljs-keyword">from</span> singa <span class="hljs-keyword">import</span> device
 <span class="hljs-keyword">from</span> singa <span class="hljs-keyword">import</span> sonnx
@@ -106,18 +116,23 @@ model = MyModel(onnx_model)
 model.compile([x], is_train=<span class="hljs-literal">False</span>, use_graph=<span class="hljs-literal">True</span>, sequential=<span class="hljs-literal">True</span>)
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="inference-với-singa-model"></a><a href="#inference-với-singa-model" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Inference với SINGA model</h3>
-<p>Sau khi tạo models, bạn có thể tiến hành inference bằng cách gọi hàm <code>model.forward</code>. Đầu vào và đầu ra phải ở dạng phiên bản của SINGA <code>Tensor</code>.</p>
+<p>Sau khi tạo models, bạn có thể tiến hành inference bằng cách gọi hàm
+<code>model.forward</code>. Đầu vào và đầu ra phải ở dạng phiên bản của SINGA <code>Tensor</code>.</p>
 <pre><code class="hljs css language-python3"><span class="hljs-attr">x</span> = tensor.Tensor(device=dev, data=INPUT)
 <span class="hljs-attr">y</span> = model.forward(x)
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="lưu-model-của-singa-dưới-dạng-onnx"></a><a href="#lưu-model-của-singa-dưới-dạng-onnx" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Lưu model của SINGA dưới dạng ONNX</h3>
-<p>Với hàm tensors đầu vào và đầu ra được tạo ra bởi các hàm của model, bạn có thể truy nguyên đến tất cả các hàm nội bộ. Bởi vậy, một model SINGA được xác định bởi tensors đầu vào và đầu ra. Để biến một model SINGA sang dạng ONNX, bạn chỉ cần cung cấp danh sách tensor đầu vào và đầu ra.</p>
+<p>Với hàm tensors đầu vào và đầu ra được tạo ra bởi các hàm của model, bạn có thể
+truy nguyên đến tất cả các hàm nội bộ. Bởi vậy, một model SINGA được xác định
+bởi tensors đầu vào và đầu ra. Để biến một model SINGA sang dạng ONNX, bạn chỉ
+cần cung cấp danh sách tensor đầu vào và đầu ra.</p>
 <pre><code class="hljs css language-python3"># <span class="hljs-symbol">x</span> is the input tensor, <span class="hljs-symbol">y</span> is the output tensor
 sonnx.to_onnx([<span class="hljs-symbol">x</span>], [<span class="hljs-symbol">y</span>])
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="training-lại-với-model-onnx"></a><a href="#training-lại-với-model-onnx" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Training lại với model ONNX</h3>
 <p>Để train (hay luyện) một model ONNX sử dụng SINGA, bạn cần thực hiện
-<code>train_one_batch</code> từ <code>sonnx.SONNXModel</code> và đánh dấu <code>is_train=True</code> khi gọi hàm <code>model.compile</code>.</p>
+<code>train_one_batch</code> từ <code>sonnx.SONNXModel</code> và đánh dấu <code>is_train=True</code> khi gọi hàm
+<code>model.compile</code>.</p>
 <pre><code class="hljs css language-python3">from singa import opt
 from singa import autograd
 
@@ -158,7 +173,9 @@ model.compile([tx], is_train=True, use_graph=graph, sequential=True)
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="transfer-learning-một-model-onnx"></a><a href="#transfer-learning-một-model-onnx" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Transfer-learning một model ONNX</h3>
 <p>Bạn cũng có thể thêm một vài layers vào phần cuối của ONNX model để làm
-transfer-learning. Hàm <code>last_layers</code> chấp nhận một số nguyên âm để chỉ layer bị cắt ra. Ví dụ, <code>-1</code> nghĩa là bị cắt ra sau kết quả cuối cùng (không xoá bớt layer nào) <code>-2</code> nghĩa là bị cắt ra sau hai layer cuối cùng.</p>
+transfer-learning. Hàm <code>last_layers</code> chấp nhận một số nguyên âm để chỉ layer bị
+cắt ra. Ví dụ, <code>-1</code> nghĩa là bị cắt ra sau kết quả cuối cùng (không xoá bớt
+layer nào) <code>-2</code> nghĩa là bị cắt ra sau hai layer cuối cùng.</p>
 <pre><code class="hljs css language-python3">from singa import opt
 from singa import autograd
 
@@ -202,9 +219,14 @@ model.set_optimizer(sgd)
 model.compile([tx], is_train=True, use_graph=graph, sequential=True)
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="onnx-model-zoo"></a><a href="#onnx-model-zoo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ONNX model zoo</h2>
-<p><a href="https://github.com/onnx/models">ONNX Model Zoo</a> là tổ hợp các models ở dạng ONNX, đã được train có kết quả tốt nhất, đóng góp bởi cộng đồng thành viên. SINGA giờ đây đã hỗ trợ một số models CV và NLP. Chúng tôi dự định sẽ sớm hỗ trợ thêm các models khác.</p>
+<p><a href="https://github.com/onnx/models">ONNX Model Zoo</a> là tổ hợp các models ở dạng
+ONNX, đã được train có kết quả tốt nhất, đóng góp bởi cộng đồng thành viên.
+SINGA giờ đây đã hỗ trợ một số models CV và NLP. Chúng tôi dự định sẽ sớm hỗ trợ
+thêm các models khác.</p>
 <h3><a class="anchor" aria-hidden="true" id="phân-loại-hình-ảnh-image-classification"></a><a href="#phân-loại-hình-ảnh-image-classification" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Phân loại hình ảnh (Image Classification)</h3>
-<p>Tổ hợp models này có đầu vào là hình ảnh, sau đó phân loại các đối tượng chính trong hình ảnh thành 1000 mục đối tượng như bàn phím, chuột, bút chì, và các động vật.</p>
+<p>Tổ hợp models này có đầu vào là hình ảnh, sau đó phân loại các đối tượng chính
+trong hình ảnh thành 1000 mục đối tượng như bàn phím, chuột, bút chì, và các
+động vật.</p>
 <table>
 <thead>
 <tr><th>Model Class</th><th>Tham khảo</th><th>Mô tả</th><th>Đường dẫn</th></tr>
@@ -219,7 +241,8 @@ model.compile([tx], is_train=True, use_graph=graph, sequential=True)
 <p>Chúng tôi cung cấp ví dụ re-training sử dụng VGG và ResNet, vui lòng xem tại
 <code>examples/onnx/training</code>.</p>
 <h3><a class="anchor" aria-hidden="true" id="nhận-diện-đối-tượng-object-detection"></a><a href="#nhận-diện-đối-tượng-object-detection" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Nhận Diện Đối Tượng (Object Detection)</h3>
-<p>Các models Object detection nhận diện sự hiện diện của các đối tượng trong một hình ảnh và phân đoạn ra các khu vực của bức ảnh mà đối tượng được nhận diện.</p>
+<p>Các models Object detection nhận diện sự hiện diện của các đối tượng trong một
+hình ảnh và phân đoạn ra các khu vực của bức ảnh mà đối tượng được nhận diện.</p>
 <table>
 <thead>
 <tr><th>Model Class</th><th>Tham khảo</th><th>Mô tả</th><th>Đường dẫn</th></tr>
@@ -229,7 +252,8 @@ model.compile([tx], is_train=True, use_graph=graph, sequential=True)
 </tbody>
 </table>
 <h3><a class="anchor" aria-hidden="true" id="phân-tích-khuôn-mặt-face-analysis"></a><a href="#phân-tích-khuôn-mặt-face-analysis" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Phân tích Khuôn Mặt (Face Analysis)</h3>
-<p>Các mô hình Nhận Diện Khuôn Mặt xác định và/hoặc nhận diện khuôn mặt người và các trạng thái cảm xúc trong bức ảnh.</p>
+<p>Các mô hình Nhận Diện Khuôn Mặt xác định và/hoặc nhận diện khuôn mặt người và
+các trạng thái cảm xúc trong bức ảnh.</p>
 <table>
 <thead>
 <tr><th>Model Class</th><th>Tham khảo</th><th>Mô tả</th><th>Đường dẫn</th></tr>
@@ -240,7 +264,8 @@ model.compile([tx], is_train=True, use_graph=graph, sequential=True)
 </tbody>
 </table>
 <h3><a class="anchor" aria-hidden="true" id="máy-hiểu-machine-comprehension"></a><a href="#máy-hiểu-machine-comprehension" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Máy Hiểu (Machine Comprehension)</h3>
-<p>Một dạng của mô hình xử lý ngôn ngữ tự nhiên giúp trả lời câu hỏi trên một đoạn ngôn ngữ cung cấp.</p>
+<p>Một dạng của mô hình xử lý ngôn ngữ tự nhiên giúp trả lời câu hỏi trên một đoạn
+ngôn ngữ cung cấp.</p>
 <table>
 <thead>
 <tr><th>Model Class</th><th>Tham khảo</th><th>Mô tả</th><th>Đường dẫn</th></tr>
@@ -335,62 +360,70 @@ model.compile([tx], is_train=True, use_graph=graph, sequential=True)
 <h3><a class="anchor" aria-hidden="true" id="các-lưu-ý-đặc-biệt-cho-onnx-backend"></a><a href="#các-lưu-ý-đặc-biệt-cho-onnx-backend" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Các lưu ý đặc biệt cho ONNX backend</h3>
 <ul>
 <li><p>Conv, MaxPool và AveragePool</p>
-<p>Đầu vào phải có shape 1d<code>(N*C*H)</code> và 2d(<code>N*C*H*W</code>) trong khi <code>dilation</code> phải là 1.</p></li>
+<p>Đầu vào phải có shape 1d<code>(N*C*H)</code> và 2d(<code>N*C*H*W</code>) trong khi <code>dilation</code> phải
+là 1.</p></li>
 <li><p>BatchNormalization</p>
 <p><code>epsilon</code> là 1e-05 và không được đổi.</p></li>
 <li><p>Cast</p>
 <p>Chỉ hỗ trợ float32 và int32, các dạng khác phải được cast thành hai dạng này.</p></li>
 <li><p>Squeeze và Unsqueeze</p>
-<p>Nếu gặp lỗi khi dùng <code>Squeeze</code> hay <code>Unsqueeze</code> giữa <code>Tensor</code> và
-Scalar, vui lòng báo cho chúng tôi.</p></li>
+<p>Nếu gặp lỗi khi dùng <code>Squeeze</code> hay <code>Unsqueeze</code> giữa <code>Tensor</code> và Scalar, vui
+lòng báo cho chúng tôi.</p></li>
 <li><p>Empty tensor Empty tensor không được chấp nhận trong SINGA.</p></li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="thực-hiện"></a><a href="#thực-hiện" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Thực hiện</h2>
-<p>Mã code của SINGA ONNX được đặt trong <code>python/singa/soonx.py</code>. Có bốn loại chính, <code>SingaFrontend</code>, <code>SingaBackend</code>, <code>SingaRep</code> và <code>SONNXModel</code>.
-<code>SingaFrontend</code> qui đổi mô hình SINGA model sang mô hình ONNX model; <code>SingaBackend</code> biến mô hình ONNX model sang đối tượng <code>SingaRep</code> giúp lưu trữ tất cả các toán tử SINGA operators và
-tensors(tensor trong văn bản này nghĩa là SINGA <code>Tensor</code>); <code>SingaRep</code> có thẻ chạy giống như mô hình SINGA model. <code>SONNXModel</code> tạo ra từ <code>model.Model</code> xác định thống nhất API cho SINGA.</p>
+<p>Mã code của SINGA ONNX được đặt trong <code>python/singa/soonx.py</code>. Có bốn loại
+chính, <code>SingaFrontend</code>, <code>SingaBackend</code>, <code>SingaRep</code> và <code>SONNXModel</code>.
+<code>SingaFrontend</code> qui đổi mô hình SINGA model sang mô hình ONNX model;
+<code>SingaBackend</code> biến mô hình ONNX model sang đối tượng <code>SingaRep</code> giúp lưu trữ
+tất cả các toán tử SINGA operators và tensors(tensor trong văn bản này nghĩa là
+SINGA <code>Tensor</code>); <code>SingaRep</code> có thẻ chạy giống như mô hình SINGA model.
+<code>SONNXModel</code> tạo ra từ <code>model.Model</code> xác định thống nhất API cho SINGA.</p>
 <h3><a class="anchor" aria-hidden="true" id="singafrontend"></a><a href="#singafrontend" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SingaFrontend</h3>
-<p>Hàm function đầu vào của <code>SingaFrontend</code> là <code>singa_to_onnx_model</code> cũng được gọi là <code>to_onnx</code>. <code>singa_to_onnx_model</code> tạo ra mô hình ONNX model, và nó cũng tạo ra một ONNX graph bằng việc
-sử dụng <code>singa_to_onnx_graph</code>.</p>
-<p><code>singa_to_onnx_graph</code> chấp nhận đầu ra của mô hình, và lặp lại đệ quy graph của mô hình
-SINGA model từ đầu ra để gom tất cả toán tử tạo thành một hàng.
-Tensors đầu vào và trực tiếp, v.d, weights để train, của mô hình SINGA model
-được chọn cùng một lúc. Đầu vào được lưu trong <code>onnx_model.graph.input</code>;
-đầu ra được lưu trong <code>onnx_model.graph.output</code>; và weights để train được lưu trong <code>onnx_model.graph.initializer</code>.</p>
-<p>Sau đó toán tử SINGA operator trong hàng được đổi sang từng toán tử ONNX operators.
-<code>_rename_operators</code> xác định tên toán tử giữa SINGA và ONNX.
+<p>Hàm function đầu vào của <code>SingaFrontend</code> là <code>singa_to_onnx_model</code> cũng được gọi
+là <code>to_onnx</code>. <code>singa_to_onnx_model</code> tạo ra mô hình ONNX model, và nó cũng tạo ra
+một ONNX graph bằng việc sử dụng <code>singa_to_onnx_graph</code>.</p>
+<p><code>singa_to_onnx_graph</code> chấp nhận đầu ra của mô hình, và lặp lại đệ quy graph của
+mô hình SINGA model từ đầu ra để gom tất cả toán tử tạo thành một hàng. Tensors
+đầu vào và trực tiếp, v.d, weights để train, của mô hình SINGA model được chọn
+cùng một lúc. Đầu vào được lưu trong <code>onnx_model.graph.input</code>; đầu ra được lưu
+trong <code>onnx_model.graph.output</code>; và weights để train được lưu trong
+<code>onnx_model.graph.initializer</code>.</p>
+<p>Sau đó toán tử SINGA operator trong hàng được đổi sang từng toán tử ONNX
+operators. <code>_rename_operators</code> xác định tên toán tử giữa SINGA và ONNX.
 <code>_special_operators</code> xác định function sử dụng để biến đổi toán tử.</p>
-<p>Thêm vào đó, một vài toán tử trong SINGA có các định nghĩa khác với ONNX, chẳng hạn như,
-ONNX coi một vài thuộc tính của toán tử SINGA operators là đầu vào, vì thế
-<code>_unhandled_operators</code> xác định function nào dùng để xử lý toán tử đặc biệt.</p>
-<p>Do dạng bool được coi là dạng int32 trong SINGA, <code>_bool_operators</code> địng nghĩa toán tử có thể
-chuyển sang dạng bool.</p>
+<p>Thêm vào đó, một vài toán tử trong SINGA có các định nghĩa khác với ONNX, chẳng
+hạn như, ONNX coi một vài thuộc tính của toán tử SINGA operators là đầu vào, vì
+thế <code>_unhandled_operators</code> xác định function nào dùng để xử lý toán tử đặc biệt.</p>
+<p>Do dạng bool được coi là dạng int32 trong SINGA, <code>_bool_operators</code> địng nghĩa
+toán tử có thể chuyển sang dạng bool.</p>
 <h3><a class="anchor" aria-hidden="true" id="singabackend"></a><a href="#singabackend" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SingaBackend</h3>
-<p>Function đầu vào của <code>SingaBackend</code> là <code>prepare</code> kiểm tra phiên bản nào của mô hình
-ONNX model rồi gọi <code>_onnx_model_to_singa_ops</code>.</p>
+<p>Function đầu vào của <code>SingaBackend</code> là <code>prepare</code> kiểm tra phiên bản nào của mô
+hình ONNX model rồi gọi <code>_onnx_model_to_singa_ops</code>.</p>
 <p>Chức năng của <code>_onnx_model_to_singa_ops</code> là để lấy SINGA tensors và operators.
 Các tensors được lưu trong một thư viện, theo tên trong ONNX, và operators được
-lưu trong hàng ở dạng <code>namedtuple('SingaOps', ['node', 'operator'])</code>.
-Với mỗi toán tử operator, <code>node</code> là một ví dụ từ OnnxNode được dùng để lưu các thông
-tin cơ bản của ONNX node; <code>operator</code> là forward function cho toán tử SINGA;</p>
+lưu trong hàng ở dạng <code>namedtuple('SingaOps', ['node', 'operator'])</code>. Với mỗi
+toán tử operator, <code>node</code> là một ví dụ từ OnnxNode được dùng để lưu các thông tin
+cơ bản của ONNX node; <code>operator</code> là forward function cho toán tử SINGA;</p>
 <p>Bước đầu tiên của <code>_onnx_model_to_singa_ops</code> có bốn bước, đầu tiên là gọi
-<code>_parse_graph_params</code> để lấy tất các các tensors lưu trong <code>params</code>. Sau đó gọi hàm
-<code>_parse_graph_inputs_outputs</code> để lấy tất cả thông tin đầu vào đầu ra lưu trong
-<code>inputs</code> và <code>outputs</code>. Cuối cùng nó lặp lại tất cả các nodes trong ONNX graph
-và đẩy sang <code>_onnx_node_to_singa_op</code> như SINGA operators hoặc layers và lưu chúng thành
-<code>outputs</code>. Một vài weights được lưu trong ONNX node gọi là
+<code>_parse_graph_params</code> để lấy tất các các tensors lưu trong <code>params</code>. Sau đó gọi
+hàm <code>_parse_graph_inputs_outputs</code> để lấy tất cả thông tin đầu vào đầu ra lưu
+trong <code>inputs</code> và <code>outputs</code>. Cuối cùng nó lặp lại tất cả các nodes trong ONNX
+graph và đẩy sang <code>_onnx_node_to_singa_op</code> như SINGA operators hoặc layers và
+lưu chúng thành <code>outputs</code>. Một vài weights được lưu trong ONNX node gọi là
 <code>Constant</code>, SONNX có thể xử lý chúng bằng <code>_onnx_constant_to_np</code> để lưu trong
 <code>params</code>.</p>
 <p>Cuối cùng class này trả lại một đối tượng <code>SingaRep</code> và lưu trên <code>params</code>,
 <code>inputs</code>, <code>outputs</code>, <code>layers</code>.</p>
 <h3><a class="anchor" aria-hidden="true" id="singarep"></a><a href="#singarep" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SingaRep</h3>
-<p><code>SingaBackend</code> lưu tất cả SINGA tensors và operators. <code>run</code> chấp nhận đầu vào của mô hình và
-chạy từng toán tử SINGA operators một, theo hàng của toán tử. Người dùng có thể sử dụng <code>last_layers</code>
-để xoá mô hình model sau vài layers cuối cùng.</p>
+<p><code>SingaBackend</code> lưu tất cả SINGA tensors và operators. <code>run</code> chấp nhận đầu vào
+của mô hình và chạy từng toán tử SINGA operators một, theo hàng của toán tử.
+Người dùng có thể sử dụng <code>last_layers</code> để xoá mô hình model sau vài layers cuối
+cùng.</p>
 <h3><a class="anchor" aria-hidden="true" id="sonnxmodel"></a><a href="#sonnxmodel" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SONNXModel</h3>
-<p><code>SONNXModel</code> được tạo từ  <code>sonnx.SONNXModel</code> và thực hiện phương pháp
-<code>forward</code> để cung cấp một API đồng bộ với các mô hình SINGA.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/3.1.0_Viet/graph"><span class="arrow-prev">← </span><span>Model</span></a><a class="docs-next button" href="/docs/3.1.0_Viet/dist-train"><span>Distributed Training</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#sử-dụng-chung">Sử dụng chung</a><ul class="toc-headings"><li><a href="#tải-một-onnx-model-trong-singa">Tải một ONNX Model trong SINGA</a></li><li><a href="#inference-với-singa-model">Inference với SINGA model</a></li><li><a href="#lưu-model-của-singa-dưới-dạng-onnx">Lưu model của SINGA dưới dạng ONNX</a></li><li><a href="#training-lại-với-model-onnx">Training lại với model ONNX</a></li><li><a href="#transfer-learning-một-model-onnx">Transfer-learning một model ONNX</a></li></ul></li><li><a href="#onnx-model-zoo">ONNX model zoo</a><ul class="toc-headings"><li><a href="#phân-loại-hình-ảnh-image-classification">Phân loại hình ảnh (Image Classification)</a></li><li><a href="#nhận-diện-đối-tượng-object-detection">Nhận Diện Đối Tượng (Object Detection)</a></li><li><a href="#phân-tích-khuôn-mặt-face-analysis">Phân tích Khuôn Mặt (Face Analysis)</a></li><li><a href="#máy-hiểu-machine-comprehension">Máy Hiểu (Machine Comprehension)</a></li></ul></li><li><a href="#các-toán-tử-operators-được-hỗ-trợ">Các toán tử (Operators) được hỗ trợ</a><ul class="toc-headings"><li><a href="#các-lưu-ý-đặc-biệt-cho-onnx-backend">Các lưu ý đặc biệt cho ONNX backend</a></li></ul></li><li><a href="#thực-hiện">Thực hiện</a><ul class="toc-headings"><li><a href="#singafrontend">SingaFrontend</a></li><li><a href="#singabackend">SingaBackend</a></li><li><a href="#singarep">SingaRep</a></li><li><a href="#sonnxmodel">SONNXModel</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2021
+<p><code>SONNXModel</code> được tạo từ <code>sonnx.SONNXModel</code> và thực hiện phương pháp <code>forward</code>
+để cung cấp một API đồng bộ với các mô hình SINGA.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 5/1/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/3.1.0_Viet/graph"><span class="arrow-prev">← </span><span>Model</span></a><a class="docs-next button" href="/docs/3.1.0_Viet/dist-train"><span>Distributed Training</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#sử-dụng-chung">Sử dụng chung</a><ul class="toc-headings"><li><a href="#tải-một-onnx-model-trong-singa">Tải một ONNX Model trong SINGA</a></li><li><a href="#inference-với-singa-model">Inference với SINGA model</a></li><li><a href="#lưu-model-của-singa-dưới-dạng-onnx">Lưu model của SINGA dưới dạng ONNX</a></li><li><a href="#training-lại-với-model-onnx">Training lại với model ONNX</a></li><li><a href="#transfer-learning-một-model-onnx">Transfer-learning một model ONNX</a></li></ul></li><li><a href="#onnx-model-zoo">ONNX model zoo</a><ul class="toc-headings"><li><a href="#phân-loại-hình-ảnh-image-classification">Phân loại hình ảnh (Image Classification)</a></li><li><a href="#nhận-diện-đối-tượng-object-detection">Nhận Diện Đối Tượng (Object Detection)</a></li><li><a href="#phân-tích-khuôn-mặt-face-analysis">Phân tích Khuôn Mặt (Face Analysis)</a></li><li><a href="#máy-hiểu-machine-comprehension">Máy Hiểu (Machine Comprehension)</a></li></ul></li><li><a href="#các-toán-tử-operators-được-hỗ-trợ">Các toán tử (Operators) được hỗ trợ</a><ul class="toc-headings"><li><a href="#các-lưu-ý-đặc-biệt-cho-onnx-backend">Các lưu ý đặc biệt cho ONNX backend</a></li></ul></li><li><a href="#thực-hiện">Thực hiện</a><ul class="toc-headings"><li><a href="#singafrontend">SingaFrontend</a></li><li><a href="#singabackend">SingaBackend</a></li><li><a href="#singarep">SingaRep</a></li><li><a href="#sonnxmodel">SONNXModel</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2021
    The Apache Software Foundation. All rights reserved.
    Apache SINGA, Apache, the Apache feather logo, and
    the Apache SINGA project logos are trademarks of The

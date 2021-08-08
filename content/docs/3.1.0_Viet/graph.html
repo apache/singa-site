@@ -61,19 +61,23 @@
               }
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/graph.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Model</h1></header><article><div><span><!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. -->
-<p>Forward và backward propagation trong mạng thần kinh nhân tạo (neural network) có thể sử dụng
-một tập hợp các hàm như convolution và pooling. Mỗi hàm nhận một vài input <a href="./tensor">tensors</a> và áp dụng một <a href="./autograd">operator</a> để tạo output tensors.
-Bằng việc thể hiện mỗi operator là một node và mỗi tensor là một
-edge, tất cả dạng hàm tạo thành một computational graph. Với computational graph, tối
-ưu hoá tốc độ và bộ nhớ có thể được tiến hành bởi việc đưa vào thực hiện việc phân bổ/giải phóng bộ nhớ và thao tác
-một cách hợp lý.  Trong SINGA, người dùng chỉ cần xác định neural network model sử dụng API của hàm
+<p>Forward và backward propagation trong mạng thần kinh nhân tạo (neural network)
+có thể sử dụng một tập hợp các hàm như convolution và pooling. Mỗi hàm nhận một
+vài input <a href="./tensor">tensors</a> và áp dụng một <a href="./autograd">operator</a> để tạo
+output tensors. Bằng việc thể hiện mỗi operator là một node và mỗi tensor là một
+edge, tất cả dạng hàm tạo thành một computational graph. Với computational
+graph, tối ưu hoá tốc độ và bộ nhớ có thể được tiến hành bởi việc đưa vào thực
+hiện việc phân bổ/giải phóng bộ nhớ và thao tác một cách hợp lý. Trong SINGA,
+người dùng chỉ cần xác định neural network model sử dụng API của hàm
 <a href="https://github.com/apache/singa/blob/master/python/singa/model.py">Model</a>.
 Graph được xây dựng và tối ưu hoá ở C++ phía sau một cách tự động.</p>
 <p>Theo đó, một mặt người dùng thực hiện network sử dụng API của hàm
-<a href="./graph">Model</a> tuân theo phong cách lập trình bắt buộc như PyTorch.
-Có điều khác với PyTorch phải tái tạo lại các thao tác ở mỗi vòng lặp, SINGA
-buffer các thao tác để tạo computational graph một cách đầy đủ (khi tính năng này được kích hoạt) sau vòng lặp đầu tiên. Do đó, mặt khác, SINGA có computational graph giống như được tạo bởi các libraries sử dụng lập trình khai báo
-(declarative programming), như TensorFlow. Nên nó được tối ưu hoá qua graph.</p>
+<a href="./graph">Model</a> tuân theo phong cách lập trình bắt buộc như PyTorch. Có điều
+khác với PyTorch phải tái tạo lại các thao tác ở mỗi vòng lặp, SINGA buffer các
+thao tác để tạo computational graph một cách đầy đủ (khi tính năng này được kích
+hoạt) sau vòng lặp đầu tiên. Do đó, mặt khác, SINGA có computational graph giống
+như được tạo bởi các libraries sử dụng lập trình khai báo (declarative
+programming), như TensorFlow. Nên nó được tối ưu hoá qua graph.</p>
 <h2><a class="anchor" aria-hidden="true" id="ví-dụ"></a><a href="#ví-dụ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ví Dụ</h2>
 <p>Mã code sau mô phỏng việc sử dụng API của hàm <code>Model</code>.</p>
 <ol>
@@ -173,11 +177,14 @@ làm ví dụ. Quá trình này gọi là hàm <code>forward</code> function c�
         y = self.linear1(inputs)
         ...
 </code></pre>
-<p>Layer <code>Linear</code> tạo thành từ phép tính <code>mutmul</code>. <code>autograd</code> áp dụng phép <code>matmul</code> bằng cách gọi hàm <code>Mult</code> được lấy từ CPP qua SWIG.</p>
+<p>Layer <code>Linear</code> tạo thành từ phép tính <code>mutmul</code>. <code>autograd</code> áp dụng phép <code>matmul</code>
+bằng cách gọi hàm <code>Mult</code> được lấy từ CPP qua SWIG.</p>
 <pre><code class="hljs css language-python"><span class="hljs-comment"># áp dụng matmul()</span>
 singa.Mult(inputs, w)
 </code></pre>
-<p>Từ phía sau, hàm <code>Mult</code> function được áp dụng bằng cách gọi <code>GEMV</code>, là một hàm CBLAS. thay vì gọi hàm <code>GEMV</code> trực tiếp, <code>Mult</code> gửi đi <code>GEMV</code> và đối số (argument) tới thiết bị (device) như sau,</p>
+<p>Từ phía sau, hàm <code>Mult</code> function được áp dụng bằng cách gọi <code>GEMV</code>, là một hàm
+CBLAS. thay vì gọi hàm <code>GEMV</code> trực tiếp, <code>Mult</code> gửi đi <code>GEMV</code> và đối số
+(argument) tới thiết bị (device) như sau,</p>
 <pre><code class="hljs css language-c++"><span class="hljs-comment">// Áp dụng Mult()</span>
 C-&gt;device()-&gt;Exec(
     [a, A, b, B, CRef](Context *ctx) <span class="hljs-keyword">mutable</span> {
@@ -185,34 +192,52 @@ C-&gt;device()-&gt;Exec(
     },
     read_blocks, {C-&gt;block()});
 </code></pre>
-<p>Hàm <code>Exec</code> function của <code>Device</code> buffer hàm này và các đối số của nó. Thêm vào đó, nó cũng có thông tin về các block (một block là một đoạn bộ nhớ cho một tensor) để đọc và viết bởi hàm này.</p>
-<p>Sau khi <code>Model.forward()</code> được thực hiện xong một lần, tất cả quá trình được buffer bởi
-<code>Device</code>. Tiếp theo, thông tin đọc/viết của tất cả quá trình sẽ được phân tích để tạo computational graph.
-Ví dụ, nếu một block <code>b</code> được viết bởi quá trình 01 và sau đó được đọc bởi quá trình 02 khác, chúng ta sẽ biết 02 là dựa vào 01 và có edge trực tiếp từ A sang B, thể hiện qua block <code>b</code> (hoặc tensor của nó). Sau đó một graph không tuần hoàn sẽ được tạo ra như dưới đây.
-Graph chỉ được tạo ra một lần.</p>
+<p>Hàm <code>Exec</code> function của <code>Device</code> buffer hàm này và các đối số của nó. Thêm vào
+đó, nó cũng có thông tin về các block (một block là một đoạn bộ nhớ cho một
+tensor) để đọc và viết bởi hàm này.</p>
+<p>Sau khi <code>Model.forward()</code> được thực hiện xong một lần, tất cả quá trình được
+buffer bởi <code>Device</code>. Tiếp theo, thông tin đọc/viết của tất cả quá trình sẽ được
+phân tích để tạo computational graph. Ví dụ, nếu một block <code>b</code> được viết bởi quá
+trình 01 và sau đó được đọc bởi quá trình 02 khác, chúng ta sẽ biết 02 là dựa
+vào 01 và có edge trực tiếp từ A sang B, thể hiện qua block <code>b</code> (hoặc tensor của
+nó). Sau đó một graph không tuần hoàn sẽ được tạo ra như dưới đây. Graph chỉ
+được tạo ra một lần.</p>
 <p><img src="/docs/assets/GraphOfMLP.png" alt="Computational graph của MLP"></p>
 <p><br/><strong>Sơ đồ 1 - Ví dụ Computational graph của MLP.</strong></p>
 <h3><a class="anchor" aria-hidden="true" id="tối-ưu-hoá"></a><a href="#tối-ưu-hoá" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tối Ưu Hoá</h3>
 <p>Hiện nay, các tối ưu hoá sau được thực hiện dựa trên computational graph.</p>
-<p><strong>Phân bổ thụ động (Lazy allocation)</strong> Khi tensor/blocks được tạo ra, các thiết bị (devices) không phân bổ bộ nhớ cho chúng ngay lập tức. Thay vào đó, khi block được tiếp cận lần đầu tiên, bộ nhớ sẽ được phân bổ.</p>
-<p><strong>Tự động tái sử dụng (Automatic recycling)</strong> Đếm số của mỗi tensor/block được tính dựa trên graph. Trước khi thực hiện quá trình nào, đếm số là số lượng hàm đọc block này. Trong quá trình thực hiện, khi một hàm nào được tiến hành, đếm số của mỗi block đầu vào bị trừ đi 1. Nếu đếm số của một block bằng 0, thì block này sẽ không được đọc lại nữa trong toàn bộ quá trình còn lại. Bởi vậy, bộ nhớ của nó được giải phóng một cách an toàn. Thêm vào đó, SINGA theo dõi việc sử dụng block bên ngoài graph. Nếu block được sử dụng bởi mã code Python (không phải các hàm autograd), nó sẽ không được tái sử dụng.</p>
+<p><strong>Phân bổ thụ động (Lazy allocation)</strong> Khi tensor/blocks được tạo ra, các thiết
+bị (devices) không phân bổ bộ nhớ cho chúng ngay lập tức. Thay vào đó, khi block
+được tiếp cận lần đầu tiên, bộ nhớ sẽ được phân bổ.</p>
+<p><strong>Tự động tái sử dụng (Automatic recycling)</strong> Đếm số của mỗi tensor/block được
+tính dựa trên graph. Trước khi thực hiện quá trình nào, đếm số là số lượng hàm
+đọc block này. Trong quá trình thực hiện, khi một hàm nào được tiến hành, đếm số
+của mỗi block đầu vào bị trừ đi 1. Nếu đếm số của một block bằng 0, thì block
+này sẽ không được đọc lại nữa trong toàn bộ quá trình còn lại. Bởi vậy, bộ nhớ
+của nó được giải phóng một cách an toàn. Thêm vào đó, SINGA theo dõi việc sử
+dụng block bên ngoài graph. Nếu block được sử dụng bởi mã code Python (không
+phải các hàm autograd), nó sẽ không được tái sử dụng.</p>
 <p><strong>Chia sẻ bộ nhớ</strong> SINGA sử dụng memory pool, như là
 <a href="https://github.com/NVIDIA/cnmem">CnMem</a> để quản lý bộ nhớ CUDA. Với <em>Automatic
-recycling</em> và memory pool, SINGA có thể chia sẻ bộ nhớ giữa các tensor. Xem xét hai hàm <code>c = a + b</code> và <code>d=2xc</code>. Trước khi thực hiện hàm thứ hai, theo như <em>Lazy allocation</em> thì bộ nhớ của d nên được sử dụng. Cũng như <code>a</code>
-không được sử dụng ở toàn bộ quá trình còn lại. Theo Tự động sử dụng (Automatic recycling), block
-của <code>a</code> sẽ được giải phóng sau hàm đầu tiên. Vì thế, SINGA sẽ đề xuất bốn hàm tới CUDA stream: addition, free <code>a</code>, malloc <code>b</code>, và
-multiplication. Memory pool sau đó có thể chia sẻ bộ nhớ được <code>a</code>
-với <code>b</code> giải phóng thay vì yêu cầu GPU thực hiện real malloc cho <code>b</code>.</p>
-<p>Các kĩ thuật tối ưu hoá khác, ví dụ từ compliers, như common
-sub-expression elimination và parallelizing operations trên CUDA
-streams khác nhau cũng có thể được áp dụng.</p>
+recycling</em> và memory pool, SINGA có thể chia sẻ bộ nhớ giữa các tensor. Xem xét
+hai hàm <code>c = a + b</code> và <code>d=2xc</code>. Trước khi thực hiện hàm thứ hai, theo như <em>Lazy
+allocation</em> thì bộ nhớ của d nên được sử dụng. Cũng như <code>a</code> không được sử dụng ở
+toàn bộ quá trình còn lại. Theo Tự động sử dụng (Automatic recycling), block của
+<code>a</code> sẽ được giải phóng sau hàm đầu tiên. Vì thế, SINGA sẽ đề xuất bốn hàm tới
+CUDA stream: addition, free <code>a</code>, malloc <code>b</code>, và multiplication. Memory pool sau
+đó có thể chia sẻ bộ nhớ được <code>a</code> với <code>b</code> giải phóng thay vì yêu cầu GPU thực
+hiện real malloc cho <code>b</code>.</p>
+<p>Các kĩ thuật tối ưu hoá khác, ví dụ từ compliers, như common sub-expression
+elimination và parallelizing operations trên CUDA streams khác nhau cũng có thể
+được áp dụng.</p>
 <h2><a class="anchor" aria-hidden="true" id="toán-tử-operator-mới"></a><a href="#toán-tử-operator-mới" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Toán Tử (Operator) mới</h2>
 <p>Mỗi toán tử được định nghĩa trong <code>autograd</code> module áp dụng hai hàm: forward và
-backward, được thực hiện bằng cách gọi toán tử (operator) từ backend. Để thêm một toán tử mới vào hàm <code>autograd</code>, bạn cần thêm nhiều toán tử ở backend.</p>
+backward, được thực hiện bằng cách gọi toán tử (operator) từ backend. Để thêm
+một toán tử mới vào hàm <code>autograd</code>, bạn cần thêm nhiều toán tử ở backend.</p>
 <p>Lấy toán tử
 <a href="https://github.com/apache/singa/blob/master/python/singa/autograd.py">Conv2d</a>
-làm ví dụ, từ phía Python, hàm forward và backward được thực hiện bằng cách gọi các toán tử từ backend dựa trên loại
-device.</p>
+làm ví dụ, từ phía Python, hàm forward và backward được thực hiện bằng cách gọi
+các toán tử từ backend dựa trên loại device.</p>
 <pre><code class="hljs css language-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">_Conv2d</span><span class="hljs-params">(Operation)</span>:</span>
 
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(self, x, W, b=None)</span>:</span>
@@ -252,16 +277,20 @@ device.</p>
 </code></pre>
 <p>Mỗi toán tử ở backend nên được thực hiện theo cách sau:</p>
 <ul>
-<li><p>Giả dụ toán từ là <code>foo()</code>; khi được thực hiện nên được gói vào trong một hàm khác, như <code>_foo()</code>. <code>foo()</code>
-chuyển <code>_foo</code> cùng với các đối số như một hàm lambda tới hàm <code>Device</code>'s <code>Exec</code> để buffer.
-Block để đọc và viết cũng được chuyển cho <code>Exec</code>.</p></li>
-<li><p>Tất cả đối số được sử dụng trong hàm lambda expression cần phải được thu thập dựa trên các nguyên tắc sau.</p>
+<li><p>Giả dụ toán từ là <code>foo()</code>; khi được thực hiện nên được gói vào trong một hàm
+khác, như <code>_foo()</code>. <code>foo()</code> chuyển <code>_foo</code> cùng với các đối số như một hàm
+lambda tới hàm <code>Device</code>'s <code>Exec</code> để buffer. Block để đọc và viết cũng được
+chuyển cho <code>Exec</code>.</p></li>
+<li><p>Tất cả đối số được sử dụng trong hàm lambda expression cần phải được thu thập
+dựa trên các nguyên tắc sau.</p>
 <ul>
-<li><p><code>thu thập bằng giá trị</code>: Nếu biến đối số (argument variable) là biến local hoặc sẽ được giải phóng ngay
-(như intermediate tensors). Hoặc, những biến số này sẽ bị loại bỏ khi <code>foo()</code> tồn tại.</p></li>
-<li><p><code>thu thập theo tham khảo</code>：Nếu biến số được ghi lại từ phía python hoặc một biến bất biến
-(như tham số W và ConvHand trong Conv2d class).</p></li>
-<li><p><code>mutable</code>: Biểu thức lambda expression nên có biến thẻ (mutable tag) nếu một biến được thu thập theo giá trị bị thay đổi trong hàm <code>_foo()</code></p></li>
+<li><p><code>thu thập bằng giá trị</code>: Nếu biến đối số (argument variable) là biến local
+hoặc sẽ được giải phóng ngay (như intermediate tensors). Hoặc, những biến số
+này sẽ bị loại bỏ khi <code>foo()</code> tồn tại.</p></li>
+<li><p><code>thu thập theo tham khảo</code>：Nếu biến số được ghi lại từ phía python hoặc một
+biến bất biến (như tham số W và ConvHand trong Conv2d class).</p></li>
+<li><p><code>mutable</code>: Biểu thức lambda expression nên có biến thẻ (mutable tag) nếu một
+biến được thu thập theo giá trị bị thay đổi trong hàm <code>_foo()</code></p></li>
 </ul></li>
 </ul>
 <p>Đây là một
@@ -520,9 +549,10 @@ về operator được áp dụng ở backend.</p>
 <h3><a class="anchor" aria-hidden="true" id="kết-luận"></a><a href="#kết-luận" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kết Luận</h3>
 <ul>
 <li>Training với computational graph giúp giảm đáng kể khối bộ nhớ.</li>
-<li>Hiện tại, tốc độ có cải thiện một chút. Nhiều tối ưu hoá có thể được thực hiện giúp tăng hiệu quả.</li>
+<li>Hiện tại, tốc độ có cải thiện một chút. Nhiều tối ưu hoá có thể được thực hiện
+giúp tăng hiệu quả.</li>
 </ul>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/3.1.0_Viet/optimizer"><span class="arrow-prev">← </span><span>Optimizer</span></a><a class="docs-next button" href="/docs/3.1.0_Viet/onnx"><span>ONNX</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#ví-dụ">Ví Dụ</a></li><li><a href="#thực-hiện">Thực Hiện</a><ul class="toc-headings"><li><a href="#xây-dựng-graph">Xây Dựng Graph</a></li><li><a href="#tối-ưu-hoá">Tối Ưu Hoá</a></li></ul></li><li><a href="#toán-tử-operator-mới">Toán Tử (Operator) mới</a></li><li><a href="#điểm-chuẩn-benchmark">Điểm Chuẩn (Benchmark)</a><ul class="toc-headings"><li><a href="#trên-một-node">Trên một node</a></li><li><a href="#đa-quá-trình-multi-processes">Đa quá trình (Multi processes)</a></li><li><a href="#kết-luận">Kết Luận</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2021
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 10/4/2020</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/3.1.0_Viet/optimizer"><span class="arrow-prev">← </span><span>Optimizer</span></a><a class="docs-next button" href="/docs/3.1.0_Viet/onnx"><span>ONNX</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#ví-dụ">Ví Dụ</a></li><li><a href="#thực-hiện">Thực Hiện</a><ul class="toc-headings"><li><a href="#xây-dựng-graph">Xây Dựng Graph</a></li><li><a href="#tối-ưu-hoá">Tối Ưu Hoá</a></li></ul></li><li><a href="#toán-tử-operator-mới">Toán Tử (Operator) mới</a></li><li><a href="#điểm-chuẩn-benchmark">Điểm Chuẩn (Benchmark)</a><ul class="toc-headings"><li><a href="#trên-một-node">Trên một node</a></li><li><a href="#đa-quá-trình-multi-processes">Đa quá trình (Multi processes)</a></li><li><a href="#kết-luận">Kết Luận</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2021
    The Apache Software Foundation. All rights reserved.
    Apache SINGA, Apache, the Apache feather logo, and
    the Apache SINGA project logos are trademarks of The

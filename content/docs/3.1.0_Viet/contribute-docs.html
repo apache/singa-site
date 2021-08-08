@@ -62,13 +62,17 @@
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/contribute-docs.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Tham gia chỉnh sửa Hướng Dẫn Sử Dụng</h1></header><article><div><span><!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. -->
 <p>Hướng Dẫn Sử Dụng có hai dạng, dạng tập tin markdown và dạng sử dụng API
-reference. Tài liệu này giới thiệu vài công cụ và chỉ dẫn trong việc chuẩn bị các tập tin nguồn markdown và chú thích API.</p>
-<p>Tập tin markdown sẽ được sử dụng trong việc tạo trang HTML qua <a href="https://docusaurus.io/">Docusaurus</a>; Chú thích API (từ nguồn mã code) sẽ được sử dụng để tạo các trang tham khảo API sử dụng Sphinx (cho Python) và Doxygen (cho CPP).</p>
+reference. Tài liệu này giới thiệu vài công cụ và chỉ dẫn trong việc chuẩn bị
+các tập tin nguồn markdown và chú thích API.</p>
+<p>Tập tin markdown sẽ được sử dụng trong việc tạo trang HTML qua
+<a href="https://docusaurus.io/">Docusaurus</a>; Chú thích API (từ nguồn mã code) sẽ được
+sử dụng để tạo các trang tham khảo API sử dụng Sphinx (cho Python) và Doxygen
+(cho CPP).</p>
 <h2><a class="anchor" aria-hidden="true" id="tập-tin-markdown"></a><a href="#tập-tin-markdown" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tập Tin Markdown</h2>
-<p>Làm theo
-<a href="https://developers.google.com/style">định dạng Văn bản Google</a>. Ví dụ,</p>
+<p>Làm theo <a href="https://developers.google.com/style">định dạng Văn bản Google</a>. Ví dụ,</p>
 <ol>
-<li>Bỏ 'vui lòng' (please) khỏi bất cứ hướng dẫn sử dụng nào. 'Please click...' thành 'Click ...'.</li>
+<li>Bỏ 'vui lòng' (please) khỏi bất cứ hướng dẫn sử dụng nào. 'Please click...'
+thành 'Click ...'.</li>
 <li>Làm theo
 <a href="https://owl.purdue.edu/owl/general_writing/mechanics/help_with_capitals.html">qui tắc viết hoa tiêu chuẩn</a>.</li>
 <li>Sử dụng 'bạn' thay cho 'chúng tôi' trong hướng dẫn.</li>
@@ -84,12 +88,16 @@ vd., <code>doc-site/docs</code> để chỉ <code>singa-doc/docs-site/docs</code
 vd., <code>Tensor</code>, <code>singa-doc/docs-site/docs</code>.</li>
 <li>Để nêu bật các điều khoản/khái niệm, sử dụng <em>graph</em> hoặc <strong>graph</strong></li>
 </ol>
-<p><a href="https://prettier.io/">Cộng cụ prettier</a> được sử dụng bởi dự án này sẽ tự làm định dạng code dựa trên
+<p><a href="https://prettier.io/">Cộng cụ prettier</a> được sử dụng bởi dự án này sẽ tự làm
+định dạng code dựa trên
 <a href="https://github.com/apache/singa-doc/blob/master/docs-site/.prettierrc">cấu hình</a>
-khi thực hiện <code>git commit</code>. Ví dụ, nó sẽ gói chữ trong các tập tin markdown thành nhiều nhất 80 kí tự (trừ các dòng chú thích).</p>
-<p>Khi giới thiệu một khái niệm (concept) (vd., class <code>Tensor</code>), đưa ra khái quát chung (mục đích và mối quan hệ với các khái niệm khác), APIs và ví dụ. Google colab có thể được sử dụng để mô phỏng điều này.</p>
-<p>Tham khảo <a href="https://github.com/apache/singa-doc/tree/master/docs-site">trang</a>
-để biết thêm chi tiết về cách chỉnh sửa các tập tin markdown và xây dựng website.</p>
+khi thực hiện <code>git commit</code>. Ví dụ, nó sẽ gói chữ trong các tập tin markdown
+thành nhiều nhất 80 kí tự (trừ các dòng chú thích).</p>
+<p>Khi giới thiệu một khái niệm (concept) (vd., class <code>Tensor</code>), đưa ra khái quát
+chung (mục đích và mối quan hệ với các khái niệm khác), APIs và ví dụ. Google
+colab có thể được sử dụng để mô phỏng điều này.</p>
+<p>Tham khảo <a href="https://github.com/apache/singa-doc/tree/master/docs-site">trang</a> để
+biết thêm chi tiết về cách chỉnh sửa các tập tin markdown và xây dựng website.</p>
 <h2><a class="anchor" aria-hidden="true" id="tham-khảo-api"></a><a href="#tham-khảo-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tham Khảo API</h2>
 <h3><a class="anchor" aria-hidden="true" id="cpp-api"></a><a href="#cpp-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CPP API</h3>
 <p>Thực hiện theo
@@ -102,13 +110,14 @@ khi thực hiện <code>git commit</code>. Ví dụ, nó sẽ gói chữ trong c
 <p>Nếu bạn sử dụng vscode để viết code, các plugins sau sẽ giúp ích.</p>
 <h3><a class="anchor" aria-hidden="true" id="docstring-snippet"></a><a href="#docstring-snippet" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Docstring Snippet</h3>
 <p><a href="https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring">autoDocstring</a>
-tạo docstring của functions, classes, v.v. Lựa chọn định dạng DocString
-to <code>google</code>.</p>
+tạo docstring của functions, classes, v.v. Lựa chọn định dạng DocString to
+<code>google</code>.</p>
 <h3><a class="anchor" aria-hidden="true" id="kiểm-tra-lỗi-chính-tả"></a><a href="#kiểm-tra-lỗi-chính-tả" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kiểm Tra Lỗi Chính Tả</h3>
 <p><a href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">Code Spell Checker</a>
-có thể được cơ cấu để kiểm tra chú thích trong mã code, hoặc các tập tin .md và .rst.</p>
-<p>Để kiểm tra lỗi chính tả cho các dòng chú thích trong code Python, thêm vào các snippet sau qua
-<code>File - Preferences - User Snippets - python.json</code></p>
+có thể được cơ cấu để kiểm tra chú thích trong mã code, hoặc các tập tin .md và
+.rst.</p>
+<p>Để kiểm tra lỗi chính tả cho các dòng chú thích trong code Python, thêm vào các
+snippet sau qua <code>File - Preferences - User Snippets - python.json</code></p>
 <pre><code class="hljs">&quot;cspell check&quot; : {
 &quot;prefix&quot;: &quot;cspell&quot;,
 &quot;body&quot;: [
@@ -120,8 +129,8 @@ có thể được cơ cấu để kiểm tra chú thích trong mã code, hoặc
 &quot;description&quot;: &quot;# chỉ kiểm tra lỗi chính tả cho chú thích trong python&quot;
 }
 </code></pre>
-<p>Để kiểm tra lỗi chính tả cho các dòng chú thích trong code Cpp, thêm vào các snippet sau qua
-<code>File - Preferences - User Snippets - cpp.json</code></p>
+<p>Để kiểm tra lỗi chính tả cho các dòng chú thích trong code Cpp, thêm vào các
+snippet sau qua <code>File - Preferences - User Snippets - cpp.json</code></p>
 <pre><code class="hljs">&quot;cspell check&quot; : {
 &quot;prefix&quot;: &quot;cspell&quot;,
 &quot;body&quot;: [
@@ -131,7 +140,7 @@ có thể được cơ cấu để kiểm tra chú thích trong mã code, hoặc
 &quot;description&quot;: &quot;# chỉ kiểm tra lỗi chính tả cho chú thích trong cpp&quot;
 }
 </code></pre>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/3.1.0_Viet/contribute-code"><span class="arrow-prev">← </span><span>How to Contribute Code</span></a><a class="docs-next button" href="/docs/3.1.0_Viet/how-to-release"><span>How to Prepare a Release</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#tập-tin-markdown">Tập Tin Markdown</a></li><li><a href="#tham-khảo-api">Tham Khảo API</a><ul class="toc-headings"><li><a href="#cpp-api">CPP API</a></li><li><a href="#python-api">Python API</a></li></ul></li><li><a href="#visual-studio-code-vscode">Visual Studio Code (vscode)</a><ul class="toc-headings"><li><a href="#docstring-snippet">Docstring Snippet</a></li><li><a href="#kiểm-tra-lỗi-chính-tả">Kiểm Tra Lỗi Chính Tả</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2021
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 5/1/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/3.1.0_Viet/contribute-code"><span class="arrow-prev">← </span><span>How to Contribute Code</span></a><a class="docs-next button" href="/docs/3.1.0_Viet/how-to-release"><span>How to Prepare a Release</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#tập-tin-markdown">Tập Tin Markdown</a></li><li><a href="#tham-khảo-api">Tham Khảo API</a><ul class="toc-headings"><li><a href="#cpp-api">CPP API</a></li><li><a href="#python-api">Python API</a></li></ul></li><li><a href="#visual-studio-code-vscode">Visual Studio Code (vscode)</a><ul class="toc-headings"><li><a href="#docstring-snippet">Docstring Snippet</a></li><li><a href="#kiểm-tra-lỗi-chính-tả">Kiểm Tra Lỗi Chính Tả</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2021
    The Apache Software Foundation. All rights reserved.
    Apache SINGA, Apache, the Apache feather logo, and
    the Apache SINGA project logos are trademarks of The

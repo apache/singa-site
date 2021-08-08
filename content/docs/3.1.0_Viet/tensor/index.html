@@ -61,8 +61,11 @@
               }
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/tensor.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Tensor</h1></header><article><div><span><!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  -->
-<p>Mỗi thực thể Tensor instance là một array đa chiều được đặt trong một thực thể Device.
-Thực thể Tensor lưu các biến và cung cấp phép tính đại số tuyến tính cho các loại thiết bị phần cứng khác nhau mà không cần người dùng để ý. Lưu ý rằng người dùng cần đảm bảo các toán hạng tensor được đặt ở cùng một thiết bị ngoại trừ hàm copy.</p>
+<p>Mỗi thực thể Tensor instance là một array đa chiều được đặt trong một thực thể
+Device. Thực thể Tensor lưu các biến và cung cấp phép tính đại số tuyến tính cho
+các loại thiết bị phần cứng khác nhau mà không cần người dùng để ý. Lưu ý rằng
+người dùng cần đảm bảo các toán hạng tensor được đặt ở cùng một thiết bị ngoại
+trừ hàm copy.</p>
 <h2><a class="anchor" aria-hidden="true" id="cách-sử-dụng-tensor"></a><a href="#cách-sử-dụng-tensor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cách sử dụng Tensor</h2>
 <h3><a class="anchor" aria-hidden="true" id="tạo-tensor"></a><a href="#tạo-tensor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tạo Tensor</h3>
 <pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
@@ -131,13 +134,16 @@ array([[<span class="hljs-number">1.</span>, <span class="hljs-number">0.</span>
 (<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>)
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="hàm-lập-trình-tensor-functions"></a><a href="#hàm-lập-trình-tensor-functions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hàm lập trình Tensor Functions</h3>
-<p>Hàm Functions trong <code>singa.tensor</code> tạo ra đối tượng <code>tensor</code> mới sau khi áp dụng phép tính trong hàm function.</p>
+<p>Hàm Functions trong <code>singa.tensor</code> tạo ra đối tượng <code>tensor</code> mới sau khi áp dụng
+phép tính trong hàm function.</p>
 <pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span>tensor.log(t+<span class="hljs-number">1</span>)
 [[<span class="hljs-number">0.6931472</span> <span class="hljs-number">0.</span>        <span class="hljs-number">0.</span>       ]
  [<span class="hljs-number">0.</span>        <span class="hljs-number">0.6931472</span> <span class="hljs-number">0.</span>       ]]
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="tensor-ở-các-thiết-bị-khác-nhau"></a><a href="#tensor-ở-các-thiết-bị-khác-nhau" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tensor ở các thiết bị khác nhau</h3>
-<p><code>tensor</code> được tạo ra trên máy chủ (CPU) từ ban đầu; nó cũng được tạo ra trên các thiết bị phần cứng khác nhau bằng cách cụ thể hoá <code>device</code>. Một <code>tensor</code> có thể chuyển giữa <code>device</code>s qua hàm <code>to_device()</code> function.</p>
+<p><code>tensor</code> được tạo ra trên máy chủ (CPU) từ ban đầu; nó cũng được tạo ra trên các
+thiết bị phần cứng khác nhau bằng cách cụ thể hoá <code>device</code>. Một <code>tensor</code> có thể
+chuyển giữa <code>device</code>s qua hàm <code>to_device()</code> function.</p>
 <pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">from</span> singa <span class="hljs-keyword">import</span> device
 <span class="hljs-meta">&gt;&gt;&gt; </span>x = tensor.Tensor((<span class="hljs-number">2</span>, <span class="hljs-number">3</span>), device.create_cuda_gpu())
 <span class="hljs-meta">&gt;&gt;&gt; </span>x.gaussian(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)
@@ -159,7 +165,7 @@ data = get_data()
 dev = device.create_cuda_gpu_on(<span class="hljs-number">0</span>)
 sgd = opt.SGD(<span class="hljs-number">0.05</span>)
 
-<span class="hljs-comment"># định nghĩa tensor cho dữ liệu và nhãn đầu vào </span>
+<span class="hljs-comment"># định nghĩa tensor cho dữ liệu và nhãn đầu vào</span>
 tx = tensor.Tensor((<span class="hljs-number">400</span>, <span class="hljs-number">2</span>), dev, tensor.float32)
 ty = tensor.Tensor((<span class="hljs-number">400</span>,), dev, tensor.int32)
 model = MLP(data_size=<span class="hljs-number">2</span>, perceptron_size=<span class="hljs-number">3</span>, num_classes=<span class="hljs-number">2</span>)
@@ -192,59 +198,67 @@ training loss =  0.148164
 training loss =  0.13589878
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="áp-dụng-tensor"></a><a href="#áp-dụng-tensor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Áp dụng Tensor</h2>
-<p>Mục trước chỉ ra cách sử dụng chung của <code>Tensor</code>, việc áp dụng cụ thể được đưa ra sau đây. Đầu tiên, sẽ giới thiệu việc thiết lập tensors Python và C++. Phần sau sẽ nói về cách frontend (Python)
-và backend (C++) kết nối với nhau và cách để mở rộng chúng.</p>
+<p>Mục trước chỉ ra cách sử dụng chung của <code>Tensor</code>, việc áp dụng cụ thể được đưa
+ra sau đây. Đầu tiên, sẽ giới thiệu việc thiết lập tensors Python và C++. Phần
+sau sẽ nói về cách frontend (Python) và backend (C++) kết nối với nhau và cách
+để mở rộng chúng.</p>
 <h3><a class="anchor" aria-hidden="true" id="python-tensor"></a><a href="#python-tensor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Python Tensor</h3>
-<p><code>Tensor</code> của lớp Python, được định nghĩa trong <code>python/singa/tensor.py</code>, cung cấp cách dùng tensor ở tầng cao, để thực hiện việc vận hành deep learning (qua
+<p><code>Tensor</code> của lớp Python, được định nghĩa trong <code>python/singa/tensor.py</code>, cung
+cấp cách dùng tensor ở tầng cao, để thực hiện việc vận hành deep learning (qua
 <a href="./autograd">autograd</a>), cũng như là quản lý dữ liệu bởi người dùng cuối.</p>
-<p>Hoạt động cơ bản của nó là gói xung quanh các phương pháp C++ tensor, cả phương pháp số học
-(như <code>sum</code>) và không số học (như <code>reshape</code>). Một vài phép số học cao cấp về sau được giới thiệu
-và áp dụng sử dụng thuần Python
-tensor API, như <code>tensordot</code>. Python Tensor APIs có thể sử dụng để thực hiện dễ dàng các phép tính
-neural network phức tạp với các phương pháp methods linh hoạt có sẵn.</p>
+<p>Hoạt động cơ bản của nó là gói xung quanh các phương pháp C++ tensor, cả phương
+pháp số học (như <code>sum</code>) và không số học (như <code>reshape</code>). Một vài phép số học cao
+cấp về sau được giới thiệu và áp dụng sử dụng thuần Python tensor API, như
+<code>tensordot</code>. Python Tensor APIs có thể sử dụng để thực hiện dễ dàng các phép
+tính neural network phức tạp với các phương pháp methods linh hoạt có sẵn.</p>
 <h3><a class="anchor" aria-hidden="true" id="c-tensor"></a><a href="#c-tensor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>C++ Tensor</h3>
-<p><code>Tensor</code> lớp C++, được định nghĩa trong  <code>include/singa/core/tensor.h</code>, về cơ bản quản lý
-bộ nhớ nắm giữ dữ liệu, và cung cấp APIs tầm thấp cho các hàm thực hiện tensor. Đồng thời nó cũng cung cấp các phương pháp số học đa dạng (như <code>matmul</code>) bằng cách gói các chương trình backends khác nhau (CUDA, BLAS, cuBLAS, v.v.).</p>
+<p><code>Tensor</code> lớp C++, được định nghĩa trong <code>include/singa/core/tensor.h</code>, về cơ bản
+quản lý bộ nhớ nắm giữ dữ liệu, và cung cấp APIs tầm thấp cho các hàm thực hiện
+tensor. Đồng thời nó cũng cung cấp các phương pháp số học đa dạng (như <code>matmul</code>)
+bằng cách gói các chương trình backends khác nhau (CUDA, BLAS, cuBLAS, v.v.).</p>
 <h4><a class="anchor" aria-hidden="true" id="văn-bản-thực-hiện-và-khoá-bộ-nhớ"></a><a href="#văn-bản-thực-hiện-và-khoá-bộ-nhớ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Văn bản thực hiện và Khoá Bộ nhớ</h4>
 <p>Hai khái niệm hay cấu trúc dữ liệu quan trọng của <code>Tensor</code> là việc áp dụng
 <code>device</code>, và khoá bộ nhớ <code>Block</code>.</p>
-<p>Mỗi <code>Tensor</code> được lưu theo nghiã đen và quản lý bởi một thiết bị phần cứng,
-thể hiện theo nghĩa thực hành (CPU, GPU). Tính toán Tensor được thực hiện
-trên thiết bị.</p>
-<p>Dữ liệu Tensor  trong hàm <code>Block</code>, được định nghĩa trong <code>include/singa/core/common.h</code>.
-<code>Block</code> chứa dữ liệu cơ sở, trong khi tensors chịu trách nhiệm về lý lịch dữ
-liệu metadata mô tả tensor, như <code>shape</code>, <code>strides</code>.</p>
+<p>Mỗi <code>Tensor</code> được lưu theo nghiã đen và quản lý bởi một thiết bị phần cứng, thể
+hiện theo nghĩa thực hành (CPU, GPU). Tính toán Tensor được thực hiện trên thiết
+bị.</p>
+<p>Dữ liệu Tensor trong hàm <code>Block</code>, được định nghĩa trong
+<code>include/singa/core/common.h</code>. <code>Block</code> chứa dữ liệu cơ sở, trong khi tensors
+chịu trách nhiệm về lý lịch dữ liệu metadata mô tả tensor, như <code>shape</code>,
+<code>strides</code>.</p>
 <h4><a class="anchor" aria-hidden="true" id="tensor-math-backends"></a><a href="#tensor-math-backends" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tensor Math Backends</h4>
-<p>Để tận dụng các thư viện chương trình toán hiệu quả cung cấp bởi backend từ các thiết bị phần cứng
-khác nhau, SINGA cung cấp một bộ Tensor functions cho mỗi backend được hỗ trợ.</p>
+<p>Để tận dụng các thư viện chương trình toán hiệu quả cung cấp bởi backend từ các
+thiết bị phần cứng khác nhau, SINGA cung cấp một bộ Tensor functions cho mỗi
+backend được hỗ trợ.</p>
 <ul>
-<li>'tensor_math_cpp.h' áp dụng vận hành sử dụng Cpp (với CBLAS) cho thiết bị CppCPU.</li>
+<li>'tensor_math_cpp.h' áp dụng vận hành sử dụng Cpp (với CBLAS) cho thiết bị
+CppCPU.</li>
 <li>'tensor_math_cuda.h' áp dụng vận hành sử dụng Cuda (với cuBLAS) cho thiết bị
 CudaGPU.</li>
 <li>'tensor_math_opencl.h' áp dụng vận hành sử dụng OpenCL cho thiết bị OpenclGPU.</li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" id="trình-bày-c-apis-qua-python"></a><a href="#trình-bày-c-apis-qua-python" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Trình bày C++ APIs qua Python</h3>
-<p>SWIG(<a href="http://www.swig.org/">http://www.swig.org/</a>) là công cụ có thể tự động qui đổi C++ APIs
-sang Python APIs. SINGA sử dụng SWIG để trình bày C++ APIs sang Python. Một vài tệp tin
-được tạo bởi SWIG, bao gồm <code>python/singa/singa_wrap.py</code>. Các Python
-mô-đun (như, <code>tensor</code>, <code>device</code> và <code>autograd</code>) nhập mô-đun để gọi C++ APIs
-để áp dụng hàm và lớp Python.</p>
+<p>SWIG(<a href="http://www.swig.org/">http://www.swig.org/</a>) là công cụ có thể tự động qui đổi C++ APIs sang
+Python APIs. SINGA sử dụng SWIG để trình bày C++ APIs sang Python. Một vài tệp
+tin được tạo bởi SWIG, bao gồm <code>python/singa/singa_wrap.py</code>. Các Python mô-đun
+(như, <code>tensor</code>, <code>device</code> và <code>autograd</code>) nhập mô-đun để gọi C++ APIs để áp dụng
+hàm và lớp Python.</p>
 <pre><code class="hljs css language-python"><span class="hljs-keyword">import</span> tensor
 
 t = tensor.Tensor(shape=(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>))
 </code></pre>
-<p>Ví dụ, khi một Python <code>Tensor</code> instance được tạo ra ở trên, việc áp dụng <code>Tensor</code>
-class tạo ra một instance của <code>Tensor</code> class định nghĩa trong
-<code>singa_wrap.py</code>, tương ứng với C++ <code>Tensor</code> class. Rõ ràng hơn,
-<code>Tensor</code> class trong <code>singa_wrap.py</code> để chỉ <code>CTensor</code> trong <code>tensor.py</code>.</p>
+<p>Ví dụ, khi một Python <code>Tensor</code> instance được tạo ra ở trên, việc áp dụng
+<code>Tensor</code> class tạo ra một instance của <code>Tensor</code> class định nghĩa trong
+<code>singa_wrap.py</code>, tương ứng với C++ <code>Tensor</code> class. Rõ ràng hơn, <code>Tensor</code> class
+trong <code>singa_wrap.py</code> để chỉ <code>CTensor</code> trong <code>tensor.py</code>.</p>
 <pre><code class="hljs css language-python"><span class="hljs-comment"># trong tensor.py</span>
 <span class="hljs-keyword">from</span> . <span class="hljs-keyword">import</span> singa_wrap <span class="hljs-keyword">as</span> singa
 
 CTensor = singa.Tensor
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="tạo-hàm-tensor-functions-mới"></a><a href="#tạo-hàm-tensor-functions-mới" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tạo Hàm Tensor Functions mới</h3>
-<p>Với nền tảng được mô tả phía trên, mở rộng hàm tensor functions
-có thể dễ dàng thực hiện từ dưới lên, Với các phép toán, các bước làm như sau:</p>
+<p>Với nền tảng được mô tả phía trên, mở rộng hàm tensor functions có thể dễ dàng
+thực hiện từ dưới lên, Với các phép toán, các bước làm như sau:</p>
 <ul>
 <li>Khai báo API mới cho <code>tensor.h</code></li>
 <li>Tạo mã code sử dụng tiền tố xác định trước trong <code>tensor.cc</code>, lấy
@@ -261,7 +275,7 @@ function được tạo trong <code>singa_wrap.py</code></li>
 <p><em>đang cập nhật</em></p>
 <h2><a class="anchor" aria-hidden="true" id="cpp-api"></a><a href="#cpp-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CPP API</h2>
 <p><em>đang cập nhật</em></p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/3.1.0_Viet/device"><span class="arrow-prev">← </span><span>Device</span></a><a class="docs-next button" href="/docs/3.1.0_Viet/autograd"><span>Autograd</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#cách-sử-dụng-tensor">Cách sử dụng Tensor</a><ul class="toc-headings"><li><a href="#tạo-tensor">Tạo Tensor</a></li><li><a href="#chuyển-sang-numpy">Chuyển sang numpy</a></li><li><a href="#phương-pháp-tensor">Phương pháp Tensor</a></li><li><a href="#phương-pháp-số-học-tensor">Phương pháp số học Tensor</a></li><li><a href="#hàm-lập-trình-tensor-functions">Hàm lập trình Tensor Functions</a></li><li><a href="#tensor-ở-các-thiết-bị-khác-nhau">Tensor ở các thiết bị khác nhau</a></li><li><a href="#dùng-tensor-để-train-mlp">Dùng Tensor để train MLP</a></li></ul></li><li><a href="#áp-dụng-tensor">Áp dụng Tensor</a><ul class="toc-headings"><li><a href="#python-tensor">Python Tensor</a></li><li><a href="#c-tensor">C++ Tensor</a></li><li><a href="#trình-bày-c-apis-qua-python">Trình bày C++ APIs qua Python</a></li><li><a href="#tạo-hàm-tensor-functions-mới">Tạo Hàm Tensor Functions mới</a></li></ul></li><li><a href="#python-api">Python API</a></li><li><a href="#cpp-api">CPP API</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2021
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 5/1/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/3.1.0_Viet/device"><span class="arrow-prev">← </span><span>Device</span></a><a class="docs-next button" href="/docs/3.1.0_Viet/autograd"><span>Autograd</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#cách-sử-dụng-tensor">Cách sử dụng Tensor</a><ul class="toc-headings"><li><a href="#tạo-tensor">Tạo Tensor</a></li><li><a href="#chuyển-sang-numpy">Chuyển sang numpy</a></li><li><a href="#phương-pháp-tensor">Phương pháp Tensor</a></li><li><a href="#phương-pháp-số-học-tensor">Phương pháp số học Tensor</a></li><li><a href="#hàm-lập-trình-tensor-functions">Hàm lập trình Tensor Functions</a></li><li><a href="#tensor-ở-các-thiết-bị-khác-nhau">Tensor ở các thiết bị khác nhau</a></li><li><a href="#dùng-tensor-để-train-mlp">Dùng Tensor để train MLP</a></li></ul></li><li><a href="#áp-dụng-tensor">Áp dụng Tensor</a><ul class="toc-headings"><li><a href="#python-tensor">Python Tensor</a></li><li><a href="#c-tensor">C++ Tensor</a></li><li><a href="#trình-bày-c-apis-qua-python">Trình bày C++ APIs qua Python</a></li><li><a href="#tạo-hàm-tensor-functions-mới">Tạo Hàm Tensor Functions mới</a></li></ul></li><li><a href="#python-api">Python API</a></li><li><a href="#cpp-api">CPP API</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2021
    The Apache Software Foundation. All rights reserved.
    Apache SINGA, Apache, the Apache feather logo, and
    the Apache SINGA project logos are trademarks of The
