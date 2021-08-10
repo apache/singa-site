@@ -72,20 +72,20 @@ SINGA.</p>
 <li>CPU only
 <a href="https://colab.research.google.com/drive/1Ntkhi-Z6XTR8WYPXiLwujHd2dOm0772V?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></li>
 </ol>
-<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> conda install -c nusdbsystem -c conda-forge singa-cpu=3.1.0</span>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> conda install -c nusdbsystem -c conda-forge singa-cpu=3.2.0.rc1</span>
 </code></pre>
 <p>Please note that we need to specify the version of singa-cpu during the installation.</p>
 <ol start="2">
 <li>GPU with CUDA and cuDNN (CUDA driver &gt;=384.81 is required)
 <a href="https://colab.research.google.com/drive/1do_TLJe18IthLOnBOsHCEe-FFPGk1sPJ?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></li>
 </ol>
-<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> conda install -c nusdbsystem -c conda-forge singa-gpu=3.1.0</span>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> conda install -c nusdbsystem -c conda-forge singa-gpu=3.2.0.rc1</span>
 </code></pre>
 <p>Please note that we need to specify the version of singa-gpu during the installation.</p>
 <ol start="3">
 <li>GPU with CUDA and cuDNN (CUDA driver &gt;=384.81 is required), and also with the distributed training module</li>
 </ol>
-<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> conda install -c nusdbsystem -c conda-forge singa-dist=3.1.0</span>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> conda install -c nusdbsystem -c conda-forge singa-dist=3.2.0.rc1</span>
 </code></pre>
 <p>Please note that we need to specify the version of singa-dist during the installation.</p>
 <ol start="4">
@@ -96,9 +96,9 @@ available SINGA packages.</li>
 
 Loading channels: done
 <span class="hljs-meta">#</span><span class="bash"> Name                       Version           Build  Channel</span>
-singa                      3.1.0.rc2        cpu_py36  nusdbsystem
-singa                      3.1.0.rc2 cudnn7.6.5_cuda10.2_py36  nusdbsystem
-singa                      3.1.0.rc2 cudnn7.6.5_cuda10.2_py37  nusdbsystem
+singa                      3.2.0.rc1        cpu_py36  nusdbsystem
+singa                      3.2.0.rc1 cudnn7.6.5_cuda10.2_nccl2.6.4.1_mpich3.3.2_py36 nusdbsystem
+singa                          3.2.0        cpu_py36  nusdbsystem
 </code></pre>
 <!--- > Please note that using the nightly built images is not recommended except for SINGA development and testing. Using stable releases is recommended. -->
 <p>The following command installs a specific version of SINGA,</p>
@@ -116,7 +116,7 @@ singa                      3.1.0.rc2 cudnn7.6.5_cuda10.2_py37  nusdbsystem
 <pre><code class="hljs css language-bash">pip install singa -f http://singa.apache.org/docs/next/wheel-cpu.html --trusted-host singa.apache.org
 </code></pre>
 <p>You can install a specific version of SINGA via <code>singa==&lt;version&gt;</code>, where the
-<code>&lt;version&gt;</code> field should be replaced, e.g., <code>3.1.0</code>. The available SINGA
+<code>&lt;version&gt;</code> field should be replaced, e.g., <code>3.2.0</code>. The available SINGA
 versions are listed at the link.</p>
 <p>To install the latest develop version, replace the link with
 <a href="http://singa.apache.org/docs/next/wheel-cpu-dev.html">http://singa.apache.org/docs/next/wheel-cpu-dev.html</a></p>
@@ -127,7 +127,7 @@ versions are listed at the link.</p>
 <pre><code class="hljs css language-bash">pip install singa -f http://singa.apache.org/docs/next/wheel-gpu.html --trusted-host singa.apache.org
 </code></pre>
 <p>You can also configure SINGA version and the CUDA version, like
-<code>singa==3.1.0+cuda10.2</code>. The available combinations of SINGA version and CUDA
+<code>singa==3.2.0+cuda10.2</code>. The available combinations of SINGA version and CUDA
 version are listed at the link.</p>
 <p>To install the latest develop version, replace the link with
 <a href="http://singa.apache.org/docs/next/wheel-gpu-dev.html">http://singa.apache.org/docs/next/wheel-gpu-dev.html</a></p>
