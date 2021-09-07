@@ -1,0 +1,351 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Build SINGA from Source · Apache SINGA</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta name="docsearch:version" content="3.2.0_Chinese"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Build SINGA from Source · Apache SINGA"/><meta property="og:type" content="website"/><meta property="og:url" content="https://singa.apache.org/"/><meta property="og:description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta property="og:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://singa.apache.org/blog/atom.xml" title="Apache SINGA Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://singa.apache.org/blog/feed.xml" title="Apache SINGA Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/singa.png" alt="Apache SINGA"/></a><a href="/versions"><h3>3.2.0_Chinese</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/3.2.0_Chinese/installation" target="_self">Docs</a></li><li class=""><a href="/docs/3.2.0_Chinese/source-repository" target="_self">Community</a></li><li class=""><a href="/blog/" target="_self">News</a></li><li class=""><a href="https://apache-singa.readthedocs.io/en/latest/" target="_self">API</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/apache/singa" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Development</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/3.2.0_Chinese/installation">Installation</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0_Chinese/software-stack">Software Stack</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0_Chinese/examples">Examples</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Guides</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/3.2.0_Chinese/device">Device</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0_Chinese/tensor">Tensor</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0_Chinese/autograd">Autograd</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0_Chinese/optimizer">Optimizer</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0_Chinese/graph">Model</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0_Chinese/onnx">ONNX</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0_Chinese/dist-train">Distributed Training</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0_Chinese/time-profiling">Time Profiling</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0_Chinese/half-precision">Half Precision</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Development</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/3.2.0_Chinese/downloads">Download SINGA</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/3.2.0_Chinese/build">Build SINGA from Source</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0_Chinese/contribute-code">How to Contribute Code</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0_Chinese/contribute-docs">How to Contribute to Documentation</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0_Chinese/how-to-release">How to Prepare a Release</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0_Chinese/git-workflow">Git Workflow</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/build.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Build SINGA from Source</h1></header><article><div><span><!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  -->
+<p>源文件可以通过<a href="https://dist.apache.org/repos/dist/dev/singa/">tar.gz文件</a>或git repo的形式下载：</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> git <span class="hljs-built_in">clone</span> https://github.com/apache/singa.git</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">cd</span> singa/</span>
+</code></pre>
+<p>如果您想为SINGA贡献代码，请参考<a href="/docs/3.2.0_Chinese/contribute-code">贡献代码</a>页面的步骤和要求。</p>
+<h2><a class="anchor" aria-hidden="true" id="使用conda构筑singa"></a><a href="#使用conda构筑singa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>使用Conda构筑SINGA</h2>
+<p>Conda-build 是一个构建工具，它从anaconda cloud安装依赖的库并执行构建脚本。</p>
+<p>安装conda-build(需要先安装conda)：</p>
+<pre><code class="hljs css language-shell">conda install conda-build
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="构建cpu版本"></a><a href="#构建cpu版本" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>构建CPU版本</h3>
+<p>构建SINGA的CPU版本：</p>
+<pre><code class="hljs css language-shell">conda build tool/conda/singa/
+</code></pre>
+<p>以上命令已经在Ubuntu（14.04，16.04和18.04）和macOS 10.11上测试过。更多信息请参考<a href="https://travis-ci.org/apache/singa">Travis-CI page</a>页面。</p>
+<h3><a class="anchor" aria-hidden="true" id="构建gpu版本"></a><a href="#构建gpu版本" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>构建GPU版本</h3>
+<p>要构建GPU版的SINGA，计算机必须装备有Nvida GPU，而且需要安装CUDA driver(&gt;=384.81)、CUDA toolkit(&gt;=9)和cuDNN(&gt;=7)。以下两个Docker镜像提供了构建环境：</p>
+<ol>
+<li>apache/singa:conda-cuda9.0</li>
+<li>apache/singa:conda-cuda10.0</li>
+</ol>
+<p>构建环境准备好后，需要先导出CUDA版本，然后运行conda命令构建SINGA：</p>
+<pre><code class="hljs css language-shell">export CUDA=x.y (e.g. 9.0)
+conda build tool/conda/singa/
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="后处理"></a><a href="#后处理" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>后处理</h3>
+<p>生成的包文件的位置(<code>.tar.gz</code>)将打印在终端上，生成的包可以直接安装：</p>
+<pre><code class="hljs css language-shell">conda install -c conda-forge --use-local &lt;path to the package file&gt;
+</code></pre>
+<p>若要上传到anaconda云端供他人下载安装，需要在 anaconda 上注册一个账号，才能<a href="https://docs.anaconda.com/anaconda-cloud/user-guide/getting-started/">上传包</a>：</p>
+<pre><code class="hljs css language-shell">conda install anaconda-client
+anaconda login
+anaconda upload -l main &lt;path to the package file&gt;
+</code></pre>
+<p>将包上传到云端后，您可以在<a href="https://anaconda.org/">Anaconda Cloud</a>上看到，也可以通过以下命令查看：</p>
+<pre><code class="hljs css language-shell">conda search -c &lt;anaconda username&gt; singa
+</code></pre>
+<p>每个特定的SINGA软件包都由版本和构建字符串来标识。要安装一个特定的SINGA包，需要提供所有信息，例如：</p>
+<pre><code class="hljs css language-shell">conda install -c &lt;anaconda username&gt; -c conda-forge singa=2.1.0.dev=cpu_py36
+</code></pre>
+<p>为了使安装命令简单化，您可以创建以下附加包，这些包依赖于最新的CPU和GPU SINGA包：</p>
+<pre><code class="hljs css language-console"><span class="hljs-meta">#</span><span class="bash"> <span class="hljs-keyword">for</span> singa-cpu</span>
+conda build tool/conda/cpu/  --python=3.6
+conda build tool/conda/cpu/  --python=3.7
+<span class="hljs-meta">#</span><span class="bash"> <span class="hljs-keyword">for</span> singa-gpu</span>
+conda build tool/conda/gpu/  --python=3.6
+conda build tool/conda/gpu/  --python=3.7
+</code></pre>
+<p>因此，当您运行：</p>
+<pre><code class="hljs css language-shell">conda install -c &lt;anaconda username&gt; -c conda-forge singa-xpu
+</code></pre>
+<p>时(<code>xpu</code>表示'cpu' or 'gpu'), 相应的真正的SINGA包将作为依赖库被安装。</p>
+<h2><a class="anchor" aria-hidden="true" id="使用本地工具在ubuntu上构建singa"></a><a href="#使用本地工具在ubuntu上构建singa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>使用本地工具在Ubuntu上构建SINGA</h2>
+<p>请参阅 SINGA <a href="https://github.com/apache/singa/blob/master/tool/docker/devel/ubuntu/cuda9/Dockerfile#L30">Dockerfiles</a>，了解在 Ubuntu 16.04 上安装依赖库的说明。您也可以使用 devel 映像创建一个 Docker 容器，并在容器中构建 SINGA。要使用GPU、DNNL、Python和单元测试来构建SINGA，请运行以下命令：</p>
+<pre><code class="hljs css language-shell">mkdir build    # at the root of singa folder
+cd build
+cmake -DENABLE_TEST=ON -DUSE_CUDA=ON -DUSE_DNNL=ON -DUSE_PYTHON3=ON ..
+make
+cd python
+pip install .
+</code></pre>
+<p>CMake选项的详细内容在本页最后一节解释，上面最后一条命令是安装Python包。你也可以运行<code>pip install -e .</code>，它可以创建符号链接，而不是将 Python 文件复制到 site-package 文件夹中。</p>
+<p>如果SINGA在ENABLE_TEST=ON的情况下编译，您可以通过以下方式运行单元测试:</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> ./bin/test_singa</span>
+</code></pre>
+<p>您可以看到所有的测试案例与测试结果。如果SINGA通过了所有测试，那么您就成功安装了SINGA。</p>
+<h2><a class="anchor" aria-hidden="true" id="使用本地工具在centos7上构建singa"></a><a href="#使用本地工具在centos7上构建singa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>使用本地工具在Centos7上构建SINGA</h2>
+<p>由于Centos7的软件包名称不同，因此从源码开始构建会有所不同。</p>
+<h3><a class="anchor" aria-hidden="true" id="安装依赖项"></a><a href="#安装依赖项" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>安装依赖项</h3>
+<p>基础包和库文件：</p>
+<pre><code class="hljs css language-shell">sudo yum install freetype-devel libXft-devel ncurses-devel openblas-devel blas-devel lapack devel atlas-devel kernel-headers unzip wget pkgconfig zip zlib-devel libcurl-devel cmake curl unzip dh-autoreconf git python-devel glog-devel protobuf-devel
+</code></pre>
+<p>构建必需的包：</p>
+<pre><code class="hljs css language-shell">sudo yum group install "Development Tools"
+</code></pre>
+<p>若要安装swig：</p>
+<pre><code class="hljs css language-shell">sudo yum install pcre-devel
+wget http://prdownloads.sourceforge.net/swig/swig-3.0.10.tar.gz
+tar xvzf swig-3.0.10.tar.gz
+cd swig-3.0.10.tar.gz
+./configure --prefix=${RUN}
+make
+make install
+</code></pre>
+<p>安装gfortran：</p>
+<pre><code class="hljs css language-shell">sudo yum install centos-release-scl-rh
+sudo yum --enablerepo=centos-sclo-rh-testing install devtoolset-7-gcc-gfortran
+</code></pre>
+<p>安装pip和其他包：</p>
+<pre><code class="hljs css language-shell">sudo yum install epel-release
+sudo yum install python-pip
+pip install matplotlib numpy pandas scikit-learn pydot
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="安装singa"></a><a href="#安装singa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>安装SINGA</h3>
+<p>按照《使用本地工具在Ubuntu上构建SINGA》的步骤1-5进行操作</p>
+<h3><a class="anchor" aria-hidden="true" id="测试"></a><a href="#测试" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>测试</h3>
+<p>您可以通过如下方式进行</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> ./bin/test_singa</span>
+</code></pre>
+<p>您可以看到所有的测试案例与测试结果。如果SINGA通过了所有测试，即表示安装成功。</p>
+<h2><a class="anchor" aria-hidden="true" id="在windows中编译singa"></a><a href="#在windows中编译singa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>在Windows中编译SINGA</h2>
+<p>在Windows上使用Python支持构建SINGA的说明可以在<a href="/docs/3.2.0_Chinese/install-win">install-win页面</a>找到。</p>
+<h2><a class="anchor" aria-hidden="true" id="关于编译选项的更多细节"></a><a href="#关于编译选项的更多细节" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>关于编译选项的更多细节</h2>
+<h3><a class="anchor" aria-hidden="true" id="use_modules-已过期废弃"></a><a href="#use_modules-已过期废弃" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>USE_MODULES (已过期废弃)</h3>
+<p>如果没有安装protobuf和openblas，你可以用它们一起编译SINGA</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> In SINGA ROOT folder</span>
+<span class="hljs-meta">$</span><span class="bash"> mkdir build</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">cd</span> build</span>
+<span class="hljs-meta">$</span><span class="bash"> cmake -DUSE_MODULES=ON ..</span>
+<span class="hljs-meta">$</span><span class="bash"> make</span>
+</code></pre>
+<p>cmake 会下载 OpenBlas 和 Protobuf (2.6.1) 并与 SINGA 一起编译。</p>
+<p>您可以使用<code>ccmake ..</code>来配置编译选项。如果一些依赖的库不在系统默认路径中，则您需要手动导出以下环境变量：</p>
+<pre><code class="hljs css language-shell">export CMAKE_INCLUDE_PATH=&lt;path to the header file folder&gt;
+export CMAKE_LIBRARY_PATH=&lt;path to the lib file folder&gt;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="use_python"></a><a href="#use_python" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>USE_PYTHON</h3>
+<p>编译SINGA的Python封装器选项：</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> cmake -DUSE_PYTHON=ON ..</span>
+<span class="hljs-meta">$</span><span class="bash"> make</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">cd</span> python</span>
+<span class="hljs-meta">$</span><span class="bash"> pip install .</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="use_cuda"></a><a href="#use_cuda" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>USE_CUDA</h3>
+<p>我们推荐用户安装CUDA和<a href="https://developer.nvidia.com/cudnn">cuDNN</a>，以便在GPU上运行SINGA，以获得更好的性能。</p>
+<p>SINGA已经在CUDA 9/10和cuDNN 7上进行了测试。如果cuDNN安装在非系统文件夹中，例如 /home/bob/local/cudnn/，则需要执行以下命令来让cmake在编译时能够找到它们：</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">export</span> CMAKE_INCLUDE_PATH=/home/bob/<span class="hljs-built_in">local</span>/cudnn/include:<span class="hljs-variable">$CMAKE_INCLUDE_PATH</span></span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">export</span> CMAKE_LIBRARY_PATH=/home/bob/<span class="hljs-built_in">local</span>/cudnn/lib64:<span class="hljs-variable">$CMAKE_LIBRARY_PATH</span></span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">export</span> LD_LIBRARY_PATH=/home/bob/<span class="hljs-built_in">local</span>/cudnn/lib64:<span class="hljs-variable">$LD_LIBRARY_PATH</span></span>
+</code></pre>
+<p>CUDA和cuDNN的cmake选项应该设置成“ON”：</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">#</span><span class="bash"> Dependent libs are install already</span>
+<span class="hljs-meta">$</span><span class="bash"> cmake -DUSE_CUDA=ON ..</span>
+<span class="hljs-meta">$</span><span class="bash"> make</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="use_dnnl"></a><a href="#use_dnnl" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>USE_DNNL</h3>
+<p>用户可以启用DNNL来提高CPU的计算性能，DNNL的安装指南可以在<a href="https://github.com/intel/mkl-dnn#installation">这里</a>找到：</p>
+<p>SINGA在DNNL v1.1环境下已经进行过测试并通过，</p>
+<p>若要启用DNNL支持来编译SINGA:</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">#</span><span class="bash"> Dependent libs are installed already</span>
+<span class="hljs-meta">$</span><span class="bash"> cmake -DUSE_DNNL=ON ..</span>
+<span class="hljs-meta">$</span><span class="bash"> make</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="use_opencl"></a><a href="#use_opencl" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>USE_OPENCL</h3>
+<p>SINGA使用opencl-headers和viennacl（版本1.7.1及以上）来支持OpenCL，它们可以通过如下方式安装：</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">#</span><span class="bash"> On Ubuntu 16.04</span>
+<span class="hljs-meta">$</span><span class="bash"> sudo apt-get install opencl-headers, libviennacl-dev</span>
+<span class="hljs-meta">#</span><span class="bash"> On Fedora</span>
+<span class="hljs-meta">$</span><span class="bash"> sudo yum install opencl-headers, viennacl</span>
+</code></pre>
+<p>此外，你需要在你想运行OpenCL的平台安装OpenCL Installable Client Driver（ICD）。</p>
+<ul>
+<li>对于AMD和Nvidia的GPU，驱动包也应该安装与之匹配的OpenCL ICD。</li>
+<li>对于Intel的CPU和/或GPU，请从<a href="https://software.intel.com/en-us/articles/opencl-drivers">Intel官方网站</a>上获取驱动程序。请注意，该网站上提供的驱动程序只支持最新的CPU和Iris GPU。</li>
+<li>对于旧的Intel CPU，你可以使用beignet-opencl-icd包。</li>
+</ul>
+<p>请注意，目前不建议在CPU上运行OpenCL，因为运行速度会很慢。内存传输是以整数秒为单位的（直观来说，CPU上是1000毫秒，而GPU上是1毫秒）。</p>
+<p>更多关于建立OpenCL工作环境的信息可以在<a href="https://wiki.tiker.net/OpenCLHowTo">这里</a>找到。</p>
+<p>如果ViennaCL的软件包版本不是至少1.7.1，则需要从源码构建它：</p>
+<p>从<a href="https://github.com/viennacl/viennacl-dev">这个git repo</a>clone版本库，切换（checkout）到release-1.7.1分支，然后构建它，并把项目路径添加到PATH，再把构建的库文件添加到LD_LIBRARY_PATH。</p>
+<p>构建支持OpenCL的SINGA（在SINGA 1.1上测试）：</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> cmake -DUSE_OPENCL=ON ..</span>
+<span class="hljs-meta">$</span><span class="bash"> make</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="package"></a><a href="#package" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PACKAGE</h3>
+<p>这个设置是用来构建 Debian 软件包的。设置PACKAGE=ON，然后用make命令来编译软件包，如下所示：</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> cmake -DPACKAGE=ON</span>
+<span class="hljs-meta">$</span><span class="bash"> make package</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="faq"></a><a href="#faq" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>FAQ</h2>
+<ul>
+<li><p>Q: 'import singa'阶段报错</p>
+<p>A: 请检查<code>python -c &quot;from singa import _singa_wrap</code>中的详细错误。有时是由依赖库引起的，比如protobuf有多个版本，cudnn缺失，numpy版本不匹配等问题。下面展示了不同情况下的解决方案</p>
+<ol>
+<li><p>检查cudnn和cuda。如果cudnn缺失或与wheel包的版本不一致，你可以下载正确的cudnn版本到~/local/cudnn/，然后：</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">"export LD_LIBRARY_PATH=/home/&lt;yourname&gt;/local/cudnn/lib64:<span class="hljs-variable">$LD_LIBRARY_PATH</span>"</span> &gt;&gt; ~/.bashrc</span>
+</code></pre></li>
+<li><p>如果是protobuf的问题。你可以将protobuf (3.6.1)从源码安装到本地文件夹，比如 ~/local/，解压tar文件，然后：</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> ./configure --prefix=/home/&lt;yourname&gt;<span class="hljs-built_in">local</span></span>
+<span class="hljs-meta">$</span><span class="bash"> make &amp;&amp; make install</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">"export LD_LIBRARY_PATH=/home/&lt;yourname&gt;/local/lib:<span class="hljs-variable">$LD_LIBRARY_PATH</span>"</span> &gt;&gt; ~/.bashrc</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">source</span> ~/.bashrc</span>
+</code></pre></li>
+<li><p>如果找不到包括python在内的其他类库，则使用<code>pip</code>或<code>conda</code>创建虚拟环境.</p></li>
+<li><p>如果不是上述原因造成的，请到<code>_singa_wrap.so</code>文件夹中查看：</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> python</span>
+<span class="hljs-meta">&gt;</span><span class="bash">&gt; import importlib</span>
+<span class="hljs-meta">&gt;</span><span class="bash">&gt; importlib.import_module(<span class="hljs-string">'_singa_wrap'</span>)</span>
+</code></pre>
+<p>来检查错误信息。例如，如果是numpy的版本不匹配，错误信息会是：</p>
+<pre><code class="hljs css language-shell">RuntimeError: module compiled against API version 0xb but this version of numpy is 0xa
+</code></pre>
+<p>那么你就需要更新numpy到更高版本。</p></li>
+</ol></li>
+</ul>
+<ul>
+<li><p>Q: 运行<code>cmake ...</code>时出错，找不到依赖库。</p>
+<p>A: 如果你还没有安装这些依赖库，请先安装它们。如果你在系统文件夹之外的文件夹中安装了库，例如/usr/local，那您需要手动导出以下变量:</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">export</span> CMAKE_INCLUDE_PATH=&lt;path to your header file folder&gt;</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">export</span> CMAKE_LIBRARY_PATH=&lt;path to your lib file folder&gt;</span>
+</code></pre></li>
+</ul>
+<ul>
+<li><p>Q: 来自<code>make</code>的错误，例如linking阶段的错误.</p>
+<p>A: 如果您的库文件在系统默认路径以外的其他文件夹中，则需要手动导出以下变量。</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">export</span> LIBRARY_PATH=&lt;path to your lib file folder&gt;</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">export</span> LD_LIBRARY_PATH=&lt;path to your lib file folder&gt;</span>
+</code></pre></li>
+</ul>
+<ul>
+<li><p>Q: 来自头文件的错误，例如'cblas.h文件不存在'</p>
+<p>A: 您需要手动将cblas.h的文件夹包含在CPLUS_INCLUDE_PATH中，例如：</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">export</span> CPLUS_INCLUDE_PATH=/opt/OpenBLAS/include:<span class="hljs-variable">$CPLUS_INCLUDE_PATH</span></span>
+</code></pre></li>
+<li><p>Q: 在编译SINGA时，我收到错误信息<code>SSE2 instruction set not enabled</code></p>
+<p>A:您可以尝试如下指令:</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> make CFLAGS=<span class="hljs-string">'-msse2'</span> CXXFLAGS=<span class="hljs-string">'-msse2'</span></span>
+</code></pre></li>
+<li><p>Q:当试图导入.py文件时，从google.protobuf.internal收到<code>ImportError: cannot import name enum_type_wrapper</code>。</p>
+<p>A: 您需要安装protobuf的Python绑定包，它可以通过如下方式安装：</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> sudo apt-get install protobuf</span>
+</code></pre>
+<p>或从源文件编译：</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">cd</span> /PROTOBUF/SOURCE/FOLDER</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">cd</span> python</span>
+<span class="hljs-meta">$</span><span class="bash"> python setup.py build</span>
+<span class="hljs-meta">$</span><span class="bash"> python setup.py install</span>
+</code></pre></li>
+<li><p>Q: 当我从源码构建OpenBLAS时，被告知需要一个Fortran编译器。</p>
+<p>A: 您可以通过如下方式编译OpenBLAS：</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> make ONLY_CBLAS=1</span>
+</code></pre>
+<p>或者通过如下方式安装：</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> sudo apt-get install libopenblas-dev</span>
+</code></pre></li>
+<li><p>Q: 当我构建协议缓冲区时，它报告说在<code>/usr/lib64/libstdc++.so.6</code>中没有找到<code>GLIBC++_3.4.20</code>？</p>
+<p>A: 这意味着链接器找到了libstdc++.so.6，但该库属于旧的GCC（用于编译和链接程序的GCC）版本。此程序依赖于新的libstdc++中定义的代码，而该代码属于较新版本的GCC，所以必须告诉链接器如何找到较新的libstdc++共享库。最简单的解决方法是找到正确的libstdc++，并将其导出到LD_LIBRARY_PATH。例如，如果下面命令的输出中列出了GLIBC++_3.4.20：</p>
+<pre><code class="hljs">  $ strings /usr/local/lib64/libstdc++.so.6|grep GLIBC++
+</code></pre>
+<p>那么接下来需要设置环境变量为：</p>
+<pre><code class="hljs">  $ export LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH
+</code></pre></li>
+<li><p>Q: 当构建glog时，报告说 &quot;src/logging_unittest.cc:83:20: error: 'gflags' is not a namespace-name&quot;。</p>
+<p>A: 可能是由于安装的gflags用了不同的命名空间，比如 &quot;google&quot;，所以glog找不到'gflags'的命名空间。实际上建立glog并不需要gflags，所以你可以修改configure.ac文件来忽略gflags。</p>
+<pre><code class="hljs">  1. cd to glog src directory
+  2. change line 125 of configure.ac  to &quot;AC_CHECK_LIB(gflags, main, ac_cv_have_libgflags=0, ac_cv_have_libgflags=0)&quot;
+  3. autoreconf
+</code></pre>
+<p>执行上述命令后，就可以重新构建glog了。</p></li>
+<li><p>Q: 在使用虚拟环境时，每次运行pip install，都会重新安装numpy。但是，当运行<code>import numpy</code>时，numpy并没有被调用。</p>
+<p>A: 可能是由于<code>PYTHONPATH</code>造成的，在使用虚拟环境时，应将<code>PYTHONPATH</code>设置为空，以避免与虚拟环境本身的路径冲突。</p></li>
+<li><p>Q: 当从源代码编译PySINGA时，由于缺少&lt;numpy/objectarray.h&gt;，出现的编译错误。</p>
+<p>A: 请安装numpy并导出numpy头文件的路径为</p>
+<pre><code class="hljs">  $ export CPLUS_INCLUDE_PATH=`python -c &quot;import numpy; print numpy.get_include()&quot;`:$CPLUS_INCLUDE_PATH
+</code></pre></li>
+<li><p>Q: 当我在Mac OS X中运行SINGA时，报错 &quot;Fatal Python error:
+PyThreadState_Get: no current thread Abort trap: 6&quot;</p>
+<p>A: 这个错误通常发生在系统上有多个版本的Python，并且是通过pip安装的SINGA (通过conda安装时不会出现这个问题)，例如，操作系统自带的版本和Homebrew安装的版本。PySINGA所链接的Python必须与Python解释器（interpreter）相同。 您可以通过 <code>which python</code> 检查您的解释器路径并通过<code>otool -L &lt;path to _singa_wrap.so&gt;</code>检查PySINGA链接的Python路径。要解决这个问题，请用正确的 Python 版本编译 SINGA。需要注意的是，如果您从源码编译 PySINGA，您需要在调用<a href="http://stackoverflow.com/questions/15291500/i-have-2-versions-of-python-installed-but-cmake-is-using-older-version-how-do">cmake</a>时指定路径：</p></li>
+</ul>
+<pre><code class="hljs">    $ cmake -DPYTHON_LIBRARY=`python-config --prefix`/lib/libpython2.7.dylib -DPYTHON_INCLUDE_DIR=`python-config --prefix`/include/python2.7/ ..
+</code></pre>
+<p>如果从二进制包中安装PySINGA，例如debian或wheel，那么你需要改变python解释器的路径，例如，重新设置$PATH，并把Python的正确路径放在前面的位置。</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/3.2.0_Chinese/downloads"><span class="arrow-prev">← </span><span>Download SINGA</span></a><a class="docs-next button" href="/docs/3.2.0_Chinese/contribute-code"><span>How to Contribute Code</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#使用conda构筑singa">使用Conda构筑SINGA</a><ul class="toc-headings"><li><a href="#构建cpu版本">构建CPU版本</a></li><li><a href="#构建gpu版本">构建GPU版本</a></li><li><a href="#后处理">后处理</a></li></ul></li><li><a href="#使用本地工具在ubuntu上构建singa">使用本地工具在Ubuntu上构建SINGA</a></li><li><a href="#使用本地工具在centos7上构建singa">使用本地工具在Centos7上构建SINGA</a><ul class="toc-headings"><li><a href="#安装依赖项">安装依赖项</a></li><li><a href="#安装singa">安装SINGA</a></li><li><a href="#测试">测试</a></li></ul></li><li><a href="#在windows中编译singa">在Windows中编译SINGA</a></li><li><a href="#关于编译选项的更多细节">关于编译选项的更多细节</a><ul class="toc-headings"><li><a href="#use_modules-已过期废弃">USE_MODULES (已过期废弃)</a></li><li><a href="#use_python">USE_PYTHON</a></li><li><a href="#use_cuda">USE_CUDA</a></li><li><a href="#use_dnnl">USE_DNNL</a></li><li><a href="#use_opencl">USE_OPENCL</a></li><li><a href="#package">PACKAGE</a></li></ul></li><li><a href="#faq">FAQ</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2021
+   The Apache Software Foundation. All rights reserved.
+   Apache SINGA, Apache, the Apache feather logo, and
+   the Apache SINGA project logos are trademarks of The
+   Apache Software Foundation. All other marks mentioned
+   may be trademarks or registered trademarks of their
+   respective owners.</section></div></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '45202133606c0b5fa6d21cddc4725dd8',
+                indexName: 'apache_singa',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:3.0.0"]}
+              });
+            </script></body></html>
