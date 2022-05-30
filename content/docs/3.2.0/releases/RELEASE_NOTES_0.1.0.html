@@ -1,0 +1,201 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>singa-incubating-0.1.0 Release Notes · Apache SINGA</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta name="docsearch:version" content="3.2.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="singa-incubating-0.1.0 Release Notes · Apache SINGA"/><meta property="og:type" content="website"/><meta property="og:url" content="https://singa.apache.org/"/><meta property="og:description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta property="og:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://singa.apache.org/blog/atom.xml" title="Apache SINGA Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://singa.apache.org/blog/feed.xml" title="Apache SINGA Blog RSS Feed"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&amp;family=Source+Sans+Pro:wght@200;300&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/singa.png" alt="Apache SINGA"/></a><a href="/versions"><h3>3.2.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/3.2.0/installation" target="_self">Docs</a></li><li class=""><a href="/docs/3.2.0/source-repository" target="_self">Community</a></li><li class=""><a href="/blog/" target="_self">News</a></li><li class=""><a href="https://apache-singa.readthedocs.io/en/latest/" target="_self">API</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/apache/singa" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/releases/RELEASE_NOTES_0.1.0.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">singa-incubating-0.1.0 Release Notes</h1></header><article><div><span><!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  -->
+<p>SINGA is a general distributed deep learning platform for training big deep
+learning models over large datasets. It is designed with an intuitive
+programming model based on the layer abstraction. SINGA supports a wide variety
+of popular deep learning models.</p>
+<p>This release includes following features:</p>
+<ul>
+<li>Job management
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-3">SINGA-3</a> Use Zookeeper to
+check stopping (finish) time of the system</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-16">SINGA-16</a> Runtime Process
+id Management</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-25">SINGA-25</a> Setup glog output
+path</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-26">SINGA-26</a> Run distributed
+training in a single command</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-30">SINGA-30</a> Enhance
+easy-to-use feature and support concurrent jobs</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-33">SINGA-33</a> Automatically
+launch a number of processes in the cluster</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-34">SINGA-34</a> Support external
+zookeeper service</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-38">SINGA-38</a> Support
+concurrent jobs</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-39">SINGA-39</a> Avoid ssh in
+scripts for single node environment</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-43">SINGA-43</a> Remove
+Job-related output from workspace</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-56">SINGA-56</a> No automatic
+launching of zookeeper service</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-73">SINGA-73</a> Refine the
+selection of available hosts from host list</li>
+</ul></li>
+</ul>
+<ul>
+<li>Installation with GNU Auto tool
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-4">SINGA-4</a> Refine
+thirdparty-dependency installation</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-13">SINGA-13</a> Separate
+intermediate files of compilation from source files</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-17">SINGA-17</a> Add root
+permission within thirdparty/install.</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-27">SINGA-27</a> Generate python
+modules for proto objects</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-53">SINGA-53</a> Add lmdb
+compiling options</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-62">SINGA-62</a> Remove building
+scrips and auxiliary files</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-67">SINGA-67</a> Add singatest
+into build targets</li>
+</ul></li>
+</ul>
+<ul>
+<li>Distributed training
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-7">SINGA-7</a> Implement shared
+memory Hogwild algorithm</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-8">SINGA-8</a> Implement
+distributed Hogwild</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-19">SINGA-19</a> Slice large Param
+objects for load-balance</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-29">SINGA-29</a> Update NeuralNet
+class to enable layer partition type customization</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-24">SINGA-24</a> Implement
+Downpour training framework</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-32">SINGA-32</a> Implement
+AllReduce training framework</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-57">SINGA-57</a> Improve
+Distributed Hogwild</li>
+</ul></li>
+</ul>
+<ul>
+<li>Training algorithms for different model categories
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-9">SINGA-9</a> Add Support for
+Restricted Boltzman Machine (RBM) model</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-10">SINGA-10</a> Add Support for
+Recurrent Neural Networks (RNN)</li>
+</ul></li>
+</ul>
+<ul>
+<li>Checkpoint and restore
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-12">SINGA-12</a> Support
+Checkpoint and Restore</li>
+</ul></li>
+</ul>
+<ul>
+<li>Unit test
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-64">SINGA-64</a> Add the test
+module for utils/common</li>
+</ul></li>
+</ul>
+<ul>
+<li>Programming model
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-36">SINGA-36</a> Refactor job
+configuration, driver program and scripts</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-37">SINGA-37</a> Enable users to
+set parameter sharing in model configuration</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-54">SINGA-54</a> Refactor job
+configuration to move fields in ModelProto out</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-55">SINGA-55</a> Refactor main.cc
+and singa.h</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-61">SINGA-61</a> Support user
+defined classes</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-65">SINGA-65</a> Add an example of
+writing user-defined layers</li>
+</ul></li>
+</ul>
+<ul>
+<li>Other features
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-6">SINGA-6</a> Implement
+thread-safe singleton</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-18">SINGA-18</a> Update API for
+displaying performance metric</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-77">SINGA-77</a> Integrate with
+Apache RAT</li>
+</ul></li>
+</ul>
+<p>Some bugs are fixed during the development of this release</p>
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-2">SINGA-2</a> Check failed:
+zsock_connect</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-5">SINGA-5</a> Server early
+terminate when zookeeper singa folder is not initially empty</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-15">SINGA-15</a> Fixg a bug from
+ConnectStub function which gets stuck for connecting layer<em>dealer</em></li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-22">SINGA-22</a> Cannot find
+openblas library when it is installed in default path</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-23">SINGA-23</a> Libtool version
+mismatch error.</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-28">SINGA-28</a> Fix a bug from
+topology sort of Graph</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-42">SINGA-42</a> Issue when loading
+checkpoints</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-44">SINGA-44</a> A bug when reseting
+metric values</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-46">SINGA-46</a> Fix a bug in
+updater.cc to scale the gradients</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-47">SINGA-47</a> Fix a bug in data
+layers that leads to out-of-memory when group size is too large</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-48">SINGA-48</a> Fix a bug in
+trainer.cc that assigns the same NeuralNet instance to workers from diff
+groups</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-49">SINGA-49</a> Fix a bug in
+HandlePutMsg func that sets param fields to invalid values</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-66">SINGA-66</a> Fix bugs in
+Worker::RunOneBatch function and ClusterProto</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-79">SINGA-79</a> Fix bug in
+singatool that can not parse -conf flag</li>
+</ul>
+<p>Features planned for the next release</p>
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-11">SINGA-11</a> Start SINGA using
+Mesos</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-31">SINGA-31</a> Extend Blob to
+support xpu (cpu or gpu)</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-35">SINGA-35</a> Add random number
+generators</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-40">SINGA-40</a> Support sparse
+Param update</li>
+<li><a href="https://issues.apache.org/jira/browse/SINGA-41">SINGA-41</a> Support single node
+single GPU training</li>
+</ul>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 4/2/2020</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2022
+   The Apache Software Foundation. All rights reserved.
+   Apache SINGA, Apache, the Apache feather logo, and
+   the Apache SINGA project logos are trademarks of The
+   Apache Software Foundation. All other marks mentioned
+   may be trademarks or registered trademarks of their
+   respective owners.</section></div></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '45202133606c0b5fa6d21cddc4725dd8',
+                indexName: 'apache_singa',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:3.0.0"]}
+              });
+            </script></body></html>

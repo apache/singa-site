@@ -1,0 +1,303 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Tensor · Apache SINGA</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta name="docsearch:version" content="3.2.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Tensor · Apache SINGA"/><meta property="og:type" content="website"/><meta property="og:url" content="https://singa.apache.org/"/><meta property="og:description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta property="og:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://singa.apache.org/blog/atom.xml" title="Apache SINGA Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://singa.apache.org/blog/feed.xml" title="Apache SINGA Blog RSS Feed"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&amp;family=Source+Sans+Pro:wght@200;300&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/singa.png" alt="Apache SINGA"/></a><a href="/versions"><h3>3.2.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/3.2.0/installation" target="_self">Docs</a></li><li class=""><a href="/docs/3.2.0/source-repository" target="_self">Community</a></li><li class=""><a href="/blog/" target="_self">News</a></li><li class=""><a href="https://apache-singa.readthedocs.io/en/latest/" target="_self">API</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/apache/singa" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Guides</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/3.2.0/installation">Installation</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/software-stack">Software Stack</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/examples">Examples</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Guides</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/3.2.0/device">Device</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/3.2.0/tensor">Tensor</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/autograd">Autograd</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/optimizer">Optimizer</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/graph">Model</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/onnx">ONNX</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/dist-train">Distributed Training</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/time-profiling">Time Profiling</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/half-precision">Half Precision</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Development</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/3.2.0/downloads">Download SINGA</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/build">Build SINGA from Source</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/contribute-code">How to Contribute Code</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/contribute-docs">How to Contribute to Documentation</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/how-to-release">How to Prepare a Release</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/git-workflow">Git Workflow</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/tensor.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Tensor</h1></header><article><div><span><!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  -->
+<p>Each Tensor instance is a multi-dimensional array allocated on a specific Device
+instance. Tensor instances store variables and provide linear algebra operations
+over different types of hardware devices without user awareness. Note that users
+need to make sure the tensor operands are allocated on the same device except
+copy functions.</p>
+<h2><a class="anchor" aria-hidden="true" id="tensor-usage"></a><a href="#tensor-usage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tensor Usage</h2>
+<h3><a class="anchor" aria-hidden="true" id="create-tensor"></a><a href="#create-tensor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create Tensor</h3>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">from</span> singa <span class="hljs-keyword">import</span> tensor
+<span class="hljs-meta">&gt;&gt;&gt; </span>tensor.from_numpy( np.asarray([[<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>]], dtype=np.float32) )
+[[<span class="hljs-number">1.</span> <span class="hljs-number">0.</span> <span class="hljs-number">0.</span>]
+ [<span class="hljs-number">0.</span> <span class="hljs-number">1.</span> <span class="hljs-number">0.</span>]]
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="convert-to-numpy"></a><a href="#convert-to-numpy" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Convert to numpy</h3>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span>a = np.asarray([[<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>]], dtype=np.float32)
+<span class="hljs-meta">&gt;&gt;&gt; </span>tensor.from_numpy(a)
+[[<span class="hljs-number">1.</span> <span class="hljs-number">0.</span> <span class="hljs-number">0.</span>]
+ [<span class="hljs-number">0.</span> <span class="hljs-number">1.</span> <span class="hljs-number">0.</span>]]
+<span class="hljs-meta">&gt;&gt;&gt; </span>tensor.to_numpy(tensor.from_numpy(a))
+array([[<span class="hljs-number">1.</span>, <span class="hljs-number">0.</span>, <span class="hljs-number">0.</span>],
+       [<span class="hljs-number">0.</span>, <span class="hljs-number">1.</span>, <span class="hljs-number">0.</span>]], dtype=float32)
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="tensor-methods"></a><a href="#tensor-methods" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tensor Methods</h3>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span>t = tensor.from_numpy(a)
+<span class="hljs-meta">&gt;&gt;&gt; </span>t.transpose([<span class="hljs-number">1</span>,<span class="hljs-number">0</span>])
+[[<span class="hljs-number">1.</span> <span class="hljs-number">0.</span>]
+ [<span class="hljs-number">0.</span> <span class="hljs-number">1.</span>]
+ [<span class="hljs-number">0.</span> <span class="hljs-number">0.</span>]]
+</code></pre>
+<p><code>tensor</code> transformation up to 6 dims</p>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span>a = tensor.random((<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>))
+<span class="hljs-meta">&gt;&gt;&gt; </span>a.shape
+(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>a.reshape((<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">6</span>)).transpose((<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>)).shape
+(<span class="hljs-number">5</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">7</span>, <span class="hljs-number">6</span>)
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="tensor-arithmetic-methods"></a><a href="#tensor-arithmetic-methods" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tensor Arithmetic Methods</h3>
+<p><code>tensor</code> is evaluated in real time.</p>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span>t + <span class="hljs-number">1</span>
+[[<span class="hljs-number">2.</span> <span class="hljs-number">1.</span> <span class="hljs-number">1.</span>]
+ [<span class="hljs-number">1.</span> <span class="hljs-number">2.</span> <span class="hljs-number">1.</span>]]
+<span class="hljs-meta">&gt;&gt;&gt; </span>t / <span class="hljs-number">5</span>
+[[<span class="hljs-number">0.2</span> <span class="hljs-number">0.</span>  <span class="hljs-number">0.</span> ]
+ [<span class="hljs-number">0.</span>  <span class="hljs-number">0.2</span> <span class="hljs-number">0.</span> ]]
+</code></pre>
+<p><code>tensor</code> broadcasting arithmetic:</p>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span>a
+[[<span class="hljs-number">1.</span> <span class="hljs-number">2.</span> <span class="hljs-number">3.</span>]
+ [<span class="hljs-number">4.</span> <span class="hljs-number">5.</span> <span class="hljs-number">6.</span>]]
+<span class="hljs-meta">&gt;&gt;&gt; </span>b
+[[<span class="hljs-number">1.</span> <span class="hljs-number">2.</span> <span class="hljs-number">3.</span>]]
+<span class="hljs-meta">&gt;&gt;&gt; </span>a + b
+[[<span class="hljs-number">2.</span> <span class="hljs-number">4.</span> <span class="hljs-number">6.</span>]
+ [<span class="hljs-number">5.</span> <span class="hljs-number">7.</span> <span class="hljs-number">9.</span>]]
+<span class="hljs-meta">&gt;&gt;&gt; </span>a * b
+[[ <span class="hljs-number">1.</span>  <span class="hljs-number">4.</span>  <span class="hljs-number">9.</span>]
+ [ <span class="hljs-number">4.</span> <span class="hljs-number">10.</span> <span class="hljs-number">18.</span>]]
+<span class="hljs-meta">&gt;&gt;&gt; </span>a / b
+[[<span class="hljs-number">1.</span>  <span class="hljs-number">1.</span>  <span class="hljs-number">1.</span> ]
+ [<span class="hljs-number">4.</span>  <span class="hljs-number">2.5</span> <span class="hljs-number">2.</span> ]]
+<span class="hljs-meta">&gt;&gt;&gt; </span>a/=b <span class="hljs-comment"># inplace operation</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>a
+[[<span class="hljs-number">1.</span>  <span class="hljs-number">1.</span>  <span class="hljs-number">1.</span> ]
+ [<span class="hljs-number">4.</span>  <span class="hljs-number">2.5</span> <span class="hljs-number">2.</span> ]]
+</code></pre>
+<p><code>tensor</code> broadcasting on matrix multiplication (GEMM)</p>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">from</span> singa <span class="hljs-keyword">import</span> tensor
+<span class="hljs-meta">&gt;&gt;&gt; </span>a = tensor.random((<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>))
+<span class="hljs-meta">&gt;&gt;&gt; </span>b = tensor.random((<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))
+<span class="hljs-meta">&gt;&gt;&gt; </span>tensor.mult(a,b).shape
+(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>)
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="tensor-functions"></a><a href="#tensor-functions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tensor Functions</h3>
+<p>Functions in module <code>singa.tensor</code> return new <code>tensor</code> object after applying the
+transformation defined in the function.</p>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span>tensor.log(t+<span class="hljs-number">1</span>)
+[[<span class="hljs-number">0.6931472</span> <span class="hljs-number">0.</span>        <span class="hljs-number">0.</span>       ]
+ [<span class="hljs-number">0.</span>        <span class="hljs-number">0.6931472</span> <span class="hljs-number">0.</span>       ]]
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="tensor-on-different-devices"></a><a href="#tensor-on-different-devices" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tensor on Different Devices</h3>
+<p><code>tensor</code> is created on host (CPU) by default; it can also be created on
+different hardware devices by specifying the <code>device</code>. A <code>tensor</code> could be moved
+between <code>device</code>s via <code>to_device()</code> function.</p>
+<pre><code class="hljs css language-python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">from</span> singa <span class="hljs-keyword">import</span> device
+<span class="hljs-meta">&gt;&gt;&gt; </span>x = tensor.Tensor((<span class="hljs-number">2</span>, <span class="hljs-number">3</span>), device.create_cuda_gpu())
+<span class="hljs-meta">&gt;&gt;&gt; </span>x.gaussian(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>x
+[[<span class="hljs-number">1.531889</span>   <span class="hljs-number">1.0128608</span>  <span class="hljs-number">0.12691343</span>]
+ [<span class="hljs-number">2.1674204</span>  <span class="hljs-number">3.083676</span>   <span class="hljs-number">2.7421203</span> ]]
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-comment"># move to host</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>x.to_device(device.get_default_device())
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="use-tensor-to-train-mlp"></a><a href="#use-tensor-to-train-mlp" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>use Tensor to train MLP</h3>
+<pre><code class="hljs css language-python">
+<span class="hljs-string">"""
+  code snipet from examples/mlp/module.py
+"""</span>
+
+label = get_label()
+data = get_data()
+
+dev = device.create_cuda_gpu_on(<span class="hljs-number">0</span>)
+sgd = opt.SGD(<span class="hljs-number">0.05</span>)
+
+<span class="hljs-comment"># define tensor for input data and label</span>
+tx = tensor.Tensor((<span class="hljs-number">400</span>, <span class="hljs-number">2</span>), dev, tensor.float32)
+ty = tensor.Tensor((<span class="hljs-number">400</span>,), dev, tensor.int32)
+model = MLP(data_size=<span class="hljs-number">2</span>, perceptron_size=<span class="hljs-number">3</span>, num_classes=<span class="hljs-number">2</span>)
+
+<span class="hljs-comment"># attached model to graph</span>
+model.set_optimizer(sgd)
+model.compile([tx], is_train=<span class="hljs-literal">True</span>, use_graph=<span class="hljs-literal">True</span>, sequential=<span class="hljs-literal">False</span>)
+model.train()
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1001</span>):
+    tx.copy_from_numpy(data)
+    ty.copy_from_numpy(label)
+    out, loss = model(tx, ty, <span class="hljs-string">'fp32'</span>, spars=<span class="hljs-literal">None</span>)
+
+    <span class="hljs-keyword">if</span> i % <span class="hljs-number">100</span> == <span class="hljs-number">0</span>:
+        print(<span class="hljs-string">"training loss = "</span>, tensor.to_numpy(loss)[<span class="hljs-number">0</span>])
+</code></pre>
+<p>Output:</p>
+<pre><code class="hljs css language-bash">$ python3 examples/mlp/module.py
+training loss =  0.6158037
+training loss =  0.52852553
+training loss =  0.4571422
+training loss =  0.37274635
+training loss =  0.30146334
+training loss =  0.24906921
+training loss =  0.21128304
+training loss =  0.18390492
+training loss =  0.16362564
+training loss =  0.148164
+training loss =  0.13589878
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="tensor-implementation"></a><a href="#tensor-implementation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tensor Implementation</h2>
+<p>The previous section shows the general usage of <code>Tensor</code>, the implementation
+under the hood will be covered below. First, the design of Python and C++
+tensors will be introduced. Later part will talk about how the frontend (Python)
+and backend (C++) are connected and how to extend them.</p>
+<h3><a class="anchor" aria-hidden="true" id="python-tensor"></a><a href="#python-tensor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Python Tensor</h3>
+<p>Python class <code>Tensor</code>, defined in <code>python/singa/tensor.py</code>, provides high level
+tensor manipulations for implementing deep learning operations (via
+<a href="./autograd">autograd</a>), as well as data management by end users.</p>
+<p>It primarily works by simply wrapping around C++ tensor methods, both arithmetic
+(e.g. <code>sum</code>) and non arithmetic methods (e.g. <code>reshape</code>). Some advanced
+arithmetic operations are later introduced and implemented using pure Python
+tensor API, e.g. <code>tensordot</code>. Python Tensor APIs could be used to implement
+complex neural network operations easily with the flexible methods available.</p>
+<h3><a class="anchor" aria-hidden="true" id="c-tensor"></a><a href="#c-tensor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>C++ Tensor</h3>
+<p>C++ class <code>Tensor</code>, defined in <code>include/singa/core/tensor.h</code>, primarily manages
+the memory that holds the data, and provides low level APIs for tensor
+manipulation. Also, it provides various arithmetic methods (e.g. <code>matmul</code>) by
+wrapping different backends (CUDA, BLAS, cuBLAS, etc.).</p>
+<h4><a class="anchor" aria-hidden="true" id="execution-context-and-memory-block"></a><a href="#execution-context-and-memory-block" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Execution Context and Memory Block</h4>
+<p>Two important concepts or data structures for <code>Tensor</code> are the execution context
+<code>device</code>, and the memory block <code>Block</code>.</p>
+<p>Each <code>Tensor</code> is physically stored on and managed by a hardware device,
+representing the execution context (CPU, GPU). Tensor math calculations are
+executed on the device.</p>
+<p>Tensor data in a <code>Block</code> instance, defined in <code>include/singa/core/common.h</code>.
+<code>Block</code> owns the underlying data, while tensors take ownership on the metadata
+describing the tensor, like <code>shape</code>, <code>strides</code>.</p>
+<h4><a class="anchor" aria-hidden="true" id="tensor-math-backends"></a><a href="#tensor-math-backends" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tensor Math Backends</h4>
+<p>To leverage on the efficient math libraries provided by different backend
+hardware devices, SINGA has one set of implementations of Tensor functions for
+each supported backend.</p>
+<ul>
+<li>'tensor_math_cpp.h' implements operations using Cpp (with CBLAS) for CppCPU
+devices.</li>
+<li>'tensor_math_cuda.h' implements operations using Cuda (with cuBLAS) for
+CudaGPU devices.</li>
+<li>'tensor_math_opencl.h' implements operations using OpenCL for OpenclGPU
+devices.</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="exposing-c-apis-to-python"></a><a href="#exposing-c-apis-to-python" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Exposing C++ APIs to Python</h3>
+<p>SWIG(<a href="http://www.swig.org/">http://www.swig.org/</a>) is a tool that can automatically convert C++ APIs
+into Python APIs. SINGA uses SWIG to expose the C++ APIs to Python. Several
+files are generated by SWIG, including <code>python/singa/singa_wrap.py</code>. The Python
+modules (e.g., <code>tensor</code>, <code>device</code> and <code>autograd</code>) imports this module to call
+the C++ APIs for implementing the Python classes and functions.</p>
+<pre><code class="hljs css language-python"><span class="hljs-keyword">import</span> tensor
+
+t = tensor.Tensor(shape=(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>))
+</code></pre>
+<p>For example, when a Python <code>Tensor</code> instance is created as above, the <code>Tensor</code>
+class implementation creates an instance of the <code>Tensor</code> class defined in
+<code>singa_wrap.py</code>, which corresponds to the C++ <code>Tensor</code> class. For clarity, the
+<code>Tensor</code> class in <code>singa_wrap.py</code> is referred as <code>CTensor</code> in <code>tensor.py</code>.</p>
+<pre><code class="hljs css language-python"><span class="hljs-comment"># in tensor.py</span>
+<span class="hljs-keyword">from</span> . <span class="hljs-keyword">import</span> singa_wrap <span class="hljs-keyword">as</span> singa
+
+CTensor = singa.Tensor
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="create-new-tensor-functions"></a><a href="#create-new-tensor-functions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create New Tensor Functions</h3>
+<p>With the groundwork set by the previous description, extending tensor functions
+could be done easily in a bottom up manner. For math operations, the steps are:</p>
+<ul>
+<li>Declare the new API to <code>tensor.h</code></li>
+<li>Generate code using the predefined macro in <code>tensor.cc</code>, refer to
+<code>GenUnaryTensorFn(Abs);</code> as an example.</li>
+<li>Declare the template method/function in <code>tensor_math.h</code></li>
+<li>Do the real implementation at least for CPU (<code>tensor_math_cpp.h</code>) and
+GPU(<code>tensor_math_cuda.h</code>)</li>
+<li>Expose the API via SWIG by adding it into <code>src/api/core_tensor.i</code></li>
+<li>Define the Python Tensor API in <code>tensor.py</code> by calling the automatically
+generated function in <code>singa_wrap.py</code></li>
+<li>Write unit tests where appropriate</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="python-api"></a><a href="#python-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Python API</h2>
+<p><em>work in progress</em></p>
+<h2><a class="anchor" aria-hidden="true" id="cpp-api"></a><a href="#cpp-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CPP API</h2>
+<p><em>work in progress</em></p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/18/2020</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/3.2.0/device"><span class="arrow-prev">← </span><span>Device</span></a><a class="docs-next button" href="/docs/3.2.0/autograd"><span>Autograd</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#tensor-usage">Tensor Usage</a><ul class="toc-headings"><li><a href="#create-tensor">Create Tensor</a></li><li><a href="#convert-to-numpy">Convert to numpy</a></li><li><a href="#tensor-methods">Tensor Methods</a></li><li><a href="#tensor-arithmetic-methods">Tensor Arithmetic Methods</a></li><li><a href="#tensor-functions">Tensor Functions</a></li><li><a href="#tensor-on-different-devices">Tensor on Different Devices</a></li><li><a href="#use-tensor-to-train-mlp">use Tensor to train MLP</a></li></ul></li><li><a href="#tensor-implementation">Tensor Implementation</a><ul class="toc-headings"><li><a href="#python-tensor">Python Tensor</a></li><li><a href="#c-tensor">C++ Tensor</a></li><li><a href="#exposing-c-apis-to-python">Exposing C++ APIs to Python</a></li><li><a href="#create-new-tensor-functions">Create New Tensor Functions</a></li></ul></li><li><a href="#python-api">Python API</a></li><li><a href="#cpp-api">CPP API</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2022
+   The Apache Software Foundation. All rights reserved.
+   Apache SINGA, Apache, the Apache feather logo, and
+   the Apache SINGA project logos are trademarks of The
+   Apache Software Foundation. All other marks mentioned
+   may be trademarks or registered trademarks of their
+   respective owners.</section></div></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '45202133606c0b5fa6d21cddc4725dd8',
+                indexName: 'apache_singa',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:3.0.0"]}
+              });
+            </script></body></html>

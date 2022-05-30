@@ -1,0 +1,136 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>singa-incubating-0.2.0 Release Notes · Apache SINGA</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta name="docsearch:version" content="3.2.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="singa-incubating-0.2.0 Release Notes · Apache SINGA"/><meta property="og:type" content="website"/><meta property="og:url" content="https://singa.apache.org/"/><meta property="og:description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta property="og:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://singa.apache.org/blog/atom.xml" title="Apache SINGA Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://singa.apache.org/blog/feed.xml" title="Apache SINGA Blog RSS Feed"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&amp;family=Source+Sans+Pro:wght@200;300&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/singa.png" alt="Apache SINGA"/></a><a href="/versions"><h3>3.2.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/3.2.0/installation" target="_self">Docs</a></li><li class=""><a href="/docs/3.2.0/source-repository" target="_self">Community</a></li><li class=""><a href="/blog/" target="_self">News</a></li><li class=""><a href="https://apache-singa.readthedocs.io/en/latest/" target="_self">API</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/apache/singa" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/releases/RELEASE_NOTES_0.2.0.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">singa-incubating-0.2.0 Release Notes</h1></header><article><div><span><!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  -->
+<p>SINGA is a general distributed deep learning platform for training big deep
+learning models over large datasets. It is designed with an intuitive
+programming model based on the layer abstraction. SINGA supports a wide variety
+of popular deep learning models.</p>
+<p>This release includes the following <strong>major features</strong>:</p>
+<ul>
+<li><a href="../docs/gpu.html">Training on GPU</a> enables training of complex models on a
+single node with multiple GPU cards.</li>
+<li><a href="../docs/hybrid.html">Hybrid neural net partitioning</a> supports data and model
+parallelism at the same time.</li>
+<li><a href="../docs/python.html">Python wrapper</a> makes it easy to configure the job,
+including neural net and SGD algorithm.</li>
+<li><a href="../docs/general-rnn.html">RNN model and BPTT algorithm</a> are implemented to
+support applications based on RNN models, e.g., GRU.</li>
+<li><a href="../docs/distributed-training.md">Cloud software integration</a> includes Mesos,
+Docker and HDFS.</li>
+</ul>
+<p><strong>More details</strong> are listed as follows,</p>
+<ul>
+<li>Programming model
+<ul>
+<li>[SINGA-80] New Blob Level and Address Level Math Operation Interface</li>
+<li>[SINGA-82] Refactor input layers using data store abstraction</li>
+<li>[SINGA-87] Replace exclude field to include field for layer configuration</li>
+<li>[SINGA-110] Add Layer member datavec* and gradvec*</li>
+<li>[SINGA-120] Implemented GRU and BPTT (BPTTWorker)</li>
+</ul></li>
+</ul>
+<ul>
+<li>Neuralnet layers
+<ul>
+<li>[SINGA-91] Add SoftmaxLayer and ArgSortLayer</li>
+<li>[SINGA-106] Add dummy layer for test purpose</li>
+<li>[SINGA-120] Implemented GRU and BPTT (GRULayer and OneHotLayer)</li>
+</ul></li>
+</ul>
+<ul>
+<li>GPU training support
+<ul>
+<li>[SINGA-100] Implement layers using CUDNN for GPU training</li>
+<li>[SINGA-104] Add Context Class</li>
+<li>[SINGA-105] Update GUN make files for compiling cuda related code</li>
+<li>[SINGA-98] Add Support for AlexNet ImageNet Classification Model</li>
+</ul></li>
+</ul>
+<ul>
+<li>Model/Hybrid partition
+<ul>
+<li>[SINGA-109] Refine bridge layers</li>
+<li>[SINGA-111] Add slice, concate and split layers</li>
+<li>[SINGA-113] Model/Hybrid Partition Support</li>
+</ul></li>
+</ul>
+<ul>
+<li>Python binding
+<ul>
+<li>[SINGA-108] Add Python wrapper to singa</li>
+</ul></li>
+</ul>
+<ul>
+<li>Predict-only mode
+<ul>
+<li>[SINGA-85] Add functions for extracting features and test new data</li>
+</ul></li>
+</ul>
+<ul>
+<li>Integrate with third-party tools
+<ul>
+<li>[SINGA-11] Start SINGA on Apache Mesos</li>
+<li>[SINGA-78] Use Doxygen to generate documentation</li>
+<li>[SINGA-89] Add Docker support</li>
+</ul></li>
+</ul>
+<ul>
+<li>Unit test
+<ul>
+<li>[SINGA-95] Add make test after building</li>
+</ul></li>
+</ul>
+<ul>
+<li>Other improvment
+<ul>
+<li>[SINGA-84] Header Files Rearrange</li>
+<li>[SINGA-93] Remove the asterisk in the log <a href="tcp://169.254.12.152">tcp://169.254.12.152</a>:*:49152</li>
+<li>[SINGA-94] Move call to google::InitGoogleLogging() from Driver::Init() to
+main()</li>
+<li>[SINGA-96] Add Momentum to Cifar10 Example</li>
+<li>[SINGA-101] Add ll (ls -l) command in .bashrc file when using docker</li>
+<li>[SINGA-114] Remove short logs in tmp directory</li>
+<li>[SINGA-115] Print layer debug information in the neural net graph file</li>
+<li>[SINGA-118] Make protobuf LayerType field id easy to assign</li>
+<li>[SIGNA-97] Add HDFS Store</li>
+</ul></li>
+</ul>
+<ul>
+<li>Bugs fixed
+<ul>
+<li>[SINGA-85] Fix compilation errors in examples</li>
+<li>[SINGA-90] Miscellaneous trivial bug fixes</li>
+<li>[SINGA-107] Error from loading pre-trained params for training stacked RBMs</li>
+<li>[SINGA-116] Fix a bug in InnerProductLayer caused by weight matrix sharing</li>
+</ul></li>
+</ul>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 4/2/2020</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2022
+   The Apache Software Foundation. All rights reserved.
+   Apache SINGA, Apache, the Apache feather logo, and
+   the Apache SINGA project logos are trademarks of The
+   Apache Software Foundation. All other marks mentioned
+   may be trademarks or registered trademarks of their
+   respective owners.</section></div></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '45202133606c0b5fa6d21cddc4725dd8',
+                indexName: 'apache_singa',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:3.0.0"]}
+              });
+            </script></body></html>

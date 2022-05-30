@@ -1,0 +1,235 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Time Profiling · Apache SINGA</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta name="docsearch:version" content="3.2.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Time Profiling · Apache SINGA"/><meta property="og:type" content="website"/><meta property="og:url" content="https://singa.apache.org/"/><meta property="og:description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta property="og:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://singa.apache.org/blog/atom.xml" title="Apache SINGA Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://singa.apache.org/blog/feed.xml" title="Apache SINGA Blog RSS Feed"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&amp;family=Source+Sans+Pro:wght@200;300&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/singa.png" alt="Apache SINGA"/></a><a href="/versions"><h3>3.2.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/3.2.0/installation" target="_self">Docs</a></li><li class=""><a href="/docs/3.2.0/source-repository" target="_self">Community</a></li><li class=""><a href="/blog/" target="_self">News</a></li><li class=""><a href="https://apache-singa.readthedocs.io/en/latest/" target="_self">API</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/apache/singa" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Guides</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/3.2.0/installation">Installation</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/software-stack">Software Stack</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/examples">Examples</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Guides</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/3.2.0/device">Device</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/tensor">Tensor</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/autograd">Autograd</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/optimizer">Optimizer</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/graph">Model</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/onnx">ONNX</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/dist-train">Distributed Training</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/3.2.0/time-profiling">Time Profiling</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/half-precision">Half Precision</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Development</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/3.2.0/downloads">Download SINGA</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/build">Build SINGA from Source</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/contribute-code">How to Contribute Code</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/contribute-docs">How to Contribute to Documentation</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/how-to-release">How to Prepare a Release</a></li><li class="navListItem"><a class="navItem" href="/docs/3.2.0/git-workflow">Git Workflow</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/time-profiling.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Time Profiling</h1></header><article><div><span><!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  -->
+<p>SINGA supports the time profiling of each of the operators buffered in the
+graph. To utilize the time profiling function, we first call the
+<code>device.SetVerbosity</code> method to set the verbosity of the time profilier, and
+then call the <code>device.PrintTimeProfiling</code> to print out the results of time
+profiling.</p>
+<h2><a class="anchor" aria-hidden="true" id="setup-the-time-profiling-verbosity"></a><a href="#setup-the-time-profiling-verbosity" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Setup the Time Profiling Verbosity</h2>
+<p>To use the time profiling function, we need to set the verbosity. There are
+three levels of verbosity. With the default value <code>verbosity == 0</code>, it will not
+do any time profiling. When we set <code>verbosity == 1</code>, it will profile the forward
+and backward propagation time. When <code>verbosity == 2</code>, it will profile the time
+spent on every buffered operation in the graph.</p>
+<p>The following is the example code to setup the time profiling function:</p>
+<pre><code class="hljs css language-python"><span class="hljs-comment"># create a device</span>
+<span class="hljs-keyword">from</span> singa <span class="hljs-keyword">import</span> device
+dev = device.create_cuda_gpu()
+<span class="hljs-comment"># set the verbosity</span>
+verbosity = <span class="hljs-number">2</span>
+dev.SetVerbosity(verbosity)
+<span class="hljs-comment"># optional: skip the first 5 iterations when profiling the time</span>
+dev.SetSkipIteration(<span class="hljs-number">5</span>)
+</code></pre>
+<p>Then, after we have completed the training at the end of the program, we can
+print the time profiling result by calling the <code>device.PrintTimeProfiling</code>
+method:</p>
+<pre><code class="hljs css language-python">dev.PrintTimeProfiling()
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="example-outputs-for-different-verbosity"></a><a href="#example-outputs-for-different-verbosity" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example Outputs for Different Verbosity</h2>
+<p>We can run the ResNet
+<a href="https://github.com/apache/singa/blob/master/examples/cnn/benchmark.py">example</a>
+to see the output with different setting of verbosity:</p>
+<ol>
+<li><code>verbosity == 1</code></li>
+</ol>
+<pre><code class="hljs"><span class="hljs-built_in">Time</span> Profili<span class="hljs-symbol">ng:</span>
+Forward Propagation <span class="hljs-built_in">Time</span> <span class="hljs-symbol">:</span> <span class="hljs-number">0.0409127</span> <span class="hljs-built_in">sec</span>
+Backward Propagation <span class="hljs-built_in">Time</span> <span class="hljs-symbol">:</span> <span class="hljs-number">0.114813</span> <span class="hljs-built_in">sec</span>
+</code></pre>
+<ol start="2">
+<li><code>verbosity == 2</code></li>
+</ol>
+<pre><code class="hljs"><span class="hljs-attr">Time Profiling:</span>
+<span class="hljs-attr">OP_ID0. SetValue :</span> <span class="hljs-number">1.73722e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID1. cudnnConvForward :</span> <span class="hljs-number">0.000612724</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID2. GpuBatchNormForwardTraining :</span> <span class="hljs-number">0.000559449</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID3. ReLU :</span> <span class="hljs-number">0.000375004</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID4. GpuPoolingForward :</span> <span class="hljs-number">0.000240041</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID5. SetValue :</span> <span class="hljs-number">3.4176e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID6. cudnnConvForward :</span> <span class="hljs-number">0.000115619</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID7. GpuBatchNormForwardTraining :</span> <span class="hljs-number">0.000150415</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID8. ReLU :</span> <span class="hljs-number">9.95494e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID9. SetValue :</span> <span class="hljs-number">3.22432e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID10. cudnnConvForward :</span> <span class="hljs-number">0.000648668</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID11. GpuBatchNormForwardTraining :</span> <span class="hljs-number">0.000149793</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID12. ReLU :</span> <span class="hljs-number">9.92118e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID13. SetValue :</span> <span class="hljs-number">3.37728e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID14. cudnnConvForward :</span> <span class="hljs-number">0.000400953</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID15. GpuBatchNormForwardTraining :</span> <span class="hljs-number">0.000572181</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID16. SetValue :</span> <span class="hljs-number">3.21312e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID17. cudnnConvForward :</span> <span class="hljs-number">0.000398698</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID18. GpuBatchNormForwardTraining :</span> <span class="hljs-number">0.00056836</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID19. Add :</span> <span class="hljs-number">0.000542246</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID20. ReLU :</span> <span class="hljs-number">0.000372783</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID21. SetValue :</span> <span class="hljs-number">3.25312e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID22. cudnnConvForward :</span> <span class="hljs-number">0.000260731</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID23. GpuBatchNormForwardTraining :</span> <span class="hljs-number">0.000149041</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID24. ReLU :</span> <span class="hljs-number">9.9072e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID25. SetValue :</span> <span class="hljs-number">3.10592e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID26. cudnnConvForward :</span> <span class="hljs-number">0.000637481</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID27. GpuBatchNormForwardTraining :</span> <span class="hljs-number">0.000152577</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID28. ReLU :</span> <span class="hljs-number">9.90518e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID29. SetValue :</span> <span class="hljs-number">3.28224e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID30. cudnnConvForward :</span> <span class="hljs-number">0.000404586</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID31. GpuBatchNormForwardTraining :</span> <span class="hljs-number">0.000569679</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID32. Add :</span> <span class="hljs-number">0.000542291</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID33. ReLU :</span> <span class="hljs-number">0.00037211</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID34. SetValue :</span> <span class="hljs-number">3.13696e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID35. cudnnConvForward :</span> <span class="hljs-number">0.000261219</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID36. GpuBatchNormForwardTraining :</span> <span class="hljs-number">0.000148281</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID37. ReLU :</span> <span class="hljs-number">9.89299e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID38. SetValue :</span> <span class="hljs-number">3.25216e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID39. cudnnConvForward :</span> <span class="hljs-number">0.000633644</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID40. GpuBatchNormForwardTraining :</span> <span class="hljs-number">0.000150711</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID41. ReLU :</span> <span class="hljs-number">9.84902e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID42. SetValue :</span> <span class="hljs-number">3.18176e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID43. cudnnConvForward :</span> <span class="hljs-number">0.000402752</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID44. GpuBatchNormForwardTraining :</span> <span class="hljs-number">0.000571523</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID45. Add :</span> <span class="hljs-number">0.000542435</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID46. ReLU :</span> <span class="hljs-number">0.000372539</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID47. SetValue :</span> <span class="hljs-number">3.24672e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID48. cudnnConvForward :</span> <span class="hljs-number">0.000493054</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID49. GpuBatchNormForwardTraining :</span> <span class="hljs-number">0.000293142</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID50. ReLU :</span> <span class="hljs-number">0.000190047</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID51. SetValue :</span> <span class="hljs-number">3.14784e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID52. cudnnConvForward :</span> <span class="hljs-number">0.00148837</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID53. GpuBatchNormForwardTraining :</span> <span class="hljs-number">8.34794e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID54. ReLU :</span> <span class="hljs-number">5.23254e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID55. SetValue :</span> <span class="hljs-number">3.40096e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID56. cudnnConvForward :</span> <span class="hljs-number">0.000292971</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID57. GpuBatchNormForwardTraining :</span> <span class="hljs-number">0.00029174</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID58. SetValue :</span> <span class="hljs-number">3.3248e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID59. cudnnConvForward :</span> <span class="hljs-number">0.000590154</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID60. GpuBatchNormForwardTraining :</span> <span class="hljs-number">0.000294149</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID61. Add :</span> <span class="hljs-number">0.000275119</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID62. ReLU :</span> <span class="hljs-number">0.000189268</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID63. SetValue :</span> <span class="hljs-number">3.2704e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID64. cudnnConvForward :</span> <span class="hljs-number">0.000341232</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID65. GpuBatchNormForwardTraining :</span> <span class="hljs-number">8.3304e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID66. ReLU :</span> <span class="hljs-number">5.23667e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID67. SetValue :</span> <span class="hljs-number">3.19936e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID68. cudnnConvForward :</span> <span class="hljs-number">0.000542484</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID69. GpuBatchNormForwardTraining :</span> <span class="hljs-number">8.60537e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID70. ReLU :</span> <span class="hljs-number">5.2479e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID71. SetValue :</span> <span class="hljs-number">3.41824e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID72. cudnnConvForward :</span> <span class="hljs-number">0.000291295</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID73. GpuBatchNormForwardTraining :</span> <span class="hljs-number">0.000292795</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID74. Add :</span> <span class="hljs-number">0.000274438</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID75. ReLU :</span> <span class="hljs-number">0.000189689</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID76. SetValue :</span> <span class="hljs-number">3.21984e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID77. cudnnConvForward :</span> <span class="hljs-number">0.000338776</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID78. GpuBatchNormForwardTraining :</span> <span class="hljs-number">8.484e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID79. ReLU :</span> <span class="hljs-number">5.29408e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID80. SetValue :</span> <span class="hljs-number">3.18208e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID81. cudnnConvForward :</span> <span class="hljs-number">0.000545542</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID82. GpuBatchNormForwardTraining :</span> <span class="hljs-number">8.40976e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID83. ReLU :</span> <span class="hljs-number">5.2256e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID84. SetValue :</span> <span class="hljs-number">3.36256e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID85. cudnnConvForward :</span> <span class="hljs-number">0.000293003</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID86. GpuBatchNormForwardTraining :</span> <span class="hljs-number">0.0002989</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID87. Add :</span> <span class="hljs-number">0.000275041</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID88. ReLU :</span> <span class="hljs-number">0.000189867</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID89. SetValue :</span> <span class="hljs-number">3.1184e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID90. cudnnConvForward :</span> <span class="hljs-number">0.000340417</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID91. GpuBatchNormForwardTraining :</span> <span class="hljs-number">8.39395e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID92. ReLU :</span> <span class="hljs-number">5.26544e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID93. SetValue :</span> <span class="hljs-number">3.2336e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID94. cudnnConvForward :</span> <span class="hljs-number">0.000539787</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID95. GpuBatchNormForwardTraining :</span> <span class="hljs-number">8.2753e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID96. ReLU :</span> <span class="hljs-number">4.86758e-05</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID97. SetValue :</span> <span class="hljs-number">3.24384e-06</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID98. cudnnConvForward :</span> <span class="hljs-number">0.000287108</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID99. GpuBatchNormForwardTraining :</span> <span class="hljs-number">0.000293127</span> <span class="hljs-string">sec</span>
+<span class="hljs-attr">OP_ID100. Add :</span> <span class="hljs-number">0.000269478</span> <span class="hljs-string">sec</span>
+<span class="hljs-string">.</span>
+<span class="hljs-string">.</span>
+<span class="hljs-string">.</span>
+</code></pre>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/27/2020</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/3.2.0/dist-train"><span class="arrow-prev">← </span><span>Distributed Training</span></a><a class="docs-next button" href="/docs/3.2.0/half-precision"><span>Half Precision</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#setup-the-time-profiling-verbosity">Setup the Time Profiling Verbosity</a></li><li><a href="#example-outputs-for-different-verbosity">Example Outputs for Different Verbosity</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2022
+   The Apache Software Foundation. All rights reserved.
+   Apache SINGA, Apache, the Apache feather logo, and
+   the Apache SINGA project logos are trademarks of The
+   Apache Software Foundation. All other marks mentioned
+   may be trademarks or registered trademarks of their
+   respective owners.</section></div></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '45202133606c0b5fa6d21cddc4725dd8',
+                indexName: 'apache_singa',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:3.0.0"]}
+              });
+            </script></body></html>
