@@ -1,0 +1,365 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Cách cài SINGA trên Windows · Apache SINGA</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta name="docsearch:version" content="4.0.0_Viet"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Cách cài SINGA trên Windows · Apache SINGA"/><meta property="og:type" content="website"/><meta property="og:url" content="https://singa.apache.org/"/><meta property="og:description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta property="og:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://singa.apache.org/blog/atom.xml" title="Apache SINGA Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://singa.apache.org/blog/feed.xml" title="Apache SINGA Blog RSS Feed"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&amp;family=Source+Sans+Pro:wght@200;300&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/singa.png" alt="Apache SINGA"/></a><a href="/versions"><h3>4.0.0_Viet</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/4.0.0_Viet/installation" target="_self">Docs</a></li><li class=""><a href="/docs/4.0.0_Viet/source-repository" target="_self">Community</a></li><li class=""><a href="/blog/" target="_self">News</a></li><li class=""><a href="https://apache-singa.readthedocs.io/en/latest/" target="_self">API</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/apache/singa" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/install-win.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Cách cài SINGA trên Windows</h1></header><article><div><span><!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  -->
+<p>Quá trình cài đặt SINGA từ nguồn sử dụng Microsoft Windows bao gồm bốn bước: cài
+đặt thư viện dependencies, cài SINGA từ nguồn, (không bắt buộc) cài đặt python
+module và (không bắt buộc) chạy thử unit tests.</p>
+<h2><a class="anchor" aria-hidden="true" id="cài-đặt-thư-viện-dependencies"></a><a href="#cài-đặt-thư-viện-dependencies" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cài đặt thư viện dependencies</h2>
+<p>Bạn có thể tạo một thư mục để cài đặt thư viện dependencies.</p>
+<p>Các thư viện dependencies bao gồm:</p>
+<ul>
+<li><p>Compiler và IDE</p>
+<ul>
+<li>Visual Studio. Công cụ biên tập mã này miễn phí và có thể được dùng trong
+việc cài đặt SINGA. <a href="https://www.visualstudio.com/">https://www.visualstudio.com/</a></li>
+</ul></li>
+<li><p>CMake</p>
+<ul>
+<li>Có thể tải về qua <a href="http://cmake.org/">http://cmake.org/</a></li>
+<li>Đảm bảo đường dẫn khả thi của cmake nằm trong đường dẫn chương trình system
+path, hoặc sử dụng đường dẫn đầy đủ khi gọi hàm cmake.</li>
+</ul></li>
+<li><p>SWIG</p>
+<ul>
+<li>Có thể tải từ <a href="http://swig.org/">http://swig.org/</a></li>
+<li>Đảm bảo đường dẫn khả thi của swig nằm trong đường dẫn chương trình system
+path, hoặc sử dụng đường dẫn đầy đủ khi gọi hàm swig. Sử dụng các phiên bản
+cập nhật như 3.0.12.</li>
+</ul></li>
+<li><p>Protocol Buffers</p>
+<ul>
+<li>Tải các phiên bản phù hợp như 2.6.1:
+<a href="https://github.com/google/protobuf/releases/tag/v2.6.1">https://github.com/google/protobuf/releases/tag/v2.6.1</a> .</li>
+<li>Tải cả hai tệp protobuf-2.6.1.zip và protoc-2.6.1-win32.zip .</li>
+<li>Giải nén cả hai tệp trên trong thư mục thư viện dependencies. Thêm đường dẫn
+khả thi cho protoc vào system path, hoặc sử dụng đường dẫn đầy đủ khi gọi
+hàm này.</li>
+<li>Mở Visual Studio solution có thể tìm trong thư mục vsproject.</li>
+<li>Thay đổi cài đặt thiết lập Settings tới Release and x64.</li>
+<li>Cài đặt libprotobuf project.</li>
+</ul></li>
+<li><p>Openblas</p>
+<ul>
+<li>Tải phiên bản nguồn phù hợp như 0.2.20 từ <a href="http://www.openblas.net">http://www.openblas.net</a></li>
+<li>Giải nén nguồn trong thư mục thư viện dependencies.</li>
+<li>Nếu bạn không có chương trình Perl, tải perl environment như Strawberry Perl
+(<a href="http://strawberryperl.com/">http://strawberryperl.com/</a>)</li>
+<li>Cài đặt Visual Studio solution bằng lệnh sau từ thư mục nguồn:</li>
+</ul>
+<pre><code class="hljs css language-bash">cmake -G <span class="hljs-string">"Visual Studio 15 2017 Win64"</span>
+</code></pre>
+<ul>
+<li>Mở Visual Studio solution và thay đổi cấu hình cài đặt cho Release and x64.</li>
+<li>Cài libopenblas project</li>
+</ul></li>
+<li><p>Google glog</p>
+<ul>
+<li>Tải phiên bản phù hợp như 0.3.5 từ <a href="https://github.com/google/glog/releases">https://github.com/google/glog/releases</a></li>
+<li>Giải nén nguồn trong thư mục thư viện dependencies.</li>
+<li>Mở Visual Studio solution.</li>
+<li>Thay đổi cài đặt thiết lập Settings tới Release and x64.</li>
+<li>Cài đặt libglog project</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="cài-singa-từ-nguồn"></a><a href="#cài-singa-từ-nguồn" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cài SINGA từ nguồn</h2>
+<ul>
+<li><p>Tải code nguồn của SINGA</p></li>
+<li><p>Cấu tạo các tệp protobuf:</p>
+<ul>
+<li>Tới thư mục src/proto</li>
+</ul>
+<pre><code class="hljs css language-shell">mkdir python_out
+protoc.exe *.proto --python_out python_out
+</code></pre></li>
+<li><p>Tạo swig interfaces cho C++ và Python: Tới mục src/api</p>
+<pre><code class="hljs css language-shell">swig -python -c++ singa.i
+</code></pre></li>
+<li><p>Tạo Visual Studio solution cho SINGA: Đi tới thư mục nguồn SINGA</p>
+<pre><code class="hljs css language-shell">mkdir build
+cd build
+</code></pre></li>
+<li><p>Gọi hàm cmake và thêm đường dẫn vào trong system của bạn, tương tự như ví dụ
+sau:</p>
+<pre><code class="hljs css language-shell">cmake -G "Visual Studio 15 2017 Win64" ^
+  -DGLOG_INCLUDE_DIR="D:/WinSinga/dependencies/glog-0.3.5/src/windows" ^
+  -DGLOG_LIBRARIES="D:/WinSinga/dependencies/glog-0.3.5/x64/Release" ^
+  -DCBLAS_INCLUDE_DIR="D:/WinSinga/dependencies/openblas-0.2.20/lapack-netlib/CBLAS/include" ^
+  -DCBLAS_LIBRARIES="D:/WinSinga/dependencies/openblas-0.2.20/lib/RELEASE" ^
+  -DProtobuf_INCLUDE_DIR="D:/WinSinga/dependencies/protobuf-2.6.1/src" ^
+  -DProtobuf_LIBRARIES="D:/WinSinga/dependencies/protobuf-2.6.1/vsprojects/x64/Release" ^
+  -DProtobuf_PROTOC_EXECUTABLE="D:/WinSinga/dependencies/protoc-2.6.1-win32/protoc.exe" ^
+  ..
+</code></pre></li>
+<li><p>Mở generated solution trong Visual Studio</p></li>
+<li><p>Thay đổi cài đặt thiết lập Settings tới Release and x64</p></li>
+<li><p>Thêm tệp tin singa_wrap.cxx từ src/api tới singa_objects project</p></li>
+<li><p>Trong singa_objects project, mở Additional Include Directories.</p></li>
+<li><p>Thêm Python bao gồm đường dẫn</p></li>
+<li><p>Thêm numpy bao gồm đường dẫn</p></li>
+<li><p>Thêm protobuf bao gồm đường dẫn</p></li>
+<li><p>Trong định nghĩa preprocessor của singa_objects project, thêm USE_GLOG</p></li>
+<li><p>Sử dụng singa_objects project</p></li>
+<li><p>Trong singa project:</p>
+<ul>
+<li>thêm singa_wrap.obj vào Thư viện Object</li>
+<li>đổi tên mục target thành _singa_wrap</li>
+<li>đổi định dạng tệp target thành .pyd</li>
+<li>đổi định dạng cấu hình sang Dynamic Library (.dll)</li>
+<li>đi tới Additional Library Directories và thêm đường dẫn vào các thư viện
+python, openblas, protobuf và glog</li>
+<li>đi tới các thư viện Dependencies bổ sung để thêm libopenblas.lib,
+libglog.lib và libprotobuf.lib</li>
+</ul></li>
+<li><p>tạo singa project</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="cài-đặt-python-module"></a><a href="#cài-đặt-python-module" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cài đặt Python module</h2>
+<ul>
+<li><p>Đổi <code>_singa_wrap.so</code> thành <code>_singa_wrap.pyd</code> trong build/python/setup.py</p></li>
+<li><p>Copy các tệp tin trong <code>src/proto/python_out</code> sang <code>build/python/singa/proto</code></p></li>
+<li><p>Không bắt buộc, tạo và kích hoạt virtual environment:</p>
+<pre><code class="hljs css language-shell">mkdir SingaEnv
+virtualenv SingaEnv
+SingaEnv\Scripts\activate
+</code></pre></li>
+<li><p>tới thư mục build/python và chạy:</p>
+<pre><code class="hljs css language-shell">python setup.py install
+</code></pre></li>
+<li><p>Sử dụng _singa_wrap.pyd, libglog.dll và libopenblas.dll bằng cách thêm chúng
+vào đường dẫn hoặc copy chúng vào thư mục gói chương trình singa trong gói
+python site-packages</p></li>
+<li><p>Xác nhận SINGA đã được cài đặt bằng cách chạy:</p>
+<pre><code class="hljs css language-shell">python -c "from singa import tensor"
+</code></pre></li>
+</ul>
+<p>Tham khảo video quá trình cài đặt tại đây:</p>
+<p><a href="https://www.youtube.com/watch?v=cteER7WeiGk"><img src="https://img.youtube.com/vi/cteER7WeiGk/0.jpg" alt="youtube video"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="chạy-unit-tests"></a><a href="#chạy-unit-tests" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Chạy Unit Tests</h2>
+<ul>
+<li><p>Trong thư mục test, tạo Visual Studio solution:</p>
+<pre><code class="hljs css language-shell">cmake -G "Visual Studio 15 2017 Win64"
+</code></pre></li>
+<li><p>Mở generated solution trong Visual Studio.</p></li>
+<li><p>Thay đổi cài đặt thiết lập Settings tới Release and x64.</p></li>
+<li><p>Tạo glog project.</p></li>
+<li><p>Trong mục test_singa project:</p>
+<ul>
+<li>Thêm USE_GLOG vào Định nghĩa Preprocessor.</li>
+<li>Trong Additional Include Directories, thêm đường dẫn của GLOG_INCLUDE_DIR,
+CBLAS_INCLUDE_DIR và Protobuf_INCLUDE_DIR đã được dùng ở bước 2 bên trên.
+Đồng thời tạo và tạo/bao gồm các thư mục.</li>
+<li>Đi tới Additional Library Directories và thêm đường dẫn vào thư viện
+openblas, protobuf và glog. Thêm build/src/singa_objects.dir/Release.</li>
+<li>Tới Thư viện Dependencies bổ sung và thêm libopenblas.lib, libglog.lib và
+libprotobuf.lib. Sửa tên của hai thư viện: gtest.lib và singa_objects.lib.</li>
+</ul></li>
+<li><p>Cài test_singa project.</p></li>
+<li><p>Sử dụng libglog.dll và libopenblas.dll bằng cách thêm chúng vào đường dẫn hoặc
+copy chúng vào thư mục test/release.</p></li>
+<li><p>Tiến hành unit tests bằng cách</p>
+<ul>
+<li>Từ dòng lệnh:</li>
+</ul>
+<pre><code class="hljs css language-shell">test_singa.exe
+</code></pre>
+<ul>
+<li>Từ Visual Studio:
+<ul>
+<li>ấn chuột phải tại test_singa project và chọn 'Set as StartUp Project'.</li>
+<li>Từ mục Debug menu, chọn 'Start Without Debugging'</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Tham khảo video hướng dẫn chạy unit tests tại đây:</p>
+<p><a href="https://www.youtube.com/watch?v=393gPtzMN1k"><img src="https://img.youtube.com/vi/393gPtzMN1k/0.jpg" alt="youtube video"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="cài-đặt-hỗ-trợ-gpu-với-cuda"></a><a href="#cài-đặt-hỗ-trợ-gpu-với-cuda" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cài đặt hỗ trợ GPU với CUDA</h2>
+<p>Trong mục này, chúng tôi sẽ mở rộng các bước phía trên để sử dụng GPU.</p>
+<h3><a class="anchor" aria-hidden="true" id="cài-đặt-thư-viện-dependencies-1"></a><a href="#cài-đặt-thư-viện-dependencies-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cài đặt thư viện Dependencies</h3>
+<p>Ngoài các thư viện dependencies ở mục 1 phía trên, chúng ta cần:</p>
+<ul>
+<li><p>CUDA</p>
+<p>Tải phiên bản phù hợp như 9.1 từ <a href="https://developer.nvidia.com/cuda-downloads">https://developer.nvidia.com/cuda-downloads</a> .
+Đảm bảo bạn cài đặt Visual Studio integration module.</p></li>
+<li><p>cuDNN</p>
+<p>Tải phiên bản phù hợp như 7.1 từ <a href="https://developer.nvidia.com/cudnn">https://developer.nvidia.com/cudnn</a></p></li>
+<li><p>cnmem:</p>
+<ul>
+<li>Tải phiên bản mới nhất tại <a href="https://github.com/NVIDIA/cnmem">https://github.com/NVIDIA/cnmem</a></li>
+<li>Tạo Visual Studio solution:</li>
+</ul>
+<pre><code class="hljs css language-shell">cmake -G "Visual Studio 15 2017 Win64"
+</code></pre>
+<ul>
+<li>Mở generated solution trong Visual Studio.</li>
+<li>Thay đổi cài đặt thiết lập Settings tới Release and x64.</li>
+<li>Tạo cnmem project.</li>
+</ul></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="cài-singa-từ-nguồn-1"></a><a href="#cài-singa-từ-nguồn-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cài SINGA từ nguồn</h3>
+<ul>
+<li>Gọi hàm cmake và thêm đường dẫn vào trong system của bạn, tương tự như ví dụ
+sau:
+<pre><code class="hljs css language-shell">cmake -G "Visual Studio 15 2017 Win64" ^
+  -DGLOG_INCLUDE_DIR="D:/WinSinga/dependencies/glog-0.3.5/src/windows" ^
+  -DGLOG_LIBRARIES="D:/WinSinga/dependencies/glog-0.3.5/x64/Release" ^
+  -DCBLAS_INCLUDE_DIR="D:/WinSinga/dependencies/openblas-0.2.20/lapack-netlib/CBLAS/include" ^
+  -DCBLAS_LIBRARIES="D:/WinSinga/dependencies/openblas-0.2.20/lib/RELEASE" ^
+  -DProtobuf_INCLUDE_DIR="D:/WinSinga/dependencies/protobuf-2.6.1/src" ^
+  -DProtobuf_LIBRARIES="D:\WinSinga/dependencies/protobuf-2.6.1/vsprojects/x64/Release" ^
+  -DProtobuf_PROTOC_EXECUTABLE="D:/WinSinga/dependencies/protoc-2.6.1-win32/protoc.exe" ^
+  -DCUDNN_INCLUDE_DIR=D:\WinSinga\dependencies\cudnn-9.1-windows10-x64-v7.1\cuda\include ^
+  -DCUDNN_LIBRARIES=D:\WinSinga\dependencies\cudnn-9.1-windows10-x64-v7.1\cuda\lib\x64 ^
+  -DSWIG_DIR=D:\WinSinga\dependencies\swigwin-3.0.12 ^
+  -DSWIG_EXECUTABLE=D:\WinSinga\dependencies\swigwin-3.0.12\swig.exe ^
+  -DUSE_CUDA=YES ^
+  -DCUDNN_VERSION=7 ^
+  ..
+</code></pre></li>
+</ul>
+<ul>
+<li><p>Tạo swig interfaces cho C++ và Python: Tới mục src/api</p>
+<pre><code class="hljs css language-shell">swig -python -c++ singa.i
+</code></pre></li>
+<li><p>Mở generated solution trong Visual Studio</p></li>
+<li><p>Thay đổi cài đặt thiết lập Settings tới Release and x64.</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="tạo-singa_objects"></a><a href="#tạo-singa_objects" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tạo singa_objects</h4>
+<ul>
+<li>Thêm tệp tin singa_wrap.cxx từ src/api tới singa_objects project</li>
+<li>Trong singa_objects project, mở Additional Include Directories.</li>
+<li>Thêm Python bao gồm đường dẫn</li>
+<li>Thêm numpy bao gồm đường dẫn</li>
+<li>Thêm protobuf bao gồm đường dẫn</li>
+<li>Bổ sung bao gồm đường dẫn cho CUDA, cuDNN và cnmem</li>
+<li>Trong định nghĩa preprocessor của singa_objects project, thêm USE_GLOG,
+USE_CUDA và USE_CUDNN. Xoá DISABLE_WARNINGS.</li>
+<li>Tạo singa_objects project</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="tạo-singa-kernel"></a><a href="#tạo-singa-kernel" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tạo singa-kernel</h4>
+<ul>
+<li><p>Tạo một Visual Studio project mới dưới dạng &quot;CUDA 9.1 Runtime&quot;. Đặt tên dạng
+như singa-kernel.</p></li>
+<li><p>project này chứa sẵn một tệp tin là kernel.cu. Xoá tệp tin này khỏi project.</p></li>
+<li><p>Thêm tệp tin này: src/core/tensor/math_kernel.cu</p></li>
+<li><p>Trong mục cài đặt project:</p>
+<ul>
+<li>Đặt Platform Toolset sang dạng &quot;Visual Studio 2015 (v140)&quot;</li>
+<li>Đổi Configuration Type sang &quot; Static Library (.lib)&quot;</li>
+<li>Trong mục Include Directories, thêm vào build/include.</li>
+</ul></li>
+<li><p>Tạo singa-kernel project</p></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="cài-đặt-singa"></a><a href="#cài-đặt-singa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cài đặt singa</h4>
+<ul>
+<li><p>Trong singa project:</p>
+<ul>
+<li>thêm singa_wrap.obj vào Object Libraries</li>
+<li>đổi tên target thành _singa_wrap</li>
+<li>đổi định dạng target sang .pyd</li>
+<li>đổi định dạng cấu hình sang Dynamic Library (.dll)</li>
+<li>đi tới Additional Library Directories và thêm đường dẫn vào các thư viện
+python, openblas, protobuf và glog</li>
+<li>thêm các đường dẫn thư viện cho singa-kernel, cnmem, cuda và cudnn.</li>
+<li>đi tới các thư viện Dependencies bổ sung để thêm libopenblas.lib,
+libglog.lib và libprotobuf.lib</li>
+<li>Đồng thời thêm: singa-kernel.lib, cnmem.lib, cudnn.lib, cuda.lib ,
+cublas.lib, curand.lib và cudart.lib.</li>
+</ul></li>
+<li><p>tạo singa project</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="cài-đặt-python-module-1"></a><a href="#cài-đặt-python-module-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cài đặt Python module</h3>
+<ul>
+<li><p>Đổi tên _singa_wrap.so sang _singa_wrap.pyd trong mục build/python/setup.py</p></li>
+<li><p>Copy các tệp tin trong src/proto/python_out sang build/python/singa/proto</p></li>
+<li><p>Không bắt buộc, tạo và kích hoạt virtual environment:</p>
+<pre><code class="hljs css language-shell">mkdir SingaEnv
+virtualenv SingaEnv
+SingaEnv\Scripts\activate
+</code></pre></li>
+<li><p>tới thư mục build/python và chạy:</p>
+<pre><code class="hljs css language-shell">python setup.py install
+</code></pre></li>
+<li><p>Sử dụng _singa_wrap.pyd, libglog.dll, libopenblas.dll, cnmem.dll, CUDA
+Runtime (e.g. cudart64_91.dll) và cuDNN (e.g. cudnn64_7.dll) bằng cách thêm
+chúng vào đường dẫn hoặc copy chúng vào thư mục gói chương trình singa trong
+gói python site-packages</p></li>
+<li><p>Xác nhận SINGA đã được cài đặt bằng cách chạy:</p>
+<pre><code class="hljs css language-shell">python -c "from singa import device; dev = device.create_cuda_gpu()"
+</code></pre></li>
+</ul>
+<p>Tham khảo video hướng dẫn cho mục này tại đây:</p>
+<p><a href="https://www.youtube.com/watch?v=YasKVjRtuDs"><img src="https://img.youtube.com/vi/YasKVjRtuDs/0.jpg" alt="youtube video"></a></p>
+<h3><a class="anchor" aria-hidden="true" id="run-unit-tests"></a><a href="#run-unit-tests" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Run Unit Tests</h3>
+<ul>
+<li><p>Trong thư mục tests, tạo Visual Studio solution:</p>
+<pre><code class="hljs css language-shell">cmake -G "Visual Studio 15 2017 Win64"
+</code></pre></li>
+<li><p>Mở solution được tạo trong Visual Studio, hoặc thêm project vào singa solution
+đã được tạo ở bước 5.2</p></li>
+<li><p>Thay đổi cài đặt thiết lập Settings tới Release and x64.</p></li>
+<li><p>Tạo glog project.</p></li>
+<li><p>Trong test_singa project:</p>
+<ul>
+<li>Thêm USE_GLOG; USE_CUDA; USE_CUDNN vào Định Nghĩa Preprocessor.</li>
+<li>Trong Thư viện Dependencies bổ sung, thêm đường dẫn của GLOG_INCLUDE_DIR,
+CBLAS_INCLUDE_DIR và Protobuf_INCLUDE_DIR đã được sử dụng tại bước 5.2 ở
+trên. Và thêm build, build/include, CUDA và cuDNN bao gồm thư mục.</li>
+<li>Tới Thư viện Dependencies bổ sung và thêm đường dẫn của thư viện openblas,
+protobuf và glog. Và thêm đường dẫn thư viện của
+build/src/singa_objects.dir/Release, singa-kernel, cnmem, CUDA và cuDNN.</li>
+<li>Tới Thư viện Dependencies bổ sung và thêm libopenblas.lib; libglog.lib;
+libprotobuf.lib; cnmem.lib; cudnn.lib; cuda.lib; cublas.lib; curand.lib;
+cudart.lib; singa-kernel.lib. Sửa tên của hai thư viện: gtest.lib và
+singa_objects.lib.</li>
+</ul></li>
+</ul>
+<ul>
+<li><p>Tạo test_singa project.</p></li>
+<li><p>Sử dụng libglog.dll, libopenblas.dll, cnmem.dll, cudart64_91.dll và
+cudnn64_7.dll bằng cách thêm chúng vào đường dẫn hoặc copy chúng vào thư mục
+test/release.</p></li>
+</ul>
+<ul>
+<li><p>Tiến hành unit tests bằng cách:</p>
+<ul>
+<li><p>Từ dòng lệnh:</p>
+<pre><code class="hljs css language-shell">test_singa.exe
+</code></pre></li>
+<li><p>Từ Visual Studio:</p>
+<ul>
+<li>ấn chuột phải tại test_singa project và chọn 'Set as StartUp Project'.</li>
+<li>Từ mục Debug menu, chọn 'Start Without Debugging'</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Tham khảo video hướng dẫn chạy unit tests tại đây:</p>
+<p><a href="https://www.youtube.com/watch?v=YOjwtrvTPn4"><img src="https://img.youtube.com/vi/YOjwtrvTPn4/0.jpg" alt="youtube video"></a></p>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#cài-đặt-thư-viện-dependencies">Cài đặt thư viện dependencies</a></li><li><a href="#cài-singa-từ-nguồn">Cài SINGA từ nguồn</a></li><li><a href="#cài-đặt-python-module">Cài đặt Python module</a></li><li><a href="#chạy-unit-tests">Chạy Unit Tests</a></li><li><a href="#cài-đặt-hỗ-trợ-gpu-với-cuda">Cài đặt hỗ trợ GPU với CUDA</a><ul class="toc-headings"><li><a href="#cài-đặt-thư-viện-dependencies-1">Cài đặt thư viện Dependencies</a></li><li><a href="#cài-singa-từ-nguồn-1">Cài SINGA từ nguồn</a></li><li><a href="#cài-đặt-python-module-1">Cài đặt Python module</a></li><li><a href="#run-unit-tests">Run Unit Tests</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2023
+   The Apache Software Foundation. All rights reserved.
+   Apache SINGA, Apache, the Apache feather logo, and
+   the Apache SINGA project logos are trademarks of The
+   Apache Software Foundation. All other marks mentioned
+   may be trademarks or registered trademarks of their
+   respective owners.</section></div></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '45202133606c0b5fa6d21cddc4725dd8',
+                indexName: 'apache_singa',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:3.0.0"]}
+              });
+            </script></body></html>

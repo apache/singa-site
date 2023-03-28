@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Software Stack · Apache SINGA</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta name="docsearch:version" content="4.0.0_Viet"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Software Stack · Apache SINGA"/><meta property="og:type" content="website"/><meta property="og:url" content="https://singa.apache.org/"/><meta property="og:description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta property="og:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://singa.apache.org/blog/atom.xml" title="Apache SINGA Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://singa.apache.org/blog/feed.xml" title="Apache SINGA Blog RSS Feed"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&amp;family=Source+Sans+Pro:wght@200;300&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/singa.png" alt="Apache SINGA"/></a><a href="/versions"><h3>4.0.0_Viet</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/4.0.0_Viet/installation" target="_self">Docs</a></li><li class=""><a href="/docs/4.0.0_Viet/source-repository" target="_self">Community</a></li><li class=""><a href="/blog/" target="_self">News</a></li><li class=""><a href="https://apache-singa.readthedocs.io/en/latest/" target="_self">API</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/apache/singa" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Getting Started</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/4.0.0_Viet/installation">Cài đặt</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/4.0.0_Viet/software-stack">Software Stack</a></li><li class="navListItem"><a class="navItem" href="/docs/4.0.0_Viet/examples">Ví Dụ</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Guides</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/4.0.0_Viet/device">Device</a></li><li class="navListItem"><a class="navItem" href="/docs/4.0.0_Viet/tensor">Tensor</a></li><li class="navListItem"><a class="navItem" href="/docs/4.0.0_Viet/autograd">Autograd</a></li><li class="navListItem"><a class="navItem" href="/docs/4.0.0_Viet/optimizer">Optimizer</a></li><li class="navListItem"><a class="navItem" href="/docs/4.0.0_Viet/graph">Model</a></li><li class="navListItem"><a class="navItem" href="/docs/4.0.0_Viet/onnx">ONNX</a></li><li class="navListItem"><a class="navItem" href="/docs/4.0.0_Viet/dist-train">Distributed Training</a></li><li class="navListItem"><a class="navItem" href="/docs/4.0.0_Viet/time-profiling">Time Profiling</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Development</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/4.0.0_Viet/downloads">Tải SINGA</a></li><li class="navListItem"><a class="navItem" href="/docs/4.0.0_Viet/build">Cài đặt SINGA từ Nguồn (Source)</a></li><li class="navListItem"><a class="navItem" href="/docs/4.0.0_Viet/contribute-code">Tham gia viết code</a></li><li class="navListItem"><a class="navItem" href="/docs/4.0.0_Viet/contribute-docs">Tham gia chỉnh sửa Hướng Dẫn Sử Dụng</a></li><li class="navListItem"><a class="navItem" href="/docs/4.0.0_Viet/how-to-release">Chuẩn bị trước khi phát hành</a></li><li class="navListItem"><a class="navItem" href="/docs/4.0.0_Viet/git-workflow">Quy Trình Sử Dụng Git</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/software-stack.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Software Stack</h1></header><article><div><span><!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  -->
+<p>Cấu trúc phần mềm của SINGA bao gồm hai cấp độ chính, cấp thấp backend classes
+và cấp giao diện Python. Hình 1 mô tả chúng cùng với phần cứng. Cấu tạo backend
+cung cấp cấu trúc dữ liệu cơ bản cho các mô hình deep learning, khái quát phần
+cứng để kế hoạch và thực hiện các phép tính, trong khi thành phần communication
+dùng cho distributed training. Giao diện Python tập hợp cấu trúc dữ liệu CPP và
+cung cấp các classes cấp cao bổ sung cho việc train neural network, giúp tiện
+lợi hơn khi thực hiện các mô hình neural network phức tạp.</p>
+<p>Sau đây, chúng tôi giới thiệu cấu trúc phần mềm từ dưới lên.</p>
+<p><img src="/docs/assets/singav3.1-sw.png" alt="Cấu trúc phần mềm SINGA V3"> <br/> <strong>Hình 1 - Cấu trúc
+phần mềm SINGA V3.</strong></p>
+<h2><a class="anchor" aria-hidden="true" id="backend-cấp-thấp"></a><a href="#backend-cấp-thấp" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Backend cấp thấp</h2>
+<h3><a class="anchor" aria-hidden="true" id="device"></a><a href="#device" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Device</h3>
+<p>Mỗi trường hợp <code>Device</code>, hay thiết bị, được tạo ra từ một thiết bị phần cứng,
+v.d GPU hay CPU. <code>Device</code> quản lý bộ nhớ của cấu trúc dữ liệu, và lên kế hoạch
+hoạt động cho việc thực hiện, v.d, trên CUDA streams hay CPU threads. Dựa trên
+phần cứng và ngôn ngữ lập trình của nó, SINGA sử dụng các loại device cụ thể
+sau:</p>
+<ul>
+<li><strong>CudaGPU</strong> tượng trưng cho cạc Nvidia GPU. Đơn vị sử dụng là CUDA streams.</li>
+<li><strong>CppCPU</strong> là một CPU thông thường. Đơn vị sử dụng là CPU threads.</li>
+<li><strong>OpenclGPU</strong> là cạc GPU thông thường cho cả Nvidia và AMD. Đơn vị sử dụng là
+CommandQueues. Do OpenCL tương thích với rất nhiều thiết bị phần cứng, như
+FPGA và ARM, OpenclGPU có thể phù hợp với các thiết bị phần cứng khác.</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="tensor"></a><a href="#tensor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tensor</h3>
+<p>Hàm <code>Tensor</code> class là một array đa chiều, lưu trữ biến models, như hình ảnh đầu
+vào và bản đồ đặc tính của convolution layer. Mỗi hàm <code>Tensor</code> (v.d một tensor)
+được đặt trong một thiết bị, giúp quản lý bộ nhớ của tensor và lên kế hoạch
+(phép tính) việc thực hiện với mỗi tensor. Hầu hết phép toán trong machine
+learning có thể thể hiện (dày hoặc mỏng) dựa trên nghĩa và việc sử dụng tensor.
+Bởi vậy SINGA có thể chạy đa dạng nhiều mô hình, bao gồm deep learning và các mô
+hình machine learning truyền thống khác.</p>
+<h3><a class="anchor" aria-hidden="true" id="hàm-operator"></a><a href="#hàm-operator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hàm Operator</h3>
+<p>Có hai dạng hàm operators cho tensors, đại số tuyến tính (linear algebra) như
+nhân ma trận (matrix multiplication), và các hàm riêng của neural network như
+convolution và pooling. Các hàm đại số tuyến tính được dùng như <code>Tensor</code>
+functions và được áp dụng riêng rẽ với các thiết bị phần cứng khác nhau.</p>
+<ul>
+<li>CppMath (tensor_math_cpp.h) thực hiện hoạt động tensor sử dụng Cpp cho CppCPU</li>
+<li>CudaMath (tensor_math_cuda.h) thực hiện hoạt động tensor sử dụng CUDA cho
+CudaGPU</li>
+<li>OpenclMath (tensor_math_opencl.h) thực hiện hoạt động tensor sử dụng OpenCL
+cho OpenclGPU</li>
+</ul>
+<p>Các toán tử neural network cụ thể cũng được sử dụng riêng rẽ như:</p>
+<ul>
+<li>GpuConvFoward (convolution.h) thực hiện hàm forward function của convolution
+qua CuDNN trên Nvidia GPU.</li>
+<li>CpuConvForward (convolution.h) thực hiện hàm forward function của convolution
+qua CPP trên CPU.</li>
+</ul>
+<p>Thông thường, người dùng tạo một hàm <code>Device</code> và sử dụng nó để tạo ra các hàm
+<code>Tensor</code>. Khi gọi chức năng Tensor hoặc dùng trong neural network, việc thực
+hiện tương ứng cho thiết bị sử dụng sẽ được gọi. Nói cách khác, việc áp dụng các
+toán tử là rõ ràng với người dùng.</p>
+<p>Việc dùng Tensor và Device có thể được áp dụng rộng hơn cho đa dạng thiết bị
+phần cứng<br>
+sử dụng ngôn ngữ lập trình. Mỗi thiết bị phần cứng mới sẽ được hỗ trợ bằng cách
+thêm một Device subclass mới và việc áp dụng tương ứng với các toán tử
+operators.</p>
+<p>Tối ưu hoá cho tốc độ và bộ nhớ được thực hiện bởi <code>Scheduler</code> và <code>MemPool</code> của
+<code>Device</code>. Ví dụ, <code>Scheduler</code> tạo ra một <a href="./graph">computational graph</a> dựa theo
+thư viện chương trình của toán tử operators. Sau đó nó có thể tối ưu lệnh thực
+hiện của toán tử trong bộ nhớ chia sẻ và song song.</p>
+<h3><a class="anchor" aria-hidden="true" id="communicator"></a><a href="#communicator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Communicator</h3>
+<p><code>Communicator</code> là để hỗ trợ <a href="./dist-train">distributed training</a>. Nó áp dụng
+communication protocols sử dụng sockets, MPI và NCCL. Thường người dùng chỉ cần
+gọi APIs cấp cao như <code>put()</code> và <code>get()</code> để gửi và nhận tensors. Tối ưu hoá
+Communication cho cấu trúc liên kết, kích cỡ tin nhắn, v.v được thực hiện nội
+bộ.</p>
+<h2><a class="anchor" aria-hidden="true" id="giao-diện-python"></a><a href="#giao-diện-python" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Giao diện Python</h2>
+<p>Tất cả thành phần backend được thể hiện dạng Python modules thông qua SWIG. Thêm
+vào đó, các classes sau được thêm vào để hỗ trợ việc áp dụng cho các networks
+phức tạp.</p>
+<h3><a class="anchor" aria-hidden="true" id="opt"></a><a href="#opt" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Opt</h3>
+<p><code>Opt</code> và các lớp con áp dụng phương pháp (như SGD) để cập nhật các giá trị tham
+số model sử dụng tham số gradients. Một lớp con <a href="./dist-train">DistOpt</a> đồng bộ
+gradients qua các workers trong distributed training bằng cách gọi phương pháp
+từ <code>Communicator</code>.</p>
+<h3><a class="anchor" aria-hidden="true" id="hàm-operator-1"></a><a href="#hàm-operator-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hàm Operator</h3>
+<p>Hàm <code>Operator</code> gói nhiều functions khác nhau sử dụng toán tử Tensor hoặc neural
+network từ backend. Ví dụ, hàm forward function và backward function <code>ReLU</code> tạo
+ra toán tử <code>ReLU</code> operator.</p>
+<h3><a class="anchor" aria-hidden="true" id="layer"></a><a href="#layer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Layer</h3>
+<p><code>Layer</code> và các lớp con gói các toán tử operators bằng tham số. Ví dụ,
+convolution và linear operators có tham số weight và bias parameters. Tham số
+được duy trì bởi các lớp <code>Layer</code> tương ứng.</p>
+<h3><a class="anchor" aria-hidden="true" id="autograd"></a><a href="#autograd" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Autograd</h3>
+<p><a href="./autograd">Autograd</a> sử dụng
+<a href="https://rufflewind.com/2016-12-30/reverse-mode-automatic-differentiation">reverse-mode automatic differentiation</a>
+bằng cách ghi nhớ hoạt động của hàm forward functions của các toán tử rồi tự
+động gọi hàm backward functions ở chiều ngược lại. Tất cả các hàm functions có
+thể được hỗ trợ bởi <code>Scheduler</code> để tạo ra một <a href="./graph">computational graph</a>
+nhằm tối ưu hoá hiệu quả và bộ nhớ.</p>
+<h3><a class="anchor" aria-hidden="true" id="model"></a><a href="#model" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Model</h3>
+<p><a href="./graph">Model</a> cung cấp giao diện cơ bản để thực hiện các mô hình models mới.
+Bạn chỉ cần dùng <code>Model</code> và định nghĩa việc thực hiện forward propagation của
+model bằng cách tạo và gọi các layers của toán tử. <code>Model</code> sẽ thực hiện autograd
+và tự động cập nhật tham số thông qua <code>Opt</code> trong khi dữ liệu để training được
+bơm vào đó. Với <code>Model</code> API, SINGA có nhiều lợi thế trong cả lập trình mệnh lệnh
+và lập trình khai báo. Người dùng sử dụng một hệ thống sử dụng <a href="./graph">Model</a>
+API theo dạng lập trình mệnh lệnh như PyTorch. Khác với PyTorch tạo lại phép
+thực thi operations ở mỗi vòng lặp, SINGA hỗ trợ phép thực thi qua cách tạo một
+computational graph hàm súc (khi tính năng này được sử dụng) sau vòng lặp đầu
+tiên. Graph tương tự như đã được tạo bởi các thư viện sử dụng lập trình khai
+báo, như TensorFlow. Vì thế, SINGA có thể áp dụng các kĩ thuật tối ưu hoá bộ nhớ
+và tốc độ qua computational graph.</p>
+<h3><a class="anchor" aria-hidden="true" id="onnx"></a><a href="#onnx" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ONNX</h3>
+<p>Để hỗ trợ ONNX, SINGA áp dụng một <a href="./onnx">sonnx</a> module, bao gồm:</p>
+<ul>
+<li>SingaFrontend để lưu SINGA model ở định dạng onnx.</li>
+<li>SingaBackend để tải model định dạng onnx sang SINGA cho training và inference.</li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/4.0.0_Viet/installation"><span class="arrow-prev">← </span><span>Installation</span></a><a class="docs-next button" href="/docs/4.0.0_Viet/examples"><span>Examples</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#backend-cấp-thấp">Backend cấp thấp</a><ul class="toc-headings"><li><a href="#device">Device</a></li><li><a href="#tensor">Tensor</a></li><li><a href="#hàm-operator">Hàm Operator</a></li><li><a href="#communicator">Communicator</a></li></ul></li><li><a href="#giao-diện-python">Giao diện Python</a><ul class="toc-headings"><li><a href="#opt">Opt</a></li><li><a href="#hàm-operator-1">Hàm Operator</a></li><li><a href="#layer">Layer</a></li><li><a href="#autograd">Autograd</a></li><li><a href="#model">Model</a></li><li><a href="#onnx">ONNX</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2023
+   The Apache Software Foundation. All rights reserved.
+   Apache SINGA, Apache, the Apache feather logo, and
+   the Apache SINGA project logos are trademarks of The
+   Apache Software Foundation. All other marks mentioned
+   may be trademarks or registered trademarks of their
+   respective owners.</section></div></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '45202133606c0b5fa6d21cddc4725dd8',
+                indexName: 'apache_singa',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:3.0.0"]}
+              });
+            </script></body></html>
