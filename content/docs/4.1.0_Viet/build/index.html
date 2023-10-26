@@ -1,0 +1,440 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Cài đặt SINGA từ Nguồn (Source) · Apache SINGA</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta name="docsearch:version" content="4.1.0_Viet"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Cài đặt SINGA từ Nguồn (Source) · Apache SINGA"/><meta property="og:type" content="website"/><meta property="og:url" content="https://singa.apache.org/"/><meta property="og:description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta property="og:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://singa.apache.org/blog/atom.xml" title="Apache SINGA Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://singa.apache.org/blog/feed.xml" title="Apache SINGA Blog RSS Feed"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&amp;family=Source+Sans+Pro:wght@200;300&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/singa.png" alt="Apache SINGA"/></a><a href="/versions"><h3>4.1.0_Viet</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/4.1.0_Viet/installation" target="_self">Docs</a></li><li class=""><a href="/docs/4.1.0_Viet/source-repository" target="_self">Community</a></li><li class=""><a href="/blog/" target="_self">News</a></li><li class=""><a href="https://apache-singa.readthedocs.io/en/latest/" target="_self">API</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/apache/singa" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Development</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/4.1.0_Viet/installation">Cài đặt</a></li><li class="navListItem"><a class="navItem" href="/docs/4.1.0_Viet/software-stack">Software Stack</a></li><li class="navListItem"><a class="navItem" href="/docs/4.1.0_Viet/examples">Ví Dụ</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Guides</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/4.1.0_Viet/device">Device</a></li><li class="navListItem"><a class="navItem" href="/docs/4.1.0_Viet/tensor">Tensor</a></li><li class="navListItem"><a class="navItem" href="/docs/4.1.0_Viet/autograd">Autograd</a></li><li class="navListItem"><a class="navItem" href="/docs/4.1.0_Viet/optimizer">Optimizer</a></li><li class="navListItem"><a class="navItem" href="/docs/4.1.0_Viet/graph">Model</a></li><li class="navListItem"><a class="navItem" href="/docs/4.1.0_Viet/onnx">ONNX</a></li><li class="navListItem"><a class="navItem" href="/docs/4.1.0_Viet/dist-train">Distributed Training</a></li><li class="navListItem"><a class="navItem" href="/docs/4.1.0_Viet/time-profiling">Time Profiling</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Development</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/4.1.0_Viet/downloads">Tải SINGA</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/4.1.0_Viet/build">Cài đặt SINGA từ Nguồn (Source)</a></li><li class="navListItem"><a class="navItem" href="/docs/4.1.0_Viet/contribute-code">Tham gia viết code</a></li><li class="navListItem"><a class="navItem" href="/docs/4.1.0_Viet/contribute-docs">Tham gia chỉnh sửa Hướng Dẫn Sử Dụng</a></li><li class="navListItem"><a class="navItem" href="/docs/4.1.0_Viet/how-to-release">Chuẩn bị trước khi phát hành</a></li><li class="navListItem"><a class="navItem" href="/docs/4.1.0_Viet/git-workflow">Quy Trình Sử Dụng Git</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/build.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Cài đặt SINGA từ Nguồn (Source)</h1></header><article><div><span><!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  -->
+<p>Các tệp nguồn có thể được tải dưới dạng
+<a href="https://dist.apache.org/repos/dist/dev/singa/">tar.gz file</a>, hoặc git repo</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> git <span class="hljs-built_in">clone</span> https://github.com/apache/singa.git</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">cd</span> singa/</span>
+</code></pre>
+<p>Nếu bạn muốn tham gia đóng góp code cho SINGA, tham khảo
+<a href="/docs/4.1.0_Viet/contribute-code">mục contribute-code</a> với các bước làm và yêu cầu kĩ thuật.</p>
+<h2><a class="anchor" aria-hidden="true" id="sử-dụng-conda-để-cài-singa"></a><a href="#sử-dụng-conda-để-cài-singa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sử dụng Conda để cài SINGA</h2>
+<p>Conda-build là phần mềm giúp cài đặt thư viện chương trình từ dữ liệu đám mây
+anaconda và thực hiện các tập lệnh tạo chương trình.</p>
+<p>Để cài đặt conda-build (sau khi cài conda)</p>
+<pre><code class="hljs css language-shell">conda install conda-build
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="tạo-phiên-bản-cpu"></a><a href="#tạo-phiên-bản-cpu" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tạo phiên bản CPU</h3>
+<p>Để tạo phiên bản CPU cho SINGA</p>
+<pre><code class="hljs css language-shell">conda build tool/conda/singa/
+</code></pre>
+<p>Lệnh trên đã được kiểm tra trên Ubuntu (14.04, 16.04 và 18.04) và macOS 10.11.
+Tham khảo <a href="https://travis-ci.org/apache/singa">trang Travis-CI</a> để biết thêm chi
+tiết.</p>
+<h3><a class="anchor" aria-hidden="true" id="tạo-phiên-bản-gpu"></a><a href="#tạo-phiên-bản-gpu" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tạo phiên bản GPU</h3>
+<p>Để tạo phiên bản GPU cho SINGA, máy để cài phải có Nvida GPU, và CUDA driver (&gt;=
+384.81), phải được cài đặt CUDA toolkit (&gt;=9) và cuDNN (&gt;=7). Hai Docker images
+dưới đây cung cấp environment để chạy:</p>
+<ol>
+<li>apache/singa:conda-cuda9.0</li>
+<li>apache/singa:conda-cuda10.0</li>
+</ol>
+<p>Sau khi environment để chạy đã sẵn sàng, bạn cần phải export phiên bản CUDA
+trước, sau đó chạy lệnh conda để cài SINGA:</p>
+<pre><code class="hljs css language-shell">export CUDA=x.y (e.g. 9.0)
+conda build tool/conda/singa/
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="sau-khi-chạy-chương-trình"></a><a href="#sau-khi-chạy-chương-trình" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sau khi chạy chương trình</h3>
+<p>Vị trí đặt tệp tin của gói chương trình được tạo (<code>.tar.gz</code>) hiển thị trên màn
+hình. Gói chương trình được tạo có thể được cài đặt trực tiếp,</p>
+<pre><code class="hljs css language-shell">conda install -c conda-forge --use-local &lt;path to the package file&gt;
+</code></pre>
+<p>hoặc tải lên dữ liệu đám mây anaconda cloud để người dùng khác có thể tải và cài
+đặt. Bạn cần phải đăng kí một tài khoản trên anaconda để có thể
+<a href="https://docs.anaconda.com/anaconda-cloud/user-guide/getting-started/">tải lên gói chương trình</a>.</p>
+<pre><code class="hljs css language-shell">conda install anaconda-client
+anaconda login
+anaconda upload -l main &lt;path to the package file&gt;
+</code></pre>
+<p>Sau khi tải gói chương trình lên dữ liệu đám mây, bạn có thể tìm thấy gói trên
+website của <a href="https://anaconda.org/">Anaconda Cloud</a> hoặc qua lệnh</p>
+<pre><code class="hljs css language-shell">conda search -c &lt;anaconda username&gt; singa
+</code></pre>
+<p>Mỗi gói chương trình của SINGA đuợc nhận diện theo phiên bản hoặc dòng lệnh cài
+đặt. Để cài một gói chương trình SINGA cụ thể, bạn cần phải cung cấp toàn bộ
+thông tin, vd.</p>
+<pre><code class="hljs css language-shell">conda install -c &lt;anaconda username&gt; -c conda-forge singa=2.1.0.dev=cpu_py36
+</code></pre>
+<p>Để cho lệnh cài đặt không phức tạp, bạn có thể tạo các gói chương trình bổ sung
+sau dựa trên các gói chương trình cho SINGA CPU và GPU mới nhất .</p>
+<pre><code class="hljs css language-console"><span class="hljs-meta">#</span><span class="bash"> <span class="hljs-keyword">for</span> singa-cpu</span>
+conda build tool/conda/cpu/  --python=3.6
+conda build tool/conda/cpu/  --python=3.7
+<span class="hljs-meta">#</span><span class="bash"> <span class="hljs-keyword">for</span> singa-gpu</span>
+conda build tool/conda/gpu/  --python=3.6
+conda build tool/conda/gpu/  --python=3.7
+</code></pre>
+<p>Bởi vậy, khi bạn chạy</p>
+<pre><code class="hljs css language-shell">conda install -c &lt;anaconda username&gt; -c conda-forge singa-xpu
+</code></pre>
+<p>(<code>xpu</code> nghĩa là hoặc 'cpu' hoặc 'gpu'), gói SINGA tương ứng thực sự được cài đặt
+như một library phụ thuộc.</p>
+<h2><a class="anchor" aria-hidden="true" id="sử-dụng-các-phương-tiện-cơ-bản-để-cài-đặt-singa-trên-ubuntu"></a><a href="#sử-dụng-các-phương-tiện-cơ-bản-để-cài-đặt-singa-trên-ubuntu" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sử dụng các phương tiện cơ bản để cài đặt SINGA trên Ubuntu</h2>
+<p>Tham khảo
+<a href="https://github.com/apache/singa/blob/master/tool/docker/devel/ubuntu/cuda9/Dockerfile#L30">Dockerfiles</a>
+của SINGA để xem hướng dẫn cài đặt các chương trình library phụ thuộc trên
+Ubuntu 16.04. Bạn có thể tạo một Docker container sử dụng <a href="">devel images</a> và
+cài SINGA trong container. Để cài SINGA với GPU, DNNL, Python và unit tests,
+chạy lệnh theo hướng dẫn sau</p>
+<pre><code class="hljs css language-shell">mkdir build    # tại thư mục nguồn của singa
+cd build
+cmake -DENABLE_TEST=ON -DUSE_CUDA=ON -DUSE_DNNL=ON -DUSE_PYTHON3=ON ..
+make
+cd python
+pip install .
+</code></pre>
+<p>Chi tiết các lựa chọn CMake đuợc giải thích ở phần cuối cùng của trang này. Câu
+lệnh cuối cùng để cài gói Python. Bạn cúng có thể chạy <code>pip install -e .</code>, để
+tạo symlinks thay vì copy các tâp tin Python vào mục site-package.</p>
+<p>Nếu SINGA được compile với ENABLE_TEST=ON, bạn có thể chạy unit test bằng cách</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> ./bin/test_singa</span>
+</code></pre>
+<p>Bạn sẽ thấy tất cả các trường hợp test kèm theo kết quả test. Nếu SINGA thông
+qua tất cả các test, bạn đã cài đặt SINGA thành công.</p>
+<h2><a class="anchor" aria-hidden="true" id="sử-dụng-các-phương-tiện-cơ-bản-để-cài-đặt-singa-trên-centos7"></a><a href="#sử-dụng-các-phương-tiện-cơ-bản-để-cài-đặt-singa-trên-centos7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sử dụng các phương tiện cơ bản để cài đặt SINGA trên Centos7</h2>
+<p>Tạo từ nguồn sẽ khác trên Centos7 bởi tên của gói chương trình là khác nhau. Làm
+theo hướng dẫn dưới đây</p>
+<h3><a class="anchor" aria-hidden="true" id="cài-các-chương-trình-phụ-thuộc-dependent-libraries"></a><a href="#cài-các-chương-trình-phụ-thuộc-dependent-libraries" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cài các chương trình phụ thuộc (dependent libraries)</h3>
+<p>Gói/chương trình cơ bản</p>
+<pre><code class="hljs css language-shell">sudo yum install freetype-devel libXft-devel ncurses-devel openblas-devel blas-devel lapack devel atlas-devel kernel-headers unzip wget pkgconfig zip zlib-devel libcurl-devel cmake curl unzip dh-autoreconf git python-devel glog-devel protobuf-devel
+</code></pre>
+<p>Cho build-essential</p>
+<pre><code class="hljs css language-shell">sudo yum group install "Development Tools"
+</code></pre>
+<p>Để cài đặt swig</p>
+<pre><code class="hljs css language-shell">sudo yum install pcre-devel
+wget http://prdownloads.sourceforge.net/swig/swig-3.0.10.tar.gz
+tar xvzf swig-3.0.10.tar.gz
+cd swig-3.0.10.tar.gz
+./configure --prefix=${RUN}
+make
+make install
+</code></pre>
+<p>Để cài đặt gfortran</p>
+<pre><code class="hljs css language-shell">sudo yum install centos-release-scl-rh
+sudo yum --enablerepo=centos-sclo-rh-testing install devtoolset-7-gcc-gfortran
+</code></pre>
+<p>Để cài đặt pip và các gói chương trình khác</p>
+<pre><code class="hljs css language-shell">sudo yum install epel-release
+sudo yum install python-pip
+pip install matplotlib numpy pandas scikit-learn pydot
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="cài-đặt"></a><a href="#cài-đặt" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cài đặt</h3>
+<p>Làm theo bước 1-5 của <em>Use native tools để cài SINGA trên Ubuntu</em></p>
+<h3><a class="anchor" aria-hidden="true" id="kiểm-tra-testing"></a><a href="#kiểm-tra-testing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kiểm tra (testing)</h3>
+<p>Bạn có thể chạy unit tests bằng cách,</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> ./bin/test_singa</span>
+</code></pre>
+<p>Bạn sẽ thấy tất cả các trường hợp test kèm theo kết quả test. Nếu SINGA thông
+qua tất cả các test, bạn đã cài đặt SINGA thành công.</p>
+<h2><a class="anchor" aria-hidden="true" id="compile-singa-trên-windows"></a><a href="#compile-singa-trên-windows" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Compile SINGA trên Windows</h2>
+<p>Hướng dẫn cài đặt trên Windows với Python vui lòng xem tại
+<a href="/docs/4.1.0_Viet/install-win">mục install-win</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="chi-tiết-bổ-sung-về-các-lựa-chọn-biên-dịch-compilation"></a><a href="#chi-tiết-bổ-sung-về-các-lựa-chọn-biên-dịch-compilation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Chi tiết bổ sung về các lựa chọn biên dịch (compilation)</h2>
+<h3><a class="anchor" aria-hidden="true" id="use_modules-không-còn-sử-dụng"></a><a href="#use_modules-không-còn-sử-dụng" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>USE_MODULES (không còn sử dụng)</h3>
+<p>Nếu protobuf và openblas không được cài đặt, bạn có thể compile SINGA cùng với
+chúng.</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> In SINGA ROOT folder</span>
+<span class="hljs-meta">$</span><span class="bash"> mkdir build</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">cd</span> build</span>
+<span class="hljs-meta">$</span><span class="bash"> cmake -DUSE_MODULES=ON ..</span>
+<span class="hljs-meta">$</span><span class="bash"> make</span>
+</code></pre>
+<p>cmake sẽ tải OpenBlas và Protobuf (2.6.1) sau đó compile cùng với SINGA.</p>
+<p>Bạn có thể sử dụng <code>ccmake ..</code> để định dạng các lựa chọn biên dịch
+(compilation). Nếu chương trình phụ thuộc (dependent libraries) nào không có
+trong đường dẫn hệ thống mặc định,bạn cần phải export các biến environment sau:</p>
+<pre><code class="hljs css language-shell">export CMAKE_INCLUDE_PATH=&lt;path to the header file folder&gt;
+export CMAKE_LIBRARY_PATH=&lt;path to the lib file folder&gt;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="use_python"></a><a href="#use_python" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>USE_PYTHON</h3>
+<p>Là lựa chọn để compile Python wrapper cho SINGA,</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> cmake -DUSE_PYTHON=ON ..</span>
+<span class="hljs-meta">$</span><span class="bash"> make</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">cd</span> python</span>
+<span class="hljs-meta">$</span><span class="bash"> pip install .</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="use_cuda"></a><a href="#use_cuda" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>USE_CUDA</h3>
+<p>Chúng tôi khuyến khích cài đặt CUDA và
+<a href="https://developer.nvidia.com/cudnn">cuDNN</a> để chạy SINGA trên GPUs nhằm có kết
+quả tốt nhất.</p>
+<p>SINGA đã được kiểm nghiệm chạy trên CUDA 9/10, và cuDNN 7. Nếu cuDNN được cài
+đặt vào thư mục không thuộc hệ thống, vd. /home/bob/local/cudnn/, cần chạy các
+lệnh sau để cmake và runtime có thể tìm được</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">export</span> CMAKE_INCLUDE_PATH=/home/bob/<span class="hljs-built_in">local</span>/cudnn/include:<span class="hljs-variable">$CMAKE_INCLUDE_PATH</span></span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">export</span> CMAKE_LIBRARY_PATH=/home/bob/<span class="hljs-built_in">local</span>/cudnn/lib64:<span class="hljs-variable">$CMAKE_LIBRARY_PATH</span></span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">export</span> LD_LIBRARY_PATH=/home/bob/<span class="hljs-built_in">local</span>/cudnn/lib64:<span class="hljs-variable">$LD_LIBRARY_PATH</span></span>
+</code></pre>
+<p>Các lựa chọn cmake cho CUDA và cuDNN cần được kích hoạt</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">#</span><span class="bash"> các Dependent libs đã được cài đặt</span>
+<span class="hljs-meta">$</span><span class="bash"> cmake -DUSE_CUDA=ON ..</span>
+<span class="hljs-meta">$</span><span class="bash"> make</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="use_dnnl"></a><a href="#use_dnnl" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>USE_DNNL</h3>
+<p>Người dùng có thể kích hoạt DNNL để cải thiện hiệu quả cho chương trình CPU.</p>
+<p>Hướng dẫn cài đặt DNNL <a href="https://github.com/intel/mkl-dnn#installation">tại đây</a>.</p>
+<p>SINGA đã được thử nghiệm chạy trên DNNL v1.1.</p>
+<p>Để chạy SINGA với DNNL:</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">#</span><span class="bash"> các Dependent libs đã được cài đặt</span>
+<span class="hljs-meta">$</span><span class="bash"> cmake -DUSE_DNNL=ON ..</span>
+<span class="hljs-meta">$</span><span class="bash"> make</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="use_opencl"></a><a href="#use_opencl" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>USE_OPENCL</h3>
+<p>SINGA sử dụng opencl-headers và viennacl (phiên bản 1.7.1 hoặc mới hơn) để hỗ
+trợ OpenCL, có thể được cài đặt qua</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">#</span><span class="bash"> Trên Ubuntu 16.04</span>
+<span class="hljs-meta">$</span><span class="bash"> sudo apt-get install opencl-headers, libviennacl-dev</span>
+<span class="hljs-meta">#</span><span class="bash"> Trên Fedora</span>
+<span class="hljs-meta">$</span><span class="bash"> sudo yum install opencl-headers, viennacl</span>
+</code></pre>
+<p>Bên cạnh đó, bạn cần OpenCL Installable Client Driver (ICD) cho nền tảng mà bạn
+muốn chạy OpenCL.</p>
+<ul>
+<li>Với AMD và nVidia GPUs, driver package nên cài đúng bản OpenCL ICD.</li>
+<li>Với Intel CPUs và/hoặc GPUs, có thể tải driver từ
+<a href="https://software.intel.com/en-us/articles/opencl-drivers">Intel website.</a> Lưu
+ý rằng driver này chỉ hỗ trợ các phiên bản mới của CPUs và Iris GPUs.</li>
+<li>Với các bản Intel CPUs cũ hơn, bạn có thể sử dụng gói <code>beignet-opencl-icd</code>.</li>
+</ul>
+<p>Lưu ý rằng chạy OpenCL trên CPUs không được khuyến khích bởi tốc độ chậm. Di
+chuyển bộ nhớ theo trình tự tính theo từng giây (1000's của ms trên CPUs so với
+1's của ms trên GPUs).</p>
+<p>Có thể xem thêm thông tin về cách thiết lập environment có chạy OpenCL tại
+<a href="https://wiki.tiker.net/OpenCLHowTo">đây</a>.</p>
+<p>Nếu phiên bản của gói chương trình ViennaCL thấp hơn 1.7.1, bạn cần phải tạo từ
+nguồn:</p>
+<p>Clone <a href="https://github.com/viennacl/viennacl-dev">nguồn tại đây</a>, chọn (checkout)
+tag <code>release-1.7.1</code> để cài đặt. Bạn cần nhớ thêm đường dẫn vào phần <code>PATH</code> và
+tạo libraries vào <code>LD_LIBRARY_PATH</code>.</p>
+<p>Để cài SINGA với hỗ trợ OpenCL (đã thử trên SINGA 1.1):</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> cmake -DUSE_OPENCL=ON ..</span>
+<span class="hljs-meta">$</span><span class="bash"> make</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="gói-chương-trình-package"></a><a href="#gói-chương-trình-package" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GÓI CHƯƠNG TRÌNH (PACKAGE)</h3>
+<p>Cài đặt này được sử dụng để tạo gói chương trình Debian package. Để PACKAGE=ON
+và tạo gói chương trình với lệnh như sau:</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> cmake -DPACKAGE=ON</span>
+<span class="hljs-meta">$</span><span class="bash"> make package</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="câu-hỏi-thường-gặp-qa"></a><a href="#câu-hỏi-thường-gặp-qa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Câu hỏi thường gặp (Q&amp;A)</h2>
+<ul>
+<li><p>Q: Gặp lỗi khi 'import singa'</p>
+<p>A: Vui lòng kiểm tra chi tiết lỗi từ
+<code>python -c &quot;from singa import _singa_wrap&quot;</code>. Đôi khi lỗi xảy ra bởi các
+dependent libraries, vd. protobuf có nhiều phiên bản, nếu thiếu cudnn, phiên
+bản numpy sẽ không tương thích. Các bước sau đưa ra giải pháp cho từng trường
+hợp:</p>
+<ol>
+<li><p>Kiểm tra cudnn và cuda. Nếu thiếu cudnn hoặc không tương thích với phiên
+bản của wheel, bạn có thể tải phiên bản đúng của cudnn vào thư mục
+~/local/cudnn/ và</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">"export LD_LIBRARY_PATH=/home/&lt;yourname&gt;/local/cudnn/lib64:<span class="hljs-variable">$LD_LIBRARY_PATH</span>"</span> &gt;&gt; ~/.bashrc</span>
+</code></pre></li>
+<li><p>Nếu lỗi liên quan tới protobuf. Bạn có thể cài đặt (3.6.1) từ nguồn vào một
+thư mục trong máy của bạn(local). chẳng hạn ~/local/; Giải nén file tar,
+sau đó</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> ./configure --prefix=/home/&lt;yourname&gt;<span class="hljs-built_in">local</span></span>
+<span class="hljs-meta">$</span><span class="bash"> make &amp;&amp; make install</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">"export LD_LIBRARY_PATH=/home/&lt;yourname&gt;/local/lib:<span class="hljs-variable">$LD_LIBRARY_PATH</span>"</span> &gt;&gt; ~/.bashrc</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">source</span> ~/.bashrc</span>
+</code></pre></li>
+<li><p>Nếu không tìm được libs nào bao gồm python, thì taọ virtual env sử dụng
+<code>pip</code> hoặc <code>conda</code>;</p></li>
+<li><p>Nếu lỗi không do các nguyên nhân trên thì đi tới thư mục của
+<code>_singa_wrap.so</code>,</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> python</span>
+<span class="hljs-meta">&gt;</span><span class="bash">&gt; import importlib</span>
+<span class="hljs-meta">&gt;</span><span class="bash">&gt; importlib.import_module(<span class="hljs-string">'_singa_wrap'</span>)</span>
+</code></pre></li>
+</ol>
+<p>kiểm tra thông báo lỗi. Ví dụ nếu phiên bản numpy không tương thích, thông báo
+lỗi sẽ là</p>
+<pre><code class="hljs css language-shell">RuntimeError: module compiled against API version 0xb but this version of numpy is 0xa
+</code></pre>
+<p>sau đó bạn cần phải nâng cấp numpy.</p></li>
+</ul>
+<ul>
+<li><p>Q: Lỗi khi chạy <code>cmake ..</code>, không tìm được dependent libraries.</p>
+<p>A: Nếu bạn vẫn chưa cài đặt libraries đó, thì cài đặt chúng. Nếu bạn cài
+libraries trong thư mục bên ngoài thư mục system, chẳng hạn như /usr/local,
+bạn cần export các biến sau đây</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">export</span> CMAKE_INCLUDE_PATH=&lt;path to your header file folder&gt;</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">export</span> CMAKE_LIBRARY_PATH=&lt;path to your lib file folder&gt;</span>
+</code></pre></li>
+</ul>
+<ul>
+<li><p>Q: Lỗi từ <code>make</code>, vd. linking phase</p>
+<p>A: Nếu libraries nằm trong thư mục không phải là thư mục system mặc định trong
+đường dẫn, bạn cần export các biến sau</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">export</span> LIBRARY_PATH=&lt;path to your lib file folder&gt;</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">export</span> LD_LIBRARY_PATH=&lt;path to your lib file folder&gt;</span>
+</code></pre></li>
+</ul>
+<ul>
+<li><p>Q: Lỗi từ các tệp tin headers vd. 'cblas.h no such file or directory exists'</p>
+<p>A: Bạn cần bao gồm các thư mục cblas.h vào CPLUS_INCLUDE_PATH, e.g.,</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">export</span> CPLUS_INCLUDE_PATH=/opt/OpenBLAS/include:<span class="hljs-variable">$CPLUS_INCLUDE_PATH</span></span>
+</code></pre></li>
+<li><p>Q: Khi compile SINGA, gặp lỗi <code>SSE2 instruction set not enabled</code></p>
+<p>A: Bạn có thể thử lệnh sau:</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> make CFLAGS=<span class="hljs-string">'-msse2'</span> CXXFLAGS=<span class="hljs-string">'-msse2'</span></span>
+</code></pre></li>
+<li><p>Q:Gặp lỗi <code>ImportError: cannot import name enum_type_wrapper</code> từ
+google.protobuf.internal khi tôi cố gắng import các tệp tin dạng .py.</p>
+<p>A: Bạn cần cài đặt python cho protobuf, có thể cài đặt qua</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> sudo apt-get install protobuf</span>
+</code></pre></li>
+</ul>
+<p>hoặc từ nguồn</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">cd</span> /PROTOBUF/SOURCE/FOLDER</span>
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">cd</span> python</span>
+<span class="hljs-meta">$</span><span class="bash"> python setup.py build</span>
+<span class="hljs-meta">$</span><span class="bash"> python setup.py install</span>
+</code></pre>
+<ul>
+<li><p>Q: Khi tôi tạo OpenBLAS từ nguồn, tôi gặp yêu cầu cần phải có Fortran
+compiler.</p>
+<p>A: Bạn có thể compile OpenBLAS bằng cách</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> make ONLY_CBLAS=1</span>
+</code></pre>
+<p>hoặc cài dặt sử dụng</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> sudo apt-get install libopenblas-dev</span>
+</code></pre></li>
+<li><p>Q: Khi tôi tạo protocol buffer, thì bị thông báo <code>GLIBC++_3.4.20</code> không được
+tìm thấy trong <code>/usr/lib64/libstdc++.so.6</code>?</p>
+<p>A: Nghĩa là linker trong libstdc++.so.6 nhưng chương trình này thuộc về một
+phiên bản cũ hơn của GCC đã được dùng để compile và link chương trình. Chương
+trình phụ thuộc vào code viết trong phiên bản libstdc++ cập nhật thuộc về
+phiên bản mới hơn của GCC, vì vậy linker phải chỉ ra cách để cài phiên bản
+libstdc++ mới hơn được chia sẻ trong library. Cách đơn giản nhất để sửa lỗi
+này là tìm phiên bản đúng cho libstdc++ và export nó vào LD_LIBRARY_PATH. Ví
+dụ nếu GLIBC++_3.4.20 có trong output của lệnh sau</p>
+<pre><code class="hljs">  $ strings /usr/local/lib64/libstdc++.so.6|grep GLIBC++
+</code></pre>
+<p>thì bạn chỉ cần tạo biến environment</p>
+<pre><code class="hljs">  $ export LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH
+</code></pre></li>
+<li><p>Q: Khi tạo glog, nhận thông báo &quot;src/logging_unittest.cc:83:20: error:
+‘gflags’ is not a namespace-name&quot;</p>
+<p>A: Có thể do bạn đã cài gflags với một namespace khác như là &quot;google&quot;. vì thế
+glog không thể tìm thấy 'gflags' namespace. Do cài glog thì không cần phải có
+gflags. Nên bạn cần sửa tệp tin configure.ac thành ignore gflags.</p>
+<pre><code class="hljs">  1. cd to glog src directory
+  2. change line 125 of configure.ac  to &quot;AC_CHECK_LIB(gflags, main, ac_cv_have_libgflags=0, ac_cv_have_libgflags=0)&quot;
+  3. autoreconf
+</code></pre>
+<p>Sau đó bạn có thể cài lại glog.</p></li>
+<li><p>Q: Khi sử dụng virtual environment, bất cứ khi nào tôi chạy pip install, numpy
+sẽ tự cài lại numpy. Tuy nhiên, numpy này không được sử dụng khi tôi
+<code>import numpy</code></p>
+<p>A: Lỗi có thể gây ra bởi <code>PYTHONPATH</code> vốn nên được để trống (empty) khi bạn sử
+dụng virtual environment nhằm tránh conflict với đường dẫn của virtual
+environment.</p></li>
+<li><p>Q: Khi compile PySINGA từ nguồn, có lỗi compilation do thiếu
+&lt;numpy/objectarray.h&gt;</p>
+<p>A: Vui lòng cài đặt numpy và export đường dẫn của tệp tin numpy header như sau</p>
+<pre><code class="hljs">  $ export CPLUS_INCLUDE_PATH=`python -c &quot;import numpy; print numpy.get_include()&quot;`:$CPLUS_INCLUDE_PATH
+</code></pre></li>
+<li><p>Q: Khi chạy SINGA trên Mac OS X, tôi gặp lỗi &quot;Fatal Python error:
+PyThreadState_Get: no current thread Abort trap: 6&quot;</p>
+<p>A: Lỗi này thường xảy ra khi bạn có nhiều phiên bản Python trong hệ thống, và
+bạn cài SINGA qua pip (vấn đề này có thể được giải quyết nếu cài đặt bằng
+conda), vd. một bên qua OS và một bên cài đặt qua Homebrew. Python dùng trong
+PySINGA phải là Python interpreter. Bạn có thể kiểm tra trình thông dịch
+(interpreter) của mình bằng <code>which python</code> và kiểm tra bản Python dùng trong
+PySINGA qua <code>otool -L &lt;path to _singa_wrap.so&gt;</code>. Để sửa lỗi này, bạn compile
+SINGA với đúng phiên bản mà SINGA cần. Cụ thể, nếu bạn tạo PySINGA từ nguồn,
+bạn cần cụ thể đường dẫn khi gọi
+<a href="http://stackoverflow.com/questions/15291500/i-have-2-versions-of-python-installed-but-cmake-is-using-older-version-how-do">cmake</a></p>
+<pre><code class="hljs">  $ cmake -DPYTHON_LIBRARY=`python-config --prefix`/lib/libpython2.7.dylib -DPYTHON_INCLUDE_DIR=`python-config --prefix`/include/python2.7/ ..
+</code></pre>
+<p>Nếu cài đặt PySINGA từ gói binary packages, vd. debian hay wheel, thì bạn cần
+thay đổi trình thông dịch của python (python interpreter), vd., reset $PATH
+để đường dẫn dúng của Python ở đằng trước.</p></li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/4.1.0_Viet/downloads"><span class="arrow-prev">← </span><span>Download SINGA</span></a><a class="docs-next button" href="/docs/4.1.0_Viet/contribute-code"><span>How to Contribute Code</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#sử-dụng-conda-để-cài-singa">Sử dụng Conda để cài SINGA</a><ul class="toc-headings"><li><a href="#tạo-phiên-bản-cpu">Tạo phiên bản CPU</a></li><li><a href="#tạo-phiên-bản-gpu">Tạo phiên bản GPU</a></li><li><a href="#sau-khi-chạy-chương-trình">Sau khi chạy chương trình</a></li></ul></li><li><a href="#sử-dụng-các-phương-tiện-cơ-bản-để-cài-đặt-singa-trên-ubuntu">Sử dụng các phương tiện cơ bản để cài đặt SINGA trên Ubuntu</a></li><li><a href="#sử-dụng-các-phương-tiện-cơ-bản-để-cài-đặt-singa-trên-centos7">Sử dụng các phương tiện cơ bản để cài đặt SINGA trên Centos7</a><ul class="toc-headings"><li><a href="#cài-các-chương-trình-phụ-thuộc-dependent-libraries">Cài các chương trình phụ thuộc (dependent libraries)</a></li><li><a href="#cài-đặt">Cài đặt</a></li><li><a href="#kiểm-tra-testing">Kiểm tra (testing)</a></li></ul></li><li><a href="#compile-singa-trên-windows">Compile SINGA trên Windows</a></li><li><a href="#chi-tiết-bổ-sung-về-các-lựa-chọn-biên-dịch-compilation">Chi tiết bổ sung về các lựa chọn biên dịch (compilation)</a><ul class="toc-headings"><li><a href="#use_modules-không-còn-sử-dụng">USE_MODULES (không còn sử dụng)</a></li><li><a href="#use_python">USE_PYTHON</a></li><li><a href="#use_cuda">USE_CUDA</a></li><li><a href="#use_dnnl">USE_DNNL</a></li><li><a href="#use_opencl">USE_OPENCL</a></li><li><a href="#gói-chương-trình-package">GÓI CHƯƠNG TRÌNH (PACKAGE)</a></li></ul></li><li><a href="#câu-hỏi-thường-gặp-qa">Câu hỏi thường gặp (Q&amp;A)</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa-doc</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2023
+   The Apache Software Foundation. All rights reserved.
+   Apache SINGA, Apache, the Apache feather logo, and
+   the Apache SINGA project logos are trademarks of The
+   Apache Software Foundation. All other marks mentioned
+   may be trademarks or registered trademarks of their
+   respective owners.</section></div></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '45202133606c0b5fa6d21cddc4725dd8',
+                indexName: 'apache_singa',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:3.0.0"]}
+              });
+            </script></body></html>
