@@ -1,0 +1,494 @@
+/*
+  Licensed to the Apache Software Foundation (ASF) under one
+  or more contributor license agreements.  See the NOTICE file
+  distributed with this work for additional information
+  regarding copyright ownership.  The ASF licenses this file
+  to you under the Apache License, Version 2.0 (the
+  "License"); you may not use this file except in compliance
+  with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing,
+  software distributed under the License is distributed on an
+  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  KIND, either express or implied.  See the License for the
+  specific language governing permissions and limitations
+  under the License
+*/
+/* body * {
+  font-family: 'Baloo Paaji 2', cursive;
+/* font-family: 'Source Sans Pro', sans-serif; */
+  /* color: #2f3f4d; */
+
+  
+
+/* mainContainer landing page */
+
+/* .mainContainer .wrapper {
+  border: 2px purple solid; 
+  max-width: 1100px !important;
+} */
+  
+/* .container {
+  padding-top: 40px;
+  padding-bottom: 40px;
+} */
+
+.mainPageContainer {
+  padding: 40px 10px !important;
+  margin: 0 auto;
+
+}
+
+/* Apache Footer */
+.ApacheOpenSource img {
+  max-width: 30%;
+  margin: 0 auto;
+}
+
+/*** from jest docusaurus jest.css ***/
+
+/* change main webpage link color */
+.mainContainer a {
+  text-decoration: none;
+  color: $primaryColor;
+}
+
+/* header navigation */
+.fixedHeaderContainer {
+  background-color: #fff;
+  /* box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); */
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.navigationSlider .slidingNav ul li a,
+.fixedHeaderContainer header h3 {
+  color: #20232a;
+}
+
+div.navigationSlider .slidingNav ul {
+  background: #fff;
+}
+
+.navigationSlider .slidingNav ul li a {
+  color: #20232a;
+  transition: color 0.2s ease-out;
+}
+
+.navigationSlider .slidingNav ul li a:focus,
+.navigationSlider .slidingNav ul li a:hover,
+.navigationSlider .slidingNav ul li.siteNavGroupActive a {
+  background: #fff;
+  color: $primaryColor;
+}
+
+/* .navigationSlider .slidingNav ul li.siteNavItemActive a { */
+  /* background: #545454; */
+  /* color: white; */
+/* } */
+
+/* Search input background color */
+.reactNavSearchWrapper input#search_input_react {
+  background-color: #aaaaaa;
+}
+
+/*** from docusaurus 1.x css ***/
+
+
+.testimonials img {
+  border-radius: 50%;
+}
+
+table td:first-child > code {
+  white-space: nowrap;
+}
+
+/* indexpage users showcase section */
+.productShowcaseSection {
+  /* border: 1px blue solid; */
+  max-width: 1100px !important;
+  margin: 0 auto;
+}
+
+.showcase {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.showcase .link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 120px;
+  width: 250px;
+  margin: 5px;
+  margin-bottom: 15px;
+  padding: 5px;
+  /* border: 2px red solid; */
+}
+
+.showcase .link:hover {
+  text-decoration: none;
+}
+
+.showcase .link .caption {
+  line-height: 14px;
+  height: 14px;
+  font-size: 12px;
+  /* border: 1px yellow solid; */
+}
+
+.showcase .link img {
+  /* width: auto; */
+  width: 160px;
+  height: 80px;
+  max-height: 100%;
+  max-width: 100%;
+  padding: 20px;
+  align-self: center;
+  /* border: 1px green solid; */
+}
+
+/*.showcaseSection .logos img{
+  max-height: 128px;
+  padding: 20px;
+  width: 128px:
+}
+*/
+
+
+@media only screen and (max-width: 735px) {
+  .showcase .link {
+    height: 134px;
+    max-width: 120px;
+  }
+
+  .showcase .link img {
+    max-height: 64px;
+    padding: 20px;
+    width: 64px;
+  }
+}
+
+.announcement {
+  background-color: #f7f7f7;
+  color: #2f3f4d;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 36px;
+  margin: 0 auto -40px;
+  text-align: center;
+}
+
+.announcement-inner {
+  margin: 0 auto;
+  max-width: 768px;
+}
+
+.announcement-inner a {
+  color: $primaryColor;
+}
+
+/* landing page hero background */
+.index-hero {
+  background-color: #2b3137;
+  background-image: url("/img/sg-botanic-coleen-rivas-unsplash.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  padding: 48px;
+}
+
+/* .backdrop {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width:100%;
+  height:100%;
+  background-color: #000;
+  opacity: 0.6;
+} */
+
+.index-hero-inner {
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 0 20px;
+}
+
+.index-hero-project-tagline {
+  color: #fff;
+  font-size: 42px;
+  margin: 0;
+}
+
+.index-hero-project-keywords {
+  color: $primaryColor;
+}
+
+@keyframes jackInTheBox {
+  from {
+    opacity: 0;
+    transform: scale(0.1) rotate(30deg);
+    transform-origin: center bottom;
+  }
+
+  50% {
+    transform: rotate(-10deg);
+  }
+
+  70% {
+    transform: rotate(3deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.index-hero-logo {
+  animation-duration: 2s;
+  animation-name: jackInTheBox;
+  margin-top: 20px;
+  padding: 20px;
+  padding-left: 0;
+  width: 500px;
+}
+
+.index-ctas {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.index-ctas-get-started-button {
+  border-radius: 8px;
+  border-width: 2px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 24px;
+  padding: 16px 24px;
+  background-color: $primaryColor;
+}
+
+.index-ctas-get-started-button:hover {
+  background: #f7f7f7;
+  color: $primaryColor;
+}
+
+.index-ctas-github-button {
+  vertical-align: sub;
+}
+
+@media only screen and (max-width: 768px) {
+  .announcement {
+    font-size: 18px;
+    padding: 20px;
+  }
+
+  .index-hero {
+    padding: 20px;
+  }
+
+  .index-hero-inner {
+    padding: 0;
+  }
+
+  .index-hero-project-tagline {
+    font-size: 36px;
+    text-align: center;
+  }
+
+  .index-hero-logo {
+    display: block;
+    float: none;
+    margin: 0 auto;
+  }
+
+  .index-ctas {
+    text-align: center;
+  }
+
+  .index-ctas-github-button {
+    display: none;
+  }
+}
+
+/* landing page blockImage style */
+/* for img aligned on top */
+.imageAlignTop .blockImage {
+  max-width: 60%;
+}
+
+.imageAlignTop .blockImage img {
+  height: 150px;
+}
+
+/* for img aligned on the side */
+.imageAlignSide .blockImage img {
+  /* box-shadow: 0 0 36px rgba(0,0,0,0.11); */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+@media only screen and (max-width: 768px) {
+  .gridBlock .blockElement.imageAlignTop .icon {
+    margin-bottom: 80px;
+  }
+}
+
+.docImage {
+  margin: 3rem auto;
+  max-width: 400px;
+}
+
+.containerImg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px;
+  margin-top: 50px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+}
+
+/* custom 404 page */
+.error-page .error-message-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 40px;
+  max-width: 1400px;
+  width: 87%;
+}
+.error-page .error-message {
+  min-height: 90vh;
+  background: white;
+}
+.error-page .error-message span {
+  color: $primaryColor;
+  font-size: 8.8em;
+  font-weight: 700;
+  display: inline-block;
+  margin-top: 10vh;
+  text-align: center;
+  display: block;
+}
+
+.error-page .error-message p {
+  color: black;
+  margin-top: 50px;
+  font-size: 1.6em;
+  text-align: center;
+}
+
+.error-page .error-message a {
+ margin-bottom: 50px;
+ font-size: 1.6em;
+ text-align: center;
+ display: block;
+ text-decoration: underline;
+}
+
+.icon {
+  font-size: 20px;
+  text-align:center;
+}
+
+@media (min-width: 735px) {
+  .container-2 {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content:space-between;
+    text-align:center;
+  }
+}
+
+@media only screen and (max-width: 735px) {
+  .container-2 {
+    text-align:center;
+  }
+}
+.container-2-box {
+  flex: 1 0 33%;
+  padding: 25px 20px;
+}
+.container-2 p {
+  text-align: justify;
+}
+
+@media (min-width: 935px) {
+  .container-3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 100%;
+    position: relative;
+  }
+  .container-3-button {
+    background: #f0f0f0;
+    padding: 20px;
+    flex:1 0 100px;
+    margin-right: 15px;
+    border:0;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    justify-content: center;
+    transition-duration: 0.4s;
+    /* cursor: pointer; */
+  }
+  .container-3-button a {
+    color: #2f3f4d;
+    font-size: 18px;
+  }        
+  .container-3-button:hover {
+    background-color: #FFF;   
+    border: 0.6px solid rgb(67, 159, 195);
+  }
+}
+
+@media only screen and (max-width:935px) {
+  .container-3 {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    max-width: 100%;
+    align-items: center;
+
+  }
+  .container-3-button {
+    width: 60%;
+    float: none;
+    border-radius: 8px;
+    text-align: center;
+    justify-content: center;
+    flex:0;
+    margin: 5px;
+    padding:15px;
+    border: 0;
+    transition-duration: 0.4s;
+    /* cursor: pointer; */
+  }
+  .container-3-button:hover {
+    background-color: #FFF;   
+    border: 0.6px solid rgb(33, 170, 204);
+  }
+  .container-3-button a {
+    flex-wrap: wrap;
+    font-size: 18px;
+    flex:0;
+    margin: 5px;
+    border: 0;
+    color:#24292e;
+  }
+  span {
+    margin-right: 25px;
+  }
+}

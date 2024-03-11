@@ -1,0 +1,38 @@
+{
+  "docs": {
+    "Getting Started": [
+      "installation",
+      "software-stack",
+      "examples"
+    ],
+    "Guides": [
+      "device",
+      "tensor",
+      "autograd",
+      "optimizer",
+      "graph",
+      "onnx",
+      "dist-train",
+      "time-profiling",
+      "half-precision"
+    ],
+    "Development": [
+      "downloads",
+      "build",
+      "contribute-code",
+      "contribute-docs",
+      "how-to-release", 
+      "git-workflow"
+    ]
+  },
+  "community": {
+    "Community": [
+      "source-repository",
+      "mail-lists",
+      "issue-tracking",
+      "security",
+      "team-list",
+      "history-singa"
+    ]
+  }
+}
