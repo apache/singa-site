@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://singa.apache.org/blog</id>
     <title>Apache SINGA Blog</title>
-    <updated>2020-04-19T06:00:00.000Z</updated>
+    <updated>1970-01-01T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://singa.apache.org/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Apache SINGA news and events.</subtitle>
@@ -14,6 +14,18 @@
    Apache Software Foundation. All other marks mentioned
    may be trademarks or registered trademarks of their
    respective owners.</rights>
+    <entry>
+        <title type="html"><![CDATA[APACHE SINGA -- 2024 SIGMOD Systems Award]]></title>
+        <id>https://singa.apache.org/blog/2024/6/22/sigmod-systems-award.html</id>
+        <link href="https://singa.apache.org/blog/2024/6/22/sigmod-systems-award.html"/>
+        <updated>1970-01-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>APACHE SINGA -- 2024 SIGMOD Systems Award</p> <p>June 22, 2024</p> <p>Apache SINGA received the 2024 SIGMOD Systems Award, which is awarded to an individual or set of individuals to recognize the development of a software or hardware system whose technical contrib...</p>]]></summary>
+        <author>
+            <name>Apache SINGA</name>
+            <email/>
+            <uri>https://twitter.com/ApacheSINGA</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Release Version 3.0.0]]></title>
         <id>https://singa.apache.org/blog/2020/04/19/v3-0-0.html</id>
