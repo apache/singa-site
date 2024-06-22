@@ -4,7 +4,7 @@
         <title>Apache SINGA Blog</title>
         <link>https://singa.apache.org/blog</link>
         <description>The best place to stay up-to-date with the latest Apache SINGA news and events.</description>
-        <lastBuildDate>Sun, 19 Apr 2020 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 01 Jan 1970 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -19,6 +19,13 @@
    Apache Software Foundation. All other marks mentioned
    may be trademarks or registered trademarks of their
    respective owners.</copyright>
+        <item>
+            <title><![CDATA[APACHE SINGA -- 2024 SIGMOD Systems Award]]></title>
+            <link>https://singa.apache.org/blog/2024/6/22/sigmod-systems-award.html</link>
+            <guid>https://singa.apache.org/blog/2024/6/22/sigmod-systems-award.html</guid>
+            <pubDate>Thu, 01 Jan 1970 00:00:00 GMT</pubDate>
+            <description><![CDATA[<p>APACHE SINGA -- 2024 SIGMOD Systems Award</p> <p>June 22, 2024</p> <p>Apache SINGA received the 2024 SIGMOD Systems Award, which is awarded to an individual or set of individuals to recognize the development of a software or hardware system whose technical contrib...</p>]]></description>
+        </item>
         <item>
             <title><![CDATA[Release Version 3.0.0]]></title>
             <link>https://singa.apache.org/blog/2020/04/19/v3-0-0.html</link>
