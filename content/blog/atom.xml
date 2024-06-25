@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://singa.apache.org/blog</id>
     <title>Apache SINGA Blog</title>
-    <updated>2020-04-19T06:00:00.000Z</updated>
+    <updated>1970-01-01T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://singa.apache.org/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Apache SINGA news and events.</subtitle>
@@ -15,11 +15,95 @@
    may be trademarks or registered trademarks of their
    respective owners.</rights>
     <entry>
+        <title type="html"><![CDATA[APACHE SINGA -- 2024 SIGMOD Systems Award]]></title>
+        <id>https://singa.apache.org/blog/2024/6/22/sigmod-systems-award.html</id>
+        <link href="https://singa.apache.org/blog/2024/6/22/sigmod-systems-award.html"/>
+        <updated>1970-01-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>Apache SINGA received the 2024 SIGMOD Systems Award, which is awarded to an individual or set of individuals to recognize the development of a software or hardware system whose technical contributions have had significant impact on the theory or prac...</p>]]></summary>
+        <author>
+            <name>Apache SINGA</name>
+            <email/>
+            <uri>https://twitter.com/ApacheSINGA</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Release Version 4.2.0]]></title>
+        <id>https://singa.apache.org/blog/2024/3/15/v4-2-0.html</id>
+        <link href="https://singa.apache.org/blog/2024/3/15/v4-2-0.html"/>
+        <updated>1970-01-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[ <p>Apache SINGA V4.2.0 is released on March 15, 2024. There are six major features added in this release.</p> <ul> <li><p>Add support for deep learning models running on top of PolarDB, including efficient model selection, dynamic model creation, flexible training co...</p></li></ul>]]></summary>
+        <author>
+            <name>Apache SINGA</name>
+            <email/>
+            <uri>https://twitter.com/ApacheSINGA</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Release Version 4.1.0]]></title>
+        <id>https://singa.apache.org/blog/2023/11/5/v4-1-0.html</id>
+        <link href="https://singa.apache.org/blog/2023/11/5/v4-1-0.html"/>
+        <updated>1970-01-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[ <p>Apache SINGA V4.1.0 is released on November 5, 2023. There are six major features added in this release.</p> <ul> <li><p>Add an example for malaria detection using cell images and structured data learning.</p></li> <li><p>Add support for in-database model definition, selection, a...</p></li></ul>]]></summary>
+        <author>
+            <name>Apache SINGA</name>
+            <email/>
+            <uri>https://twitter.com/ApacheSINGA</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Release Version 4.0.0]]></title>
+        <id>https://singa.apache.org/blog/2023/04/7/v4-0-0.html</id>
+        <link href="https://singa.apache.org/blog/2023/04/7/v4-0-0.html"/>
+        <updated>1970-01-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[ <p>Apache SINGA v4.0.0 is released on April 7, 2023. There are seven major features added in this release.</p> <ul> <li><p>Enhance distributed training by adding GPU configuration support, increasing max epochs, printing mini-batch information, and allowing switching...</p></li></ul>]]></summary>
+        <author>
+            <name>Apache SINGA</name>
+            <email/>
+            <uri>https://twitter.com/ApacheSINGA</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Release Version 3.3.0]]></title>
+        <id>https://singa.apache.org/blog/2022/6/7/v3-3-0.html</id>
+        <link href="https://singa.apache.org/blog/2022/6/7/v3-3-0.html"/>
+        <updated>1970-01-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[ <p>Apache SINGA V3.3.0 is released on June 7, 2022. There are seven major features added in this release.</p> <ul> <li><p>New examples are added, including a CNN example for the BloodMnist dataset and an example for medical image analysis.</p></li> <li><p>Distributed training is enh...</p></li></ul>]]></summary>
+        <author>
+            <name>Apache SINGA</name>
+            <email/>
+            <uri>https://twitter.com/ApacheSINGA</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Release Version 3.2.0]]></title>
+        <id>https://singa.apache.org/blog/2021/8/15/v3-2-0.html</id>
+        <link href="https://singa.apache.org/blog/2021/8/15/v3-2-0.html"/>
+        <updated>1970-01-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[ <p>Apache SINGA V3.2.0 is released on August 15, 2021. There are eight major features added in this release.</p> <ul> <li><p>Add one CIFAR-10 distributed CNN example for benchmarking performance and one large CNN example for training with a dataset from the filesyste...</p></li></ul>]]></summary>
+        <author>
+            <name>Apache SINGA</name>
+            <email/>
+            <uri>https://twitter.com/ApacheSINGA</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Release Version 3.1.0]]></title>
+        <id>https://singa.apache.org/blog/2020/10/30/v3-1-0.html</id>
+        <link href="https://singa.apache.org/blog/2020/10/30/v3-1-0.html"/>
+        <updated>2020-10-30T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[ <p>Apache SINGA V3.1.0 is released on October 30, 2020. There are six major features added in this release.</p> <ul> <li><p>Update the Tensor core to support tensor transformations (reshape, transpose) for tensors up to 6 dimensions and implement traverse-unary-trans...</p></li></ul>]]></summary>
+        <author>
+            <name>Apache SINGA</name>
+            <email/>
+            <uri>https://twitter.com/ApacheSINGA</uri>
+        </author>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Release Version 3.0.0]]></title>
         <id>https://singa.apache.org/blog/2020/04/19/v3-0-0.html</id>
         <link href="https://singa.apache.org/blog/2020/04/19/v3-0-0.html"/>
         <updated>2020-04-19T06:00:00.000Z</updated>
-        <summary type="html"><![CDATA[ <p>Apache SINGA V3.0.0 is released on April 18, 2020. This is the first official release since SINGA became the first Top-Level Apache project. There are three major features added in this release.</p> <p>First, a new Python class <a href="/docs/graph">Module</a> is introduced. New mo...</p>]]></summary>
+        <summary type="html"><![CDATA[ <p>Apache SINGA V3.0.0 is released on April 18, 2020. This is the first official release since SINGA became the first Top-Level Apache project. There are three major features added in this release.</p> <ul> <li><p>A new Python class <a href="/docs/graph">Module</a> is introduced. New models (...</p></li></ul>]]></summary>
         <author>
             <name>Apache SINGA</name>
             <email/>
