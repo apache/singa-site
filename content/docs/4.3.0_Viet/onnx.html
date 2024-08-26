@@ -1,0 +1,451 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>ONNX · Apache SINGA</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta name="docsearch:version" content="4.3.0_Viet"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="ONNX · Apache SINGA"/><meta property="og:type" content="website"/><meta property="og:url" content="https://singa.apache.org/"/><meta property="og:description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta property="og:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://singa.apache.org/blog/atom.xml" title="Apache SINGA Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://singa.apache.org/blog/feed.xml" title="Apache SINGA Blog RSS Feed"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&amp;family=Source+Sans+Pro:wght@200;300&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/singa.png" alt="Apache SINGA"/></a><a href="/versions"><h3>4.3.0_Viet</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/4.3.0_Viet/installation" target="_self">Docs</a></li><li class=""><a href="/docs/4.3.0_Viet/source-repository" target="_self">Community</a></li><li class=""><a href="/blog/" target="_self">News</a></li><li class=""><a href="https://apache-singa.readthedocs.io/en/latest/" target="_self">API</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/apache/singa" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Guides</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Viet/installation">Cài đặt</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Viet/software-stack">Software Stack</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Viet/examples">Ví Dụ</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Guides</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Viet/device">Device</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Viet/tensor">Tensor</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Viet/autograd">Autograd</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Viet/optimizer">Optimizer</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Viet/graph">Model</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/4.3.0_Viet/onnx">ONNX</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Viet/dist-train">Distributed Training</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Viet/time-profiling">Time Profiling</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Development</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Viet/downloads">Tải SINGA</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Viet/build">Cài đặt SINGA từ Nguồn (Source)</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Viet/contribute-code">Tham gia viết code</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Viet/contribute-docs">Tham gia chỉnh sửa Hướng Dẫn Sử Dụng</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Viet/how-to-release">Chuẩn bị trước khi phát hành</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Viet/git-workflow">Quy Trình Sử Dụng Git</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/onnx.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">ONNX</h1></header><article><div><span><!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  -->
+<p><a href="https://onnx.ai/">ONNX</a> là một định dạng đại diện mở dùng trong các model của
+machine learning, cho phép nhà phát triển AI sử dụng các models trên các
+libraries và công cụ khác nhau. SINGA hỗ trợ tải các models dạng ONNX trong
+training và inference, và lưu các models ở dạng ONNX với SINGA APIs (e.g.,
+<a href="./module">Module</a>).</p>
+<p>SINGA đã được thử nghiệm với
+<a href="https://github.com/onnx/onnx/blob/master/docs/Versioning.md">phiên bản sau</a> của
+ONNX.</p>
+<table>
+<thead>
+<tr><th>Phiên bản ONNX</th><th>Phiên bản định dạng tệp tin</th><th>Opset phiên bản ai.onnx</th><th>Opset phiên bản ai.onnx.ml</th><th>Opset phiên bản ai.onnx.training</th></tr>
+</thead>
+<tbody>
+<tr><td>1.6.0</td><td>6</td><td>11</td><td>2</td><td>-</td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="sử-dụng-chung"></a><a href="#sử-dụng-chung" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sử dụng chung</h2>
+<h3><a class="anchor" aria-hidden="true" id="tải-một-onnx-model-trong-singa"></a><a href="#tải-một-onnx-model-trong-singa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tải một ONNX Model trong SINGA</h3>
+<p>Sau khi tải một ONNX model từ disk qua <code>onnx.load</code>, bạn chỉ cần cập nhật
+batch-size của input sử dụng <code>tensor.PlaceHolder</code> sau SINGA v3.0, shape của
+internal tensors sẽ tự động được tạo ra.</p>
+<p>Sau đó, bạn định nghĩa một class thừa hưởng từ <code>sonnx.SONNXModel</code> và thực hiện
+hai phương pháp <code>forward</code> cho quá trình forward và <code>train_one_batch</code> cho quá
+trình training. Sau khi gọi hàm <code>model.compile</code>, hàm SONNX sẽ lặp lại và dịch
+tất cả các nodes trong phạm vi graph của ONNX model sang các hàm SINGA, tải tất
+cả weights đã lưu trữ và tạo ra shape của từng tensor trung gian.</p>
+<pre><code class="hljs css language-python3"><span class="hljs-keyword">import</span> onnx
+<span class="hljs-keyword">from</span> singa <span class="hljs-keyword">import</span> device
+<span class="hljs-keyword">from</span> singa <span class="hljs-keyword">import</span> sonnx
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyModel</span><span class="hljs-params">(sonnx.SONNXModel)</span>:</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, onnx_model)</span>:</span>
+        super(MyModel, self).__init__(onnx_model)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(self, *x)</span>:</span>
+        y = super(MyModel, self).forward(*x)
+        <span class="hljs-comment"># Since SINGA model returns the output as a list,</span>
+        <span class="hljs-comment"># if there is only one output,</span>
+        <span class="hljs-comment"># you just need to take the first element.</span>
+        <span class="hljs-keyword">return</span> y[<span class="hljs-number">0</span>]
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">train_one_batch</span><span class="hljs-params">(self, x, y)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+
+model_path = <span class="hljs-string">"PATH/To/ONNX/MODEL"</span>
+onnx_model = onnx.load(model_path)
+
+<span class="hljs-comment"># convert onnx model into SINGA model</span>
+dev = device.create_cuda_gpu()
+x = tensor.PlaceHolder(INPUT.shape, device=dev)
+model = MyModel(onnx_model)
+model.compile([x], is_train=<span class="hljs-literal">False</span>, use_graph=<span class="hljs-literal">True</span>, sequential=<span class="hljs-literal">True</span>)
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="inference-với-singa-model"></a><a href="#inference-với-singa-model" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Inference với SINGA model</h3>
+<p>Sau khi tạo models, bạn có thể tiến hành inference bằng cách gọi hàm
+<code>model.forward</code>. Đầu vào và đầu ra phải ở dạng phiên bản của SINGA <code>Tensor</code>.</p>
+<pre><code class="hljs css language-python3"><span class="hljs-attr">x</span> = tensor.Tensor(device=dev, data=INPUT)
+<span class="hljs-attr">y</span> = model.forward(x)
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="lưu-model-của-singa-dưới-dạng-onnx"></a><a href="#lưu-model-của-singa-dưới-dạng-onnx" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Lưu model của SINGA dưới dạng ONNX</h3>
+<p>Với hàm tensors đầu vào và đầu ra được tạo ra bởi các hàm của model, bạn có thể
+truy nguyên đến tất cả các hàm nội bộ. Bởi vậy, một model SINGA được xác định
+bởi tensors đầu vào và đầu ra. Để biến một model SINGA sang dạng ONNX, bạn chỉ
+cần cung cấp danh sách tensor đầu vào và đầu ra.</p>
+<pre><code class="hljs css language-python3"># <span class="hljs-symbol">x</span> is the input tensor, <span class="hljs-symbol">y</span> is the output tensor
+sonnx.to_onnx([<span class="hljs-symbol">x</span>], [<span class="hljs-symbol">y</span>])
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="training-lại-với-model-onnx"></a><a href="#training-lại-với-model-onnx" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Training lại với model ONNX</h3>
+<p>Để train (hay luyện) một model ONNX sử dụng SINGA, bạn cần thực hiện
+<code>train_one_batch</code> từ <code>sonnx.SONNXModel</code> và đánh dấu <code>is_train=True</code> khi gọi hàm
+<code>model.compile</code>.</p>
+<pre><code class="hljs css language-python3">from singa import opt
+from singa import autograd
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyModel</span>(<span class="hljs-title">sonnx</span>.<span class="hljs-title">SONNXModel</span>):</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, onnx_model)</span></span>:
+        <span class="hljs-keyword">super</span>(MyModel, <span class="hljs-keyword">self</span>).__init_<span class="hljs-number">_</span>(onnx_model)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, *x)</span></span>:
+        y = <span class="hljs-keyword">super</span>(MyModel, <span class="hljs-keyword">self</span>).forward(*x)
+        <span class="hljs-keyword">return</span> y[<span class="hljs-number">0</span>]
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">train_one_batch</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, x, y, dist_option, spars)</span></span>:
+        out = <span class="hljs-keyword">self</span>.forward(x)
+        loss = autograd.softmax_cross_entropy(out, y)
+        <span class="hljs-keyword">if</span> dist_option == <span class="hljs-string">'fp32'</span>:
+            <span class="hljs-keyword">self</span>.optimizer.backward_and_update(loss)
+        elif dist_option == <span class="hljs-string">'fp16'</span>:
+            <span class="hljs-keyword">self</span>.optimizer.backward_and_update_half(loss)
+        elif dist_option == <span class="hljs-string">'partialUpdate'</span>:
+            <span class="hljs-keyword">self</span>.optimizer.backward_and_partial_update(loss)
+        elif dist_option == <span class="hljs-string">'sparseTopK'</span>:
+            <span class="hljs-keyword">self</span>.optimizer.backward_and_sparse_update(loss,
+                                                      topK=True,
+                                                      spars=spars)
+        elif dist_option == <span class="hljs-string">'sparseThreshold'</span>:
+            <span class="hljs-keyword">self</span>.optimizer.backward_and_sparse_update(loss,
+                                                      topK=False,
+                                                      spars=spars)
+        <span class="hljs-keyword">return</span> out, loss
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">set_optimizer</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, optimizer)</span></span>:
+        <span class="hljs-keyword">self</span>.optimizer = optimizer
+
+sgd = opt.SGD(lr=<span class="hljs-number">0</span>.<span class="hljs-number">005</span>, momentum=<span class="hljs-number">0</span>.<span class="hljs-number">9</span>, weight_decay=<span class="hljs-number">1</span>e-<span class="hljs-number">5</span>)
+model.set_optimizer(sgd)
+model.compile([tx], is_train=True, use_graph=graph, sequential=True)
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="transfer-learning-một-model-onnx"></a><a href="#transfer-learning-một-model-onnx" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Transfer-learning một model ONNX</h3>
+<p>Bạn cũng có thể thêm một vài layers vào phần cuối của ONNX model để làm
+transfer-learning. Hàm <code>last_layers</code> chấp nhận một số nguyên âm để chỉ layer bị
+cắt ra. Ví dụ, <code>-1</code> nghĩa là bị cắt ra sau kết quả cuối cùng (không xoá bớt
+layer nào) <code>-2</code> nghĩa là bị cắt ra sau hai layer cuối cùng.</p>
+<pre><code class="hljs css language-python3">from singa import opt
+from singa import autograd
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyModel</span>(<span class="hljs-title">sonnx</span>.<span class="hljs-title">SONNXModel</span>):</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, onnx_model)</span></span>:
+        <span class="hljs-keyword">super</span>(MyModel, <span class="hljs-keyword">self</span>).__init_<span class="hljs-number">_</span>(onnx_model)
+        <span class="hljs-keyword">self</span>.linear = layer.Linear(<span class="hljs-number">1000</span>, <span class="hljs-number">3</span>)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, *x)</span></span>:
+        <span class="hljs-comment"># cut off after the last third layer</span>
+        <span class="hljs-comment"># and append a linear layer</span>
+        y = <span class="hljs-keyword">super</span>(MyModel, <span class="hljs-keyword">self</span>).forward(*x, last_layers=-<span class="hljs-number">3</span>)[<span class="hljs-number">0</span>]
+        y = <span class="hljs-keyword">self</span>.linear(y)
+        <span class="hljs-keyword">return</span> y
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">train_one_batch</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, x, y, dist_option, spars)</span></span>:
+        out = <span class="hljs-keyword">self</span>.forward(x)
+        loss = autograd.softmax_cross_entropy(out, y)
+        <span class="hljs-keyword">if</span> dist_option == <span class="hljs-string">'fp32'</span>:
+            <span class="hljs-keyword">self</span>.optimizer.backward_and_update(loss)
+        elif dist_option == <span class="hljs-string">'fp16'</span>:
+            <span class="hljs-keyword">self</span>.optimizer.backward_and_update_half(loss)
+        elif dist_option == <span class="hljs-string">'partialUpdate'</span>:
+            <span class="hljs-keyword">self</span>.optimizer.backward_and_partial_update(loss)
+        elif dist_option == <span class="hljs-string">'sparseTopK'</span>:
+            <span class="hljs-keyword">self</span>.optimizer.backward_and_sparse_update(loss,
+                                                      topK=True,
+                                                      spars=spars)
+        elif dist_option == <span class="hljs-string">'sparseThreshold'</span>:
+            <span class="hljs-keyword">self</span>.optimizer.backward_and_sparse_update(loss,
+                                                      topK=False,
+                                                      spars=spars)
+        <span class="hljs-keyword">return</span> out, loss
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">set_optimizer</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, optimizer)</span></span>:
+        <span class="hljs-keyword">self</span>.optimizer = optimizer
+
+sgd = opt.SGD(lr=<span class="hljs-number">0</span>.<span class="hljs-number">005</span>, momentum=<span class="hljs-number">0</span>.<span class="hljs-number">9</span>, weight_decay=<span class="hljs-number">1</span>e-<span class="hljs-number">5</span>)
+model.set_optimizer(sgd)
+model.compile([tx], is_train=True, use_graph=graph, sequential=True)
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="onnx-model-zoo"></a><a href="#onnx-model-zoo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ONNX model zoo</h2>
+<p><a href="https://github.com/onnx/models">ONNX Model Zoo</a> là tổ hợp các models ở dạng
+ONNX, đã được train có kết quả tốt nhất, đóng góp bởi cộng đồng thành viên.
+SINGA giờ đây đã hỗ trợ một số models CV và NLP. Chúng tôi dự định sẽ sớm hỗ trợ
+thêm các models khác.</p>
+<h3><a class="anchor" aria-hidden="true" id="phân-loại-hình-ảnh-image-classification"></a><a href="#phân-loại-hình-ảnh-image-classification" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Phân loại hình ảnh (Image Classification)</h3>
+<p>Tổ hợp models này có đầu vào là hình ảnh, sau đó phân loại các đối tượng chính
+trong hình ảnh thành 1000 mục đối tượng như bàn phím, chuột, bút chì, và các
+động vật.</p>
+<table>
+<thead>
+<tr><th>Model Class</th><th>Tham khảo</th><th>Mô tả</th><th>Đường dẫn</th></tr>
+</thead>
+<tbody>
+<tr><td><b><a href="https://github.com/onnx/models/tree/master/vision/classification/mobilenet">MobileNet</a></b></td><td><a href="https://arxiv.org/abs/1801.04381">Sandler et al.</a></td><td>deep neural network nhỏ, nhẹ phù hợp nhất cho điện thoại và ứng dụng hình ảnh đính kèm. <br>Top-5 error từ báo cáo - ~10%</td><td><a href="https://colab.research.google.com/drive/1HsixqJMIpKyEPhkbB8jy7NwNEFEAUWAf"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Mở trên Colab"></a></td></tr>
+<tr><td><b><a href="https://github.com/onnx/models/tree/master/vision/classification/resnet">ResNet18</a></b></td><td><a href="https://arxiv.org/abs/1512.03385">He et al.</a></td><td>Mô hình CNN (lên tới 152 layers). Sử dụng liên kết ngắn gọn để đạt độ chính xác cao hơn khi phân loại hình ảnh. <br> Top-5 error từ báo cáo - ~3.6%</td><td><a href="https://colab.research.google.com/drive/1u1RYefSsVbiP4I-5wiBKHjsT9L0FxLm9"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Mở trên Colab"></a></td></tr>
+<tr><td><b><a href="https://github.com/onnx/models/tree/master/vision/classification/vgg">VGG16</a></b></td><td><a href="https://arxiv.org/abs/1409.1556">Simonyan et al.</a></td><td>Mô hình CNN chuyên sâu (lên tới 19 layers). Tương tự như AlexNet nhưng sử dụng nhiều loại filters cỡ kernel nhỏ hơn mang lại độ chính xác cao hơn khi phân loại hình ảnh. <br>Top-5 từ báo cáo - ~8%</td><td><a href="https://colab.research.google.com/drive/14kxgRKtbjPCKKsDJVNi3AvTev81Gp_Ds"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Mở trên Colab"></a></td></tr>
+<tr><td><b><a href="https://github.com/onnx/models/tree/master/vision/classification/shufflenet">ShuffleNet_V2</a></b></td><td><a href="https://arxiv.org/pdf/1707.01083.pdf">Simonyan et al.</a></td><td>Mô hình CNN cực kỳ hiệu quả trong sử dụng tài nguyên, được thiết kế đặc biệt cho các thiết bị di động. Mạng lưới thiết kế hệ mô hình sử dụng số liệu trực tiếp như tốc độ, thay vì các số liệu gián tiếp như FLOP. Top-1 error từ báo cáo - ~30.6%</td><td>[<img src="https://colab.research.google.com/drive/19HfRu3YHP_H2z3BcZujVFRp23_J5XsuA?usp=sharing" alt="Mở trên Colab"></td></tr>
+</tbody>
+</table>
+<p>Chúng tôi cung cấp ví dụ re-training sử dụng VGG và ResNet, vui lòng xem tại
+<code>examples/onnx/training</code>.</p>
+<h3><a class="anchor" aria-hidden="true" id="nhận-diện-đối-tượng-object-detection"></a><a href="#nhận-diện-đối-tượng-object-detection" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Nhận Diện Đối Tượng (Object Detection)</h3>
+<p>Các models Object detection nhận diện sự hiện diện của các đối tượng trong một
+hình ảnh và phân đoạn ra các khu vực của bức ảnh mà đối tượng được nhận diện.</p>
+<table>
+<thead>
+<tr><th>Model Class</th><th>Tham khảo</th><th>Mô tả</th><th>Đường dẫn</th></tr>
+</thead>
+<tbody>
+<tr><td><b><a href="https://github.com/onnx/models/tree/master/vision/object_detection_segmentation/tiny_yolov2">Tiny YOLOv2</a></b></td><td><a href="https://arxiv.org/pdf/1612.08242.pdf">Redmon et al.</a></td><td>Mô hình CNN thời gian thực cho Nhận diện đối tượng có thể nhận diện 20 loại đối tượng khác nhau. Phiên bản nhỏ của mô hình phức tạp Yolov2.</td><td><a href="https://colab.research.google.com/drive/11V4I6cRjIJNUv5ZGsEGwqHuoQEie6b1T"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Mở trên Colab"></a></td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="phân-tích-khuôn-mặt-face-analysis"></a><a href="#phân-tích-khuôn-mặt-face-analysis" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Phân tích Khuôn Mặt (Face Analysis)</h3>
+<p>Các mô hình Nhận Diện Khuôn Mặt xác định và/hoặc nhận diện khuôn mặt người và
+các trạng thái cảm xúc trong bức ảnh.</p>
+<table>
+<thead>
+<tr><th>Model Class</th><th>Tham khảo</th><th>Mô tả</th><th>Đường dẫn</th></tr>
+</thead>
+<tbody>
+<tr><td><b><a href="https://github.com/onnx/models/tree/master/vision/body_analysis/arcface">ArcFace</a></b></td><td><a href="https://arxiv.org/abs/1801.07698">Deng et al.</a></td><td>Mô hình dựa trên CNN để nhận diện khuôn mặt, học từ các đặc tính khác nhau trên khuôn mặt và tạo ra các embeddings cho hình ảnh khuôn mặt đầu vào.</td><td><a href="https://colab.research.google.com/drive/1qanaqUKGIDtifdzEzJOHjEj4kYzA9uJC"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></td></tr>
+<tr><td><b><a href="https://github.com/onnx/models/tree/master/vision/body_analysis/emotion_ferplus">Emotion FerPlus</a></b></td><td><a href="https://arxiv.org/abs/1608.01041">Barsoum et al.</a></td><td>Mô hình CNN chuyên sâu nhận diện cảm xúc được train trên các hình ảnh khuôn mặt.</td><td><a href="https://colab.research.google.com/drive/1XHtBQGRhe58PDi4LGYJzYueWBeWbO23r"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="máy-hiểu-machine-comprehension"></a><a href="#máy-hiểu-machine-comprehension" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Máy Hiểu (Machine Comprehension)</h3>
+<p>Một dạng của mô hình xử lý ngôn ngữ tự nhiên giúp trả lời câu hỏi trên một đoạn
+ngôn ngữ cung cấp.</p>
+<table>
+<thead>
+<tr><th>Model Class</th><th>Tham khảo</th><th>Mô tả</th><th>Đường dẫn</th></tr>
+</thead>
+<tbody>
+<tr><td><b><a href="https://github.com/onnx/models/tree/master/text/machine_comprehension/bert-squad">BERT-Squad</a></b></td><td><a href="https://arxiv.org/pdf/1810.04805.pdf">Devlin et al.</a></td><td>Mô hình này trả lời câu hỏi dựa trên ngữ cảnh của đoạn văn đầu vào.</td><td><a href="https://colab.research.google.com/drive/1kud-lUPjS_u-TkDAzihBTw0Vqr0FjCE-"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Mở trên Colab"></a></td></tr>
+<tr><td><b><a href="https://github.com/onnx/models/tree/master/text/machine_comprehension/roberta">RoBERTa</a></b></td><td><a href="https://arxiv.org/pdf/1907.11692.pdf">Devlin et al.</a></td><td>Mô hình transformer-based kích thước lớn, dự đoán ngữ nghĩa dựa trên đoạn văn đầu vào.</td><td><a href="https://colab.research.google.com/drive/1F-c4LJSx3Cb2jW6tP7f8nAZDigyLH6iN?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Mở trên Colab"></a></td></tr>
+<tr><td><b><a href="https://github.com/onnx/models/tree/master/text/machine_comprehension/gpt-2">GPT-2</a></b></td><td><a href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">Devlin et al.</a></td><td>Mô hình ngôn ngữ transformer-based kích thước lớn, đưa ra một đoạn chữ, rồi dự đoán từ tiếp theo.</td><td>[<img src="https://colab.research.google.com/drive/1ZlXLSIMppPch6HgzKRillJiUcWn3PiK7?usp=sharing" alt="Mở trên Colab"></td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="các-toán-tử-operators-được-hỗ-trợ"></a><a href="#các-toán-tử-operators-được-hỗ-trợ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Các toán tử (Operators) được hỗ trợ</h2>
+<p>Chúng tôi hỗ trợ các toán tử sau:</p>
+<ul>
+<li>Acos</li>
+<li>Acosh</li>
+<li>Add</li>
+<li>And</li>
+<li>Asin</li>
+<li>Asinh</li>
+<li>Atan</li>
+<li>Atanh</li>
+<li>AveragePool</li>
+<li>BatchNormalization</li>
+<li>Cast</li>
+<li>Ceil</li>
+<li>Clip</li>
+<li>Concat</li>
+<li>ConstantOfShape</li>
+<li>Conv</li>
+<li>Cos</li>
+<li>Cosh</li>
+<li>Div</li>
+<li>Dropout</li>
+<li>Elu</li>
+<li>Equal</li>
+<li>Erf</li>
+<li>Expand</li>
+<li>Flatten</li>
+<li>Gather</li>
+<li>Gemm</li>
+<li>GlobalAveragePool</li>
+<li>Greater</li>
+<li>HardSigmoid</li>
+<li>Identity</li>
+<li>LeakyRelu</li>
+<li>Less</li>
+<li>Log</li>
+<li>MatMul</li>
+<li>Max</li>
+<li>MaxPool</li>
+<li>Mean</li>
+<li>Min</li>
+<li>Mul</li>
+<li>Neg</li>
+<li>NonZero</li>
+<li>Not</li>
+<li>OneHot</li>
+<li>Or</li>
+<li>Pad</li>
+<li>Pow</li>
+<li>PRelu</li>
+<li>Reciprocal</li>
+<li>ReduceMean</li>
+<li>ReduceSum</li>
+<li>Relu</li>
+<li>Reshape</li>
+<li>ScatterElements</li>
+<li>Selu</li>
+<li>Shape</li>
+<li>Sigmoid</li>
+<li>Sign</li>
+<li>Sin</li>
+<li>Sinh</li>
+<li>Slice</li>
+<li>Softmax</li>
+<li>Softplus</li>
+<li>Softsign</li>
+<li>Split</li>
+<li>Sqrt</li>
+<li>Squeeze</li>
+<li>Sub</li>
+<li>Sum</li>
+<li>Tan</li>
+<li>Tanh</li>
+<li>Tile</li>
+<li>Transpose</li>
+<li>Unsqueeze</li>
+<li>Upsample</li>
+<li>Where</li>
+<li>Xor</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="các-lưu-ý-đặc-biệt-cho-onnx-backend"></a><a href="#các-lưu-ý-đặc-biệt-cho-onnx-backend" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Các lưu ý đặc biệt cho ONNX backend</h3>
+<ul>
+<li><p>Conv, MaxPool và AveragePool</p>
+<p>Đầu vào phải có shape 1d<code>(N*C*H)</code> và 2d(<code>N*C*H*W</code>) trong khi <code>dilation</code> phải
+là 1.</p></li>
+<li><p>BatchNormalization</p>
+<p><code>epsilon</code> là 1e-05 và không được đổi.</p></li>
+<li><p>Cast</p>
+<p>Chỉ hỗ trợ float32 và int32, các dạng khác phải được cast thành hai dạng này.</p></li>
+<li><p>Squeeze và Unsqueeze</p>
+<p>Nếu gặp lỗi khi dùng <code>Squeeze</code> hay <code>Unsqueeze</code> giữa <code>Tensor</code> và Scalar, vui
+lòng báo cho chúng tôi.</p></li>
+<li><p>Empty tensor Empty tensor không được chấp nhận trong SINGA.</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="thực-hiện"></a><a href="#thực-hiện" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Thực hiện</h2>
+<p>Mã code của SINGA ONNX được đặt trong <code>python/singa/soonx.py</code>. Có bốn loại
+chính, <code>SingaFrontend</code>, <code>SingaBackend</code>, <code>SingaRep</code> và <code>SONNXModel</code>.
+<code>SingaFrontend</code> qui đổi mô hình SINGA model sang mô hình ONNX model;
+<code>SingaBackend</code> biến mô hình ONNX model sang đối tượng <code>SingaRep</code> giúp lưu trữ
+tất cả các toán tử SINGA operators và tensors(tensor trong văn bản này nghĩa là
+SINGA <code>Tensor</code>); <code>SingaRep</code> có thẻ chạy giống như mô hình SINGA model.
+<code>SONNXModel</code> tạo ra từ <code>model.Model</code> xác định thống nhất API cho SINGA.</p>
+<h3><a class="anchor" aria-hidden="true" id="singafrontend"></a><a href="#singafrontend" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SingaFrontend</h3>
+<p>Hàm function đầu vào của <code>SingaFrontend</code> là <code>singa_to_onnx_model</code> cũng được gọi
+là <code>to_onnx</code>. <code>singa_to_onnx_model</code> tạo ra mô hình ONNX model, và nó cũng tạo ra
+một ONNX graph bằng việc sử dụng <code>singa_to_onnx_graph</code>.</p>
+<p><code>singa_to_onnx_graph</code> chấp nhận đầu ra của mô hình, và lặp lại đệ quy graph của
+mô hình SINGA model từ đầu ra để gom tất cả toán tử tạo thành một hàng. Tensors
+đầu vào và trực tiếp, v.d, weights để train, của mô hình SINGA model được chọn
+cùng một lúc. Đầu vào được lưu trong <code>onnx_model.graph.input</code>; đầu ra được lưu
+trong <code>onnx_model.graph.output</code>; và weights để train được lưu trong
+<code>onnx_model.graph.initializer</code>.</p>
+<p>Sau đó toán tử SINGA operator trong hàng được đổi sang từng toán tử ONNX
+operators. <code>_rename_operators</code> xác định tên toán tử giữa SINGA và ONNX.
+<code>_special_operators</code> xác định function sử dụng để biến đổi toán tử.</p>
+<p>Thêm vào đó, một vài toán tử trong SINGA có các định nghĩa khác với ONNX, chẳng
+hạn như, ONNX coi một vài thuộc tính của toán tử SINGA operators là đầu vào, vì
+thế <code>_unhandled_operators</code> xác định function nào dùng để xử lý toán tử đặc biệt.</p>
+<p>Do dạng bool được coi là dạng int32 trong SINGA, <code>_bool_operators</code> địng nghĩa
+toán tử có thể chuyển sang dạng bool.</p>
+<h3><a class="anchor" aria-hidden="true" id="singabackend"></a><a href="#singabackend" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SingaBackend</h3>
+<p>Function đầu vào của <code>SingaBackend</code> là <code>prepare</code> kiểm tra phiên bản nào của mô
+hình ONNX model rồi gọi <code>_onnx_model_to_singa_ops</code>.</p>
+<p>Chức năng của <code>_onnx_model_to_singa_ops</code> là để lấy SINGA tensors và operators.
+Các tensors được lưu trong một thư viện, theo tên trong ONNX, và operators được
+lưu trong hàng ở dạng <code>namedtuple('SingaOps', ['node', 'operator'])</code>. Với mỗi
+toán tử operator, <code>node</code> là một ví dụ từ OnnxNode được dùng để lưu các thông tin
+cơ bản của ONNX node; <code>operator</code> là forward function cho toán tử SINGA;</p>
+<p>Bước đầu tiên của <code>_onnx_model_to_singa_ops</code> có bốn bước, đầu tiên là gọi
+<code>_parse_graph_params</code> để lấy tất các các tensors lưu trong <code>params</code>. Sau đó gọi
+hàm <code>_parse_graph_inputs_outputs</code> để lấy tất cả thông tin đầu vào đầu ra lưu
+trong <code>inputs</code> và <code>outputs</code>. Cuối cùng nó lặp lại tất cả các nodes trong ONNX
+graph và đẩy sang <code>_onnx_node_to_singa_op</code> như SINGA operators hoặc layers và
+lưu chúng thành <code>outputs</code>. Một vài weights được lưu trong ONNX node gọi là
+<code>Constant</code>, SONNX có thể xử lý chúng bằng <code>_onnx_constant_to_np</code> để lưu trong
+<code>params</code>.</p>
+<p>Cuối cùng class này trả lại một đối tượng <code>SingaRep</code> và lưu trên <code>params</code>,
+<code>inputs</code>, <code>outputs</code>, <code>layers</code>.</p>
+<h3><a class="anchor" aria-hidden="true" id="singarep"></a><a href="#singarep" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SingaRep</h3>
+<p><code>SingaBackend</code> lưu tất cả SINGA tensors và operators. <code>run</code> chấp nhận đầu vào
+của mô hình và chạy từng toán tử SINGA operators một, theo hàng của toán tử.
+Người dùng có thể sử dụng <code>last_layers</code> để xoá mô hình model sau vài layers cuối
+cùng.</p>
+<h3><a class="anchor" aria-hidden="true" id="sonnxmodel"></a><a href="#sonnxmodel" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SONNXModel</h3>
+<p><code>SONNXModel</code> được tạo từ <code>sonnx.SONNXModel</code> và thực hiện phương pháp <code>forward</code>
+để cung cấp một API đồng bộ với các mô hình SINGA.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/4.3.0_Viet/graph"><span class="arrow-prev">← </span><span>Model</span></a><a class="docs-next button" href="/docs/4.3.0_Viet/dist-train"><span>Distributed Training</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#sử-dụng-chung">Sử dụng chung</a><ul class="toc-headings"><li><a href="#tải-một-onnx-model-trong-singa">Tải một ONNX Model trong SINGA</a></li><li><a href="#inference-với-singa-model">Inference với SINGA model</a></li><li><a href="#lưu-model-của-singa-dưới-dạng-onnx">Lưu model của SINGA dưới dạng ONNX</a></li><li><a href="#training-lại-với-model-onnx">Training lại với model ONNX</a></li><li><a href="#transfer-learning-một-model-onnx">Transfer-learning một model ONNX</a></li></ul></li><li><a href="#onnx-model-zoo">ONNX model zoo</a><ul class="toc-headings"><li><a href="#phân-loại-hình-ảnh-image-classification">Phân loại hình ảnh (Image Classification)</a></li><li><a href="#nhận-diện-đối-tượng-object-detection">Nhận Diện Đối Tượng (Object Detection)</a></li><li><a href="#phân-tích-khuôn-mặt-face-analysis">Phân tích Khuôn Mặt (Face Analysis)</a></li><li><a href="#máy-hiểu-machine-comprehension">Máy Hiểu (Machine Comprehension)</a></li></ul></li><li><a href="#các-toán-tử-operators-được-hỗ-trợ">Các toán tử (Operators) được hỗ trợ</a><ul class="toc-headings"><li><a href="#các-lưu-ý-đặc-biệt-cho-onnx-backend">Các lưu ý đặc biệt cho ONNX backend</a></li></ul></li><li><a href="#thực-hiện">Thực hiện</a><ul class="toc-headings"><li><a href="#singafrontend">SingaFrontend</a></li><li><a href="#singabackend">SingaBackend</a></li><li><a href="#singarep">SingaRep</a></li><li><a href="#sonnxmodel">SONNXModel</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2024
+   The Apache Software Foundation. All rights reserved.
+   Apache SINGA, Apache, the Apache feather logo, and
+   the Apache SINGA project logos are trademarks of The
+   Apache Software Foundation. All other marks mentioned
+   may be trademarks or registered trademarks of their
+   respective owners.</section></div></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '45202133606c0b5fa6d21cddc4725dd8',
+                indexName: 'apache_singa',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:3.0.0"]}
+              });
+            </script></body></html>
