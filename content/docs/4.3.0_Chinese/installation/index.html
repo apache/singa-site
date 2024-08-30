@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Installation · Apache SINGA</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta name="docsearch:version" content="4.3.0_Chinese"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Installation · Apache SINGA"/><meta property="og:type" content="website"/><meta property="og:url" content="https://singa.apache.org/"/><meta property="og:description" content="&lt;!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  --&gt;"/><meta property="og:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://singa.apache.org/blog/atom.xml" title="Apache SINGA Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://singa.apache.org/blog/feed.xml" title="Apache SINGA Blog RSS Feed"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&amp;family=Source+Sans+Pro:wght@200;300&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/singa.png" alt="Apache SINGA"/></a><a href="/versions"><h3>4.3.0_Chinese</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive siteNavItemActive"><a href="/docs/4.3.0_Chinese/installation" target="_self">Docs</a></li><li class=""><a href="/docs/4.3.0_Chinese/source-repository" target="_self">Community</a></li><li class=""><a href="/blog/" target="_self">News</a></li><li class=""><a href="https://apache-singa.readthedocs.io/en/latest/" target="_self">API</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/apache/singa" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Getting Started</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/docs/4.3.0_Chinese/installation">Installation</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Chinese/software-stack">Software Stack</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Chinese/examples">Examples</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Guides</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Chinese/device">Device</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Chinese/tensor">Tensor</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Chinese/autograd">Autograd</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Chinese/optimizer">Optimizer</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Chinese/graph">Model</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Chinese/onnx">ONNX</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Chinese/dist-train">Distributed Training</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Chinese/time-profiling">Time Profiling</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Chinese/half-precision">Half Precision</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Development</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Chinese/downloads">Download SINGA</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Chinese/build">Build SINGA from Source</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Chinese/contribute-code">How to Contribute Code</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Chinese/contribute-docs">How to Contribute to Documentation</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Chinese/how-to-release">How to Prepare a Release</a></li><li class="navListItem"><a class="navItem" href="/docs/4.3.0_Chinese/git-workflow">Git Workflow</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/installation.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Installation</h1></header><article><div><span><!--- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.  -->
+<h2><a class="anchor" aria-hidden="true" id="使用-pip"></a><a href="#使用-pip" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>使用 pip</h2>
+<ol>
+<li>只使用 CPU
+<a href="https://colab.research.google.com/drive/17RA056Brwk0vBQTFaZ-l9EbqwADO0NA9?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></li>
+</ol>
+<pre><code class="hljs css language-bash">pip install singa -f http://singa.apache.org/docs/next/wheel-cpu.html --trusted-host singa.apache.org
+</code></pre>
+<p>您可以通过<code>singa==&lt;version&gt;</code>安装特定版本的 SINGA，其中<code>&lt;version&gt;</code>字段应被替换，
+例如 <code>4.3.0</code>。可用的 SINGA 版本在链接中列出。</p>
+<p>要安装最新的开发版本，请将链接替换为
+<a href="http://singa.apache.org/docs/next/wheel-cpu-dev.html">http://singa.apache.org/docs/next/wheel-cpu-dev.html</a></p>
+<ol start="2">
+<li>使用 CUDA 和 cuDNN 的 GPU
+<a href="https://colab.research.google.com/drive/1W30IPCqj5fG8ADAQsFqclaCLyIclVcJL?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></li>
+</ol>
+<pre><code class="hljs css language-bash">pip install singa -f http://singa.apache.org/docs/next/wheel-gpu.html --trusted-host singa.apache.org
+</code></pre>
+<p>您也可以配置 SINGA 版本和 CUDA 版本，比如 <code>s4.3.0+cuda10.2</code>，SINGA 版本和 CUDA 版
+本的可用组合在链接中列出。</p>
+<p>要安装最新的开发版本，请将链接替换为
+<a href="http://singa.apache.org/docs/next/wheel-gpu-dev.html">http://singa.apache.org/docs/next/wheel-gpu-dev.html</a></p>
+<p>注意：你本地 Python 环境的 Python 版本将被用来寻找相应的 wheel 包。例如，如果你
+本地的 Python 是 3.9，那么就会通过 pip 选择在 Python 3.9 上编译的 wheel 包并安装
+。事实上，wheel 文件的名称包括 SINGA 版本、CUDA 版本和 Python 版本。因此
+，<code>pip</code>知道要下载和安装哪个 wheel 文件。</p>
+<p>参考 setup.py 文件顶部的注释，了解如何构建 wheel 包。</p>
+<p>如果运行以下命令没有报错：</p>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> python -c <span class="hljs-string">"from singa import tensor"</span></span>
+</code></pre>
+<p>那么 SINGA 就安装成功了。</p>
+<h2><a class="anchor" aria-hidden="true" id="使用-docker"></a><a href="#使用-docker" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>使用 Docker</h2>
+<p>按照<a href="https://docs.docker.com/install/">说明</a>在你的本地主机上安装 Docker。将您的
+用户添加
+到<a href="https://docs.docker.com/install/linux/linux-postinstall/">docker 组</a>中，以便
+在没有<code>sudo</code>的情况下运行 docker 命令。</p>
+<ol>
+<li>仅使用 CPU</li>
+</ol>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> docker run -it apache/singa:X.Y.Z-cpu-ubuntu16.04 /bin/bash</span>
+</code></pre>
+<ol start="2">
+<li>要使用 GPU，在安装 Docker 后安装
+<a href="https://github.com/NVIDIA/nvidia-docker">Nvidia-Docker</a></li>
+</ol>
+<pre><code class="hljs css language-shell"><span class="hljs-meta">$</span><span class="bash"> nvidia-docker run -it apache/singa:X.Y.Z-cuda9.0-cudnn7.4.2-ubuntu16.04 /bin/bash</span>
+</code></pre>
+<ol start="3">
+<li>关于 SINGA Docker 镜像（标签）的完整列表，请访
+问<a href="https://hub.docker.com/r/apache/singa/">docker hub site</a>。对于每个 docker
+镜像，标签的命名为：</li>
+</ol>
+<pre><code class="hljs css language-shell">version-(cpu|gpu)[-devel]
+</code></pre>
+<table>
+<thead>
+<tr><th>Tag</th><th>Description</th><th>Example value</th></tr>
+</thead>
+<tbody>
+<tr><td><code>version</code></td><td>SINGA version</td><td>'2.0.0-rc0', '2.0.0', '1.2.0'</td></tr>
+<tr><td><code>cpu</code></td><td>the image cannot run on GPUs</td><td>'cpu'</td></tr>
+<tr><td><code>gpu</code></td><td>the image can run on Nvidia GPUs</td><td>'gpu', or 'cudax.x-cudnnx.x' e.g., 'cuda10.0-cudnn7.3'</td></tr>
+<tr><td><code>devel</code></td><td>indicator for development</td><td>if absent, SINGA Python package is installed for runtime only; if present, the building environment is also created, you can recompile SINGA from source at '/root/singa'</td></tr>
+<tr><td><code>OS</code></td><td>indicate OS version number</td><td>'ubuntu16.04', 'ubuntu18.04'</td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="从源码编译"></a><a href="#从源码编译" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>从源码编译</h2>
+<p>您可以使用本地构建工具或 conda-build 在本地主机操作系统上或在 Docker 容器中从源
+代码<a href="/docs/4.3.0_Chinese/build">构建和安装 SINGA</a>。</p>
+<h2><a class="anchor" aria-hidden="true" id="faq"></a><a href="#faq" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>FAQ</h2>
+<ul>
+<li><p>Q: <code>from singa import tensor</code>错误</p>
+<p>A: 执行下面的命令，检查详细的错误：</p>
+<pre><code class="hljs css language-shell">python -c  "from singa import _singa_wrap"
+<span class="hljs-meta">#</span><span class="bash"> go to the folder of _singa_wrap.so</span>
+ldd path to _singa_wrap.so
+python
+<span class="hljs-meta">&gt;</span><span class="bash">&gt; import importlib</span>
+<span class="hljs-meta">&gt;</span><span class="bash">&gt; importlib.import_module(<span class="hljs-string">'_singa_wrap'</span>)</span>
+</code></pre>
+<p><code>_singa_wrap.so</code> 的文件夹是
+<code>~/miniconda3/lib/python3.10/site-packages/singa</code>。通常情况下，这个错误是由于
+依赖的库不匹配或缺失造成的，例如 cuDNN 或 protobuf。解决方法是创建一个新的虚拟
+环境，并在该环境中安装 SINGA，例如：</p></li>
+</ul>
+<pre><code class="hljs css language-shell">conda create -n singa
+conda activate singa
+conda install -c nusdbsystem -c conda-forge singa-cpu
+</code></pre>
+<ul>
+<li><p>Q: 使用虚拟环境时，每次安装 SINGA 时，都会重新安装 numpy。但是，当我运
+行<code>import numpy</code>时，numpy 没有被使用。</p>
+<p>A: 这可能是由<code>PYTHONPATH</code>环境变量引起的，在使用虚拟环境时，应将其设置为空，以
+避免与虚拟环境的路径冲突。</p></li>
+<li><p>Q: 当我在 Mac OS X 中运行 SINGA 时，得到如下错误 &quot;Fatal Python error:
+PyThreadState_Get: no current thread Abort trap: 6&quot;</p>
+<p>A: 这个错误通常发生在系统中有多个 Python 版本的时候，例如，操作系统自带的版本
+和 Homebrew 安装的版本。SINGA 链接的 Python 必须与 Python 解释器相同。您可以通
+过<code>which python</code>来检查解释器 python 版本并通
+过<code>otool -L &lt;path to _singa_wrap.so&gt;</code> 检查 SINGA 链接的 Python，如果通过 conda
+安装 SINGA，这个问题应该可以解决。</p></li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-next button" href="/docs/4.3.0_Chinese/software-stack"><span>Software Stack</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#使用-pip">使用 pip</a></li><li><a href="#使用-docker">使用 Docker</a></li><li><a href="#从源码编译">从源码编译</a></li><li><a href="#faq">FAQ</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2024
+   The Apache Software Foundation. All rights reserved.
+   Apache SINGA, Apache, the Apache feather logo, and
+   the Apache SINGA project logos are trademarks of The
+   Apache Software Foundation. All other marks mentioned
+   may be trademarks or registered trademarks of their
+   respective owners.</section></div></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '45202133606c0b5fa6d21cddc4725dd8',
+                indexName: 'apache_singa',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:3.0.0"]}
+              });
+            </script></body></html>
