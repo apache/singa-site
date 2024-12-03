@@ -15,10 +15,22 @@
    may be trademarks or registered trademarks of their
    respective owners.</rights>
     <entry>
-        <title type="html"><![CDATA[APACHE SINGA -- 2024 SIGMOD Systems Award]]></title>
-        <id>https://singa.apache.org/blog/2024/6/22/sigmod-systems-award.html</id>
-        <link href="https://singa.apache.org/blog/2024/6/22/sigmod-systems-award.html"/>
+        <title type="html"><![CDATA[SINGA Launches Model Zoo to Support Healthcare Applications]]></title>
+        <id>https://singa.apache.org/blog/2024/12/3/healthcare-model-zoo.html</id>
+        <link href="https://singa.apache.org/blog/2024/12/3/healthcare-model-zoo.html"/>
         <updated>1970-01-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[ <p>The SINGA team is excited to announce the launch of the Healthcare Model Zoo, a repository of different deep-learning models designed to advance the landscape of healthcare applications. This embodies SINGA's commitment to harnessing artificial inte...</p>]]></summary>
+        <author>
+            <name>Apache SINGA</name>
+            <email/>
+            <uri>https://twitter.com/ApacheSINGA</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[APACHE SINGA -- 2024 SIGMOD Systems Award]]></title>
+        <id>https://singa.apache.org/blog/2024/06/22/sigmod-systems-award.html</id>
+        <link href="https://singa.apache.org/blog/2024/06/22/sigmod-systems-award.html"/>
+        <updated>2024-06-22T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>Apache SINGA received the 2024 SIGMOD Systems Award, which is awarded to an individual or set of individuals to recognize the development of a software or hardware system whose technical contributions have had significant impact on the theory or prac...</p>]]></summary>
         <author>
             <name>Apache SINGA</name>
@@ -28,9 +40,9 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Release Version 4.2.0]]></title>
-        <id>https://singa.apache.org/blog/2024/3/15/v4-2-0.html</id>
-        <link href="https://singa.apache.org/blog/2024/3/15/v4-2-0.html"/>
-        <updated>1970-01-01T00:00:00.000Z</updated>
+        <id>https://singa.apache.org/blog/2024/03/15/v4-2-0.html</id>
+        <link href="https://singa.apache.org/blog/2024/03/15/v4-2-0.html"/>
+        <updated>2024-03-15T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[ <p>Apache SINGA V4.2.0 is released on March 15, 2024. There are six major features added in this release.</p> <ul> <li><p>Add support for deep learning models running on top of PolarDB, including efficient model selection, dynamic model creation, flexible training co...</p></li></ul>]]></summary>
         <author>
             <name>Apache SINGA</name>
