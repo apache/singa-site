@@ -1,0 +1,580 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Model · Apache SINGA</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. --&gt;"/><meta name="docsearch:version" content="5.0.0_Viet"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Model · Apache SINGA"/><meta property="og:type" content="website"/><meta property="og:url" content="https://singa.apache.org/"/><meta property="og:description" content="&lt;!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. --&gt;"/><meta property="og:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://singa.apache.org/img/singa_twitter_banner.jpeg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://singa.apache.org/blog/atom.xml" title="Apache SINGA Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://singa.apache.org/blog/feed.xml" title="Apache SINGA Blog RSS Feed"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&amp;family=Source+Sans+Pro:wght@200;300&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/singa.png" alt="Apache SINGA"/></a><a href="/versions"><h3>5.0.0_Viet</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/5.0.0_Viet/installation" target="_self">Docs</a></li><li class=""><a href="/docs/5.0.0_Viet/source-repository" target="_self">Community</a></li><li class=""><a href="/blog/" target="_self">News</a></li><li class=""><a href="https://apache-singa.readthedocs.io/en/latest/" target="_self">API</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li><li class=""><a href="https://github.com/apache/singa" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Guides</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/5.0.0_Viet/installation">Cài đặt</a></li><li class="navListItem"><a class="navItem" href="/docs/5.0.0_Viet/software-stack">Software Stack</a></li><li class="navListItem"><a class="navItem" href="/docs/5.0.0_Viet/examples">Ví Dụ</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Guides</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/5.0.0_Viet/device">Device</a></li><li class="navListItem"><a class="navItem" href="/docs/5.0.0_Viet/tensor">Tensor</a></li><li class="navListItem"><a class="navItem" href="/docs/5.0.0_Viet/autograd">Autograd</a></li><li class="navListItem"><a class="navItem" href="/docs/5.0.0_Viet/optimizer">Optimizer</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/5.0.0_Viet/graph">Model</a></li><li class="navListItem"><a class="navItem" href="/docs/5.0.0_Viet/onnx">ONNX</a></li><li class="navListItem"><a class="navItem" href="/docs/5.0.0_Viet/dist-train">Distributed Training</a></li><li class="navListItem"><a class="navItem" href="/docs/5.0.0_Viet/time-profiling">Time Profiling</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Development</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/5.0.0_Viet/downloads">Tải SINGA</a></li><li class="navListItem"><a class="navItem" href="/docs/5.0.0_Viet/build">Cài đặt SINGA từ Nguồn (Source)</a></li><li class="navListItem"><a class="navItem" href="/docs/5.0.0_Viet/contribute-code">Tham gia viết code</a></li><li class="navListItem"><a class="navItem" href="/docs/5.0.0_Viet/contribute-docs">Tham gia chỉnh sửa Hướng Dẫn Sử Dụng</a></li><li class="navListItem"><a class="navItem" href="/docs/5.0.0_Viet/how-to-release">Chuẩn bị trước khi phát hành</a></li><li class="navListItem"><a class="navItem" href="/docs/5.0.0_Viet/git-workflow">Quy Trình Sử Dụng Git</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/apache/singa-doc/blob/master/docs-site/docs/graph.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Model</h1></header><article><div><span><!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License. -->
+<p>Forward và backward propagation trong mạng thần kinh nhân tạo (neural network)
+có thể sử dụng một tập hợp các hàm như convolution và pooling. Mỗi hàm nhận một
+vài input <a href="./tensor">tensors</a> và áp dụng một <a href="./autograd">operator</a> để tạo
+output tensors. Bằng việc thể hiện mỗi operator là một node và mỗi tensor là một
+edge, tất cả dạng hàm tạo thành một computational graph. Với computational
+graph, tối ưu hoá tốc độ và bộ nhớ có thể được tiến hành bởi việc đưa vào thực
+hiện việc phân bổ/giải phóng bộ nhớ và thao tác một cách hợp lý. Trong SINGA,
+người dùng chỉ cần xác định neural network model sử dụng API của hàm
+<a href="https://github.com/apache/singa/blob/master/python/singa/model.py">Model</a>.
+Graph được xây dựng và tối ưu hoá ở C++ phía sau một cách tự động.</p>
+<p>Theo đó, một mặt người dùng thực hiện network sử dụng API của hàm
+<a href="./graph">Model</a> tuân theo phong cách lập trình bắt buộc như PyTorch. Có điều
+khác với PyTorch phải tái tạo lại các thao tác ở mỗi vòng lặp, SINGA buffer các
+thao tác để tạo computational graph một cách đầy đủ (khi tính năng này được kích
+hoạt) sau vòng lặp đầu tiên. Do đó, mặt khác, SINGA có computational graph giống
+như được tạo bởi các libraries sử dụng lập trình khai báo (declarative
+programming), như TensorFlow. Nên nó được tối ưu hoá qua graph.</p>
+<h2><a class="anchor" aria-hidden="true" id="ví-dụ"></a><a href="#ví-dụ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ví Dụ</h2>
+<p>Mã code sau mô phỏng việc sử dụng API của hàm <code>Model</code>.</p>
+<ol>
+<li>Áp dụng model mới như một tập con của Model class.</li>
+</ol>
+<pre><code class="hljs css language-Python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CNN</span><span class="hljs-params">(model.Model)</span>:</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, num_classes=<span class="hljs-number">10</span>, num_channels=<span class="hljs-number">1</span>)</span>:</span>
+        super(CNN, self).__init__()
+        self.conv1 = layer.Conv2d(num_channels, <span class="hljs-number">20</span>, <span class="hljs-number">5</span>, padding=<span class="hljs-number">0</span>, activation=<span class="hljs-string">"RELU"</span>)
+        self.conv2 = layer.Conv2d(<span class="hljs-number">20</span>, <span class="hljs-number">50</span>, <span class="hljs-number">5</span>, padding=<span class="hljs-number">0</span>, activation=<span class="hljs-string">"RELU"</span>)
+        self.linear1 = layer.Linear(<span class="hljs-number">500</span>)
+        self.linear2 = layer.Linear(num_classes)
+        self.pooling1 = layer.MaxPool2d(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, padding=<span class="hljs-number">0</span>)
+        self.pooling2 = layer.MaxPool2d(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, padding=<span class="hljs-number">0</span>)
+        self.relu = layer.ReLU()
+        self.flatten = layer.Flatten()
+        self.softmax_cross_entropy = layer.SoftMaxCrossEntropy()
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(self, x)</span>:</span>
+        y = self.conv1(x)
+        y = self.pooling1(y)
+        y = self.conv2(y)
+        y = self.pooling2(y)
+        y = self.flatten(y)
+        y = self.linear1(y)
+        y = self.relu(y)
+        y = self.linear2(y)
+        <span class="hljs-keyword">return</span> y
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">train_one_batch</span><span class="hljs-params">(self, x, y)</span>:</span>
+        out = self.forward(x)
+        loss = self.softmax_cross_entropy(out, y)
+        self.optimizer(loss)
+        <span class="hljs-keyword">return</span> out, loss
+</code></pre>
+<ol start="2">
+<li>Tạo một instance cho model, optimizer, device, v.v. Compile model đó</li>
+</ol>
+<pre><code class="hljs css language-python">model = CNN()
+
+<span class="hljs-comment"># khởi tạo optimizer và đính nó vào model</span>
+sgd = opt.SGD(lr=<span class="hljs-number">0.005</span>, momentum=<span class="hljs-number">0.9</span>, weight_decay=<span class="hljs-number">1e-5</span>)
+model.set_optimizer(sgd)
+
+<span class="hljs-comment"># khởi tạo device</span>
+dev = device.create_cuda_gpu()
+
+<span class="hljs-comment"># input và target placeholders cho model</span>
+tx = tensor.Tensor((batch_size, <span class="hljs-number">1</span>, IMG_SIZE, IMG_SIZE), dev, tensor.float32)
+ty = tensor.Tensor((batch_size, num_classes), dev, tensor.int32)
+
+<span class="hljs-comment"># compile model trước khi training</span>
+model.compile([tx], is_train=<span class="hljs-literal">True</span>, use_graph=<span class="hljs-literal">True</span>, sequential=<span class="hljs-literal">False</span>)
+</code></pre>
+<ol start="3">
+<li>Train model theo vòng lặp</li>
+</ol>
+<pre><code class="hljs css language-python"><span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> range(num_train_batch):
+    <span class="hljs-comment"># tạo mini-batch tiếp theo</span>
+    x, y = ...
+
+    <span class="hljs-comment"># Copy dữ liệu vào input tensors</span>
+    tx.copy_from_numpy(x)
+    ty.copy_from_numpy(y)
+
+    <span class="hljs-comment"># Training với một batch</span>
+    out, loss = model(tx, ty)
+</code></pre>
+<p>Ví dụ này có trên Google Colab notebook
+<a href="https://colab.research.google.com/drive/1fbGUs1AsoX6bU5F745RwQpohP4bHTktq">tại đây</a>.</p>
+<p>Các ví dụ khác:</p>
+<ul>
+<li><a href="https://github.com/apache/singa/blob/master/examples/mlp/model.py">MLP</a></li>
+<li><a href="https://github.com/apache/singa/blob/master/examples/cnn/model/cnn.py">CNN</a></li>
+<li><a href="https://github.com/apache/singa/blob/master/examples/cnn/model/resnet.py">ResNet</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="thực-hiện"></a><a href="#thực-hiện" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Thực Hiện</h2>
+<h3><a class="anchor" aria-hidden="true" id="xây-dựng-graph"></a><a href="#xây-dựng-graph" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Xây Dựng Graph</h3>
+<p>SINGA tạo computational graph qua 3 bước:</p>
+<ol>
+<li>Buffer các thao tác</li>
+<li>Phân tích hoạt động các thư viện sử dụng trong dự án (dependencies)</li>
+<li>Tạo nodes và edges dựa trên dependencies</li>
+</ol>
+<p>Sử dụng phép nhân ma trận từ dense layer của
+<a href="https://github.com/apache/singa/blob/master/examples/mlp/model.py">MLP model</a>
+làm ví dụ. Quá trình này gọi là hàm <code>forward</code> function của class MLP</p>
+<pre><code class="hljs css language-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MLP</span><span class="hljs-params">(model.Model)</span>:</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, data_size=<span class="hljs-number">10</span>, perceptron_size=<span class="hljs-number">100</span>, num_classes=<span class="hljs-number">10</span>)</span>:</span>
+        super(MLP, self).__init__()
+        self.linear1 = layer.Linear(perceptron_size)
+        ...
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(self, inputs)</span>:</span>
+        y = self.linear1(inputs)
+        ...
+</code></pre>
+<p>Layer <code>Linear</code> tạo thành từ phép tính <code>mutmul</code>. <code>autograd</code> áp dụng phép <code>matmul</code>
+bằng cách gọi hàm <code>Mult</code> được lấy từ CPP qua SWIG.</p>
+<pre><code class="hljs css language-python"><span class="hljs-comment"># áp dụng matmul()</span>
+singa.Mult(inputs, w)
+</code></pre>
+<p>Từ phía sau, hàm <code>Mult</code> function được áp dụng bằng cách gọi <code>GEMV</code>, là một hàm
+CBLAS. thay vì gọi hàm <code>GEMV</code> trực tiếp, <code>Mult</code> gửi đi <code>GEMV</code> và đối số
+(argument) tới thiết bị (device) như sau,</p>
+<pre><code class="hljs css language-c++"><span class="hljs-comment">// Áp dụng Mult()</span>
+C-&gt;device()-&gt;Exec(
+    [a, A, b, B, CRef](Context *ctx) <span class="hljs-keyword">mutable</span> {
+        GEMV&lt;DType, Lang&gt;(a, A, B, b, &amp;CRef, ctx);
+    },
+    read_blocks, {C-&gt;block()});
+</code></pre>
+<p>Hàm <code>Exec</code> function của <code>Device</code> buffer hàm này và các đối số của nó. Thêm vào
+đó, nó cũng có thông tin về các block (một block là một đoạn bộ nhớ cho một
+tensor) để đọc và viết bởi hàm này.</p>
+<p>Sau khi <code>Model.forward()</code> được thực hiện xong một lần, tất cả quá trình được
+buffer bởi <code>Device</code>. Tiếp theo, thông tin đọc/viết của tất cả quá trình sẽ được
+phân tích để tạo computational graph. Ví dụ, nếu một block <code>b</code> được viết bởi quá
+trình 01 và sau đó được đọc bởi quá trình 02 khác, chúng ta sẽ biết 02 là dựa
+vào 01 và có edge trực tiếp từ A sang B, thể hiện qua block <code>b</code> (hoặc tensor của
+nó). Sau đó một graph không tuần hoàn sẽ được tạo ra như dưới đây. Graph chỉ
+được tạo ra một lần.</p>
+<p><img src="/docs/assets/GraphOfMLP.png" alt="Computational graph của MLP"></p>
+<p><br/><strong>Sơ đồ 1 - Ví dụ Computational graph của MLP.</strong></p>
+<h3><a class="anchor" aria-hidden="true" id="tối-ưu-hoá"></a><a href="#tối-ưu-hoá" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tối Ưu Hoá</h3>
+<p>Hiện nay, các tối ưu hoá sau được thực hiện dựa trên computational graph.</p>
+<p><strong>Phân bổ thụ động (Lazy allocation)</strong> Khi tensor/blocks được tạo ra, các thiết
+bị (devices) không phân bổ bộ nhớ cho chúng ngay lập tức. Thay vào đó, khi block
+được tiếp cận lần đầu tiên, bộ nhớ sẽ được phân bổ.</p>
+<p><strong>Tự động tái sử dụng (Automatic recycling)</strong> Đếm số của mỗi tensor/block được
+tính dựa trên graph. Trước khi thực hiện quá trình nào, đếm số là số lượng hàm
+đọc block này. Trong quá trình thực hiện, khi một hàm nào được tiến hành, đếm số
+của mỗi block đầu vào bị trừ đi 1. Nếu đếm số của một block bằng 0, thì block
+này sẽ không được đọc lại nữa trong toàn bộ quá trình còn lại. Bởi vậy, bộ nhớ
+của nó được giải phóng một cách an toàn. Thêm vào đó, SINGA theo dõi việc sử
+dụng block bên ngoài graph. Nếu block được sử dụng bởi mã code Python (không
+phải các hàm autograd), nó sẽ không được tái sử dụng.</p>
+<p><strong>Chia sẻ bộ nhớ</strong> SINGA sử dụng memory pool, như là
+<a href="https://github.com/NVIDIA/cnmem">CnMem</a> để quản lý bộ nhớ CUDA. Với <em>Automatic
+recycling</em> và memory pool, SINGA có thể chia sẻ bộ nhớ giữa các tensor. Xem xét
+hai hàm <code>c = a + b</code> và <code>d=2xc</code>. Trước khi thực hiện hàm thứ hai, theo như <em>Lazy
+allocation</em> thì bộ nhớ của d nên được sử dụng. Cũng như <code>a</code> không được sử dụng ở
+toàn bộ quá trình còn lại. Theo Tự động sử dụng (Automatic recycling), block của
+<code>a</code> sẽ được giải phóng sau hàm đầu tiên. Vì thế, SINGA sẽ đề xuất bốn hàm tới
+CUDA stream: addition, free <code>a</code>, malloc <code>b</code>, và multiplication. Memory pool sau
+đó có thể chia sẻ bộ nhớ được <code>a</code> với <code>b</code> giải phóng thay vì yêu cầu GPU thực
+hiện real malloc cho <code>b</code>.</p>
+<p>Các kĩ thuật tối ưu hoá khác, ví dụ từ compliers, như common sub-expression
+elimination và parallelizing operations trên CUDA streams khác nhau cũng có thể
+được áp dụng.</p>
+<h2><a class="anchor" aria-hidden="true" id="toán-tử-operator-mới"></a><a href="#toán-tử-operator-mới" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Toán Tử (Operator) mới</h2>
+<p>Mỗi toán tử được định nghĩa trong <code>autograd</code> module áp dụng hai hàm: forward và
+backward, được thực hiện bằng cách gọi toán tử (operator) từ backend. Để thêm
+một toán tử mới vào hàm <code>autograd</code>, bạn cần thêm nhiều toán tử ở backend.</p>
+<p>Lấy toán tử
+<a href="https://github.com/apache/singa/blob/master/python/singa/autograd.py">Conv2d</a>
+làm ví dụ, từ phía Python, hàm forward và backward được thực hiện bằng cách gọi
+các toán tử từ backend dựa trên loại device.</p>
+<pre><code class="hljs css language-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">_Conv2d</span><span class="hljs-params">(Operation)</span>:</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">forward</span><span class="hljs-params">(self, x, W, b=None)</span>:</span>
+        ......
+        <span class="hljs-keyword">if</span> training:
+            <span class="hljs-keyword">if</span> self.handle.bias_term:
+                self.inputs = (x, W, b) <span class="hljs-comment"># ghi chép x, W, b</span>
+            <span class="hljs-keyword">else</span>:
+                self.inputs = (x, W)
+
+        <span class="hljs-keyword">if</span> (type(self.handle) != singa.ConvHandle):
+            <span class="hljs-keyword">return</span> singa.GpuConvForward(x, W, b, self.handle)
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-keyword">return</span> singa.CpuConvForward(x, W, b, self.handle)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">backward</span><span class="hljs-params">(self, dy)</span>:</span>
+        <span class="hljs-keyword">if</span> (type(self.handle) != singa.ConvHandle):
+            dx = singa.GpuConvBackwardx(dy, self.inputs[<span class="hljs-number">1</span>], self.inputs[<span class="hljs-number">0</span>],
+                                        self.handle)
+            dW = singa.GpuConvBackwardW(dy, self.inputs[<span class="hljs-number">0</span>], self.inputs[<span class="hljs-number">1</span>],
+                                        self.handle)
+            db = singa.GpuConvBackwardb(
+                dy, self.inputs[<span class="hljs-number">2</span>],
+                self.handle) <span class="hljs-keyword">if</span> self.handle.bias_term <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span>
+        <span class="hljs-keyword">else</span>:
+            dx = singa.CpuConvBackwardx(dy, self.inputs[<span class="hljs-number">1</span>], self.inputs[<span class="hljs-number">0</span>],
+                                        self.handle)
+            dW = singa.CpuConvBackwardW(dy, self.inputs[<span class="hljs-number">0</span>], self.inputs[<span class="hljs-number">1</span>],
+                                        self.handle)
+            db = singa.CpuConvBackwardb(
+                dy, self.inputs[<span class="hljs-number">2</span>],
+                self.handle) <span class="hljs-keyword">if</span> self.handle.bias_term <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span>
+        <span class="hljs-keyword">if</span> db:
+            <span class="hljs-keyword">return</span> dx, dW, db
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-keyword">return</span> dx, dW
+</code></pre>
+<p>Mỗi toán tử ở backend nên được thực hiện theo cách sau:</p>
+<ul>
+<li><p>Giả dụ toán từ là <code>foo()</code>; khi được thực hiện nên được gói vào trong một hàm
+khác, như <code>_foo()</code>. <code>foo()</code> chuyển <code>_foo</code> cùng với các đối số như một hàm
+lambda tới hàm <code>Device</code>'s <code>Exec</code> để buffer. Block để đọc và viết cũng được
+chuyển cho <code>Exec</code>.</p></li>
+<li><p>Tất cả đối số được sử dụng trong hàm lambda expression cần phải được thu thập
+dựa trên các nguyên tắc sau.</p>
+<ul>
+<li><p><code>thu thập bằng giá trị</code>: Nếu biến đối số (argument variable) là biến local
+hoặc sẽ được giải phóng ngay (như intermediate tensors). Hoặc, những biến số
+này sẽ bị loại bỏ khi <code>foo()</code> tồn tại.</p></li>
+<li><p><code>thu thập theo tham khảo</code>：Nếu biến số được ghi lại từ phía python hoặc một
+biến bất biến (như tham số W và ConvHand trong Conv2d class).</p></li>
+<li><p><code>mutable</code>: Biểu thức lambda expression nên có biến thẻ (mutable tag) nếu một
+biến được thu thập theo giá trị bị thay đổi trong hàm <code>_foo()</code></p></li>
+</ul></li>
+</ul>
+<p>Đây là một
+<a href="https://github.com/apache/singa/blob/master/src/model/operation/convolution.cc">ví dụ</a>
+về operator được áp dụng ở backend.</p>
+<pre><code class="hljs css language-c++"><span class="hljs-function">Tensor <span class="hljs-title">GpuConvBackwardx</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Tensor &amp;dy, <span class="hljs-keyword">const</span> Tensor &amp;W, <span class="hljs-keyword">const</span> Tensor &amp;x,
+                        <span class="hljs-keyword">const</span> CudnnConvHandle &amp;cch)</span> </span>{
+  CHECK_EQ(dy.device()-&gt;lang(), kCuda);
+
+  Tensor dx;
+  dx.ResetLike(x);
+
+  dy.device()-&gt;Exec(
+      <span class="hljs-comment">/*
+       * dx is a local variable so it's captured by value
+       * dy is an intermediate tensor and isn't recorded on the python side
+       * W is an intermediate tensor but it's recorded on the python side
+       * chh is a variable and it's recorded on the python side
+       */</span>
+      [dx, dy, &amp;W, &amp;cch](Context *ctx) <span class="hljs-keyword">mutable</span> {
+        Block *wblock = W.block(), *dyblock = dy.block(), *dxblock = dx.block();
+        <span class="hljs-keyword">float</span> alpha = <span class="hljs-number">1.f</span>, beta = <span class="hljs-number">0.f</span>;
+        cudnnConvolutionBackwardData(
+            ctx-&gt;cudnn_handle, &amp;alpha, cch.filter_desc, wblock-&gt;data(),
+            cch.y_desc, dyblock-&gt;data(), cch.conv_desc, cch.bp_data_alg,
+            cch.workspace.block()-&gt;mutable_data(),
+            cch.workspace_count * <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">float</span>), &amp;beta, cch.x_desc,
+            dxblock-&gt;mutable_data());
+      },
+      {dy.block(), W.block()}, {dx.block(), cch.workspace.block()});
+      <span class="hljs-comment">/* the lambda expression reads the blocks of tensor dy and w
+       * and writes the blocks of tensor dx and chh.workspace
+       */</span>
+
+  <span class="hljs-keyword">return</span> dx;
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="điểm-chuẩn-benchmark"></a><a href="#điểm-chuẩn-benchmark" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Điểm Chuẩn (Benchmark)</h2>
+<h3><a class="anchor" aria-hidden="true" id="trên-một-node"></a><a href="#trên-một-node" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Trên một node</h3>
+<ul>
+<li>Thiết lập thí nghiệm
+<ul>
+<li>Model
+<ul>
+<li>Sử dụng layer: ResNet50 trong
+<a href="https://github.com/apache/singa/blob/master/examples/cnn/autograd/resnet_cifar10.py">resnet.py</a></li>
+<li>Sử dụng model: ResNet50 trong
+<a href="https://github.com/apache/singa/blob/master/examples/cnn/model/resnet.py">resnet.py</a></li>
+</ul></li>
+<li>GPU: NVIDIA RTX 2080Ti</li>
+</ul></li>
+<li>Kí hiệu
+<ul>
+<li><code>s</code> ：giây (second)</li>
+<li><code>it</code> ： vòng lặp (iteration)</li>
+<li><code>Mem</code>：sử dụng bộ nhớ tối đa trong một GPU</li>
+<li><code>Throughout</code>：số lượng hình ảnh được xử lý mỗi giây</li>
+<li><code>Time</code>：tổng thời gian</li>
+<li><code>Speed</code>：vòng lặp mỗi giây</li>
+<li><code>Reduction</code>：tốc độ giảm bộ nhớ sử dụng so với sử dụng layer</li>
+<li><code>Speedup</code>: tốc độ tăng tốc so với dev branch</li>
+</ul></li>
+<li>Kết quả
+  <table style="text-align: center">
+      <tr>
+          <th style="text-align: center">Batchsize</th>
+          <th style="text-align: center">Cases</th>
+          <th style="text-align: center">Mem(MB)</th>
+          <th style="text-align: center">Time(s)</th>
+          <th style="text-align: center">Speed(it/s)</th>
+          <th style="text-align: center">Throughput</th>
+          <th style="text-align: center">Reduction</th>
+          <th style="text-align: center">Speedup</th>
+      </tr>
+      <tr>
+          <td rowspan="4">16</td>
+          <td nowrap>layer</td>
+          <td>4975</td>
+          <td>14.1952</td>
+          <td>14.0893</td>
+          <td>225.4285</td>
+          <td>0.00%</td>
+          <td>1.0000</td>
+      </tr>
+      <tr>
+          <td nowrap>model:disable graph</td>
+          <td>4995</td>
+          <td>14.1264</td>
+          <td>14.1579</td>
+          <td>226.5261</td>
+          <td>-0.40%</td>
+          <td>1.0049</td>
+      </tr>
+      <tr>
+          <td nowrap>model:enable graph, bfs</td>
+          <td>3283</td>
+          <td>13.7438</td>
+          <td>14.5520</td>
+          <td>232.8318</td>
+          <td>34.01%</td>
+          <td>1.0328</td>
+      </tr>
+      <tr>
+          <td nowrap>model:enable graph, serial</td>
+          <td>3265</td>
+          <td>13.7420</td>
+          <td>14.5540</td>
+          <td>232.8635</td>
+          <td>34.37%</td>
+          <td>1.0330</td>
+      </tr>
+      <tr>
+          <td rowspan="4">32</td>
+          <td nowrap>layer</td>
+          <td>10119</td>
+          <td>13.4587</td>
+          <td>7.4302</td>
+          <td>237.7649</td>
+          <td>0.00%</td>
+          <td>1.0000</td>
+      </tr>
+      <tr>
+          <td nowrap>model:disable graph</td>
+          <td>10109</td>
+          <td>13.2952</td>
+          <td>7.5315</td>
+          <td>240.6875</td>
+          <td>0.10%</td>
+          <td>1.0123</td>
+      </tr>
+      <tr>
+          <td nowrap>model:enable graph, bfs</td>
+          <td>6839</td>
+          <td>13.1059</td>
+          <td>7.6302</td>
+          <td>244.1648</td>
+          <td>32.41%</td>
+          <td>1.0269</td>
+      </tr>
+      <tr>
+          <td nowrap>model:enable graph, serial</td>
+          <td>6845</td>
+          <td>13.0489</td>
+          <td>7.6635</td>
+          <td>245.2312</td>
+          <td>32.35%</td>
+          <td>1.0314</td>
+      </tr>
+  </table>
+</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="đa-quá-trình-multi-processes"></a><a href="#đa-quá-trình-multi-processes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Đa quá trình (Multi processes)</h3>
+<ul>
+<li>Thiết lập thí nghiệm
+<ul>
+<li>API
+<ul>
+<li>Sử dụng Layer: ResNet50 trong
+<a href="https://github.com/apache/singa/blob/master/examples/cnn/autograd/resnet_dist.py">resnet_dist.py</a></li>
+<li>Sử dụng Model: ResNet50 trong
+<a href="https://github.com/apache/singa/blob/master/examples/cnn/model/resnet.py">resnet.py</a></li>
+</ul></li>
+<li>GPU: NVIDIA RTX 2080Ti * 2</li>
+<li>MPI: hai quá trình MPI trên một node</li>
+</ul></li>
+<li>Kí hiệu: như trên</li>
+<li>kết quả
+  <table style="text-align: center">
+      <tr>
+          <th style="text-align: center">Batchsize</th>
+          <th style="text-align: center">Cases</th>
+          <th style="text-align: center">Mem(MB)</th>
+          <th style="text-align: center">Time(s)</th>
+          <th style="text-align: center">Speed(it/s)</th>
+          <th style="text-align: center">Throughput</th>
+          <th style="text-align: center">Reduction</th>
+          <th style="text-align: center">Speedup</th>
+      </tr>
+      <tr>
+          <td rowspan="4">16</td>
+          <td nowrap>layer</td>
+          <td>5439</td>
+          <td>17.3323</td>
+          <td>11.5391</td>
+          <td>369.2522</td>
+          <td>0.00%</td>
+          <td>1.0000</td>
+      </tr>
+      <tr>
+          <td nowrap>model:disable graph</td>
+          <td>5427</td>
+          <td>17.8232</td>
+          <td>11.2213</td>
+          <td>359.0831</td>
+          <td>0.22%</td>
+          <td>0.9725</td>
+      </tr>
+      <tr>
+          <td nowrap>model:enable graph, bfs</td>
+          <td>3389</td>
+          <td>18.2310</td>
+          <td>10.9703</td>
+          <td>351.0504</td>
+          <td>37.69%</td>
+          <td>0.9507</td>
+      </tr>
+      <tr>
+          <td nowrap>model:enable graph, serial</td>
+          <td>3437</td>
+          <td>17.0389</td>
+          <td>11.7378</td>
+          <td>375.6103</td>
+          <td>36.81%</td>
+          <td>1.0172</td>
+      </tr>
+      <tr>
+          <td rowspan="4">32</td>
+          <td nowrap>layer</td>
+          <td>10547</td>
+          <td>14.8635</td>
+          <td>6.7279</td>
+          <td>430.5858</td>
+          <td>0.00%</td>
+          <td>1.0000</td>
+      </tr>
+      <tr>
+          <td nowrap>model:disable graph</td>
+          <td>10503</td>
+          <td>14.7746</td>
+          <td>6.7684</td>
+          <td>433.1748</td>
+          <td>0.42%</td>
+          <td>1.0060</td>
+      </tr>
+      <tr>
+          <td nowrap>model:enable graph, bfs</td>
+          <td>6935</td>
+          <td>14.8553</td>
+          <td>6.7316</td>
+          <td>430.8231</td>
+          <td>34.25%</td>
+          <td>1.0006</td>
+      </tr>
+      <tr>
+          <td nowrap>model:enable graph, serial</td>
+          <td>7027</td>
+          <td>14.3271</td>
+          <td>6.9798</td>
+          <td>446.7074</td>
+          <td>33.37%</td>
+          <td>1.0374</td>
+      </tr>
+  </table>
+</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="kết-luận"></a><a href="#kết-luận" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kết Luận</h3>
+<ul>
+<li>Training với computational graph giúp giảm đáng kể khối bộ nhớ.</li>
+<li>Hiện tại, tốc độ có cải thiện một chút. Nhiều tối ưu hoá có thể được thực hiện
+giúp tăng hiệu quả.</li>
+</ul>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 10/4/2020</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/5.0.0_Viet/optimizer"><span class="arrow-prev">← </span><span>Optimizer</span></a><a class="docs-next button" href="/docs/5.0.0_Viet/onnx"><span>ONNX</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#ví-dụ">Ví Dụ</a></li><li><a href="#thực-hiện">Thực Hiện</a><ul class="toc-headings"><li><a href="#xây-dựng-graph">Xây Dựng Graph</a></li><li><a href="#tối-ưu-hoá">Tối Ưu Hoá</a></li></ul></li><li><a href="#toán-tử-operator-mới">Toán Tử (Operator) mới</a></li><li><a href="#điểm-chuẩn-benchmark">Điểm Chuẩn (Benchmark)</a><ul class="toc-headings"><li><a href="#trên-một-node">Trên một node</a></li><li><a href="#đa-quá-trình-multi-processes">Đa quá trình (Multi processes)</a></li><li><a href="#kết-luận">Kết Luận</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/singa-logo-square.png" alt="Apache SINGA" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/installation">Getting Started</a><a href="/docs/device">Guides</a><a href="/en/https://apache-singa.readthedocs.io/en/latest/">API Reference</a><a href="/docs/examples">Examples</a><a href="/docs/download-singa">Development</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/docs/history-singa">SINGA History</a><a href="/docs/team-list">SINGA Team</a><a href="/blog">SINGA News</a><a href="https://github.com/apache/singa">GitHub</a><div class="social"><a class="github-button" href="https://github.com/apache/singa" data-count-href="/apache/singa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">apache/singa</a></div><div class="social"><a href="https://twitter.com/ApacheSINGA" class="twitter-follow-button">Follow @ApacheSINGA</a></div></div><div><h5>Apache Software Foundation</h5><a href="https://apache.org/" target="_blank" rel="noreferrer noopener">Foundation</a><a href="http://www.apache.org/licenses/" target="_blank" rel="noreferrer noopener">License</a><a href="http://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer noopener">Sponsorship</a><a href="http://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer noopener">Thanks</a><a href="http://www.apache.org/events/current-event" target="_blank" rel="noreferrer noopener">Events</a><a href="http://www.apache.org/security/" target="_blank" rel="noreferrer noopener">Security</a></div></section><div style="width:100%;text-align:center"><a href="https://apache.org/" target="_blank" rel="noreferrer noopener" class="ApacheOpenSource"><img src="/img/asf_logo_wide.svg" alt="Apache Open Source"/></a><section class="copyright" style="max-width:60%;margin:0 auto">Copyright © 2025
+   The Apache Software Foundation. All rights reserved.
+   Apache SINGA, Apache, the Apache feather logo, and
+   the Apache SINGA project logos are trademarks of The
+   Apache Software Foundation. All other marks mentioned
+   may be trademarks or registered trademarks of their
+   respective owners.</section></div></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '45202133606c0b5fa6d21cddc4725dd8',
+                indexName: 'apache_singa',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:3.0.0"]}
+              });
+            </script></body></html>
